@@ -8,7 +8,7 @@ import javax.xml.stream.events.Comment;
 
 public interface serviceInterface {
 
-	public int join(HashMap<String, Object> params);
+	public int join(HashMap<String, Object> params);//성민 도현
 
 	public HashMap<String, Object> login(String id, String password);
 
@@ -18,9 +18,9 @@ public interface serviceInterface {
 
 	public HashMap<String, Object> updateUser(HashMap<String, Object> params);
 
-	public int idCheck(String id);
+	public int idCheck(String id); // 성민 도현
 
-	public int nicknameCheck(String nickname);
+	public int nicknameCheck(String nickname); //성민 도현
 
 	public List<HashMap<String, Object>> listBoard(HashMap<String, Object> params, int mode, String searchMsg);
 
@@ -28,7 +28,7 @@ public interface serviceInterface {
 
 	public int updateBoard(HashMap<String, Object> params);
 
-	public int deleteBoard(HashMap<String, Object> params);
+	public int deleteBoard(HashMap<String, Object> params); //성민 도현
 
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 
@@ -36,7 +36,7 @@ public interface serviceInterface {
 
 	public int updateComment(HashMap<String, Object> params);
 
-	public int deleteComment(HashMap<String, Object> params);
+	public int deleteComment(HashMap<String, Object> params); //성민 도현
 
 	public List<HashMap<String, Object>> listApply(int BoardNo);
 
@@ -44,7 +44,7 @@ public interface serviceInterface {
 
 	public int updateApply(HashMap<String, Object> params);
 
-	public int deleteApply(HashMap<String, Object> params);
+	public int deleteApply(HashMap<String, Object> params); //성민 도현
 
 	public int choiceApply(int userIndex);
 
@@ -52,8 +52,8 @@ public interface serviceInterface {
 
 	public int writeScore(float starPoint);
 
-	public int bookmark(int BoardNo, int userIndex);
+	public int bookmark(int BoardNo, int userIndex); //성민 도현
 
-	public int police(int BoardNo, int userIndex);
+	public int police(int BoardNo, int userIndex); //성민 도현 
 
 }
