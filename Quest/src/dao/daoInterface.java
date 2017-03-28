@@ -1,15 +1,9 @@
 package dao;
 import java.util.HashMap;
+
 import java.util.List;
 
 import javax.xml.stream.events.Comment;
-
-import model.Apply;
-import model.Board;
-import model.Bookmark;
-import model.Police;
-import model.Score;
-import model.User;
 
 public interface daoInterface {
 	public int insertBoard(HashMap<String, Object> params);

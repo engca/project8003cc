@@ -1,12 +1,10 @@
 package service;
 import java.util.HashMap;
+
 import java.util.List;
 
 import javax.xml.stream.events.Comment;
 
-import model.Apply;
-import model.Board;
-import model.User;
 
 public interface serviceInterface {
 
@@ -18,7 +16,7 @@ public interface serviceInterface {
 
 	public int unjoin(HashMap<String, Object> params);
 
-	public User updateUser(HashMap<String, Object> params);
+	public HashMap<String, Object> updateUser(HashMap<String, Object> params);
 
 	public int idCheck(String id);
 
