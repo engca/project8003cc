@@ -3,14 +3,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="dao.daoInterface">
-   <insert id="insertBoard" parameterType="board">
+   <insert id="insertBoard" parameterType="java.util.HashMap">
       insert into board values(#{board_flag}, #{b_complete_flag}, #{boardNo}, #{user_index},
       #{date}, #{police_count}, #{read_count}, #{title}, #{addr1No}, #{addr2No}, 
       #{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{st_time}, #{play_time},
       #{content})
    </insert>
    
-   <update id="updateBoard" parameterType="board">
+   <update id="updateBoard" parameterType="java.util.HashMap">
       update board set board_flag=#{board_flag}, b_complete_flag=#{b_complete_flag},
       date=#{date}, police_count=#{police_count}, read_count=#{read_count}, title=#{title},
       arrd1No=#{arrd1No}, arrd2No=#{arrd2No}, reward1=#{reward1}, reward2=#{reward2}, 
@@ -22,11 +22,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       delete from board where boardNo=#{boardNo}
    </delete>
    
-   <select id="selectBoardOne" parameterType="int" resultType="board">
+   <select id="selectBoardOne" parameterType="int" resultType="java.util.HashMap">
       select * from board where boardNo=#{boardNo}
    </select>
    
-   <select id="selectBoardAll" resultType="board">
+   <select id="selectBoardAll" resultType="java.util.HashMap">
       select * from board
    </select>
 

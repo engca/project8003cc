@@ -4,21 +4,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dao.daoInterface">
-   <insert id="insertApply" parameterType="apply">
+   <insert id="insertApply" parameterType="java.util.HashMap">
       insert into apply values(#{boardNo}, #{rewardNo}, #{contactAnswer}, 
       #{content}, #{user_index}, #{a_complete_flag})
    </insert>
    
-   <update id="updateApply" parameterType="apply">
+   <update id="updateApply" parameterType="java.util.HashMap">
       update apply set rewardNo=#{rewardNo}, contactAnswer=#{contactAnswer}, 
       content=#{content} where boardNo=#{boardNo}
    </update>
    
-   <select id="selectAllApplyByBoardNo" parameterType="int" resultType="apply">
+   <select id="selectAllApplyByBoardNo" parameterType="int" resultType="java.util.HashMap">
       select * from apply where boardNo=#{boardNo}
    </select>
    
-   <select id="selectAllApplyByUserIndex" parameterType="int" resultType="apply">
+   <select id="selectAllApplyByUserIndex" parameterType="int" resultType="java.util.HashMap">
       select * from apply where user_index=#{user_index}
    </select>
    
