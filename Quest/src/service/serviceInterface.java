@@ -1,4 +1,5 @@
 package service;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.stream.events.Comment;
@@ -9,47 +10,47 @@ import model.User;
 
 public interface serviceInterface {
 
-	public int join(User user);
+	public int join(HashMap<String, Object> params);
 
-	public User login(String id, String password);
+	public HashMap<String, Object> login(String id, String password);
 
-	public int logout(User user);
+	public int logout(HashMap<String, Object> params);
 
-	public int unjoin(User user);
+	public int unjoin(HashMap<String, Object> params);
 
-	public User updateUser(User user);
+	public User updateUser(HashMap<String, Object> params);
 
 	public int idCheck(String id);
 
 	public int nicknameCheck(String nickname);
 
-	public List<Board> listBoard(Board board, int mode, String searchMsg);
+	public List<HashMap<String, Object>> listBoard(HashMap<String, Object> params, int mode, String searchMsg);
 
-	public int writeBoard(Board board);
+	public int writeBoard(HashMap<String, Object> params);
 
-	public int updateBoard(Board board);
+	public int updateBoard(HashMap<String, Object> params);
 
-	public int deleteBoard(Board board);
+	public int deleteBoard(HashMap<String, Object> params);
 
-	public List<Comment> listComment(int BoardNo);
+	public List<HashMap<String, Object>> listComment(int BoardNo);
 
-	public int writeComment(Comment comment);
+	public int writeComment(HashMap<String, Object> params);
 
-	public int updateComment(Comment comment);
+	public int updateComment(HashMap<String, Object> params);
 
-	public int deleteComment(Comment comment);
+	public int deleteComment(HashMap<String, Object> params);
 
-	public List<Apply> listApply(int BoardNo);
+	public List<HashMap<String, Object>> listApply(int BoardNo);
 
-	public int writeApply(Apply apply);
+	public int writeApply(HashMap<String, Object> params);
 
-	public int updateApply(Apply apply);
+	public int updateApply(HashMap<String, Object> params);
 
-	public int deleteApply(Apply apply);
+	public int deleteApply(HashMap<String, Object> params);
 
 	public int choiceApply(int user_index);
 
-	public List<Board> listBoard(int user1_index);
+	public List<HashMap<String, Object>> listBoard(int user1_index);
 
 	public int writeScore(float starPoint);
 

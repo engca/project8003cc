@@ -12,28 +12,28 @@ import model.Score;
 import model.User;
 
 public interface daoInterface {
-	public int insertBoard(Board board);
-	public int updateBoard(Board board);
+	public int insertBoard(HashMap<String, Object> params);
+	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(int boradNo);
-	public List<Board> selectBoardAll();
-	public Board selectBoardOne(int boardNo);
+	public List<HashMap<String, Object>> selectBoardAll();
+	public HashMap<String, Object> selectBoardOne(int boardNo);
 	
-	public int insertUser(User user);
-	public int updateUser(User user);
+	public int insertUser(HashMap<String, Object> params);
+	public int updateUser(HashMap<String, Object> params);
 	public int deleteUser(int user_index);
-	public User selectUser(int user_index);
+	public HashMap<String, Object> selectUser(int user_index);
 	
 
 	public int insertComment(HashMap<String, Object> params);
 	public int updateComment(HashMap<String, Object> params);
 	public int deleteComment(HashMap<String, Object> params);
 //	public Comment selectCommentByBoardNo(int boardNo);
-	public List<Comment> selectAllCommentByBoardNo(int boardNo);
+	public List<HashMap<String, Object>> selectAllCommentByBoardNo(int boardNo);
 	
-	public int insertApply(Apply apply);
-	public int updateApply(Apply apply);
-	public List<Apply> selectAllApplyByBoardNo(int boardNo);
-	public List<Apply> selectAllApplyByUserIndex(int User_Index);
+	public int insertApply(HashMap<String, Object> params);
+	public int updateApply(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectAllApplyByBoardNo(int boardNo);
+	public List<HashMap<String, Object>> selectAllApplyByUserIndex(int User_Index);
 
 
 	public int insertScore(HashMap<String, Object> params);
@@ -42,12 +42,12 @@ public interface daoInterface {
 //	public Score selectScoreByUser2Id(int user2_index);
 	public HashMap<String, Object> selectScoreByBoardNo(int boardNo);
 
-	public int insertBookMark(Bookmark bookmark);
-	public int deleteBookMark(Bookmark bookmark);
-	public Bookmark selectBookMark(Bookmark bookmark);
+	public int insertBookMark(HashMap<String, Object> params);
+	public int deleteBookMark(HashMap<String, Object> params);
+	public HashMap<String, Object> selectBookMark(HashMap<String, Object> params);
 
-	public int insertPolice(Police police);
-	public int selectPolice(Police police);
+	public int insertPolice(HashMap<String, Object> params);
+	public int selectPolice(HashMap<String, Object> params);
 
 	public String selectaddr1(int addr1No);
 	public String selectaddr2(int addr2No);
