@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dao.daoInterface">
+<mapper namespace="dao.daoInterface"> 
 
 	<insert id="insertUser" parameterType="java.util.HashMap">
 	INSERT INTO user VALUES(0, #{userId}, #{password}, #{nickname}, #{starPoint}, #{doCount})
