@@ -7,4 +7,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAddr2" parameterType="java.util.HashMap">
 		select addr2 from addr2 where addr2No = #{addr2No}
 	</select>
+	<g></g>
 </mapper>
