@@ -31,6 +31,7 @@ public class QuestDao implements daoInterface{
 				}
 		}
 	}
+	
 
 	@Override
 	public int insertBoard(HashMap<String, Object> params) {
