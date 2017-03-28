@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="dao.daoInterface">
 	<insert id="insertScore" parameterType="java.util.HashMap">
-	INSERT score INTO VALUES (#{user1_index})
+	INSERT INTO score VALUES (#{user1_index})
 	</insert>
 	<update id="updateScore" parameterType="java.util.HashMap">
 	update score set boardNo = #{boardNo}, s_complete_flag = #{s_complete_flag}, 
