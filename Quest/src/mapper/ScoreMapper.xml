@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="dao.daoInterface">
+	<insert id="insertScore" parameterType="java.util.HashMap">
+	INSERT score INTO VALUES (#{user1_index})
+	</insert>
+	<update id="updateScore" parameterType="java.util.HashMap">
+	update score set boardNo = #{boardNo}, s_complete_flag = #{s_complete_flag}, 
+	user1_starPoint = #{user1_starPoint}, user2_starPoint = #{user2_starPoint} WHERE 
+	( user1_index = #{user1_index} AND user2_index = #{user2_index} )
+	</update>
+	<select id="selectScoreByBoardNo" parameterType="int" resultType="java.util.HashMap">
+	SELECT * FROM score WHERE boradNo = #{boardNo} 
+	</select>
+</mapper>
