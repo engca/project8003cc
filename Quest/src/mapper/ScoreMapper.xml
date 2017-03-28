@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateScore" parameterType="java.util.HashMap">
 	update score set boardNo = #{boardNo}, sCompleteFlag = #{sCompleteFlag}, 
 	user1StarPoint = #{user1StarPoint}, user2_starPoint = #{user2StarPoint} WHERE 
-	( user1Index = #{user1Index} AND user2Index = #{user2Index} )
+	 user1Index = #{user1Index} AND user2Index = #{user2Index} 
 	</update>
 	<select id="selectScoreByBoardNo" parameterType="int" resultType="java.util.HashMap">
 	SELECT * FROM score WHERE boradNo = #{boardNo} 

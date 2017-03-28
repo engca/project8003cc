@@ -5,21 +5,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="dao.daoInterface">
    <insert id="insertApply" parameterType="java.util.HashMap">
-      insert into apply values(#{boardNo}, #{rewardNo}, #{contactAnswer}, 
+      INSERT INTO apply VALUES (#{boardNo}, #{rewardNo}, #{contactAnswer}, 
       #{content}, #{userIndex}, #{aCompleteFlag})
    </insert>
    
    <update id="updateApply" parameterType="java.util.HashMap">
-      update apply set rewardNo=#{rewardNo}, contactAnswer=#{contactAnswer}, 
-      content=#{content} where boardNo=#{boardNo}
+      UPDATE apply SET rewardNo=#{rewardNo}, contactAnswer=#{contactAnswer}, 
+      content=#{content} WHERE boardNo=#{boardNo}
    </update>
    
    <select id="selectAllApplyByBoardNo" parameterType="int" resultType="java.util.HashMap">
-      select * from apply where boardNo=#{boardNo}
+      SELECT * FROM apply WHERE boardNo=#{boardNo}
    </select>
    
    <select id="selectAllApplyByUserIndex" parameterType="int" resultType="java.util.HashMap">
-      select * from apply where userIndex=#{userIndex}
+      SELECT * FROM apply WHERE userIndex=#{userIndex}
    </select>
    
 

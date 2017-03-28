@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </update>
   
   <delete id="deleteComment" parameterType="java.util.HashMap">
-  	DELETE FROM comment WHERE boardNo = #{boardNo} and userIndex = #{userIndex}
+  	DELETE FROM comment WHERE boardNo = #{boardNo} AND userIndex = #{userIndex}
   </delete>
   
   <select id="selectAllCommentByBoardNo" parameterType="int"

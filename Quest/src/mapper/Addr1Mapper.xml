@@ -5,6 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace = "dao.daoInterface">
 	<select id="selectAddr1" parameterType="java.util.HashMap">
-		select addr1 from addr1 where addr1No = #{addr1No}
+		SELECT addr1 FROM addr1 WHERE addr1No = #{addr1No}
 	</select>
 </mapper>

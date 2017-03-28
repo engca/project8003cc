@@ -4,30 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="dao.daoInterface">
    <insert id="insertBoard" parameterType="java.util.HashMap">
-      insert into board values(#{boardFlag}, #{bCompleteFlag}, #{boardNo}, #{userIndex},
+      INSERT INTO board VALUES(#{boardFlag}, #{bCompleteFlag}, #{boardNo}, #{userIndex},
       #{date}, #{policeCount}, #{readCount}, #{title}, #{addr1No}, #{addr2No}, 
       #{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime}, #{playTime},
       #{content}) 
    </insert>
    
    <update id="updateBoard" parameterType="java.util.HashMap">
-      update board set boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
+      UPDATE board SET boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
       date=#{date}, policeCount=#{policeCount}, readCount=#{readCount}, title=#{title},
       addr1No=#{addr1No}, addr2No=#{addr2No}, reward1=#{reward1}, reward2=#{reward2}, 
       reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},
-      playTime=#{playTime}, content=#{content} where boardNo=#{boardNo}
+      playTime=#{playTime}, content=#{content} WHERE boardNo=#{boardNo}
    </update>
    
    <delete id="deleteBoard" parameterType="int">
-      delete from board where boardNo=#{boardNo}
+      DELETE FROM board WHERE boardNo=#{boardNo}
    </delete>
    
    <select id="selectBoardOne" parameterType="int" resultType="java.util.HashMap">
-      select * from board where boardNo=#{boardNo}
+      SELECT * FROM board WHERE boardNo=#{boardNo}
    </select>
    
    <select id="selectBoardAll" resultType="java.util.HashMap">
-      select * from board
+      SELECT * FROM board
    </select>
 
 </mapper>
