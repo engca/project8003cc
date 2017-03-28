@@ -6,19 +6,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dao.daoInterface">
 
 	<insert id="insertUser" parameterType="java.util.HashMap">
-	INSERT INTO user VALUES(0, #{user_id}, #{password}, #{nickname}, #{star_point}, #{do_count})
+	INSERT INTO user VALUES(0, #{userId}, #{password}, #{nickname}, #{starPoint}, #{doCount})
 	</insert>
 
 	<update id="updateUser" parameterType="java.util.HashMap">
-	UPDATE user SET password = #{password}, nickname = #{nickname}, star_point = #{star_point},
-	do_count = #{do_count} WHERE user_index = #{user_index}  
+	UPDATE user SET password = #{password}, nickname = #{nickname}, starPoint = #{starPoint},
+	doCount = #{doCount} WHERE userIndex = #{userIndex}  
 	</update>
 
 	<delete id="deleteUser" parameterType="int">
-	DELETE FROM user WHERE user_index = #{user_index}
+	DELETE FROM user WHERE userIndex = #{userIndex}
 	</delete>
 
-	<select id="select_User" parameterType="int" resultType="java.util.HashMap">
-	SELECT * FROM user WHERE user_index = #{user_index}
+	<select id="selectUser" parameterType="int" resultType="java.util.HashMap">
+	SELECT * FROM user WHERE userIndex = #{userIndex}
 	</select>
 </mapper>

@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 
 <mapper namespace = "dao.daoInterface">
-	<select id="selectaddr1" parameterType="java.util.HashMap">
-		select addr1 from addr1 where addr1No = #{ addr1No}
+	<select id="selectAddr1" parameterType="java.util.HashMap">
+		select addr1 from addr1 where addr1No = #{addr1No}
 	</select>
 </mapper>

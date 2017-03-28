@@ -4,16 +4,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="dao.daoInterface">
   <insert id="insertComment" parameterType="java.util.HashMap">
-  	INSERT INTO comment VALUES (#{boardNo}, #{user_index}, sysdate(), #{content})
+  	INSERT INTO comment VALUES (#{boardNo}, #{userIndex}, sysdate(), #{content})
   </insert>
-  
+    
   <update id="updateComment" parameterType="java.util.HashMap" >
   	UPDATE comment SET content = #{content}, date = sysdate() WHERE 
-  	(boardNo = #{boardNo} and user_index = #{user_index})
+  	(boardNo = #{boardNo} and userIndex = #{userIndex})
   </update>
   
   <delete id="deleteComment" parameterType="java.util.HashMap">
-  	DELETE FROM comment WHERE boardNo = #{boardNo} and user_index = #{user_index}
+  	DELETE FROM comment WHERE boardNo = #{boardNo} and userIndex = #{userIndex}
   </delete>
   
   <select id="selectAllCommentByBoardNo" parameterType="int"

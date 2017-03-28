@@ -5,11 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="dao.daoInterface">
 	<insert id="insertPolice" parameterType="java.util.HashMap">
-		insert into police values(#{boardNo}, #{user_index})
+		insert into police values(#{boardNo}, #{userIndex})
 	</insert>
-	
+	 
 	<select id="selectPolice" parameterType="java.util.HashMap" resultType="java.util.HashMap"> 
-		select * from police where boardNo=#{boardNo} and user_id=#{user_index}
+		select * from police where boardNo=#{boardNo} and userIndex=#{userIndex}
 	</select>
 
 </mapper>

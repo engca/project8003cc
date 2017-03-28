@@ -5,15 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="dao.daoInterface">
    <insert id="insertBookMark" parameterType="java.util.HashMap">
-      insert into bookmark values(#{boardNo}, #{user_index})
+      insert into bookmark values(#{boardNo}, #{userIndex})
    </insert>
-   
+    
    <delete id="deleteBookMark" parameterType="java.util.HashMap">
       delete from bookmark where boardNo=#{boardNo}
    </delete>
    
    <select id="selectBookMark" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-      select * from bookmark where boardNo=#{boardNo} and user_index=#{user_index}
+      select * from bookmark where boardNo=#{boardNo} and userIndex=#{userIndex}
    </select>
    
 

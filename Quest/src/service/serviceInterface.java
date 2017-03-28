@@ -46,14 +46,14 @@ public interface serviceInterface {
 
 	public int deleteApply(HashMap<String, Object> params);
 
-	public int choiceApply(int user_index);
+	public int choiceApply(int userIndex);
 
-	public List<HashMap<String, Object>> listBoard(int user1_index);
+	public List<HashMap<String, Object>> listBoard(int user1Index);
 
 	public int writeScore(float starPoint);
 
-	public int bookmark(int BoardNo, int user_index);
+	public int bookmark(int BoardNo, int userIndex);
 
-	public int police(int BoardNo, int user_index);
+	public int police(int BoardNo, int userIndex);
 
 }

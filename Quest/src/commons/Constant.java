@@ -2,13 +2,13 @@ package commons;
 
 public class Constant {
 
-	public static String BOARDFLAG = "boardflag";
-	public static String BCOMPLETEFLAG = "bcompleteflag";
+	public static String BOARDFLAG = "boardFlag";
+	public static String BCOMPLETEFLAG = "bCompleteFlag";
 	public static String BOARDNO = "boardNo";
-	public static String USERINDEX = "userindex";
+	public static String USERINDEX = "userIndex";
 	public static String DATE = "date";
-	public static String POLICECOUNT = "policecount";
-	public static String READCOUNT = "readcount";
+	public static String POLICECOUNT = "policeCount";
+	public static String READCOUNT = "readCount";
 	public static String TITLE = "title";
 	public static String ADDR1NO = "addr1No";
 	public static String ADDR2NO = "addr2No";
@@ -17,24 +17,24 @@ public class Constant {
 	public static String REWARD3 = "reward3";
 	public static String PEOPLE = "people";
 	public static String CONTACTNO = "contactNo";
-	public static String STTIME = "sttime";
-	public static String PLAYTIME = "playtime";
+	public static String STTIME = "stTime";
+	public static String PLAYTIME = "playTime";
 	public static String CONTENT = "content";
 
-	public static String USERID = "userid";
+	public static String USERID = "userId";
 	public static String PASSWORD = "password";
 	public static String NICKNAME = "nickname";
-	public static String STARPOSTRING = "starpoString";
-	public static String DOCOUNT = "docount";
+	public static String STARPOINT = "starPoint";
+	public static String DOCOUNT = "doCount";
 
 	public static String REWARDNO = "rewardNo";
 	public static String CONTACTANSWER = "contactAnswer";
-	public static String ACOMPLETEFLAG = "acompleteflag";
+	public static String ACOMPLETEFLAG = "aCompleteFlag";
 
-	public static String USER1INDEX = "user1index";
-	public static String USER2INDEX = "user2index";
-	public static String SCOMPLETEFLAG = "scompleteflag";
-	public static String USER1STARPOSTRING = "user1starPoString";
-	public static String USER2STARPOSTRING = "user2starPoString";
+	public static String USER1INDEX = "user1Index";
+	public static String USER2INDEX = "user2Index";
+	public static String SCOMPLETEFLAG = "sCompleteFlag";
+	public static String USER1STARPOINT = "user1StarPoint";
+	public static String USER2STARPOINT = "user2starPoint";
 
 }

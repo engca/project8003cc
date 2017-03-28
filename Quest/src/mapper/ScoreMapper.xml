@@ -4,14 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="dao.daoInterface">
 	<insert id="insertScore" parameterType="java.util.HashMap">
-	INSERT INTO score VALUES (#{user1_index})
+	INSERT INTO score VALUES (#{user1Index})
 	</insert>
 	<update id="updateScore" parameterType="java.util.HashMap">
-	update score set boardNo = #{boardNo}, s_complete_flag = #{s_complete_flag}, 
-	user1_starPoint = #{user1_starPoint}, user2_starPoint = #{user2_starPoint} WHERE 
-	( user1_index = #{user1_index} AND user2_index = #{user2_index} )
+	update score set boardNo = #{boardNo}, sCompleteFlag = #{sCompleteFlag}, 
+	user1StarPoint = #{user1StarPoint}, user2_starPoint = #{user2StarPoint} WHERE 
+	( user1Index = #{user1Index} AND user2Index = #{user2Index} )
 	</update>
 	<select id="selectScoreByBoardNo" parameterType="int" resultType="java.util.HashMap">
 	SELECT * FROM score WHERE boradNo = #{boardNo} 
-	</select>  
+	</select>   
 </mapper>

@@ -14,8 +14,8 @@ public interface daoInterface {
 	
 	public int insertUser(HashMap<String, Object> params);
 	public int updateUser(HashMap<String, Object> params);
-	public int deleteUser(int user_index);
-	public HashMap<String, Object> selectUser(int user_index);
+	public int deleteUser(int userIndex);
+	public HashMap<String, Object> selectUser(int userIndex);
 	
 
 	public int insertComment(HashMap<String, Object> params);
@@ -27,7 +27,7 @@ public interface daoInterface {
 	public int insertApply(HashMap<String, Object> params);
 	public int updateApply(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectAllApplyByBoardNo(int boardNo);
-	public List<HashMap<String, Object>> selectAllApplyByUserIndex(int User_Index);
+	public List<HashMap<String, Object>> selectAllApplyByUserIndex(int userIndex);
 
 
 	public int insertScore(HashMap<String, Object> params);
@@ -43,7 +43,7 @@ public interface daoInterface {
 	public int insertPolice(HashMap<String, Object> params);
 	public int selectPolice(HashMap<String, Object> params);
 
-	public String selectaddr1(int addr1No);
-	public String selectaddr2(int addr2No);
+	public String selectAddr1(int addr1No);
+	public String selectAddr2(int addr2No);
 
 }
