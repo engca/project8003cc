@@ -44,7 +44,7 @@ public interface daoInterface {
 
 	public int insertBookMark(HashMap<String, Object> params);
 	public int deleteBookMark(HashMap<String, Object> params);
-	public List<HashMap<String, Object>> selectBookMark(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectBookMark(HashMap<String, Object> params); 
 
 	public int insertPolice(HashMap<String, Object> params);
 	public int selectPolice(HashMap<String, Object> params);
