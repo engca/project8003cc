@@ -13,5 +13,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<select id="selectScoreByBoardNo" parameterType="int" resultType="java.util.HashMap">
 	SELECT * FROM score WHERE boradNo = #{boardNo} 
-	</select>
+	</select>  
 </mapper>
