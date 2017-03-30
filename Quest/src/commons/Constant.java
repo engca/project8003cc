@@ -64,8 +64,8 @@ public class Constant {
 	}
 	
 	class Police{
-		private static final String boardNo="boardNo";
-		private static final String userindex="userIndex";
+		private static final String BOARDNO="boardNo";
+		private static final String USERINDEX="userIndex";
 
 		
 	}
