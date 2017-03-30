@@ -23,7 +23,7 @@ public class Constant {
 	}
 
 	class User {
-		public static final String USERINDEX = "userIndext";
+		public static final String USERINDEX = "userIndex";
 		public static final String USERID = "userId";
 		public static final String PASSWORD = "password";
 		public static final String NICKNAME = "nickname";
