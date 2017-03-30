@@ -9,29 +9,13 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class QuestDao implements daoInterface{
+	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
-	
-	public QuestDao(){
-		InputStream is = null;
-		try {
-			is = Resources.getResourceAsStream("configuration.xml");
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		finally{
-				try {
-					if(is!=null)
-					is.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}
-	}
-	
 
 	@Override
 	public int insertBoard(HashMap<String, Object> params) {
