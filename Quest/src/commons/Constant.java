@@ -1,40 +1,49 @@
 package commons;
 
 public class Constant {
+	class Board {
+		public static final String BOARDFLAG = "boardFlag";
+		public static final String BCOMPLETEFLAG = "bCompleteFlag";
+		public static final String BOARDNO = "boardNo";
+		public static final String USERINDEX = "userIndex";
+		public static final String DATE = "date";
+		public static final String POLICECOUNT = "policeCount";
+		public static final String READCOUNT = "readCount";
+		public static final String TITLE = "title";
+		public static final String ADDR1NO = "addr1No";
+		public static final String ADDR2NO = "addr2No";
+		public static final String REWARD1 = "reward1";
+		public static final String REWARD2 = "reward2";
+		public static final String REWARD3 = "reward3";
+		public static final String PEOPLE = "people";
+		public static final String CONTACTNO = "contactNo";
+		public static final String STTIME = "stTime";
+		public static final String PLAYTIME = "playTime";
+		public static final String CONTENT = "content";
+	}
 
-	public static String BOARDFLAG = "boardFlag";
-	public static String BCOMPLETEFLAG = "bCompleteFlag";
-	public static String BOARDNO = "boardNo";
-	public static String USERINDEX = "userIndex";
-	public static String DATE = "date";
-	public static String POLICECOUNT = "policeCount";
-	public static String READCOUNT = "readCount";
-	public static String TITLE = "title";
-	public static String ADDR1NO = "addr1No";
-	public static String ADDR2NO = "addr2No";
-	public static String REWARD1 = "reward1";
-	public static String REWARD2 = "reward2";
-	public static String REWARD3 = "reward3";
-	public static String PEOPLE = "people";
-	public static String CONTACTNO = "contactNo";
-	public static String STTIME = "stTime";
-	public static String PLAYTIME = "playTime";
-	public static String CONTENT = "content";
+	class User {
+		public static final String USERINDEX = "userIndext";
+		public static final String USERID = "userId";
+		public static final String PASSWORD = "password";
+		public static final String NICKNAME = "nickname";
+		public static final String STARPOINT = "starPoint";
+		public static final String DOCOUNT = "doCount";
+	}
 
-	public static String USERID = "userId";
-	public static String PASSWORD = "password";
-	public static String NICKNAME = "nickname";
-	public static String STARPOINT = "starPoint";
-	public static String DOCOUNT = "doCount";
+	class Apply {
+		public static final String BOARDNO = "boardNo";
+		public static final String REWARDNO = "rewardNo";
+		public static final String CONTACTANSWER = "contactAnswer";
+		public static final String ACOMPLETEFLAG = "aCompleteFlag";
+	}
 
-	public static String REWARDNO = "rewardNo";
-	public static String CONTACTANSWER = "contactAnswer";
-	public static String ACOMPLETEFLAG = "aCompleteFlag";
-
-	public static String USER1INDEX = "user1Index";
-	public static String USER2INDEX = "user2Index";
-	public static String SCOMPLETEFLAG = "sCompleteFlag";
-	public static String USER1STARPOINT = "user1StarPoint";
-	public static String USER2STARPOINT = "user2starPoint";
-
+	class Commnet {
+		public static final String USER1INDEX = "user1Index";
+		public static final String USER2INDEX = "user2Index";
+		public static final String BOARDNO = "boardNo";
+		public static final String SCOMPLETEFLAG = "sCompleteFlag";
+		public static final String USER1STARPOINT = "user1StarPoint";
+		public static final String USER2STARPOINT = "user2starPoint";
+	}
 }
