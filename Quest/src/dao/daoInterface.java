@@ -43,7 +43,6 @@ public interface daoInterface {
 	public int insertPolice(HashMap<String, Object> params);
 	public int selectPolice(HashMap<String, Object> params);
 
-	public String selectAddr1(int addr1No);
-	public String selectAddr2(int addr2No);
+	public String selectAddress(int addrNo);
 
 }

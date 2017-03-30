@@ -10,8 +10,7 @@ public class Constant {
 		public static final String POLICECOUNT = "policeCount";
 		public static final String READCOUNT = "readCount";
 		public static final String TITLE = "title";
-		public static final String ADDR1NO = "addr1No";
-		public static final String ADDR2NO = "addr2No";
+		public static final String ADDRNO = "addrNo";
 		public static final String REWARD1 = "reward1";
 		public static final String REWARD2 = "reward2";
 		public static final String REWARD3 = "reward3";

@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dao.daoInterface">
    <insert id="insertBoard" parameterType="java.util.HashMap">
       INSERT INTO board VALUES(#{boardFlag}, #{bCompleteFlag}, #{boardNo}, #{userIndex},
-      #{date}, #{policeCount}, #{readCount}, #{title}, #{addr1No}, #{addr2No}, 
+      #{date}, #{policeCount}, #{readCount}, #{title}, #{addrNo}, 
       #{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime}, #{playTime},
       #{content}) 
    </insert>
@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <update id="updateBoard" parameterType="java.util.HashMap">
       UPDATE board SET boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
       date=#{date}, policeCount=#{policeCount}, readCount=#{readCount}, title=#{title},
-      addr1No=#{addr1No}, addr2No=#{addr2No}, reward1=#{reward1}, reward2=#{reward2}, 
+      addrNo=#{addrNo}, reward1=#{reward1}, reward2=#{reward2}, 
       reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},
       playTime=#{playTime}, content=#{content} WHERE boardNo=#{boardNo}
    </update>

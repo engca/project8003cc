@@ -334,23 +334,11 @@ public class QuestDao implements daoInterface{
 	}
 
 	@Override
-	public String selectAddr1(int addr1No) {
+	public String selectAddress(int addrNo) {
 		// TODO Auto-generated method stub
 		SqlSession s = sqlSessionFactory.openSession();
 		try{
-			return s.getMapper(daoInterface.class).selectAddr1(addr1No);
-		}
-		finally{
-			s.close();
-		}
-	}
-
-	@Override
-	public String selectAddr2(int addr2No) {
-		// TODO Auto-generated method stub
-		SqlSession s = sqlSessionFactory.openSession();
-		try{
-			return s.getMapper(daoInterface.class).selectAddr2(addr2No);
+			return s.getMapper(daoInterface.class).selectAddress(addrNo);
 		}
 		finally{
 			s.close();
