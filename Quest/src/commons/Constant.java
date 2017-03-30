@@ -46,4 +46,27 @@ public class Constant {
 		public static final String USER1STARPOINT = "user1StarPoint";
 		public static final String USER2STARPOINT = "user2starPoint";
 	}
+	
+	class Score{
+		private static final String USER1INDEX = "user1Index";
+		private static final String USER2INDEX="user2Index";
+		private static final String BOARDNO="boardNo";
+		private static final String SCOMPLETEFLAG="sCompleteFlag";
+		private static final String USER1STARPOINT="user1StarPoint";
+		private static final String USER2STARPOINT="user2StarPoint";
+
+	}
+	
+	class Bookmark{
+		private static final String BOARDNO="boardNo";
+		private static final String USERINDEX="userIndex";
+	
+	}
+	
+	class Police{
+		private static final String boardNo="boardNo";
+		private static final String userindex="userIndex";
+
+		
+	}
 }
