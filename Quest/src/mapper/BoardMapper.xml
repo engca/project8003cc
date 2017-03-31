@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.daoInterface">
-   <insert id="insertBoard" parameterType="java.util.HashMap">
-      INSERT INTO board VALUES(#{boardFlag}, #{bCompleteFlag}, #{boardNo}, #{userIndex},
-      #{date}, #{policeCount}, #{readCount}, #{title}, #{addrNo}, 
-      #{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime}, #{playTime},
-      #{content}) 
-   </insert>
-   
-   <update id="updateBoard" parameterType="java.util.HashMap">
-      UPDATE board SET boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
-      date=#{date}, policeCount=#{policeCount}, readCount=#{readCount}, title=#{title},
-      addrNo=#{addrNo}, reward1=#{reward1}, reward2=#{reward2}, 
-      reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},
-      playTime=#{playTime}, content=#{content} WHERE boardNo=#{boardNo}
-   </update>
-   
-   <delete id="deleteBoard" parameterType="int">
-      DELETE FROM board WHERE boardNo=#{boardNo}
-   </delete>
-   
-   <select id="selectBoardOne" parameterType="int" resultType="java.util.HashMap">
-      SELECT * FROM board WHERE boardNo=#{boardNo}
-   </select>
-   
-   <select id="selectBoardAll" resultType="java.util.HashMap">
-      SELECT * FROM board
-   </select>
+	<insert id="insertBoard" parameterType="java.util.HashMap">
+		INSERT INTO board VALUES(#{boardFlag}, #{bCompleteFlag}, #{boardNo},
+		#{userIndex},
+		#{date}, #{policeCount}, #{readCount}, #{title}, #{addrNo},
+		#{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime},
+		#{playTime},
+		#{content})
+	</insert>
 
+	<update id="updateBoard" parameterType="java.util.HashMap">
+		UPDATE board SET boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
+		date=#{date}, policeCount=#{policeCount}, readCount=#{readCount},
+		title=#{title},
+		addrNo=#{addrNo}, reward1=#{reward1}, reward2=#{reward2},
+		reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},
+		playTime=#{playTime}, content=#{content} WHERE boardNo=#{boardNo}
+	</update>
+
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board WHERE boardNo=#{boardNo}
+	</delete>
+
+	<select id="selectBoardOne" parameterType="int" resultType="java.util.HashMap">
+		SELECT * FROM board WHERE boardNo=#{boardNo}
+	</select>
+
+	<select id="selectBoardAll" resultType="java.util.HashMap">
+		SELECT * FROM board
+	</select>
+	<select id="selectBoard" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT * from board
+		where board_flag = #{board_flag}
+		<if test="searchMsg != null and searchMsg != ''">
+			or title like "%${searchMsg}%"
+		</if>
+		<if test="addrNo != null">
+			<foreach item="addrno" collection="addrNo">
+				or addrNo = #{addrNo}
+			</foreach>
+		</if>
+	</select>
 </mapper>

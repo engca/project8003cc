@@ -22,7 +22,7 @@ public interface IQuestService {
 
 	public int nicknameCheck(String nickname); //성민 도현
 
-	public List<HashMap<String, Object>> listBoard(HashMap<String, Object> params, int mode, String searchMsg);
+	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg);
 
 	public int writeBoard(HashMap<String, Object> params);
 
@@ -46,11 +46,11 @@ public interface IQuestService {
 
 	public int deleteApply(HashMap<String, Object> params); //성민 도현
 
-	public int choiceApply(int userIndex);
+	public int choiceApply(HashMap<String, Object> params);
 
-	public List<HashMap<String, Object>> listBoard(int user1Index);
+	public List<HashMap<String, Object>> listScore(int userIndex,int mode);
 
-	public int writeScore(float starPoint);
+	public int writeScore(int boardNo, float starPoint, int mode);
 
 	public int bookmark(int BoardNo, int userIndex); //성민 도현
 

@@ -81,26 +81,35 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> listBoard(HashMap<String, Object> params, int mode, String searchMsg) {
+	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg) {
 		// TODO Auto-generated method stub
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		// 상진아 화이팅
-		return null;
+			HashMap<String, Object> params = new HashMap<>();
+			
+			params.put("addrNo", addrNo);
+			params.put("board_flag", mode);
+			params.put("searchMsg", searchMsg);
+			return dao.selectBoard(params);
+			//선택한 지역 번호 리스트와
+			//어떤리스트를 보여줄지랑
+			//검색어
+			
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			//될지 안될지 모르겟음
+			
 	}
 
 	@Override
@@ -174,61 +183,52 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public int choiceApply(int userIndex) {
+	public int choiceApply(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
+		// selectApply
+//		params에 들어와야 할것들
+			//글을 올린사람 = user1_id
+			//신청하여 선택 받은사람 = user2_id
+			//boardNo
+	
+		dao.insertScore(params);
+		//INSERT INTO score VALUES (#{user1_index},#{user2_index},#{boardNo},0,0,0)
+		//평가완료확인  = user1_exp = user2_exp = 0
+		dao.deleteApply((int)params.get("boardNo"));
+		// 지원한 목록들 삭제
 		
 		return 0;
 	}
 
 	@Override
-	public List<HashMap<String, Object>> listBoard(int user1Index) {
+	public List<HashMap<String, Object>> listScore(int userIndex, int mode) {
 		// TODO Auto-generated method stub
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
+//		mode가 0이면 파라미터의 user가  user1일때 리턴되는 리스트
+//		mode가 1면 파라미터의 user가 user2일때 리턴되는 리스트
+		HashMap<String, Object> params = new HashMap<>();
+		if(mode == 0)
+			params.put("user1_index", userIndex);
+		else if(mode == 1)
+			params.put("user2_index", userIndex);
 		
-		return null;
+		return dao.selectScoreByUserindex(params);
 	}
 
 	@Override
-	public int writeScore(float starPoint) {
+	public int writeScore(int boardNo, float starPoint, int mode) {
 		// TODO Auto-generated method stub
+		// boardNo
+		// starPoint
+		// mode = 0이면 내가 user1_exp
+		// mode = 1이면 내가 user2_exp
 		HashMap<String, Object> params = new HashMap<>();
-		params.put(Constant.Score.USER1STARPOINT, starPoint);
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		// 상진아 고마워 화이팅
-		return dao.insertScore(params);
+		
+		params.put("boardNo", boardNo);
+		if(mode == 0)
+			params.put("user1_starPoint", starPoint);
+		else if(mode == 1)
+			params.put("user2_starPoint", starPoint);
+		return dao.updateScore(params);
 	}
 
 	@Override

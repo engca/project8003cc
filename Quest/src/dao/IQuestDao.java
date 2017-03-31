@@ -10,6 +10,7 @@ public interface IQuestDao {
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(int boradNo);
 	public List<HashMap<String, Object>> selectBoardAll();
+	public List<HashMap<String, Object>> selectBoard(HashMap<String, Object> params);
 	public HashMap<String, Object> selectBoardOne(int boardNo);
 	
 	public int insertUser(HashMap<String, Object> params);
@@ -26,12 +27,15 @@ public interface IQuestDao {
 	
 	public int insertApply(HashMap<String, Object> params);
 	public int updateApply(HashMap<String, Object> params);
+	public int deleteApply(int boardNo);
+	public HashMap<String, Object> selectApply(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectAllApplyByBoardNo(int boardNo);
 	public List<HashMap<String, Object>> selectAllApplyByUserIndex(int userIndex);
 
 
 	public int insertScore(HashMap<String, Object> params);
 	public int updateScore(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectScoreByUserindex(HashMap<String, Object> params);
 //	public Score selectScoreByUser1Id(int user1_index);
 //	public Score selectScoreByUser2Id(int user2_index);
 	public HashMap<String, Object> selectScoreByBoardNo(int boardNo);
