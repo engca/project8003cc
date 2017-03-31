@@ -1,6 +1,8 @@
 package commons;
 
 public class Constant {
+	
+	
 	class Board {
 		public static final String BOARDFLAG = "boardFlag";
 		public static final String BCOMPLETEFLAG = "bCompleteFlag";
