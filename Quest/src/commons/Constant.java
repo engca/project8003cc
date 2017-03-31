@@ -3,7 +3,7 @@ package commons;
 public class Constant {
 	
 	
-	class Board {
+	public static class Board {
 		public static final String BOARDFLAG = "boardFlag";
 		public static final String BCOMPLETEFLAG = "bCompleteFlag";
 		public static final String BOARDNO = "boardNo";
@@ -23,7 +23,7 @@ public class Constant {
 		public static final String CONTENT = "content";
 	}
 
-	class User {
+	public static class User {
 		public static final String USERINDEX = "userIndex";
 		public static final String USERID = "userId";
 		public static final String PASSWORD = "password";
@@ -32,14 +32,14 @@ public class Constant {
 		public static final String DOCOUNT = "doCount";
 	}
 
-	class Apply {
+	public static class Apply {
 		public static final String BOARDNO = "boardNo";
 		public static final String REWARDNO = "rewardNo";
 		public static final String CONTACTANSWER = "contactAnswer";
 		public static final String ACOMPLETEFLAG = "aCompleteFlag";
 	}
 
-	class Commnet {
+	public static class Commnet {
 		public static final String USER1INDEX = "user1Index";
 		public static final String USER2INDEX = "user2Index";
 		public static final String BOARDNO = "boardNo";
@@ -48,25 +48,25 @@ public class Constant {
 		public static final String USER2STARPOINT = "user2starPoint";
 	}
 	
-	class Score{
-		private static final String USER1INDEX = "user1Index";
-		private static final String USER2INDEX="user2Index";
-		private static final String BOARDNO="boardNo";
-		private static final String SCOMPLETEFLAG="sCompleteFlag";
-		private static final String USER1STARPOINT="user1StarPoint";
-		private static final String USER2STARPOINT="user2StarPoint";
+	public static class Score{
+		public static final String USER1INDEX = "user1Index";
+		public static final String USER2INDEX="user2Index";
+		public static final String BOARDNO="boardNo";
+		public static final String SCOMPLETEFLAG="sCompleteFlag";
+		public static final String USER1STARPOINT="user1StarPoint";
+		public static final String USER2STARPOINT="user2StarPoint";
 
 	}
 	
-	class Bookmark{
-		private static final String BOARDNO="boardNo";
-		private static final String USERINDEX="userIndex";
+	public static class Bookmark{
+		public static final String BOARDNO="boardNo";
+		public static final String USERINDEX="userIndex";
 	
 	}
 	
-	class Police{
-		private static final String BOARDNO="boardNo";
-		private static final String USERINDEX="userIndex";
+	public static class Police{
+		public static final String BOARDNO="boardNo";
+		public static final String USERINDEX="userIndex";
 
 		
 	}

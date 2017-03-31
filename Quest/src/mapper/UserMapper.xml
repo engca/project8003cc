@@ -18,14 +18,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	DELETE FROM user WHERE userIndex = #{userIndex}
 	</delete>
 
-	<select id="selectUser" parameterType="int" resultType="java.util.HashMap">
-	SELECT * FROM user WHERE userIndex = #{userIndex}
+	<select id="selectUser" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT * FROM user WHERE
+	<if test="userIndex != null">
+	 userIndex = #{userIndex}
+	</if>
+	<if test="userId != null">
+	 userId = #{userId}
+	</if>
+	<if test="nickname != null">
+	 nickname = #{nickname}
+	</if>
 	</select>
-	
-	<select id="selectUserId" parameterType="String" resultType="java.util.HashMap">
-	SELECT * FROM user WHERE userId = #{userId}
-	</select>
-	
 	
 	
 </mapper>
