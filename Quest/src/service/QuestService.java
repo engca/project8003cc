@@ -3,7 +3,6 @@ package service;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -178,6 +177,15 @@ public class QuestService implements IQuestService {
 	public int choiceApply(int userIndex) {
 		// TODO Auto-generated method stub
 		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
 		
 		return 0;
 	}
@@ -186,6 +194,16 @@ public class QuestService implements IQuestService {
 	public List<HashMap<String, Object>> listBoard(int user1Index) {
 		// TODO Auto-generated method stub
 		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		
 		return null;
 	}
 
@@ -194,6 +212,22 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.Score.USER1STARPOINT, starPoint);
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
+		// 상진아 고마워 화이팅
 		return dao.insertScore(params);
 	}
 
