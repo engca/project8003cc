@@ -3,7 +3,14 @@ package service;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class QuestService implements IQuestService {
+	
+	@Autowired
+	private IQuestService dao;
 
 	@Override
 	public int join(HashMap<String, Object> params) {
