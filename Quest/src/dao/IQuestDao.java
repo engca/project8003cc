@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.xml.stream.events.Comment;
 
-public interface daoInterface {
+public interface IQuestDao {
 	public int insertBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(int boradNo);

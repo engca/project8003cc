@@ -6,7 +6,7 @@ import java.util.List;
 import javax.xml.stream.events.Comment;
 
 
-public interface serviceInterface {
+public interface IQuestService {
 
 	public int join(HashMap<String, Object> params);//성민 도현
 

@@ -18,7 +18,7 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperFactoryBean" id="questDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="mapperInterface" value="dao.daoInterface"></property>
+		<property name="mapperInterface" value="dao.IQuestDao"></property>
 	</bean>
 
 </beans>
