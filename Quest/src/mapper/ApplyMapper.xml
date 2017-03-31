@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dao.daoInterface">
    <insert id="insertApply" parameterType="java.util.HashMap">
       INSERT INTO apply VALUES (#{boardNo}, #{rewardNo}, #{contactAnswer}, 
-      #{content}, #{userIndex}, #{aCompleteFlag})
+      #{content}, #{userIndex}, 1)
    </insert>
    
    <update id="updateApply" parameterType="java.util.HashMap">
