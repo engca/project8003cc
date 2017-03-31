@@ -16,6 +16,7 @@ public interface IQuestDao {
 	public int updateUser(HashMap<String, Object> params);
 	public int deleteUser(int userIndex);
 	public HashMap<String, Object> selectUser(int userIndex);
+	public HashMap<String, Object> selectUserId(String id);
 	
 
 	public int insertComment(HashMap<String, Object> params);
