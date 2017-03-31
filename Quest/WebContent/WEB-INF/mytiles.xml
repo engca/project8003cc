@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="common" template="/main/layout.jsp">
+		<put-attribute name="title" value="타일즈" />
+		<put-attribute name="header" value="/main/header.jsp" />
+		<put-attribute name="menu" value="/main/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/main/footer.jsp" />
+	</definition>
+
+	<definition name="home" extends="common">
+		<put-attribute name="body" value="/home.jsp" />
+	</definition>
+
+</tiles-definitions>
+
