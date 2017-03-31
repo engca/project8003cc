@@ -183,18 +183,21 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public int choiceApply(HashMap<String, Object> params) {
+	public int choiceApply(int user1Index, int user2Index, int boardNo) {
 		// TODO Auto-generated method stub
 		// selectApply
 //		params에 들어와야 할것들
 			//글을 올린사람 = user1_id
 			//신청하여 선택 받은사람 = user2_id
 			//boardNo
-	
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("user1_index", user1Index);
+		params.put("user2_index", user2Index);
+		params.put("boardNo", boardNo);
 		dao.insertScore(params);
 		//INSERT INTO score VALUES (#{user1_index},#{user2_index},#{boardNo},0,0,0)
 		//평가완료확인  = user1_exp = user2_exp = 0
-		dao.deleteApply((int)params.get("boardNo"));
+		dao.deleteApply(boardNo);
 		// 지원한 목록들 삭제
 		
 		return 0;

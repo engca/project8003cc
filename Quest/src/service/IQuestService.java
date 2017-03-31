@@ -46,7 +46,7 @@ public interface IQuestService {
 
 	public int deleteApply(HashMap<String, Object> params); //성민 도현
 
-	public int choiceApply(HashMap<String, Object> params);
+	public int choiceApply(int user1Index, int user2Index, int boardNo);
 
 	public List<HashMap<String, Object>> listScore(int userIndex,int mode);
 
