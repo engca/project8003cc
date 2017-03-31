@@ -6,21 +6,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import dao.IQuestDao;
+
 @Component
 public class QuestService implements IQuestService {
 	
 	@Autowired
-	private IQuestService dao;
+	private IQuestDao dao;
 
 	@Override
 	public int join(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.insertUser(params);
 	}
 
 	@Override
 	public HashMap<String, Object> login(String id, String password) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
