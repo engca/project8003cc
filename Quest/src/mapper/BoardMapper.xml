@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoard" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT * from board
-		where board_flag = #{board_flag}
+		where boardFlag = #{boardFlag}
 		<if test="searchMsg != null and searchMsg != ''">
 			or title like "%${searchMsg}%"
 		</if>

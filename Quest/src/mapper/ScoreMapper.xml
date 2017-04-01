@@ -4,15 +4,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="dao.daoInterface"> 
 	<insert id="insertScore" parameterType="java.util.HashMap">
-	INSERT INTO score VALUES (#{user1_index},#{user2_index},#{boardNo},0,0,0)
+	INSERT INTO score VALUES (#{user1Index},#{user2Index},#{boardNo},0,0,0)
 	</insert>
 	<update id="updateScore" parameterType="java.util.HashMap">
 	update score set 
 	<if test="user1_starPoint != null">
-		user1_starPoint = #{user1_starPoint}
+		user1StarPoint = #{user1StarPoint}
 	</if>
 	<if test="user2_starPoint != null">
-		user2_starPoint = #{user2_starPoint}
+		user2StarPoint = #{user2StarPoint}
 	</if>
 	where boardNo = #{boardNo}
 	</update>
@@ -22,10 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectScoreByUserindex" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 	SELECT * FROM score WHERE 
 	<if test="user1_index != null">
-		user1_index = #{user1_index}
+		user1Index = #{user1Index}
 	</if>
 	<if test="user2_index != null">
-		user2_index = #{user2_index}
+		user2Index = #{user2Index}
 	</if>  
 	</select>  
 </mapper>

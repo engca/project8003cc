@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dao.daoInterface">
    <insert id="insertApply" parameterType="java.util.HashMap">
       INSERT INTO apply VALUES (#{boardNo}, #{rewardNo}, #{contactAnswer}, 
-      #{content}, #{user_index}, 1)
+      #{content}, #{userIndex}, 1)
    </insert>
    
    <update id="updateApply" parameterType="java.util.HashMap">
@@ -15,14 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </update>
    <select id = "selectApply" parameterType = "java.util.HashMap" resultType = "java.util.HashMap">
 	Select * from apply 
-	where boardNo = #{boardNo} and user_index = #{user_index} 
+	where boardNo = #{boardNo} and userIndex = #{userIndex} 
    </select>
    <select id="selectAllApplyByBoardNo" parameterType="int" resultType="java.util.HashMap">
       SELECT * FROM apply WHERE boardNo=#{boardNo}
    </select>
    
    <select id="selectAllApplyByUserIndex" parameterType="int" resultType="java.util.HashMap">
-      SELECT * FROM apply WHERE user_index=#{user_index}
+      SELECT * FROM apply WHERE userIndex=#{userIndex}
    </select>
    <delete id="deleteApply" parameterType="int">
       DELETE * from apply where boardNo = #{boardNo} 

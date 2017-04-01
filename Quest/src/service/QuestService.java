@@ -86,7 +86,7 @@ public class QuestService implements IQuestService {
 			HashMap<String, Object> params = new HashMap<>();
 			
 			params.put("addrNo", addrNo);
-			params.put("board_flag", mode);
+			params.put("boardFlag", mode);
 			params.put("searchMsg", searchMsg);
 			return dao.selectBoard(params);
 			//선택한 지역 번호 리스트와
@@ -191,8 +191,8 @@ public class QuestService implements IQuestService {
 			//신청하여 선택 받은사람 = user2_id
 			//boardNo
 		HashMap<String, Object> params = new HashMap<>();
-		params.put("user1_index", user1Index);
-		params.put("user2_index", user2Index);
+		params.put("user1Index", user1Index);
+		params.put("user2Index", user2Index);
 		params.put("boardNo", boardNo);
 		dao.insertScore(params);
 		//INSERT INTO score VALUES (#{user1_index},#{user2_index},#{boardNo},0,0,0)
@@ -210,9 +210,9 @@ public class QuestService implements IQuestService {
 //		mode가 1면 파라미터의 user가 user2일때 리턴되는 리스트
 		HashMap<String, Object> params = new HashMap<>();
 		if(mode == 0)
-			params.put("user1_index", userIndex);
+			params.put("user1Index", userIndex);
 		else if(mode == 1)
-			params.put("user2_index", userIndex);
+			params.put("user2Index", userIndex);
 		
 		return dao.selectScoreByUserindex(params);
 	}
@@ -228,9 +228,9 @@ public class QuestService implements IQuestService {
 		
 		params.put("boardNo", boardNo);
 		if(mode == 0)
-			params.put("user1_starPoint", starPoint);
+			params.put("user1StarPoint", starPoint);
 		else if(mode == 1)
-			params.put("user2_starPoint", starPoint);
+			params.put("user2StarPoint", starPoint);
 		return dao.updateScore(params);
 	}
 
