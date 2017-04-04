@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Component;
 
 import commons.Constant;
@@ -15,6 +16,8 @@ public class QuestService implements IQuestService {
 	
 	@Autowired
 	private IQuestDao dao;
+	@Autowired
+	private DataSourceTransactionManager txManager;
 
 	@Override
 	public int join(HashMap<String, Object> params) {
