@@ -18,7 +18,7 @@ public interface IQuestService {
 	public int idCheck(String id); // 성민 도현
 	public int nicknameCheck(String nickname); //성민 도현
 
-	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg);
+	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex);
 	public int writeBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(HashMap<String, Object> params); //성민 도현

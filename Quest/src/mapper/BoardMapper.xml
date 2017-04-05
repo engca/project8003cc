@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.daoInterface">
+<mapper namespace="dao.IQuestDao">
 	<insert id="insertBoard" parameterType="java.util.HashMap">
 		INSERT INTO board VALUES(#{boardFlag}, #{bCompleteFlag}, #{boardNo},
 		#{userIndex},
@@ -38,6 +38,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where boardFlag = #{boardFlag}
 		<if test="searchMsg != null and searchMsg != ''">
 			or title like "%${searchMsg}%"
+		</if>
+		<if test="userIndex != null and userIndex != ''">
+			or userIndex = #{userIndex}
 		</if>
 		<if test="addrNo != null">
 			<foreach item="addrno" collection="addrNo">

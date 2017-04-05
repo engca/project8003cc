@@ -8,8 +8,6 @@
 </head>
 <body>
 testJSP
-이상진진짜
-뭐한거야
-
+${hello }
 </body>
 </html>

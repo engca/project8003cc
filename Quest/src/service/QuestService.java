@@ -84,12 +84,13 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg) {
+	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex) {
 		// TODO Auto-generated method stub
 			HashMap<String, Object> params = new HashMap<>();
 			
 			params.put("addrNo", addrNo);
 			params.put("boardFlag", mode);
+			params.put("userIndex", userIndex);
 			params.put("searchMsg", searchMsg);
 			return dao.selectBoard(params);
 			//선택한 지역 번호 리스트와
