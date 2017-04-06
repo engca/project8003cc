@@ -256,4 +256,11 @@ public class QuestService implements IQuestService {
 		return dao.insertPolice(params);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> selectAll() {
+		// TODO Auto-generated method stub
+		
+		return dao.selectBoardAll();
+	}
+
 }

@@ -40,5 +40,7 @@ public interface IQuestService {
 	public int bookmark(int BoardNo, int userIndex); //성민 도현
 
 	public int police(int BoardNo, int userIndex); //성민 도현 
+	
+	public List<HashMap<String, Object>> selectAll();
 
 }
