@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-머리
-
 
 </body>
 </html>

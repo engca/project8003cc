@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style="text-align:center">
-바닥
-</div>
+
 </body>
 </html>
