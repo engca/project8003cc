@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<context:component-scan base-package="service"></context:component-scan>
+	
+	<bean class = "org.springframework.jdbc.datasource.DriverManagerDataSource"
+	id = "dataSource">
+		<property name="username" value = "root"></property>
+		<property name="password" value = "mysql"></property>
+		<property name="driverClassName" value = "com.mysql.jdbc.Driver"></property>
+		<property name="url" value = "jdbc:mysql://localhost/quest_db"></property>
+	</bean>
+	
+<!-- 	SqlSessionFactory -->
+	<bean class = "org.mybatis.spring.SqlSessionFactoryBean"
+	id = "sqlSessionFactoryBean">
+		<property name="dataSource" ref = "dataSource"></property>
+		<property name="mapperLocations" value = "classpath*:mapper/*.xml"></property>
+	</bean>
+	
+	<bean class = "org.mybatis.spring.mapper.MapperFactoryBean"
+	id = "QuestDao">
+		<property name="sqlSessionFactory" ref = "sqlSessionFactoryBean"></property>
+		<property name="mapperInterface" value = "dao.IQuestDao"></property>
+	</bean>
+	<bean class = "org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		id = "txManager">
+		<property name="dataSource" ref = "dataSource"></property>
+	</bean>
+</beans>
