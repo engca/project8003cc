@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>즐겨찾기에 추가되었습니다.
+<br>
+즐겨찾기로 이동하시겠습니까?
 
+<input type="button" value="닫기" onclick="location.href='글상세보기.do'">
+<input type="button" value="이동" onclick="location.href='북마크리스트.do'">
+
+</h1>
 </body>
 </html>
