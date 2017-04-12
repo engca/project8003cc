@@ -15,7 +15,7 @@ function logincheck(){
 	}
 	return true;
 }
-
+  
 function idCheck(){
 	if(document.frm.userid.value ==""){
 		alert('아이디를 입력하여 주십시오.');
