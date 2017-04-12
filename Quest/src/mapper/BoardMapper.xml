@@ -24,6 +24,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteBoard" parameterType="int">
 		DELETE FROM board WHERE boardNo=#{boardNo}
 	</delete>
+	
+	<select id="getBoardCount" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<select id="selectBoardLimit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from board order by num desc 
+		limit #{skip}, #{count}
+	</select>
 
 	<select id="selectBoardOne" parameterType="int" resultType="java.util.HashMap">
 		SELECT * FROM board WHERE boardNo=#{boardNo}
@@ -32,12 +41,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoardAll" resultType="java.util.HashMap">
 		SELECT * FROM board
 	</select>
+	
 	<select id="selectBoard" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
-		SELECT * from board
+		SELECT * from board order by boardNo desc
 		where boardFlag = #{boardFlag}
 		<if test="searchMsg != null and searchMsg != ''">
-			or title like "%${searchMsg}%"
+			or title like CONCAT('%',#{searchMsg},'%')
 		</if>
 		<if test="userIndex != null and userIndex != ''">
 			or userIndex = #{userIndex}

@@ -18,10 +18,12 @@ public interface IQuestService {
 	public int idCheck(String id); // 성민 도현
 	public int nicknameCheck(String nickname); //성민 도현
 
+	// 보드 서비스
 	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex);
 	public int writeBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(HashMap<String, Object> params); //성민 도현
+	public HashMap<String, Object> getBoardList(int page); // 페이징 처리용 추가 (4/12)
 
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
