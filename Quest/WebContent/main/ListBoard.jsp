@@ -17,6 +17,7 @@ a {
 	<div id="board_title">
 		<hi> ${title }</hi>
 	</div>
+	
 	<div id="board">
 		<table>
 			<tr>
@@ -26,16 +27,19 @@ a {
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
-
 			<c:forEach var="board" items="list">
 				<tr>
 					<td>${board.boardNo }</td>
-					<td>${board.title }</td>
+					<td><a href="readBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td>
 					<td>#{board.nickname }</td>
 					<td>${board.date }</td>
 					<td>${board.readcount }</td>
 				</tr>
 			</c:forEach>
+			<tr></tr>
+			<tr>
+				<td align="right"><input type="button" value="글쓰기" onclick="location.href='writeBoard.do'"></td>
+			</tr>
 		</table>
 	</div>
 
@@ -44,7 +48,7 @@ a {
 			<c:forEach var="num" begin="${start }" end="${end }">
 				<c:choose>
 					<c:when test="${num == current }">
-							<b>${num}</b>  
+							<b>[${num}]</b>  
 					</c:when>
 					<c:otherwise>
 						<a href="list.do?page=${num}"> [${num}]</a>
