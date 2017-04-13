@@ -69,7 +69,7 @@
 	});
 	function sch_area_si_chg(sido) {
 		$('#sangseaArea').css('visibility', 'visible');
-		//이동햇을때 체크 다 풀기
+		//이동햇을때 체크 다 풀기 
 		$("input:checkbox[name='area']").prop("checked", false);
 
 		$('#sangseaArea').text("");
