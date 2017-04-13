@@ -2,66 +2,76 @@
  * 회원가입시 유효성 검사
  */
 
-function logincheck(){
-	if (document.frm.userid.value.length == 0){
-		alert("아이디를 써주세요!!");
-		frm.userid.focus();
-		return false;
-	}
-	if(document.frm.pwd.value ==""){
-		alert("비번은 반드시 입력!!");
-		frm.pwd.focus();
-		return false;
-	}
-	return true;
-}
-  
-function idCheck(){
-	if(document.frm.userid.value ==""){
-		alert('아이디를 입력하여 주십시오.');
-		document.frm.user.focus();
-		return;
-	}
-	var url = "idCheck.do?userid=" + document.frm.userid.value;
-	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
-}
+window.onload = function() {
+ 
+	var userid = document.getElementById("userid");
+	var useridspan = document.getElementById("useridspan");
+	var password = document.getElementById("password");
+	var passwordspan = document.getElementById("passwordspan");
+	var pwd_check = document.getElementById("pwd_check");
+	var pwd_checkspan = document.getElementById("pwd_checkspan");
+	var nickname = document.getElementById("nickname");
+	var nicknamespan = document.getElementById("nicknamespan");
 
-function idok() {
-	opener.frm.userid.value = document.frm.userid.value;
-	opener.frm.reid.value = document.frm.userid.value;
-	self.close();
-}
+	var check = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,20}/;
+//	var email = /^([a-z0-9_+.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+	var email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
-function joinCheck(){
-	if (document.frm.name.value.length == 0){
-		alert("이름을 써주세요!!");
-		frm.name.focus();
-		return false;
-	}
-	if (document.frm.userid.value.length == 0){
-		alert("아이디를 써주세요");
-		frm.userid.focus();
-		return false;
-	}
-	if (document.frm.userid.value.length < 2){
-		alert("아이디는 2글자 이상이어야 합니다.");
-		frm.userid.focus();
-		return false;
-	}
-	if (document.frm.pwd.value == ""){
-		alert("암호는 반드시 입력해야 합니다.");
-		frm.pwd.focus();
-		return false;
-	}
-	if (document.frm.pwd.value != document.frm.pwd_check.value){
-		alert("암호가 일치하지 않습니다.");
-		frm.pwd.focus();
-		return false;
-	}
-	if (document.frm.reid.value.length == 0){
-		alert("중복체크를 하지 않았습니다.");
-		frm.userid.focus();
-		return false;
-	}
-	return true;
+	password.addEventListener('keyup', function() {
+		if (!check.test(password.value)) {
+			passwordspan.innerHTML = "영문 대소문자/특수문자/숫자 포함 8자";
+		} else {
+			passwordspan.innerHTML = "올바른 비밀번호 입니다.";
+		}
+	});
+		
+	pwd_check.addEventListener('keyup', function() {
+		if (pwd_check.value!=password.value){
+			pwd_checkspan.innerHTML = "동일한 비밀번호를 입력하세요." ;
+		} else {
+			pwd_checkspan.innerHTML = "동일한 비밀번호 입니다." ;
+		}
+	});
+	
+	userid.addEventListener('keyup', function(e) {
+		if (!email.test(userid.value)) {
+			useridspan.innerHTML = "올바른 이메일을 입력하세요";
+		} else {
+			var http = new XMLHttpRequest();
+			http.open('get', 'idCheck.do?userid=' + userid.value);
+			http.onreadystatechange = function() {
+				if (http.readyState == 4 && http.status == 200) 
+				{
+					if (http.responseText == 0)
+					{
+						useridspan.innerHTML = "사용가능한 아이디(이메일) 입니다.";
+					}
+					else 
+					{
+						useridspan.innerHTML = "아이디(이메일)이 중복입니다";
+					}
+				}	
+			}		
+			http.send();
+		}
+	});
+		
+	nickname.addEventListener('keyup', function(e) {
+		var http = new XMLHttpRequest();
+		http.open('get', 'nicknameCheck.do?nickname=' + nickname.value);
+		http.onreadystatechange = function() {
+			if (http.readyState == 4 && http.status == 200) 
+			{
+				if (http.responseText == 0)
+				{
+					nicknamespan.innerHTML = "사용가능한 닉네임 입니다";
+				}
+				else 
+				{
+					nicknamespan.innerHTML = "닉네임이 중복입니다";
+				}
+			}	
+		}
+		http.send();
+	});
 }

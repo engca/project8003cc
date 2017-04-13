@@ -1,7 +1,12 @@
 package controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,23 +21,48 @@ public class MainPageController {
 	@Autowired
 	IQuestService service;
 	 
-	@RequestMapping("todo.do")
+	@RequestMapping("list.do")
 	public ModelAndView todoBoardAllList(int boardflag){
 		
 		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mav = new ModelAndView();
 		if(boardflag==0){
-			mv.addObject("title","잘해요");
+			mav.addObject("title","잘해요");
 		}
 		else if(boardflag==1){
-			mv.addObject("title","해주세요");
+			mav.addObject("title","해주세요");
 		}
-		mv.addObject("list", list);
-		mv.setViewName("ListBoard");
-		return mv;		
+		mav.addObject("list", list);
+		mav.setViewName("/main/ListBoard.jsp");
+		return mav;		
 	}
-			
+
+	@RequestMapping("join.do")
+	public String join(){
+		return "/main/join.jsp";
+	}	
 	
+	@RequestMapping("idCheck.do")
+	public void idCheck(String userid, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
+		// TODO Auto-generated method stub
+		int result = service.idCheck(userid);	
+		
+		PrintWriter pw = resp.getWriter();
+		pw.print(result);
+		pw.close();
+		pw.flush();	
+	}
+	
+	@RequestMapping("nicknameCheck.do")
+	public void nicknameCheck(String nickname, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
+		// TODO Auto-generated method stub
+		int result = service.nicknameCheck(nickname);	
+		
+		PrintWriter pw = resp.getWriter();
+		pw.print(result);
+		pw.close();
+		pw.flush();	
+	}
 	
 	
 	
