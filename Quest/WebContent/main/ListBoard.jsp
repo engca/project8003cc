@@ -30,12 +30,16 @@ a {
 			<c:forEach var="board" items="list">
 				<tr>
 					<td>${board.boardNo }</td>
-					<td>${board.title }</td>
+					<td><a href="readBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td>
 					<td>#{board.nickname }</td>
 					<td>${board.date }</td>
 					<td>${board.readcount }</td>
 				</tr>
 			</c:forEach>
+			<tr></tr>
+			<tr>
+				<td align="right"><input type="button" value="글쓰기" onclick="location.href='writeBoard.do'"></td>
+			</tr>
 		</table>
 	</div>
 
