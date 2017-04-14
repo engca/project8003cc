@@ -26,7 +26,7 @@
 							<input type="submit" value="로그인"> 
 							<input type="button" value="회원가입" onclick="location.href='joinForm.do'">
 						</form>
- 
+  
 					</c:when>
 					<c:otherwise>
 				${param.id }님 환영합니다.
