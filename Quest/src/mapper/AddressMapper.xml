@@ -7,4 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAddress" parameterType="java.util.HashMap">
 		SELECT * FROM address WHERE addrNo = #{addrNo}
 	</select>
+	<select id="selectAddress2" parameterType = "java.util.HashMap"
+	resultType="java.util.HashMap">
+		select * from address where 1=0
+		<if test="sido != null">
+			and sido = #{sido}
+		</if>
+		<if test="gugun != null">
+			and gugun = #{gugun}
+		</if>
+		
+	</select>
 </mapper>
