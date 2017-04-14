@@ -15,6 +15,7 @@
         </layout>   
     </appender>
      
+     
     <!-- Application Loggers -->
     <logger name="place" additivity="false">
         <level value="debug" />

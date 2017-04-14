@@ -18,6 +18,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 		super.postHandle(request, response, handler, modelAndView);
 	}
 	
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {

@@ -22,7 +22,6 @@
 			<mvc:exclude-mapping path="/joinForm.do" />
 			<mvc:exclude-mapping path="/join.do" />
 			<ref bean="loginCheckInterceptor" />
-
 		</mvc:interceptor>
 
 		<mvc:interceptor>
