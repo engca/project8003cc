@@ -36,8 +36,8 @@
 		<c:forEach var="board" items="${boardList }">
 			<tr>
 				<td>${board.boardNo }</td>
-				<td><c:if test="${board.bcompleteflag == 0 }">요청중</c:if> <c:if
-						test="${board.acompleteflag == 1 }">신청중</c:if></td>
+				<td><c:if test="${board.bcompleteflag == 0 }">요청중</c:if>
+				 	<c:if test="${board.acompleteflag == 1 }">신청중</c:if></td>
 				<td>${board.title }</td>
 				<!-- USER INDEX>ID -->
 				<td>${board.닉네임 }</td>
@@ -47,24 +47,27 @@
 		</c:forEach>
 
 		<tr>
-			<td width="1250px" colspan="6" align="center"><c:if
-					test="${start != 1 }">
+			<td width="1250px" colspan="6" align="center">
+				<c:if test="${start != 1 }">
 					<a href="list.do?page=1"> [처음] &nbsp </a>
 					<a href="list.do?page=${start-1 }"> ◀ &nbsp&nbsp </a>
-				</c:if> <c:forEach begin="${start }" end="${end}" var="i">
+				</c:if>
+				<c:forEach begin="${start }" end="${end}" var="i">
 					<c:choose>
 						<c:when test="${i == current }">
-					[${i }]
-					</c:when>
+							[${i }]
+						</c:when>
 						<c:otherwise>
 							<a href="list.do?page=${i}"> [${i }] </a>
 						</c:otherwise>
 					</c:choose>
 
-				</c:forEach> <c:if test="${end != last }">
-					<a href="list.do?page=${end+1 }"> &nbsp&nbsp  ▶ </a>
-					<a href="list.do?page=${last}"> &nbsp [끝]</a>
-				</c:if></td>
+				</c:forEach> 
+					<c:if test="${end != last }">
+						<a href="list.do?page=${end+1 }"> &nbsp&nbsp  ▶ </a>
+						<a href="list.do?page=${last}"> &nbsp [끝]</a>
+					</c:if>
+			</td>
 		</tr>
 
 	</table>
