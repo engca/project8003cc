@@ -64,6 +64,15 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
+	@RequestMapping("writeBoard.do")
+	public String writeBoard(){
+		return "/main/writeBoard.jsp";
+	}
 	
+	@RequestMapping("writeBoardProc.do")
+	public ModelAndView writeBoardProc(){
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
 	
 }
