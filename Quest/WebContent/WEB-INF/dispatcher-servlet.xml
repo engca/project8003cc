@@ -14,21 +14,21 @@
 <!-- 		<property name="suffix" value = ".jsp"></property> -->
 	</bean>
 	
-		<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/*.do" />
-			<mvc:exclude-mapping path="/main.do" />
-			<mvc:exclude-mapping path="/login.do" />
-			<mvc:exclude-mapping path="/joinForm.do" />
-			<mvc:exclude-mapping path="/join.do" />
-			<ref bean="loginCheckInterceptor" />
-		</mvc:interceptor>
+<!-- 		<mvc:interceptors> -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/*.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/main.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/login.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/joinForm.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/join.do" /> -->
+<!-- 			<ref bean="loginCheckInterceptor" /> -->
+<!-- 		</mvc:interceptor> -->
 
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean id="logInterceptor" class="controller.LogIntercepter"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/**" /> -->
+<!-- 			<bean id="logInterceptor" class="controller.LogIntercepter"></bean> -->
+<!-- 		</mvc:interceptor> -->
+<!-- 	</mvc:interceptors> -->
 	
 	
 </beans>

@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import commons.Constant;
 import service.IQuestService;
+import service.QuestService;
 
 
 @Controller
@@ -70,9 +74,9 @@ public class MainPageController {
 	}
 	
 	@RequestMapping("writeBoardProc.do")
-	public ModelAndView writeBoardProc(){
-		ModelAndView mav = new ModelAndView();
-		return mav;
+	public String writeBoardProc(@ModelAttribute HashMap<String, Object> board){
+		service.writeBoard(board);
+		return "redirect:/list.do";
 	}
 	
 }
