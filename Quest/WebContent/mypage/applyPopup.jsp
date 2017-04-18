@@ -86,7 +86,7 @@ select {
 					<form action=""></form>
 					<table align="center" class="table table-bordered">
 						<tr align="center">
-							<td>보상</td>
+							<th>보상</th>
 							<td>
 								<!-- 							<input type="radio" name="reward" id="reward" --> <%-- 								value="${보상1 }">${보상1 } &nbsp&nbsp&nbsp <input --%>
 								<%-- 								type="radio" name="reward" id="reward" value="${보상2 }">${보상2 } --%>
@@ -95,12 +95,12 @@ select {
 							</td>
 						</tr>
 						<tr align="center">
-							<td>연락 방법</td>
+							<th>연락 방법</th>
 							<td>${contact }<input type="text" placeholder="연락처를 입력하세요."
 								name="contactInfo" id="contactInfo" >
 						</tr>
 						<tr align="center">
-							<td>내용</td>
+							<th>내용</th>
 							<td><textarea cols="4" rows="4" placeholder="내용을 입력하세요."
 									name="content" class="form-control"></textarea></td>
 						</tr>
