@@ -66,7 +66,6 @@ h2 {
 </style>
 </head>
 
-
 <body>
 	<hr class="star-primary">
 	<h2>즐겨찾기에 추가되었습니다.</h2>

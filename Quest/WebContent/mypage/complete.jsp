@@ -137,5 +137,6 @@ h2 {
 			</tr>
 <%-- 		</c:forEach> --%>
 	</table>
+	
 </body>
 </html>

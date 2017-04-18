@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -57,8 +57,9 @@ select {
 }
 
 h1 {
-text-align: center;
+	text-align: center;
 }
+
 .container {
 	position: absolute;
 	top: 60px;
@@ -68,9 +69,9 @@ text-align: center;
 
 </head>
 <body>
-<h1> 즐 겨 찾 기</h1>
-<hr class="star-primary">
-<table class="table table-bordered">
+	<h1>즐 겨 찾 기</h1>
+	<hr class="star-primary">
+	<table class="table table-bordered">
 		<tr>
 			<th width="150">글번호</th>
 			<th width="150">구 분</th>
@@ -80,14 +81,11 @@ text-align: center;
 			<th width="150">조회수</th>
 		</tr>
 
-
-
-
 		<c:forEach var="board" items="${boardList }">
 			<tr>
 				<td>${board.boardNo }</td>
-				<td><c:if test="${board.boardflag == 0 }">해주세요</c:if>
-				 <c:if	test="${board.boardflag == 1 }">잘해요</c:if></td>
+				<td><c:if test="${board.boardflag == 0 }">해주세요</c:if> <c:if
+						test="${board.boardflag == 1 }">잘해요</c:if></td>
 				<td>${board.title }</td>
 				<!-- USER INDEX>ID -->
 				<td>${board.userindex }</td>
@@ -112,7 +110,7 @@ text-align: center;
 					</c:choose>
 
 				</c:forEach> <c:if test="${end != last }">
-					<a href="list.do?page=${end+1 }"> &nbsp&nbsp  ▶ </a>
+					<a href="list.do?page=${end+1 }"> &nbsp&nbsp ▶ </a>
 					<a href="list.do?page=${last}"> &nbsp [끝]</a>
 				</c:if></td>
 		</tr>

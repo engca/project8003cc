@@ -139,6 +139,7 @@ $(document).ready ( function() {
 </head>
 
 <body>
+
 <form action="join.do" method="post" name="frm">
   <section id="contact">
         <div class="container">
