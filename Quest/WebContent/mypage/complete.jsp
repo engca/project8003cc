@@ -135,6 +135,7 @@ h2 {
 				<td>조회수</td>
 				<td>즐겨찾기</td>
 			</tr>
+			
 <%-- 		</c:forEach> --%>
 
 	</table>
