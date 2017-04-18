@@ -5,7 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시판 뿌리기</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Custom Fonts -->
+    <link href="../bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 <style type="text/css">
 a {
 	text-decoration: none
@@ -15,35 +20,41 @@ a {
 <body>
 
 	<div id="board_title">
-		<hi> ${title }</hi>
+		<h1>잘해요</h1>
+<%-- 		<h1> ${title }</h1> --%>
 	</div>
 	
-	<div id="board">
-		<table>
+	<div id="board" class="container">
+		<table class="table table-striped">
 			<tr>
-				<th>No</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회수</th>
+				<th width="10%">No</th>
+				<th width="40%">제목</th>
+				<th width="20%">작성자</th>
+				<th width="20%">작성일</th>
+				<th width="10%">조회수</th>
 			</tr>
 			<c:forEach var="board" items="list">
 				<tr>
-					<td>${board.boardNo }</td>
-					<td><a href="readBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td>
-					<td>#{board.nickname }</td>
-					<td>${board.date }</td>
-					<td>${board.readcount }</td>
+					<td> 111 </td>
+					<td> 제목입니다. </td>
+					<td> 닉네임 </td>
+					<td> 2017-01-01 </td>
+					<td> 1 </td>
+<!-- 					서버 연동되면 아래 살리기 -->
+<%-- 					<td>${board.boardNo }</td> --%>
+<%-- 					<td><a href="readBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td> --%>
+<%-- 					<td>#{board.nickname }</td> --%>
+<%-- 					<td>${board.date }</td> --%>
+<%-- 					<td align="center"><fmt:formatDate value="${board.readcount }"  pattern="yyyy-MM-dd" /> --%>
 				</tr>
 			</c:forEach>
-			<tr></tr>
 			<tr>
-				<td align="right"><input type="button" value="글쓰기" onclick="location.href='writeBoard.do'"></td>
+				<td colspan="5" align="right"><input type="button" value="글쓰기" onclick="location.href='writeBoard.do'" class="btn btn-default pull-right"></td>
 			</tr>
 		</table>
-	</div>
 
-		<div id="paging">
+		<div id="paging" class="text-center">
+			<ul class="pagination">
 			<a href="list.do?page=${first }">◀</a>
 			<c:forEach var="num" begin="${start }" end="${end }">
 				<c:choose>
@@ -56,9 +67,15 @@ a {
 				</c:choose>
 			</c:forEach>
 			<a href="list.do?page=${last }">▶ </a>
+			</ul>
 		</div>
 
+	</div>
 
+    <!-- jQuery -->
+    <script src="../bootstrapResources/vendor/jquery/jquery.min.js"></script>
 
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
