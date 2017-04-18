@@ -7,19 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>퀘스트 작성하기</title>
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-
-<!-- Optional theme -->
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script></script>
 <style type="text/css">
 th {
@@ -112,8 +105,9 @@ select {
 							placeholder="내용을 입력하세요." name="content" class="form-control"></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="right"><a class="btn btn-default"
-						onclick=".do">퀘스트등록 </a> <a class="btn btn-default" onclick=".do">퀘스트목록</a>
+					<td colspan="4" align="right">
+					<a class="btn btn-default" onclick="writeBoard.do">퀘스트등록 </a> 
+					<a class="btn btn-default" onclick="list.do">퀘스트목록 </a>
 					</td>
 				</tr>
 			</table>
