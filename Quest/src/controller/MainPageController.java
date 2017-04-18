@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.IQuestService;
@@ -64,6 +65,14 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
+	@RequestMapping(method=RequestMethod.GET, value="readBoard.do")
+	public ModelAndView viewboard(int num){
+		ModelAndView mv = new ModelAndView();
+		mv.addAllObjects(service.readBoard(num));
+		mv.setViewName("readBoard");
+		return mv;
+	}
+	
 	@RequestMapping("writeBoard.do")
 	public String writeBoard(){
 		return "/main/writeBoard.jsp";
@@ -74,5 +83,6 @@ public class MainPageController {
 		ModelAndView mav = new ModelAndView();
 		return mav;
 	}
+	
 	
 }

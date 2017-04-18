@@ -109,6 +109,14 @@ public class QuestService implements IQuestService {
 	}	
 	
 	@Override
+	public HashMap<String, Object> readBoard(int boardNo) {
+		HashMap<String, Object> bd = dao.selectBoardOne(boardNo);
+		bd.put(Constant.Board.READCOUNT, (int)bd.get(Constant.Board.READCOUNT)+1);
+		dao.updateBoard(bd);
+		return bd;
+	}
+	
+	@Override
 	public HashMap<String, Object> getBoardList(int page) {
 		// TODO Auto-generated method stub
 		// 첫페이지 → 맨 앞페이지
@@ -293,6 +301,8 @@ public class QuestService implements IQuestService {
 		
 		return dao.selectBoardAll();
 	}
+
+
 
 
 

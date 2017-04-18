@@ -24,6 +24,7 @@ public interface IQuestService {
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(HashMap<String, Object> params); //성민 도현
 	public HashMap<String, Object> getBoardList(int page); // 페이징 처리용 추가 (4/12)
+	public HashMap<String, Object> readBoard(int boardNo);
 
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
