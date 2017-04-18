@@ -136,6 +136,7 @@ h2 {
 				<td>즐겨찾기</td>
 			</tr>
 <%-- 		</c:forEach> --%>
+
 	</table>
 	
 </body>
