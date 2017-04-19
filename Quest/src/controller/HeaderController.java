@@ -29,10 +29,14 @@ public class HeaderController {
 		return "redirect:joinForm.jsp";
 	}
 	
-	
+	@RequestMapping("search.do")
+	public String search(){
+//		session.setAttribute("id", id);
+		return "bootstrapResources/header/search.jsp";
+		}
 	@RequestMapping("header.do")
 	public String header(){
 //		session.setAttribute("id", id);
-		return "header/header.jsp";
+		return "bootstrapResources/header/header.jsp";
 		}
 }
