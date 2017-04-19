@@ -4,9 +4,84 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <!-- Bootstrap Core CSS -->
+    <link href="../bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Custom Fonts -->
+    <link href="../bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
+
+<!-- 잘해요 검색결과  리스트 -->
+	<div id="welldoboard" class="container">
+			<h1>잘해요</h1>
+<!-- 		<div class="col-lg-12 text-center"> -->
+<%-- 			<h2>${title}</h2> --%>
+<!-- 			<hr class="star-primary"> -->
+<!-- 		</div> -->
+
+		<table class="table table-striped">
+			<tr>
+				<th width="10%">No</th>
+				<th width="40%">제목</th>
+				<th width="20%">작성자</th>
+				<th width="20%">작성일</th>
+				<th width="10%">조회수</th>
+			</tr>
+			<c:forEach var="board" items="list">
+				<tr>
+					<td> 111 </td>
+					<td> 제목입니다. </td>
+					<td> 닉네임 </td>
+					<td> 2017-01-01 </td>
+					<td> 1 </td>
+<!-- 					서버 연동되면 아래 살리기 -->
+<%-- 					<td>${board.boardNo }</td> --%>
+<%-- 					<td><a href="readBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td> --%>
+<%-- 					<td>#{board.nickname }</td> --%>
+<%-- 					<td>${board.date }</td> --%>
+<%-- 					<td align="center"><fmt:formatDate value="${board.readcount }"  pattern="yyyy-MM-dd" /> --%>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+
+<!-- 해주세요 검색결과  리스트 -->
+	
+	<div id="todoboard" class="container">
+			<h1>해주세요</h1>
+<!-- 		<div class="col-lg-12 text-center"> -->
+<%-- 			<h2>${title}</h2> --%>
+<!-- 			<hr class="star-primary"> -->
+<!-- 		</div> -->
+
+		<table class="table table-striped">
+			<tr>
+				<th width="10%">No</th>
+				<th width="40%">제목</th>
+				<th width="20%">작성자</th>
+				<th width="20%">작성일</th>
+				<th width="10%">조회수</th>
+			</tr>
+			<c:forEach var="board" items="list">
+				<tr>
+					<td> 111 </td>
+					<td> 제목입니다. </td>
+					<td> 닉네임 </td>
+					<td> 2017-01-01 </td>
+					<td> 1 </td>
+<!-- 					서버 연동되면 아래 살리기 -->
+<%-- 					<td>${board.boardNo }</td> --%>
+<%-- 					<td><a href="readBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td> --%>
+<%-- 					<td>#{board.nickname }</td> --%>
+<%-- 					<td>${board.date }</td> --%>
+<%-- 					<td align="center"><fmt:formatDate value="${board.readcount }"  pattern="yyyy-MM-dd" /> --%>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 
 </body>
 </html>

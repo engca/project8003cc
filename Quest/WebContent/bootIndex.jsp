@@ -171,6 +171,8 @@
                         <i class="fa fa-download"></i> Download Theme
                     </a>
                 </div>
+                
+
             </div>
         </div>
     </section>
