@@ -69,11 +69,11 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="readBoard.do")
+	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
 	public ModelAndView viewboard(int num){
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(service.readBoard(num));
-		mv.setViewName("readBoard");
+		mv.setViewName("viewBoard");
 		return mv;
 	}
 	
