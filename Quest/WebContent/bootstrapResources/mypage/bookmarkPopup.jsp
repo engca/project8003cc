@@ -75,10 +75,10 @@ h2 {
 	<hr class="star-primary">
 	<center>
 		<input type="button" class="btn btn-primary btn-lg" value="닫기"
-			onclick="location.href='글상세보기.do'">
+			onclick="location.href='viewBoard.do'">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
 			class="btn btn-success btn-lg" value="이동"
-			onclick="location.href='북마크리스트.do'">
+			onclick="location.href='bookmark.do'">
 	</center>
 
 </body>
