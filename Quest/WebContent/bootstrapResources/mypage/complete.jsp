@@ -67,7 +67,7 @@ h2 {
 </style>
 <script type="text/javascript">
 	function starpointPopup() {
-		var popUrl = "starpoint.jsp";
+		var popUrl = "starpoint.do";
 		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 		window.open(popUrl,"",popOption);
 	}
