@@ -89,7 +89,7 @@ public class MainPageController {
 		return "redirect:/list.do";
 	}
 	
-//	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")
+//	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")  
 //	public ModelAndView updateBoard(int boardNo){
 //		ModelAndView mav = new ModelAndView();
 //		mav.addObject("board", service.getBoard(boardNo));
