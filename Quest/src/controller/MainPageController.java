@@ -108,6 +108,10 @@ public class MainPageController {
 		return "redirect:/viewBoard.do";
 	}
 	
+	@RequestMapping("ListBoard.do")
+	public String ListBoard() {
+		return "/bootstrapResources/main/ListBoard.jsp";
+	}
 	
 	
 	

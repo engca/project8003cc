@@ -4,23 +4,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <!-- Bootstrap Core CSS -->
-    <link href="../bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Theme CSS -->
+	<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
      <!-- Custom Fonts -->
-    <link href="../bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Theme JavaScript -->
+	<script src="bootstrapResources/js/freelancer.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 
 <!-- 잘해요 검색결과  리스트 -->
 	<div id="welldoboard" class="container">
-			<h1>잘해요</h1>
-<!-- 		<div class="col-lg-12 text-center"> -->
+		<div class="row">
+		<div class="col-lg-12">
+			<h2>잘해요</h2>
 <%-- 			<h2>${title}</h2> --%>
-<!-- 			<hr class="star-primary"> -->
-<!-- 		</div> -->
+			<hr class="star-primary1">
+		</div>
+		</div>
 
 		<table class="table table-striped">
 			<tr>
@@ -51,11 +61,13 @@
 <!-- 해주세요 검색결과  리스트 -->
 	
 	<div id="todoboard" class="container">
-			<h1>해주세요</h1>
-<!-- 		<div class="col-lg-12 text-center"> -->
+		<div class="row">
+		<div class="col-lg-12">
+			<h2>해주세요</h2>
 <%-- 			<h2>${title}</h2> --%>
-<!-- 			<hr class="star-primary"> -->
-<!-- 		</div> -->
+			<hr class="star-primary1">
+		</div>
+		</div>
 
 		<table class="table table-striped">
 			<tr>
