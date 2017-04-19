@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -76,13 +78,25 @@ select {
 			</div>
 		</div>
 		<div class="row">
-
+			<div>
+				<h3>
+<%-- 					<c:choose> --%>
+<%-- 						<c:when test="${board.boardFlag } == 0"> --%>
+<!-- 								해주세요 -->
+<%-- 						</c:when> --%>
+<%-- 						<c:otherwise> --%>
+<!-- 								잘해요 -->
+<%-- 						</c:otherwise> --%>
+<%-- 					</c:choose> --%>
+				</h3>
+			</div>
 			<form action="updateBoardProc.do" method="post">
 				<table class="table table-bordered bordertable">
 					</tr>
 					<tr>
 						<th><h5>제목</h5></th>
-						<td colspan="3"> ${board.title }</td>
+						<td colspan="3"><input type="text" name="title"
+							class="form-control" value="${board.title }" /></td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
@@ -99,14 +113,14 @@ select {
 						<td colspan="3">
 							<table>
 								<tr>
-									<td><input type="text" placeholder="보상1" name="reward1"
-										class="form-control input-sm"></td>
+									<td><input type="text" name="reward1"
+										class="form-control input-sm" value="${board.reward1 }"></td>
 									<td>&nbsp;&nbsp;</td>
-									<td><input type="text" placeholder="보상2" name="reward2"
-										class="form-control input-sm"></td>
+									<td><input type="text" name="reward2"
+										class="form-control input-sm" value="${board.reward2 }"></td>
 									<td>&nbsp;&nbsp;</td>
-									<td><input type="text" placeholder="보상3" name="reward3"
-										class="form-control input-sm"></td>
+									<td><input type="text" name="reward3"
+										class="form-control input-sm" value="${board.reward3 }"></td>
 								</tr>
 							</table>
 						</td>
@@ -114,15 +128,16 @@ select {
 
 					<tr>
 						<th><h5>필요인원</h5></th>
-						<td colspan="3"><input type="text" placeholder="     명"
+						<td colspan="3"><input type="text" value="${board.people }"
 							name="people" class="form-control people">
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
 						<td colspan="3"><input type="radio" name="contact"
 							value="kakao">카톡&nbsp;&nbsp; <input type="radio"
-							name="contact" value="email">이메일 &nbsp;&nbsp;<input
-							type="radio" name="contact" value="phone">전화&nbsp;&nbsp;</td>
+							name="contact" value="email">이메일 &nbsp;&nbsp; <input
+							type="radio" name="contact" value="phone">전화&nbsp;&nbsp;
+						</td>
 					</tr>
 
 					<tr>
@@ -142,12 +157,12 @@ select {
 					<tr>
 						<th height="100"><h5>내용</h5></th>
 						<td colspan="3"><textarea cols="10" rows="10"
-								placeholder="내용을 입력하세요." name="content" class="form-control"></textarea></td>
+								value="${board.content }" name="content" class="form-control"></textarea></td>
 					</tr>
 					<tr>
 						<td colspan="4" align="right"><input type="submit"
-							class="btn btn-success btn-lg" value="퀘스트등록"> <a
-							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a></td>
+							class="btn btn-success btn-lg" value="수정완료"> <a
+							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록</a></td>
 					</tr>
 				</table>
 			</form>

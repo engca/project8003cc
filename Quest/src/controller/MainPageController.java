@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -89,10 +90,23 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
-	public String writeBoardProc(@ModelAttribute HashMap<String, Object> board){
+	public String writeBoardProc(@ModelAttribute HashMap<String, Object> board, 
+			HttpSession session){
+		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+		board.put("userIndex", userIndex);
+		
+		
 		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
+	
+	@RequestMapping("getSido.do")
+	public 
+	@ResponseBody HashMap<String, Object> getSido(){
+		HashMap<String, Object> sido = new HashMap<>();
+		return sido;
+	}
+	
 	
 //	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")  
 //	public ModelAndView updateBoard(int boardNo){
