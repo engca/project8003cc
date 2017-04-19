@@ -312,6 +312,11 @@ public class QuestService implements IQuestService {
 		
 		return user;
 	}
+	public HashMap<String, Object> getBoard(int boardNo) {
+		// TODO Auto-generated method stub
+		return dao.selectBoardOne(boardNo);
+
+	}
 
 
 

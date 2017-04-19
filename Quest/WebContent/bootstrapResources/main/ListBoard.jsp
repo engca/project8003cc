@@ -19,12 +19,13 @@ a {
 </head>
 <body>
 
-	<div id="board_title">
-		<h1>잘해요</h1>
-<%-- 		<h1> ${title }</h1> --%>
-	</div>
-	
 	<div id="board" class="container">
+		<div class="col-lg-12 text-center">
+			<h1>잘해요</h1>
+<%-- 			<h2>${title}</h2> --%>
+			<hr class="star-primary">
+		</div>
+
 		<table class="table table-striped">
 			<tr>
 				<th width="10%">No</th>

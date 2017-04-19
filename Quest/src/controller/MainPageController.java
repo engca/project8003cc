@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,11 +70,11 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="readBoard.do")
+	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
 	public ModelAndView viewboard(int num){
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(service.readBoard(num));
-		mv.setViewName("readBoard");
+		mv.setViewName("viewBoard");
 		return mv;
 	}
 	
@@ -82,11 +83,32 @@ public class MainPageController {
 		return "/bootstrapResources/main/writeBoard.jsp";
 	}
 	
-	@RequestMapping("writeBoardProc.do")
+	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
 	public String writeBoardProc(@ModelAttribute HashMap<String, Object> board){
 		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
+	
+//	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")  
+//	public ModelAndView updateBoard(int boardNo){
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("board", service.getBoard(boardNo));
+//		mav.setViewName("/bootstrapResources/main/updateBoard.jsp");
+//		return mav;
+//	}
+	
+	@RequestMapping("updateBoard.do")
+	public String updateBoard() {
+		return "/bootstrapResources/main/updateBoard.jsp";
+	}
+	
+	@RequestMapping("updateBoardProc.do")
+	public String updateBoardProc(@ModelAttribute HashMap<String, Object> board){
+		service.updateBoard(board);
+		return "redirect:/viewBoard.do";
+	}
+	
+	
 	
 	
 }
