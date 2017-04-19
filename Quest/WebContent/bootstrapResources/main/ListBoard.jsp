@@ -19,6 +19,16 @@
     <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Theme JavaScript -->
 	<script src="bootstrapResources/js/freelancer.min.js"></script>
+<script type="text/javascript">
+var checkLogin = function(){
+	var loginid = '${sessionScope.id}';
+	if (loginid == ""){
+		alert('로그인 후 가능합니다.');
+	} else {
+		location.href='writeBoard.do';
+	}
+}
+</script>
 <style type="text/css">
 a {
 	text-decoration: none
@@ -54,14 +64,15 @@ a {
 					<td> 1 </td>
 <!-- 					서버 연동되면 아래 살리기 -->
 <%-- 					<td>${board.boardNo }</td> --%>
-<%-- 					<td><a href="readBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td> --%>
+<%-- 					<td><a href="viewBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td> --%>
 <%-- 					<td>#{board.nickname }</td> --%>
 <%-- 					<td>${board.date }</td> --%>
 <%-- 					<td align="center"><fmt:formatDate value="${board.readcount }"  pattern="yyyy-MM-dd" /> --%>
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="5" align="right"><input type="button" value="글쓰기" onclick="location.href='writeBoard.do'" class="btn btn-default pull-right"></td>
+				<td colspan="5" align="right">
+					<input type="button" value="글쓰기" onclick="checkLogin()" 	class="btn btn-default pull-right"></td>
 			</tr>
 		</table>
 
