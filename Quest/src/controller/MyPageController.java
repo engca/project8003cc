@@ -6,7 +6,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant.User;
@@ -51,9 +53,13 @@ public class MyPageController {
 	}
 
 	@RequestMapping("mylist.do")
-	public String mylist() {
+	public String mylist(@RequestParam(defaultValue="9") int boardFlag,Model model) {
+		model.addAttribute("boardFlag", boardFlag);
+		
 		return "/bootstrapResources/mypage/mylist.jsp";
 	}
+	
+	
 
 	@RequestMapping("profile.do")
 	public ModelAndView profile(HttpSession session) {
