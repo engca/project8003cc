@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
@@ -68,9 +69,17 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
+	@RequestMapping(method=RequestMethod.GET, value="readBoard.do")
+	public ModelAndView viewboard(int num){
+		ModelAndView mv = new ModelAndView();
+		mv.addAllObjects(service.readBoard(num));
+		mv.setViewName("readBoard");
+		return mv;
+	}
+	
 	@RequestMapping("writeBoard.do")
 	public String writeBoard(){
-		return "/main/writeBoard.jsp";
+		return "/bootstrapResources/writeBoard.jsp";
 	}
 	
 	@RequestMapping("writeBoardProc.do")
@@ -78,5 +87,6 @@ public class MainPageController {
 		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
+	
 	
 }
