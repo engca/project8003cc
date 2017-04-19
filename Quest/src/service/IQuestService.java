@@ -14,6 +14,7 @@ public interface IQuestService {
 	public int unjoin(HashMap<String, Object> params);
 
 	public int updateUser(HashMap<String, Object> params);
+	public HashMap<String, Object> getUser(int userIndex);
 
 	public int idCheck(String id); // 성민 도현
 	public int nicknameCheck(String nickname); //성민 도현
