@@ -70,12 +70,17 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
-	public ModelAndView viewboard(int num){
-		ModelAndView mv = new ModelAndView();
-		mv.addAllObjects(service.readBoard(num));
-		mv.setViewName("viewBoard");
-		return mv;
+//	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
+//	public ModelAndView viewboard(int boardNo){
+//		ModelAndView mv = new ModelAndView();
+//		mv.addAllObjects(service.readBoard(boardNo));
+//		mv.setViewName("viewBoard");
+//		return mv;
+//	}
+	
+	@RequestMapping("viewBoard.do")
+	public String viewBoard(){
+		return "/bootstrapResources/main/viewBoard.jsp";
 	}
 	
 	@RequestMapping("writeBoard.do")
