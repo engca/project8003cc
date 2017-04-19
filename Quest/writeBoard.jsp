@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>퀘스트 수정하기</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>퀘스트 작성하기</title>
 <!-- Bootstrap Core CSS -->
-<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
+<link
+	href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Theme CSS -->
-<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
+<link href="bootstrapResources/css/freelancer.min.css"
+	rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -38,6 +42,7 @@
 
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
+
 <style type="text/css">
 th {
 	width: 150px;
@@ -55,7 +60,7 @@ select {
 }
 
 .bordertable th {
-	/* 	background-color: pink; */
+/* 	background-color: pink; */
 	text-align: center;
 }
 
@@ -65,28 +70,29 @@ select {
 </style>
 </head>
 <body>
-	<!-- UserIndex, 주소 해야됨  -->
 	<section id="writeBoard">
 
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2>퀘스트 수정하기</h2>
+				<h2>퀘스트 작성하기</h2>
 				<hr class="star-primary">
 			</div>
 		</div>
 		<div class="row">
 
-			<form action="updateBoardProc.do" method="post">
+			<form action="writeBoardProc.do" method="post">
 				<table class="table table-bordered bordertable">
-					</tr>
 					<tr>
 						<th><h5>제목</h5></th>
-						<td colspan="3"> ${board.title }</td>
+						<td colspan="3"><input type="text" placeholder="제목을 입력하세요. "
+							name="title" class="form-control" /></td>
+
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3"><select name="sido">
+						<td colspan="3">
+						<select name="sido">
 								<option>시도</option>
 						</select> <select name="gugun">
 								<option>군구</option>
@@ -114,8 +120,8 @@ select {
 
 					<tr>
 						<th><h5>필요인원</h5></th>
-						<td colspan="3"><input type="text" placeholder="     명"
-							name="people" class="form-control people">
+						<td colspan="3">
+						<input type="text" placeholder="     명" name="people"class="form-control people">
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>

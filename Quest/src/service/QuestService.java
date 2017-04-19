@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import commons.Constant;
+import commons.Constant.User;
 import dao.IQuestDao;
 
 @Service
@@ -300,6 +301,21 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		
 		return dao.selectBoardAll();
+	}
+
+	@Override
+	public HashMap<String, Object> getUser(int userIndex) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> tmp = new HashMap<>();
+		tmp.put("userIndex", userIndex);
+		HashMap<String, Object> user = dao.selectUser(tmp);
+		
+		return user;
+	}
+	public HashMap<String, Object> getBoard(int boardNo) {
+		// TODO Auto-generated method stub
+		return dao.selectBoardOne(boardNo);
+
 	}
 
 
