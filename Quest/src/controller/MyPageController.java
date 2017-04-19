@@ -39,5 +39,8 @@ public class MyPageController {
 	public String profile(){
 		return "/bootstrapResources/mypage/profile.jsp";
 	}
-	
+	@RequestMapping("starpoint.do")
+	public String starpoint(){
+		return "/bootstrapResources/mypage/starpoint.jsp";
+	}
 }
