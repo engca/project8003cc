@@ -6,6 +6,8 @@ import java.util.List;
 import javax.xml.stream.events.Comment;
 
 public interface IQuestDao {
+	public String selectContact(int contactNo);
+	
 	public int insertBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(int boradNo);

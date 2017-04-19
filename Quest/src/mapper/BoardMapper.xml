@@ -3,6 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.IQuestDao">
+	<!-- contact mapper -->
+	
+	<select id="selectContact" parameterType="int" resultType="String">
+		select contact from contact where contactNo= #{contactNo}
+		
+	</select>
+
 	<insert id="insertBoard" parameterType="java.util.HashMap">
 		INSERT INTO board VALUES(#{boardFlag}, #{bCompleteFlag}, #{boardNo},
 		#{userIndex},

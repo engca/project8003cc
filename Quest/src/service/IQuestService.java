@@ -7,7 +7,8 @@ import javax.xml.stream.events.Comment;
 
 
 public interface IQuestService {
-
+	public String getContact(int conatactNo);
+	
 	public int join(HashMap<String, Object> params);
 	public HashMap<String, Object> login(String id, String password);
 	public int logout(HashMap<String, Object> params);

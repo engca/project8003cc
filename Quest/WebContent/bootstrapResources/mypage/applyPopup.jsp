@@ -12,13 +12,11 @@
 <meta name="author" content="">
 <title>Insert title here</title>
 <!-- Bootstrap Core CSS -->
-<link
-	href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
+<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Theme CSS -->
-<link href="bootstrapResources/css/freelancer.min.css"
-	rel="stylesheet">
+<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -88,17 +86,16 @@ select {
 					<table align="center" class="table table-bordered">
 						<tr align="center">
 							<th>보상</th>
-							<td>
-								<!-- 							<input type="radio" name="reward" id="reward" --> <%-- 								value="${보상1 }">${보상1 } &nbsp&nbsp&nbsp <input --%>
-								<%-- 								type="radio" name="reward" id="reward" value="${보상2 }">${보상2 } --%>
-								<!-- 								&nbsp&nbsp <input type="radio" name="reward" id="reward" -->
-								<%-- 								value="${보상3 }">${보상3 } --%>
-							</td>
+							<td><input type="radio" name="reward" id="reward"
+								value="1">${reward1 } &nbsp;&nbsp;&nbsp; <input
+								type="radio" name="reward" id="reward" value="2">${reward2 }
+								&nbsp&nbsp <input type="radio" name="reward" id="reward"
+								value="3">${reward3 }</td>
 						</tr>
 						<tr align="center">
 							<th>연락 방법</th>
 							<td>${contact }<input type="text" placeholder="연락처를 입력하세요."
-								name="contactInfo" id="contactInfo" >
+								name="contactInfo" id="contactInfo">
 						</tr>
 						<tr align="center">
 							<th>내용</th>
@@ -108,7 +105,7 @@ select {
 						<tr align="center">
 							<td colspan="2" align="center"><input type="button"
 								class="btn btn-primary btn-lg" value="취소"
-								onclick="location.href='글상세보기.do'">
+								onclick="location.href='viewBoard.do'">
 								&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit"
 								class="btn btn-success btn-lg" value="신청완료" onclick="apply()">
 						</tr>

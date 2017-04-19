@@ -318,6 +318,13 @@ public class QuestService implements IQuestService {
 
 	}
 
+	@Override
+	public String getContact(int contactNo) {
+		// TODO Auto-generated method stub
+				
+		return dao.selectContact(contactNo);
+	}
+
 
 
 

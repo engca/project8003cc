@@ -17,15 +17,18 @@ public class MyPageController {
 	@Autowired
 	IQuestService service;
 
-	// @RequestMapping("applyPopup.do")
-	// public ModelAndView applyPopup(HashMap<String, Object> params) {
-	// HashMap<String, Object> tmp =
-	// ModelAndView mav = new ModelAndView();
-	// mav.addObject();
-	// mav.setViewName("/bootstrapResources/mypage/applyPopup.jsp");
-	//
-	// return mav;
-	// }
+	 @RequestMapping("applyPopup.do")
+	 public ModelAndView applyPopup(HashMap<String, Object> params) {
+		 // 연락방법, 보상종류
+	 HashMap<String, Object> tmp = service.getBoard((int)params.get("boardNo"));
+	 tmp.put("contact", service.getContact((int)tmp.get("contactNo")));
+	 ModelAndView mav = new ModelAndView();
+	 mav.addAllObjects(tmp);
+	 
+	 mav.setViewName("/bootstrapResources/mypage/applyPopup.jsp");
+	
+	 return mav;
+	 }
 
 	@RequestMapping("applyPopupProc.do")
 	public String applyPopupProc() {
