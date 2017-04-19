@@ -38,7 +38,7 @@
 
 <!-- Contact Form JavaScript -->
 <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-<script src="bootstrapResources/js/contact_me.js"></script>
+<script src="bootstrapResources/js/contact_me.js"></script>w
 
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
@@ -70,6 +70,8 @@ select {
 </style>
 </head>
 <body>
+
+<!-- UserIndex, 주소 해야됨  -->
 	<section id="writeBoard">
 
 	<div class="container">
@@ -84,10 +86,18 @@ select {
 			<form action="writeBoardProc.do" method="post">
 				<table class="table table-bordered bordertable">
 					<tr>
+						<th><h5>게시판 구분</h5></th>
+						<td colspan="5">
+						<h4>
+						<input type = "radio" name = "boardFlag" value = "0"> 해주세요
+						<input type ="radio" name = "boardFlag" value = "1"> 잘해요
+						</h4>
+						</td>
+					</tr>
+					<tr>
 						<th><h5>제목</h5></th>
 						<td colspan="3"><input type="text" placeholder="제목을 입력하세요. "
 							name="title" class="form-control" /></td>
-
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
