@@ -8,8 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>퀘스트 작성하기</title>
 <!-- Bootstrap Core CSS -->
-<link
-	href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
+<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Theme CSS -->
@@ -42,6 +41,22 @@
 
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
+
+<!-- ajax -->
+<script type="text/javascript">
+	$.ajax({
+		type : "get",
+		url : "getSido.do",
+		dataType : "json",
+		success : function() {
+			alert("success");
+		},
+		error : function() {
+			alert("error");
+		}			
+	});
+</script>
+
 
 <style type="text/css">
 th {
@@ -104,11 +119,11 @@ select {
 						<td colspan="3">
 						<select name="sido">
 								<option>시도</option>
-						</select> <select name="gugun">
+						</select> 
+						<select name="gugun">
 								<option>군구</option>
-						</select> <select name="dong">
-								<option>동</option>
-						</select></td>
+						</select>
+						</td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
@@ -136,23 +151,23 @@ select {
 					<tr>
 						<th><h5>연락방법</h5></th>
 						<td colspan="3"><input type="radio" name="contact"
-							value="kakao">카톡&nbsp;&nbsp; <input type="radio"
-							name="contact" value="email">이메일 &nbsp;&nbsp;<input
-							type="radio" name="contact" value="phone">전화&nbsp;&nbsp;</td>
+							value="1">카톡&nbsp;&nbsp; <input type="radio"
+							name="contact" value="2">이메일 &nbsp;&nbsp;<input
+							type="radio" name="contact" value="3">전화&nbsp;&nbsp;</td>
 					</tr>
 
 					<tr>
 						<th><h5>희망시작시간</h5></th>
 						<td><select name="stTime">
 								<c:forEach var="i" begin="1" end="24">
-									<option>${i }시</option>
+									<option value = ${i }>${i }시</option>
 								</c:forEach>
 						</select></td>
 						<th><h5>소요예정시간</h5></th>
 						<td><select name="playTime">
-								<option value="1">30분미만</option>
-								<option value="2">3시간 미만</option>
-								<option value="3">3시간 이상</option>
+								<option value="30m">30분미만</option>
+								<option value="3h">3시간 미만</option>
+								<option value="over3h">3시간 이상</option>
 						</select></td>
 					</tr>
 					<tr>
@@ -161,10 +176,10 @@ select {
 								placeholder="내용을 입력하세요." name="content" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="4" align="right"><input type="submit"
-							class="btn btn-success btn-lg" value="퀘스트등록"> <a
-							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a></td>
-							
+					
+						<td colspan="4" align="right">
+						<input type="submit" class="btn btn-success btn-lg" value="퀘스트등록"> 
+						<a class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a></td>
 					</tr>
 				</table>
 			</form>

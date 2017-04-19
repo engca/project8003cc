@@ -7,13 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectContact" parameterType="int" resultType="String">
 		select contact from contact where contactNo= #{contactNo}
-		
 	</select>
 
 	<insert id="insertBoard" parameterType="java.util.HashMap">
-		INSERT INTO board VALUES(#{boardFlag}, #{bCompleteFlag}, #{boardNo},
+		INSERT INTO board VALUES(#{boardFlag}, 0, #{boardNo},
 		#{userIndex},
-		#{date}, #{policeCount}, #{readCount}, #{title}, #{addrNo},
+		sysdate(), 0, 0, #{title}, #{addrNo},
 		#{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime},
 		#{playTime},
 		#{content})

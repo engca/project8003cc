@@ -4,9 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 
 <mapper namespace = "dao.IQuestDao">
-	<select id="selectAddress" parameterType="java.util.HashMap">
+	<select id="selectAddress" parameterType="int"
+	resultType="java.util.HashMap">
 		SELECT * FROM address WHERE addrNo = #{addrNo}
 	</select>  
+	
 	<select id="selectAddress2" parameterType = "java.util.HashMap"
 	resultType="java.util.HashMap">
 		select * from address where 1=0
@@ -16,6 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="gugun != null">
 			and gugun = #{gugun}
 		</if>
-		
+	</select>
+	
+	<select id="selectSidoAll"  resultType="java.util.HashMap">
+		SELECT DISTINCT sido FROM address
+	</select>
+	
+	<select id = "selectGugun" parameterType="String"
+	resultType="java.util.HashMap">
+		SELECT DISTINCT gugun FROM address WHERE sido like #{sido}
 	</select>
 </mapper>

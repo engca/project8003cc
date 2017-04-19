@@ -48,5 +48,8 @@ public interface IQuestService {
 	public int police(int BoardNo, int userIndex); 
 	
 	public List<HashMap<String, Object>> selectAll();
+	
+	public List<HashMap<String, Object>> selectSidoAll();
+	public List<HashMap<String, Object>> selectGugun(String sido);
 
 }

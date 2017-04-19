@@ -51,6 +51,9 @@ public interface IQuestDao {
 	public int insertPolice(HashMap<String, Object> params);
 	public int selectPolice(HashMap<String, Object> params);
 
-	public String selectAddress(int addrNo);
+	public HashMap<String, Object> selectAddress(int addrNo);
+	public List<HashMap<String, Object>> selectSidoAll();
+	public List<HashMap<String, Object>> selectGugun(String sido);
+	
 
 }

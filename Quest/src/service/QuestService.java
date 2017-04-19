@@ -325,6 +325,20 @@ public class QuestService implements IQuestService {
 		return dao.selectContact(contactNo);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> selectSidoAll() {
+		// TODO Auto-generated method stub
+		List<HashMap<String, Object>> sido = dao.selectSidoAll();
+		return sido;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectGugun(String sido) {
+		// TODO Auto-generated method stub
+		List<HashMap<String, Object>> gugun = dao.selectGugun(sido);
+		return gugun;
+	}
+
 
 
 
