@@ -42,6 +42,7 @@ function applyPopup(){
 	} else {
 		location.href='writeBoard.do';
 	}
+	
 }
 
 </script>
