@@ -79,7 +79,7 @@ public class MainPageController {
 	
 	@RequestMapping("writeBoard.do")
 	public String writeBoard(){
-		return "/bootstrapResources/writeBoard.jsp";
+		return "/bootstrapResources/main/writeBoard.jsp";
 	}
 	
 	@RequestMapping("writeBoardProc.do")
