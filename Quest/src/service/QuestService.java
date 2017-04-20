@@ -297,12 +297,16 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public HashMap<String, Object> selectpolice(int BoardNo, int userIndex) {
+	public int selectpolice(int BoardNo, int userIndex) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.Police.BOARDNO, BoardNo);
 		params.put(Constant.Police.USERINDEX, userIndex);
-		return dao.selectPolice(params);
+		HashMap<String, Object> result = dao.selectPolice(params);
+		if(result == null){
+			return 1;  //신고없음. 신고접수 가능
+		}
+		else return 2;	// 신고데이터 있음. 신고접수 불가능
 	}
 	
 	@Override
