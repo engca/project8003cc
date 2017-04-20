@@ -294,10 +294,10 @@ public class QuestService implements IQuestService {
 		params.put(Constant.Police.BOARDNO, BoardNo);
 		params.put(Constant.Police.USERINDEX, userIndex);
 		return dao.insertPolice(params);
-	} 
+	}
 
 	@Override
-	public int selectpolice(int BoardNo, int userIndex) {
+	public HashMap<String, Object> selectpolice(int BoardNo, int userIndex) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.Police.BOARDNO, BoardNo);

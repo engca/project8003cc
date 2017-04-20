@@ -133,6 +133,11 @@ public class MainPageController {
 		return "/bootstrapResources/main/ListBoard.jsp";
 	}
 	
-	
+	@RequestMapping("police.do")
+	public String police(int BoardNo, int userIndex){
+		service.selectpolice(BoardNo, userIndex);
+		
+		return "";
+	}
 	
 }
