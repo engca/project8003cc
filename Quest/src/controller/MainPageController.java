@@ -143,13 +143,11 @@ public class MainPageController {
 		return "/bootstrapResources/main/ListBoard.jsp";
 	}
 	
-<<<<<<< HEAD
+
 	@RequestMapping("police.do")
 	public int police(int BoardNo, int userIndex){
 		return service.selectpolice(BoardNo, userIndex);
 	}
-=======
-	
->>>>>>> branch 'master' of https://github.com/engca/project8003cc.git
+
 	
 }
