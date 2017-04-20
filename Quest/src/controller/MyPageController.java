@@ -49,7 +49,13 @@ public class MyPageController {
 		tmp.put("userIndex", (int) session.getAttribute("userInder"));
 				
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("bookmarkList",service.listBookmark(tmp));
+		mav.addObject("bookmarkList",service.listBookmark(tmp)); //boardNo List
+		for(HashMap<String, Object> boardNo : service.listBookmark(tmp)){
+			service.getBoard(boardNo);
+		}
+			
+		
+		mav.addAllObjects(service.getBoard(boardNo))
 		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
 		return mav;
 	}

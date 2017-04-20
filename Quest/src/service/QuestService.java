@@ -16,7 +16,7 @@ import dao.IQuestDao;
 
 @Service
 public class QuestService implements IQuestService {
-	
+
 	@Autowired
 	private IQuestDao dao;
 	@Autowired
@@ -34,7 +34,7 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.User.USERID, id);
 		HashMap<String, Object> user = dao.selectUser(params);
-		if(user.get(Constant.User.PASSWORD) == password) {
+		if (user.get(Constant.User.PASSWORD) == password) {
 			return user;
 		} else {
 			return null;
@@ -66,10 +66,10 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.User.USERID, id);
 		HashMap<String, Object> user = dao.selectUser(params);
-		if(user == null) {
-			return 0; //성공
+		if (user == null) {
+			return 0; // 성공
 		} else {
-			return 1; //실패
+			return 1; // 실패
 		}
 	}
 
@@ -79,44 +79,39 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.User.NICKNAME, nickname);
 		HashMap<String, Object> user = dao.selectUser(params);
-		if(user == null) {
-			return 0; //성공
+		if (user == null) {
+			return 0; // 성공
 		} else {
-			return 1; //실패
+			return 1; // 실패
 		}
 	}
-	
-	
+
 	@Override
-	public List<HashMap<String, Object>> listBoard(
-			@RequestParam(required=false) List<Integer> addrNo,
-			@RequestParam(defaultValue="0") int boardflag, 
-			@RequestParam(required=false) String searchMsg, 
-			@RequestParam(required=false, defaultValue="0") int userIndex) {
+	public List<HashMap<String, Object>> listBoard(@RequestParam(required = false) List<Integer> addrNo,
+			@RequestParam(defaultValue = "0") int boardflag, @RequestParam(required = false) String searchMsg,
+			@RequestParam(required = false, defaultValue = "0") int userIndex) {
 		// TODO Auto-generated method stub
-			HashMap<String, Object> params = new HashMap<>();
-			
-			params.put("addrNo", addrNo);
-			params.put("boardFlag", boardflag);
-			params.put("userIndex", userIndex);
-			params.put("searchMsg", searchMsg);
-			return dao.selectBoard(params);
-			
-				
-//			addr/searchMsg/userIndex 는 없으면 검색안됨
-//			boardflag 는 디폴트 "잘해요"
-		
-			
-	}	
-	
+		HashMap<String, Object> params = new HashMap<>();
+
+		params.put("addrNo", addrNo);
+		params.put("boardFlag", boardflag);
+		params.put("userIndex", userIndex);
+		params.put("searchMsg", searchMsg);
+		return dao.selectBoard(params);
+
+		// addr/searchMsg/userIndex 는 없으면 검색안됨
+		// boardflag 는 디폴트 "잘해요"
+
+	}
+
 	@Override
 	public HashMap<String, Object> readBoard(int boardNo) {
 		HashMap<String, Object> bd = dao.selectBoardOne(boardNo);
-		bd.put(Constant.Board.READCOUNT, (int)bd.get(Constant.Board.READCOUNT)+1);
+		bd.put(Constant.Board.READCOUNT, (int) bd.get(Constant.Board.READCOUNT) + 1);
 		dao.updateBoard(bd);
 		return bd;
 	}
-	
+
 	@Override
 	public HashMap<String, Object> getBoardList(int page) {
 		// TODO Auto-generated method stub
@@ -153,8 +148,6 @@ public class QuestService implements IQuestService {
 
 		return result;
 	}
-	
-	
 
 	@Override
 	public int writeBoard(HashMap<String, Object> params) {
@@ -171,7 +164,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public int deleteBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		int boradNo = (int)params.get(Constant.Board.BOARDNO);
+		int boradNo = (int) params.get(Constant.Board.BOARDNO);
 		return dao.deleteBoard(boradNo);
 	}
 
@@ -230,34 +223,35 @@ public class QuestService implements IQuestService {
 	public int choiceApply(int user1Index, int user2Index, int boardNo) {
 		// TODO Auto-generated method stub
 		// selectApply
-//		params에 들어와야 할것들
-			//글을 올린사람 = user1_id
-			//신청하여 선택 받은사람 = user2_id
-			//boardNo
+		// params에 들어와야 할것들
+		// 글을 올린사람 = user1_id
+		// 신청하여 선택 받은사람 = user2_id
+		// boardNo
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("user1Index", user1Index);
 		params.put("user2Index", user2Index);
 		params.put("boardNo", boardNo);
 		dao.insertScore(params);
-		//INSERT INTO score VALUES (#{user1_index},#{user2_index},#{boardNo},0,0,0)
-		//평가완료확인  = user1_exp = user2_exp = 0
+		// INSERT INTO score VALUES
+		// (#{user1_index},#{user2_index},#{boardNo},0,0,0)
+		// 평가완료확인 = user1_exp = user2_exp = 0
 		dao.deleteApply(boardNo);
 		// 지원한 목록들 삭제
-		
+
 		return 0;
 	}
 
 	@Override
 	public List<HashMap<String, Object>> listScore(int userIndex, int mode) {
 		// TODO Auto-generated method stub
-//		mode가 0이면 파라미터의 user가  user1일때 리턴되는 리스트
-//		mode가 1면 파라미터의 user가 user2일때 리턴되는 리스트
+		// mode가 0이면 파라미터의 user가 user1일때 리턴되는 리스트
+		// mode가 1면 파라미터의 user가 user2일때 리턴되는 리스트
 		HashMap<String, Object> params = new HashMap<>();
-		if(mode == 0)
+		if (mode == 0)
 			params.put("user1Index", userIndex);
-		else if(mode == 1)
+		else if (mode == 1)
 			params.put("user2Index", userIndex);
-		
+
 		return dao.selectScoreByUserindex(params);
 	}
 
@@ -269,11 +263,11 @@ public class QuestService implements IQuestService {
 		// mode = 0이면 내가 user1_exp
 		// mode = 1이면 내가 user2_exp
 		HashMap<String, Object> params = new HashMap<>();
-		
+
 		params.put("boardNo", boardNo);
-		if(mode == 0)
+		if (mode == 0)
 			params.put("user1StarPoint", starPoint);
-		else if(mode == 1)
+		else if (mode == 1)
 			params.put("user2StarPoint", starPoint);
 		return dao.updateScore(params);
 	}
@@ -294,7 +288,7 @@ public class QuestService implements IQuestService {
 		params.put(Constant.Police.BOARDNO, BoardNo);
 		params.put(Constant.Police.USERINDEX, userIndex);
 		return dao.insertPolice(params);
-	} 
+	}
 
 	@Override
 	public int selectpolice(int BoardNo, int userIndex) {
@@ -304,11 +298,11 @@ public class QuestService implements IQuestService {
 		params.put(Constant.Police.USERINDEX, userIndex);
 		return dao.selectPolice(params);
 	}
-	
+
 	@Override
 	public List<HashMap<String, Object>> selectAll() {
 		// TODO Auto-generated method stub
-		
+
 		return dao.selectBoardAll();
 	}
 
@@ -318,9 +312,10 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> tmp = new HashMap<>();
 		tmp.put("userIndex", userIndex);
 		HashMap<String, Object> user = dao.selectUser(tmp);
-		
+
 		return user;
 	}
+
 	public HashMap<String, Object> getBoard(int boardNo) {
 		// TODO Auto-generated method stub
 		return dao.selectBoardOne(boardNo);
@@ -330,7 +325,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public String getContact(int contactNo) {
 		// TODO Auto-generated method stub
-				
+
 		return dao.selectContact(contactNo);
 	}
 
@@ -354,11 +349,5 @@ public class QuestService implements IQuestService {
 		List<HashMap<String, Object>> bookmarkList = dao.selectBookMark(params);
 		return bookmarkList;
 	}
-
-
-
-
-
-
 
 }
