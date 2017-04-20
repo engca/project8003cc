@@ -62,6 +62,6 @@ public interface IQuestDao {
 	public HashMap<String, Object> selectAddress(int addrNo);
 	public List<HashMap<String, Object>> selectSidoAll();
 	public List<HashMap<String, Object>> selectGungu(String sido);
-	
+	public int selectAddrNo(String gungu);
 
 }

@@ -28,4 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	resultType="java.util.HashMap">
 		SELECT DISTINCT gungu FROM address WHERE sido LIKE #{sido}
 	</select>
+	
+	<select id="selectAddrNo" parameterType="String" resultType="int">
+		SELECT addrNo FROM address WHERE gungu LIKE #{gungu}
+	</select>
 </mapper>

@@ -64,6 +64,7 @@
 	});
 
 $(document).ready(function(){
+	
 	 $('#sido').change(function(){
 		 var selectedVal = $('#sido option:selected').val();
 		 $.ajax({
@@ -71,7 +72,7 @@ $(document).ready(function(){
 			url : "getGugun.do",
 			dataType : "json",
 			data : "sido="+selectedVal,
-			success : function(){
+			success : function(data){
 			$('#gungu').empty();
 			$(data.gungu).each(function(index){
 				var gungu = $('<option value='+this.gungu+'>'+this.gungu+'</option>');
@@ -150,7 +151,7 @@ select {
 						<td colspan="3">
 						<select name="sido" id="sido">
 						</select> 
-						<select name="gungu">
+						<select name="gungu" id = "gungu">
 						</select></td>
 					</tr>
 					<tr>
