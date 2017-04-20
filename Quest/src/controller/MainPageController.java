@@ -105,7 +105,7 @@ public class MainPageController {
 	@ResponseBody List<HashMap<String, Object>> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
 		service.getSidoAll();
-		return sido;
+		return sido;  
 	}
 	
 	
