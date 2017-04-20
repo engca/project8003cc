@@ -48,7 +48,9 @@
 <script type="text/javascript">
 	var doScore = function() {
 		var starPoint = $(".star-input").find("output>b").text();
-		alert(starPoint);
+		opener.document.location.href="starpointProc.do?boardNo="+${boardNo}+"&starpoin="+starPoint;
+		alert(starPoint+"점 평가하였습니다.");
+		doClose();
 	}
 
 	var doClose = function() {
