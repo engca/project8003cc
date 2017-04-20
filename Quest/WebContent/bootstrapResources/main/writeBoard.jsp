@@ -7,6 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>퀘스트 작성하기</title>
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+	crossorigin="anonymous"></script>
+	
 <!-- Bootstrap Core CSS -->
 <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -48,8 +52,10 @@
 		type : "get",
 		url : "getSido.do",
 		dataType : "json",
-		success : function() {
-			alert("success");
+		success : function(data) {
+			for (var i = 0 ; i < data.length; i++) {
+				$("#sido").append("<option value = "" + data[i][])
+			}
 		},
 		error : function() {
 			alert("error");
@@ -117,8 +123,7 @@ select {
 					<tr>
 						<th><h5>장소</h5></th>
 						<td colspan="3">
-						<select name="sido">
-								<option>시도</option>
+						<select name="sido" id = "sido">
 						</select> 
 						<select name="gugun">
 								<option>군구</option>
