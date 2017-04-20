@@ -298,6 +298,7 @@ public class QuestService implements IQuestService {
 		params.put(Constant.Police.USERINDEX, userIndex);
 		HashMap<String, Object> result = dao.selectPolice(params);
 		if(result == null){
+			dao.insertPolice(params);
 			return 1;  //신고없음. 신고접수 가능
 		}
 		else return 2;	// 신고데이터 있음. 신고접수 불가능   
