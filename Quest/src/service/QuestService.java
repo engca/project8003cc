@@ -342,10 +342,10 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getGugun(String sido) {
+	public List<HashMap<String, Object>> getGungu(String sido) {
 		// TODO Auto-generated method stub
-		List<HashMap<String, Object>> gugun = dao.selectGugun(sido);
-		return gugun;
+		List<HashMap<String, Object>> gungu = dao.selectGungu(sido);
+		return gungu;
 	}
 
 	@Override

@@ -24,8 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT DISTINCT sido FROM address
 	</select>
 	
-	<select id = "selectGugun" parameterType="String"
+	<select id = "selectGungu" parameterType="String"
 	resultType="java.util.HashMap">
-		SELECT DISTINCT gugun FROM address WHERE sido LIKE #{sido}
+		SELECT DISTINCT gungu FROM address WHERE sido LIKE #{sido}
 	</select>
 </mapper>

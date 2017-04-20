@@ -54,6 +54,6 @@ public interface IQuestService {
 	public List<HashMap<String, Object>> selectAll();
 	
 	public List<HashMap<String, Object>> getSidoAll();
-	public List<HashMap<String, Object>> getGugun(String sido);
+	public List<HashMap<String, Object>> getGungu(String sido);
 
 }

@@ -61,7 +61,7 @@ public interface IQuestDao {
 	// 주소관련
 	public HashMap<String, Object> selectAddress(int addrNo);
 	public List<HashMap<String, Object>> selectSidoAll();
-	public List<HashMap<String, Object>> selectGugun(String sido);
+	public List<HashMap<String, Object>> selectGungu(String sido);
 	
 
 }
