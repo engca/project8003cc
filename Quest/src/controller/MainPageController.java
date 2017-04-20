@@ -42,7 +42,7 @@ public class MainPageController {
 			mav.addObject("title","해주세요");
 		}
 		mav.addObject("list", list);
-		mav.setViewName("/bootstrapResources/main/ListBoard.jsp");
+		mav.setViewName("search.main/ListBoard");
 		return mav;		
 	}
 
@@ -73,17 +73,12 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
-//	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
-//	public ModelAndView viewboard(int boardNo){
-//		ModelAndView mv = new ModelAndView();
-//		mv.addAllObjects(service.readBoard(boardNo));
-//		mv.setViewName("viewBoard");
-//		return mv;
-//	}
-	
-	@RequestMapping("viewBoard.do")
-	public String viewBoard(){
-		return "/bootstrapResources/main/viewBoard.jsp";
+	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
+	public ModelAndView viewboard(int boardNo){
+		ModelAndView mv = new ModelAndView();
+		mv.addAllObjects(service.readBoard(boardNo));
+		mv.setViewName("search.main/viewBoard");
+		return mv; 
 	}
 	
 	@RequestMapping("writeBoard.do")
