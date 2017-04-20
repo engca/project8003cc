@@ -309,9 +309,9 @@ public class QuestService implements IQuestService {
 	public List<HashMap<String, Object>> selectAll() {
 		// TODO Auto-generated method stub
 		
-		return dao.selectBoardAll();
+		return dao.selectBoardAll(); 
 	}
-
+ 
 	@Override
 	public HashMap<String, Object> getUser(int userIndex) {
 		// TODO Auto-generated method stub
