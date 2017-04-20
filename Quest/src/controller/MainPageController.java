@@ -92,11 +92,13 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
-	public String writeBoardProc(@ModelAttribute HashMap<String, Object> board, 
+	public String writeBoardProc(@RequestParam HashMap<String, Object> board
+, 
 			HttpSession session){
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex);
-		service.writeBoard(board);
+		System.out.println(board);
+//		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
 	
@@ -105,7 +107,7 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
 		sido.put("sido", service.getSidoAll());
-		System.out.println(sido);
+//		System.out.println(sido);
 		return sido;  
 	}
 
@@ -114,7 +116,7 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
 		gungu.put("gungu", service.getGungu(sido));
-		System.out.println(gungu);
+//		System.out.println(gungu);
 		return gungu;
 	}
 	
