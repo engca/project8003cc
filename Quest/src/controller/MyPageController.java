@@ -72,8 +72,21 @@ public class MyPageController {
 	}
 
 	@RequestMapping("starpoint.do")
-	public String starpoint() {
+	public String starpoint(int boardNo, Model model) {
+		model.addAttribute("boardNo", boardNo);
 		return "/bootstrapResources/mypage/starpoint.jsp";
+	}
+	
+	@RequestMapping("starpointProc.do")
+	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
+		int userIndex = (int)session.getAttribute("userIndex");
+		int mode=0;
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("boardNo", boardNo);
+		params.put("userIndex", userIndex);
+		if(service.isMyBoard(params))
+		service.writeScore(boardNo, starpoint, mode);
+		return "redirect:complete.do";
 	}
 
 	@RequestMapping("profileProc.do")

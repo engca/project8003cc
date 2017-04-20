@@ -47,8 +47,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script type="text/javascript">
 	var doScore = function() {
-		var starPoint = $(".star-input").find("output>b").text();
-		alert(starPoint);
+		var starpoint = $(".star-input").find("output>b").text();
+		alert(starpoint);
+		opener.document.location.href="starpointProc.do?boardNo="+${boardNo}+"&starpoint="+starpoint;
+		doClose();
 	}
 
 	var doClose = function() {

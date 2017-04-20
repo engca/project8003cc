@@ -339,6 +339,15 @@ public class QuestService implements IQuestService {
 		return gugun;
 	}
 
+	@Override
+	public boolean isMyBoard(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		if(dao.isMyBoard(params) == null)
+			return false;
+		else
+			return true;
+	}
+
 
 
 

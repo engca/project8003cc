@@ -66,8 +66,8 @@ h2 {
 }
 </style>
 <script type="text/javascript">
-	function starpointPopup() {
-		var popUrl = "starpoint.do";
+	function starpointPopup(boardNo) {
+		var popUrl = "starpoint.do?boardNo="+boardNo;
 		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 		window.open(popUrl,"",popOption);
 	}
@@ -87,7 +87,7 @@ h2 {
 
 	<table border="1">
 		<tr>
-			<th>버튼</th>
+			<th>평가하기</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일</th>
@@ -96,46 +96,13 @@ h2 {
 		</tr>
 <%-- 		<c:forEach var="listValue" items="${list }"> --%>
 			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
+				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup(111)"></td>
 				<td>제목</td>
 				<td>작성자</td>
 				<td>작성일</td>
 				<td>조회수</td>
 				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			
+			</tr>		
 <%-- 		</c:forEach> --%>
 
 	</table>
