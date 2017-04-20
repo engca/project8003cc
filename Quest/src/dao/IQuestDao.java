@@ -49,7 +49,7 @@ public interface IQuestDao {
 	public List<HashMap<String, Object>> selectBookMark(HashMap<String, Object> params); 
 
 	public int insertPolice(HashMap<String, Object> params);
-	public int selectPolice(HashMap<String, Object> params);
+	public HashMap<String, Object> selectPolice(HashMap<String, Object> params);
 
 	public HashMap<String, Object> selectAddress(int addrNo);
 	public List<HashMap<String, Object>> selectSidoAll();
