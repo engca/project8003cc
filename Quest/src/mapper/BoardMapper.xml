@@ -10,9 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="insertBoard" parameterType="java.util.HashMap">
-		INSERT INTO board VALUES(#{boardFlag}, 0, #{boardNo},
-		#{userIndex},
-		sysdate(), 0, 0, #{title}, #{addrNo},
+		INSERT INTO board VALUES(#{boardFlag}, 0, 0,
+		0, sysdate(), 0, 0, #{title}, 4794,
 		#{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime},
 		#{playTime},
 		#{content})
@@ -20,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="updateBoard" parameterType="java.util.HashMap">
 		UPDATE board SET boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
-		date=#{date}, policeCount=#{policeCount}, readCount=#{readCount},
+		sysdate(), policeCount=#{policeCount}, readCount=#{readCount},
 		title=#{title},
 		addrNo=#{addrNo}, reward1=#{reward1}, reward2=#{reward2},
 		reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},

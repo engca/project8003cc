@@ -17,8 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		<if test="gugun != null">
 			and gugun = #{gugun}
-		</if>
-	</select>
+		</if>  
+	</select>  
 	
 	<select id="selectSidoAll"  resultType="java.util.HashMap">
 		SELECT DISTINCT sido FROM address
@@ -27,5 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id = "selectGungu" parameterType="String"
 	resultType="java.util.HashMap">
 		SELECT DISTINCT gungu FROM address WHERE sido LIKE #{sido}
+	</select>
+	
+	<select id="selectAddrNo" parameterType="String" resultType="int">
+		SELECT addrNo FROM address WHERE gungu LIKE #{gungu}  
 	</select>
 </mapper>

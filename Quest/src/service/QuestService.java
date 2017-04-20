@@ -26,7 +26,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public int join(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		return dao.insertUser(params);
+		return 1; 
 	}
 
 	@Override
@@ -147,12 +147,14 @@ public class QuestService implements IQuestService {
 		result.put("current", page);
 		result.put("boardList", list);
 
-		return result;
+		return result;  
 	}
 
 	@Override
 	public int writeBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
+//		int addrNo = dao.selectAddrNo((String)params.get("gungu"));
+//		params.put("addrNo", addrNo);
 		return dao.insertBoard(params);
 	}
 

@@ -64,6 +64,7 @@
 	});
 
 $(document).ready(function(){
+	
 	 $('#sido').change(function(){
 		 var selectedVal = $('#sido option:selected').val();
 		 $.ajax({
@@ -71,7 +72,7 @@ $(document).ready(function(){
 			url : "getGugun.do",
 			dataType : "json",
 			data : "sido="+selectedVal,
-			success : function(){
+			success : function(data){
 			$('#gungu').empty();
 			$(data.gungu).each(function(index){
 				var gungu = $('<option value='+this.gungu+'>'+this.gungu+'</option>');
@@ -117,7 +118,6 @@ select {
 </head>
 <body>
 
-	<!-- UserIndex, 주소 해야됨  -->
 	<section id="writeBoard">
 
 	<div class="container">
@@ -147,10 +147,8 @@ select {
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3">
-						<select name="sido" id="sido">
-						</select> 
-						<select name="gungu">
+						<td colspan="3"><select name="sido" id="sido">
+						</select> <select name="gungu" id="gungu">
 						</select></td>
 					</tr>
 					<tr>
@@ -206,7 +204,7 @@ select {
 
 						<td colspan="4" align="right"><input type="submit"
 							class="btn btn-success btn-lg" value="퀘스트등록"> <a
-							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a></td>
+							class="btn btn-primary btn-lg" onclick="location.href='list.do'">퀘스트목록 </a></td>
 					</tr>
 				</table>
 			</form>

@@ -28,6 +28,22 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+        <!-- jQuery -->
+    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
+    <script src="bootstrapResources/js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="bootstrapResources/js/freelancer.min.js"></script>
+    
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -36,23 +52,23 @@
 $(document).ready ( function() {
 	
 	// id(이메일) 중복확인
-	$('#id').on('keyup', function(){
+	$('#userId').on('keyup', function(){
 		var regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;		
-		if( !regEmail.test($('#id').val()) ) {
+		if( !regEmail.test($('#userId').val()) ) {
 			$('#idspan').html('올바른 이메일을 입력하세요');
-			$('#id').focus();
+			$('#userId').focus();
 		} else {
 			$.ajax({
 				type : 'post',
 				url : 'idCheck.do',
 				dataType : 'text',
-				data : 'userid=' + $('#id').val(),
+				data : 'userid=' + $('#userId').val(),
 				success : function(data) {
-					if (data != $('#id').val()) {
+					if (data != $('#userId').val()) {
 						$('#idspan').html('사용가능한 ID(이메일) 입니다.');
 					} else {
 						$('#idspan').text('이미 사용중인 ID(이메일) 입니다.');
-						$('#id').focus();
+						$('#userId').focus();
 					}
 				},
 // 				error : function(xhrReq, status, error) {
@@ -79,24 +95,24 @@ $(document).ready ( function() {
 		}
 	});
 	
-	nickname.addEventListener('keyup', function(e) {
-		var http = new XMLHttpRequest();
-		http.open('get', 'nicknameCheck.do?nickname=' + nickname.value);
-		http.onreadystatechange = function() {
-			if (http.readyState == 4 && http.status == 200) 
-			{
-				if (http.responseText == 0)
-				{
-					nicknamespan.innerHTML = "사용가능한 닉네임 입니다";
-				}
-				else 
-				{
-					nicknamespan.innerHTML = "닉네임이 중복입니다";
-				}
-			}	
-		}
-		http.send();
-	});
+// 	nickname.addEventListener('keyup', function(e) {
+// 		var http = new XMLHttpRequest();
+// 		http.open('get', 'nicknameCheck.do?nickname=' + nickname.value);
+// 		http.onreadystatechange = function() {
+// 			if (http.readyState == 4 && http.status == 200) 
+// 			{
+// 				if (http.responseText == 0)
+// 				{
+// 					nicknamespan.innerHTML = "사용가능한 닉네임 입니다";
+// 				}
+// 				else 
+// 				{
+// 					nicknamespan.innerHTML = "닉네임이 중복입니다";
+// 				}
+// 			}	
+// 		}
+// 		http.send();
+// 	});
 	// 닉네임 중복확인
 	$('#nickname').on('keyup', function(){
 		$.ajax({
@@ -119,21 +135,23 @@ $(document).ready ( function() {
 	});	
 
 	// 가입
-// 	$('#btn').click(function() {
-// 		$.ajax({
-// 			type : 'post',
-// 			url : 'join.do',
-// 			dataType : 'text',
-// 			data : 'id=' + $('#id').val() + '&password=' + $('#password').val() + '&nickname=' + $('#nickname').val(),
-// 			success : function(data) {
-// 				printList();
-// 			},
-// 			error : function(xhrReq, status, error) {
-// 				alert('에러');
-// 			}
-// 		});
-// 	});
+	$('#btn').click(function() {
+		$.ajax({
+			type : 'post',
+			url : 'join.do',
+			dataType : 'text',
+			data : 'userId=' + $('#userId').val() + '&password=' + $('#password').val() + '&nickname=' + $('#nickname').val(),
+			success : function(data) {
+				alert("회원가입이 완료되었습니다");
+			},
+			error : function(xhrReq, status, error) {
+				alert('에러');
+			}
+		});
+	});
 
+	
+	
 });
 </script>
 </head>
@@ -153,8 +171,8 @@ $(document).ready ( function() {
                     <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="id">아이디(email)</label>
-                                <input type="text" class="form-control" placeholder="사용할 ID(이메일) 입력" id="id" required data-validation-required-message="Please enter your name.">
+                                <label for="userId">아이디(email)</label>
+                                <input type="text" class="form-control" placeholder="사용할 ID(이메일) 입력" id="userId" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger" id="idspan"></p>
                             </div>
                         </div>
@@ -183,9 +201,7 @@ $(document).ready ( function() {
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <input type="button"
-								class="btn btn-primary btn-lg" value="Cancel"
-								onclick="location.href='글상세보기.do'">
+                                <input type="button"	class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='글상세보기.do'">
 								
                                 <button type="submit" class="btn btn-success btn-lg" id="btn">Send</button>
                             </div>
@@ -198,21 +214,7 @@ $(document).ready ( function() {
 </form>
 
 
-    <!-- jQuery -->
-    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-    <script src="bootstrapResources/js/contact_me.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="bootstrapResources/js/freelancer.min.js"></script>
 
 </body>
 </html>

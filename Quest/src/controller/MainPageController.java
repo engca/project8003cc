@@ -30,8 +30,8 @@ public class MainPageController {
 	@Autowired
 	IQuestService service; 
 	 
-	@RequestMapping("list.do")
-	public ModelAndView todoBoardAllList(int boardflag){
+	@RequestMapping("listBoard.do")
+	public ModelAndView todoBoardAllList(@RequestParam(defaultValue="0") int boardflag ){
 		
 		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
 		ModelAndView mav = new ModelAndView();
@@ -42,13 +42,18 @@ public class MainPageController {
 			mav.addObject("title","해주세요");
 		}
 		mav.addObject("list", list);
-		mav.setViewName("/bootstrapResources/main/ListBoard.jsp");
+		mav.setViewName("search.main/ListBoard");
 		return mav;		
 	}
 
-	@RequestMapping("join.do")
-	public String join(){
-		return "/bootstrapResources/main/join.jsp";
+	@RequestMapping(method=RequestMethod.POST, value="join.do")
+	public String join(String userId, String password, String nickname){
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("userId", userId );
+		param.put("password", password);
+		param.put("nickname", nickname);
+		service.join(param);
+		return "select.main/ListBoard";
 	}	
 	
 	@RequestMapping("idCheck.do")
@@ -73,17 +78,12 @@ public class MainPageController {
 		pw.flush();	
 	}
 	
-//	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
-//	public ModelAndView viewboard(int boardNo){
-//		ModelAndView mv = new ModelAndView();
-//		mv.addAllObjects(service.readBoard(boardNo));
-//		mv.setViewName("viewBoard");
-//		return mv;
-//	}
-	
-	@RequestMapping("viewBoard.do")
-	public String viewBoard(){
-		return "/bootstrapResources/main/viewBoard.jsp";
+	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
+	public ModelAndView viewboard(int boardNo){
+		ModelAndView mv = new ModelAndView();
+		mv.addAllObjects(service.readBoard(boardNo));
+		mv.setViewName("search.main/viewBoard");
+		return mv; 
 	}
 	
 	@RequestMapping("writeBoard.do")
@@ -92,13 +92,13 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
-	public String writeBoardProc(@ModelAttribute HashMap<String, Object> board, 
+	public String writeBoardProc(@RequestParam HashMap<String, Object> board
+, 
 			HttpSession session){
-		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
-		board.put("userIndex", userIndex);
-		
-		
-		service.writeBoard(board);
+//		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+//		board.put("userIndex", userIndex);
+		System.out.println(board);
+//		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
 	
@@ -107,7 +107,7 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
 		sido.put("sido", service.getSidoAll());
-		System.out.println(sido);
+//		System.out.println(sido);
 		return sido;  
 	}
 
@@ -115,34 +115,24 @@ public class MainPageController {
 	public
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
-		gungu.put("gugun", service.getGungu(sido));
-		System.out.println(gungu);
+		gungu.put("gungu", service.getGungu(sido));
+//		System.out.println(gungu);
 		return gungu;
 	}
 	
-	
-//	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")  
-//	public ModelAndView updateBoard(int boardNo){
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("board", service.getBoard(boardNo));
-//		mav.setViewName("/bootstrapResources/main/updateBoard.jsp");
-//		return mav;
-//	}
 	
 	@RequestMapping("updateBoard.do")
 	public String updateBoard() {
 		return "/bootstrapResources/main/updateBoard.jsp";
 	}
 	
-	@RequestMapping("updateBoardProc.do")
-	public String updateBoardProc(@ModelAttribute HashMap<String, Object> board){
+	@RequestMapping(method = RequestMethod.POST, value ="updateBoardProc.do")
+	public String updateBoardProc(@ModelAttribute HashMap<String, Object> board,
+			HttpServletRequest session){
+		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+		board.put("userIndex", userIndex);
 		service.updateBoard(board);
 		return "redirect:/viewBoard.do";
-	}
-	
-	@RequestMapping("ListBoard.do")
-	public String ListBoard() {
-		return "/bootstrapResources/main/ListBoard.jsp";
 	}
 	
 
