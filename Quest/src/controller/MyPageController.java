@@ -41,6 +41,18 @@ public class MyPageController {
 	public String bookmark() {
 		return "/bootstrapResources/mypage/bookmark.jsp";
 	}
+	
+	@RequestMapping("bookmarkProc.do")
+	public ModelAndView bookmarkProc(HttpSession session) {
+		int index = (int)session.getAttribute("userIndex");
+		HashMap<String, Object> tmp = new HashMap<>();
+		tmp.put("userIndex", (int) session.getAttribute("userInder"));
+				
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("bookmarkList",service.listBookmark(tmp));
+		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
+		return mav;
+	}
 
 	@RequestMapping("bookmarkPopup.do")
 	public String bookmarkPopup() {
@@ -58,7 +70,6 @@ public class MyPageController {
 		
 		return "/bootstrapResources/mypage/mylist.jsp";
 	}
-	
 	
 
 	@RequestMapping("profile.do")

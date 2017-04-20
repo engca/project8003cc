@@ -348,6 +348,13 @@ public class QuestService implements IQuestService {
 		return gugun;
 	}
 
+	@Override
+	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		List<HashMap<String, Object>> bookmarkList = dao.selectBookMark(params);
+		return bookmarkList;
+	}
+
 
 
 
