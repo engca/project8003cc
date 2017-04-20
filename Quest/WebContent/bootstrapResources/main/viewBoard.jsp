@@ -38,8 +38,6 @@ function bookmarkPopup(){
 	window.open("'bookmarkPopup.do?boardNo='+${boardNo}+'&userindex='+${userindex}");	
 }
 function police(){
-	
-<<<<<<< HEAD
 	$('#police').onclick(function(){
 		$.ajax({
 			type : 'get',
@@ -55,9 +53,6 @@ function police(){
 			},
 		});
 	});	
-	
-=======
->>>>>>> branch 'master' of https://github.com/engca/project8003cc.git
 }
 
 </script>
