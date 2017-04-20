@@ -78,7 +78,7 @@ public class MainPageController {
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(service.readBoard(boardNo));
 		mv.setViewName("search.main/viewBoard");
-		return mv;
+		return mv; 
 	}
 	
 	@RequestMapping("writeBoard.do")
