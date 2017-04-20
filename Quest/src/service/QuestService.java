@@ -326,14 +326,14 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> selectSidoAll() {
+	public List<HashMap<String, Object>> getSidoAll() {
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> sido = dao.selectSidoAll();
 		return sido;
 	}
 
 	@Override
-	public List<HashMap<String, Object>> selectGugun(String sido) {
+	public List<HashMap<String, Object>> getGugun(String sido) {
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> gugun = dao.selectGugun(sido);
 		return gugun;

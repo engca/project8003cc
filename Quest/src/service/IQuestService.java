@@ -49,7 +49,7 @@ public interface IQuestService {
 	
 	public List<HashMap<String, Object>> selectAll();
 	
-	public List<HashMap<String, Object>> selectSidoAll();
-	public List<HashMap<String, Object>> selectGugun(String sido);
+	public List<HashMap<String, Object>> getSidoAll();
+	public List<HashMap<String, Object>> getGugun(String sido);
 
 }
