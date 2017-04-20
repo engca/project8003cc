@@ -153,8 +153,8 @@ public class QuestService implements IQuestService {
 	@Override
 	public int writeBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		System.out.println(dao.selectAddrNo((String)params.get("gungu")));
-		params.put("addrNo", dao.selectAddrNo((String)params.get("gungu")));
+		int addrNo = dao.selectAddrNo((String)params.get("gungu"));
+		params.put("addrNo", addrNo);
 		return dao.insertBoard(params);
 	}
 

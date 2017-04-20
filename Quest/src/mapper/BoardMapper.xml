@@ -10,9 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="insertBoard" parameterType="java.util.HashMap">
-		INSERT INTO board VALUES(#{boardFlag}, 0, #{boardNo},
-		#{userIndex},
-		sysdate(), 0, 0, #{title}, #{addrNo},
+		INSERT INTO board VALUES(#{boardFlag}, 0, 0,
+		0, sysdate(), 0, 0, #{title}, #{addrNo},
 		#{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime},
 		#{playTime},
 		#{content})

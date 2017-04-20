@@ -204,9 +204,10 @@ select {
 					</tr>
 					<tr>
 
-						<td colspan="4" align="right"><input type="submit"
-							class="btn btn-success btn-lg" value="퀘스트등록"> 
-						<a class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a></td>
+						<td colspan="4" align="right">
+						<input type="submit" class="btn btn-success btn-lg" value="퀘스트등록"> 
+						<a class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a>
+						</td>
 					</tr>
 				</table>
 			</form>

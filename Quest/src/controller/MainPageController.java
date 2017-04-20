@@ -94,10 +94,8 @@ public class MainPageController {
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
 	public String writeBoardProc(@ModelAttribute HashMap<String, Object> board, 
 			HttpSession session){
-		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
-		board.put("userIndex", userIndex);
-		
-		
+//		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+//		board.put("userIndex", userIndex);
 		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
