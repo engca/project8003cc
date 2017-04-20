@@ -16,6 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       SELECT * FROM bookmark WHERE boardNo=#{boardNo} AND userIndex=#{userIndex}
    </select>
    
+   <select id = "selectBookMarkByUserIndex" parameterType="int" resultType="java.util.HashMap">
+    	SELECT * FROM bookmark WHERE userIndex=#{userIndex}
+   </select>
   
    
 
