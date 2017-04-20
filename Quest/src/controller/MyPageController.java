@@ -42,23 +42,23 @@ public class MyPageController {
 		return "/bootstrapResources/mypage/bookmark.jsp";
 	}
 	
-	@RequestMapping("bookmarkProc.do")
-	public ModelAndView bookmarkProc(HttpSession session) {
-		int index = (int)session.getAttribute("userIndex");
-		HashMap<String, Object> tmp = new HashMap<>();
-		tmp.put("userIndex", (int) session.getAttribute("userInder"));
-				
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("bookmarkList",service.listBookmark(tmp)); //boardNo List
-		for(HashMap<String, Object> boardNo : service.listBookmark(tmp)){
-			service.getBoard(boardNo);
-		}
-			
-		
-		mav.addAllObjects(service.getBoard(boardNo))
-		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
-		return mav;
-	}
+//	@RequestMapping("bookmarkProc.do")
+//	public ModelAndView bookmarkProc(HttpSession session) {
+//		int index = (int)session.getAttribute("userIndex");
+//		HashMap<String, Object> tmp = new HashMap<>();
+//		tmp.put("userIndex", (int) session.getAttribute("userInder"));
+//				
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("bookmarkList",service.listBookmark(tmp)); //boardNo List
+//		for(HashMap<String, Object> boardNo : service.listBookmark(tmp)){
+//			service.getBoard(boardNo);
+//		}
+//			
+//		
+//		mav.addAllObjects(service.getBoard(boardNo));
+//		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
+//		return mav;
+//	}
 
 	@RequestMapping("bookmarkPopup.do")
 	public String bookmarkPopup() {
@@ -89,8 +89,24 @@ public class MyPageController {
 	}
 
 	@RequestMapping("starpoint.do")
-	public String starpoint() {
+	public String starpoint(int boardNo, Model model) {
+		model.addAttribute("boardNo", boardNo);
 		return "/bootstrapResources/mypage/starpoint.jsp";
+	} 
+	
+	@RequestMapping("starpointProc.do")
+	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
+		int userIndex = (int)session.getAttribute("userIndex");
+		int mode=0;
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("boardNo", boardNo);
+		params.put("userIndex", userIndex);
+		if(service.isMyBoard(params))
+			mode = 0;
+		else 
+			mode = 1;
+		service.writeScore(boardNo, starpoint, mode);
+		return "redirect:complete.do";
 	}
 
 	@RequestMapping("profileProc.do")
