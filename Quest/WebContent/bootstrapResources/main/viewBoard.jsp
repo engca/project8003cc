@@ -39,6 +39,22 @@ function bookmarkPopup(){
 }
 function police(){
 	
+	$('#police').onclick(function(){
+		$.ajax({
+			type : 'get',
+			url : 'police.do',
+// 			dataType : 'text',
+			data : 'boardNo=' + ${boardNo} + '&userindex=' +${userindex},
+			success : function(data) {
+				if (data) {
+					window.open('이미 신고된 게시글 입니다.');
+				} else {
+					window.open('게시글 신고되었습니다.');
+				}
+			},
+		});
+	});	
+	
 }
 
 </script>
@@ -128,7 +144,7 @@ select {
 <%-- 		<c:when test="${userid != null }"> --%>
 				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
-				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
+				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()" id="police">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
 <%-- 		</c:when> --%>
