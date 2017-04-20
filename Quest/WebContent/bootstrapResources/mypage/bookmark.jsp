@@ -47,7 +47,7 @@
 <style type="text/css">
 th {
 	width: 150px;
-	text-align: center;
+	
 }
 
 select {

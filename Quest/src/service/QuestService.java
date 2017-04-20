@@ -1,5 +1,6 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -362,8 +363,20 @@ public class QuestService implements IQuestService {
 			return false;
 		else 
 			return true;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> bookmarkBoardByUserIndex(int userIndex) {
+		// TODO Auto-generated method stub
+		List<HashMap<String, Object>> tmp = dao.selectBookMarkByUserIndex(userIndex);
+		List<HashMap<String, Object>> list = new ArrayList<>();
+		for(HashMap<String, Object> boardNo : tmp){
+			list.add(dao.selectBoardOne((int)boardNo.get("boardNo")));
+		}
+		return list;
 	}  
 
+	
 
 
 
