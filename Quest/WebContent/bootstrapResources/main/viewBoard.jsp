@@ -27,8 +27,25 @@
 <script src="bootstrapResources/js/contact_me.js"></script>
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
+<script type="text/javascript">
+function applyPopup(){
+	var boardNo = req
+	var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+	window.open("applyPopup.do",popOption);
+	var pass = document.getElementById("pass").value;
+	window.opener.parent.location.href='delete.do?num='+${num}+'&pass='+pass;
+	winodw.close();	
+	
+	var loginid = '${sessionScope.id}';
+	if (loginid == ""){
+		alert('로그인 후 가능합니다.');
+	} else {
+		location.href='writeBoard.do';
+	}
+	
+}
 
-
+</script>
 <style type="text/css">
 th {
 	width: 150px;
@@ -67,56 +84,65 @@ select {
 <!-- 		</div> -->
 		<div class="row">
 
-			<form action="viewBoardProc.do" method="get">
 				<table class="table table-bordered bordertable">
 					<tr>
 						<th><h5>제목</h5></th>
-						<td colspan="3">${title } </td>
-
+						<td colspan="3">제목입니다. </td>
+<%-- 						<td colspan="3">${title } </td> --%>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3">${addrNo }</td>
+						<td colspan="3">강남구 역삼동</td>
+<%-- 						<td colspan="3">${addrNo }</td> --%>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
 						<td colspan="3">
-							<li class="btn btn-lg btn-outline">${reward1 }</li>
-							<li class="btn btn-lg btn-outline">${reward2 }</li>
-							<li class="btn btn-lg btn-outline">${reward3 }</li>
+							<li class="btn btn-lg btn-outline">500원</li>
+<%-- 							<li class="btn btn-lg btn-outline">${reward1 }</li> --%>
+<%-- 							<li class="btn btn-lg btn-outline">${reward2 }</li> --%>
+<%-- 							<li class="btn btn-lg btn-outline">${reward3 }</li> --%>
 					</tr>
 					<tr>
 						<th><h5>필요인원</h5></th>
-						<td colspan="3">${people }</td>
+						<td colspan="3">5명</td>
+<%-- 						<td colspan="3">${people }</td> --%>
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3">${contactNo }</td>
+						<td colspan="3">카톡</td>
+<%-- 						<td colspan="3">${people }</td> --%>
 					</tr>
 					<tr>
 						<th><h5>희망시작시간</h5></th>
-						<td>${sttime }</td>
+						<td>AM 2:00</td>
+<%-- 						<td>${sttime }</td> --%>
 						<th><h5>소요예정시간</h5></th>
-						<td>${playtime }</td>
+						<td>3시간</td>
+<%-- 						<td>${playtime }</td> --%>
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
-						<td colspan="3">${content }</td>
+						<td colspan="3">많은 신청 바랍니다~~ 유후</td>
+<%-- 						<td colspan="3">${content }</td> --%>
 					</tr>
-					
+					<tr>
+						<td colspan="4" align="right">
 	<c:choose>
 		<c:when test="${id != null }">
-			<tr>
-				<td colspan="4" align="right">
-				<input type="button"	class="btn btn-default btn-lg" value="퀘스트수정">
-				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제"> 
+				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
+				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
+				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
+				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
+				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
 		</c:when>
 	</c:choose>					
-						<a	class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a>
-						</td>
-					</tr>
+				<input type="button" 	class="btn btn-primary btn-lg" onclick="list.do" value="퀘스트목록">
+			
+					</td>
+				</tr>
 				</table>
-			</form>
+										
 		</div>
 	</div>
 

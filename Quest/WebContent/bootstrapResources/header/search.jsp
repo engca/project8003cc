@@ -207,6 +207,10 @@
     width: 100%;
     border: 1px solid #bcbcbc;
   }
+  .ls2 {
+        letter-spacing: -1px;
+        word-spacing: 3px;
+      }
 </style>
 </head>
 <body>
@@ -242,7 +246,7 @@
 				<tr />
 			<tr>
 				<td colspan="17" >
-					<div id="sangseaArea"
+					<div id="sangseaArea" class ="ls2"
 						style=" visibility: hidden; border: double; overflow-x: hidden; width: 800px;">
 					</div>
 				</td>
