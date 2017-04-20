@@ -46,7 +46,7 @@ function police(){
 // 			dataType : 'text',
 			data : 'boardNo=' + ${boardNo} + '&userindex=' +${userindex},
 			success : function(data) {
-				if (data) {
+				if (data == 2) {
 					window.open('이미 신고된 게시글 입니다.');
 				} else {
 					window.open('게시글 신고되었습니다.');

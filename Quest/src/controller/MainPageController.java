@@ -134,10 +134,8 @@ public class MainPageController {
 	}
 	
 	@RequestMapping("police.do")
-	public String police(int BoardNo, int userIndex){
-		service.selectpolice(BoardNo, userIndex);
-		
-		return "";
+	public int police(int BoardNo, int userIndex){
+		return service.selectpolice(BoardNo, userIndex);
 	}
 	
 }
