@@ -81,6 +81,7 @@ public class MyPageController {
 		return mav;
 	}
 
+	
 	@RequestMapping("starpoint.do")
 	public String starpoint(int boardNo, Model model) {
 		model.addAttribute("boardNo", boardNo);

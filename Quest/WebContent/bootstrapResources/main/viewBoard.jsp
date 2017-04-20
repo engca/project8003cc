@@ -29,13 +29,13 @@
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
 function applyPopup(){
-	window.open("'applyPopup.do?boardNo='+${boardNo}+'&userindex='
-			+${userindex}+'&rewardNo='+${rewardNo}+'&contactAnswer='+${contactAnswer}");	
+	var url = "applyPopup.do?boardNo="+${boardNo}+"&userindex="
+			+${userindex}+"&rewardNo="+${rewardNo}+"&contactAnswer="+${contactAnswer};	
+	window.open(url,'Apply','width=400, height=300');	
 }
 function bookmarkPopup(){
-// 	var boardNo = '${boardNo}';
-// 	var userindex = '${userindex}';
-	window.open("'bookmarkPopup.do?boardNo='+${boardNo}+'&userindex='+${userindex}");	
+	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userindex="+${userindex};  
+    window.open(url,'Bookmark','width=400, height=300');	
 }
 function police(){
 	$('#police').onclick(function(){
@@ -138,15 +138,15 @@ select {
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
-<%-- 	<c:choose> --%>
-<%-- 		<c:when test="${userid != null }"> --%>
+	<c:choose>
+		<c:when test="${userid != null }">
 				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
-<%-- 		</c:when> --%>
-<%-- 	</c:choose>					 --%>
+		</c:when>
+	</c:choose>					
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="list.do" value="퀘스트목록">
 			
 					</td>

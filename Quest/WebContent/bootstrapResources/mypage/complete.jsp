@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -66,8 +67,8 @@ h2 {
 }
 </style>
 <script type="text/javascript">
-	function starpointPopup() {
-		var popUrl = "starpoint.do";
+	function starpointPopup(boardNo) {
+		var popUrl = "starpoint.do?boardNo="+boardNo;
 		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 		window.open(popUrl,"",popOption);
 	}
@@ -83,62 +84,53 @@ h2 {
 				<hr class="star-primary">
 			</div>
 		</div>
-		<div class="row">
+		
+		<table class="table table-striped">
+			<tr>
+				<th width="5%">No</th>
+				<th width="15%">구분</th>
+				<th width="45%">제목</th>
+				<th width="15%">작성자</th>
+				<th width="15%">작성일</th>
+				<th width="5%">버튼</th>
+			</tr>
 
-	<table border="1">
-		<tr>
-			<th>버튼</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-			<th>즐겨찾기</th>
-		</tr>
-<%-- 		<c:forEach var="listValue" items="${list }"> --%>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			<tr>
-				<td><input type="button" class="btn btn-default" value="평가하기" onclick="starpointPopup()"></td>
-				<td>제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>조회수</td>
-				<td>즐겨찾기</td>
-			</tr>
-			
-<%-- 		</c:forEach> --%>
+			<c:forEach var="board" items="${bookmarkList }">
+				<tr>
+					<td>${board.boardNo }</td>
+					<td><c:if test="${board.boardFlag == 0 }">해주세요</c:if> <c:if
+							test="${board.boardFlag == 1 }">잘해요</c:if></td>
+					<td>${board.title }</td>
+					<!-- USER INDEX>ID -->
+					<td>${board.userIndex }</td>
+					<td><fmt:formatDate value="${board.date }"
+							pattern="yyyy-MM-dd" /></td>
+					<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo })"></td>
+				</tr>
+			</c:forEach>
 
-	</table>
+			<tr>
+				<td width="1250px" colspan="6" align="center"><c:if
+						test="${start != 1 }">
+						<a href="list.do?page=1"> [처음] &nbsp; </a>
+						<a href="list.do?page=${start-1 }"> ◀ &nbsp;&nbsp; </a>
+					</c:if> <c:forEach begin="${start }" end="${end}" var="i">
+						<c:choose>
+							<c:when test="${i == current }">
+					[${i }]
+					</c:when>
+							<c:otherwise>
+								<a href="list.do?page=${i}"> [${i }] </a>
+							</c:otherwise>
+						</c:choose>
+
+					</c:forEach> <c:if test="${end != last }">
+						<a href="list.do?page=${end+1 }"> &nbsp;&nbsp; ▶ </a>
+						<a href="list.do?page=${last}"> &nbsp; [끝]</a>
+					</c:if></td>
+			</tr>
+
+		</table>
 	
 </body>
 </html>

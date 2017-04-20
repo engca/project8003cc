@@ -28,6 +28,24 @@
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css">
 
+<!-- jQuery -->
+<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
+<script src="bootstrapResources/js/contact_me.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="bootstrapResources/js/freelancer.min.js"></script>
+
+
 <style type="text/css">
 th {
 	width: 150px;
@@ -38,42 +56,45 @@ select {
 	height: 35px;
 }
 
-.container {
-	position: absolute;
-	top: 60px;
-	left: 60px;
-}
-
+/* .container { */
+/* 	position: absolute; */
+/* 	top: 60px; */
+/* 	left: 60px; */
+/* } */
 </style>
 
 </head>
 <body>
+	<div id="board" class="container">
+		<input type="button" class="btn btn-primary btn-lg" value="해주세요"
+			onclick="location.href='mylist.do?boardFlag=0'"> <input
+			type="button" class="btn btn-primary btn-lg" value="잘해요"
+			onclick="location.href='mylist.do?boardFlag=1'">
+		<div class="row">
+			<div class="col-lg-12 ">
+				<c:if test="${boardFlag ==0}">
+					<h1 align="center">해 주 세 요</h1>
+				</c:if>
 
-	<input type="button" class="btn btn-primary btn-lg" value="해주세요"
-		onclick="location.href='mylist.do?boardFlag=0'">
-	<input type="button" class="btn btn-primary btn-lg" value="잘해요"
-		onclick="location.href='mylist.do?boardFlag=1'">
-	<c:if test="${boardFlag ==0}">
-		<h1 align="center">해 주 세 요</h1>
-
-	</c:if>
-
-	<c:if test="${boardFlag == 1}">
-		<h1 align="center">잘 해 요</h1>
-
-	</c:if>
-	<p>
+				<c:if test="${boardFlag == 1}">
+					<h1 align="center">잘 해 요</h1>
+				</c:if>
+			</div>
+		</div>
 
 		<c:if test="${boardFlag == 0 || boardFlag == 1 }">
 			<hr class="star-primary">
-			<table border="1">
+
+
+			<table class="table table-striped">
+
 				<tr>
-					<td align="center" width="150">글번호</td>
-					<td align="center" width="150">구 분</td>
-					<td align="center" width="150">제 목</td>
-					<td align="center" width="150">작성자</td>
-					<td align="center" width="150">작성일</td>
-					<td align="center" width="150">조회수</td>
+					<th width="5%">No</th>
+					<th width="15%">구분</th>
+					<th width="45%">제목</th>
+					<th width="15%">작성자</th>
+					<th width="15%">작성일</th>
+					<th width="5%">조회수</th>
 				</tr>
 
 
@@ -116,22 +137,6 @@ select {
 
 			</table>
 		</c:if>
-	<!-- jQuery -->
-	<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-	<!-- Plugin JavaScript -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-	<!-- Contact Form JavaScript -->
-	<script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-	<script src="bootstrapResources/js/contact_me.js"></script>
-
-	<!-- Theme JavaScript -->
-	<script src="bootstrapResources/js/freelancer.min.js"></script>
-
+	</div>
 </body>
 </html>
