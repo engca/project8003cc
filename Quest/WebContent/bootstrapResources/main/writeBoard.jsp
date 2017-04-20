@@ -147,10 +147,8 @@ select {
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3">
-						<select name="sido" id="sido">
-						</select> 
-						<select name="gungu" id = "gungu">
+						<td colspan="3"><select name="sido" id="sido">
+						</select> <select name="gungu" id="gungu">
 						</select></td>
 					</tr>
 					<tr>
@@ -204,10 +202,9 @@ select {
 					</tr>
 					<tr>
 
-						<td colspan="4" align="right">
-						<input type="submit" class="btn btn-success btn-lg" value="퀘스트등록"> 
-						<a class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a>
-						</td>
+						<td colspan="4" align="right"><input type="submit"
+							class="btn btn-success btn-lg" value="퀘스트등록"> <a
+							class="btn btn-primary btn-lg" onclick="location.href='list.do'">퀘스트목록 </a></td>
 					</tr>
 				</table>
 			</form>
