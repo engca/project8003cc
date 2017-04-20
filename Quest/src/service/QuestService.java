@@ -294,7 +294,7 @@ public class QuestService implements IQuestService {
 		params.put(Constant.Police.BOARDNO, BoardNo);
 		params.put(Constant.Police.USERINDEX, userIndex);
 		return dao.insertPolice(params);
-	}
+	} 
 
 	@Override
 	public int selectpolice(int BoardNo, int userIndex) {
