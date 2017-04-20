@@ -367,6 +367,42 @@ public class QuestService implements IQuestService {
 			return true;
 	}
 
+	@Override
+	public HashMap<String, Object> bookmarkBoardByUserIndex(int userIndex, int page) {
+		// TODO Auto-generated method stub
+	// TODO Auto-generated method stub
+		
+		// 시작페이지와 끝페이지 계산
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막 페이지 계산
+		int first = 1;
+		int last = (dao.getBookmarkByUserIndexCount(userIndex) - 1) / 10 + 1;
+		end = last < end ? last : end;
+		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
+		
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userIndex", userIndex);
+		params.put("page", page);
+		params.put("skip", skip);
+		params.put("count", count);
+
+		List<HashMap<String, Object>> list = dao.selectBookMarkByUserIndex(params);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("bookmarkList", list);
+		
+		return result;
+
+	}
+
 
 
 	

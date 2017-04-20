@@ -52,7 +52,8 @@ public interface IQuestService {
 	//즐겨찾기
 	public int bookmark(int BoardNo, int userIndex); 
 	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params);
-	public List<HashMap<String, Object>> bookmarkBoardByUserIndex(int userIndex);
+	public HashMap<String, Object> bookmarkBoardByUserIndex(int userIndex, int page);
+
 	
 	//신고하기
 	public int police(int BoardNo, int userIndex); 

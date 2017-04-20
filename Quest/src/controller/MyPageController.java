@@ -39,7 +39,19 @@ public class MyPageController {
 	}
 
 
-	
+	@RequestMapping("bookmark.do")
+	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page) {
+//		int index = (int)session.getAttribute("userIndex");
+		int index = 1;
+		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(index,page);
+		
+		
+				
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(list);
+		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
+		return mav;
+	}
 
 
 	@RequestMapping("bookmarkPopup.do")
