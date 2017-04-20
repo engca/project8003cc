@@ -306,7 +306,7 @@ public class QuestService implements IQuestService {
 		if(result == null){
 			return 1;  //신고없음. 신고접수 가능
 		}
-		else return 2;	// 신고데이터 있음. 신고접수 불가능
+		else return 2;	// 신고데이터 있음. 신고접수 불가능 
 	}
 	
 	@Override
