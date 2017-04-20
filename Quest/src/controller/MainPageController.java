@@ -102,9 +102,10 @@ public class MainPageController {
 	
 	@RequestMapping("getSido.do")
 	public 
-	@ResponseBody HashMap<String, Object> getSido(){
+	@ResponseBody List<HashMap<String, Object>> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
-		return sido;
+		service.getSidoAll();
+		return sido;  
 	}
 	
 	
