@@ -16,6 +16,7 @@ public interface IQuestDao {
 	public HashMap<String, Object> selectBoardOne(int boardNo);
 	public int getBoardCount();
 	public List<HashMap<String, Object>> selectBoardLimit(HashMap<String, Object> params); 
+	public HashMap<String, Object> isMyBoard(HashMap<String, Object> params);
 	
 	public int insertUser(HashMap<String, Object> params);
 	public int updateUser(HashMap<String, Object> params);
