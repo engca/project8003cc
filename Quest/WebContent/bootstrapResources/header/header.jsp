@@ -33,27 +33,36 @@
 </script>
 </head>
 <body>
-		<div align = "left">
-			<span >
-				<button type="button" id='dowellBtn' class='btn btn-success btn-lg'>잘해요</button>
-				<button type="button" id='todoBtn' class='btn btn-success btn-lg'>해주세요</button>
-			</span>
-		</div>
-		<div align = "right">
-		<hr>
-			<span>
+		<nav  class="navbar navbar-default navbar-fixed-top navbar-custom">
 				<c:choose>
 					<c:when test="${param.id == null}">
 						<form action="login.do">
-								<span>id : <input type="text" name="id" ></span> 
-								<span>pw: <input type="password" name="pw" ></span>
-								<input type="submit" value="로그인" class='btn btn-success btn-lg'> 
-								<input type="button" value="회원가입" onclick="location.href='joinForm.do'" class='btn btn-success btn-lg'>
+							<div>
+								<span style = "position:absolute; margin:5px;" align = "right">
+									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
+										onclick="location.href='List.do?boardflag=0'" value="잘해요">
+									<input type="button" id='todoBtn' class='btn btn-success btn-lg'
+										onclick="location.href='List.do?boardflag=1'" value="해주세요">
+								</span>
+								<span style="margin:5px;" align = "right">
+									<span style=" color:white;"> id : </span><input type="text" name="id" > 
+									<span style="color:white;"> pw: </span><input type="password" name="pw" >
+									<input type="submit" value="로그인" class='btn btn-success btn-lg'
+									onclick = "locaion.href='login.do'"> 
+									<input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'>
+								</span>
+							</div>
 						</form>
 
 					</c:when>
 					<c:otherwise>
-						<span> ${param.id }님 환영합니다. </span>
+						<span >
+							<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
+								onclick="location.href='List.do?boardflag=0'" value="잘해요">
+							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
+								onclick="location.href='List.do?boardflag=1'" value="해주세요">
+						</span>
+						<span style="color:white;" > ${param.id }님 환영합니다. </span>
 						<input type="button" value="마이페이지"
 							onclick="location.href='mypage.do'">
 						<input type="button" value="로그아웃"
@@ -61,9 +70,7 @@
 
 					</c:otherwise>
 				</c:choose>
-			</span>
-			<hr>
-		</div>
+		</nav>
 	<!-- jQuery -->
 	<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
 
