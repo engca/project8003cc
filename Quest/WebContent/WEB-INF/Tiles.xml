@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="tiles" template="/jsp/layout.jsp">
+		<put-attribute name="header" value = "/jsp/header.jsp"></put-attribute>
+		<put-attribute name="left" value = "/jsp/left.jsp"></put-attribute>
+		<put-attribute name="body" value = ""></put-attribute>
+		<put-attribute name="footer" value = "/jsp/footer.jsp"></put-attribute>
+	</definition>
+	<definition extends="tiles" name="*.*.tiles">
+		<put-attribute name="left" value = "/jsp/left.jsp"></put-attribute>
+		<put-attribute name="body" value = "/jsp/{1}.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>
