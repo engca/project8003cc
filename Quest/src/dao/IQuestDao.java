@@ -53,7 +53,8 @@ public interface IQuestDao {
 	public int insertBookMark(HashMap<String, Object> params);
 	public int deleteBookMark(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectBookMark(HashMap<String, Object> params);
-	public List<HashMap<String, Object>> selectBookMarkByUserIndex (int userIndex);
+	public List<HashMap<String, Object>> selectBookMarkByUserIndex (HashMap<String, Object> params);
+	public int getBookmarkByUserIndexCount(int userIndex);
 
 	// 신고하기
 	public int insertPolice(HashMap<String, Object> params);
