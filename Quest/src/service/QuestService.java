@@ -359,7 +359,7 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		if(dao.isMyBoard(params) == null)
 			return false;
-		else
+		else 
 			return true;
 	}  
 
