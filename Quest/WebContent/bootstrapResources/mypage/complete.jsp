@@ -95,7 +95,7 @@ h2 {
 				<th width="5%">버튼</th>
 			</tr>
 
-			<c:forEach var="board" items="${bookmarkList }">
+			<c:forEach var="board" items="${completeList }">
 				<tr>
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">해주세요</c:if> <c:if
