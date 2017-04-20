@@ -30,8 +30,8 @@ public class MainPageController {
 	@Autowired
 	IQuestService service; 
 	 
-	@RequestMapping("list.do")
-	public ModelAndView todoBoardAllList(int boardflag){
+	@RequestMapping("listBoard.do")
+	public ModelAndView todoBoardAllList(@RequestParam(defaultValue="0") int boardflag ){
 		
 		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
 		ModelAndView mav = new ModelAndView();
@@ -131,11 +131,6 @@ public class MainPageController {
 		board.put("userIndex", userIndex);
 		service.updateBoard(board);
 		return "redirect:/viewBoard.do";
-	}
-	
-	@RequestMapping("ListBoard.do")
-	public String ListBoard() {
-		return "/bootstrapResources/main/ListBoard.jsp";
 	}
 	
 
