@@ -29,6 +29,7 @@ public interface IQuestService {
 	public HashMap<String, Object> readBoard(int boardNo);
 	public HashMap<String, Object> getBoard(int boardNo);
 
+	
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
 	public int updateComment(HashMap<String, Object> params);
