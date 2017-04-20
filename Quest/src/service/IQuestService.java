@@ -46,7 +46,7 @@ public interface IQuestService {
 	public int bookmark(int BoardNo, int userIndex); 
 
 	public int police(int BoardNo, int userIndex); 
-	public HashMap<String, Object> selectpolice(int BoardNo, int userIndex);
+	public HashMap<String, Object> selectpolice(int BoardNo, int userIndex); 
 	
 	public List<HashMap<String, Object>> selectAll();
 	
