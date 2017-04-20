@@ -46,9 +46,14 @@ public class MainPageController {
 		return mav;		
 	}
 
-	@RequestMapping("join.do")
-	public String join(){
-		return "/bootstrapResources/main/join.jsp";
+	@RequestMapping(method=RequestMethod.POST, value="join.do")
+	public String join(String userId, String password, String nickname){
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("userId", userId );
+		param.put("password", password);
+		param.put("nickname", nickname);
+		service.join(param);
+		return "select.main/ListBoard";
 	}	
 	
 	@RequestMapping("idCheck.do")
