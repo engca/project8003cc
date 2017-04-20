@@ -72,17 +72,17 @@ select {
 			onclick="location.href='mylist.do?boardFlag=1'">
 		<div class="row">
 			<div class="col-lg-12 ">
-				<c:if test="${boardFlag ==0}">
+				<c:if test="${board.boardFlag ==0}">
 					<h1 align="center">해 주 세 요</h1>
 				</c:if>
 
-				<c:if test="${boardFlag == 1}">
+				<c:if test="${board.boardFlag == 1}">
 					<h1 align="center">잘 해 요</h1>
 				</c:if>
 			</div>
 		</div>
 
-		<c:if test="${boardFlag == 0 || boardFlag == 1 }">
+		<c:if test="${board.boardFlag == 0 || board.boardFlag == 1 }">
 			<hr class="star-primary">
 
 

@@ -17,10 +17,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       SELECT * FROM bookmark WHERE boardNo=#{boardNo} AND userIndex=#{userIndex}
    </select>
    
-   <select id = "selectBookMarkByUserIndex" parameterType="int" resultType="java.util.HashMap">
-    	SELECT * FROM bookmark WHERE userIndex=#{userIndex}
+   <select id = "selectBookMarkByUserIndex" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    	SELECT * FROM bookmark bk, board b 
+    	WHERE bk.boardNo=b.boardNo and bk.userIndex=#{userIndex}
+    	limit #{skip}, #{count}
    </select>
   
-   
+	<select id="getBookmarkByUserIndexCount" parameterType="int" resultType="int">
+		SELECT count(*) FROM bookmark bk, board b 
+    	WHERE bk.boardNo=b.boardNo and bk.userIndex=#{userIndex}
+	</select>
 
 </mapper>
