@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       DELETE FROM bookmark WHERE boardNo=#{boardNo}
    </delete>
    
+   
    <select id="selectBookMark" parameterType="java.util.HashMap" resultType="java.util.HashMap">
       SELECT * FROM bookmark WHERE boardNo=#{boardNo} AND userIndex=#{userIndex}
    </select>
