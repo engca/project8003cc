@@ -75,7 +75,7 @@ public class MyPageController {
 	public String starpoint(int boardNo, Model model) {
 		model.addAttribute("boardNo", boardNo);
 		return "/bootstrapResources/mypage/starpoint.jsp";
-	}
+	} 
 	
 	@RequestMapping("starpointProc.do")
 	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
@@ -85,6 +85,9 @@ public class MyPageController {
 		params.put("boardNo", boardNo);
 		params.put("userIndex", userIndex);
 		if(service.isMyBoard(params))
+			mode = 0;
+		else 
+			mode = 1;
 		service.writeScore(boardNo, starpoint, mode);
 		return "redirect:complete.do";
 	}
