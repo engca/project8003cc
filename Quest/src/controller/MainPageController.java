@@ -28,7 +28,7 @@ import service.QuestService;
 @Controller
 public class MainPageController {
 	@Autowired
-	IQuestService service;
+	IQuestService service; 
 	 
 	@RequestMapping("list.do")
 	public ModelAndView todoBoardAllList(int boardflag){
