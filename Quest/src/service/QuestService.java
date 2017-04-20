@@ -296,16 +296,20 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.Police.BOARDNO, BoardNo);
 		params.put(Constant.Police.USERINDEX, userIndex);
-		return dao.selectPolice(params);
+		HashMap<String, Object> result = dao.selectPolice(params);
+		if(result == null){
+			return 1;  //신고없음. 신고접수 가능
+		}
+		else return 2;	// 신고데이터 있음. 신고접수 불가능
 	}
 
 	@Override
 	public List<HashMap<String, Object>> selectAll() {
 		// TODO Auto-generated method stub
 
-		return dao.selectBoardAll();
+		return dao.selectBoardAll(); 
 	}
-
+ 
 	@Override
 	public HashMap<String, Object> getUser(int userIndex) {
 		// TODO Auto-generated method stub
@@ -344,10 +348,25 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
+
 	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> bookmarkList = dao.selectBookMark(params);
 		return bookmarkList;
 	}
+
+	public boolean isMyBoard(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		if(dao.isMyBoard(params) == null)
+			return false;
+		else
+			return true;
+	}  
+
+
+
+
+
+
 
 }
