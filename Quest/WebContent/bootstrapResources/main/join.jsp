@@ -79,24 +79,24 @@ $(document).ready ( function() {
 		}
 	});
 	
-	nickname.addEventListener('keyup', function(e) {
-		var http = new XMLHttpRequest();
-		http.open('get', 'nicknameCheck.do?nickname=' + nickname.value);
-		http.onreadystatechange = function() {
-			if (http.readyState == 4 && http.status == 200) 
-			{
-				if (http.responseText == 0)
-				{
-					nicknamespan.innerHTML = "사용가능한 닉네임 입니다";
-				}
-				else 
-				{
-					nicknamespan.innerHTML = "닉네임이 중복입니다";
-				}
-			}	
-		}
-		http.send();
-	});
+// 	nickname.addEventListener('keyup', function(e) {
+// 		var http = new XMLHttpRequest();
+// 		http.open('get', 'nicknameCheck.do?nickname=' + nickname.value);
+// 		http.onreadystatechange = function() {
+// 			if (http.readyState == 4 && http.status == 200) 
+// 			{
+// 				if (http.responseText == 0)
+// 				{
+// 					nicknamespan.innerHTML = "사용가능한 닉네임 입니다";
+// 				}
+// 				else 
+// 				{
+// 					nicknamespan.innerHTML = "닉네임이 중복입니다";
+// 				}
+// 			}	
+// 		}
+// 		http.send();
+// 	});
 	// 닉네임 중복확인
 	$('#nickname').on('keyup', function(){
 		$.ajax({

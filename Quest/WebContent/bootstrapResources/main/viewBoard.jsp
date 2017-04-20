@@ -29,19 +29,31 @@
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
 function applyPopup(){
-	var boardNo = req
-	var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
-	window.open("applyPopup.do",popOption);
-	var pass = document.getElementById("pass").value;
-	window.opener.parent.location.href='delete.do?num='+${num}+'&pass='+pass;
-	winodw.close();	
+	window.open("'applyPopup.do?boardNo='+${boardNo}+'&userindex='
+			+${userindex}+'&rewardNo='+${rewardNo}+'&contactAnswer='+${contactAnswer}");	
+}
+function bookmarkPopup(){
+// 	var boardNo = '${boardNo}';
+// 	var userindex = '${userindex}';
+	window.open("'bookmarkPopup.do?boardNo='+${boardNo}+'&userindex='+${userindex}");	
+}
+function police(){
 	
-	var loginid = '${sessionScope.id}';
-	if (loginid == ""){
-		alert('로그인 후 가능합니다.');
-	} else {
-		location.href='writeBoard.do';
-	}
+	$('#police').onclick(function(){
+		$.ajax({
+			type : 'get',
+			url : 'police.do',
+// 			dataType : 'text',
+			data : 'boardNo=' + ${boardNo} + '&userindex=' +${userindex},
+			success : function(data) {
+				if (data) {
+					window.open('이미 신고된 게시글 입니다.');
+				} else {
+					window.open('게시글 신고되었습니다.');
+				}
+			},
+		});
+	});	
 	
 }
 
@@ -128,15 +140,15 @@ select {
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
-	<c:choose>
-		<c:when test="${id != null }">
+<%-- 	<c:choose> --%>
+<%-- 		<c:when test="${userid != null }"> --%>
 				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
-				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
+				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()" id="police">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
-		</c:when>
-	</c:choose>					
+<%-- 		</c:when> --%>
+<%-- 	</c:choose>					 --%>
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="list.do" value="퀘스트목록">
 			
 					</td>

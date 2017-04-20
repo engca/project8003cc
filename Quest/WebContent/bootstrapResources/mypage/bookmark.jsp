@@ -12,13 +12,11 @@
 <meta name="author" content="">
 <title>Insert title here</title>
 <!-- Bootstrap Core CSS -->
-<link
-	href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
+<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Theme CSS -->
-<link href="bootstrapResources/css/freelancer.min.css"
-	rel="stylesheet">
+<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -49,6 +47,7 @@
 <style type="text/css">
 th {
 	width: 150px;
+	text-align: center;
 }
 
 select {
@@ -69,52 +68,60 @@ h1 {
 
 </head>
 <body>
-	<h1>즐 겨 찾 기</h1>
-	<hr class="star-primary">
-	<table class="table table-bordered">
-		<tr>
-			<th width="150">글번호</th>
-			<th width="150">구 분</th>
-			<th width="150">제 목</th>
-			<th width="150">작성자</th>
-			<th width="150">작성일</th>
-			<th width="150">조회수</th>
-		</tr>
+	<div id="board" class="container">
+		<div class="row">
+			<div class="col-lg-12 ">
+				<h1>즐 겨 찾 기</h1>
+				<hr class="star-primary">
+			</div>
+		</div>
 
-		<c:forEach var="board" items="${boardList }">
+		<table class="table table-striped">
 			<tr>
-				<td>${board.boardNo }</td>
-				<td><c:if test="${board.boardflag == 0 }">해주세요</c:if> <c:if
-						test="${board.boardflag == 1 }">잘해요</c:if></td>
-				<td>${board.title }</td>
-				<!-- USER INDEX>ID -->
-				<td>${board.userindex }</td>
-				<td><fmt:formatDate value="${board.date }" pattern="yyyy-MM-dd" /></td>
-				<td>${board.readcount }</td>
+				<th width="5%">No</th>
+				<th width="15%">구분</th>
+				<th width="45%">제목</th>
+				<th width="15%">작성자</th>
+				<th width="15%">작성일</th>
+				<th width="5%">조회수</th>
 			</tr>
-		</c:forEach>
 
-		<tr>
-			<td width="1250px" colspan="6" align="center"><c:if
-					test="${start != 1 }">
-					<a href="list.do?page=1"> [처음] &nbsp </a>
-					<a href="list.do?page=${start-1 }"> ◀ &nbsp&nbsp </a>
-				</c:if> <c:forEach begin="${start }" end="${end}" var="i">
-					<c:choose>
-						<c:when test="${i == current }">
+			<c:forEach var="board" items="${boardList }">
+				<tr>
+					<td>${board.boardNo }</td>
+					<td><c:if test="${board.boardflag == 0 }">해주세요</c:if> <c:if
+							test="${board.boardflag == 1 }">잘해요</c:if></td>
+					<td>${board.title }</td>
+					<!-- USER INDEX>ID -->
+					<td>${board.userindex }</td>
+					<td><fmt:formatDate value="${board.date }"
+							pattern="yyyy-MM-dd" /></td>
+					<td>${board.readcount }</td>
+				</tr>
+			</c:forEach>
+
+			<tr>
+				<td width="1250px" colspan="6" align="center"><c:if
+						test="${start != 1 }">
+						<a href="list.do?page=1"> [처음] &nbsp </a>
+						<a href="list.do?page=${start-1 }"> ◀ &nbsp&nbsp </a>
+					</c:if> <c:forEach begin="${start }" end="${end}" var="i">
+						<c:choose>
+							<c:when test="${i == current }">
 					[${i }]
 					</c:when>
-						<c:otherwise>
-							<a href="list.do?page=${i}"> [${i }] </a>
-						</c:otherwise>
-					</c:choose>
+							<c:otherwise>
+								<a href="list.do?page=${i}"> [${i }] </a>
+							</c:otherwise>
+						</c:choose>
 
-				</c:forEach> <c:if test="${end != last }">
-					<a href="list.do?page=${end+1 }"> &nbsp&nbsp ▶ </a>
-					<a href="list.do?page=${last}"> &nbsp [끝]</a>
-				</c:if></td>
-		</tr>
+					</c:forEach> <c:if test="${end != last }">
+						<a href="list.do?page=${end+1 }"> &nbsp&nbsp ▶ </a>
+						<a href="list.do?page=${last}"> &nbsp [끝]</a>
+					</c:if></td>
+			</tr>
 
-	</table>
+		</table>
+	</div>
 </body>
 </html>
