@@ -54,7 +54,7 @@
 		dataType : "json",
 		success : function(data) {
 			for (var i = 0 ; i < data.length; i++) {
-				$("#sido").append("<option value = "" + data[i][])
+				$("#sido").append("<option value = "" + data[i][])  
 			}
 		},
 		error : function() {
