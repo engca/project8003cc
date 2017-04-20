@@ -28,7 +28,6 @@ public interface IQuestService {
 	public HashMap<String, Object> getBoardList(int page); // 페이징 처리용 추가 (4/12)
 	public HashMap<String, Object> readBoard(int boardNo);
 	public HashMap<String, Object> getBoard(int boardNo);
-	public boolean isMyBoard(HashMap<String, Object> params);
 
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
@@ -45,9 +44,10 @@ public interface IQuestService {
 	public int writeScore(int boardNo, float starPoint, int mode);
 
 	public int bookmark(int BoardNo, int userIndex); 
+	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params);
 
 	public int police(int BoardNo, int userIndex); 
-	public int selectpolice(int BoardNo, int userIndex);  
+	public int selectpolice(int BoardNo, int userIndex);
 	
 	public List<HashMap<String, Object>> selectAll();
 	

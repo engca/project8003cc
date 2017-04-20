@@ -1,7 +1,9 @@
 package controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -100,12 +102,20 @@ public class MainPageController {
 		return "redirect:/list.do";
 	}
 	
+	@RequestMapping("getSido.do")
+	public 
+	@ResponseBody HashMap<String, Object> getSido(){
+		HashMap<String, Object> sido = new HashMap<>();
+		sido.put("sido", service.getSidoAll());
+		System.out.println(sido);
+		return sido;  
+	}
+
+	
 //	@RequestMapping("getSido.do")
-//	public 
-//	@ResponseBody List<HashMap<String, Object>> getSido(){
-//		HashMap<String, Object> sido = new HashMap<>();
-//		service.getSidoAll();
-//		return sido;  
+//	public
+//	@ResponseBody String getSido()	{
+//		return "hello";
 //	}
 	
 	
@@ -133,9 +143,13 @@ public class MainPageController {
 		return "/bootstrapResources/main/ListBoard.jsp";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping("police.do")
 	public int police(int BoardNo, int userIndex){
 		return service.selectpolice(BoardNo, userIndex);
 	}
+=======
+	
+>>>>>>> branch 'master' of https://github.com/engca/project8003cc.git
 	
 }

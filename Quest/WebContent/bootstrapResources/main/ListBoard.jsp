@@ -19,6 +19,7 @@
     <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Theme JavaScript -->
 	<script src="bootstrapResources/js/freelancer.min.js"></script>
+	
 <script type="text/javascript">
 var checkLogin = function(){
 	var loginid = '${sessionScope.id}';
