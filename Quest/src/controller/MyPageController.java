@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -38,27 +39,19 @@ public class MyPageController {
 	}
 
 	@RequestMapping("bookmark.do")
-	public String bookmark() {
-		return "/bootstrapResources/mypage/bookmark.jsp";
+	public ModelAndView bookmarkProc(HttpSession session) {
+//		int index = (int)session.getAttribute("userIndex");
+		int index = 1;
+		List<HashMap<String, Object>> list = service.bookmarkBoardByUserIndex(index);
+		
+				
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("bookmarkList",list);
+		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
+		return mav;
 	}
 	
-//	@RequestMapping("bookmarkProc.do")
-//	public ModelAndView bookmarkProc(HttpSession session) {
-//		int index = (int)session.getAttribute("userIndex");
-//		HashMap<String, Object> tmp = new HashMap<>();
-//		tmp.put("userIndex", (int) session.getAttribute("userInder"));
-//				
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("bookmarkList",service.listBookmark(tmp)); //boardNo List
-//		for(HashMap<String, Object> boardNo : service.listBookmark(tmp)){
-//			service.getBoard(boardNo);
-//		}
-//			
-//		
-//		mav.addAllObjects(service.getBoard(boardNo));
-//		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
-//		return mav;
-//	}
+
 
 	@RequestMapping("bookmarkPopup.do")
 	public String bookmarkPopup() {

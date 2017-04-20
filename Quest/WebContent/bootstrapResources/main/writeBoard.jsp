@@ -10,14 +10,13 @@
 <script src="https://code.jquery.com/jquery-2.2.4.js"
 	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
 	crossorigin="anonymous"></script>
-	
+
 <!-- Bootstrap Core CSS -->
 <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Theme CSS -->
-<link href="bootstrapResources/css/freelancer.min.css"
-	rel="stylesheet">
+<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -53,14 +52,40 @@
 		url : "getSido.do",
 		dataType : "json",
 		success : function(data) {
-			for (var i = 0 ; i < data.length; i++) {
-				$("#sido").append("<option value = "" + data[i][])  
-			}
+			$("#sido").empty();
+			$(data.sido).each(function(index) {
+				var sido = $('<option value='+this.sido+'>'+ this.sido +'</option>');
+				$("#sido").append(sido);
+			});
 		},
 		error : function() {
 			alert("error");
 		}			
 	});
+
+$(document).ready(function(){
+	 $('#sido').change(function(){
+		 var selectedVal = $('#sido option:selected').val();
+		 $.ajax({
+			type : "get",
+			url : "getGugun.do",
+			dataType : "json",
+			data : "sido="+selectedVal,
+			success : function(){
+			$('#gungu').empty();
+			$(data.gungu).each(function(index){
+				var gungu = $('<option value='+this.gungu+'>'+this.gungu+'</option>');
+				$("#gungu").append(gungu);
+			});
+			},
+			error : function() {
+				alert("error");
+			}
+		 });
+		 
+	    });
+
+});
 </script>
 
 
@@ -81,7 +106,7 @@ select {
 }
 
 .bordertable th {
-/* 	background-color: pink; */
+	/* 	background-color: pink; */
 	text-align: center;
 }
 
@@ -92,7 +117,7 @@ select {
 </head>
 <body>
 
-<!-- UserIndex, 주소 해야됨  -->
+	<!-- UserIndex, 주소 해야됨  -->
 	<section id="writeBoard">
 
 	<div class="container">
@@ -109,10 +134,10 @@ select {
 					<tr>
 						<th><h5>게시판 구분</h5></th>
 						<td colspan="5">
-						<h4>
-						<input type = "radio" name = "boardFlag" value = "0"> 해주세요
-						<input type ="radio" name = "boardFlag" value = "1"> 잘해요
-						</h4>
+							<h4>
+								<input type="radio" name="boardFlag" value="0"> 해주세요 <input
+									type="radio" name="boardFlag" value="1"> 잘해요
+							</h4>
 						</td>
 					</tr>
 					<tr>
@@ -123,12 +148,10 @@ select {
 					<tr>
 						<th><h5>장소</h5></th>
 						<td colspan="3">
-						<select name="sido" id = "sido">
+						<select name="sido" id="sido">
 						</select> 
-						<select name="gugun">
-								<option>군구</option>
-						</select>
-						</td>
+						<select name="gungu">
+						</select></td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
@@ -150,22 +173,21 @@ select {
 
 					<tr>
 						<th><h5>필요인원</h5></th>
-						<td colspan="3">
-						<input type="text" placeholder="     명" name="people"class="form-control people">
+						<td colspan="3"><input type="text" placeholder="     명"
+							name="people" class="form-control people">
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3"><input type="radio" name="contact"
-							value="1">카톡&nbsp;&nbsp; <input type="radio"
-							name="contact" value="2">이메일 &nbsp;&nbsp;<input
-							type="radio" name="contact" value="3">전화&nbsp;&nbsp;</td>
+						<td colspan="3"><input type="radio" name="contact" value="1">카톡&nbsp;&nbsp;
+							<input type="radio" name="contact" value="2">이메일
+							&nbsp;&nbsp;<input type="radio" name="contact" value="3">전화&nbsp;&nbsp;</td>
 					</tr>
 
 					<tr>
 						<th><h5>희망시작시간</h5></th>
 						<td><select name="stTime">
 								<c:forEach var="i" begin="1" end="24">
-									<option value = ${i }>${i }시</option>
+									<option value=${i }>${i }시</option>
 								</c:forEach>
 						</select></td>
 						<th><h5>소요예정시간</h5></th>
@@ -181,10 +203,10 @@ select {
 								placeholder="내용을 입력하세요." name="content" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-					
-						<td colspan="4" align="right">
-						<input type="submit" class="btn btn-success btn-lg" value="퀘스트등록"> 
-						<a class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a></td>
+
+						<td colspan="4" align="right"><input type="submit"
+							class="btn btn-success btn-lg" value="퀘스트등록"> <a
+							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록 </a></td>
 					</tr>
 				</table>
 			</form>

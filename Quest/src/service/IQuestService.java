@@ -7,8 +7,10 @@ import javax.xml.stream.events.Comment;
 
 
 public interface IQuestService {
+	//contact
 	public String getContact(int conatactNo);
 	
+	//join
 	public int join(HashMap<String, Object> params);
 	public HashMap<String, Object> login(String id, String password);
 	public int logout(HashMap<String, Object> params);
@@ -30,30 +32,35 @@ public interface IQuestService {
 	public HashMap<String, Object> getBoard(int boardNo);
 	public boolean isMyBoard(HashMap<String, Object> params);
 
-	
+	//댓글
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
 	public int updateComment(HashMap<String, Object> params);
 	public int deleteComment(HashMap<String, Object> params); 
-
+	
+	//신청하기
 	public List<HashMap<String, Object>> listApply(int BoardNo);
 	public int writeApply(HashMap<String, Object> params);
 	public int updateApply(HashMap<String, Object> params);
 	public int deleteApply(HashMap<String, Object> params); 
 	public int choiceApply(int user1Index, int user2Index, int boardNo);
 
+	//평가하기
 	public List<HashMap<String, Object>> listScore(int userIndex,int mode);
 	public int writeScore(int boardNo, float starPoint, int mode);
 
+	//즐겨찾기
 	public int bookmark(int BoardNo, int userIndex); 
 	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params);
-
+	public List<HashMap<String, Object>> bookmarkBoardByUserIndex(int userIndex);
+	
+	//신고하기
 	public int police(int BoardNo, int userIndex); 
 	public int selectpolice(int BoardNo, int userIndex);
 	
 	public List<HashMap<String, Object>> selectAll();
 	
 	public List<HashMap<String, Object>> getSidoAll();
-	public List<HashMap<String, Object>> getGugun(String sido);
+	public List<HashMap<String, Object>> getGungu(String sido);
 
 }

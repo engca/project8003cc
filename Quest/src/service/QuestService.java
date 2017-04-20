@@ -1,5 +1,6 @@
 package service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class QuestService implements IQuestService {
 	private IQuestDao dao;
 	@Autowired
 	private DataSourceTransactionManager txManager;
-
+// 
 	@Override
 	public int join(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
@@ -298,6 +299,7 @@ public class QuestService implements IQuestService {
 		params.put(Constant.Police.USERINDEX, userIndex);
 		HashMap<String, Object> result = dao.selectPolice(params);
 		if(result == null){
+			dao.insertPolice(params);
 			return 1;  //신고없음. 신고접수 가능
 		}
 		else return 2;	// 신고데이터 있음. 신고접수 불가능   
@@ -341,10 +343,10 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> getGugun(String sido) {
+	public List<HashMap<String, Object>> getGungu(String sido) {
 		// TODO Auto-generated method stub
-		List<HashMap<String, Object>> gugun = dao.selectGugun(sido);
-		return gugun;
+		List<HashMap<String, Object>> gungu = dao.selectGungu(sido);
+		return gungu;
 	}
 
 	@Override
@@ -361,8 +363,20 @@ public class QuestService implements IQuestService {
 			return false;
 		else 
 			return true;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> bookmarkBoardByUserIndex(int userIndex) {
+		// TODO Auto-generated method stub
+		List<HashMap<String, Object>> tmp = dao.selectBookMarkByUserIndex(userIndex);
+		List<HashMap<String, Object>> list = new ArrayList<>();
+		for(HashMap<String, Object> boardNo : tmp){
+			list.add(dao.selectBoardOne((int)boardNo.get("boardNo")));
+		}
+		return list;
 	}  
 
+	
 
 
 

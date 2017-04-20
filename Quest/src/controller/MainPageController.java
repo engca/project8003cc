@@ -111,12 +111,14 @@ public class MainPageController {
 		return sido;  
 	}
 
-	
-//	@RequestMapping("getSido.do")
-//	public
-//	@ResponseBody String getSido()	{
-//		return "hello";
-//	}
+	@RequestMapping("getGugun.do")
+	public
+	@ResponseBody HashMap<String, Object> getGugun(String sido){
+		HashMap<String, Object> gungu = new HashMap<>();
+		gungu.put("gugun", service.getGungu(sido));
+		System.out.println(gungu);
+		return gungu;
+	}
 	
 	
 //	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")  
