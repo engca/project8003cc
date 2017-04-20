@@ -121,21 +121,16 @@ public class MainPageController {
 	}
 	
 	
-//	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")  
-//	public ModelAndView updateBoard(int boardNo){
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("board", service.getBoard(boardNo));
-//		mav.setViewName("/bootstrapResources/main/updateBoard.jsp");
-//		return mav;
-//	}
-	
 	@RequestMapping("updateBoard.do")
 	public String updateBoard() {
 		return "/bootstrapResources/main/updateBoard.jsp";
 	}
 	
-	@RequestMapping("updateBoardProc.do")
-	public String updateBoardProc(@ModelAttribute HashMap<String, Object> board){
+	@RequestMapping(method = RequestMethod.POST, value ="updateBoardProc.do")
+	public String updateBoardProc(@ModelAttribute HashMap<String, Object> board,
+			HttpServletRequest session){
+		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+		board.put("userIndex", userIndex);
 		service.updateBoard(board);
 		return "redirect:/viewBoard.do";
 	}

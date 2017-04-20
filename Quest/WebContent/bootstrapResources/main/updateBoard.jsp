@@ -100,13 +100,9 @@ select {
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3"><select name="sido">
-								<option>시도</option>
-						</select> <select name="gugun">
-								<option>군구</option>
-						</select> <select name="dong">
-								<option>동</option>
-						</select></td>
+						<td colspan="3">
+						<select name="sido" id = "sido"></select> 
+						<select name="gungu" id = "gungu"></select></td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
@@ -134,9 +130,9 @@ select {
 					<tr>
 						<th><h5>연락방법</h5></th>
 						<td colspan="3"><input type="radio" name="contact"
-							value="kakao">카톡&nbsp;&nbsp; <input type="radio"
-							name="contact" value="email">이메일 &nbsp;&nbsp; <input
-							type="radio" name="contact" value="phone">전화&nbsp;&nbsp;
+							value="1">카톡&nbsp;&nbsp; <input type="radio"
+							name="contact" value="2">이메일 &nbsp;&nbsp; <input
+							type="radio" name="contact" value="3">전화&nbsp;&nbsp;
 						</td>
 					</tr>
 
@@ -149,9 +145,9 @@ select {
 						</select></td>
 						<th><h5>소요예정시간</h5></th>
 						<td><select name="playTime">
-								<option value="1">30분미만</option>
-								<option value="2">3시간 미만</option>
-								<option value="3">3시간 이상</option>
+								<option value="30m">30분미만</option>
+								<option value="3h">3시간 미만</option>
+								<option value="over3h">3시간 이상</option>
 						</select></td>
 					</tr>
 					<tr>
@@ -160,8 +156,13 @@ select {
 								value="${board.content }" name="content" class="form-control"></textarea></td>
 					</tr>
 					<tr>
-						<td colspan="4" align="right"><input type="submit"
-							class="btn btn-success btn-lg" value="수정완료"> <a
+						<td colspan="4" align="right">
+						<input type = "hidden" value = "${board.boardNo }">
+						<input type = "hidden" value = "${board.readCount }">
+						<input type = "hidden" value = "${board.policeCount }">
+						<input type = "hidden" value = "${board.bCompleteFlag}">
+						
+						<input type="submit" class="btn btn-success btn-lg" value="수정완료"> <a
 							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록</a></td>
 					</tr>
 				</table>
