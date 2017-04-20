@@ -147,7 +147,7 @@ public class QuestService implements IQuestService {
 		result.put("current", page);
 		result.put("boardList", list);
 
-		return result;
+		return result;  
 	}
 
 	@Override
