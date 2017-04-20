@@ -100,13 +100,13 @@ public class MainPageController {
 		return "redirect:/list.do";
 	}
 	
-	@RequestMapping("getSido.do")
-	public 
-	@ResponseBody List<HashMap<String, Object>> getSido(){
-		HashMap<String, Object> sido = new HashMap<>();
-		service.getSidoAll();
-		return sido;  
-	}
+//	@RequestMapping("getSido.do")
+//	public 
+//	@ResponseBody List<HashMap<String, Object>> getSido(){
+//		HashMap<String, Object> sido = new HashMap<>();
+//		service.getSidoAll();
+//		return sido;  
+//	}
 	
 	
 //	@RequestMapping(method = RequestMethod.POST, value ="updateBoard.do")  
