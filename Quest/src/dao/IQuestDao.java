@@ -19,6 +19,7 @@ public interface IQuestDao {
 	public List<HashMap<String, Object>> selectBoardLimit(HashMap<String, Object> params);
 	public HashMap<String, Object> isMyBoard(HashMap<String, Object> params);
 	
+	
 	// 회원관리 부분
 	public int insertUser(HashMap<String, Object> params);
 	public int updateUser(HashMap<String, Object> params);
@@ -63,5 +64,7 @@ public interface IQuestDao {
 	public List<HashMap<String, Object>> selectSidoAll();
 	public List<HashMap<String, Object>> selectGungu(String sido);
 	
-
+	//마이페이지 
+	//마이리스트
+	public List<HashMap<String, Object>> selectBoardByUserIndex(int userIndex);
 }
