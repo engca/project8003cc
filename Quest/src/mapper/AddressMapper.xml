@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		<if test="gugun != null">
 			and gugun = #{gugun}
-		</if>
+		</if>  
 	</select>  
 	
 	<select id="selectSidoAll"  resultType="java.util.HashMap">
