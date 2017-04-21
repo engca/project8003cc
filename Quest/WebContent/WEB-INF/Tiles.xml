@@ -3,14 +3,14 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-	<definition name="tiles" template="bootstrapResources/jsp/header/layout.jsp">
-		<put-attribute name="header" value = "bootstrapResources/jsp/header/header.jsp"></put-attribute>
+	<definition name="tiles" template="/bootstrapResources/header/layout.jsp">
+		<put-attribute name="header" value = "/bootstrapResources/header/header.jsp"></put-attribute>
 		<put-attribute name="bar" value = ""></put-attribute>
 		<put-attribute name="body" value = ""></put-attribute>
-		<put-attribute name="footer" value = "bootstrapResources/jsp/header/footer.jsp"></put-attribute>
+		<put-attribute name="footer" value = "/bootstrapResources/header/footer.jsp"></put-attribute>
 	</definition>
 	<definition extends="tiles" name="*.*">
-		<put-attribute name="bar" value = "bootstrapResources/jsp/header/{1}.jsp"></put-attribute>
-		<put-attribute name="body" value = "bootstrapResources/jsp/{2}.jsp"></put-attribute>
+		<put-attribute name="bar" value = "/bootstrapResources/header/{1}.jsp"></put-attribute>
+		<put-attribute name="body" value = "/bootstrapResources/{2}.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>
