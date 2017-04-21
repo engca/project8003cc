@@ -404,6 +404,13 @@ public class QuestService implements IQuestService {
 
 	}
 
+	@Override
+	public String nickname(int userIndex) {
+		// TODO Auto-generated method stub
+		
+		return dao.selectNicknname(userIndex);
+	}
+
 
 
 	
