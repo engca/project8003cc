@@ -31,5 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</if>
 	</select>
 	
+	<select id="selectNicknname" parameterType="int" resultType="String">
+	select nickname from user where userIndex=#{userIndex}
+	</select>
 	
 </mapper>

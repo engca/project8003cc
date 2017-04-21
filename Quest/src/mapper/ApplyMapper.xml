@@ -24,8 +24,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="selectAllApplyByUserIndex" parameterType="int" resultType="java.util.HashMap">
       SELECT * FROM apply WHERE userIndex=#{userIndex}
    </select>
+   
+   <select id="selectBoardApply" parameterType="int" resultType="java.util.HashMap">
+   	select * from board b, apply a where b.boardNo=a.boardNo and a.userIndex=#{userIndex}
+   </select>
+   
    <delete id="deleteApply" parameterType="int">
       DELETE * from apply where boardNo = #{boardNo} 
    </delete>
+   
+   
 
 </mapper>
