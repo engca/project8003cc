@@ -51,16 +51,19 @@
 									<input type="button" id='todoBtn' class='btn btn-success btn-lg'
 										onclick="location.href='List.do?boardflag=1'" value="해주세요">
 								</span>
-								<span style="margin:5px;" align = "right">
+								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav navbar-right">
+								<span style="left:50%; margin:5px;" align = "right">
 									<span style=" color:white;"> id : </span><input type="text" name="id" > 
 									<span style="color:white;"> pw: </span><input type="password" name="pw" >
 									<input type="submit" value="로그인" class='btn btn-success btn-lg'
 									onclick = "locaion.href='login.do'"> 
 									<input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'>
 								</span>
+								</ul>
+								</div>
 							</div>
 						</form>
-
 					</c:when>
 					<c:otherwise>
 						<span >
@@ -69,12 +72,13 @@
 							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
 								onclick="location.href='List.do?boardflag=1'" value="해주세요">
 						</span>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
 						<span style="color:white;" > ${param.id }님 환영합니다. </span>
-						<input type="button" value="마이페이지"
-							onclick="location.href='mypage.do'">
-						<input type="button" value="로그아웃"
-							onclick="location.href='logout.do'">
-
+						<input type="button" value="마이페이지" 	onclick="location.href='mypage.do'">
+						<input type="button" value="로그아웃"	onclick="location.href='logout.do'">
+						</ul>
+						</div>
 					</c:otherwise>
 				</c:choose>
             </div>
