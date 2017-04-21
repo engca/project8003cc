@@ -31,8 +31,7 @@ public class MainPageController {
 	IQuestService service; 
 	 
 	@RequestMapping("listBoard.do")
-	public ModelAndView todoBoardAllList(@RequestParam(defaultValue="0") int boardflag ){
-		
+	public ModelAndView BoardAllList(@RequestParam(defaultValue="0") int boardflag ){		
 		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
 		ModelAndView mav = new ModelAndView();
 		if(boardflag==0){
@@ -59,15 +58,13 @@ public class MainPageController {
 		param.put("password", password);
 		param.put("nickname", nickname);
 		service.join(param);
-//		return "select.main/ListBoard";
-		return "search.main/viewBoard";
+		return "select.main/ListBoard";
 	}	
 	
 	@RequestMapping("idCheck.do")
 	public void idCheck(String userId, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
 		// TODO Auto-generated method stub
-		int result = service.idCheck(userId);	
-		
+		int result = service.idCheck(userId);			
 		PrintWriter pw = resp.getWriter();
 		pw.print(result);
 		pw.close();
@@ -77,14 +74,13 @@ public class MainPageController {
 	@RequestMapping("nicknameCheck.do")
 	public void nicknameCheck(String nickname, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
 		// TODO Auto-generated method stub
-		int result = service.nicknameCheck(nickname);	
-		
+		int result = service.nicknameCheck(nickname);			
 		PrintWriter pw = resp.getWriter();
 		pw.print(result);
 		pw.close();
 		pw.flush();	
 	}
-	
+		
 	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
 	public ModelAndView viewboard(int boardNo){
 		ModelAndView mv = new ModelAndView();
