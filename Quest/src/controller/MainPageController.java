@@ -31,21 +31,20 @@ public class MainPageController {
 	IQuestService service; 
 	 
 	@RequestMapping("listBoard.do")
-	public ModelAndView BoardAllList(int boardflag ){		
+	public ModelAndView BoardAllList(@RequestParam(defaultValue = "0") int boardflag ){		
 		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
-		System.out.println(list);
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> data = new HashMap<>();
 		if(boardflag==0){
-			data.put("title", "잘해요");
+			data.put("header", "잘해요");
 		}
 		else if(boardflag==1){
-			data.put("title", "해주세요");
+			data.put("header", "해주세요");
 		}
 		data.put("list", list);
 		mav.addAllObjects(data);
-//		mav.setViewName("search.main/ListBoard");
-		mav.setViewName("/bootstrapResources/main/heetest");
+		System.out.println(data);
+		mav.setViewName("search.main.listBoard");
 		return mav;		
 	}
 
@@ -62,7 +61,7 @@ public class MainPageController {
 		param.put("password", password);
 		param.put("nickname", nickname);
 		service.join(param);
-		return "select.main/ListBoard";
+		return "select.main.listBoard";
 	}	
 	
 	@RequestMapping("idCheck.do")
@@ -151,7 +150,7 @@ public class MainPageController {
 	// 요거 희정 테스트확인용
 	@RequestMapping("heetest.do")
 	public String heetest() {
-		return "/bootstrapResources/main/heetest.jsp";
+		return "search.main.heetest";
 	}
 
 	

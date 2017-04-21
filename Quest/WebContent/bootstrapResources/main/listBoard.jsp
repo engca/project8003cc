@@ -58,17 +58,11 @@ a {
 			</tr>
 			<c:forEach var="board" items="list">
 				<tr>
-					<td> 111 </td>
-					<td> 제목입니다. </td>
-					<td> 닉네임 </td>
-					<td> 2017-01-01 </td>
-					<td> 1 </td>
-<!-- 					서버 연동되면 아래 살리기 -->
-<%-- 					<td>${board.boardNo }</td> --%>
-<%-- 					<td><a href="viewBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td> --%>
-<%-- 					<td>#{board.nickname }</td> --%>
-<%-- 					<td>${board.date }</td> --%>
-<%-- 					<td align="center"><fmt:formatDate value="${board.readcount }"  pattern="yyyy-MM-dd" /> --%>
+					<td>${board.boardNo }</td>
+					<td><a href="viewBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td>
+					<td>#{board.nickname }</td>
+					<td>${board.date }</td>
+					<td align="center"><fmt:formatDate value="${board.readCount }"  pattern="yyyy-MM-dd" />
 				</tr>
 			</c:forEach>
 			<tr>

@@ -89,17 +89,22 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> listBoard(@RequestParam(required = false) List<Integer> addrNo,
-			@RequestParam(defaultValue = "0") int boardflag, @RequestParam(required = false) String searchMsg,
-			@RequestParam(required = false, defaultValue = "0") int userIndex) {
+	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo,
+			int boardflag, String searchMsg, int userIndex) {
 		// TODO Auto-generated method stub
+	
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("addrNo", addrNo);
 		params.put("boardFlag", boardflag);
 		params.put("userIndex", userIndex);
 		params.put("searchMsg", searchMsg);
-		return dao.selectBoard(params);
-
+		
+		List<HashMap<String, Object>> list = dao.selectBoard(params);
+		for (HashMap<String, Object> board : list ){
+			int nickname = (int) board.get("userIndex");
+			board.put("nickname", nickname(nickname));
+		}				
+		return list;
 		// addr/searchMsg/userIndex 는 없으면 검색안됨
 		// boardflag 는 디폴트 "잘해요"
 
