@@ -36,7 +36,7 @@ public class MainPageController {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> data = new HashMap<>();
 		if(boardflag==0){
-			data.put("header", "잘해요"); 
+			data.put("header", "잘해요");   
 		}
 		else if(boardflag==1){
 			data.put("header", "해주세요");
