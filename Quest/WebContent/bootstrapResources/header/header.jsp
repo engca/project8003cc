@@ -37,15 +37,15 @@
 		<nav  class="navbar navbar-default navbar-fixed-top navbar-custom">
 				<c:choose>
 					<c:when test="${param.id == null}">
-						<form action="login.do">
+						<form action="login.do"> 
 							<div>
-								<span style = "position:absolute; margin:5px;" align = "right">
+								<span style = "position:absolute; margin:5px;" align = "left">
 									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
 										onclick="location.href='List.do?boardflag=0'" value="잘해요">
 									<input type="button" id='todoBtn' class='btn btn-success btn-lg'
 										onclick="location.href='List.do?boardflag=1'" value="해주세요">
 								</span>
-								<span style="margin:5px;" align = "right">
+								<span style="margin:5px;" align="right">
 									<span style=" color:white;"> id : </span><input type="text" name="id" > 
 									<span style="color:white;"> pw: </span><input type="password" name="pw" >
 									<input type="submit" value="로그인" class='btn btn-success btn-lg'
