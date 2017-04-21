@@ -43,7 +43,6 @@ public class MainPageController {
 		}
 		data.put("list", list);
 		mav.addAllObjects(data);
-		System.out.println(data);
 		mav.setViewName("search.main.listBoard");
 		return mav;		
 	}
@@ -88,6 +87,7 @@ public class MainPageController {
 	public ModelAndView viewboard(int boardNo){
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(service.readBoard(boardNo));
+		System.out.println(service.readBoard(boardNo));
 		mv.setViewName("search.main.viewBoard");
 		return mv; 
 	}
