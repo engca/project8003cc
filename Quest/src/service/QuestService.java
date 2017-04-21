@@ -399,6 +399,7 @@ public class QuestService implements IQuestService {
 		result.put("last", last);
 		result.put("current", page);
 		result.put("bookmarkList", list);
+		result.put("nickname", dao.selectNicknname(userIndex));
 		
 		return result;
 
