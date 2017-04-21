@@ -33,19 +33,25 @@
 <script type="text/javascript">
 </script>
 </head>
-<body>
-		<nav  class="navbar navbar-default navbar-fixed-top navbar-custom">
-				<c:choose>
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                   <c:choose>
 					<c:when test="${param.id == null}">
-						<form action="login.do"> 
+						<form action="login.do">
 							<div>
-								<span style = "position:absolute; margin:5px;" align = "left">
+								<span style = "position:absolute; margin:5px;" align = "right">
 									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
 										onclick="location.href='List.do?boardflag=0'" value="잘해요">
 									<input type="button" id='todoBtn' class='btn btn-success btn-lg'
 										onclick="location.href='List.do?boardflag=1'" value="해주세요">
 								</span>
-								<span style="margin:5px;" align="right">
+								<span style="margin:5px;" align = "right">
 									<span style=" color:white;"> id : </span><input type="text" name="id" > 
 									<span style="color:white;"> pw: </span><input type="password" name="pw" >
 									<input type="submit" value="로그인" class='btn btn-success btn-lg'
@@ -71,16 +77,32 @@
 
 					</c:otherwise>
 				</c:choose>
-		</nav>
-	<!-- jQuery -->
-	<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-	<!-- Plugin JavaScript -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    
+
+   
+    <!-- jQuery -->
+    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
+    <script src="bootstrapResources/js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="bootstrapResources/js/freelancer.min.js"></script>
+
 
 </body>
 </html>
