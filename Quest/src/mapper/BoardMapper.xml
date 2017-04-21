@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectBoardByUserIndex" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from board where userIndex=#{userIndex} order by boardNo limit #{skip}, #{count}
+		select * from board where userIndex=#{userIndex} and boardFlag=#{boardFlag} order by boardNo limit #{skip}, #{count}
 	</select>
 		
 	
