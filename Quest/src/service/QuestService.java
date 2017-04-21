@@ -101,8 +101,8 @@ public class QuestService implements IQuestService {
 		
 		List<HashMap<String, Object>> list = dao.selectBoard(params);
 		for (HashMap<String, Object> board : list ){
-			int nickname = (int) board.get("userIndex");
-			board.put("nickname", nickname(nickname));
+			int userindex = (int) (board.get("userIndex"));
+			board.put("nickname", nickname(userindex));
 		}				
 		return list;
 		// addr/searchMsg/userIndex 는 없으면 검색안됨

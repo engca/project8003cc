@@ -36,10 +36,10 @@ public class MainPageController {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> data = new HashMap<>();
 		if(boardflag==0){
-			data.put("header", "잘해요");   
+			data.put("header1", "잘해요");   
 		}
 		else if(boardflag==1){
-			data.put("header", "해주세요");
+			data.put("header1", "해주세요");
 		}
 		data.put("list", list);
 		mav.addAllObjects(data);
@@ -50,7 +50,7 @@ public class MainPageController {
 
 	@RequestMapping("join.do")
 	public String join(){
-		return "/bootstrapResources/main/join.jsp";
+		return "search.main.join";
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="userjoin.do")
@@ -61,7 +61,7 @@ public class MainPageController {
 		param.put("password", password);
 		param.put("nickname", nickname);
 		service.join(param);
-		return "select.main.listBoard";
+		return "search.main.listBoard";
 	}	
 	
 	@RequestMapping("idCheck.do")
@@ -88,13 +88,13 @@ public class MainPageController {
 	public ModelAndView viewboard(int boardNo){
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(service.readBoard(boardNo));
-		mv.setViewName("search.main/viewBoard");
+		mv.setViewName("search.main.viewBoard");
 		return mv; 
 	}
 	
 	@RequestMapping("writeBoard.do")
 	public String writeBoard(){
-		return "/bootstrapResources/main/writeBoard.jsp";
+		return "search.main.writeBoard";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
@@ -129,7 +129,7 @@ public class MainPageController {
 	
 	@RequestMapping("updateBoard.do")
 	public String updateBoard() {
-		return "/bootstrapResources/main/updateBoard.jsp";
+		return "search.main.updateBoard";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value ="updateBoardProc.do")
