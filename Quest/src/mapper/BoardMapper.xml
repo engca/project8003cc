@@ -34,6 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from board
 	</select>
 	
+	<select id="getCountBoardByUserIndex" parameterType="int"  resultType="int">
+		select count(*) from board where userIndex=#{userIndex}
+	</select>
+	
 	<select id="selectBoardLimit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from board order by num desc 
 		limit #{skip}, #{count}

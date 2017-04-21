@@ -34,5 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    	select * from board b, apply a where b.boardNo=a.boardNo and a.userIndex=#{userIndex} limit #{skip},#{count}
    </select>
    
+   <select id="getCountBoardApplyByUserIndex" parameterType="int" resultType="int">
+   select  count(*) from board b , apply a where b.boardNo=a.boardNo and a.userIndex=#{userIndex} 
+   </select>
+   
+   
 
 </mapper>
