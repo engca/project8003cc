@@ -33,15 +33,19 @@ public class MainPageController {
 	@RequestMapping("listBoard.do")
 	public ModelAndView BoardAllList(@RequestParam(defaultValue="0") int boardflag ){		
 		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
+		System.out.println(list);
 		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> data = new HashMap<>();
 		if(boardflag==0){
-			mav.addObject("title","잘해요");
+			data.put("title", "잘해요");
 		}
 		else if(boardflag==1){
-			mav.addObject("title","해주세요");
+			data.put("title", "해주세요");
 		}
-		mav.addObject("list", list);
-		mav.setViewName("search.main/ListBoard");
+		data.put("list", list);
+		mav.addAllObjects(data);
+//		mav.setViewName("search.main/ListBoard");
+		mav.setViewName("/bootstrapResources/main/heetest");
 		return mav;		
 	}
 
@@ -142,6 +146,12 @@ public class MainPageController {
 	@RequestMapping("police.do")
 	public int police(int BoardNo, int userIndex){
 		return service.selectpolice(BoardNo, userIndex);
+	}
+
+	// 요거 희정 테스트확인용
+	@RequestMapping("heetest.do")
+	public String heetest() {
+		return "/bootstrapResources/main/heetest.jsp";
 	}
 
 	

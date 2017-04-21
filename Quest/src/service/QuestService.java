@@ -94,7 +94,6 @@ public class QuestService implements IQuestService {
 			@RequestParam(required = false, defaultValue = "0") int userIndex) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
-
 		params.put("addrNo", addrNo);
 		params.put("boardFlag", boardflag);
 		params.put("userIndex", userIndex);

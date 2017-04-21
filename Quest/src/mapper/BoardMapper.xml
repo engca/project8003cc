@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectBoard" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
-		SELECT * from board order by boardNo desc
+		SELECT * from board order by boardNo desc 
 		where boardFlag = #{boardFlag}
 		<if test="searchMsg != null and searchMsg != ''">
 			or title like CONCAT('%',#{searchMsg},'%')
