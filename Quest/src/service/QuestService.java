@@ -69,9 +69,9 @@ public class QuestService implements IQuestService {
 		params.put(Constant.User.USERID, id);
 		HashMap<String, Object> user = dao.selectUser(params);
 		if (user == null) {
-			return 0; // 성공
+			return 0; // 성공. 아이디 사용가능
 		} else {
-			return 1; // 실패
+			return 1; // 실패. 동일한 아이디 있음
 		}
 	}
 
@@ -82,9 +82,9 @@ public class QuestService implements IQuestService {
 		params.put(Constant.User.NICKNAME, nickname);
 		HashMap<String, Object> user = dao.selectUser(params);
 		if (user == null) {
-			return 0; // 성공
+			return 0; // 성공. 닉네임 사용가능
 		} else {
-			return 1; // 실패
+			return 1; // 실패. 동일한 닉넴 있음
 		}
 	}
 

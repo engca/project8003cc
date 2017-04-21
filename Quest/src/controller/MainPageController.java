@@ -46,20 +46,27 @@ public class MainPageController {
 		return mav;		
 	}
 
-	@RequestMapping(method=RequestMethod.POST, value="join.do")
+	@RequestMapping("join.do")
+	public String join(){
+		return "/bootstrapResources/main/join.jsp";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="userjoin.do")
 	public String join(String userId, String password, String nickname){
+		System.out.println(userId);
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("userId", userId );
 		param.put("password", password);
 		param.put("nickname", nickname);
 		service.join(param);
-		return "select.main/ListBoard";
+//		return "select.main/ListBoard";
+		return "search.main/viewBoard";
 	}	
 	
 	@RequestMapping("idCheck.do")
-	public void idCheck(String userid, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
+	public void idCheck(String userId, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
 		// TODO Auto-generated method stub
-		int result = service.idCheck(userid);	
+		int result = service.idCheck(userId);	
 		
 		PrintWriter pw = resp.getWriter();
 		pw.print(result);
