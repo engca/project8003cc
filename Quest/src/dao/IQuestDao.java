@@ -41,7 +41,7 @@ public interface IQuestDao {
 	public HashMap<String, Object> selectApply(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectAllApplyByBoardNo(int boardNo);
 	public List<HashMap<String, Object>> selectAllApplyByUserIndex(int userIndex);
-	public List<HashMap<String, Object>> selectBoardApply(int userIndex);
+	
 
 	// 평가하기
 	public int insertScore(HashMap<String, Object> params);
@@ -71,6 +71,7 @@ public interface IQuestDao {
 	
 	//마이페이지 
 	//마이리스트
-	public List<HashMap<String, Object>> selectBoardByUserIndex(int userIndex);
+	public List<HashMap<String, Object>> selectBoardByUserIndex(HashMap<String, Object>params);
+	public List<HashMap<String, Object>> selectBoardApply(HashMap<String, Object>params);
 	
 }
