@@ -26,7 +26,8 @@ public class QuestService implements IQuestService {
 	@Override
 	public int join(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		return 1; 
+		dao.insertUser(params);
+		return 1; // 성공
 	}
 
 	@Override

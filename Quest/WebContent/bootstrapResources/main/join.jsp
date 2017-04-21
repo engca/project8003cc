@@ -134,21 +134,21 @@ $(document).ready ( function() {
 		});
 	});	
 
-	// 가입
-	$('#btn').click(function() {
-		$.ajax({
-			type : 'post',
-			url : 'join.do',
-			dataType : 'text',
-			data : 'userId=' + $('#userId').val() + '&password=' + $('#password').val() + '&nickname=' + $('#nickname').val(),
-			success : function(data) {
-				alert("회원가입이 완료되었습니다");
-			},
-			error : function(xhrReq, status, error) {
-				alert('에러');
-			}
-		});
-	});
+// 	// 가입
+// 	$('#btn').click(function() {
+// 		$.ajax({
+// 			type : 'post',
+// 			url : 'join.do',
+// 			dataType : 'text',
+// 			data : 'userId=' + $('#userId').val() + '&password=' + $('#password').val() + '&nickname=' + $('#nickname').val(),
+// 			success : function(data) {
+// 				alert("회원가입이 완료되었습니다");
+// 			},
+// 			error : function(xhrReq, status, error) {
+// 				alert('에러');
+// 			}
+// 		});
+// 	});
 
 	
 	
@@ -201,7 +201,7 @@ $(document).ready ( function() {
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <input type="button"	class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='글상세보기.do'">
+                                <input type="button"	class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='viewBoard.do'">
 								
                                 <button type="submit" class="btn btn-success btn-lg" id="btn">Send</button>
                             </div>
