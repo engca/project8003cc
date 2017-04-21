@@ -67,25 +67,26 @@ select {
 <body>
 	<div id="board" class="container">
 		<input type="button" class="btn btn-primary btn-lg" value="해주세요"
-			onclick="location.href='mylist.do?boardFlag=0'"> <input
+			onclick="location.href='mylistProc.do?boardFlag=0'"> <input
 			type="button" class="btn btn-primary btn-lg" value="잘해요"
-			onclick="location.href='mylist.do?boardFlag=1'">
+			onclick="location.href='mylistProc.do?boardFlag=1'">
 		<div class="row">
 			<div class="col-lg-12 ">
-				<c:if test="${board.boardFlag ==0}">
+				<c:if test="${myboard.boardFlag ==0}">
 					<h1 align="center">해 주 세 요</h1>
 				</c:if>
 
-				<c:if test="${board.boardFlag == 1}">
+				<c:if test="${myboard.boardFlag == 1}">
 					<h1 align="center">잘 해 요</h1>
 				</c:if>
 			</div>
 		</div>
 
-		<c:if test="${board.boardFlag == 0 || board.boardFlag == 1 }">
+		<c:if test="${myboard.boardFlag == 0 || myboard.boardFlag == 1 }">
 			<hr class="star-primary">
 
 
+			<h3>게시한 글(요청중)</h3>
 			<table class="table table-striped">
 
 				<tr>
@@ -99,29 +100,28 @@ select {
 
 
 
-
-				<c:forEach var="board" items="${boardList }">
+				<c:forEach var="myboard" items="${myboard }">
 					<tr>
-						<td>${board.boardNo }</td>
-						<td><c:if test="${board.bcompleteflag == 0 }">요청중</c:if> <c:if
-								test="${board.acompleteflag == 1 }">신청중</c:if></td>
-						<td>${board.title }</td>
+						<td>${myboard.boardNo }</td>
+						<td><c:if test="${myboard.boardFlag == 0 }">해주세요</c:if> <c:if
+							test="${myboard.boardFlag == 1 }">잘해요</c:if></td>
+						<td>${myboard.title }</td>
 						<!-- USER INDEX>ID -->
-						<td>${board.닉네임 }</td>
-						<td><fmt:formatDate value="${board.date }"
+						<td>${myboardnickname}</td>
+						<td><fmt:formatDate value="${myboard.date }"
 								pattern="yyyy-MM-dd" /></td>
-						<td>${board.readcount }</td>
+						<td>${myboard.readcount }</td>
 					</tr>
 				</c:forEach>
 
 				<tr>
 					<td width="1250px" colspan="6" align="center"><c:if
-							test="${start != 1 }">
+							test="${myboardstart != 1 }">
 							<a href="list.do?page=1"> [처음] &nbsp; </a>
-							<a href="list.do?page=${start-1 }"> ◀ &nbsp;&nbsp; </a>
-						</c:if> <c:forEach begin="${start }" end="${end}" var="i">
+							<a href="list.do?page=${myboardstart-1 }"> ◀ &nbsp;&nbsp; </a>
+						</c:if> <c:forEach begin="${myboardstart }" end="${myboardend}" var="i">
 							<c:choose>
-								<c:when test="${i == current }">
+								<c:when test="${i == myboardcurrent }">
 							[${i }]
 						</c:when>
 								<c:otherwise>
@@ -129,13 +129,20 @@ select {
 								</c:otherwise>
 							</c:choose>
 
-						</c:forEach> <c:if test="${end != last }">
-							<a href="list.do?page=${end+1 }"> &nbsp;&nbsp; ▶ </a>
-							<a href="list.do?page=${last}"> &nbsp; [끝]</a>
+						</c:forEach> <c:if test="${myboardend != myboardlast }">
+							<a href="list.do?page=${myboardend+1 }"> &nbsp;&nbsp; ▶ </a>
+							<a href="list.do?page=${myboardlast}"> &nbsp; [끝]</a>
 						</c:if></td>
 				</tr>
 
 			</table>
+			
+			
+			
+		
+			
+			
+			
 		</c:if>
 	</div>
 </body>
