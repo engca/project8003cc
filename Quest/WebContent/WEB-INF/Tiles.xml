@@ -10,7 +10,7 @@
 		<put-attribute name="footer" value = "bootstrapResources/jsp/header/footer.jsp"></put-attribute>
 	</definition>
 	<definition extends="tiles" name="*.*">
-		<put-attribute name="bar" value = "bootstrapResources/jsp/{1}.jsp"></put-attribute>
+		<put-attribute name="bar" value = "bootstrapResources/jsp/header/{1}.jsp"></put-attribute>
 		<put-attribute name="body" value = "bootstrapResources/jsp/{2}.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>

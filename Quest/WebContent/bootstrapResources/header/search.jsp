@@ -52,7 +52,6 @@
 				dataType : "json",
 				data : "sido="+val,
 				success : function(data){
-					alert("?");
 					$('#gungu').empty();
 					$(data.gungu).each(function(index){
 						var a = $('<td>')
@@ -68,27 +67,6 @@
 					alert("error");
 				}
 			 });
-	}
-	function sch_area_si_chg(sido) {
-		$('#sangseaArea').css('visibility', 'visible');
-		//이동햇을때 체크 다 풀기 
-		$("input:checkbox[name='area']").prop("checked", false);
-
-		$('#sangseaArea').text("");
-		if (sido == 'A') {
-			$(A).each(function(index) {
-				var a = $('<span style ="width:20px; height:10px;border:double;" align = "center">');
-				var b = $('<input type ="checkbox" name="area" value="'+A[index]+'">');
-				a.append(b);
-				a.append(A[index]);
-				var br = $('<br>');
-				if(index%8 == 0 && index !==0)
-					$('#sangseaArea').append(br);
-				$('#sangseaArea').append(a);
-				
-			});
-		}
-
 	}
 </script>
 <style type="text/css">
@@ -112,10 +90,8 @@
 		<div id="sangsea" style="visibility:hidden">
 			<table width="50%" >
 				<tr id = "sido">
-					
 				<tr>
 				<tr id = "gungu" style = "overflow :auto; ">
-				
 				</tr>
 			</table>
 		</div>
