@@ -25,6 +25,7 @@ public interface IQuestDao {
 	public int updateUser(HashMap<String, Object> params);
 	public int deleteUser(int userIndex);
 	public HashMap<String, Object> selectUser(HashMap<String, Object> params);
+	public String selectNicknname(int userIndex);
 	
 	// 코멘트 관리부분
 	public int insertComment(HashMap<String, Object> params);
@@ -40,6 +41,7 @@ public interface IQuestDao {
 	public HashMap<String, Object> selectApply(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectAllApplyByBoardNo(int boardNo);
 	public List<HashMap<String, Object>> selectAllApplyByUserIndex(int userIndex);
+	
 
 	// 평가하기
 	public int insertScore(HashMap<String, Object> params);
@@ -53,7 +55,8 @@ public interface IQuestDao {
 	public int insertBookMark(HashMap<String, Object> params);
 	public int deleteBookMark(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectBookMark(HashMap<String, Object> params);
-	public List<HashMap<String, Object>> selectBookMarkByUserIndex (int userIndex);
+	public List<HashMap<String, Object>> selectBookMarkByUserIndex (HashMap<String, Object> params);
+	public int getBookmarkByUserIndexCount(int userIndex);
 
 	// 신고하기
 	public int insertPolice(HashMap<String, Object> params);
@@ -68,5 +71,9 @@ public interface IQuestDao {
 	
 	//마이페이지 
 	//마이리스트
-	public List<HashMap<String, Object>> selectBoardByUserIndex(int userIndex);
+	public int getCountBoardByUserIndex(int userIndex);
+	public int getCountBoardApplyByUserIndex(int userIndex);
+	public List<HashMap<String, Object>> selectBoardByUserIndex(HashMap<String, Object>params);
+	public List<HashMap<String, Object>> selectBoardApply(HashMap<String, Object>params);
+	
 }

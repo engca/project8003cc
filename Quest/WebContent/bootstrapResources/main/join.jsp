@@ -52,23 +52,23 @@
 $(document).ready ( function() {
 	
 	// id(이메일) 중복확인
-	$('#id').on('keyup', function(){
+	$('#userId').on('keyup', function(){
 		var regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;		
-		if( !regEmail.test($('#id').val()) ) {
+		if( !regEmail.test($('#userId').val()) ) {
 			$('#idspan').html('올바른 이메일을 입력하세요');
-			$('#id').focus();
+			$('#userId').focus();
 		} else {
 			$.ajax({
 				type : 'post',
 				url : 'idCheck.do',
 				dataType : 'text',
-				data : 'userid=' + $('#id').val(),
+				data : 'userId=' + $('#userId').val(),
 				success : function(data) {
-					if (data != $('#id').val()) {
+					if (data != 1) {
 						$('#idspan').html('사용가능한 ID(이메일) 입니다.');
 					} else {
 						$('#idspan').text('이미 사용중인 ID(이메일) 입니다.');
-						$('#id').focus();
+						$('#userId').focus();
 					}
 				},
 // 				error : function(xhrReq, status, error) {
@@ -80,10 +80,10 @@ $(document).ready ( function() {
 	
 	$('#password').on('keyup', function(){
 		var regpass = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).{8,20}/;
-		if( !regpass.test($('#pass').val()) ) {
-			$('#passspan').html('특수문자,숫자,영문 대소문자 포함하세요');
+		if( !regpass.test($('#password').val()) ) {
+			$('#passwordspan').html('특수문자,숫자,영문 대소문자 포함 8자이상!! ');
 		} else {
-			$('#passspan').html('사용가능한 패스워드 입니다.');
+			$('#passwordspan').html('사용가능한 패스워드 입니다.');
 		}					
 	});
 	
@@ -94,25 +94,7 @@ $(document).ready ( function() {
 			$('#passwordcheckspan').html('동일한 비밀번호 입니다');
 		}
 	});
-	
-	nickname.addEventListener('keyup', function(e) {
-		var http = new XMLHttpRequest();
-		http.open('get', 'nicknameCheck.do?nickname=' + nickname.value);
-		http.onreadystatechange = function() {
-			if (http.readyState == 4 && http.status == 200) 
-			{
-				if (http.responseText == 0)
-				{
-					nicknamespan.innerHTML = "사용가능한 닉네임 입니다";
-				}
-				else 
-				{
-					nicknamespan.innerHTML = "닉네임이 중복입니다";
-				}
-			}	
-		}
-		http.send();
-	});
+
 	// 닉네임 중복확인
 	$('#nickname').on('keyup', function(){
 		$.ajax({
@@ -121,7 +103,7 @@ $(document).ready ( function() {
 			dataType : 'text',
 			data : 'nickname=' + $('#nickname').val(),
 			success : function(data) {
-				if (data != $('#nickname').val()) {
+				if (data != 1) {
 					$('#nicknamespan').html('사용가능한 닉네임 입니다.');
 				} else {
 					$('#nicknamespan').text('이미 사용중인 닉네임 입니다.');
@@ -133,29 +115,12 @@ $(document).ready ( function() {
 // 			}
 		});
 	});	
-
-	// 가입
-// 	$('#btn').click(function() {
-// 		$.ajax({
-// 			type : 'post',
-// 			url : 'join.do',
-// 			dataType : 'text',
-// 			data : 'id=' + $('#id').val() + '&password=' + $('#password').val() + '&nickname=' + $('#nickname').val(),
-// 			success : function(data) {
-// 				printList();
-// 			},
-// 			error : function(xhrReq, status, error) {
-// 				alert('에러');
-// 			}
-// 		});
-// 	});
-
+	
 });
 </script>
 </head>
 
 <body>
-<form action="join.do" method="post" name="frm">
   <section id="contact">
         <div class="container">
             <div class="row">
@@ -164,20 +129,21 @@ $(document).ready ( function() {
                     <hr class="star-primary">
                 </div>
             </div>
+<form action="userjoin.do" method="post" name="frm">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label for="id">아이디(email)</label>
-                                <input type="text" class="form-control" placeholder="사용할 ID(이메일) 입력" id="id" required data-validation-required-message="Please enter your name.">
+                                <label for="userId">아이디(email)</label>
+                                <input type="text" class="form-control" placeholder="사용할 ID(이메일) 입력" name="userId" id="userId" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger" id="idspan"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="password">비밀번호</label>
-                                <input type="password" class="form-control" placeholder="비밀번호 입력" id="password" required data-validation-required-message="Please enter your email address.">
+                                <input type="password" class="form-control" placeholder="비밀번호 입력"  name="password"  id="password" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger" id="passwordspan"></p>
                             </div>
                         </div>
@@ -191,7 +157,7 @@ $(document).ready ( function() {
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="nickname">닉네임</label>
-                                <input type="text" class="form-control" placeholder="사용할 닉네임 입력" id="nickname" required data-validation-required-message="Please enter your phone number.">
+                                <input type="text" class="form-control" placeholder="사용할 닉네임 입력" name="nickname"  id="nickname" required data-validation-required-message="Please enter your phone number.">
                                 <p class="help-block text-danger" id="nicknamespan"></p>
                             </div>
                         </div>
@@ -199,9 +165,7 @@ $(document).ready ( function() {
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <input type="button"
-								class="btn btn-primary btn-lg" value="Cancel"
-								onclick="location.href='글상세보기.do'">
+                                <input type="button"	class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='viewBoard.do'">
 								
                                 <button type="submit" class="btn btn-success btn-lg" id="btn">Send</button>
                             </div>
@@ -209,9 +173,9 @@ $(document).ready ( function() {
                     </form>
                 </div>
             </div>
+</form>
         </div>
     </section>
-</form>
 
 
 

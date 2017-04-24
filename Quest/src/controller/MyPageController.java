@@ -38,19 +38,20 @@ public class MyPageController {
 		return "/bootstrapResources/mypage/applyPopup.jsp";
 	}
 
+
 	@RequestMapping("bookmark.do")
-	public ModelAndView bookmarkProc(HttpSession session) {
+	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page) {
 //		int index = (int)session.getAttribute("userIndex");
 		int index = 1;
-		List<HashMap<String, Object>> list = service.bookmarkBoardByUserIndex(index);
+		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(index,page);
+		
 		
 				
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("bookmarkList",list);
+		mav.addAllObjects(list);
 		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
 		return mav;
 	}
-	
 
 
 	@RequestMapping("bookmarkPopup.do")
@@ -70,6 +71,22 @@ public class MyPageController {
 		return "/bootstrapResources/mypage/mylist.jsp";
 	}
 	
+	@RequestMapping("mylistProc.do")
+	public ModelAndView mylistProc(HttpSession session, @RequestParam(defaultValue="1")int page,@RequestParam(defaultValue="9")int boardFlag) {
+//		int userIndex = (int) session.getAttribute("userIndex");
+		int userIndex=1;
+		
+		
+		ModelAndView mav = new ModelAndView();
+//		mav.addObject("myboard",jservice.myboard(userIndex, page));
+//		mav.addObject("myapply",jservice.myapply(userIndex, page));
+		mav.addObject("boardFlag",boardFlag);
+		mav.addAllObjects(service.myapply(userIndex, page, boardFlag));
+		mav.addAllObjects(service.myboard(userIndex, page,boardFlag));
+		mav.setViewName("/bootstrapResources/mypage/mylist.jsp");
+		return mav;
+		
+	}
 
 	@RequestMapping("profile.do")
 	public ModelAndView profile(HttpSession session) {

@@ -26,7 +26,8 @@ public class QuestService implements IQuestService {
 	@Override
 	public int join(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		return dao.insertUser(params);
+		dao.insertUser(params);
+		return 1; // 성공
 	}
 
 	@Override
@@ -68,9 +69,9 @@ public class QuestService implements IQuestService {
 		params.put(Constant.User.USERID, id);
 		HashMap<String, Object> user = dao.selectUser(params);
 		if (user == null) {
-			return 0; // 성공
+			return 0; // 성공. 아이디 사용가능
 		} else {
-			return 1; // 실패
+			return 1; // 실패. 동일한 아이디 있음
 		}
 	}
 
@@ -81,25 +82,29 @@ public class QuestService implements IQuestService {
 		params.put(Constant.User.NICKNAME, nickname);
 		HashMap<String, Object> user = dao.selectUser(params);
 		if (user == null) {
-			return 0; // 성공
+			return 0; // 성공. 닉네임 사용가능
 		} else {
-			return 1; // 실패
+			return 1; // 실패. 동일한 닉넴 있음
 		}
 	}
 
 	@Override
-	public List<HashMap<String, Object>> listBoard(@RequestParam(required = false) List<Integer> addrNo,
-			@RequestParam(defaultValue = "0") int boardflag, @RequestParam(required = false) String searchMsg,
-			@RequestParam(required = false, defaultValue = "0") int userIndex) {
+	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo,
+			int boardflag, String searchMsg, int userIndex) {
 		// TODO Auto-generated method stub
+	
 		HashMap<String, Object> params = new HashMap<>();
-
 		params.put("addrNo", addrNo);
 		params.put("boardFlag", boardflag);
 		params.put("userIndex", userIndex);
 		params.put("searchMsg", searchMsg);
-		return dao.selectBoard(params);
-
+		
+		List<HashMap<String, Object>> list = dao.selectBoard(params);
+		for (HashMap<String, Object> board : list ){
+			int userindex = (int) (board.get("userIndex"));
+			board.put("nickname", nickname(userindex));
+		}				
+		return list;
 		// addr/searchMsg/userIndex 는 없으면 검색안됨
 		// boardflag 는 디폴트 "잘해요"
 
@@ -368,15 +373,137 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> bookmarkBoardByUserIndex(int userIndex) {
+	public HashMap<String, Object> bookmarkBoardByUserIndex(int userIndex, int page) {
 		// TODO Auto-generated method stub
-		List<HashMap<String, Object>> tmp = dao.selectBookMarkByUserIndex(userIndex);
-		List<HashMap<String, Object>> list = new ArrayList<>();
-		for(HashMap<String, Object> boardNo : tmp){
-			list.add(dao.selectBoardOne((int)boardNo.get("boardNo")));
+	// TODO Auto-generated method stub
+		
+		// 시작페이지와 끝페이지 계산
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막 페이지 계산
+		int first = 1;
+		int last = (dao.getBookmarkByUserIndexCount(userIndex) - 1) / 10 + 1;
+		end = last < end ? last : end;
+		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
+		
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userIndex", userIndex);
+		params.put("page", page);
+		params.put("skip", skip);
+		params.put("count", count);
+
+		List<HashMap<String, Object>> list = dao.selectBookMarkByUserIndex(params);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("bookmarkList", list);
+		result.put("nickname", dao.selectNicknname(userIndex));
+		
+		return result;
+
+	}
+
+	@Override
+	public String nickname(int userIndex) {
+		// TODO Auto-generated method stub
+		
+		return dao.selectNicknname(userIndex);
+	}
+
+	@Override
+	public HashMap<String, Object> myapply(int userIndex, int page, int boardFlag) {
+		// TODO Auto-generated method stub
+		// 시작페이지와 끝페이지 계산
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막 페이지 계산
+		int first = 1;
+		int last = (dao.getCountBoardApplyByUserIndex(userIndex) - 1) / 10 + 1;
+		end = last < end ? last : end;
+		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
+		
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userIndex", userIndex);
+		params.put("page", page);
+		params.put("skip", skip);
+		params.put("count", count);
+		params.put("boardFlag", boardFlag);
+		
+		
+		//apply+board 내가 신청한거
+		List<HashMap<String, Object>> myapply = dao.selectBoardApply(params);
+		for(HashMap<String, Object> p : myapply){
+			String nickname =dao.selectNicknname((int)p.get("userIndex"));
+			p.put("nickname", nickname);
+			
 		}
-		return list;
-	}  
+		
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("myapplystart", start);
+		result.put("myapplyfirst", first);
+		result.put("myapplyend", end);
+		result.put("myapplylast", last);
+		result.put("myapplycurrent", page);
+		result.put("myapply", myapply);
+		result.put("myapplyboardFlag", boardFlag);
+		
+		
+		return result;
+	}
+
+	@Override
+	public HashMap<String, Object> myboard(int userIndex, int page, int boardFlag) {
+		// TODO Auto-generated method stub
+		// 시작페이지와 끝페이지 계산
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막 페이지 계산
+		int first = 1;
+		int last = (dao.getCountBoardByUserIndex(userIndex) - 1) / 10 + 1;
+		end = last < end ? last : end;
+		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
+		
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userIndex", userIndex);
+		params.put("page", page);
+		params.put("skip", skip);
+		params.put("count", count);
+		params.put("boardFlag", boardFlag);
+		
+		
+		//board에서 내가 쓴거
+		List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
+		
+		//apply+board 내가 신청한거
+		
+		String nickname =dao.selectNicknname(userIndex);
+		
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("myboardstart", start);
+		result.put("myboardfirst", first);
+		result.put("myboardend", end);
+		result.put("myboardlast", last);
+		result.put("myboardcurrent", page);
+		result.put("myboard", myboard);
+		result.put("myboardnickname", nickname);
+		result.put("myboardboardFlag", boardFlag);
+		
+		
+		return result;
+	}
+
+
 
 	
 

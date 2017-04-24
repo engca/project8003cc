@@ -93,7 +93,7 @@ h1 {
 							test="${board.boardFlag == 1 }">잘해요</c:if></td>
 					<td>${board.title }</td>
 					<!-- USER INDEX>ID -->
-					<td>${board.userIndex }</td>
+					<td>${nickname }</td>
 					<td><fmt:formatDate value="${board.date }"
 							pattern="yyyy-MM-dd" /></td>
 					<td>${board.readcount }</td>

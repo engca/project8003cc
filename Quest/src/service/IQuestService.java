@@ -21,6 +21,8 @@ public interface IQuestService {
 
 	public int idCheck(String id); 
 	public int nicknameCheck(String nickname); 
+	
+	public String nickname(int userIndex);
 
 	// 보드 서비스   
 	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex);
@@ -52,7 +54,8 @@ public interface IQuestService {
 	//즐겨찾기
 	public int bookmark(int BoardNo, int userIndex); 
 	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params);
-	public List<HashMap<String, Object>> bookmarkBoardByUserIndex(int userIndex);
+	public HashMap<String, Object> bookmarkBoardByUserIndex(int userIndex, int page);
+
 	
 	//신고하기
 	public int police(int BoardNo, int userIndex); 
@@ -62,5 +65,10 @@ public interface IQuestService {
 	
 	public List<HashMap<String, Object>> getSidoAll();
 	public List<HashMap<String, Object>> getGungu(String sido);
+	
+	// 마이리스트내가쓴글
+	public HashMap<String, Object> myapply(int userIndex , int page, int boardFlag);
+	public HashMap<String, Object> myboard(int userIndex , int page, int boardFlag);
+	
 
 }

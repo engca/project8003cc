@@ -31,31 +31,42 @@ public class MainPageController {
 	IQuestService service; 
 	 
 	@RequestMapping("listBoard.do")
-	public ModelAndView todoBoardAllList(@RequestParam(defaultValue="0") int boardflag ){
-		
+	public ModelAndView BoardAllList(@RequestParam(defaultValue = "0") int boardflag ){		
 		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
 		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> data = new HashMap<>();
 		if(boardflag==0){
-			mav.addObject("title","잘해요");
+			data.put("header1", "잘해요");   
 		}
 		else if(boardflag==1){
-			mav.addObject("title","해주세요");
+			data.put("header1", "해주세요");
 		}
-		mav.addObject("list", list);
-		mav.setViewName("search.main/ListBoard");
+		data.put("list", list);
+		mav.addAllObjects(data);
+		mav.setViewName("search.main.listBoard");
 		return mav;		
 	}
 
 	@RequestMapping("join.do")
 	public String join(){
-		return "/bootstrapResources/main/join.jsp";
+		return "search.main.join";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="userjoin.do")
+	public String join(String userId, String password, String nickname){
+		System.out.println(userId);
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("userId", userId );
+		param.put("password", password);
+		param.put("nickname", nickname);
+		service.join(param);
+		return "search.main.listBoard";
 	}	
 	
 	@RequestMapping("idCheck.do")
-	public void idCheck(String userid, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
+	public void idCheck(String userId, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
 		// TODO Auto-generated method stub
-		int result = service.idCheck(userid);	
-		
+		int result = service.idCheck(userId);			
 		PrintWriter pw = resp.getWriter();
 		pw.print(result);
 		pw.close();
@@ -65,25 +76,25 @@ public class MainPageController {
 	@RequestMapping("nicknameCheck.do")
 	public void nicknameCheck(String nickname, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 
 		// TODO Auto-generated method stub
-		int result = service.nicknameCheck(nickname);	
-		
+		int result = service.nicknameCheck(nickname);			
 		PrintWriter pw = resp.getWriter();
 		pw.print(result);
 		pw.close();
 		pw.flush();	
 	}
-	
+		
 	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
 	public ModelAndView viewboard(int boardNo){
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(service.readBoard(boardNo));
-		mv.setViewName("search.main/viewBoard");
+		System.out.println(service.readBoard(boardNo));
+		mv.setViewName("search.main.viewBoard");
 		return mv; 
 	}
 	
 	@RequestMapping("writeBoard.do")
 	public String writeBoard(){
-		return "/bootstrapResources/main/writeBoard.jsp";
+		return "search.main.writeBoard";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
@@ -118,7 +129,7 @@ public class MainPageController {
 	
 	@RequestMapping("updateBoard.do")
 	public String updateBoard() {
-		return "/bootstrapResources/main/updateBoard.jsp";
+		return "search.main.updateBoard";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value ="updateBoardProc.do")
@@ -134,6 +145,12 @@ public class MainPageController {
 	@RequestMapping("police.do")
 	public int police(int BoardNo, int userIndex){
 		return service.selectpolice(BoardNo, userIndex);
+	}
+
+	// 요거 희정 테스트확인용
+	@RequestMapping("heetest.do")
+	public String heetest() {
+		return "search.main.heetest";
 	}
 
 	

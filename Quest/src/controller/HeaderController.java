@@ -31,12 +31,16 @@ public class HeaderController {
 	
 	@RequestMapping("search.do")
 	public String search(){
-//		session.setAttribute("id", id);
 		return "bootstrapResources/header/search.jsp";
 		}
 	@RequestMapping("header.do")
 	public String header(){
 //		session.setAttribute("id", id);
 		return "bootstrapResources/header/header.jsp";
+		}
+	@RequestMapping("mypageMenu.do")
+	public String mypageMenu(){
+//		session.setAttribute("id", id);
+		return "bootstrapResources/header/mypageMenu.jsp";
 		}
 }

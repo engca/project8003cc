@@ -11,26 +11,26 @@
 <body>
 <table style="rules : rows;">
 	<tr>
-		<div style="position:absolute;width:100%;height:20%;background-color:blue;">
-<%-- 			<tiles:insertAttribute name = "header"></tiles:insertAttribute> --%>
+		<div style="position:absolute;width:100%;height:20%;">
+			<tiles:insertAttribute name = "header"></tiles:insertAttribute>
 			<hr>
 		</div>
 	</tr>
 	<tr>
-		<div style="position:absolute;top:20%;width:100%;height:10%; background-color:red;">
-<%-- 			<tiles:insertAttribute name = "bar"></tiles:insertAttribute> --%>
+		<div style="position:absolute;top:20%;width:100%;height:10%;overflow: visible;">
+			<tiles:insertAttribute name = "bar"></tiles:insertAttribute>
 			<hr>
 		</div>
 	</tr>
 	<tr>
-		<div style="position:absolute;top:30%;width:100%;height:60%;overflow:auto; background-color:pink;">
-<%-- 			<tiles:insertAttribute name = "body"></tiles:insertAttribute> --%>
+		<div style="position:absolute;top:30%;width:100%;height:60%;overflow:auto; ">
+			<tiles:insertAttribute name = "body"></tiles:insertAttribute>
 			<hr>
 		</div>
 	</tr>
 	<tr>
-		<div style="position:absolute;top:90%;width:100%;height:10%; background-color:red;">
-<%-- 		<tiles:insertAttribute name = "footer"></tiles:insertAttribute> --%>
+		<div style="position:absolute;top:90%;width:100%;height:10%; ">
+		<tiles:insertAttribute name = "footer"></tiles:insertAttribute>
 		</div>
 	</tr>
 </table>

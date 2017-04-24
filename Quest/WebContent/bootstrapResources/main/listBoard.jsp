@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,15 +40,12 @@ a {
 <body>
 
 	<div id="board" class="container">
-	
 		<div class="row">
 		<div class="col-lg-12 ">
-			<h2>잘해요</h2>
-<%-- 			<h2>${title}</h2> --%>
+			<h2>${header1}</h2>
 			<hr class="star-primary1">
 		</div>
 		</div>
-		
 		<table class="table table-striped">
 			<tr>
 				<th width="10%">No</th>
@@ -56,19 +54,13 @@ a {
 				<th width="20%">작성일</th>
 				<th width="10%">조회수</th>
 			</tr>
-			<c:forEach var="board" items="list">
+			<c:forEach var="board" items="${list}">
 				<tr>
-					<td> 111 </td>
-					<td> 제목입니다. </td>
-					<td> 닉네임 </td>
-					<td> 2017-01-01 </td>
-					<td> 1 </td>
-<!-- 					서버 연동되면 아래 살리기 -->
-<%-- 					<td>${board.boardNo }</td> --%>
-<%-- 					<td><a href="viewBoard.do?boardNo=${board.boardNo }">	${board.title }</a></td> --%>
-<%-- 					<td>#{board.nickname }</td> --%>
-<%-- 					<td>${board.date }</td> --%>
-<%-- 					<td align="center"><fmt:formatDate value="${board.readcount }"  pattern="yyyy-MM-dd" /> --%>
+					<td>${board.boardNo}</td>
+					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title }</a></td>
+					<td>${board.nickname}</td>
+					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyy-MM-dd" />
+					<td>${board.readCount }</td>
 				</tr>
 			</c:forEach>
 			<tr>
@@ -76,23 +68,6 @@ a {
 					<input type="button" value="글쓰기" onclick="checkLogin()" 	class="btn btn-default pull-right"></td>
 			</tr>
 		</table>
-
-		<div id="paging" class="text-center">
-			<ul class="pagination">
-			<a href="list.do?page=${first }">◀</a>
-			<c:forEach var="num" begin="${start }" end="${end }">
-				<c:choose>
-					<c:when test="${num == current }">
-							<b>[${num}]</b>  
-					</c:when>
-					<c:otherwise>
-						<a href="list.do?page=${num}"> [${num}]</a>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<a href="list.do?page=${last }">▶ </a>
-			</ul>
-		</div>
 
 	</div>
 

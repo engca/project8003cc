@@ -37,6 +37,14 @@ function bookmarkPopup(){
 	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userindex="+${userindex};  
     window.open(url,'Bookmark','width=400, height=300');	
 }
+// function bookmarkPopup(formName) {
+// 	var frm = document.getElementById(formName);
+// 	window.open('', 'viewer', 'width=1000, height=700');
+// 	frm.action = "popTest.do";
+// 	frm.target = "viewer";
+// 	frm.method = "post";
+// 	frm.submit();
+// }
 function police(){
 	$('#police').onclick(function(){
 		$.ajax({
@@ -84,57 +92,48 @@ select {
 </head>
 <body>
 	<section id="viewBoard">
-
 	<div class="container">
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-lg-12 text-center"> -->
-<!-- 				<h2>퀘스트 상세보기</h2> -->
-<!-- 				<hr class="star-primary"> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>퀘스트 상세보기</h2>
+				<hr class="star-primary1">
+			</div>
+		</div>
 		<div class="row">
 
 				<table class="table table-bordered bordertable">
 					<tr>
 						<th><h5>제목</h5></th>
-						<td colspan="3">제목입니다. </td>
-<%-- 						<td colspan="3">${title } </td> --%>
+						<td colspan="3">${title } </td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3">강남구 역삼동</td>
-<%-- 						<td colspan="3">${addrNo }</td> --%>
+						<td colspan="3">${addrNo }</td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
 						<td colspan="3">
-							<li class="btn btn-lg btn-outline">500원</li>
-<%-- 							<li class="btn btn-lg btn-outline">${reward1 }</li> --%>
-<%-- 							<li class="btn btn-lg btn-outline">${reward2 }</li> --%>
-<%-- 							<li class="btn btn-lg btn-outline">${reward3 }</li> --%>
+							<li class="btn btn-lg btn-outline">${reward1 }</li>
+							<li class="btn btn-lg btn-outline">${reward2 }</li>
+							<li class="btn btn-lg btn-outline">${reward3 }</li>
 					</tr>
 					<tr>
 						<th><h5>필요인원</h5></th>
-						<td colspan="3">5명</td>
-<%-- 						<td colspan="3">${people }</td> --%>
+						<td colspan="3">${people }</td>
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3">카톡</td>
-<%-- 						<td colspan="3">${people }</td> --%>
+						<td colspan="3">${people }</td>
 					</tr>
 					<tr>
 						<th><h5>희망시작시간</h5></th>
-						<td>AM 2:00</td>
-<%-- 						<td>${sttime }</td> --%>
+						<td>${sttime }</td>
 						<th><h5>소요예정시간</h5></th>
-						<td>3시간</td>
-<%-- 						<td>${playtime }</td> --%>
+						<td>${playtime }</td>
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
-						<td colspan="3">많은 신청 바랍니다~~ 유후</td>
-<%-- 						<td colspan="3">${content }</td> --%>
+						<td colspan="3">${content }</td>
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
@@ -148,6 +147,12 @@ select {
 		</c:when>
 	</c:choose>					
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="list.do" value="퀘스트목록">
+			
+<!-- 	<form id="viewerForm"> -->
+<!-- 	<input type="text" name="viewer_base_url" value="AAA">  -->
+<!-- 	<input type=button onClick="postPopUp('viewerForm')" value="입력"> -->
+<!-- 	</form> -->
+			
 			
 					</td>
 				</tr>

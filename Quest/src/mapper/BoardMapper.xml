@@ -34,6 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from board
 	</select>
 	
+	<select id="getCountBoardByUserIndex" parameterType="int"  resultType="int">
+		select count(*) from board where userIndex=#{userIndex}
+	</select>
+	
 	<select id="selectBoardLimit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from board order by num desc 
 		limit #{skip}, #{count}
@@ -47,10 +51,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM board
 	</select>
 	
-	<select id="selectBoard" parameterType="java.util.HashMap"
-		resultType="java.util.HashMap">
-		SELECT * from board order by boardNo desc
-		where boardFlag = #{boardFlag}
+	<select id="selectBoard" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT * from board
+		where boardFlag = #{boardFlag} 
 		<if test="searchMsg != null and searchMsg != ''">
 			or title like CONCAT('%',#{searchMsg},'%')
 		</if>
@@ -62,6 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				or addrNo = #{addrNo}
 			</foreach>
 		</if>
+		order by boardNo desc 
 	</select>
 	
 	
@@ -69,8 +73,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from board where boardNo=#{boardNo} and userIndex=#{userIndex}
 	</select>
 	
-	<select id="selectBoardByUserIndex" parameterType="int" resultType="java.util.HashMap">
-		select * from board where userIndex=#{userIndex}
+	<select id="selectBoardByUserIndex" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from board where userIndex=#{userIndex} and boardFlag=#{boardFlag} order by boardNo limit #{skip}, #{count}
 	</select>
 		
 	
