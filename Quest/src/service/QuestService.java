@@ -314,8 +314,7 @@ public class QuestService implements IQuestService {
 
 	public HashMap<String, Object> getBoard(int boardNo) {
 		// TODO Auto-generated method stub
-		System.out.println("aaaaaa");
-		System.out.println( dao.selectBoardOne(boardNo));
+//		System.out.println( dao.selectBoardOne(boardNo));
 		return dao.selectBoardOne(boardNo);
 
 	}
