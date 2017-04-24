@@ -49,7 +49,7 @@
 <script type="text/javascript">
 	$.ajax({
 		type : "get",
-		url : "getSido.do",
+		url : "getSido.ajax",
 		dataType : "json",
 		success : function(data) {
 			$("#sido").empty();
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		 var selectedVal = $('#sido option:selected').val();
 		 $.ajax({
 			type : "get",
-			url : "getGugun.do",
+			url : "getGugun.ajax",
 			dataType : "json",
 			data : "sido="+selectedVal,
 			success : function(data){
@@ -204,7 +204,7 @@ select {
 
 						<td colspan="4" align="right"><input type="submit"
 							class="btn btn-success btn-lg" value="퀘스트등록"> <a
-							class="btn btn-primary btn-lg" onclick="location.href='list.do'">퀘스트목록 </a></td>
+							class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'">퀘스트목록 </a></td>
 					</tr>
 				</table>
 			</form>
