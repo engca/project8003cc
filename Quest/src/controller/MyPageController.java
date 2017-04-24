@@ -60,8 +60,15 @@ public class MyPageController {
 	}
 
 	@RequestMapping("complete.do")
-	public String complete() {
-		return "mypageMenu.mypage.complete";
+	public ModelAndView complete(HttpSession session, @RequestParam(defaultValue="1")int page) {
+//		int index = (int)session.getAttribute("userIndex");
+		int index = 1;
+		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(index,page);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addAllObjects(list);
+		mav.setViewName("mypageMenu.mypage.complete");
+		return mav;
 	}
 
 	@RequestMapping("mylist.do")

@@ -76,4 +76,8 @@ public interface IQuestDao {
 	public List<HashMap<String, Object>> selectBoardByUserIndex(HashMap<String, Object>params);
 	public List<HashMap<String, Object>> selectBoardApply(HashMap<String, Object>params);
 	
+	
+	
+	
+	public List<HashMap<String, Object>> selectBoardComplete(HashMap<String, Object>params);
 }

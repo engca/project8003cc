@@ -112,21 +112,21 @@ h2 {
 			<tr>
 				<td width="1250px" colspan="6" align="center"><c:if
 						test="${start != 1 }">
-						<a href="list.do?page=1"> [처음] &nbsp; </a>
-						<a href="list.do?page=${start-1 }"> ◀ &nbsp;&nbsp; </a>
+						<a href="complete.do?page=1"> [처음] &nbsp; </a>
+						<a href="complete.do?page=${start-1 }"> ◀ &nbsp;&nbsp; </a>
 					</c:if> <c:forEach begin="${start }" end="${end}" var="i">
 						<c:choose>
 							<c:when test="${i == current }">
 					[${i }]
 					</c:when>
 							<c:otherwise>
-								<a href="list.do?page=${i}"> [${i }] </a>
+								<a href="complete.do?page=${i}"> [${i }] </a>
 							</c:otherwise>
 						</c:choose>
 
 					</c:forEach> <c:if test="${end != last }">
-						<a href="list.do?page=${end+1 }"> &nbsp;&nbsp; ▶ </a>
-						<a href="list.do?page=${last}"> &nbsp; [끝]</a>
+						<a href="complete.do?page=${end+1 }"> &nbsp;&nbsp; ▶ </a>
+						<a href="complete.do?page=${last}"> &nbsp; [끝]</a>
 					</c:if></td>
 			</tr>
 
