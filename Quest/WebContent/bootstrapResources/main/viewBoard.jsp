@@ -59,6 +59,7 @@ function bookmarkPopup(boardNo, userIndex){
 	bm.userIndex.value = userIndex;
 	bm.submit(); 
 }
+
 function police(){
 	$('#police').onclick(function(){
 		$.ajax({
@@ -72,7 +73,7 @@ function police(){
 				} else {
 					window.open('게시글 신고되었습니다.');
 				}
-			},
+			}
 		});
 	});	
 }
@@ -129,7 +130,7 @@ select {
 						<td colspan="3">
 							<li class="btn btn-lg btn-outline">${reward1 }</li>
 							<li class="btn btn-lg btn-outline">${reward2 }</li>
-							<li class="btn btn-lg btn-outline">${reward3 }</li>
+							<li class="btn btn-lg btn-outline">${reward3 }</li>  
 					</tr>
 					<tr>
 						<th><h5>필요인원</h5></th>
@@ -160,14 +161,14 @@ select {
 					<input type="hidden" name="userIndex" value=${userIndex }>
 					<input type="hidden" name="rewardNo" value=${rewardNo }>
 					<input type="hidden" name="contactAnswer" value=${contactAnswer }>										  
-				</form>		
 				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userIndex','rewardNo','contactAnswer')">
+				</form>		
 
 				<form name="bookmark">
 					<input type="hidden" name="boardNo" value=${boardNo }>
 					<input type="hidden" name="userIndex" value=${userIndex }>  
-				</form>
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userIndex')">
+				</form>
 				
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardNo }'">
@@ -175,7 +176,6 @@ select {
 <%-- 		</c:when> --%>
 <%-- 	</c:choose>					 --%>
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'" value="퀘스트목록">
-			
 			
 					</td>
 				</tr>
