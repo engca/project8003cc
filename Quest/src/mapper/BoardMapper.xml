@@ -4,42 +4,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.IQuestDao">
 	<!-- contact mapper -->
-	
+
 	<select id="selectContact" parameterType="int" resultType="String">
 		select contact from contact where contactNo= #{contactNo}
 	</select>
 
 	<insert id="insertBoard" parameterType="java.util.HashMap">
-		INSERT INTO board VALUES(#{boardFlag}, 0, 1,
+		INSERT INTO board
+		VALUES(#{boardFlag}, 0, 1,
 		0, sysdate(), 0, 0, #{title}, #{addrNo},
-		#{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo}, #{stTime},
+		#{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo},
+		#{stTime},
 		#{playTime},
 		#{content})
 	</insert>
 
 	<update id="updateBoard" parameterType="java.util.HashMap">
-		UPDATE board SET boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
-		date = sysdate(), policeCount=#{policeCount}, readCount=#{readCount},
-		title=#{title}, addrNo=#{addrNo}, reward1=#{reward1}, reward2=#{reward2},
-		reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},
-		playTime=#{playTime}, content=#{content} WHERE boardNo=#{boardNo}
+		UPDATE board SET
+		boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
+		date =
+		sysdate(), policeCount=#{policeCount}, readCount=#{readCount},
+		title=#{title}, addrNo=#{addrNo}, reward1=#{reward1},
+		reward2=#{reward2},
+		reward3=#{reward3}, people=#{people},
+		contactNo=#{contactNo}, stTime=#{stTime},
+		playTime=#{playTime},
+		content=#{content} WHERE boardNo=#{boardNo}
 	</update>
 
 	<delete id="deleteBoard" parameterType="int">
-		DELETE FROM board WHERE boardNo=#{boardNo}
+		DELETE FROM board WHERE
+		boardNo=#{boardNo}
 	</delete>
-	
-	<select id="getBoardCount" parameterType="int"  resultType="int">
+
+	<select id="getBoardCount" parameterType="int" resultType="int">
 		select count(*) from board where boardFlag = #{boardFlag}
 	</select>
-	
-	<select id="getCountBoardByUserIndex" parameterType="int"  resultType="int">
+
+	<select id="getCountBoardByUserIndex" parameterType="int"
+		resultType="int">
 		select count(*) from board where userIndex=#{userIndex}
 	</select>
-	
-	<select id="selectBoardLimit" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from board order by num desc 
-		limit #{skip}, #{count}
+
+	<select id="selectBoardLimit" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select * from board order by num desc
+		limit #{skip},
+		#{count}
 	</select>
 
 	<select id="selectBoardOne" parameterType="int" resultType="java.util.HashMap">
@@ -49,10 +60,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoardAll" resultType="java.util.HashMap">
 		SELECT * FROM board
 	</select>
-	
-	<select id="selectBoard" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+
+	<select id="selectBoard" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
 		SELECT * from board
-		where boardFlag = #{boardFlag} 
+		where boardFlag = #{boardFlag}
 		<if test="searchMsg != null and searchMsg != ''">
 			or title like CONCAT('%',#{searchMsg},'%')
 		</if>
@@ -64,27 +76,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				or addrNo = #{addrNo}
 			</foreach>
 		</if>
-		order by boardNo desc 
+		order by boardNo desc
 	</select>
-	
-	
-	<select id="isMyBoard" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from board where boardNo=#{boardNo} and userIndex=#{userIndex}
+
+
+	<select id="isMyBoard" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select * from board where boardNo=#{boardNo} and
+		userIndex=#{userIndex}
 	</select>
-	
-	<select id="selectBoardByUserIndex" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from board 
-		where boardFlag = #{boardFlag} 
+
+	<select id="selectBoardByUserIndex" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select * from board
+		where boardFlag = #{boardFlag}
 		<if test="userIndex != null and userIndex != ''">
 			and userIndex = #{userIndex}
 		</if>
 		order by boardNo desc
 		limit #{skip}, #{count}
 	</select>
-	
-	<select id="selectBoardComplete" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from board where userIndex=#{userIndex} and bCompleteFlag=#{bCompleteFlag}
+
+	<select id="selectBoardComplete" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		select * from board, score where
+		board.boardNo=score.boardNo and
+		board.userIndex=#{userIndex} and
+		score.sCompleteFlag!=3
+		<if test="mode == 0">
+		and score.sCompleteFlag != 1
+		</if>
+		<if test="mode == 1">
+		and score.sCompleteFlag != 2
+		</if>
+		order by board.boardNo desc
+		limit #{skip}, #{count}
 	</select>
-		
-	
+
+
 </mapper>
