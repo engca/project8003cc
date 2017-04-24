@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -145,6 +146,9 @@ public class QuestService implements IQuestService {
 	@Override
 	public int updateBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
+		int addrNo = dao.selectAddrNo((String)params.get("gungu"));
+		params.put("addrNo", addrNo);
+		System.out.println(params);
 		return dao.updateBoard(params);
 	}
 
@@ -310,6 +314,8 @@ public class QuestService implements IQuestService {
 
 	public HashMap<String, Object> getBoard(int boardNo) {
 		// TODO Auto-generated method stub
+		System.out.println("aaaaaa");
+		System.out.println( dao.selectBoardOne(boardNo));
 		return dao.selectBoardOne(boardNo);
 
 	}

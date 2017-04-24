@@ -102,7 +102,7 @@ public class MainPageController {
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex);
 		service.writeBoard(board);
-		return "redirect:/list.do";
+		return "redirect:/listBoard.do";
 	}
 	
 	@RequestMapping("getSido.do")
@@ -125,7 +125,7 @@ public class MainPageController {
 	
 	
 	@RequestMapping("updateBoard.do")
-	public ModelAndView updateBoard(@RequestParam(defaultValue="2") int boardNo) {
+	public ModelAndView updateBoard(@RequestParam(defaultValue="19") int boardNo) {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> board = service.getBoard(boardNo);
 		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
@@ -137,7 +137,7 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value ="updateBoardProc.do")
-	public String updateBoardProc(@ModelAttribute HashMap<String, Object> board,
+	public String updateBoardProc(@RequestParam HashMap<String, Object> board,
 			HttpServletRequest session){
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex); 세션도아직안댐
