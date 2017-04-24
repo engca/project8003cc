@@ -255,19 +255,25 @@ public class QuestService implements IQuestService {
 		// mode = 1이면 내가 user2_exp
 		HashMap<String, Object> params = new HashMap<>();
 
-		params.put("boardNo", boardNo);
-		if (mode == 0)
-			params.put("user1StarPoint", starPoint);
-		else if (mode == 1)
-			params.put("user2StarPoint", starPoint);
-		
-		
 		int flag = (int) dao.selectScoreByBoardNo(boardNo).get(Constant.Score.SCOMPLETEFLAG);
-		if(flag == 0) {
-			params.put(Constant.Score.SCOMPLETEFLAG, 1);
-		} else if (flag == 1) {
-			params.put(Constant.Score.SCOMPLETEFLAG, 2);
+		params.put("boardNo", boardNo);
+		
+		if (mode == 0) {
+			params.put("user2StarPoint", starPoint);
+			if(flag == 0) {
+				params.put(Constant.Score.SCOMPLETEFLAG, 1);
+			} else {
+				params.put(Constant.Score.SCOMPLETEFLAG, 3);
+			}
+		} else if (mode == 1) {
+			params.put("user1StarPoint", starPoint);
+			if(flag == 0) {
+				params.put(Constant.Score.SCOMPLETEFLAG, 2);
+			} else {
+				params.put(Constant.Score.SCOMPLETEFLAG, 3);
+			}
 		}
+		
 		return dao.updateScore(params);
 	}
 
@@ -521,12 +527,17 @@ public class QuestService implements IQuestService {
 				params.put("page", page);
 				params.put("skip", skip);
 				params.put("count", count);
-				params.put("bCompleteFlag", 1);
+				
+				int mode = 0;
+				if(isMyBoard(params))
+					mode = 0;
+				else 
+					mode = 1;
+				
+				params.put("mode", mode);
 				
 				
 				List<HashMap<String, Object>> myboard = dao.selectBoardComplete(params);
-				
-				//apply+board 내가 신청한거
 				
 				String nickname =dao.selectNicknname(userIndex);
 				
