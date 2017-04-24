@@ -71,5 +71,8 @@ public interface IQuestService {
 	public HashMap<String, Object> myapply(int userIndex , int page, int boardFlag);
 	public HashMap<String, Object> myboard(int userIndex , int page, int boardFlag);
 	
+	
+	
+	public HashMap<String, Object> mycomplete(int userIndex, int page);
 
 }

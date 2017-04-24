@@ -495,6 +495,47 @@ public class QuestService implements IQuestService {
 
 	}
 
+	@Override
+	public HashMap<String, Object> mycomplete(int userIndex, int page) {
+		// TODO Auto-generated method stub
+		// 시작페이지와 끝페이지 계산
+				int start = (page - 1) / 10 * 10 + 1;
+				int end = ((page - 1) / 10 + 1) * 10;
+				// 첫페이지와 마지막 페이지 계산
+				int first = 1;
+				int last = (dao.getCountBoardByUserIndex(userIndex) - 1) / 10 + 1;
+				end = last < end ? last : end;
+				// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+				int skip = (page - 1) * 10;
+				int count = 10;
+				
+				HashMap<String, Object> params = new HashMap<>();
+				params.put("userIndex", userIndex);
+				params.put("page", page);
+				params.put("skip", skip);
+				params.put("count", count);
+				params.put("bCompleteFlag", 1);
+				
+				
+				List<HashMap<String, Object>> myboard = dao.selectBoardComplete(params);
+				
+				//apply+board 내가 신청한거
+				
+				String nickname =dao.selectNicknname(userIndex);
+				
+				HashMap<String, Object> result = new HashMap<>();
+				result.put("start", start);
+				result.put("first", first);
+				result.put("end", end);
+				result.put("last", last);
+				result.put("current", page);
+				result.put("completeList", myboard);
+				result.put("nickname", nickname);
+				
+				
+				return result;
+	}
+
 
 
 
