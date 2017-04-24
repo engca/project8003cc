@@ -155,7 +155,7 @@ public class MainPageController {
 	}
 
 	// 요거 희정 테스트확인용
-	@RequestMapping("heetest.do")
+	@RequestMapping("heetest.do")  
 	public String heetest() {
 		return "search.main.heetest";
 	}
