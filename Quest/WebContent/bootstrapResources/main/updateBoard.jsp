@@ -155,7 +155,7 @@ select {
 						</select></td>
 					</tr>
 					<tr>
-						<th><h5>보상</h5></th>
+						<th><h5>보상</h5></th> 
 						<td colspan="3">
 							<table>
 								<tr>
