@@ -25,7 +25,7 @@ public interface IQuestService {
 	public String nickname(int userIndex);
 
 	// 보드 서비스   
-	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex);
+//	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex);
 	public int writeBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(HashMap<String, Object> params); 
@@ -65,6 +65,7 @@ public interface IQuestService {
 	
 	public List<HashMap<String, Object>> getSidoAll();
 	public List<HashMap<String, Object>> getGungu(String sido);
+	public HashMap<String, Object> getAddress(int addrNo);
 	
 	// 마이리스트내가쓴글
 	public HashMap<String, Object> myapply(int userIndex , int page, int boardFlag);

@@ -482,12 +482,12 @@ public class QuestService implements IQuestService {
 		return result;
 	}
 
-	@Override
-	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+	public HashMap<String, Object> getAddress(int addrNo) {
+		// TODO Auto-generated method stub
+		return dao.selectAddress(addrNo);
+
+	}
 
 
 

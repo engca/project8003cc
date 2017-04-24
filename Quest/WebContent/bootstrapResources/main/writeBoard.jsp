@@ -65,7 +65,7 @@
 
 $(document).ready(function(){
 	
-	 $('#sido').change(function(){
+	 $('#sido').click(function(){
 		 var selectedVal = $('#sido option:selected').val();
 		 $.ajax({
 			type : "get",
@@ -176,9 +176,9 @@ select {
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3"><input type="radio" name="contact" value="1">카톡&nbsp;&nbsp;
-							<input type="radio" name="contact" value="2">이메일
-							&nbsp;&nbsp;<input type="radio" name="contact" value="3">전화&nbsp;&nbsp;</td>
+						<td colspan="3"><input type="radio" name="contactNo" value="1">카톡&nbsp;&nbsp;
+							<input type="radio" name="contactNo" value="2">이메일
+							&nbsp;&nbsp;<input type="radio" name="contactNo" value="3">전화&nbsp;&nbsp;</td>
 					</tr>
 
 					<tr>

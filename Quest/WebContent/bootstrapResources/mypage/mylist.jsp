@@ -106,7 +106,7 @@ select {
 						<td>${myboard.boardNo }</td>
 						<td><c:if test="${myboard.boardFlag == 0 }">해주세요</c:if> <c:if
 							test="${myboard.boardFlag == 1 }">잘해요</c:if></td>
-						<td>${myboard.title }</td>
+						<td><a href="viewBoard.do?boardNo=${myboard.boardNo }">${myboard.title }</a></td>
 						<!-- USER INDEX>ID -->
 						<td>${myboardnickname}</td>
 						<td><fmt:formatDate value="${myboard.date }"
@@ -158,7 +158,7 @@ select {
 						<td>${myapply.boardNo }</td>
 						<td><c:if test="${myapply.boardFlag == 0 }">해주세요</c:if> <c:if
 							test="${myapply.boardFlag == 1 }">잘해요</c:if></td>
-						<td>${myapply.title }</td>
+						<td><a href="viewBoard.do?boardNo=${myapply.boardNo }">${myapply.title }</a></td>
 						<!-- USER INDEX>ID -->
 						<td>${myapply.nickname}</td>
 						<td><fmt:formatDate value="${myapply.date }"

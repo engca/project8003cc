@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,6 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>퀘스트 수정하기</title>
 <!-- Bootstrap Core CSS -->
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+	crossorigin="anonymous"></script>
 <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
@@ -68,7 +71,6 @@ select {
 </head>
 <body>
 	<!-- UserIndex, 주소 해야됨  -->
-	<section id="writeBoard">
 
 	<div class="container">
 		<div class="row">
@@ -78,31 +80,35 @@ select {
 			</div>
 		</div>
 		<div class="row">
-			<div>
+			<div align = "left">
 				<h3>
-<%-- 					<c:choose> --%>
-<%-- 						<c:when test="${board.boardFlag } == 0"> --%>
-<!-- 								해주세요 -->
-<%-- 						</c:when> --%>
-<%-- 						<c:otherwise> --%>
-<!-- 								잘해요 -->
-<%-- 						</c:otherwise> --%>
-<%-- 					</c:choose> --%>
-				</h3>
+					<c:choose>
+						<c:when test="${boardFlag == 0 }">
+							해주세요
+						</c:when>
+						<c:otherwise>
+							잘해요
+						</c:otherwise>
+					</c:choose>
+				</h3>				
+
 			</div>
 			<form action="updateBoardProc.do" method="post">
 				<table class="table table-bordered bordertable">
-					</tr>
 					<tr>
 						<th><h5>제목</h5></th>
 						<td colspan="3"><input type="text" name="title"
-							class="form-control" value="${board.title }" /></td>
+							class="form-control" value="${title }" /></td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
 						<td colspan="3">
-						<select name="sido" id = "sido"></select> 
-						<select name="gungu" id = "gungu"></select></td>
+						<select name="sido" id = "sido">
+						<option>${sido }</option>
+						</select> 
+						<select name="gungu" id = "gungu">
+						<option>${gungu }</option>
+						</select></td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
@@ -110,13 +116,13 @@ select {
 							<table>
 								<tr>
 									<td><input type="text" name="reward1"
-										class="form-control input-sm" value="${board.reward1 }"></td>
+										class="form-control input-sm" value="${reward1 }"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" name="reward2"
-										class="form-control input-sm" value="${board.reward2 }"></td>
+										class="form-control input-sm" value="${reward2 }"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" name="reward3"
-										class="form-control input-sm" value="${board.reward3 }"></td>
+										class="form-control input-sm" value="${reward3 }"></td>
 								</tr>
 							</table>
 						</td>
@@ -124,15 +130,28 @@ select {
 
 					<tr>
 						<th><h5>필요인원</h5></th>
-						<td colspan="3"><input type="text" value="${board.people }"
+						<td colspan="3"><input type="text" value="${people }"
 							name="people" class="form-control people">
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3"><input type="radio" name="contact"
-							value="1">카톡&nbsp;&nbsp; <input type="radio"
-							name="contact" value="2">이메일 &nbsp;&nbsp; <input
-							type="radio" name="contact" value="3">전화&nbsp;&nbsp;
+						<td colspan="3">
+						<c:if test="${contactNo == 1 }">
+						<input type="radio" name="contactNo" value="1" checked>카톡&nbsp;&nbsp;
+						<input type = "radio" name = "contactNo" value = "2">이메일 &nbsp;&nbsp;
+						<input type = "radio" name = "contactNo" value = "3">전화
+						</c:if>
+						<c:if test="${contactNo == 2 }">
+						<input type = "radio" name = "contactNo" value = "1">카톡 &nbsp;&nbsp;
+						<input type="radio" name="contactNo" value="2" checked>이메일 &nbsp;&nbsp; 
+						<input type = "radio" name = "contactNo" value = "3">전화 &nbsp;&nbsp;
+						</c:if>
+						<c:if test="${contactNo == 3 }">
+						<input type="radio" name="contactNo" value="1">카톡&nbsp;&nbsp;
+						<input type = "radio" name = "contactNo" value = "2">이메일 &nbsp;&nbsp;
+						<input type="radio" name="contactNo" value="3" checked>전화&nbsp;&nbsp;
+						</c:if>  
+					
 						</td>
 					</tr>
 
@@ -142,10 +161,10 @@ select {
 								<c:forEach var="i" begin="1" end="24">
 									<option>${i }시</option>
 								</c:forEach>
-						</select></td>
+						</select></td>  
 						<th><h5>소요예정시간</h5></th>
 						<td><select name="playTime">
-								<option value="30m">30분미만</option>
+								<option value="30m" selected>30분미만</option>
 								<option value="3h">3시간 미만</option>
 								<option value="over3h">3시간 이상</option>
 						</select></td>
@@ -153,14 +172,14 @@ select {
 					<tr>
 						<th height="100"><h5>내용</h5></th>
 						<td colspan="3"><textarea cols="10" rows="10"
-								value="${board.content }" name="content" class="form-control"></textarea></td>
+								 name="content" class="form-control">${content }</textarea></td>
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
-						<input type = "hidden" value = "${board.boardNo }">
-						<input type = "hidden" value = "${board.readCount }">
-						<input type = "hidden" value = "${board.policeCount }">
-						<input type = "hidden" value = "${board.bCompleteFlag}">
+						<input type = "hidden" value = "${boardNo }">
+						<input type = "hidden" value = "${readCount }">
+						<input type = "hidden" value = "${policeCount }">
+						<input type = "hidden" value = "${bCompleteFlag}">
 						
 						<input type="submit" class="btn btn-success btn-lg" value="수정완료"> <a
 							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록</a></td>
