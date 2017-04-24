@@ -8,10 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<update id="updateScore" parameterType="java.util.HashMap">
 	update score set 
-	<if test="user1_starPoint != null">
+		aCompleteFlag = #{aCompleteFlag},
+	<if test="user1StarPoint != null">
 		user1StarPoint = #{user1StarPoint}
 	</if>
-	<if test="user2_starPoint != null">
+	<if test="user2StarPoint != null">
 		user2StarPoint = #{user2StarPoint}
 	</if>
 	where boardNo = #{boardNo}
@@ -27,5 +28,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<if test="user2_index != null">
 		user2Index = #{user2Index}
 	</if>  
-	</select>  
+	</select>
 </mapper>

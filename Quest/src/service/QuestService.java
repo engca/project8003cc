@@ -260,6 +260,14 @@ public class QuestService implements IQuestService {
 			params.put("user1StarPoint", starPoint);
 		else if (mode == 1)
 			params.put("user2StarPoint", starPoint);
+		
+		
+		int flag = (int) dao.selectScoreByBoardNo(boardNo).get(Constant.Score.SCOMPLETEFLAG);
+		if(flag == 0) {
+			params.put(Constant.Score.SCOMPLETEFLAG, 1);
+		} else if (flag == 1) {
+			params.put(Constant.Score.SCOMPLETEFLAG, 2);
+		}
 		return dao.updateScore(params);
 	}
 

@@ -114,10 +114,11 @@ public class MyPageController {
 	} 
 	
 	
-	
 	@RequestMapping("starpointProc.do")
 	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
-		int userIndex = (int)session.getAttribute("userIndex");
+//		int userIndex = (int)session.getAttribute("userIndex");
+		int userIndex=1;
+		boardNo=1;
 		int mode=0;
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("boardNo", boardNo);
