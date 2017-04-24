@@ -36,7 +36,7 @@
 // function bookmarkPopup(){
 // 	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userindex="+${userindex};  
 //     window.open(url,'Bookmark','width=400, height=300');	
-// } 
+// }   
 function applyPopup(boardNo,userindex,rewardNo,contactAnswer){
 	var apply = document.apply;
 	window.open(url,'apply','width=400, height=300');
