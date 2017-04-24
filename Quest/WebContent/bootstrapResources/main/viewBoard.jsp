@@ -177,7 +177,6 @@ select {
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="listBoard.do" value="퀘스트목록">
 			
 			
-			
 					</td>
 				</tr>
 				</table>
