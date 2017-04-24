@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,7 +83,11 @@ public class MainPageController {
 	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
 	public ModelAndView viewboard(int boardNo){
 		ModelAndView mv = new ModelAndView();
+		HashMap<String, Object> board = service.getBoard(boardNo);
+		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
+		
 		mv.addAllObjects(service.readBoard(boardNo));
+		mv.addAllObjects(addr);
 		System.out.println(service.readBoard(boardNo));
 		mv.setViewName("search.main.viewBoard");
 		return mv; 

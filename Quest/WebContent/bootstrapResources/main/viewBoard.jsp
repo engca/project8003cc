@@ -29,34 +29,34 @@
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
 // function applyPopup(){
-// 	var url = "applyPopup.do?boardNo="+${boardNo}+"&userindex="
-// 			+${userindex}+"&rewardNo="+${rewardNo}+"&contactAnswer="+${contactAnswer};	
+// 	var url = "applyPopup.do?boardNo="+${boardNo}+"&userIndex="
+// 			+${userIndex}+"&rewardNo="+${rewardNo}+"&contactAnswer="+${contactAnswer};	
 // 	window.open(url,'Apply','width=400, height=300');	
 // }
 // function bookmarkPopup(){
-// 	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userindex="+${userindex};  
+// 	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userIndex="+${userIndex};  
 //     window.open(url,'Bookmark','width=400, height=300');	
 // }   
-function applyPopup(boardNo,userindex,rewardNo,contactAnswer){
+function applyPopup(boardNo,userIndex,rewardNo,contactAnswer){
 	var apply = document.apply; 
 	window.open(url,'apply','width=400, height=300');
 	apply.action = "applyPopup.do";
 	apply.target = "apply";
 	apply.method = "post";
 	apply.boardNo.value = boardNo;
-	apply.userindex.value = userindex;
+	apply.userIndex.value = userIndex;
 	apply.rewardNo.value = rewardNo;
 	apply.contactAnswer.value = contactAnswer;
 	apply.submit(); 
 }
-function bookmarkPopup(boardNo, userindex){
+function bookmarkPopup(boardNo, userIndex){
 	var bm = document.bookmark;
 	window.open(url,'Bookmark','width=400, height=300');
 	bm.action = "bookmarkPopup.do";
 	bm.target = "Bookmark";
 	bm.method = "post";
 	bm.boardNo.value = boardNo;
-	bm.userindex.value = userindex;
+	bm.userIndex.value = userIndex;
 	bm.submit(); 
 }
 function police(){
@@ -65,7 +65,7 @@ function police(){
 			type : 'get',
 			url : 'police.do',
 // 			dataType : 'text',
-			data : 'boardNo=' + ${boardNo} + '&userindex=' +${userindex},
+			data : 'boardNo=' + ${boardNo} + '&userIndex=' +${userIndex},
 			success : function(data) {
 				if (data == 2) {
 					window.open('이미 신고된 게시글 입니다.');
@@ -122,7 +122,7 @@ select {
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3">${addrNo }</td>
+						<td colspan="3">${sido }&nbsp;&nbsp;&nbsp;${gungu }</td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
@@ -141,9 +141,9 @@ select {
 					</tr>
 					<tr>
 						<th><h5>희망시작시간</h5></th>
-						<td>${sttime }</td>
+						<td>${stTime }</td>
 						<th><h5>소요예정시간</h5></th>
-						<td>${playtime }</td>
+						<td>${playTime }</td>
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
@@ -157,17 +157,17 @@ select {
 
 				<form name="apply">
 					<input type="hidden" name="boardNo" value=${boardNo }>
-					<input type="hidden" name="userindex" value=${userindex }>
+					<input type="hidden" name="userIndex" value=${userIndex }>
 					<input type="hidden" name="rewardNo" value=${rewardNo }>
 					<input type="hidden" name="contactAnswer" value=${contactAnswer }>										  
 				</form>		
-				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userindex','rewardNo','contactAnswer')">
+				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userIndex','rewardNo','contactAnswer')">
 
 				<form name="bookmark">
 					<input type="hidden" name="boardNo" value=${boardNo }>
-					<input type="hidden" name="userindex" value=${userindex }>  
+					<input type="hidden" name="userIndex" value=${userIndex }>  
 				</form>
-				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userindex')">
+				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userIndex')">
 				
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardNo }'">
