@@ -102,7 +102,6 @@ public class MainPageController {
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session){
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex);
-		System.out.println(board);
 		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
@@ -131,9 +130,6 @@ public class MainPageController {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> board = service.getBoard(boardNo);
 		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
-		
-//		System.out.println(addr.get("sido"));
-//		System.out.println(addr.get("gungu"));
 		mav.addAllObjects(board);
 		mav.addAllObjects(addr);
 //		mav.setViewName("search.main.updateBoard");
@@ -144,10 +140,13 @@ public class MainPageController {
 	@RequestMapping(method = RequestMethod.POST, value ="updateBoardProc.do")
 	public String updateBoardProc(@ModelAttribute HashMap<String, Object> board,
 			HttpServletRequest session){
-		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
-		board.put("userIndex", userIndex);
+//		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+//		board.put("userIndex", userIndex); 세션도아직안댐
+		System.out.println(board);
+		System.out.println("dfsds");
 		service.updateBoard(board);
-		return "redirect:/viewBoard.do";
+//		return "redirect:/viewBoard.do"; 뷰보드 아직안됨
+		return "redirect:/listBoard.do";
 	}
 	
 
