@@ -220,12 +220,12 @@ select {
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
-						<input type = "hidden" value = "${boardNo }">
-						<input type = "hidden" value = "${readCount }">
-						<input type = "hidden" value = "${policeCount }">
-						<input type = "hidden" value = "${bCompleteFlag}">
-						<input type = "hidden" value = "${boardFlag }">
-						<input type = "hidden" value = "${userIndex }">
+						<input type = "hidden" name = "boardNo" value = "${boardNo }">
+						<input type = "hidden" name = "readCount" value = "${readCount }">
+						<input type = "hidden" name = "policeCount" value = "${policeCount }">
+						<input type = "hidden" name = "bCompleteFlag" value = "${bCompleteFlag}">
+						<input type = "hidden" name = "boardFlag" value = "${boardFlag }">
+						<input type = "hidden" name = "userIndex" value = "${userIndex }">
 						
 						<input type="submit" class="btn btn-success btn-lg" value="수정완료"> <a
 							class="btn btn-primary btn-lg" onclick="location.href='list.do'">퀘스트목록</a></td>

@@ -17,19 +17,21 @@
 			$('#sangsea').css('visibility', 'visible');
 			$.ajax({
 				type : 'get',
-				url : 'getSido.do',
+				url : 'getSido.ajax',
 				dataType : 'json',
 				success : function(data)
 				{
-					$('#sido').empty();
+					alert(data.sido);
+					$('#sidooo').empty();
 					$(data.sido).each(function(index)
 						{
+							alert(this.sido);
 							var a = $('<td>');
 							var b = $('<input type = "button" value = "' + this.sido +'" onclick="searchGungu(this)" />');
 							a.append(b)
-							$('#sido').append(a);
+							$('#sidooo').append(a);
 						});
-							
+					alert("!?");		
 				},
 				error : function(xhrReq, status, error)
 				{
@@ -48,18 +50,18 @@
 			var val = btn.value;
 			$.ajax({
 				type : "get",
-				url : "getGugun.do",
+				url : "getGugun.ajax",
 				dataType : "json",
 				data : "sido="+val,
 				success : function(data){
-					$('#gungu').empty();
+					$('#gunguuu').empty();
 					$(data.gungu).each(function(index){
 						var a = $('<td>')
 						var b = $('<input type ="checkbox" name="area" value="'+this.gungu+'">');
 						$(a).append(b);
 						var c = this.gungu;
 						$(a).append(c);
-						$('#gungu').append(a);
+						$('#gunguuu').append(a);
 						
 					});
 					},
@@ -81,21 +83,22 @@
 </style>
 </head>
 <body>
+	<div align = "center">
 	<form action="ListBoard.do">
 		<input type="text" name="searchKey"> 
 		<input type="submit" value="검색" onclick="insertAreaList();">
 	
 		<input id="sangseaBtn" type = "button" value="상세검색">
 		<input type = "button" id = "closeBtn" value="상세검색닫기">
-		<div id="sangsea" style="visibility:hidden">
+		<div id="sangsea" style="visibility:hidden;">
 			<table width="50%" >
-				<tr id = "sido">
+				<tr id = "sidooo">
 				<tr>
-				<tr id = "gungu" style = "overflow :auto; ">
+				<tr id = "gunguuu" >
 				</tr>
 			</table>
 		</div>
 	</form>
-
+	</div>
 </body>
 </html>
