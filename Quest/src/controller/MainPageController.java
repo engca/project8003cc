@@ -127,10 +127,15 @@ public class MainPageController {
 	
 	
 	@RequestMapping("updateBoard.do")
-	public ModelAndView updateBoard(@RequestParam(defaultValue="1") int boardNo) {
+	public ModelAndView updateBoard(@RequestParam(defaultValue="2") int boardNo) {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> board = service.getBoard(boardNo);
+		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
+		
+//		System.out.println(addr.get("sido"));
+//		System.out.println(addr.get("gungu"));
 		mav.addAllObjects(board);
+		mav.addAllObjects(addr);
 //		mav.setViewName("search.main.updateBoard");
 		mav.setViewName("/bootstrapResources/main/updateBoard.jsp");
 		return mav;

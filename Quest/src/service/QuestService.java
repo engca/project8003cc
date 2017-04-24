@@ -503,6 +503,13 @@ public class QuestService implements IQuestService {
 		return result;
 	}
 
+	@Override
+	public HashMap<String, Object> getAddress(int addrNo) {
+		// TODO Auto-generated method stub
+		return dao.selectAddress(addrNo);
+
+	}
+
 
 
 	

@@ -103,8 +103,12 @@ select {
 					<tr>
 						<th><h5>장소</h5></th>
 						<td colspan="3">
-						<select name="sido" id = "sido"></select> 
-						<select name="gungu" id = "gungu"></select></td>
+						<select name="sido" id = "sido">
+						<option>${sido }</option>
+						</select> 
+						<select name="gungu" id = "gungu">
+						<option>${gungu }</option>
+						</select></td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
@@ -132,15 +136,21 @@ select {
 					<tr>
 						<th><h5>연락방법</h5></th>
 						<td colspan="3">
-						<c:if test="${contact == 1 }">
-						<input type="radio" name="contactNo" value="1" checked>카톡&nbsp;&nbsp; 
+						<c:if test="${contactNo == 1 }">
+						<input type="radio" name="contactNo" value="1" checked>카톡&nbsp;&nbsp;
+						<input type = "radio" name = "contactNo" value = "2">이메일 &nbsp;&nbsp;
+						<input type = "radio" name = "contactNo" value = "3">전화
 						</c:if>
-						<c:if test="${contact == 2 }">
+						<c:if test="${contactNo == 2 }">
+						<input type = "radio" name = "contactNo" value = "1">카톡 &nbsp;&nbsp;
 						<input type="radio" name="contactNo" value="2" checked>이메일 &nbsp;&nbsp; 
+						<input type = "radio" name = "contactNo" value = "3">전화 &nbsp;&nbsp;
 						</c:if>
-						<c:if test="${contact == 3 }">
+						<c:if test="${contactNo == 3 }">
+						<input type="radio" name="contactNo" value="1">카톡&nbsp;&nbsp;
+						<input type = "radio" name = "contactNo" value = "2">이메일 &nbsp;&nbsp;
 						<input type="radio" name="contactNo" value="3" checked>전화&nbsp;&nbsp;
-						</c:if>
+						</c:if>  
 					
 						</td>
 					</tr>
@@ -154,7 +164,7 @@ select {
 						</select></td>
 						<th><h5>소요예정시간</h5></th>
 						<td><select name="playTime">
-								<option value="30m">30분미만</option>
+								<option value="30m" selected>30분미만</option>
 								<option value="3h">3시간 미만</option>
 								<option value="over3h">3시간 이상</option>
 						</select></td>
