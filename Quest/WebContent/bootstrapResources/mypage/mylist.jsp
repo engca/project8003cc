@@ -88,6 +88,7 @@ select {
 
 
 			<h3>게시한 글(요청중)</h3>
+			<div>
 			<table class="table table-striped">
 
 				<tr>
@@ -114,32 +115,35 @@ select {
 						<td>${myboard.readcount }</td>
 					</tr>
 				</c:forEach>
+				
+				
 
-				<tr>
-					<td width="1250px" colspan="6" align="center"><c:if
-							test="${myboardstart != 1 }">
-							<a href="list.do?page=1"> [처음] &nbsp; </a>
-							<a href="list.do?page=${myboardstart-1 }"> ◀ &nbsp;&nbsp; </a>
-						</c:if> <c:forEach begin="${myboardstart }" end="${myboardend}" var="i">
-							<c:choose>
-								<c:when test="${i == myboardcurrent }">
-							[${i }]
-						</c:when>
-								<c:otherwise>
-									<a href="list.do?page=${i}"> [${i }] </a>
-								</c:otherwise>
-							</c:choose>
+<!-- 				<tr> -->
+<%-- 					<td width="1250px" colspan="6" align="center"><c:if --%>
+<%-- 							test="${myboardstart != 1 }"> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=1"> [처음] &nbsp; </a> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=${myboardstart-1 }"> ◀ &nbsp;&nbsp; </a> --%>
+<%-- 						</c:if> <c:forEach begin="${myboardstart }" end="${myboardend}" var="i"> --%>
+<%-- 							<c:choose> --%>
+<%-- 								<c:when test="${i == myboardcurrent }"> --%>
+<%-- 							[${i }] --%>
+<%-- 						</c:when> --%>
+<%-- 								<c:otherwise> --%>
+<%-- 									<a href="mylist.do?boardFlag=${boardFlag }&page=${i}"> [${i }] </a> --%>
+<%-- 								</c:otherwise> --%>
+<%-- 							</c:choose> --%>
 
-						</c:forEach> <c:if test="${myboardend != myboardlast }">
-							<a href="list.do?page=${myboardend+1 }"> &nbsp;&nbsp; ▶ </a>
-							<a href="list.do?page=${myboardlast}"> &nbsp; [끝]</a>
-						</c:if></td>
-				</tr>
+<%-- 						</c:forEach> <c:if test="${myboardend != myboardlast }"> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=${myboardend+1 }"> &nbsp;&nbsp; ▶ </a> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=${myboardlast}"> &nbsp; [끝]</a> --%>
+<%-- 						</c:if></td> --%>
+<!-- 				</tr> -->
 
 			</table>
-			
+			</div>
 			
 			<h3>신청한 글(신청중)</h3>
+			<div>
 			<table class="table table-striped">
 
 				<tr>
@@ -166,33 +170,33 @@ select {
 						<td>${myapply.readcount }</td>
 					</tr>
 				</c:forEach>
+				
+<!-- 				<tr> -->
+<%-- 					<td width="1250px" colspan="6" align="center"><c:if --%>
+<%-- 							test="${myapplystart != 1 }"> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=1"> [처음] &nbsp; </a> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=${myapplystart-1 }"> ◀ &nbsp;&nbsp; </a> --%>
+<%-- 						</c:if> <c:forEach begin="${myapplystart }" end="${myapplyend}" var="i"> --%>
+<%-- 							<c:choose> --%>
+<%-- 								<c:when test="${i == myapplycurrent }"> --%>
+<%-- 							[${i }] --%>
+<%-- 						</c:when> --%>
+<%-- 								<c:otherwise> --%>
+<%-- 									<a href="mylist.do?boardFlag=${boardFlag }&page=${i}"> [${i }] </a> --%>
+<%-- 								</c:otherwise> --%>
+<%-- 							</c:choose> --%>
 
-				<tr>
-					<td width="1250px" colspan="6" align="center"><c:if
-							test="${myapplystart != 1 }">
-							<a href="list.do?page=1"> [처음] &nbsp; </a>
-							<a href="list.do?page=${myapplystart-1 }"> ◀ &nbsp;&nbsp; </a>
-						</c:if> <c:forEach begin="${myapplystart }" end="${myapplyend}" var="i">
-							<c:choose>
-								<c:when test="${i == myapplycurrent }">
-							[${i }]
-						</c:when>
-								<c:otherwise>
-									<a href="list.do?page=${i}"> [${i }] </a>
-								</c:otherwise>
-							</c:choose>
-
-						</c:forEach> <c:if test="${myapplyend != myapplylast }">
-							<a href="list.do?page=${myapplyend+1 }"> &nbsp;&nbsp; ▶ </a>
-							<a href="list.do?page=${myapplylast}"> &nbsp; [끝]</a>
-						</c:if></td>
-				</tr>
+<%-- 						</c:forEach> <c:if test="${myapplyend != myapplylast }"> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=${myapplyend+1 }"> &nbsp;&nbsp; ▶ </a> --%>
+<%-- 							<a href="mylist.do?boardFlag=${boardFlag }&page=${myapplylast}"> &nbsp; [끝]</a> --%>
+<%-- 						</c:if></td> --%>
+<!-- 				</tr> -->
 
 			</table>
 			
 			
 		
-			
+			</div>
 			
 			
 		</c:if>

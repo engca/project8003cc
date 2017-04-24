@@ -83,7 +83,7 @@ h1 {
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">해주세요</c:if> <c:if
 							test="${board.boardFlag == 1 }">잘해요</c:if></td>
-					<td><a href="viewBoard.do?boardNo=${board.baordNo}">
+					<td><a href="viewBoard.do?boardNo=${board.boardNo }">
 							${board.title }</a></td>
 					<!-- USER INDEX>ID -->
 					<td>${nickname }</td>
@@ -96,21 +96,21 @@ h1 {
 			<tr>
 				<td width="1250px" colspan="6" align="center"><c:if
 						test="${start != 1 }">
-						<a href="list.do?page=1"> [처음] &nbsp; </a>
-						<a href="list.do?page=${start-1 }"> ◀ &nbsp;&nbsp; </a>
+						<a href="bookmark.do?page=1"> [처음] &nbsp; </a>
+						<a href="bookmark.do?page=${start-1 }"> ◀ &nbsp;&nbsp; </a>
 					</c:if> <c:forEach begin="${start }" end="${end}" var="i">
 						<c:choose>
 							<c:when test="${i == current }">
 					[${i }]
 					</c:when>
 							<c:otherwise>
-								<a href="list.do?page=${i}"> [${i }] </a>
+								<a href="bookmark.do?page=${i}"> [${i }] </a>
 							</c:otherwise>
 						</c:choose>
 
 					</c:forEach> <c:if test="${end != last }">
-						<a href="list.do?page=${end+1 }"> &nbsp;&nbsp; ▶ </a>
-						<a href="list.do?page=${last}"> &nbsp; [끝]</a>
+						<a href="bookmark.do?page=${end+1 }"> &nbsp;&nbsp; ▶ </a>
+						<a href="bookmark.do?page=${last}"> &nbsp; [끝]</a>
 					</c:if></td>
 			</tr>
 

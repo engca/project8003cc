@@ -72,7 +72,8 @@ public class MyPageController {
 	}
 	
 	@RequestMapping("mylistProc.do")
-	public ModelAndView mylistProc(HttpSession session, @RequestParam(defaultValue="1")int page,@RequestParam(defaultValue="9")int boardFlag) {
+	public ModelAndView mylistProc
+	(HttpSession session, @RequestParam(defaultValue="1")int page,@RequestParam(defaultValue="9")int boardFlag) {
 //		int userIndex = (int) session.getAttribute("userIndex");
 		int userIndex=1;
 		
