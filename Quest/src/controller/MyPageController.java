@@ -62,9 +62,10 @@ public class MyPageController {
 
 	@RequestMapping("complete.do")
 	public ModelAndView complete(HttpSession session, @RequestParam(defaultValue="1")int page) {
-//		int index = (int)session.getAttribute("userIndex");
-		int index = 3;
-		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(index,page);
+//		int userIndex = (int)session.getAttribute("userIndex");
+		int userIndex = 1;
+		
+		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(userIndex,page);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(list);
