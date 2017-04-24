@@ -72,7 +72,7 @@
 						</span>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-						<span style="color:white;" > ${param.id }님 환영합니다. </span>
+						<marquee direction="right"><font size=4> ${param.id }님 환영합니다.  </marquee> 
 						<input type="button" value="마이페이지" 	onclick="location.href='mypage.do'">
 						<input type="button" value="로그아웃"	onclick="location.href='logout.do'">
 						</ul>

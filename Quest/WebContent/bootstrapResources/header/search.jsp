@@ -21,11 +21,10 @@
 				dataType : 'json',
 				success : function(data)
 				{
-					alert(data.sido);
+// 					alert(data.sido);
 					$('#sidooo').empty();
 					$(data.sido).each(function(index)
 						{
-							alert(this.sido);
 							var a = $('<td>');
 							var b = $('<input type = "button" value = "' + this.sido +'" onclick="searchGungu(this)" />');
 							a.append(b)
@@ -55,15 +54,16 @@
 				data : "sido="+val,
 				success : function(data){
 					$('#gunguuu').empty();
+						var ul = $('<ul>');
 					$(data.gungu).each(function(index){
-						var a = $('<td>')
+						var a = $('<il>')
 						var b = $('<input type ="checkbox" name="area" value="'+this.gungu+'">');
 						$(a).append(b);
 						var c = this.gungu;
-						$(a).append(c);
-						$('#gunguuu').append(a);
-						
+						$(a).append(c);		
+						$(ul).append(a);
 					});
+					$('#gunguuu').append(ul);
 					},
 				error : function() {
 					alert("error");
@@ -72,35 +72,48 @@
 	}
 </script>
 <style type="text/css">
-	table {
-    width: 100%;
-    border: 1px solid #bcbcbc;
-  }
-  .ls2 {
-        letter-spacing: -1px;
-        word-spacing: 3px;
-      }
+table {
+	width: 100%;
+	border: 1px solid #bcbcbc;
+}
+
+.ls2 {
+	letter-spacing: -1px;
+	word-spacing: 3px;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	border: 0;
+	float: left;
+}
 </style>
 </head>
 <body>
-	<form action="ListBoard.do">
-		<input type="text" name="searchKey"> 
-		<input type="submit" value="검색" onclick="insertAreaList();">
-	
-		<input id="sangseaBtn" type = "button" value="상세검색">
-		<input type = "button" id = "closeBtn" value="상세검색닫기">
-		<div id = "sangsea" style="visibility:hidden;">
-			<div id = "sidooo">
+	<center>
+		<form action="ListBoard.do">
+			<input type="text" name="searchKey"> <input type="submit"
+				value="검색" onclick="insertAreaList();"> <input
+				id="sangseaBtn" type="button" value="상세검색"> <input
+				type="button" id="closeBtn" value="상세검색닫기">
+			<div id="sangsea" style="visibility: hidden;">
+				<div id="sidooo"></div>
+				<div id="gunguuu"></div>
 			</div>
-			<div id = "gunguuu">
-			</div>
-		</div>
-<!-- 		<table width="50%" id="sangsea" style="visibility:;"> -->
-<!-- 			<tr id = "sidooo"> -->
-<!-- 			<tr> -->
-<!-- 			<tr id = "gunguuu" > -->
-<!-- 			</tr> -->
-<!-- 		</table> -->
-	</form>
+			<!-- 		<table width="50%" id="sangsea" style="visibility:;"> -->
+			<!-- 			<tr id = "sidooo"> -->
+			<!-- 			<tr> -->
+			<!-- 			<tr id = "gunguuu" > -->
+			<!-- 			</tr> -->
+			<!-- 		</table> -->
+		</form>
+	</center>
 </body>
 </html>
