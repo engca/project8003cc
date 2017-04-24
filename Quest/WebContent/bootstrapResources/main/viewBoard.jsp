@@ -137,7 +137,7 @@ select {
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3">${people }</td>
+						<td colspan="3">${contactNo }</td>
 					</tr>
 					<tr>
 						<th><h5>희망시작시간</h5></th>
