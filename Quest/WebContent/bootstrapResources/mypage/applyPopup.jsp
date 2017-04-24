@@ -80,7 +80,7 @@ select {
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2">
 				<div class="modal-body">
-					<h1 align="center">신 청 하 기</h1>
+					<h1 align="center">신 청 하 기</h1> 
 					<hr class="star-primary">
 					<form action=""></form>
 					<table align="center" class="table table-bordered">
