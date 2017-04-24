@@ -161,7 +161,7 @@ select {
 								<c:forEach var="i" begin="1" end="24">
 									<option>${i }시</option>
 								</c:forEach>
-						</select></td>
+						</select></td>  
 						<th><h5>소요예정시간</h5></th>
 						<td><select name="playTime">
 								<option value="30m" selected>30분미만</option>
