@@ -131,6 +131,6 @@ h2 {
 			</tr>
 
 		</table>
-	
+	</div>
 </body>
 </html>

@@ -88,26 +88,41 @@ public class QuestService implements IQuestService {
 		}
 	}
 
-	@Override
-	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo,
-			int boardflag, String searchMsg, int userIndex) {
-		// TODO Auto-generated method stub
 	
-		HashMap<String, Object> params = new HashMap<>();
-		params.put("addrNo", addrNo);
-		params.put("boardFlag", boardflag);
-		params.put("userIndex", userIndex);
-		params.put("searchMsg", searchMsg);
+	@Override
+	public HashMap<String, Object> getBoardList(int boardflag, int page) {
+	
+		// 시작페이지와 끝페이지
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막페이지
+		int first = 1;
+		int last = (dao.getBoardCount(boardflag) - 1) / 10 + 1;
+		// 끝페이지 검증
+		end = last < end ? last : end;
+		// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
 		
-		List<HashMap<String, Object>> list = dao.selectBoard(params);
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("boardFlag", boardflag);
+		params.put("skip", skip);
+		params.put("count", count);
+		
+		List<HashMap<String, Object>> list = dao.selectBoardByUserIndex(params);
+		
+		HashMap<String, Object> result = new HashMap<>();
 		for (HashMap<String, Object> board : list ){
 			int userindex = (int) (board.get("userIndex"));
 			board.put("nickname", nickname(userindex));
 		}				
-		return list;
-		// addr/searchMsg/userIndex 는 없으면 검색안됨
-		// boardflag 는 디폴트 "잘해요"
-
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("boardList", list);
+		return result;  		
 	}
 
 	@Override
@@ -118,42 +133,6 @@ public class QuestService implements IQuestService {
 		return bd;
 	}
 
-	@Override
-	public HashMap<String, Object> getBoardList(int page) {
-		// TODO Auto-generated method stub
-		// 첫페이지 → 맨 앞페이지
-		// 시작페이지 → 현재 보이는 첫 페이지
-		// 끝페이지 → 현재 보이는 마지막 페이지
-		// 마지막페이지 → 맨 마지막 페이지
-
-		// 시작페이지와 끝페이지를 계산해보세요
-		int start = (page - 1) / 10 * 10 + 1;
-		int end = ((page - 1) / 10 + 1) * 10;
-		// 첫페이지와 마지막페이지를 계산
-		int first = 1;
-		int last = (dao.getBoardCount() - 1) / 10 + 1;
-
-		// 끝페이지 검증
-		end = last < end ? last : end;
-
-		// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
-		int skip = (page - 1) * 10;
-		int count = 10;
-		HashMap<String, Object> params = new HashMap<>();
-		params.put("skip", skip);
-		params.put("count", count);
-		List<HashMap<String, Object>> list = dao.selectBoardLimit(params);
-
-		HashMap<String, Object> result = new HashMap<>();
-		result.put("start", start);
-		result.put("first", first);
-		result.put("end", end);
-		result.put("last", last);
-		result.put("current", page);
-		result.put("boardList", list);
-
-		return result;  
-	}
 
 	@Override
 	public int writeBoard(HashMap<String, Object> params) {
@@ -503,12 +482,13 @@ public class QuestService implements IQuestService {
 		return result;
 	}
 
-	@Override
+
 	public HashMap<String, Object> getAddress(int addrNo) {
 		// TODO Auto-generated method stub
 		return dao.selectAddress(addrNo);
 
 	}
+
 
 
 
