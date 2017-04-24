@@ -14,12 +14,12 @@
 		<!-- <property name="suffix" value = ".jsp"></property> -->
 		<property name="order" value="2" />
 	</bean>
-<!-- 	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"> -->
-<!-- 		<property name="definitions" value="/WEB-INF/Tiles.xml"></property> -->
-<!-- 	</bean> -->
-<!-- 	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"> -->
-<!-- 		<property name="order" value="1" /> -->
-<!-- 	</bean> -->
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/Tiles.xml"></property>
+	</bean>
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
+		<property name="order" value="1" />
+	</bean>
 
 
 	<!-- <mvc:interceptors> -->  
