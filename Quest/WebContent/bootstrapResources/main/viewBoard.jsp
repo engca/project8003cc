@@ -39,7 +39,7 @@
 // }   
 function applyPopup(boardNo,userIndex,rewardNo,contactAnswer){
 	var apply = document.apply; 
-	window.open(url,'apply','width=400, height=300');
+	window.open('','apply','width=400, height=300');
 	apply.action = "applyPopup.do";
 	apply.target = "apply";
 	apply.method = "post";
@@ -51,7 +51,7 @@ function applyPopup(boardNo,userIndex,rewardNo,contactAnswer){
 }
 function bookmarkPopup(boardNo, userIndex){
 	var bm = document.bookmark;
-	window.open(url,'Bookmark','width=400, height=300');
+	window.open('','Bookmark','width=400, height=300');
 	bm.action = "bookmarkPopup.do";
 	bm.target = "Bookmark";
 	bm.method = "post";
