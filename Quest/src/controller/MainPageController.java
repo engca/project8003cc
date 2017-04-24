@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
 import service.IQuestService;
-import service.QuestService;
 
 
 @Controller
@@ -94,7 +92,7 @@ public class MainPageController {
 	@RequestMapping("writeBoard.do")
 	public String writeBoard(){
 //		return "search.main.writeBoard";
-		return "/bootstrapResources/main/writeBoard.jsp";
+		return "search.main.writeBoard";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
@@ -105,7 +103,7 @@ public class MainPageController {
 		return "redirect:/listBoard.do";
 	}
 	
-	@RequestMapping("getSido.do")
+	@RequestMapping("getSido.ajax")
 	public 
 	@ResponseBody HashMap<String, Object> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
@@ -114,7 +112,7 @@ public class MainPageController {
 		return sido;  
 	}
 
-	@RequestMapping("getGugun.do")
+	@RequestMapping("getGugun.ajax")
 	public
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
@@ -131,8 +129,7 @@ public class MainPageController {
 		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
 		mav.addAllObjects(board);
 		mav.addAllObjects(addr);
-//		mav.setViewName("search.main.updateBoard");
-		mav.setViewName("/bootstrapResources/main/updateBoard.jsp");
+		mav.setViewName("search.main.updateBoard");
 		return mav;
 	}
 	
