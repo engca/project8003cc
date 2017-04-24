@@ -32,6 +32,7 @@ public class MyPageController {
 	
 	 return mav;
 	 }
+	 
 
 	@RequestMapping("applyPopupProc.do")
 	public String applyPopupProc() {
