@@ -83,22 +83,24 @@
 </style>
 </head>
 <body>
-	<div align = "center">
 	<form action="ListBoard.do">
 		<input type="text" name="searchKey"> 
 		<input type="submit" value="검색" onclick="insertAreaList();">
 	
 		<input id="sangseaBtn" type = "button" value="상세검색">
 		<input type = "button" id = "closeBtn" value="상세검색닫기">
-		<div id="sangsea" style="visibility:hidden;">
-			<table width="50%" >
-				<tr id = "sidooo">
-				<tr>
-				<tr id = "gunguuu" >
-				</tr>
-			</table>
+		<div id = "sangsea" style="visibility:hidden;">
+			<div id = "sidooo">
+			</div>
+			<div id = "gunguuu">
+			</div>
 		</div>
+<!-- 		<table width="50%" id="sangsea" style="visibility:;"> -->
+<!-- 			<tr id = "sidooo"> -->
+<!-- 			<tr> -->
+<!-- 			<tr id = "gunguuu" > -->
+<!-- 			</tr> -->
+<!-- 		</table> -->
 	</form>
-	</div>
 </body>
 </html>
