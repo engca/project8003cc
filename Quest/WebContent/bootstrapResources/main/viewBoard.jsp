@@ -140,6 +140,14 @@ select {
 	<c:choose>
 		<c:when test="${userid != null }">
 				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
+				
+				
+				
+				
+<!-- 	<form id="viewerForm"> -->
+<!-- 	<input type="text" name="viewer_base_url" value="AAA">  -->
+<!-- 	<input type=button onClick="postPopUp('viewerForm')" value="입력"> -->
+<!-- 	</form> -->
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
@@ -148,10 +156,6 @@ select {
 	</c:choose>					
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="list.do" value="퀘스트목록">
 			
-<!-- 	<form id="viewerForm"> -->
-<!-- 	<input type="text" name="viewer_base_url" value="AAA">  -->
-<!-- 	<input type=button onClick="postPopUp('viewerForm')" value="입력"> -->
-<!-- 	</form> -->
 			
 			
 					</td>

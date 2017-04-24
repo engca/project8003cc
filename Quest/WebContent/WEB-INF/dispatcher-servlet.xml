@@ -8,17 +8,16 @@
 
 	<context:component-scan base-package="controller"></context:component-scan>
 
-<!-- 	<bean -->
-<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- <property name="prefix" value = "/jsp/"></property> -->
 		<!-- <property name="suffix" value = ".jsp"></property> -->
-<!-- 	</bean> -->
+	</bean>
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<!-- 타일즈 설정을 스프링에 읽어줄 친구 -->
 		<property name="definitions" value="/WEB-INF/Tiles.xml"></property>
 	</bean>
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
-		<!-- 타일즈로 응답을 만들기 위한 뷰리졸버 등록 -->
 	</bean>
 
 
