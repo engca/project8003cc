@@ -91,7 +91,7 @@ h1 {
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">해주세요</c:if> <c:if
 							test="${board.boardFlag == 1 }">잘해요</c:if></td>
-					<td>${board.title }</td>
+					<td><a href="viewBoard.do?boardNo=${board.baordNo}"> ${board.title }</a></td>
 					<!-- USER INDEX>ID -->
 					<td>${nickname }</td>
 					<td><fmt:formatDate value="${board.date }"
