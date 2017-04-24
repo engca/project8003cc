@@ -93,7 +93,7 @@ public class MainPageController {
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex);
 		System.out.println(board);
-//		service.writeBoard(board);
+		service.writeBoard(board);
 		return "redirect:/list.do";
 	}
 	
