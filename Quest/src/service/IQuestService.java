@@ -29,7 +29,7 @@ public interface IQuestService {
 	public int writeBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(HashMap<String, Object> params); 
-	public HashMap<String, Object> getBoardList(int page); // 페이징 처리용 추가 (4/12)
+	public HashMap<String, Object> getBoardList(int boardflag, int page); // 페이징 처리용 추가 (4/12)
 	public HashMap<String, Object> readBoard(int boardNo);
 	public HashMap<String, Object> getBoard(int boardNo);
 	public boolean isMyBoard(HashMap<String, Object> params);

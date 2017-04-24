@@ -31,17 +31,16 @@ public class MainPageController {
 	IQuestService service; 
 	 
 	@RequestMapping("listBoard.do")
-	public ModelAndView BoardAllList(@RequestParam(defaultValue = "0") int boardflag ){		
-		List<HashMap<String, Object>> list = service.listBoard(null, boardflag, null, 0);
+	public ModelAndView BoardAllList(@RequestParam(defaultValue = "0") int boardflag, @RequestParam(defaultValue="1")int page ){		
+		HashMap<String, Object> data = service.getBoardList(boardflag, page); 
+		System.out.println(data);
 		ModelAndView mav = new ModelAndView();
-		HashMap<String, Object> data = new HashMap<>();
 		if(boardflag==0){
 			data.put("header1", "잘해요");   
 		}
 		else if(boardflag==1){
 			data.put("header1", "해주세요");
 		}
-		data.put("list", list);
 		mav.addAllObjects(data);
 		mav.setViewName("search.main.listBoard");
 		return mav;		
