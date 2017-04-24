@@ -50,7 +50,7 @@ $(document).ready(function(){
 	 $('#sido').click(function(){
 		 $.ajax({
 				type : "get",
-				url : "getSido.do",
+				url : "getSido.ajax",
 				dataType : "json",
 				success : function(data) {
 // 					$("#sido").empty();
@@ -60,14 +60,14 @@ $(document).ready(function(){
 					});
 				},
 				error : function() {
-					alert("error");
+					alert("error1");
 				}			
 			});
 		 
 		 var selectedVal = $('#sido option:selected').val();
 		 $.ajax({
 			type : "get",
-			url : "getGugun.do",
+			url : "getGugun.ajax",
 			dataType : "json",
 			data : "sido="+selectedVal,
 			success : function(data){
