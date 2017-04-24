@@ -14,17 +14,15 @@
 		<!-- <property name="suffix" value = ".jsp"></property> -->
 		<property name="order" value="2" />
 	</bean>
-	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
-		<!-- 타일즈 설정을 스프링에 읽어줄 친구 -->
-		<property name="definitions" value="/WEB-INF/Tiles.xml"></property>
-	</bean>
-	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
-		<!-- 타일즈로 응답을 만들기 위한 뷰리졸버 등록 -->
-		<property name="order" value="1" />
-	</bean>
+<!-- 	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"> -->
+<!-- 		<property name="definitions" value="/WEB-INF/Tiles.xml"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"> -->
+<!-- 		<property name="order" value="1" /> -->
+<!-- 	</bean> -->
 
 
-	<!-- <mvc:interceptors> -->
+	<!-- <mvc:interceptors> -->  
 	<!-- <mvc:interceptor> -->
 	<!-- <mvc:mapping path="/*.do" /> -->
 	<!-- <mvc:exclude-mapping path="/main.do" /> -->

@@ -94,7 +94,8 @@ public class MainPageController {
 	
 	@RequestMapping("writeBoard.do")
 	public String writeBoard(){
-		return "search.main.writeBoard";
+//		return "search.main.writeBoard";
+		return "/bootstrapResources/main/writeBoard.jsp";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
@@ -126,8 +127,18 @@ public class MainPageController {
 	
 	
 	@RequestMapping("updateBoard.do")
-	public String updateBoard(@RequestParam(defaultValue="0") int boardNo) {
-		return "search.main.updateBoard";
+	public ModelAndView updateBoard(@RequestParam(defaultValue="2") int boardNo) {
+		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> board = service.getBoard(boardNo);
+		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
+		
+//		System.out.println(addr.get("sido"));
+//		System.out.println(addr.get("gungu"));
+		mav.addAllObjects(board);
+		mav.addAllObjects(addr);
+//		mav.setViewName("search.main.updateBoard");
+		mav.setViewName("/bootstrapResources/main/updateBoard.jsp");
+		return mav;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value ="updateBoardProc.do")

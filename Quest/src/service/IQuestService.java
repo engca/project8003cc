@@ -65,6 +65,7 @@ public interface IQuestService {
 	
 	public List<HashMap<String, Object>> getSidoAll();
 	public List<HashMap<String, Object>> getGungu(String sido);
+	public HashMap<String, Object> getAddress(int addrNo);
 	
 	// 마이리스트내가쓴글
 	public HashMap<String, Object> myapply(int userIndex , int page, int boardFlag);
