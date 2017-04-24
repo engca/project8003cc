@@ -4,13 +4,18 @@
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 	<definition name="tiles" template="/bootstrapResources/header/layout.jsp">
-		<put-attribute name="header" value = "/bootstrapResources/header/header.jsp"></put-attribute>
-		<put-attribute name="bar" value = ""></put-attribute>
-		<put-attribute name="body" value = ""></put-attribute>
-		<put-attribute name="footer" value = "/bootstrapResources/header/footer.jsp"></put-attribute>
+		<put-attribute name="header"
+			value="/bootstrapResources/header/header.jsp"></put-attribute>
+		<put-attribute name="bar" value=""></put-attribute>
+		<put-attribute name="body" value=""></put-attribute>
+		<put-attribute name="footer"
+			value="/bootstrapResources/header/footer.jsp"></put-attribute>
 	</definition>
 	<definition extends="tiles" name="*.*.*">
-		<put-attribute name="bar" value = "/bootstrapResources/header/{1}.jsp"></put-attribute>
-		<put-attribute name="body" value = "/bootstrapResources/{2}/{3}.jsp"></put-attribute>
+		<put-attribute name="bar" value="/bootstrapResources/header/{1}.jsp"></put-attribute>
+		<put-attribute name="body" value="/bootstrapResources/{2}/{3}.jsp"></put-attribute>
+	</definition>
+	<definition extends="tiles" name="starpoint.star">
+		<put-attribute name="header" value="/bootstrapResources/mypage/starpoint.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>
