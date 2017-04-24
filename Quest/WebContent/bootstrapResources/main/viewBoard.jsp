@@ -170,11 +170,11 @@ select {
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userindex')">
 				
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
-				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
+				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardNo }'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
 <%-- 		</c:when> --%>
 <%-- 	</c:choose>					 --%>
-				<input type="button" 	class="btn btn-primary btn-lg" onclick="list.do" value="퀘스트목록">
+				<input type="button" 	class="btn btn-primary btn-lg" onclick="listBoard.do" value="퀘스트목록">
 			
 			
 			
