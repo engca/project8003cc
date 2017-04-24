@@ -43,6 +43,50 @@
 
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	 $('#sido').click(function(){
+		 $.ajax({
+				type : "get",
+				url : "getSido.do",
+				dataType : "json",
+				success : function(data) {
+// 					$("#sido").empty();
+					$(data.sido).each(function(index) {
+						var sido = $('<option value='+this.sido+'>'+ this.sido +'</option>');
+						$("#sido").append(sido);
+					});
+				},
+				error : function() {
+					alert("error");
+				}			
+			});
+		 
+		 var selectedVal = $('#sido option:selected').val();
+		 $.ajax({
+			type : "get",
+			url : "getGugun.do",
+			dataType : "json",
+			data : "sido="+selectedVal,
+			success : function(data){
+			$('#gungu').empty();
+			$(data.gungu).each(function(index){
+				var gungu = $('<option value='+this.gungu+'>'+this.gungu+'</option>');
+				$("#gungu").append(gungu);
+			});
+			},
+			error : function() {
+				alert("error");
+			}
+		 });
+		 
+	    });
+
+});
+
+</script>
 <style type="text/css">
 th {
 	width: 150px;
@@ -180,9 +224,11 @@ select {
 						<input type = "hidden" value = "${readCount }">
 						<input type = "hidden" value = "${policeCount }">
 						<input type = "hidden" value = "${bCompleteFlag}">
+						<input type = "hidden" value = "${boardFlag }">
+						<input type = "hidden" value = "${userIndex }">
 						
 						<input type="submit" class="btn btn-success btn-lg" value="수정완료"> <a
-							class="btn btn-primary btn-lg" onclick="list.do">퀘스트목록</a></td>
+							class="btn btn-primary btn-lg" onclick="location.href='list.do'">퀘스트목록</a></td>
 					</tr>
 				</table>
 			</form>
