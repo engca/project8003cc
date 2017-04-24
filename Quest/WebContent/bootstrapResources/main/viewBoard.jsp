@@ -28,23 +28,37 @@
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
-function applyPopup(){
-	var url = "applyPopup.do?boardNo="+${boardNo}+"&userindex="
-			+${userindex}+"&rewardNo="+${rewardNo}+"&contactAnswer="+${contactAnswer};	
-	window.open(url,'Apply','width=400, height=300');	
-}
-function bookmarkPopup(){
-	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userindex="+${userindex};  
-    window.open(url,'Bookmark','width=400, height=300');	
-}
-// function bookmarkPopup(formName) {
-// 	var frm = document.getElementById(formName);
-// 	window.open('', 'viewer', 'width=1000, height=700');
-// 	frm.action = "popTest.do";
-// 	frm.target = "viewer";
-// 	frm.method = "post";
-// 	frm.submit();
+// function applyPopup(){
+// 	var url = "applyPopup.do?boardNo="+${boardNo}+"&userindex="
+// 			+${userindex}+"&rewardNo="+${rewardNo}+"&contactAnswer="+${contactAnswer};	
+// 	window.open(url,'Apply','width=400, height=300');	
 // }
+// function bookmarkPopup(){
+// 	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userindex="+${userindex};  
+//     window.open(url,'Bookmark','width=400, height=300');	
+// }
+function applyPopup(boardNo,userindex,rewardNo,contactAnswer){
+	var apply = document.apply;
+	window.open(url,'apply','width=400, height=300');
+	apply.action = "applyPopup.do";
+	apply.target = "apply";
+	apply.method = "post";
+	apply.boardNo.value = boardNo;
+	apply.userindex.value = userindex;
+	apply.rewardNo.value = rewardNo;
+	apply.contactAnswer.value = contactAnswer;
+	apply.submit(); 
+}
+function bookmarkPopup(boardNo, userindex){
+	var bm = document.bookmark;
+	window.open(url,'Bookmark','width=400, height=300');
+	bm.action = "bookmarkPopup.do";
+	bm.target = "Bookmark";
+	bm.method = "post";
+	bm.boardNo.value = boardNo;
+	bm.userindex.value = userindex;
+	bm.submit(); 
+}
 function police(){
 	$('#police').onclick(function(){
 		$.ajax({
@@ -139,16 +153,21 @@ select {
 						<td colspan="4" align="right">
 	<c:choose>
 		<c:when test="${userid != null }">
-				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
+
+				<form name="apply">
+					<input type="hidden" name="boardNo" value=${boardNo }>
+					<input type="hidden" name="userindex" value=${userindex }>
+					<input type="hidden" name="rewardNo" value=${rewardNo }>
+					<input type="hidden" name="contactAnswer" value=${contactAnswer }>										  
+				</form>		
+				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userindex','rewardNo','contactAnswer')">
+
+				<form name="bookmark">
+					<input type="hidden" name="boardNo" value=${boardNo }>
+					<input type="hidden" name="userindex" value=${userindex }>  
+				</form>
+				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userindex')">
 				
-				
-				
-				
-<!-- 	<form id="viewerForm"> -->
-<!-- 	<input type="text" name="viewer_base_url" value="AAA">  -->
-<!-- 	<input type=button onClick="postPopUp('viewerForm')" value="입력"> -->
-<!-- 	</form> -->
-				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">

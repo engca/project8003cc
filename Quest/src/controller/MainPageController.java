@@ -33,7 +33,6 @@ public class MainPageController {
 	@RequestMapping("listBoard.do")
 	public ModelAndView BoardAllList(@RequestParam(defaultValue = "0") int boardflag, @RequestParam(defaultValue="1")int page ){		
 		HashMap<String, Object> data = service.getBoardList(boardflag, page); 
-		System.out.println(data);
 		ModelAndView mav = new ModelAndView();
 		if(boardflag==0){
 			data.put("header1", "잘해요");   
