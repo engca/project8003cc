@@ -47,7 +47,6 @@
 <style type="text/css">
 th {
 	width: 150px;
-	
 }
 
 select {
@@ -58,12 +57,6 @@ select {
 h1 {
 	text-align: center;
 }
-
-/* .container { */
-/* 	position: absolute; */
-/* 	top: 60px; */
-/* 	left: 60px; */
-/* } */
 </style>
 
 </head>
@@ -75,8 +68,7 @@ h1 {
 				<hr class="star-primary">
 			</div>
 		</div>
-
-		<table class="table table-striped">
+		<table class="table tablestriped">
 			<tr>
 				<th width="5%">No</th>
 				<th width="15%">구분</th>
@@ -91,7 +83,8 @@ h1 {
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">해주세요</c:if> <c:if
 							test="${board.boardFlag == 1 }">잘해요</c:if></td>
-					<td><a href="viewBoard.do?boardNo=${board.baordNo}"> ${board.title }</a></td>
+					<td><a href="viewBoard.do?boardNo=${board.baordNo}">
+							${board.title }</a></td>
 					<!-- USER INDEX>ID -->
 					<td>${nickname }</td>
 					<td><fmt:formatDate value="${board.date }"
