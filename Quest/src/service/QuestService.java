@@ -531,7 +531,6 @@ public class QuestService implements IQuestService {
 				result.put("completeList", myboard);
 				result.put("nickname", nickname);
 				
-				
 				return result;
 	}
 
