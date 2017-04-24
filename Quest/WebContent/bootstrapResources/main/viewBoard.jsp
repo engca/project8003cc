@@ -151,8 +151,9 @@ select {
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
-	<c:choose>
-		<c:when test="${userid != null }">
+<!-- 	로그인 세션 체크 -->
+<%-- 	<c:choose> --%>
+<%-- 		<c:when test="${userid != null }"> --%>
 
 				<form name="apply">
 					<input type="hidden" name="boardNo" value=${boardNo }>
@@ -171,8 +172,8 @@ select {
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
-		</c:when>
-	</c:choose>					
+<%-- 		</c:when> --%>
+<%-- 	</c:choose>					 --%>
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="list.do" value="퀘스트목록">
 			
 			
