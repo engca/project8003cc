@@ -113,6 +113,8 @@ public class MyPageController {
 		return "starpoint.star";
 	} 
 	
+	
+	
 	@RequestMapping("starpointProc.do")
 	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
 		int userIndex = (int)session.getAttribute("userIndex");

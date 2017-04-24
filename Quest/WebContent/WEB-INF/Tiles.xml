@@ -15,7 +15,7 @@
 		<put-attribute name="bar" value="/bootstrapResources/header/{1}.jsp"></put-attribute>
 		<put-attribute name="body" value="/bootstrapResources/{2}/{3}.jsp"></put-attribute>
 	</definition>
-	<definition extends="tiles" name="starpoint.star">
-		<put-attribute name="header" value="/bootstrapResources/mypage/starpoint.jsp"></put-attribute>
+	<definition name="starpoint.star" template="/bootstrapResources/header/empty.jsp">
+		<put-attribute name="content" value="/bootstrapResources/mypage/starpoint.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>
