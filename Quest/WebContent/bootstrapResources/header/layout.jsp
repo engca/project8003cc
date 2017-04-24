@@ -11,25 +11,22 @@
 <body>
 <table style="rules : rows;">
 	<tr>
-		<div style="position:absolute;width:100%;height:20%;">
+		<div style="position:absolute;width:100%; ">
 			<tiles:insertAttribute name = "header"></tiles:insertAttribute>
-			<hr>
 		</div>
 	</tr>
 	<tr>
-		<div style="position:absolute;top:20%;width:100%;height:10%;overflow: visible;">
+		<div style="position:absolute;top:150px;width:100%; ">
 			<tiles:insertAttribute name = "bar"></tiles:insertAttribute>
-			<hr>
 		</div>
 	</tr>
 	<tr>
-		<div style="position:absolute;top:30%;width:100%;height:60%;overflow:auto; ">
+		<div style="position:absolute;top:250px;width:100%; ">
 			<tiles:insertAttribute name = "body"></tiles:insertAttribute>
-			<hr>
 		</div>
 	</tr>
 	<tr>
-		<div style="position:absolute;top:90%;width:100%;height:10%; ">
+		<div style="osition:absolute;top:900px;width:100%;height:10%; ">
 		<tiles:insertAttribute name = "footer"></tiles:insertAttribute>
 		</div>
 	</tr>
