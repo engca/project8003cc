@@ -174,7 +174,7 @@ select {
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
 <%-- 		</c:when> --%>
 <%-- 	</c:choose>					 --%>
-				<input type="button" 	class="btn btn-primary btn-lg" onclick="listBoard.do" value="퀘스트목록">
+				<input type="button" 	class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'" value="퀘스트목록">
 			
 			
 					</td>
