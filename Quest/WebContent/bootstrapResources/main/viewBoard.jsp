@@ -37,7 +37,7 @@
 // 	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userIndex="+${userIndex};  
 //     window.open(url,'Bookmark','width=400, height=300');	
 // }   
-function applyPopup(boardNo,userIndex,rewardNo,contactAnswer){
+function applyPopup(boardNo,userIndex,reward1,reward2,reward3,contactAnswer){
 	var apply = document.apply; 
 	window.open('','apply','width=400, height=300');
 	apply.action = "applyPopup.do";
@@ -45,7 +45,9 @@ function applyPopup(boardNo,userIndex,rewardNo,contactAnswer){
 	apply.method = "post";
 	apply.boardNo.value = boardNo;
 	apply.userIndex.value = userIndex;
-	apply.rewardNo.value = rewardNo;
+	apply.reward1.value = reward1;
+	apply.reward2.value = reward2;
+	apply.reward3.value = reward3;
 	apply.contactAnswer.value = contactAnswer;
 	apply.submit(); 
 }
@@ -59,7 +61,6 @@ function bookmarkPopup(boardNo, userIndex){
 	bm.userIndex.value = userIndex;
 	bm.submit(); 
 }
-
 function police(){
 	$('#police').onclick(function(){
 		$.ajax({
@@ -103,6 +104,12 @@ select {
 .people {
 	width: 60px;
 }
+FORM { 
+margin-top: 0px; 
+margin-right: 0px; 
+margin-bottom: 0px; 
+margin-left: 0px 
+} 
 </style>
 </head>
 <body>
@@ -159,17 +166,18 @@ select {
 				<form name="apply">
 					<input type="hidden" name="boardNo" value=${boardNo }>
 					<input type="hidden" name="userIndex" value=${userIndex }>
-					<input type="hidden" name="rewardNo" value=${rewardNo }>
+					<input type="hidden" name="reward1" value=${reward1 }>
+					<input type="hidden" name="reward2" value=${reward2 }>
+					<input type="hidden" name="reward3" value=${reward3 }>
 					<input type="hidden" name="contactAnswer" value=${contactAnswer }>										  
-				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userIndex','rewardNo','contactAnswer')">
-				</form>		
-
+				</form>						
 				<form name="bookmark">
 					<input type="hidden" name="boardNo" value=${boardNo }>
 					<input type="hidden" name="userIndex" value=${userIndex }>  
-				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userIndex')">
 				</form>
 				
+				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userIndex','reward1','reward2','reward3','contactAnswer')">
+				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userIndex')">								
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardNo }'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">

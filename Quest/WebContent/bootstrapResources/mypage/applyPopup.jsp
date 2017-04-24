@@ -87,10 +87,10 @@ select {
 						<tr align="center">
 							<th>보상</th>
 							<td><input type="radio" name="reward" id="reward"
-								value="1">${reward1 } &nbsp;&nbsp;&nbsp; <input
-								type="radio" name="reward" id="reward" value="2">${reward2 }
+								value="1"><%=request.getParameter("reward1") %> &nbsp;&nbsp;&nbsp; <input
+								type="radio" name="reward" id="reward" value="2"><%=request.getParameter("reward2") %>
 								&nbsp&nbsp <input type="radio" name="reward" id="reward"
-								value="3">${reward3 }</td>
+								value="3"><%=request.getParameter("reward3") %></td>
 						</tr>
 						<tr align="center">
 							<th>연락 방법</th>
