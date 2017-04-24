@@ -44,45 +44,48 @@
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
+$.ajax({
+	type : "get",
+	url : "getSido.ajax",
+	dataType : "json",
+	success : function(data) {
+// 		$("#sido").empty();
+// 		 $('<option>'+ ${sido } +'</option>');
+// 		 $("#sido").append(sido);
+		$(data.sido).each(function(index) {
+			var sido = $('<option value='+this.sido+'>'+ this.sido +'</option>');
+			$("#sido").append(sido);
+		});
+		
+	},
+	error : function() {
+		alert("error");
+	}			
+});
 
 $(document).ready(function(){
-	
-	 $('#sido').click(function(){
-		 $.ajax({
-				type : "get",
-				url : "getSido.ajax",
-				dataType : "json",
-				success : function(data) {
-// 					$("#sido").empty();
-					$(data.sido).each(function(index) {
-						var sido = $('<option value='+this.sido+'>'+ this.sido +'</option>');
-						$("#sido").append(sido);
-					});
-				},
-				error : function() {
-					alert("error1");
-				}			
-			});
-		 
-		 var selectedVal = $('#sido option:selected').val();
-		 $.ajax({
-			type : "get",
-			url : "getGugun.ajax",
-			dataType : "json",
-			data : "sido="+selectedVal,
-			success : function(data){
-			$('#gungu').empty();
-			$(data.gungu).each(function(index){
-				var gungu = $('<option value='+this.gungu+'>'+this.gungu+'</option>');
-				$("#gungu").append(gungu);
-			});
-			},
-			error : function() {
-				alert("error");
-			}
-		 });
-		 
-	    });
+
+ $('#sido').click(function(){
+		//인천 만 지우기		
+	 var selectedVal = $('#sido option:selected').val();
+	 $.ajax({
+		type : "get",
+		url : "getGugun.ajax",
+		dataType : "json",
+		data : "sido="+selectedVal,
+		success : function(data){
+		$('#gungu').empty();
+		$(data.gungu).each(function(index){
+			var gungu = $('<option value='+this.gungu+'>'+this.gungu+'</option>');
+			$("#gungu").append(gungu);
+		});
+		},
+		error : function() {
+			alert("error");
+		}
+	 });
+	 
+    });
 
 });
 
