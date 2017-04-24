@@ -62,7 +62,7 @@ public class MyPageController {
 	@RequestMapping("complete.do")
 	public ModelAndView complete(HttpSession session, @RequestParam(defaultValue="1")int page) {
 //		int index = (int)session.getAttribute("userIndex");
-		int index = 1;
+		int index = 3;
 		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(index,page);
 		
 		ModelAndView mav = new ModelAndView();
@@ -110,7 +110,7 @@ public class MyPageController {
 	@RequestMapping("starpoint.do")
 	public String starpoint(int boardNo, Model model) {
 		model.addAttribute("boardNo", boardNo);
-		return "mypageMenu.mypage.starpoint";
+		return "starpoint.star";
 	} 
 	
 	@RequestMapping("starpointProc.do")
