@@ -122,7 +122,7 @@ public class MainPageController {
 	
 	
 	@RequestMapping("updateBoard.do")
-	public ModelAndView updateBoard(@RequestParam(defaultValue="19") int boardNo) {
+	public ModelAndView updateBoard(@RequestParam(defaultValue="0") int boardNo) {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> board = service.getBoard(boardNo);
 		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
@@ -138,10 +138,8 @@ public class MainPageController {
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex); 세션도아직안댐
 		System.out.println(board);
-		System.out.println("dfsds");
 		service.updateBoard(board);
-//		return "redirect:/viewBoard.do"; 뷰보드 아직안됨
-		return "redirect:/listBoard.do";
+		return "redirect:/viewBoard.do";
 	}
 	
 
