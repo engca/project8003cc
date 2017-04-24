@@ -27,14 +27,6 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-</head>
-<body>
-	<div class="navbar navbar-default navbar-fixed-top navbar-custom" align="center">
-		<input type = "button" value = "Profile" onclick = "location.href='profile.do'" class="btn btn-success btn-lg'"/>
-		<input type = "button" value = "MyList" onclick = "location.href='mylist.do'" class="btn btn-success btn-lg'"/>
-		<input type = "button" value = "CompleteList" onclick = "location.href='complete.do'" class="btn btn-success btn-lg'"/>
-		<input type = "button" value = "BookMark" onclick = "location.href='bookmark.do'" class="btn btn-success btn-lg'"/>
-	</div>
 		<!-- jQuery -->
 	<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
 
@@ -45,5 +37,13 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top navbar-custom" align="center">
+		<input type = "button" value = "MyList" onclick = "location.href='mylist.do'" class="btn btn-success btn-lg'"/>
+		<input type = "button" value = "CompleteList" onclick = "location.href='complete.do'" class="btn btn-success btn-lg'"/>
+		<input type = "button" value = "BookMark" onclick = "location.href='bookmark.do'" class="btn btn-success btn-lg'"/>
+		<input type = "button" value = "Profile" onclick = "location.href='profile.do'" class="btn btn-success btn-lg'"/>
+	</div>
 </body>
 </html>

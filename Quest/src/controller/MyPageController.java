@@ -28,14 +28,14 @@ public class MyPageController {
 	 ModelAndView mav = new ModelAndView();
 	 mav.addAllObjects(tmp);
 	 
-	 mav.setViewName("/bootstrapResources/mypage/applyPopup.jsp");
+	 mav.setViewName("mypageMenu.mypage.applyPopup");
 	
 	 return mav;
 	 }
 
 	@RequestMapping("applyPopupProc.do")
 	public String applyPopupProc() {
-		return "/bootstrapResources/mypage/applyPopup.jsp";
+		return "mypageMenu.mypage.applyPopup";
 	}
 
 
@@ -49,26 +49,26 @@ public class MyPageController {
 				
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(list);
-		mav.setViewName("/bootstrapResources/mypage/bookmark.jsp");
+		mav.setViewName("mypageMenu.mypage.bookmark");
 		return mav;
 	}
 
 
 	@RequestMapping("bookmarkPopup.do")
 	public String bookmarkPopup() {
-		return "/bootstrapResources/mypage/bookmarkPopup.jsp";
+		return "mypageMenu.mypage.bookmarkPopup";
 	}
 
 	@RequestMapping("complete.do")
 	public String complete() {
-		return "/bootstrapResources/mypage/complete.jsp";
+		return "mypageMenu.mypage.complete";
 	}
 
 	@RequestMapping("mylist.do")
 	public String mylist(@RequestParam(defaultValue="9") int boardFlag,Model model) {
 		model.addAttribute("boardFlag", boardFlag);
 		
-		return "/bootstrapResources/mypage/mylist.jsp";
+		return "mypageMenu.mypage.mylist";
 	}
 	
 	@RequestMapping("mylistProc.do")
@@ -83,7 +83,7 @@ public class MyPageController {
 		mav.addObject("boardFlag",boardFlag);
 		mav.addAllObjects(service.myapply(userIndex, page, boardFlag));
 		mav.addAllObjects(service.myboard(userIndex, page,boardFlag));
-		mav.setViewName("/bootstrapResources/mypage/mylist.jsp");
+		mav.setViewName("mypageMenu.mypage.mylist");
 		return mav;
 		
 	}
@@ -94,7 +94,7 @@ public class MyPageController {
 		HashMap<String, Object> user = service.getUser(index);
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(user);
-		mav.setViewName("/bootstrapResources/mypage/profile.jsp");
+		mav.setViewName("mypageMenu.mypage.profile");
 		return mav;
 	}
 
@@ -102,7 +102,7 @@ public class MyPageController {
 	@RequestMapping("starpoint.do")
 	public String starpoint(int boardNo, Model model) {
 		model.addAttribute("boardNo", boardNo);
-		return "/bootstrapResources/mypage/starpoint.jsp";
+		return "mypageMenu.mypage.starpoint";
 	} 
 	
 	@RequestMapping("starpointProc.do")
