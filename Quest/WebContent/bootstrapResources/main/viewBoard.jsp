@@ -65,7 +65,7 @@ function police(){
 			type : 'get',
 			url : 'police.do',
 // 			dataType : 'text',
-			data : 'boardNo=' + ${boardNo} + '&userIndex=' +${userIndex},
+			data : 'boardNo=' + ${boardNo} + '&userIndex=' + ${userIndex},
 			success : function(data) {
 				if (data == 2) {
 					window.open('이미 신고된 게시글 입니다.');
