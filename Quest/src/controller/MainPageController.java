@@ -98,9 +98,7 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
-	public String writeBoardProc(@RequestParam HashMap<String, Object> board
-, 
-			HttpSession session){
+	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session){
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex);
 		System.out.println(board);
@@ -128,7 +126,7 @@ public class MainPageController {
 	
 	
 	@RequestMapping("updateBoard.do")
-	public String updateBoard() {
+	public String updateBoard(@RequestParam(defaultValue="0") int boardNo) {
 		return "search.main.updateBoard";
 	}
 	
