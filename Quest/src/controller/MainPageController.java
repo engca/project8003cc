@@ -139,7 +139,7 @@ public class MainPageController {
 //		board.put("userIndex", userIndex); 세션도아직안댐
 		System.out.println(board);
 		service.updateBoard(board);
-		return "redirect:/viewBoard.do";
+		return "redirect:/viewBoard.do?boardNo="+board.get(Constant.Board.BOARDNO);
 	}
 	
 

@@ -228,7 +228,7 @@ select {
 						<input type = "hidden" name = "userIndex" value = "${userIndex }">
 						
 						<input type="submit" class="btn btn-success btn-lg" value="수정완료"> <a
-							class="btn btn-primary btn-lg" onclick="location.href='list.do'">퀘스트목록</a></td>
+							class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'">퀘스트목록</a></td>
 					</tr>
 				</table>
 			</form>
