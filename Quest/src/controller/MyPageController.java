@@ -28,10 +28,11 @@ public class MyPageController {
 	 ModelAndView mav = new ModelAndView();
 	 mav.addAllObjects(tmp);
 	 
-	 mav.setViewName("mypageMenu.mypage.applyPopup");
+	 mav.setViewName("applyPopup.popup");
 	
 	 return mav;
 	 }
+	 
 
 	@RequestMapping("applyPopupProc.do")
 	public String applyPopupProc() {
@@ -56,7 +57,7 @@ public class MyPageController {
 
 	@RequestMapping("bookmarkPopup.do")
 	public String bookmarkPopup() {
-		return "mypageMenu.mypage.bookmarkPopup";
+		return "bookmarkPopup.popup";
 	}
 
 	@RequestMapping("complete.do")
@@ -111,7 +112,7 @@ public class MyPageController {
 	@RequestMapping("starpoint.do")
 	public String starpoint(int boardNo, Model model) {
 		model.addAttribute("boardNo", boardNo);
-		return "starpoint.star";
+		return "starpoint.popup";
 	} 
 	
 	

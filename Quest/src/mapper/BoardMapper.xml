@@ -20,16 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<update id="updateBoard" parameterType="java.util.HashMap">
-		UPDATE board SET
+		UPDATE board SET 
 		boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
-		date =
-		sysdate(), policeCount=#{policeCount}, readCount=#{readCount},
-		title=#{title}, addrNo=#{addrNo}, reward1=#{reward1},
-		reward2=#{reward2},
-		reward3=#{reward3}, people=#{people},
-		contactNo=#{contactNo}, stTime=#{stTime},
-		playTime=#{playTime},
-		content=#{content} WHERE boardNo=#{boardNo}
+		date = sysdate(), policeCount=#{policeCount}, readCount=#{readCount},
+		title=#{title}, addrNo=#{addrNo}, reward1=#{reward1}, reward2=#{reward2},
+		reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},
+		playTime=#{playTime}, content=#{content} 
+		WHERE boardNo=#{boardNo}
 	</update>
 
 	<delete id="deleteBoard" parameterType="int">
