@@ -26,7 +26,7 @@
 		</tr>
 		<tr>
 			<td>
-				<div style="position: absolute; top: 250px; width: 100%;">
+				<div style="position: absolute; top: 250px; width: 100%;height:700px;">
 					<tiles:insertAttribute name="body"></tiles:insertAttribute>
 				</div>
 			</td>

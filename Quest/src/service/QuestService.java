@@ -507,7 +507,10 @@ public class QuestService implements IQuestService {
 		return dao.selectAddress(addrNo);
 
 	}
-
+	public int getUserIndexById(String id)
+	{
+		return dao.selectUserIndexById(id);
+	}
 	@Override
 	public HashMap<String, Object> mycomplete(int userIndex, int page) {
 		// TODO Auto-generated method stub

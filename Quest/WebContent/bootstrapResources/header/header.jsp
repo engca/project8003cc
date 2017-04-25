@@ -30,62 +30,79 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-<script type="text/javascript">
-</script>
+	<script type="text/javascript">
+	function login(){
+// 		alert("asd");
+		var id = $("#id").value();
+		var pwd = $("#pw").val;
+		alert(id);
+		alert(pwd);
+// 		$.ajax({
+// 			type : "get",
+// 			url : "getGugun.ajax",
+// 			dataType : "json",
+// 			data : "sido="+val,
+// 			success : function(data){
+// 				$('#gunguuu').empty();
+// 					var ul = $('<ul>');
+// 				$(data.gungu).each(function(index){
+// 					var a = $('<il>')
+// 					var b = $('<input type ="checkbox" name="area" value="'+this.gungu+'">');
+// 					$(a).append(b);
+// 					var c = this.gungu;
+// 					$(a).append(c);		
+// 					$(ul).append(a);
+// 				});
+// 				$('#gunguuu').append(ul);
+// 				},
+// 			error : function() {
+// 				alert("error");
+// 			}
+// 		 });
+}
+	
+	</script>
 </head>
-<body id="page-top" class="index">
+<body>
 
     <!-- Navigation -->
-        <div class="container" >
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style ="padding:10px">
                    <c:choose>
 					<c:when test="${param.id == null}">
 						<form action="login.do">
 							<div>
-								<span style = "position:absolute; margin:5px;" align = "right">
+								<span >
 									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
-										onclick="location.href='List.do?boardflag=0'" value="잘해요">
+										onclick="location.href='listBoard.do?boardflag=0'" value="잘해요">
 									<input type="button" id='todoBtn' class='btn btn-success btn-lg'
-										onclick="location.href='List.do?boardflag=1'" value="해주세요">
+										onclick="location.href='listBoard.do?boardflag=1'" value="해주세요">
 								</span>
-								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="nav navbar-nav navbar-right">
-								<span style="left:50%; margin:5px;" align = "right">
-									<span style=" color:white;"> id : </span><input type="text" name="id" > 
-									<span style="color:white;"> pw: </span><input type="password" name="pw" >
+								<span  style="float:right">
+									<span > id : </span><input type="text" id="id" > 
+									<span > pw: </span><input type="password" id="pw" >
 									<input type="submit" value="로그인" class='btn btn-success btn-lg'
-									onclick = "locaion.href='login.do'"> 
+									onclick = "alert('?')"> 
 									<input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'>
 								</span>
-								</ul>
-								</div>
 							</div>
 						</form>
 					</c:when>
 					<c:otherwise>
 						<span >
 							<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
-								onclick="location.href='List.do?boardflag=0'" value="잘해요">
+								onclick="location.href='listBoard.do?boardflag=0'" value="잘해요">
 							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
-								onclick="location.href='List.do?boardflag=1'" value="해주세요">
+								onclick="location.href='listBoard.do?boardflag=1'" value="해주세요">
 						</span>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav navbar-right">
-						<marquee direction="right"><font size=4> ${param.id }님 환영합니다.  </marquee> 
-						<input type="button" value="마이페이지" 	onclick="location.href='mypage.do'">
-						<input type="button" value="로그아웃"	onclick="location.href='logout.do'">
-						</ul>
+							<marquee direction="right"><font size=4> ${param.id }님 환영합니다.  </marquee> 
+							<input type="button" value="마이페이지" 	onclick="location.href='mypage.do'">
+							<input type="button" value="로그아웃"		onclick="location.href='logout.do'">
 						</div>
 					</c:otherwise>
 				</c:choose>
             </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-
-
-    
 
    
     <!-- jQuery -->

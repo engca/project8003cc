@@ -50,7 +50,7 @@ public interface IQuestDao {
 //	public Score selectScoreByUser1Id(int user1_index);
 //	public Score selectScoreByUser2Id(int user2_index);
 	public HashMap<String, Object> selectScoreByBoardNo(int boardNo);
-
+	public int selectUserIndexById(String id);
 	// 즐겨찾기
 	public int insertBookMark(HashMap<String, Object> params);
 	public int deleteBookMark(HashMap<String, Object> params);
