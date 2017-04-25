@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,6 +87,17 @@ public class MainPageController {
 		mv.addAllObjects(service.readBoard(boardNo));
 		mv.setViewName("search.main.viewBoard");
 		return mv; 
+	}
+	
+	@RequestMapping("deleteBoardPopup.do")
+	public String deleteBoardPopup(Model model, int boardNo){
+		model.addAttribute("boardNo", boardNo);
+		return "deleteBoardPopup.popup";
+	}
+	
+	@RequestMapping("deleteBoard.do")
+	public String deleteBoard(int boardNo){
+		return "search.main.listBoard";
 	}
 	
 	@RequestMapping("writeBoard.do")

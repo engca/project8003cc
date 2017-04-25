@@ -172,7 +172,7 @@ margin-left: 0px
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">								
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
-				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
+				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoardPopup.do?boardNo=${boardList.boardNo }'">
 <%-- 		</c:when> --%>
 <%-- 	</c:choose>					 --%>
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'" value="퀘스트목록">
