@@ -106,14 +106,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * from board
 		where boardFlag = #{boardFlag}
 		<if test="searchKey != null and searchKey != ''">
-			or title like CONCAT('%',#{searchKey},'%')
+			and title like CONCAT('%',#{searchKey},'%')
 		</if>
 		<if test="userIndex != null and userIndex != ''">
-			or userIndex = #{userIndex}
+			and userIndex = #{userIndex}
 		</if>
 		<if test="addrNo != null">
 			<foreach item="addrno" collection="addrNo">
-				or addrNo = #{addrNo}
+				and addrNo = #{addrNo}
 			</foreach>
 		</if>
 		order by boardNo desc

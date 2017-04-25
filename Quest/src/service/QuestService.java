@@ -133,17 +133,7 @@ public class QuestService implements IQuestService {
 	public HashMap<String, Object> searchBoardList(int boardflag, int page, String searchKey) {
 		// TODO Auto-generated method stub
 		// 시작페이지와 끝페이지
-				int start = (page - 1) / 10 * 10 + 1;
-				int end = ((page - 1) / 10 + 1) * 10;
-				// 첫페이지와 마지막페이지
-				HashMap<String, Object> paramss = new HashMap<>();
-				paramss.put("boardflag", boardflag);
-				paramss.put("searchKey", searchKey);
-				int first = 1;
-				int last = (dao.getBoardCountBySearch(paramss) - 1) / 10 + 1;
-				// 끝페이지 검증
-				end = last < end ? last : end;
-				// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
+				
 				int skip = (page - 1) * 10;
 				int count = 10;
 				
@@ -153,6 +143,15 @@ public class QuestService implements IQuestService {
 				params.put("count", count);
 				params.put("searchKey", searchKey);
 				List<HashMap<String, Object>> list = dao.selectBoard(params);
+				
+				int start = (page - 1) / 10 * 10 + 1;
+				int end = ((page - 1) / 10 + 1) * 10;
+				// 첫페이지와 마지막페이지
+				int first = 1;
+				// 끝페이지 검증
+				// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
+				int last = (list.size() - 1) / 10 + 1;
+				end = last < end ? last : end;
 				
 				HashMap<String, Object> result = new HashMap<>();
 				for (HashMap<String, Object> board : list ){

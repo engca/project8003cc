@@ -105,7 +105,7 @@ li {
 	<center>
 		<form action="searchBoard.do">
 			<select name = "boardflag">
-				<option value = "1">잘해요</option>
+				<option value = "0">잘해요</option>
 				<option value = "1">해주세요</option>
 			</select>
 			<input type="text" name="searchKey" > 
