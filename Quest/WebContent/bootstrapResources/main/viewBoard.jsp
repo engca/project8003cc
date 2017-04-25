@@ -62,7 +62,7 @@ function police(){
 			error : function(){
 				alert('DB에러');
 			}
-		});
+		}); 
 }
 
 </script>
