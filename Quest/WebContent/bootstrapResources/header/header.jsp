@@ -70,7 +70,7 @@
 							<input type="button" value="마이페이지" class='btn btn-success btn-lg'	onclick="location.href='mypage.do'">
 							<input type="button" value="로그아웃"	class='btn btn-success btn-lg'	onclick="location.href='logout.do'">
 						</span>
-							<marquee direction="right"> ${sessionScope.username }님 환영합니다.  </marquee> 
+							<marquee direction="right"> ${sessionScope.userId }님 환영합니다.  </marquee> 
 					</c:otherwise>
 				</c:choose>
             </div>

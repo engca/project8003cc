@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import commons.Constant;
 import service.IQuestService;
@@ -15,16 +16,21 @@ import service.IQuestService;
 public class HeaderController {
 	@Autowired
 	IQuestService service;
-	@RequestMapping("login.do")
+	@RequestMapping(value="login.do", method=RequestMethod.POST )
 	public String login(HttpSession session, String id, String pw){
+		System.out.println(id + " " + pw);
 		if(service.login(id, pw)!=null)
-		{
+		{	
 			HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
 			session.setAttribute(Constant.User.USERINDEX,user.get(Constant.User.USERINDEX));
 			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
+			System.out.println(user.get(Constant.User.USERINDEX) + " "+ user.get(Constant.User.NICKNAME) +" "+ user.get(Constant.User.USERID));
+		}else
+		{
+			System.out.println("널이라구욧");
 		}
-		return "listBoard.do";
+		return "redirect:listBoard.do";
 	}
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session){
