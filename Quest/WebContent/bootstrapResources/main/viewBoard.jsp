@@ -138,11 +138,10 @@ margin-left: 0px
 							<li class="btn btn-warning btn-lg">${reward1 } </li>
 							&nbsp; &nbsp;
 							<li class="btn btn-warning btn-lg">${reward2 } </li>
-							&nbsp; &nbsp;							
 							<li class="btn btn-warning btn-lg">${reward3 }</li>  
 					</tr>
 					<tr>
-						<th><h5>필요인원</h5></th>
+						<th><h5>필요인원</h5></th> 
 						<td colspan="3">${people } 명</td>
 					</tr>
 					<tr>
