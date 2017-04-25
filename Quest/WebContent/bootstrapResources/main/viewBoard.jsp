@@ -103,7 +103,7 @@ margin-left: 0px
 	<div id="board"  class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2>퀘스트 상세보기</h2>
+				<h2>상세보기</h2>
 				<hr class="star-primary1">
 			</div>
 		</div>
@@ -123,11 +123,11 @@ margin-left: 0px
 						<td colspan="3">
 							<li class="btn btn-warning btn-lg">${boardList.reward1 } </li>
 							&nbsp; &nbsp;
-						 <c:if test="${boardList.reward2 != '' or boardList.reward2 ne null}">
+						 <c:if test="${boardList.reward2 != ''}">
 							<li class="btn btn-warning btn-lg">${boardList.reward2 } </li>
 						</c:if>
 							&nbsp; &nbsp;
-						<c:if test="${boardList.reward3 != '' or boardList.reward3 ne null }">
+						<c:if test="${boardList.reward3 != ''}">
 							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>
 						</c:if>  
 					</tr>
