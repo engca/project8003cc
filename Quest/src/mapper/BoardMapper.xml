@@ -105,8 +105,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="java.util.HashMap">
 		SELECT * from board
 		where boardFlag = #{boardFlag}
-		<if test="searchMsg != null and searchMsg != ''">
-			or title like CONCAT('%',#{searchMsg},'%')
+		<if test="searchKey != null and searchKey != ''">
+			or title like CONCAT('%',#{searchKey},'%')
 		</if>
 		<if test="userIndex != null and userIndex != ''">
 			or userIndex = #{userIndex}
@@ -123,8 +123,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="int">
 		select count(*) from board
 		where boardFlag = #{boardFlag}
-		<if test="searchMsg != null and searchMsg != ''">
-			or title like CONCAT('%',#{searchMsg},'%')
+		<if test="searchKey != null and searchKey != ''">
+			or title like CONCAT('%',#{searchKey},'%')
 		</if>
 		<if test="userIndex != null and userIndex != ''">
 			or userIndex = #{userIndex}

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
 import service.IQuestService;
@@ -39,6 +41,24 @@ public class HeaderController {
 			session.removeAttribute(Constant.User.USERINDEX);
 		return "redirect:listBoard.do";
 	}
+	@RequestMapping("searchBoard.do")
+	public ModelAndView searchBoard(
+			@RequestParam(defaultValue = "0") int boardflag,
+			@RequestParam(defaultValue="1") int page ,
+			@RequestParam(defaultValue="") String searchKey){		
+		HashMap<String, Object> data = service.searchBoardList(boardflag, page, searchKey); 
+		ModelAndView mav = new ModelAndView();
+		if(boardflag==0){
+			data.put("header1", "잘해요");   
+		}
+		else if(boardflag==1){
+			data.put("header1", "해주세요");
+		}
+		mav.addAllObjects(data);
+		mav.setViewName("search.header.searchBoard");
+		return mav;		
+	}
+	
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
 		return "redirect:join.do";

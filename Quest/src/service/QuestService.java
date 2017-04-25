@@ -128,6 +128,45 @@ public class QuestService implements IQuestService {
 		result.put("boardList", list);
 		return result;  		
 	}
+	
+	@Override
+	public HashMap<String, Object> searchBoardList(int boardflag, int page, String searchKey) {
+		// TODO Auto-generated method stub
+		// 시작페이지와 끝페이지
+				int start = (page - 1) / 10 * 10 + 1;
+				int end = ((page - 1) / 10 + 1) * 10;
+				// 첫페이지와 마지막페이지
+				HashMap<String, Object> paramss = new HashMap<>();
+				paramss.put("boardflag", boardflag);
+				paramss.put("searchKey", searchKey);
+				int first = 1;
+				int last = (dao.getBoardCountBySearch(paramss) - 1) / 10 + 1;
+				// 끝페이지 검증
+				end = last < end ? last : end;
+				// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
+				int skip = (page - 1) * 10;
+				int count = 10;
+				
+				HashMap<String, Object> params = new HashMap<>();
+				params.put("boardFlag", boardflag);
+				params.put("skip", skip);
+				params.put("count", count);
+				params.put("searchKey", searchKey);
+				List<HashMap<String, Object>> list = dao.selectBoard(params);
+				
+				HashMap<String, Object> result = new HashMap<>();
+				for (HashMap<String, Object> board : list ){
+					int userindex = (int) (board.get("userIndex"));
+					board.put("nickname", nickname(userindex));
+				}				
+				result.put("start", start);
+				result.put("first", first);
+				result.put("end", end);
+				result.put("last", last);
+				result.put("current", page);
+				result.put("boardList", list);
+				return result;  	
+	}
 
 	@Override
 	public HashMap<String, Object> readBoard(int boardNo) {

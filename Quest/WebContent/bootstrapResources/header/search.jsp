@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,6 +69,11 @@
 					alert("error");
 				}
 			 });
+		function insertAreaList()
+		{
+			
+		}
+		
 	}
 </script>
 <style type="text/css">
@@ -98,11 +103,15 @@ li {
 </head>
 <body>
 	<center>
-		<form action="ListBoard.do">
-			<input type="text" name="searchKey"> <input type="submit"
-				value="검색" onclick="insertAreaList();"> <input
-				id="sangseaBtn" type="button" value="상세검색"> <input
-				type="button" id="closeBtn" value="상세검색닫기">
+		<form action="searchBoard.do">
+			<select name = "boardflag">
+				<option value = "1">잘해요</option>
+				<option value = "1">해주세요</option>
+			</select>
+			<input type="text" name="searchKey" > 
+			<input type="submit"value="검색" > 
+			<input id="sangseaBtn" type="button" value="상세검색"> 
+			<input type="button" id="closeBtn" value="상세검색닫기">
 			<div id="sangsea" style="visibility: hidden;">
 				<div id="sidooo"></div>
 				<div id="gunguuu"></div>
