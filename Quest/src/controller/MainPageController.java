@@ -146,8 +146,8 @@ public class MainPageController {
 	@RequestMapping("police.do")
 	@ResponseBody
 	public int police(int boardNo, int userIndex){
-		System.out.println(service.selectpolice(boardNo, userIndex));
-		return service.selectpolice(boardNo, userIndex);
+		int result = service.selectpolice(boardNo, userIndex);
+		return result;
 	}
 
 	// 요거 희정 테스트확인용
