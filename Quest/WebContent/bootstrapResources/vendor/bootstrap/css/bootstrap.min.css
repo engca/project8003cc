@@ -3001,7 +3001,7 @@ fieldset[disabled] input[type=checkbox], fieldset[disabled] input[type=radio],
 	height: 30px;
 	padding: 5px 10px;
 	font-size: 12px;
-	line-height: 1.5;
+	line-height: 1.5px;
 	border-radius: 3px
 }
 
