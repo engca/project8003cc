@@ -135,13 +135,15 @@ margin-left: 0px
 					<tr>
 						<th><h5>보상</h5></th>
 						<td colspan="3">
-							<li class="btn btn-lg btn-outline">${reward1 }</li>
-							<li class="btn btn-lg btn-outline">${reward2 }</li>
-							<li class="btn btn-lg btn-outline">${reward3 }</li>  
+							<li class="btn btn-warning btn-lg">${reward1 } </li>
+							&nbsp; &nbsp;
+							<li class="btn btn-warning btn-lg">${reward2 } </li>
+							&nbsp; &nbsp;							
+							<li class="btn btn-warning btn-lg">${reward3 }</li>  
 					</tr>
 					<tr>
 						<th><h5>필요인원</h5></th>
-						<td colspan="3">${people }</td>
+						<td colspan="3">${people } 명</td>
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
@@ -151,7 +153,7 @@ margin-left: 0px
 						<th><h5>희망시작시간</h5></th>
 						<td>${stTime }</td>
 						<th><h5>소요예정시간</h5></th>
-						<td>${playTime }</td>
+						<td>${playTime } 분</td>
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
