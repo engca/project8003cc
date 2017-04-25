@@ -88,14 +88,28 @@ $(document).ready(function(){
 
 	 $('#title').click(function(){
 		 if($("input:radio[name='boardFlag']").is(":checked") == true){
-		
 		 }else{
 			 alert("게시판 구분을 선택해주세요.")
-			$('#boardFlag').focus();
+			 $('#boardFlag').focus();
 			return false;
 		}
 	 });
 	 
+	 
+	 $('#btn').click(function(){
+		 if (!$('#title').val())
+		{
+			 alert("제목을 입력하세요");
+			 $('#title').focus();
+			 return false;
+		 }
+		 else if (!$('#reward1').val()){
+			 alert("보상은 하나 이상 입력해야 합니다.")
+			 $('#reward1').focus();
+			 return false;
+		 }
+		 
+	 })
 	 
 	 
 
@@ -141,7 +155,7 @@ select {
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2>퀘스트 작성하기</h2>
+				<h3>퀘스트 작성하기</h3>
 				<hr class="star-primary1">
 			</div>
 		</div>
@@ -175,7 +189,7 @@ select {
 							<table>
 								<tr>
 									<td><input type="text" placeholder="보상1" name="reward1"
-										class="form-control input-sm"></td>
+										class="form-control input-sm" id = "reward1"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" placeholder="보상2" name="reward2"
 										class="form-control input-sm"></td>
@@ -215,13 +229,13 @@ select {
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
-						<td colspan="3"><textarea cols="10" rows="10"
+						<td colspan="3"><textarea cols="10" rows="6"
 								placeholder="내용을 입력하세요." name="content" class="form-control"></textarea></td>
 					</tr>
 					<tr>
 
 						<td colspan="4" align="right"><input type="submit"
-							class="btn btn-success btn-lg" value="퀘스트등록"> <a
+							class="btn btn-success btn-lg" value="퀘스트등록" id = "btn"> <a
 							class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'">퀘스트목록 </a></td>
 					</tr>
 				</table>

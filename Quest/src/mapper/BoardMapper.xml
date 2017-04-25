@@ -5,6 +5,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="dao.IQuestDao">
 	<!-- contact mapper -->
 
+	<sql id="content">
+		<choose>
+			<when test="content != null">
+				#{content}
+			</when>
+			<otherwise>
+				''
+			</otherwise>
+		</choose>
+	</sql>
+
+	<sql id="reward2">
+		<choose>
+			<when test="reward2 != null">
+				${reward2}
+			</when>
+			<otherwise>
+				''
+			</otherwise>
+		</choose>
+	</sql>
+
+	<sql id="reward3">
+		<choose>
+			<when test="reward3 != null">
+				${reward2}
+			</when>
+			<otherwise>
+				''
+			</otherwise>
+		</choose>
+	</sql>
+
 	<select id="selectContact" parameterType="int" resultType="String">
 		select contact from contact where contactNo= #{contactNo}
 	</select>
@@ -12,20 +45,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertBoard" parameterType="java.util.HashMap">
 		INSERT INTO board
 		VALUES(#{boardFlag}, 0, 0,
-		1, sysdate(), 0, 0, #{title}, #{addrNo},
-		#{reward1}, #{reward2}, #{reward3}, #{people}, #{contactNo},
+		1, sysdate(), 0, 0,
+		#{title}, #{addrNo},
+		#{reward1},
+		<include refid="reward2"></include>
+		,
+		<include refid="reward3"></include>
+		, #{people}, #{contactNo},
 		#{stTime},
 		#{playTime},
-		#{content})
+		<include refid="content"></include>
+		)
 	</insert>
 
 	<update id="updateBoard" parameterType="java.util.HashMap">
-		UPDATE board SET 
+		UPDATE board SET
 		boardFlag=#{boardFlag}, bCompleteFlag=#{bCompleteFlag},
-		date = sysdate(), policeCount=#{policeCount}, readCount=#{readCount},
-		title=#{title}, addrNo=#{addrNo}, reward1=#{reward1}, reward2=#{reward2},
-		reward3=#{reward3}, people=#{people}, contactNo=#{contactNo}, stTime=#{stTime},
-		playTime=#{playTime}, content=#{content} 
+		date =
+		sysdate(), policeCount=#{policeCount}, readCount=#{readCount},
+		title=#{title}, addrNo=#{addrNo}, reward1=#{reward1},
+		reward2=#{reward2},
+		reward3=#{reward3}, people=#{people},
+		contactNo=#{contactNo}, stTime=#{stTime},
+		playTime=#{playTime},
+		content=#{content}
 		WHERE boardNo=#{boardNo}
 	</update>
 
@@ -116,10 +159,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		board.userIndex=#{userIndex} and
 		score.sCompleteFlag!=3
 		<if test="mode == 0">
-		and score.sCompleteFlag != 1
+			and score.sCompleteFlag != 1
 		</if>
 		<if test="mode == 1">
-		and score.sCompleteFlag != 2
+			and score.sCompleteFlag != 2
 		</if>
 		order by board.boardNo desc
 		limit #{skip}, #{count}
