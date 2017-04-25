@@ -47,22 +47,20 @@ function bookmarkPopup(){
 	bm.submit(); 
 }
 function police(){
-		alert("police");
 		$.ajax({
 			type : 'get',
 			url : 'police.do',
 			dataType : 'text',
 			data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${boardList.userIndex},
 			success : function(data) {
-				alert(data);
 				if (data == 2) {
-					window.open('이미 신고된 게시글 입니다.');
+					alert('이미 신고된 게시글 입니다.');
 				} else {
-					window.open('게시글 신고되었습니다.');
+					alert('게시글이 신고완료 되었습니다.');
 				}
 			},
 			error : function(){
-				alert('AAAA');
+				alert('DB에러');
 			}
 		});
 }
