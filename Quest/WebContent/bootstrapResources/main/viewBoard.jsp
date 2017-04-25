@@ -123,9 +123,13 @@ margin-left: 0px
 						<td colspan="3">
 							<li class="btn btn-warning btn-lg">${boardList.reward1 } </li>
 							&nbsp; &nbsp;
+						 <c:if test="${boardList.reward2 != '' or boardList.reward2 ne null}">
 							<li class="btn btn-warning btn-lg">${boardList.reward2 } </li>
+						</c:if>
 							&nbsp; &nbsp;
-							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>  
+						<c:if test="${boardList.reward3 != '' or boardList.reward3 ne null }">
+							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>
+						</c:if>  
 					</tr>
 					<tr>
 						<th><h5>필요인원</h5></th> 
