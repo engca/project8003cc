@@ -35,7 +35,7 @@
  
  	<div id="board" class="container">
  		<div class="row">
- 		<div class="collg12 ">
+ 		<div class="col-lg-12">
  			<h2>${header1}</h2>
  			<hr class="star-primary1">
  		</div>

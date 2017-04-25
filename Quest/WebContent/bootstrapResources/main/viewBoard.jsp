@@ -113,10 +113,10 @@ margin-left: 0px
 </style>
 </head>
 <body>
-	<section id="viewBoard">
-	<div class="container">
+
+	<div id="board"  class="container">
 		<div class="row">
-			<div class="col-lg-12 text-center">
+			<div class="col-lg-12">
 				<h2>퀘스트 상세보기</h2>
 				<hr class="star-primary1">
 			</div>
@@ -192,7 +192,7 @@ margin-left: 0px
 		</div>
 	</div>
 
-	</section>
+
 
 
 
