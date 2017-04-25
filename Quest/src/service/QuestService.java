@@ -208,10 +208,9 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public int deleteBoard(HashMap<String, Object> params) {
+	public int deleteBoard(int boardNo) {
 		// TODO Auto-generated method stub
-		int boradNo = (int) params.get(Constant.Board.BOARDNO);
-		return dao.deleteBoard(boradNo);
+		return dao.deleteBoard(boardNo);
 	}
 
 	@Override
