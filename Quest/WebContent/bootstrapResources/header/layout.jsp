@@ -19,14 +19,14 @@
 		</tr>
 		<tr>
 			<td>
-				<div style="position: absolute; top: 150px; width: 100%;">
+				<div style="position: absolute; top: 80px; width: 100%;">
 					<tiles:insertAttribute name="bar"></tiles:insertAttribute>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div style="position: absolute; top: 250px; width: 100%;height:700px;">
+				<div style="position: absolute; top: 150px; width: 100%;height:700px;">
 					<tiles:insertAttribute name="body"></tiles:insertAttribute>
 				</div>
 			</td>
@@ -34,7 +34,7 @@
 		<tr>
 			<td>
 				<div
-					style="position: absolute; top: 900px; width: 100%; height: 10%;">
+					style="position: absolute; top: 800px; width: 100%; height: 10%;">
 					<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 				</div>
 			</td>
