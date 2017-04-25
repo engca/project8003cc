@@ -40,7 +40,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style ="padding:10px">
                    <c:choose>
-					<c:when test="${param.id == null}">
+                   	
+					<c:when test="${sessionScope.userId == null}">
 						<form action="login.do" method = "post">
 							<div>
 								<span >
@@ -69,7 +70,7 @@
 							<input type="button" value="마이페이지" class='btn btn-success btn-lg'	onclick="location.href='mypage.do'">
 							<input type="button" value="로그아웃"	class='btn btn-success btn-lg'	onclick="location.href='logout.do'">
 						</span>
-							<marquee direction="right"> ${param.id }님 환영합니다.  </marquee> 
+							<marquee direction="right"> ${sessionScope.username }님 환영합니다.  </marquee> 
 					</c:otherwise>
 				</c:choose>
             </div>
