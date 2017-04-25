@@ -64,7 +64,6 @@
 	});
 
 $(document).ready(function(){
-	
 	 $('#sido').click(function(){
 		 var selectedVal = $('#sido option:selected').val();
 		 $.ajax({
@@ -91,23 +90,44 @@ $(document).ready(function(){
 		 }else{
 			 alert("게시판 구분을 선택해주세요.")
 			 $('#boardFlag').focus();
-			return false;
 		}
 	 });
 	 
+	 $('#reward1').click(function(){
+		 if($("#gungu option").is(":selected") == true){
+		 } else {
+			 alert("장소를 선택해주세요.");
+			 $('#sido').focus();
+		 }
+	 })
 	 
 	 $('#btn').click(function(){
-		 if (!$('#title').val())
-		{
+		 if (!$('#title').val()) {
 			 alert("제목을 입력하세요");
 			 $('#title').focus();
 			 return false;
-		 }
-		 else if (!$('#reward1').val()){
+		 }  else if (!$('#reward1').val()){
 			 alert("보상은 하나 이상 입력해야 합니다.")
-			 $('#reward1').focus();
 			 return false;
-		 }
+		 } else if($("input:radio[name='contactNo']").is(":checked") == false ){
+			 $('contactNo').focus();
+			 $('#contact').html("연락방법을 선택하세요.");
+			 return false;
+		} else if (!$('#people').val()){
+			 $('#peoplechk').html("필요인원을 적어주세요.");
+			return false;
+		} else if (isNaN($('#people').val()) == true){
+			alert("dsfds");
+			return false;
+		}
+		 
+		 
+	$('#people').blur(function){
+		if (!$('#people').val()){
+			$('#peoplechk').html("필요인원을 적어주세요.");
+			$('#people').focus();
+		} else if ())
+	}	 
 		 
 	 })
 	 
@@ -167,8 +187,8 @@ select {
 						<th><h5>게시판 구분</h5></th>
 						<td colspan="5">
 							<h4>
-								<input type="radio" name="boardFlag" value="0" id = "boardFlag"> 해주세요 
-								<input type="radio" name="boardFlag" value="1" id = "boardFlag"> 잘해요
+								<input type="radio" name="boardFlag" value="1" id = "boardFlag"> 해주세요 
+								<input type="radio" name="boardFlag" value="0" id = "boardFlag"> 잘해요
 							</h4>
 						</td>
 					</tr>
@@ -205,6 +225,7 @@ select {
 						<th><h5>필요인원</h5></th>
 						<td colspan="3"><input type="text" placeholder="     명"
 							name="people" class="form-control people" id = "people">
+							<span id = "peoplechk" style = "color:red;"></span>
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>

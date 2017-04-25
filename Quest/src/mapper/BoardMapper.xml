@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<sql id="content">
 		<choose>
-			<when test="content != null">
+			<when test="content != ''">
 				#{content}
 			</when>
 			<otherwise>
@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<sql id="reward2">
 		<choose>
-			<when test="reward2 != null">
+			<when test="reward2 != ''">
 				${reward2}
 			</when>
 			<otherwise>
@@ -29,8 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<sql id="reward3">
 		<choose>
-			<when test="reward3 != null">
-				${reward2}
+			<when test="reward3 != ''">
+				${reward3}
 			</when>
 			<otherwise>
 				''
