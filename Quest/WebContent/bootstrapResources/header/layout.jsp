@@ -9,34 +9,25 @@
 
 </head>
 <body>
-	<table style="rules: rows;">
+	<table style="rules: rows;"  border="1">
 		<tr>
 			<td>
-				<div style="position: absolute; width: 100%;">
 					<tiles:insertAttribute name="header"></tiles:insertAttribute>
-				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div style="position: absolute; top: 80px; width: 100%;">
 					<tiles:insertAttribute name="bar"></tiles:insertAttribute>
-				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div style="position: absolute; top: 150px; width: 100%;height:700px;">
 					<tiles:insertAttribute name="body"></tiles:insertAttribute>
-				</div>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<div
-					style="position: absolute; top: 800px; width: 100%; height: 10%;">
 					<tiles:insertAttribute name="footer"></tiles:insertAttribute>
-				</div>
 			</td>
 		</tr>
 	</table>
