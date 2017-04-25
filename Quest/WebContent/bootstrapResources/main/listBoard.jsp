@@ -42,19 +42,19 @@
  		</div>
  		<table class="table tablestriped">
  			<tr>
- 				<th width="10%">No</th>
- 				<th width="40%">제목</th>
- 				<th width="20%">작성자</th>
- 				<th width="20%">작성일</th>
- 				<th width="10%">조회수</th>
+ 				<td align="center" width="10%"><b>No</b></td>
+ 				<td align="center" width="40%"><b>제목</b></td>
+ 				<td align="center" width="20%"><b>작성자</b></td>
+ 				<td align="center" width="20%"><b>작성일</b></td>
+ 				<td align="center" width="10%"><b>조회수</b></td>
  			</tr>
  			<c:forEach var="board" items="${boardList}">
  				<tr>
- 					<td>${board.boardNo}</td>
+ 					<td align="center">${board.boardNo}</td>
  					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title }</a></td>
- 					<td>${board.nickname}</td>
+ 					<td align="center">${board.nickname}</td>
  					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyyMMdd" />
- 					<td>${board.readCount }</td>
+ 					<td align="center">${board.readCount }</td>
  				</tr>
  			</c:forEach>
  			<tr>
