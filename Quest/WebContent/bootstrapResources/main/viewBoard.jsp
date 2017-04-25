@@ -61,7 +61,7 @@ function police(){
 			},
 			error : function(){
 				alert('DB에러');
-			}
+			} 
 		}); 
 }
 
