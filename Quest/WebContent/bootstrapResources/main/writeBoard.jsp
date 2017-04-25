@@ -86,7 +86,25 @@ $(document).ready(function(){
 		 
 	    });
 
+	 $('#title').click(function(){
+		 if($("input:radio[name='boardFlag']").is(":checked") == true){
+		
+		 }else{
+			 alert("게시판 구분을 선택해주세요.")
+			$('#boardFlag').focus();
+			return false;
+		}
+	 });
+	 
+	 
+	 
+
+
+
 });
+
+
+
 </script>
 
 
@@ -122,9 +140,9 @@ select {
 
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12 text-center">
+			<div class="col-lg-12">
 				<h2>퀘스트 작성하기</h2>
-				<hr class="star-primary">
+				<hr class="star-primary1">
 			</div>
 		</div>
 		<div class="row">
@@ -135,15 +153,15 @@ select {
 						<th><h5>게시판 구분</h5></th>
 						<td colspan="5">
 							<h4>
-								<input type="radio" name="boardFlag" value="0"> 해주세요 <input
-									type="radio" name="boardFlag" value="1"> 잘해요
+								<input type="radio" name="boardFlag" value="0" id = "boardFlag"> 해주세요 
+								<input type="radio" name="boardFlag" value="1" id = "boardFlag"> 잘해요
 							</h4>
 						</td>
 					</tr>
 					<tr>
 						<th><h5>제목</h5></th>
 						<td colspan="3"><input type="text" placeholder="제목을 입력하세요. "
-							name="title" class="form-control" /></td>
+							name="title" class="form-control" id = "title"/></td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
@@ -172,7 +190,7 @@ select {
 					<tr>
 						<th><h5>필요인원</h5></th>
 						<td colspan="3"><input type="text" placeholder="     명"
-							name="people" class="form-control people">
+							name="people" class="form-control people" id = "people">
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>

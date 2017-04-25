@@ -67,6 +67,7 @@ $(document).ready(function(){
 
  $('#sido').click(function(){
 		//인천 만 지우기		
+// 		$("#sido").remove();
 	 var selectedVal = $('#sido option:selected').val();
 	 $.ajax({
 		type : "get",
@@ -145,7 +146,7 @@ select {
 					<tr>
 						<th><h5>제목</h5></th>
 						<td colspan="3"><input type="text" name="title"
-							class="form-control" value="${title }" /></td>
+							class="form-control" value="${title }" onFocus="this.value='';return true;"/></td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
@@ -163,13 +164,16 @@ select {
 							<table>
 								<tr>
 									<td><input type="text" name="reward1"
-										class="form-control input-sm" value="${reward1 }"></td>
+										class="form-control input-sm" value="${reward1 }" 
+										onFocus="this.value='';return true;"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" name="reward2"
-										class="form-control input-sm" value="${reward2 }"></td>
+										class="form-control input-sm" value="${reward2 }"
+										onFocus="this.value='';return true;"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" name="reward3"
-										class="form-control input-sm" value="${reward3 }"></td>
+										class="form-control input-sm" value="${reward3 }"
+										onFocus="this.value='';return true;"></td>
 								</tr>
 							</table>
 						</td>
@@ -178,7 +182,8 @@ select {
 					<tr>
 						<th><h5>필요인원</h5></th>
 						<td colspan="3"><input type="text" value="${people }"
-							name="people" class="form-control people">
+							name="people" class="form-control people"
+							onFocus="this.value='';return true;">
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
