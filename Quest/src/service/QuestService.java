@@ -131,7 +131,21 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> bd = dao.selectBoardOne(boardNo);
 		bd.put(Constant.Board.READCOUNT, (int) bd.get(Constant.Board.READCOUNT) + 1);
 		dao.updateBoard(bd);
-		return bd;
+		
+		int contactNo = (int) bd.get(Constant.Board.CONTACTNO);
+		String contactMethod = null;
+		if (contactNo == 1)	contactMethod = "KakaoTalk";
+		else if (contactNo == 2) 	contactMethod = "Email";
+		else contactMethod = "Phone";
+
+		int addrNo = (int)bd.get(Constant.Board.ADDRNO);
+		HashMap<String, Object> addr = dao.selectAddress(addrNo);
+				
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("boardList", bd);
+		result.put("contactMethod", contactMethod);		
+		result.put("addr", addr);
+		return result;
 	}
 
 

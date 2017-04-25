@@ -82,12 +82,7 @@ public class MainPageController {
 		
 	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
 	public ModelAndView viewboard(int boardNo){
-		HashMap<String, Object> board = service.getBoard(boardNo);
-		HashMap<String, Object> addr = service.getAddress((int)board.get(Constant.Board.ADDRNO));
-
 		ModelAndView mv = new ModelAndView();
-		
-		mv.addAllObjects(addr);
 		mv.addAllObjects(service.readBoard(boardNo));
 		mv.setViewName("search.main.viewBoard");
 		return mv; 

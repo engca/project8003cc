@@ -126,37 +126,37 @@ margin-left: 0px
 				<table class="table table-bordered bordertable">
 					<tr>
 						<th><h5>제목</h5></th>
-						<td colspan="3">${title } </td>
+						<td colspan="3">${boardList.title } </td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
-						<td colspan="3">${sido }&nbsp;&nbsp;&nbsp;${gungu }</td>
+						<td colspan="3">${addr.sido }&nbsp;&nbsp;&nbsp;${addr.gungu }</td>
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
 						<td colspan="3">
-							<li class="btn btn-warning btn-lg">${reward1 } </li>
+							<li class="btn btn-warning btn-lg">${boardList.reward1 } </li>
 							&nbsp; &nbsp;
-							<li class="btn btn-warning btn-lg">${reward2 } </li>
-							<li class="btn btn-warning btn-lg">${reward3 }</li>  
+							<li class="btn btn-warning btn-lg">${boardList.reward2 } </li>
+							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>  
 					</tr>
 					<tr>
 						<th><h5>필요인원</h5></th> 
-						<td colspan="3">${people } 명</td>
+						<td colspan="3">${boardList.people } 명</td>
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3">${contactNo }</td>
+						<td colspan="3">${contactMethod }</td>
 					</tr>
 					<tr>
 						<th><h5>희망시작시간</h5></th>
-						<td>${stTime }</td>
+						<td>${boardList.stTime }</td>
 						<th><h5>소요예정시간</h5></th>
-						<td>${playTime } 분</td>
+						<td>${boardList.playTime } 분</td>
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
-						<td colspan="3">${content }</td>
+						<td colspan="3">${boardList.content }</td>
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
@@ -165,22 +165,22 @@ margin-left: 0px
 <%-- 		<c:when test="${userid != null }"> --%>
 
 				<form name="apply">
-					<input type="hidden" name="boardNo" value=${boardNo }>
-					<input type="hidden" name="userIndex" value=${userIndex }>
-					<input type="hidden" name="reward1" value=${reward1 }>
-					<input type="hidden" name="reward2" value=${reward2 }>
-					<input type="hidden" name="reward3" value=${reward3 }>
-					<input type="hidden" name="contactAnswer" value=${contactAnswer }>										  
+					<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+					<input type="hidden" name="userIndex" value=${boardList.userIndex }>
+					<input type="hidden" name="reward1" value=${boardList.reward1 }>
+					<input type="hidden" name="reward2" value=${boardList.reward2 }>
+					<input type="hidden" name="reward3" value=${boardList.reward3 }>
+					<input type="hidden" name="contactAnswer" value=${boardList.contactAnswer }>										  
 				</form>						
 				<form name="bookmark">
-					<input type="hidden" name="boardNo" value=${boardNo }>
-					<input type="hidden" name="userIndex" value=${userIndex }>  
+					<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+					<input type="hidden" name="userIndex" value=${boardList.userIndex }>  
 				</form>
 				
 				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userIndex','reward1','reward2','reward3','contactAnswer')">
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userIndex')">								
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
-				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardNo }'">
+				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
 <%-- 		</c:when> --%>
 <%-- 	</c:choose>					 --%>
