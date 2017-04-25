@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<marquee direction="right"><font size=4> made by ÇÑÁ¶  </marquee> 
 </body>
 </html>

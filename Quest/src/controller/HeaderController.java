@@ -15,13 +15,18 @@ public class HeaderController {
 	@RequestMapping("login.do")
 	public String login(HttpSession session, String id, String pw){
 		if(service.login(id, pw)!=null)
+		{
+			session.setAttribute("userIndex",service.getUserIndexById(id));
+			session.setAttribute("nickName", service.nickname(service.getUserIndexById(id)));
 			session.setAttribute("id", id);
-		
+		}
 		return "redirect:main.do";
 	}
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session){
 			session.removeAttribute("id");
+			session.removeAttribute("nickName");
+			session.removeAttribute("userIndex");
 		return "redirect:main.do";
 	}
 	@RequestMapping("joinForm.do")

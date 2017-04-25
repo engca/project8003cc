@@ -33,7 +33,7 @@ public interface IQuestService {
 	public HashMap<String, Object> readBoard(int boardNo);
 	public HashMap<String, Object> getBoard(int boardNo);
 	public boolean isMyBoard(HashMap<String, Object> params);
-
+	
 	//댓글
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
@@ -72,7 +72,7 @@ public interface IQuestService {
 	public HashMap<String, Object> myboard(int userIndex , int page, int boardFlag);
 	
 	
-	
+	public int getUserIndexById(String id);
 	public HashMap<String, Object> mycomplete(int userIndex, int page);
 
 }
