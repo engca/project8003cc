@@ -92,6 +92,7 @@ public class MainPageController {
 	@RequestMapping("deleteBoardPopup.do")
 	public String deleteBoardPopup(Model model, int boardNo){
 		model.addAttribute("boardNo", boardNo);
+		
 		return "deleteBoardPopup.popup";
 	}
 	
