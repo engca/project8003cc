@@ -36,9 +36,12 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		params.put(Constant.User.USERID, id);
+		System.out.println(id + " " + password);
 		HashMap<String, Object> user = dao.selectUser(params);
-		if (user.get(Constant.User.PASSWORD) == password) {
-			return user;
+		if (user != null) {
+			if(user.get(Constant.User.PASSWORD) == password)
+				return user;
+			return null;
 		} else {
 			return null;
 		}
@@ -523,6 +526,7 @@ public class QuestService implements IQuestService {
 	}
 	public int getUserIndexById(String id)
 	{
+		System.out.println(id);
 		return dao.selectUserIndexById(id);
 	}
 	@Override
