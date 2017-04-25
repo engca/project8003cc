@@ -28,55 +28,43 @@
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
-// function applyPopup(){
-// 	var url = "applyPopup.do?boardNo="+${boardNo}+"&userIndex="
-// 			+${userIndex}+"&rewardNo="+${rewardNo}+"&contactAnswer="+${contactAnswer};	
-// 	window.open(url,'Apply','width=400, height=300');	
-// }
-// function bookmarkPopup(){
-// 	var url = "bookmarkPopup.do?boardNo="+${boardNo}+"&userIndex="+${userIndex};  
-//     window.open(url,'Bookmark','width=400, height=300');	
-// }   
-function applyPopup(boardNo,userIndex,reward1,reward2,reward3,contactAnswer){
+function applyPopup(){
+	alert("applyPopup");
 	var apply = document.apply; 
-	window.open('','apply','width=400, height=300');
+	window.open('','apply','width=500, height=600');
 	apply.action = "applyPopup.do";
 	apply.target = "apply";
 	apply.method = "post";
-	apply.boardNo.value = boardNo;
-	apply.userIndex.value = userIndex;
-	apply.reward1.value = reward1;
-	apply.reward2.value = reward2;
-	apply.reward3.value = reward3;
-	apply.contactAnswer.value = contactAnswer;
 	apply.submit(); 
 }
-function bookmarkPopup(boardNo, userIndex){
+function bookmarkPopup(){
+	alert("bookmarkpopup");
 	var bm = document.bookmark;
 	window.open('','Bookmark','width=400, height=300');
 	bm.action = "bookmarkPopup.do";
 	bm.target = "Bookmark";
 	bm.method = "post";
-	bm.boardNo.value = boardNo;
-	bm.userIndex.value = userIndex;
 	bm.submit(); 
 }
 function police(){
-	$('#police').onclick(function(){
+		alert("police");
 		$.ajax({
 			type : 'get',
 			url : 'police.do',
-// 			dataType : 'text',
-			data : 'boardNo=' + ${boardNo} + '&userIndex=' + ${userIndex},
+			dataType : 'text',
+			data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${boardList.userIndex},
 			success : function(data) {
+				alert(data);
 				if (data == 2) {
 					window.open('이미 신고된 게시글 입니다.');
 				} else {
 					window.open('게시글 신고되었습니다.');
 				}
+			},
+			error : function(){
+				alert('AAAA');
 			}
 		});
-	});	
 }
 
 </script>
@@ -138,6 +126,7 @@ margin-left: 0px
 							<li class="btn btn-warning btn-lg">${boardList.reward1 } </li>
 							&nbsp; &nbsp;
 							<li class="btn btn-warning btn-lg">${boardList.reward2 } </li>
+							&nbsp; &nbsp;
 							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>  
 					</tr>
 					<tr>
@@ -177,9 +166,9 @@ margin-left: 0px
 					<input type="hidden" name="userIndex" value=${boardList.userIndex }>  
 				</form>
 				
-				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup('boardNo','userIndex','reward1','reward2','reward3','contactAnswer')">
-				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup('boardNo','userIndex')">								
-				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()">
+				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
+				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">								
+				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
 				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoard.do'">
 <%-- 		</c:when> --%>

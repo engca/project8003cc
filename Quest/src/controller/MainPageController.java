@@ -144,8 +144,9 @@ public class MainPageController {
 	
 
 	@RequestMapping("police.do")
-	public int police(int BoardNo, int userIndex){
-		return service.selectpolice(BoardNo, userIndex);
+	public int police(int boardNo, int userIndex){
+		System.out.println(service.selectpolice(boardNo, userIndex));
+		return service.selectpolice(boardNo, userIndex);
 	}
 
 	// 요거 희정 테스트확인용
