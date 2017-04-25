@@ -31,35 +31,6 @@
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
 	<script type="text/javascript">
-	function login(){
-// 		alert("asd");
-		var id = $("#id").value();
-		var pwd = $("#pw").val;
-		alert(id);
-		alert(pwd);
-// 		$.ajax({
-// 			type : "get",
-// 			url : "getGugun.ajax",
-// 			dataType : "json",
-// 			data : "sido="+val,
-// 			success : function(data){
-// 				$('#gunguuu').empty();
-// 					var ul = $('<ul>');
-// 				$(data.gungu).each(function(index){
-// 					var a = $('<il>')
-// 					var b = $('<input type ="checkbox" name="area" value="'+this.gungu+'">');
-// 					$(a).append(b);
-// 					var c = this.gungu;
-// 					$(a).append(c);		
-// 					$(ul).append(a);
-// 				});
-// 				$('#gunguuu').append(ul);
-// 				},
-// 			error : function() {
-// 				alert("error");
-// 			}
-// 		 });
-}
 	
 	</script>
 </head>
@@ -70,7 +41,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style ="padding:10px">
                    <c:choose>
 					<c:when test="${param.id == null}">
-						<form action="login.do">
+						<form action="login.do" method = "post">
 							<div>
 								<span >
 									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
@@ -79,10 +50,9 @@
 										onclick="location.href='listBoard.do?boardflag=1'" value="해주세요">
 								</span>
 								<span  style="float:right">
-									<span > id : </span><input type="text" id="id" > 
-									<span > pw: </span><input type="password" id="pw" >
-									<input type="submit" value="로그인" class='btn btn-success btn-lg'
-									onclick = "alert('?')"> 
+									<span > id : </span><input type="text" name="id" > 
+									<span > pw: </span><input type="password" name="pw" >
+									<input type="submit" value="로그인" class='btn btn-success btn-lg'> 
 									<input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'>
 								</span>
 							</div>
@@ -95,11 +65,11 @@
 							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
 								onclick="location.href='listBoard.do?boardflag=1'" value="해주세요">
 						</span>
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<marquee direction="right"><font size=4> ${param.id }님 환영합니다.  </marquee> 
-							<input type="button" value="마이페이지" 	onclick="location.href='mypage.do'">
-							<input type="button" value="로그아웃"		onclick="location.href='logout.do'">
-						</div>
+						<span  style="float:right" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<input type="button" value="마이페이지" class='btn btn-success btn-lg'	onclick="location.href='mypage.do'">
+							<input type="button" value="로그아웃"	class='btn btn-success btn-lg'	onclick="location.href='logout.do'">
+						</span>
+							<marquee direction="right"> ${param.id }님 환영합니다.  </marquee> 
 					</c:otherwise>
 				</c:choose>
             </div>

@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 or nickname = #{nickname}
 	</if>
 	</select>
-	<select id="selectUserIndex" parameterType="String" resultType="int">
+	<select id="selectUserIndexById" parameterType="String" resultType="int">
 	select userIndex from user where userId = #{userId}
 	</select>
 	<select id="selectNicknname" parameterType="int" resultType="String">

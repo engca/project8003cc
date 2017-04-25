@@ -1,11 +1,14 @@
 package controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import commons.Constant;
 import service.IQuestService;
   
 @Controller
@@ -16,22 +19,23 @@ public class HeaderController {
 	public String login(HttpSession session, String id, String pw){
 		if(service.login(id, pw)!=null)
 		{
-			session.setAttribute("userIndex",service.getUserIndexById(id));
-			session.setAttribute("nickName", service.nickname(service.getUserIndexById(id)));
-			session.setAttribute("id", id);
+			HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
+			session.setAttribute(Constant.User.USERINDEX,user.get(Constant.User.USERINDEX));
+			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
+			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
 		}
-		return "redirect:main.do";
+		return "listBoard.do";
 	}
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session){
-			session.removeAttribute("id");
-			session.removeAttribute("nickName");
-			session.removeAttribute("userIndex");
-		return "redirect:main.do";
+			session.removeAttribute(Constant.User.USERID);
+			session.removeAttribute(Constant.User.NICKNAME);
+			session.removeAttribute(Constant.User.USERINDEX);
+		return "redirect:listBoard.do";
 	}
 	@RequestMapping("joinForm.do")
 	public String joinForm(){
-		return "redirect:joinForm.jsp";
+		return "redirect:join.do";
 	}
 	
 	@RequestMapping("search.do")
