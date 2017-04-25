@@ -39,7 +39,7 @@ public class QuestService implements IQuestService {
 		System.out.println(id + " " + password);
 		HashMap<String, Object> user = dao.selectUser(params);
 		if (user != null) {
-			if(user.get(Constant.User.PASSWORD) == password)
+			if(user.get(Constant.User.PASSWORD).equals(password))
 				return user;
 			return null;
 		} else {
