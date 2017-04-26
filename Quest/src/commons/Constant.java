@@ -40,12 +40,10 @@ public class Constant {
 	}
 
 	public static class Commnet {
-		public static final String USER1INDEX = "user1Index";
-		public static final String USER2INDEX = "user2Index";
 		public static final String BOARDNO = "boardNo";
-		public static final String SCOMPLETEFLAG = "sCompleteFlag";
-		public static final String USER1STARPOINT = "user1StarPoint";
-		public static final String USER2STARPOINT = "user2starPoint";
+		public static final String USERINDEX = "userIndex";
+		public static final String DATE = "date";
+		public static final String CONTENT = "content";		
 	}
 	
 	public static class Score{
