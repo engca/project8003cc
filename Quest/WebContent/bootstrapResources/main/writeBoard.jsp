@@ -122,14 +122,14 @@ $(document).ready(function(){
 		}
 		 
 		 
-	$('#people').blur(function){
-		if (!$('#people').val()){
-			$('#peoplechk').html("필요인원을 적어주세요.");
-			$('#people').focus();
-		} else if ())
-	}	 
-		 
-	 })
+// 	$('#people').blur(function){
+// 		if (!$('#people').val()){
+// 			$('#peoplechk').html("필요인원을 적어주세요.");
+// 			$('#people').focus();
+// 		} else if ())
+// 	}	 
+		   
+// 	 })
 	 
 	 
 
