@@ -183,17 +183,47 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> bd = dao.selectBoardOne(boardNo);
 		bd.put(Constant.Board.READCOUNT, (int) bd.get(Constant.Board.READCOUNT) + 1);
 		dao.updateBoard(bd);
+		
 		// 컨택방법 테이블 참조
 		int contactNo = (int) bd.get(Constant.Board.CONTACTNO);
 		String contactMethod = null;
 		if (contactNo == 1)	contactMethod = "KakaoTalk";
 		else if (contactNo == 2) 	contactMethod = "Email";
 		else contactMethod = "Phone";
+
 		// 주소테이블 참조
 		int addrNo = (int)bd.get(Constant.Board.ADDRNO);
 		HashMap<String, Object> addr = dao.selectAddress(addrNo);
+		
+		// 신청하기 테이블 참조
+		int AboardNo = (int)bd.get(Constant.Board.BOARDNO);
+		int Auserindex = (int)bd.get(Constant.Board.USERINDEX);
+		HashMap<String, Object> apply = new HashMap<>();
+		apply.put("boardNo", AboardNo);
+		apply.put("userIndex", Auserindex);
+		HashMap<String, Object> applydata = dao.selectApply(apply);
+		
+		// 신고하기 테이블 참조
+		int PboardNo = (int)bd.get(Constant.Board.BOARDNO);
+		int Puserindex = (int)bd.get(Constant.Board.USERINDEX);
+		HashMap<String, Object> police = new HashMap<>();
+		apply.put("boardNo", PboardNo);
+		apply.put("userIndex", Puserindex);		
+		HashMap<String, Object> policedata = dao.selectPolice(police);
+		
+		// 즐겨찾기 테이블 참조
+		int BboardNo = (int)bd.get(Constant.Board.BOARDNO);
+		int Buserindex = (int)bd.get(Constant.Board.USERINDEX);
+		HashMap<String, Object> bookmark = new HashMap<>();
+		apply.put("boardNo", BboardNo);
+		apply.put("userIndex", Buserindex);		
+		List<HashMap<String, Object>> bookmarkdata = dao.selectBookMark(bookmark); 
+		
 		// 최종 해쉬맵에 담아보내기		
 		HashMap<String, Object> result = new HashMap<>();
+		result.put("applydata", applydata);
+		result.put("policedata", policedata);
+		result.put("bookmarkdata", bookmarkdata);
 		result.put("boardList", bd);
 		result.put("contactMethod", contactMethod);		
 		result.put("addr", addr);
