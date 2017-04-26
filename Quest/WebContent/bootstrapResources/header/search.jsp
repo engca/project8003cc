@@ -41,12 +41,13 @@
 			
 		});
 		$('#closeBtn').click(function() {
-			$('#sangsea').css('visibility', 'hidden');
+			$('#sangsea').empty();
 			$("input:checkbox[name='area']").prop("checked", false);
 			$('#sangseaArea').css('visibility', 'hidden');
 		});	 
 	});
 	function searchGungu(btn){
+			$('#gunguuu').css('visibility', 'visible');
 			var val = btn.value;
 			$.ajax({
 				type : "get",
@@ -122,8 +123,8 @@ li {
 			<input id="sangseaBtn" type="button" value="상세검색"> 
 			<input type="button" id="closeBtn" value="상세검색닫기">
 			<div id="sangsea" style="visibility: hidden;">
-				<table id="sidooo"></table>
-				<table id="gunguuu"></table>
+				<table id="sidooo" style = "width: 500px; border:double"></table>
+				<table id="gunguuu" style = "width: 800px; border:double; visibility:hidden;"></table>
 			</div>
 		</form>
 	</center>
