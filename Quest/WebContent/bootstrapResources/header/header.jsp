@@ -60,7 +60,7 @@
 						</form>
 					</c:when>
 					<c:otherwise>
-						<span >
+						<span > 
 							<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
 								onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
 							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
