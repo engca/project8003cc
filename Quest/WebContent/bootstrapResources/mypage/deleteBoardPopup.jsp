@@ -77,10 +77,9 @@ h2 {
 	<hr class="star-primary">
 	<center>
 		<input type="button" class="btn btn-primary btn-lg" value="삭제"
-			onclick="location.href='deleteBoard.do?boardNo=${boardList.boardNo }'">
+			onclick="location.href='deleteBoard.do?boardNo=${boardNo }'">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		<input type="button"	class="btn btn-success btn-lg" value="취소"
-			onclick="doClose()">
+		<input type="button"	class="btn btn-success btn-lg" value="취소"	onclick="doClose()">
 	</center>
 
 </body>

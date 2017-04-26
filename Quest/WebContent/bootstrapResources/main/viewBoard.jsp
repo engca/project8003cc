@@ -37,6 +37,9 @@ function bookmarkPopup(){
 	bm.method = "post";
 	bm.submit(); 
 }
+function deletePopup(){
+	window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');
+}
 function police(){
 		$.ajax({
 			type : 'get',
@@ -55,6 +58,7 @@ function police(){
 			} 
 		}); 
 }
+
 
 </script>
 <style type="text/css">
@@ -143,8 +147,8 @@ margin-left: 0px
 					<tr>
 						<td colspan="4" align="right">
 <!-- 	로그인 세션 체크 -->
-<%-- 	<c:choose> --%>
-<%-- 		<c:when test="${userid != null }"> --%>
+	<c:choose>
+		<c:when test="${userId != null }">
 
 				<form name="apply">
 					<input type="hidden" name="boardNo" value=${boardList.boardNo }>
@@ -162,16 +166,47 @@ margin-left: 0px
 				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">								
 				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
+				<c:if test="${sessionScope.userIndex == boardList.userIndex }">
 				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
-				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" onclick="location.href='deleteBoardPopup.do?boardNo=${boardList.boardNo }'">
-<%-- 		</c:when> --%>
-<%-- 	</c:choose>					 --%>
+				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" 
+				onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">   
+				</c:if>
+		</c:when>
+	</c:choose>					
 				<input type="button" 	class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'" value="퀘스트목록">
 			
 					</td>
 				</tr>
-				</table>
-										
+			</table>
+<!-- 댓글보기 부분 추가 -->
+		<hr>
+			<table class="table table-bordered bordertable" width="80%">
+			<c:if test="${listComment != null }">
+				<c:forEach var="comment" items="${listComment }">
+				<tr>
+					<td width="20%"><b>${comment.nickname}</b></td>
+					<td width="60%">${comment.content}</td>
+					<td width="20%" align="center">${comment.date }</td>
+					<td>
+						<c:if test="${sessionScope.nickname == comment.nickname }">
+						<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${boardList.userIndex }'" value="삭제">
+						</c:if>
+					</td> 
+				</tr>
+				</c:forEach>
+				<c:if test="${sessionScope.userId != null }">
+				<form action="insertComment.do" method="post">
+					<tr>
+						<td>${sessionScope.userId}</td>
+						<td colspan="2"><textarea name="content" id="content" rows="2" cols="100"></textarea></td>
+								<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+								<input type="hidden" name="userIndex" value=${boardList.userIndex }>
+						<td><input type="submit" class="btn btn-primary btn-lg" value="댓글등록"></td>
+					</tr>
+				</form>
+				</c:if>
+			</c:if>	
+			</table>								
 		</div>
 	</div>
 

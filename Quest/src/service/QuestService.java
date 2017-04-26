@@ -172,19 +172,20 @@ public class QuestService implements IQuestService {
 
 	@Override
 	public HashMap<String, Object> readBoard(int boardNo) {
+		// 보드 불러와서 조회수 업데이트하기
 		HashMap<String, Object> bd = dao.selectBoardOne(boardNo);
 		bd.put(Constant.Board.READCOUNT, (int) bd.get(Constant.Board.READCOUNT) + 1);
 		dao.updateBoard(bd);
-		
+		// 컨택방법 테이블 참조
 		int contactNo = (int) bd.get(Constant.Board.CONTACTNO);
 		String contactMethod = null;
 		if (contactNo == 1)	contactMethod = "KakaoTalk";
 		else if (contactNo == 2) 	contactMethod = "Email";
 		else contactMethod = "Phone";
-
+		// 주소테이블 참조
 		int addrNo = (int)bd.get(Constant.Board.ADDRNO);
 		HashMap<String, Object> addr = dao.selectAddress(addrNo);
-				
+		// 최종 해쉬맵에 담아보내기		
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("boardList", bd);
 		result.put("contactMethod", contactMethod);		
@@ -217,9 +218,14 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> listComment(int BoardNo) {
+	public List<HashMap<String, Object>> listComment(int boardNo) {
 		// TODO Auto-generated method stub
-		List<HashMap<String, Object>> list = dao.selectAllCommentByBoardNo(BoardNo);
+		List<HashMap<String, Object>> list = dao.selectAllCommentByBoardNo(boardNo);
+				
+		for (HashMap<String, Object> board : list ){
+			int userindex = (int) (board.get("userIndex"));
+			board.put("nickname", nickname(userindex));
+		}		
 		return list;
 	}
 

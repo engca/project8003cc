@@ -83,10 +83,25 @@ public class MainPageController {
 		
 	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
 	public ModelAndView viewboard(int boardNo){
+		HashMap<String, Object> board = service.readBoard(boardNo);
+		List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		ModelAndView mv = new ModelAndView();
-		mv.addAllObjects(service.readBoard(boardNo));
+		mv.addAllObjects(board);
+		mv.addObject("listComment", comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv; 
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value ="insertComment.do")
+	public String insertComment(@RequestParam HashMap<String, Object> comment, HttpSession session){		
+		service.writeComment(comment);
+		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO);
+	}
+	
+	@RequestMapping("deleteComment.do")
+	public String deleteComment(@RequestParam HashMap<String, Object> comment, HttpSession session){		
+		service.deleteComment(comment);
+		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO);
 	}
 	
 	@RequestMapping("deleteBoardPopup.do")
@@ -98,7 +113,7 @@ public class MainPageController {
 	@RequestMapping("deleteBoard.do")
 	public String deleteBoard(int boardNo){
 		service.deleteBoard(boardNo);
-		return "search.main.listBoard";
+		return "redirect:/listBoard.do";
 	}
 	
 	@RequestMapping("writeBoard.do")
