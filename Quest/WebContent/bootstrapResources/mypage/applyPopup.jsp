@@ -64,8 +64,15 @@ select {
 <script type="text/javascript">
 	var apply = function() {
 		alert('신청이 완료되었습니다.');
-		var me = this;
-		me.doClose();
+		var apply = document.applyPopup;
+// 		window.open('','applyPopup','width=500, height=600');
+		apply.action = "applyPopupProc.do";
+		window.opener.name= "parent"
+		apply.target = "parent";
+		apply.method = "post";
+		apply.submit(); 
+// 		opener.document.location.href="viewBoard.do?boardNo="+${boardNo};
+		window.close();
 	}
 
 	var doClose = function() {
@@ -82,34 +89,46 @@ select {
 				<div class="modal-body">
 					<h1 align="center">신 청 하 기</h1> 
 					<hr class="star-primary">
-					<form action=""></form>
+					
+					
+					<form name="applyPopup">
 					<table align="center" class="table table-bordered">
 						<tr align="center">
+							<th> 글 번 호</th>
+							<td>${boardNo}<input type="hidden" 
+								name="boardNo" value="${boardNo}" id="boardNo">
+						</tr>
+					
+						<tr align="center">
 							<th>보상</th>
-							<td><input type="radio" name="reward" id="reward"
-								value="1"><%=request.getParameter("reward1") %> &nbsp;&nbsp;&nbsp; <input
-								type="radio" name="reward" id="reward" value="2"><%=request.getParameter("reward2") %>
-								&nbsp&nbsp <input type="radio" name="reward" id="reward"
+							<td>
+								<input type="radio" name="rewardNo" id="reward"value="1">
+								<%=request.getParameter("reward1") %> &nbsp;&nbsp;&nbsp; 
+								<input type="radio" name="rewardNo" id="reward" value="2">
+								<%=request.getParameter("reward2") %>
+								&nbsp;&nbsp; <input type="radio" name="rewardNo" id="reward"
 								value="3"><%=request.getParameter("reward3") %></td>
 						</tr>
 						<tr align="center">
 							<th>연락 방법</th>
-							<td>${contact }<input type="text" placeholder="연락처를 입력하세요."
-								name="contactInfo" id="contactInfo">
+							<td>${contact}<input type="text" placeholder="연락처를 입력하세요."
+								name="contactAnswer" id="contactAnswer">
 						</tr>
 						<tr align="center">
 							<th>내용</th>
 							<td><textarea cols="4" rows="4" placeholder="내용을 입력하세요."
 									name="content" class="form-control"></textarea></td>
 						</tr>
+						
 						<tr align="center">
 							<td colspan="2" align="center"><input type="button"
 								class="btn btn-primary btn-lg" value="취소"
-								onclick="location.href='viewBoard.do'">
-								&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit"
+								onclick="doClose()">
+								&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
 								class="btn btn-success btn-lg" value="신청완료" onclick="apply()">
 						</tr>
 					</table>
+					</form>
 				</div>
 			</div>
 		</div>

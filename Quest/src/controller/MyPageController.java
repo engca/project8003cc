@@ -21,22 +21,34 @@ public class MyPageController {
 	IQuestService service;
 
 	 @RequestMapping("applyPopup.do")
-	 public ModelAndView applyPopup(HashMap<String, Object> params) {
-		 // 연락방법, 보상종류
-	 HashMap<String, Object> tmp = service.getBoard((int)params.get("boardNo"));
-	 tmp.put("contact", service.getContact((int)tmp.get("contactNo")));
-	 ModelAndView mav = new ModelAndView();
-	 mav.addAllObjects(tmp);
-	 
-	 mav.setViewName("applyPopup.popup");
+	 public ModelAndView applyPopup(@RequestParam HashMap<String, Object> params) {
+//		 System.out.println("applyPopup.do");
+//		 System.out.println("params" + params);
+//		 System.out.println("boardNo: " + params.get("boardNo"));
+//		 System.out.println("getboard"+ Integer.parseInt((String)(params.get("boardNo"))));
+		 HashMap<String, Object> tmp = service.getBoard(Integer.parseInt((String)(params.get("boardNo"))));
+//		 System.out.println("tmp"+service.getContact(Integer.parseInt((String)params.get("contactNo"))));
+		 
+		 tmp.put("contact", service.getContact(Integer.parseInt((String)params.get("contactNo"))));
+		 ModelAndView mav = new ModelAndView();
+		 mav.addAllObjects(tmp);
+		 mav.setViewName("applyPopup.popup");
 	
-	 return mav;
+		 return mav;
 	 }
 	 
 
 	@RequestMapping("applyPopupProc.do")
-	public String applyPopupProc() {
-		return "mypageMenu.mypage.applyPopup";
+	public String applyPopupProc(Model model, @RequestParam HashMap<String, Object>params,HttpSession session) {
+//		int userIndex = (int)session.getAttribute("userIndex");
+		int userIndex = 1;
+		params.put("userIndex", userIndex);
+		service.writeApply(params);
+//		System.out.println("applyPopupProc.do params : " + params );
+//		System.out.println("apply OK!");
+	
+		model.addAttribute("boardNo", params.get("boardNo"));
+		return "redirect:viewBoard.do";
 	}
 
 
