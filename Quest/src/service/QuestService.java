@@ -130,7 +130,7 @@ public class QuestService implements IQuestService {
 	}
 	
 	@Override
-	public HashMap<String, Object> searchBoardList(int boardflag,int searchFlag, int page,String searchKey) {
+	public HashMap<String, Object> searchBoardList(int boardflag,int searchFlag, int page,String searchKey, String[] area) {
 		// TODO Auto-generated method stub
 		// 시작페이지와 끝페이지
 				
@@ -142,6 +142,10 @@ public class QuestService implements IQuestService {
 				params.put("skip", skip);
 				params.put("count", count);
 				params.put("searchKey", searchKey);
+				int[] areaList = new int[area.length];
+				for(int i =0 ;i < area.length ;i ++)
+					areaList[i] = dao.selectAddrNo(area[i]);
+				params.put("area",areaList);
 				List<HashMap<String, Object>> list = null;
 				if(searchFlag == 0)
 					list = dao.selectBoardByContent(params);

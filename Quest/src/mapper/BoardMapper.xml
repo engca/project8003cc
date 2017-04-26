@@ -151,8 +151,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="searchKey != null and searchKey != ''">
 			or title like CONCAT('%',#{searchKey},'%')
 		</if>
-		<if test="addrNo != null">
-			<foreach item="addrno" collection="addrNo">
+		<if test="area != null">
+			<foreach item="addrNo" collection="area">
 				or addrNo = #{addrNo}
 			</foreach>
 		</if>
