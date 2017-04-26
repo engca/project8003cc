@@ -13,7 +13,8 @@ public interface IQuestDao {
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(int boradNo);
 	public List<HashMap<String, Object>> selectBoardAll();
-	public List<HashMap<String, Object>> selectBoard(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectBoardByContent(HashMap<String, Object> params);
+	public List<HashMap<String, Object>> selectBoardByWriter(HashMap<String, Object> params);
 	public HashMap<String, Object> selectBoardOne(int boardNo);
 	public int getBoardCount(int boardFlag);
 	public int getBoardCountBySearch(HashMap<String, Object> params);
