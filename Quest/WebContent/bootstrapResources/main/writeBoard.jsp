@@ -66,9 +66,8 @@ $(document).ready(function(){
 				alert("error");
 			}
 		 });
-		 
-	    });
-
+	 });
+});
 	 $('#title').click(function(){
 		 if($("input:radio[name='boardFlag']").is(":checked") == true){
 		 }else{

@@ -33,7 +33,7 @@ public interface IQuestService {
 	public HashMap<String, Object> readBoard(int boardNo);
 	public HashMap<String, Object> getBoard(int boardNo);
 	public boolean isMyBoard(HashMap<String, Object> params);
-	public HashMap<String, Object> searchBoardList(int boardflag, int page, String searchKey);
+	public HashMap<String, Object> searchBoardList(int boardflag,int searchFlag, int page, String searchKey,String[] area);
 	//댓글
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
