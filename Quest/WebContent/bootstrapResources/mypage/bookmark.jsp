@@ -81,8 +81,8 @@ h1 {
 			<c:forEach var="board" items="${bookmarkList }">
 				<tr>
 					<td>${board.boardNo }</td>
-					<td><c:if test="${board.boardFlag == 0 }">해주세요</c:if> <c:if
-							test="${board.boardFlag == 1 }">잘해요</c:if></td>
+					<td><c:if test="${board.boardFlag == 0 }">잘해요</c:if> <c:if
+							test="${board.boardFlag == 1 }">해주세요</c:if></td>
 					<td><a href="viewBoard.do?boardNo=${board.boardNo }">
 							${board.title }</a></td>
 					<!-- USER INDEX>ID -->
