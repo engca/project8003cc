@@ -49,9 +49,6 @@ $.ajax({
 	url : "getSido.ajax",
 	dataType : "json",
 	success : function(data) {
-// 		$("#sido").empty();
-// 		 $('<option>'+ ${sido } +'</option>');
-// 		 $("#sido").append(sido);
 		$(data.sido).each(function(index) {
 			var sido = $('<option value='+this.sido+'>'+ this.sido +'</option>');
 			$("#sido").append(sido);
@@ -66,8 +63,6 @@ $.ajax({
 $(document).ready(function(){
 
  $('#sido').click(function(){
-		//인천 만 지우기		
-// 		$("#sido").remove();
 	 var selectedVal = $('#sido option:selected').val();
 	 $.ajax({
 		type : "get",
@@ -85,8 +80,41 @@ $(document).ready(function(){
 			alert("error");
 		}
 	 });
-	 
     });
+ 
+ 
+ $('#btn').click(function(){
+	 if (!$('#title').val()) {
+		 alert("제목을 입력하세요");
+		 $('#title').focus();
+		 return false;
+	 } else if (!$('#reward1').val()){
+		 alert("보상은 하나 이상 입력해야 합니다.")
+		 return false; 
+	 }  else if (!$('#people').val()) {
+		$('#peoplechk').html("필요인원을 적어주세요.");
+		$('#people').focus();
+		return false; 
+	} else {
+		return true;
+	}
+
+
+ });
+ 
+	   
+
+ $('#people').keyup(function(){
+	if ($.isNumeric($('#people').val()) == false) {
+		$('#peoplechk').html("숫자로 입력해 주세요.");
+		$('#people').focus();
+	} else {
+		$('#peoplechk').remove();
+		$('#people').focus();
+	}
+ });
+  
+ 
 
 });
 
@@ -123,8 +151,8 @@ select {
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2>퀘스트 수정하기</h2>
-				<hr class="star-primary">
+<!-- 				<h2>퀘스트 수정하기</h2> -->
+<!-- 				<hr class="star-primary1"> -->
 			</div>
 		</div>
 		<div class="row">
@@ -145,7 +173,7 @@ select {
 				<table class="table table-bordered bordertable">
 					<tr>
 						<th><h5>제목</h5></th>
-						<td colspan="3"><input type="text" name="title"
+						<td colspan="3"><input type="text" name="title" id = "title"
 							class="form-control" value="${title }" onFocus="this.value='';return true;"/></td>
 					</tr>
 					<tr>
@@ -163,15 +191,15 @@ select {
 						<td colspan="3">
 							<table>
 								<tr>
-									<td><input type="text" name="reward1"
+									<td><input type="text" name="reward1" id = "reward1"
 										class="form-control input-sm" value="${reward1 }" 
 										onFocus="this.value='';return true;"></td>
 									<td>&nbsp;&nbsp;</td>
-									<td><input type="text" name="reward2"
+									<td><input type="text" name="reward2" id = "reward2"
 										class="form-control input-sm" value="${reward2 }"
 										onFocus="this.value='';return true;"></td>
 									<td>&nbsp;&nbsp;</td>
-									<td><input type="text" name="reward3"
+									<td><input type="text" name="reward3" id = "reward3"
 										class="form-control input-sm" value="${reward3 }"
 										onFocus="this.value='';return true;"></td>
 								</tr>
@@ -182,8 +210,9 @@ select {
 					<tr>
 						<th><h5>필요인원</h5></th>
 						<td colspan="3"><input type="text" value="${people }"
-							name="people" class="form-control people"
-							onFocus="this.value='';return true;">
+							name="people" class="form-control people" id = "people"
+							maxlength="3">
+							<span id = "peoplechk" style = "color:red;"></span>
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
@@ -209,13 +238,13 @@ select {
 
 					<tr>
 						<th><h5>희망시작시간</h5></th>
-						<td><select name="stTime">
+						<td><select name="stTime" id = "stTime">
 								<c:forEach var="i" begin="1" end="24">
 									<option>${i }시</option>
 								</c:forEach>
 						</select></td>  
 						<th><h5>소요예정시간</h5></th>
-						<td><select name="playTime">
+						<td><select name="playTime" id = "playTime">
 								<option value="30m" selected>30분미만</option>
 								<option value="3h">3시간 미만</option>
 								<option value="over3h">3시간 이상</option>
@@ -235,7 +264,7 @@ select {
 						<input type = "hidden" name = "boardFlag" value = "${boardFlag }">
 						<input type = "hidden" name = "userIndex" value = "${userIndex }">
 						
-						<input type="submit" class="btn btn-success btn-lg" value="수정완료"> <a
+						<input type="submit" class="btn btn-success btn-lg" value="수정완료" id = "btn"> <a
 							class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'">퀘스트목록</a></td>
 					</tr>
 				</table>

@@ -64,6 +64,18 @@ h2 {
 	text-align: center;
 }
 </style>
+
+<script type="text/javascript">
+	var doBook = function() {
+		
+		opener.document.location.href="bookmark.do";
+		window.close();
+	}
+
+	var doClose = function() {
+		window.open("about:blank", "_self").close();
+	}
+</script>
 </head>
 
 <body>
@@ -75,10 +87,10 @@ h2 {
 	<hr class="star-primary">
 	<center>
 		<input type="button" class="btn btn-primary btn-lg" value="닫기"
-			onclick="location.href='viewBoard.do'">
+			onclick="doClose()">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
 			class="btn btn-success btn-lg" value="이동"
-			onclick="location.href='bookmark.do'">
+			onclick="doBook()">
 	</center>
 
 </body>

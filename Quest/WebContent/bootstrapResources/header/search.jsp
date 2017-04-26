@@ -23,14 +23,15 @@
 				{
 // 					alert(data.sido);
 					$('#sidooo').empty();
+					var tr = $('<tr>');
 					$(data.sido).each(function(index)
 						{
-							var a = $('<td>');
-							var b = $('<input type = "button" value = "' + this.sido +'" onclick="searchGungu(this)" />');
-							a.append(b)
-							$('#sidooo').append(a);
+							var td = $('<td>');
+							var btn = $('<input type = "button" value = "' + this.sido +'" onclick="searchGungu(this)" />');
+							td.append(btn);
+							tr.append(td);
 						});
-					alert("!?");		
+					$('#sidooo').append(tr);
 				},
 				error : function(xhrReq, status, error)
 				{
@@ -40,12 +41,13 @@
 			
 		});
 		$('#closeBtn').click(function() {
-			$('#sangsea').css('visibility', 'hidden');
+			$('#sangsea').empty();
 			$("input:checkbox[name='area']").prop("checked", false);
 			$('#sangseaArea').css('visibility', 'hidden');
 		});	 
 	});
 	function searchGungu(btn){
+			$('#gunguuu').css('visibility', 'visible');
 			var val = btn.value;
 			$.ajax({
 				type : "get",
@@ -54,16 +56,20 @@
 				data : "sido="+val,
 				success : function(data){
 					$('#gunguuu').empty();
-						var ul = $('<ul>');
+					var tr;
 					$(data.gungu).each(function(index){
-						var a = $('<il>')
+						if(index%6 == 0 )
+							tr = $('<tr>');
+						var td = $('<td>');
 						var b = $('<input type ="checkbox" name="area" value="'+this.gungu+'">');
-						$(a).append(b);
 						var c = this.gungu;
-						$(a).append(c);		
-						$(ul).append(a);
+						$(td).append(b);
+						$(td).append(c);		
+						$(tr).append(td);
+						if(index%6 == 0 )
+							$('#gunguuu').append(tr);
 					});
-					$('#gunguuu').append(ul);
+					
 					},
 				error : function() {
 					alert("error");
@@ -117,15 +123,9 @@ li {
 			<input id="sangseaBtn" type="button" value="상세검색"> 
 			<input type="button" id="closeBtn" value="상세검색닫기">
 			<div id="sangsea" style="visibility: hidden;">
-				<div id="sidooo"></div>
-				<div id="gunguuu"></div>
+				<table id="sidooo" style = "width: 500px; border:double"></table>
+				<table id="gunguuu" style = "width: 800px; border:double; visibility:hidden;"></table>
 			</div>
-			<!-- 		<table width="50%" id="sangsea" style="visibility:;"> -->
-			<!-- 			<tr id = "sidooo"> -->
-			<!-- 			<tr> -->
-			<!-- 			<tr id = "gunguuu" > -->
-			<!-- 			</tr> -->
-			<!-- 		</table> -->
 		</form>
 	</center>
 </body>

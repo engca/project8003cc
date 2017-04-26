@@ -10,42 +10,24 @@
 <script src="https://code.jquery.com/jquery-2.2.4.js"
 	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
 	crossorigin="anonymous"></script>
-
-<!-- Bootstrap Core CSS -->
-<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
+<link	href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"	 rel="stylesheet">
 <!-- Theme CSS -->
 <link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
-
 <!-- Custom Fonts -->
-<link
-	href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css">
-
+<link	href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css"	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"	rel="stylesheet" type="text/css">
+<link	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"	rel="stylesheet" type="text/css">
 <!-- jQuery -->
 <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
-
 <!-- Plugin JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <!-- Contact Form JavaScript -->
 <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
 <script src="bootstrapResources/js/contact_me.js"></script>
-
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
-
-<!-- ajax -->
 <script type="text/javascript">
 	$.ajax({
 		type : "get",
@@ -62,6 +44,8 @@
 			alert("error");
 		}			
 	});
+	
+	
 
 $(document).ready(function(){
 	 $('#sido').click(function(){
@@ -83,7 +67,7 @@ $(document).ready(function(){
 			}
 		 });
 	 });
-});
+
 	 $('#title').click(function(){
 		 if($("input:radio[name='boardFlag']").is(":checked") == true){
 		 }else{
@@ -103,37 +87,38 @@ $(document).ready(function(){
 	 $('#btn').click(function(){
 		 if (!$('#title').val()) {
 			 alert("제목을 입력하세요");
-			 $('#title').focus();
 			 return false;
-		 }  else if (!$('#reward1').val()){
+		 } else if (!$('#reward1').val()){
 			 alert("보상은 하나 이상 입력해야 합니다.")
 			 return false;
-		 } else if($("input:radio[name='contactNo']").is(":checked") == false ){
-			 $('contactNo').focus();
-			 $('#contact').html("연락방법을 선택하세요.");
-			 return false;
-		} else if (!$('#people').val()){
-			 $('#peoplechk').html("필요인원을 적어주세요.");
+		 }  else if (!$('#people').val()) {
+			$('#peoplechk').html("필요인원을 적어주세요.");
+			$('#people').focus();
 			return false;
-		} else if (isNaN($('#people').val()) == true){
-			alert("dsfds");
-			return false;
+		} else if ($("input:radio[name='contactNo']").is(":checked") == false) {
+				 $('contactNo').focus();
+				 $('#contact').html("연락방법을 선택하세요.");
+				 return false;
+		} else {
+			return true;
 		}
-		 
-		 
-// 	$('#people').blur(function){
-// 		if (!$('#people').val()){
-// 			$('#peoplechk').html("필요인원을 적어주세요.");
-// 			$('#people').focus();
-// 		} else if ())
-// 	}	 
+	 });
+	 
 		   
-// 	 })
+
+	 $('#people').keyup(function(){
+		if ($.isNumeric($('#people').val()) == false) {
+			$('#peoplechk').html("숫자로 입력해 주세요.");
+			$('#people').focus();
+		} else {
+			$('#peoplechk').remove();
+			$('#people').focus();
+		}
+	 });
 	 
 	 
-
-
-
+	 
+	 
 });
 
 
@@ -186,15 +171,16 @@ select {
 						<th><h5>게시판 구분</h5></th>
 						<td colspan="5">
 							<h4>
-								<input type="radio" name="boardFlag" value="1" id = "boardFlag"> 해주세요 
-								<input type="radio" name="boardFlag" value="0" id = "boardFlag"> 잘해요
+								<input type="radio" name="boardFlag" value="1" id="boardFlag">
+								해주세요 <input type="radio" name="boardFlag" value="0"
+									id="boardFlag"> 잘해요
 							</h4>
 						</td>
 					</tr>
 					<tr>
 						<th><h5>제목</h5></th>
 						<td colspan="3"><input type="text" placeholder="제목을 입력하세요. "
-							name="title" class="form-control" id = "title"/></td>
+							name="title" class="form-control" id="title" /></td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
@@ -208,7 +194,7 @@ select {
 							<table>
 								<tr>
 									<td><input type="text" placeholder="보상1" name="reward1"
-										class="form-control input-sm" id = "reward1"></td>
+										class="form-control input-sm" id="reward1"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" placeholder="보상2" name="reward2"
 										class="form-control input-sm"></td>
@@ -223,14 +209,19 @@ select {
 					<tr>
 						<th><h5>필요인원</h5></th>
 						<td colspan="3"><input type="text" placeholder="     명"
-							name="people" class="form-control people" id = "people">
-							<span id = "peoplechk" style = "color:red;"></span>
+							name="people" class="form-control people" id="people"
+							maxlength="3" >
+
+						<span id="peoplechk" style="color: red;"></span>
 					</tr>
 					<tr>
 						<th><h5>연락방법</h5></th>
-						<td colspan="3"><input type="radio" name="contactNo" value="1">카톡&nbsp;&nbsp;
-							<input type="radio" name="contactNo" value="2">이메일
-							&nbsp;&nbsp;<input type="radio" name="contactNo" value="3">전화&nbsp;&nbsp;</td>
+						<td colspan="3"><input type="radio" name="contactNo"
+							value="1">카톡&nbsp;&nbsp; <input type="radio"
+							name="contactNo" value="2">이메일 &nbsp;&nbsp;<input
+							type="radio" name="contactNo" value="3">전화&nbsp;&nbsp;
+							<span id = "contact" style = "color:red"></span>
+							</td>
 					</tr>
 
 					<tr>
@@ -255,8 +246,9 @@ select {
 					<tr>
 
 						<td colspan="4" align="right"><input type="submit"
-							class="btn btn-success btn-lg" value="퀘스트등록" id = "btn"> <a
-							class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'">퀘스트목록 </a></td>
+							class="btn btn-success btn-lg" value="퀘스트등록" id="btn"> <a
+							class="btn btn-primary btn-lg"
+							onclick="location.href='listBoard.do'">퀘스트목록 </a></td>
 					</tr>
 				</table>
 			</form>
