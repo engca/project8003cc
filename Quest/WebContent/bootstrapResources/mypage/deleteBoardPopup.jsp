@@ -48,6 +48,17 @@ var doClose = function() {
 	window.open("about:blank", "_self").close();
 }
 </script>
+<script type="text/javascript">
+var dodelete = function() {
+	opener.document.location.href="deleteBoard.do?boardNo="+${boardNo};
+// 	action = "deleteBoard.do?boardNo="+boardNo;
+// 	window.opener.name= "parent"
+// 	target = "parent";
+// 	method = "post";
+// 	submit(); 
+	window.close();
+}
+</script>
 <style type="text/css">
 th {
 	width: 150px;
@@ -76,8 +87,8 @@ h2 {
 	<p>
 	<hr class="star-primary">
 	<center>
-		<input type="button" class="btn btn-primary btn-lg" value="삭제"
-			onclick="location.href='deleteBoard.do?boardNo=${boardNo }'">
+<%-- 		<input type="hidden" name="boardNo" value=${boardNo }> --%>
+		<input type="button" class="btn btn-primary btn-lg" value="삭제"	onclick="dodelete()">
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 		<input type="button"	class="btn btn-success btn-lg" value="취소"	onclick="doClose()">
 	</center>
