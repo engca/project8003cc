@@ -204,7 +204,7 @@ margin-left: 0px
 				<c:if test="${sessionScope.userId != null }">
 				<form action="insertComment.do" method="post">
 					<tr>
-						<td>${sessionScope.userId}</td>
+						<td>${sessionScope.nickname}</td>
 						<td colspan="2"><textarea name="content" id="content" rows="2" cols="100"></textarea></td>
 								<input type="hidden" name="boardNo" value=${boardList.boardNo }>
 								<input type="hidden" name="userIndex" value=${boardList.userIndex }>
