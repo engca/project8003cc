@@ -32,7 +32,6 @@
 							tr.append(td);
 						});
 					$('#sidooo').append(tr);
-					alert("!?");		
 				},
 				error : function(xhrReq, status, error)
 				{

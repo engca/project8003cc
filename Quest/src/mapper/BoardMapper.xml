@@ -108,9 +108,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="searchKey != null and searchKey != ''">
 			and title like CONCAT('%',#{searchKey},'%')
 		</if>
-		<if test="addrNo != null">
-			<foreach item="addrno" collection="addrNo">
-				and addrNo = #{addrNo}
+		<if test="area != null">
+			<foreach item="addrno" collection="area">
+				and addrNo = #{addrno}
 			</foreach>
 		</if>
 		order by boardNo desc
@@ -123,9 +123,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="searchKey != null and searchKey != ''">
 			and userIndex = #{searchKey}
 		</if>
-		<if test="addrNo != null">
-			<foreach item="addrno" collection="addrNo">
-				and addrNo = #{addrNo}
+		<if test="area != null">
+			<foreach item="addrno" collection="area">
+				and addrNo = #{addrno}
 			</foreach>
 		</if>
 		order by boardNo desc
@@ -138,8 +138,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="userIndex != null and userIndex != ''">
 			or userIndex = #{userIndex}
 		</if>
-		<if test="addrNo != null">
-			<foreach item="addrno" collection="addrNo">
+		<if test="areaList != null">
+			<foreach item="addrno" collection="areaList">
 				or addrNo = #{addrNo}
 			</foreach>
 		</if>

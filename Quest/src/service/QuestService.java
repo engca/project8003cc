@@ -144,7 +144,10 @@ public class QuestService implements IQuestService {
 				params.put("searchKey", searchKey);
 				int[] areaList = new int[area.length];
 				for(int i =0 ;i < area.length ;i ++)
+				{
 					areaList[i] = dao.selectAddrNo(area[i]);
+					System.out.println(areaList[i]);
+				}
 				params.put("area",areaList);
 				List<HashMap<String, Object>> list = null;
 				if(searchFlag == 0)
