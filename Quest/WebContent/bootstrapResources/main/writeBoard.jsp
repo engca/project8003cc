@@ -67,7 +67,7 @@ $(document).ready(function(){
 			}
 		 });
 	 });
-});
+
 	 $('#title').click(function(){
 		 if($("input:radio[name='boardFlag']").is(":checked") == true){
 		 }else{
@@ -87,27 +87,24 @@ $(document).ready(function(){
 	 $('#btn').click(function(){
 		 if (!$('#title').val()) {
 			 alert("제목을 입력하세요");
-			 $('#title').focus();
 			 return false;
-		 }  else if (!$('#reward1').val()){
+		 } else if (!$('#reward1').val()){
 			 alert("보상은 하나 이상 입력해야 합니다.")
 			 return false;
-		 } else if($("input:radio[name='contactNo']").is(":checked") == false ){
-			 $('contactNo').focus();
-			 $('#contact').html("연락방법을 선택하세요.");
-			 return false;
-		} 
-	 })
-	 
-		 
-	 
-		   
-	$('#people').blur(function(){
-		if (!$('#people').val()){
+		 }  else if (!$('#people').val()) {
 			$('#peoplechk').html("필요인원을 적어주세요.");
 			$('#people').focus();
-		} 
-	});
+			return false;
+		} else if ($("input:radio[name='contactNo']").is(":checked") == false) {
+				 $('contactNo').focus();
+				 $('#contact').html("연락방법을 선택하세요.");
+				 return false;
+		} else {
+			return true;
+		}
+	 });
+	 
+		   
 
 	 $('#people').keyup(function(){
 		if ($.isNumeric($('#people').val()) == false) {
@@ -115,9 +112,12 @@ $(document).ready(function(){
 			$('#people').focus();
 		} else {
 			$('#peoplechk').remove();
-			$('#contactNo').focus();
+			$('#people').focus();
 		}
 	 });
+	 
+	 
+	 
 	 
 });
 
@@ -219,7 +219,9 @@ select {
 						<td colspan="3"><input type="radio" name="contactNo"
 							value="1">카톡&nbsp;&nbsp; <input type="radio"
 							name="contactNo" value="2">이메일 &nbsp;&nbsp;<input
-							type="radio" name="contactNo" value="3">전화&nbsp;&nbsp;</td>
+							type="radio" name="contactNo" value="3">전화&nbsp;&nbsp;
+							<span id = "contact" style = "color:red"></span>
+							</td>
 					</tr>
 
 					<tr>
