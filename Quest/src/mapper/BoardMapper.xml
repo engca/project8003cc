@@ -120,8 +120,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="java.util.HashMap">
 		SELECT * from board
 		where boardFlag = #{boardFlag}
-		<if test="userIndex != null and userIndex != ''">
-			and userIndex = #{userIndex}
+		<if test="searchKey != null and searchKey != ''">
+			and userIndex = #{searchKey}
 		</if>
 		<if test="addrNo != null">
 			<foreach item="addrno" collection="addrNo">
@@ -131,15 +131,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by boardNo desc
 		limit #{skip}, #{count}
 	</select>
-	<select id="getBoardCountBySearch" parameterType="int"
+	<select id="getBoardCountByWriter" parameterType="int"
+		resultType="int">
+		select count(*) from board
+		where boardFlag = #{boardFlag}
+		<if test="userIndex != null and userIndex != ''">
+			or userIndex = #{userIndex}
+		</if>
+		<if test="addrNo != null">
+			<foreach item="addrno" collection="addrNo">
+				or addrNo = #{addrNo}
+			</foreach>
+		</if>
+	</select>
+	<select id="getBoardCountByContent" parameterType="int"
 		resultType="int">
 		select count(*) from board
 		where boardFlag = #{boardFlag}
 		<if test="searchKey != null and searchKey != ''">
 			or title like CONCAT('%',#{searchKey},'%')
-		</if>
-		<if test="userIndex != null and userIndex != ''">
-			or userIndex = #{userIndex}
 		</if>
 		<if test="addrNo != null">
 			<foreach item="addrno" collection="addrNo">

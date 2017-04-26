@@ -108,6 +108,10 @@ li {
 				<option value = "0">잘해요</option>
 				<option value = "1">해주세요</option>
 			</select>
+			<select name = "searchFlag">
+				<option value = "0">컨텐츠</option>
+				<option value = "1">작성자</option>
+			</select>
 			<input type="text" name="searchKey" > 
 			<input type="submit"value="검색" > 
 			<input id="sangseaBtn" type="button" value="상세검색"> 
