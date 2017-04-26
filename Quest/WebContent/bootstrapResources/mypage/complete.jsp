@@ -98,8 +98,8 @@ h2 {
 			<c:forEach var="board" items="${completeList }">
 				<tr>
 					<td>${board.boardNo }</td>
-					<td><c:if test="${board.boardFlag == 0 }">해주세요</c:if> <c:if
-							test="${board.boardFlag == 1 }">잘해요</c:if></td>
+					<td><c:if test="${board.boardFlag == 0 }">잘해요</c:if> <c:if
+							test="${board.boardFlag == 1 }">해주세요</c:if></td>
 					<td>${board.title }</td>
 					<!-- USER INDEX>ID -->
 					<td>${board.userIndex }</td>
