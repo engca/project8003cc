@@ -17,7 +17,7 @@
  	
  <script type="text/javascript">
  var checkLogin = function(){
- 	var loginid = '${sessionScope.id}';
+ 	var loginid = '${sessionScope.userId}';
  	if (loginid == ""){
  		alert('로그인 후 가능합니다.');
  	} else {

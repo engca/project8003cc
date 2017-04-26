@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   <select id="selectAllCommentByBoardNo" parameterType="int"
    resultType="java.util.HashMap">
-   SELECT * FROM board WHERE boardNo = #{boardNo}
+   SELECT * FROM comment WHERE boardNo = #{boardNo}
    </select>
    
 </mapper>
