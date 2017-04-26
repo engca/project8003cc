@@ -65,19 +65,19 @@
  			<tr>
 				<td colspan="5" align="center">
 <%-- 					<c:if test="${start != first }"> --%>
-						<a href="listBoard.do?page=${first}"> [처음]</a> &nbsp;&nbsp; 
+						<a href="listBoard.do?page=${first}&boardFlag=${boardFlag}"> [처음]</a> &nbsp;&nbsp; 
 <%-- 					</c:if>  --%>
 					<c:forEach begin="${start }" end="${end}" var="i">
 						<c:choose>
 							<c:when test="${i == current }">[<b>${i }</b>]
 							</c:when>
 							<c:otherwise>
-								<a href="listBoard.do?page=${i}">[<b>${i }</b>] </a>
+								<a href="listBoard.do?page=${i}&boardFlag=${boardFlag}">[<b>${i }</b>] </a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach> 
 <%-- 					<c:if test="${end != last }"> --%>
-						 &nbsp; <a href="listBoard.do?page=${last}">[끝]</a>
+						 &nbsp; <a href="listBoard.do?page=${last}&boardFlag=${boardFlag}">[끝]</a>
 <%-- 					</c:if></td> --%>
 			</tr>
 			

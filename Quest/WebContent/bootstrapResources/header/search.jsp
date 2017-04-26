@@ -110,7 +110,7 @@ li {
 <body>
 	<center>
 		<form action="searchBoard.do">
-			<select name = "boardflag">
+			<select name = "boardFlag">
 				<option value = "0">잘해요</option>
 				<option value = "1">해주세요</option>
 			</select>

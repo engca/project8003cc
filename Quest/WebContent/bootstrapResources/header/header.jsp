@@ -46,9 +46,9 @@
 							<div>
 								<span >
 									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
-										onclick="location.href='listBoard.do?boardflag=0'" value="잘해요">
+										onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
 									<input type="button" id='todoBtn' class='btn btn-success btn-lg'
-										onclick="location.href='listBoard.do?boardflag=1'" value="해주세요">
+										onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
 								</span>
 								<span  style="float:right">
 									<span > id : </span><input type="text" name="id" class="form-control input-sm"> 
@@ -62,9 +62,9 @@
 					<c:otherwise>
 						<span >
 							<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
-								onclick="location.href='listBoard.do?boardflag=0'" value="잘해요">
+								onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
 							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
-								onclick="location.href='listBoard.do?boardflag=1'" value="해주세요">
+								onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
 						</span>
 						<span  style="float:right" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<input type="button" value="마이페이지" class='btn btn-success btn-lg'	onclick="location.href='mypage.do'">

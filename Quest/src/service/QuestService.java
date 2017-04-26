@@ -125,6 +125,7 @@ public class QuestService implements IQuestService {
 		result.put("end", end);
 		result.put("last", last);
 		result.put("current", page);
+		result.put("boardFlag", boardflag);
 		result.put("boardList", list);
 		return result;  		
 	}
