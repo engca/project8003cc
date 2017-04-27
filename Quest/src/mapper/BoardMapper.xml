@@ -175,19 +175,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by boardNo desc
 		limit #{skip}, #{count}
 	</select>
+	
+	<select id="getCountBoardComplete" parameterType="int" resultType="int">
+		select count(*) from board, score where
+		board.boardNo=score.boardNo and
+		board.userIndex=#{userIndex} and
+		board.bCompleteFlag = 1
+	</select>
 
 	<select id="selectBoardComplete" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		select * from board, score where
 		board.boardNo=score.boardNo and
 		board.userIndex=#{userIndex} and
-		score.sCompleteFlag!=3
-		<if test="mode == 0">
-			and score.sCompleteFlag != 1
-		</if>
-		<if test="mode == 1">
-			and score.sCompleteFlag != 2
-		</if>
+		board.bCompleteFlag = 1
 		order by board.boardNo desc
 		limit #{skip}, #{count}
 	</select>

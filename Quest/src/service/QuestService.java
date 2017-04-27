@@ -624,7 +624,7 @@ public class QuestService implements IQuestService {
 				int end = ((page - 1) / 10 + 1) * 10;
 				// 첫페이지와 마지막 페이지 계산
 				int first = 1;
-				int last = (dao.getCountBoardByUserIndex(userIndex) - 1) / 10 + 1;
+				int last = (dao.getCountBoardComplete(userIndex) - 1) / 10 + 1;
 				end = last < end ? last : end;
 				// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
 				int skip = (page - 1) * 10;
