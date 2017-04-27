@@ -195,7 +195,7 @@ select {
 					<tr>
 						<th><h5>보상</h5></th>
 						<td colspan="3">
-							<table>
+							<table>  
 								<tr>
 									<td><input type="text" placeholder="보상1" name="reward1"
 										class="form-control input-sm" id="reward1"></td>
