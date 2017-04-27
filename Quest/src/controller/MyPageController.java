@@ -56,9 +56,9 @@ public class MyPageController {
 
 
 	@RequestMapping("bookmark.do")
-	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page, int boardNo) {
+	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page) {
 		int userIndex = (int)session.getAttribute("userIndex");
-		service.bookmark(boardNo, userIndex);
+		
 		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(userIndex,page);
 		
 		
@@ -72,7 +72,11 @@ public class MyPageController {
 
 
 	@RequestMapping("bookmarkPopup.do")
-	public String bookmarkPopup() {
+	public String bookmarkPopup(@RequestParam HashMap<String, Object>params) {
+		System.out.println("book"+params);
+		int boardNo=Integer.parseInt((String)params.get("boardNo"));
+		int userIndex=Integer.parseInt((String)params.get("userIndex"));
+		service.bookmark(boardNo, userIndex);
 		return "bookmarkPopup.popup";
 	}
 	
