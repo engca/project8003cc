@@ -17,7 +17,7 @@
 
 </head>
 <body>
-	<form action="#">
+	<form action="#" >
 		<input type="button" value="MyList"
 			onclick="location.href='mylist.do'" class="btn btn-success btn-lg'" />
 		<input type="button" value="CompleteList"

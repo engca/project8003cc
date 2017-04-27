@@ -120,7 +120,7 @@ select {
 </style>
 </head>
 <body >
-	<center>
+	<center >
 		<form action="searchBoard.do">
 			<select name = "boardFlag">
 				<option value = "0">잘해요</option>
@@ -135,7 +135,7 @@ select {
 			<input id="sangseaBtn" type="button" value="상세검색" class ="btn-success"> 
 			<input type="button" id="closeBtn" value="상세검색닫기" class= "btn-warning">
 			<div id="sangsea" style="visibility: hidden;">
-				<table id="sidooo" style = "width: 500px; border:double" class="col-lg-12"></table>
+				<table id="sidooo" style = "width: 500px; border:double" ></table>
 				<table id="gunguuu" style = "width: 800px; visibility:hidden;"></table>
 			</div>
 		</form>
