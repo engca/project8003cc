@@ -469,6 +469,7 @@ public class QuestService implements IQuestService {
 	public int BookmarkCheck(HashMap<String, Object> params){
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> list = dao.selectBookMark(params);
+		System.out.println(list);
 		if( list != null) 
 			return 1; // 즐겨찾기 한사람이 있음
 		else return 2; // 줄겨찾기 한사람이 없음. 즐겨찾기 가능!!

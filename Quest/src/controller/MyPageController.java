@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant.User;
@@ -72,7 +74,18 @@ public class MyPageController {
 	public String bookmarkPopup() {
 		return "bookmarkPopup.popup";
 	}
+	
+	@RequestMapping("bookmarkCheck.do")
+	@ResponseBody
+	public int bookmarkCheck(@RequestParam HashMap<String,Object> params) {
+		System.out.println(params);
+		int result = service.BookmarkCheck(params);
+		System.out.println(result); 
+		return result;
+	}
 
+	
+	
 	@RequestMapping("complete.do")
 	public ModelAndView complete(HttpSession session, @RequestParam(defaultValue="1")int page) {
 //		int userIndex = (int)session.getAttribute("userIndex");

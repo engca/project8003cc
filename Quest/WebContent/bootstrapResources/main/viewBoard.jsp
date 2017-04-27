@@ -1,18 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>퀘스트 상세보기</title> 
-<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<title>퀘스트 상세보기</title>
+<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
-<link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<link
+	href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css">
 <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
 <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrapResources/js/freelancer.min.js"></script>
@@ -20,7 +26,6 @@
 <script src="bootstrapResources/js/contact_me.js"></script>
 <script type="text/javascript">
 function applyPopup(){
-	alert("applyPopup");
 	var apply = document.apply; 
 	window.open('','apply','width=500, height=600');
 	apply.action = "applyPopup.do";
@@ -29,23 +34,36 @@ function applyPopup(){
 	apply.submit(); 
 }
 function bookmarkPopup(){
-	alert("bookmarkpopup");
-	var bm = document.bookmark;
-	window.open('','Bookmark','width=400, height=300');
-	bm.action = "bookmarkPopup.do";
-	bm.target = "Bookmark";
-	bm.method = "post";
-	bm.submit(); 
-}
-function deletePopup(){
-	window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');
+	$.ajax({
+		type : 'get',
+		url : 'bookmarkCheck.do',
+		dataType : 'text',
+		data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${sessionScope.userIndex},
+		success : function(data) {
+			alert(data);
+			if (data == 2) {
+				var bm = document.bookmark;
+				window.open('','Bookmark','width=400, height=300');
+				bm.action = "bookmarkPopup.do";
+				bm.target = "Bookmark";
+				bm.method = "post";
+				bm.submit(); 
+			} else {
+				alert('이미 즐겨찾기 되었습니다.');
+			}
+		},
+		error : function(){
+			alert('DB에러');
+		} 
+	}); 
+	
 }
 function police(){
 		$.ajax({
 			type : 'get',
 			url : 'police.do',
 			dataType : 'text',
-			data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${boardList.userIndex},
+			data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${sessionScope.userIndex},
 			success : function(data) {
 				if (data == 2) {
 					alert('이미 신고된 게시글 입니다.');
@@ -78,36 +96,40 @@ select {
 }
 
 .bordertable th {
-/* 	background-color: pink; */
+	/* 	background-color: pink; */
 	text-align: center;
 }
 
 .people {
 	width: 60px;
 }
-FORM { 
-margin-top: 0px; 
-margin-right: 0px; 
-margin-bottom: 0px; 
-margin-left: 0px 
-} 
+
+FORM {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px
+}
 </style>
 </head>
 <body>
 
-	<div id="board"  class="container">
+	<div id="board" class="container">
 		<div class="row">
 			<div class="col-lg-12">
 				<h2>상세보기</h2>
 				<hr class="star-primary1">
 			</div>
-		</div>
-		<div class="row">
 
 			<table class="table table-bordered bordertable">
 				<tr>
 					<th><h5>제목</h5></th>
-					<td colspan="3">${boardList.title }</td>
+					<c:if test="${boardList.bCompleteFlag ==0 }">
+						<td colspan="3">${boardList.title }</td>
+					</c:if>
+					<c:if test="${boardList.bCompleteFlag ==1 }">
+						<td colspan="3"><font color="red">[완료된 퀘스트]</font>${boardList.title }</td>
+					</c:if>
 				</tr>
 				<tr>
 					<th><h5>장소</h5></th>
@@ -117,9 +139,12 @@ margin-left: 0px
 					<th><h5>보상</h5></th>
 					<td colspan="3">
 						<li class="btn btn-warning btn-lg">${boardList.reward1 }</li>
-						&nbsp; &nbsp; <c:if test="${boardList.reward2 != ''}">
+						&nbsp; &nbsp; 
+						<c:if test="${boardList.reward2 != ''}">
 							<li class="btn btn-warning btn-lg">${boardList.reward2 }</li>
-						</c:if> &nbsp; &nbsp; <c:if test="${boardList.reward3 != ''}">
+						</c:if> 
+						&nbsp; &nbsp; 
+						<c:if test="${boardList.reward3 != ''}">
 							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>
 						</c:if>
 				</tr>
@@ -135,9 +160,8 @@ margin-left: 0px
 					<th><h5>희망시작시간</h5></th>
 					<td>${boardList.stTime }</td>
 					<th><h5>소요예정시간</h5></th>
-					<td>
-					<c:if test="${boardList.playTime == '30m'}">30분</c:if>
-					<c:if test="${boardList.playTime == '3h' }">3시간이하</c:if>
+					<td><c:if test="${boardList.playTime == '30m'}">30분</c:if> 
+					<c:if test="${boardList.playTime == '3h' }">3시간이하</c:if> 
 					<c:if test="${boardList.playTime == 'over3h'}">3시간이상</c:if>
 					</td>
 				</tr>
@@ -152,82 +176,72 @@ margin-left: 0px
 
 								<form name="apply">
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
-									<input type="hidden" name="userIndex"
-										value=${boardList.userIndex }> <input type="hidden"
-										name="reward1" value=${boardList.reward1 }> <input
-										type="hidden" name="reward2" value=${boardList.reward2 }>
+									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }> 
+									<input type="hidden"	name="reward1" value=${boardList.reward1 }> 
+									<input type="hidden" name="reward2" value=${boardList.reward2 }>
 									<input type="hidden" name="reward3" value=${boardList.reward3 }>
-									<input type="hidden" name="contactNo"
-										value=${boardList.contactNo }>
+									<input type="hidden" name="contactNo" value=${boardList.contactNo }>
 								</form>
 								<form name="bookmark">
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
-									<input type="hidden" name="userIndex"
-										value=${boardList.userIndex }>
+									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
 								</form>
 
 								<c:if test="${applydata == null }">
-									<input type="button" class="btn btn-info btn-lg" value="신청하기"
-										onclick="applyPopup()">
+									<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 								</c:if>
 
-								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기"
-									onclick="bookmarkPopup()">
+								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 
 								<c:if test="${policedata == null }">
-									<input type="button" class="btn btn-danger btn-lg" value="신고하기"
-										onclick="police()" name="police">
+									<input type="button" class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
 								</c:if>
 
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
-									<input type="button" class="btn btn-warning btn-lg"
-										value="퀘스트수정"
+									<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"
 										onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
-									<input type="button" class="btn btn-success btn-lg"
-										value="퀘스트삭제"
+									<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"
 										onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">
 								</c:if>
 							</c:when>
-						</c:choose> <input type="button" class="btn btn-primary btn-lg"
-						onclick="location.href='listBoard.do'" value="퀘스트목록">
+						</c:choose> 
+						<input type="button" class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'" value="퀘스트목록">
 
 					</td>
 				</tr>
-			</table>
-			<!-- 댓글보기 부분 추가 -->
-			<hr>
-			<table class="table table-bordered bordertable" width="80%">
+				<tr></tr>
+				<!-- 댓글보기 부분 추가 -->
+				<tr>
+				<c:if test="${sessionScope.userId != null }">
+					<form action="insertComment.do" method="post">
+						<td>${sessionScope.nickname}</td>
+						<td colspan="2">
+								<textarea name="content" id="content" rows="2" cols="100"></textarea>
+						</td>
+						<td>
+							<input type="hidden" name="boardNo" value=${boardList.boardNo }> 
+							<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
+							<input type="submit" class="btn btn-primary btn-lg" value="댓글등록">
+						</td>
+					</form>
+				</c:if>
+				</tr>
+				<tr>
 				<c:if test="${listComment != null }">
 					<c:forEach var="comment" items="${listComment }">
-						<tr>
+					<tr>
 							<td width="20%"><b>${comment.nickname}</b></td>
 							<td width="60%">${comment.content}</td>
 							<td width="20%" align="center">${comment.date }</td>
-							<td><c:if
-									test="${sessionScope.nickname == comment.nickname }">
-									<input type="button"
-										onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${boardList.userIndex }'"
+							<td><c:if test="${sessionScope.nickname == comment.nickname }">
+									<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${boardList.userIndex }'"
 										value="삭제">
-								</c:if></td>
-						</tr>
+							</c:if></td>
+					</tr>
 					</c:forEach>
-					<c:if test="${sessionScope.userId != null }">
-						<form action="insertComment.do" method="post">
-							<table>
-								<tr>
-									<td>${sessionScope.nickname}</td>
-									<td colspan="2"><textarea name="content" id="content"
-											rows="2" cols="100"></textarea></td>
-									<td><input type="hidden" name="boardNo"
-										value=${boardList.boardNo }> <input type="hidden"
-										name="userIndex" value=${boardList.userIndex }></td>
-									<td><input type="submit" class="btn btn-primary btn-lg"
-										value="댓글등록"></td>
-								</tr>
-							</table>
-						</form>
-					</c:if>
 				</c:if>
+				</tr>
+				
 			</table>
 		</div>
 	</div>
