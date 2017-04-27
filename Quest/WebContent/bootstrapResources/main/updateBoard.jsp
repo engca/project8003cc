@@ -131,11 +131,6 @@ select {
 	height: 35px;
 }
 
-.container {
-	position: absolute;
-	top: 60px;
-	left: 60px;
-}
 
 .bordertable th {
 	/* 	background-color: pink; */
