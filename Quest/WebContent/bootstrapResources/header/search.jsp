@@ -64,6 +64,30 @@
 // 			$('#sangseaArea').css('visibility', 'hidden');
 		});	 
 	});
+	function changeCheck(btn)
+	{	
+		 if($(btn).is(":checked")){
+	            var input = $('<input type = "button" onclick ="deleteBtn(this)" value = "'+ $(btn).val()+'"/>');
+	            $('#areaList').append(input);
+	            $('#area').text($(btn).val());
+// 	            alert("체크박스 체크 !");
+	        
+	        }else{
+	            alert("체크박스 체크 해제!");
+	        }
+	}
+	function delete(btn)
+	{	
+		 if($(btn).is(":checked")){
+	            var input = $('<input type = "button" onclick ="deleteBtn(this)" value = "'+ $(btn).val()+'"/>');
+	            $('#areaList').append(input);
+	            $('#area').text($(btn).val());
+// 	            alert("체크박스 체크 !");
+	        
+	        }else{
+	            alert("체크박스 체크 해제!");
+	        }
+	}
 	function searchGungu(btn){
 			$('#gunguuu').css('visibility', 'visible');
 			var val = btn.value;
@@ -79,7 +103,7 @@
 						if(index%6 == 0 )
 							tr = $('<tr>');
 						var td = $('<td>');
-						var b = $('<input type ="checkbox" name="area" value="'+this.gungu+'">');
+						var b = $('<input type ="checkbox" onclick="changeCheck(this)" value="'+this.gungu+'">');
 						var c = this.gungu;
 						$(td).append(b);
 						$(td).append(c);		
@@ -93,10 +117,7 @@
 					alert("error");
 				}
 			 });
-		function insertAreaList()
-		{
 			
-		}
 		
 	}
 </script>
@@ -134,9 +155,11 @@ select {
 			<input type="submit"value="검색" class = "btn-primary" > 
 			<input id="sangseaBtn" type="button" value="상세검색" class ="btn-success"> 
 			<input type="button" id="closeBtn" value="상세검색닫기" class= "btn-warning">
-			<div id="sangsea" style="visibility: hidden;">
+			<div id="sangsea" style="visibility: hidden;" align = "center">
 				<table id="sidooo" style = "width: 500px; border:double" ></table>
-				<table id="gunguuu" style = "width: 800px; visibility:hidden;"></table>
+				<table id="gunguuu" style = "width: 780px; visibility:hidden;"></table>
+				<div id = "areaList">
+				<input id = "area" name = "area" type = "hidden">
 			</div>
 		</form>
 	</center>
