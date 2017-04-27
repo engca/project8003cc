@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{content}
 			</when>
 			<otherwise>
-				''
+				'내용없음'
 			</otherwise>
 		</choose>
 	</sql>
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="reward2">
 		<choose>
 			<when test="reward2 != ''">
-				${reward2}
+				#{reward2}
 			</when>
 			<otherwise>
 				''
@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<sql id="reward3">
 		<choose>
 			<when test="reward3 != ''">
-				${reward3}
+				#{reward3}
 			</when>
 			<otherwise>
 				''
@@ -45,12 +45,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertBoard" parameterType="java.util.HashMap">
 		INSERT INTO board
 		VALUES(#{boardFlag}, 0, 0,
-		1, sysdate(), 0, 0,
+		#{userIndex}, sysdate(), 0, 0,
 		#{title}, #{addrNo},
 		#{reward1},
 		<include refid="reward2"></include>
+<!-- 		#{reward2} -->
 		,
 		<include refid="reward3"></include>
+<!-- 		#{reward3} -->
 		, #{people}, #{contactNo},
 		#{stTime},
 		#{playTime},
