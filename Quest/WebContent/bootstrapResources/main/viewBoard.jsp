@@ -40,7 +40,6 @@ function bookmarkPopup(){
 		dataType : 'text',
 		data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${sessionScope.userIndex},
 		success : function(data) {
-			alert(data);
 			if (data == 1) {
 				var bm = document.bookmark;
 				window.open('','Bookmark','width=400, height=300');
