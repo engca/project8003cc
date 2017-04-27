@@ -58,7 +58,17 @@ h1 {
 	text-align: center;
 }
 </style>
+<script type="text/javascript">
+function deleteBook(btn) {
+	var code = btn.getAttribute('name');
+// 		alert(code + "← 이자식을 지우고 싶어...");
+	
+	document.location.href="deleteBook.do?boardNo="+ code;
+	
+	alert("즐겨찾기가 삭제되었습니다.");
 
+}
+</script>
 </head>
 <body>
 	<div id="board" class="container">
@@ -70,15 +80,16 @@ h1 {
 		<table class="table tablestriped">
 			<tr>
 				<th width="5%">No</th>
-				<th width="15%">구분</th>
+				<th width="10%">구분</th>
 				<th width="45%">제목</th>
 				<th width="15%">작성자</th>
-				<th width="15%">작성일</th>
+				<th width="10%">작성일</th>
 				<th width="5%">조회수</th>
+				<th width="10%">삭제</th>
 			</tr>
 
 			<c:forEach var="board" items="${bookmarkList }">
-				<tr>
+				<tr id="tr_${board.boardNo }">
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">잘해요</c:if> <c:if
 							test="${board.boardFlag == 1 }">해주세요</c:if></td>
@@ -89,6 +100,8 @@ h1 {
 					<td><fmt:formatDate value="${board.date }"
 							pattern="yyyy-MM-dd" /></td>
 					<td>${board.readCount }</td>
+					<td><input type="button" value="삭제" name="${board.boardNo }" onclick="deleteBook(this)">
+					</td>
 				</tr>
 			</c:forEach>
 

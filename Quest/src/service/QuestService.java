@@ -670,6 +670,15 @@ public class QuestService implements IQuestService {
 				return result;
 	}
 
+	@Override
+	public int removeBookmark(int boardNo) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("boardNo", boardNo);
+		return dao.deleteBookMark(params);
+		
+	}
+
 
 
 
