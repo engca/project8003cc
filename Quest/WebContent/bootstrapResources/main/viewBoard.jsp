@@ -41,7 +41,7 @@ function bookmarkPopup(){
 		data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${sessionScope.userIndex},
 		success : function(data) {
 			alert(data);
-			if (data == 2) {
+			if (data == 1) {
 				var bm = document.bookmark;
 				window.open('','Bookmark','width=400, height=300');
 				bm.action = "bookmarkPopup.do";

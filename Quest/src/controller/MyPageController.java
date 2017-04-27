@@ -78,9 +78,7 @@ public class MyPageController {
 	@RequestMapping("bookmarkCheck.do")
 	@ResponseBody
 	public int bookmarkCheck(@RequestParam HashMap<String,Object> params) {
-		System.out.println(params);
 		int result = service.BookmarkCheck(params);
-		System.out.println(result); 
 		return result;
 	}
 
