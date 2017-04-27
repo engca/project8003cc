@@ -93,7 +93,7 @@ select {
 	/* 	background-color: pink; */
 	text-align: center;
 }
-
+ 
 .people {
 	width: 60px;
 }
