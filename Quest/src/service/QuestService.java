@@ -474,7 +474,7 @@ public class QuestService implements IQuestService {
 		else return 1; // 줄겨찾기 한사람이 없음. 즐겨찾기 가능!!
 	}
 		
-	@Override
+	@Override 
 	public boolean isMyBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		if(dao.isMyBoard(params) == null)
