@@ -51,7 +51,7 @@
  			
   			<c:forEach var="board" items="${boardList}">
   				<tr>
- 					<td align="center">${board.boardNo}</td>
+ 					<td align="center">${board.boardNo}</td> 
  					<c:if test="${board.bCompleteFlag ==0 }">
  					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title }</a></td>
  					</c:if>
