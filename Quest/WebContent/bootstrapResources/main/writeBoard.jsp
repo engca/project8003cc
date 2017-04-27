@@ -88,7 +88,7 @@ $(document).ready(function(){
 		 if (!$('#title').val()) {
 			 alert("제목을 입력하세요");
 			 return false;
-		 } else if (!$('#reward1').val()){
+		 } else if (!$('#reward1').val()|| !$('#reward2').val() || !$('#reward3').val() ){
 			 alert("보상은 하나 이상 입력해야 합니다.")
 			 return false;
 		 }  else if (!$('#people').val()) {
@@ -99,6 +99,10 @@ $(document).ready(function(){
 				 $('contactNo').focus();
 				 $('#contact').html("연락방법을 선택하세요.");
 				 return false;
+		} else if ($.isNumeric($('#people').val()) == false) {
+			alert("숫자로 입력하세요");
+			$('#people').focus();
+			return false;
 		} else {
 			return true;
 		}
@@ -191,7 +195,7 @@ select {
 					<tr>
 						<th><h5>보상</h5></th>
 						<td colspan="3">
-							<table>
+							<table>  
 								<tr>
 									<td><input type="text" placeholder="보상1" name="reward1"
 										class="form-control input-sm" id="reward1"></td>
@@ -200,7 +204,9 @@ select {
 										class="form-control input-sm"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" placeholder="보상3" name="reward3"
-										class="form-control input-sm"></td>
+										class="form-control input-sm">
+										<span id = "rewardChk" style = "color:red;"></span>
+										</td>
 								</tr>
 							</table>
 						</td>
