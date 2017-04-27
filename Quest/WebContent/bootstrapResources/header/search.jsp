@@ -113,6 +113,10 @@ input[type="radio"] {
 	letter-spacing: -1px;
 	word-spacing: 3px;
 }
+select {
+	width: 80px;
+	height: 30px;
+}
 </style>
 </head>
 <body >
@@ -126,7 +130,7 @@ input[type="radio"] {
 				<option value = "0">컨텐츠</option>
 				<option value = "1">작성자</option>
 			</select>
-			<input type="text" name="searchKey" > 
+			<input type="text" name="searchKey" class="input-sm"> 
 			<input type="submit"value="검색" class = "btn-primary" > 
 			<input id="sangseaBtn" type="button" value="상세검색" class ="btn-success"> 
 			<input type="button" id="closeBtn" value="상세검색닫기" class= "btn-warning">
