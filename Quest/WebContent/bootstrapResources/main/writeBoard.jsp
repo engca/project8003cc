@@ -44,6 +44,7 @@
 			alert("error");
 		}			
 	});
+	
 	 $(function(){
 		if ( !$('#reward1').val() ) {
 		 $('#reward2').attr('readonly', true);

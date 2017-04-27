@@ -84,14 +84,14 @@ $(document).ready(function(){
  
  
  $('#btn').click(function(){
-	 if (!$('#title').val()) {
+	 if ($('#title').val() == "") {
 		 alert("제목을 입력하세요");
 		 $('#title').focus();
 		 return false;
-	 } else if (!$('#reward1').val()){
+	 } else if ($('#reward1').val() == ""){
 		 alert("보상은 하나 이상 입력해야 합니다.")
 		 return false; 
-	 }  else if (!$('#people').val()) {
+	 }  else if ($('#people').val() == "") {
 		$('#peoplechk').html("필요인원을 적어주세요.");
 		$('#people').focus();
 		return false; 
@@ -114,7 +114,9 @@ $(document).ready(function(){
 	}
  });
   
- 
+ $('#reward1').click(function(){
+	 $('#rewardChk').html("한 번 정한 보상은 수정할 수 없습니다.")
+ })
 
 });
 
@@ -188,20 +190,21 @@ select {
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th> 
-						<td colspan="3">
+						<td colspan="4">
 							<table>
 								<tr>
 									<td><input type="text" name="reward1" id = "reward1"
 										class="form-control input-sm" value="${reward1 }" 
-										onFocus="this.value='';return true;"></td>
+										readonly></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" name="reward2" id = "reward2"
 										class="form-control input-sm" value="${reward2 }"
-										onFocus="this.value='';return true;"></td>
+										 readonly></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" name="reward3" id = "reward3"
 										class="form-control input-sm" value="${reward3 }"
-										onFocus="this.value='';return true;"></td>
+										 readonly></td>
+									<td><span id = "rewardChk" style = "color : red"></span></td>
 								</tr>
 							</table>
 						</td>
@@ -272,7 +275,6 @@ select {
 		</div>
 	</div>
 
-	</section>
 
 
 
