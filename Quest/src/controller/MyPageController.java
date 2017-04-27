@@ -56,9 +56,11 @@ public class MyPageController {
 
 
 	@RequestMapping("bookmark.do")
-	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page) {
-		int index = (int)session.getAttribute("userIndex");
-		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(index,page);
+	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page, int boardNo) {
+		int userIndex = (int)session.getAttribute("userIndex");
+		service.bookmark(boardNo, userIndex);
+		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(userIndex,page);
+		
 		
 		
 				
