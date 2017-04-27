@@ -136,7 +136,7 @@ $(document).ready(function(){
 	 $('#reward1').keyup(function(){
 			if ( !$('#reward1').val()) {
 			} else {
-				$('#rewardChk').remove();
+				$('#rewardChk').remove(); 
 			}
 		 });
 	 
