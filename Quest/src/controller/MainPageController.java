@@ -88,6 +88,7 @@ public class MainPageController {
 		List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(board);
+		System.out.println(board);
 		mv.addObject("listComment", comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv; 

@@ -459,13 +459,22 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-
 	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> bookmarkList = dao.selectBookMark(params);
 		return bookmarkList;
 	}
 
+	@Override
+	public int BookmarkCheck(HashMap<String, Object> params){
+		// TODO Auto-generated method stub
+		List<HashMap<String, Object>> list = dao.selectBookMark(params);
+		if( list != null) 
+			return 1; // 즐겨찾기 한사람이 있음
+		else return 2; // 줄겨찾기 한사람이 없음. 즐겨찾기 가능!!
+	}
+		
+	
 	public boolean isMyBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		if(dao.isMyBoard(params) == null)
@@ -660,6 +669,8 @@ public class QuestService implements IQuestService {
 				
 				return result;
 	}
+
+
 
 
 

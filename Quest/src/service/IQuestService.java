@@ -55,6 +55,7 @@ public interface IQuestService {
 	public int bookmark(int BoardNo, int userIndex); 
 	public List<HashMap<String, Object>> listBookmark(HashMap<String, Object> params);
 	public HashMap<String, Object> bookmarkBoardByUserIndex(int userIndex, int page);
+	public int BookmarkCheck(HashMap<String, Object> params);
 
 	
 	//신고하기
