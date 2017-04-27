@@ -112,7 +112,7 @@ select {
 						<td>${myboardnickname}</td>
 						<td><fmt:formatDate value="${myboard.date }"
 								pattern="yyyy-MM-dd" /></td>
-						<td>${myboard.readcount }</td>
+						<td>${myboard.readCount }</td>
 					</tr>
 				</c:forEach>
 				

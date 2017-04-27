@@ -63,7 +63,6 @@ h1 {
 <body>
 	<div id="board" class="container">
 		<div class="row">
-			<div class="col-lg-12 ">
 				<h1>즐 겨 찾 기</h1>
 				<hr class="star-primary">
 			</div>
@@ -89,7 +88,7 @@ h1 {
 					<td>${nickname }</td>
 					<td><fmt:formatDate value="${board.date }"
 							pattern="yyyy-MM-dd" /></td>
-					<td>${board.readcount }</td>
+					<td>${board.readCount }</td>
 				</tr>
 			</c:forEach>
 
