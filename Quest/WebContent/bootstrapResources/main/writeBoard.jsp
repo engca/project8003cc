@@ -90,14 +90,14 @@ $(document).ready(function(){
 	 })
 	 
 	 $('#btn').click(function(){
-		 if (!$('#title').val()) {
+		 if ($('#title').val() == "") {
 			 alert("제목을 입력하세요");
 			 return false;
-		 } else if ( !$('#reward1').val() ) {
+		 } else if ( $('#reward1').val() == "" ) {
 				$('#rewardChk').html("보상은 하나 이상 입력해야 합니다.");
 				$('#reward1').focus();
 			return false; 
-		 } else if (!$('#people').val()) {
+		 } else if ($('#people').val() == "") {
 			$('#peoplechk').html("필요인원을 적어주세요.");
 			$('#people').focus();
 			return false;
@@ -123,7 +123,7 @@ $(document).ready(function(){
 	})
 	
 
-	 $('#people').keyup(function(){
+	 $('#people').change(function(){
 		if ($.isNumeric($('#people').val()) == false) {
 			$('#peoplechk').html("숫자로 입력해 주세요.");
 			$('#people').focus();
@@ -133,10 +133,11 @@ $(document).ready(function(){
 		}
 	 });
 	 
-	 $('#reward1').keyup(function(){
-			if ( !$('#reward1').val()) {
+	 $('#reward1').change(function(){
+			if ( $('#reward1').val() == '' ) {
+				$('#rewardChk').html("보상을 입력하세요");
 			} else {
-				$('#rewardChk').remove(); 
+				$('#rewardChk').html("");				
 			}
 		 });
 	 

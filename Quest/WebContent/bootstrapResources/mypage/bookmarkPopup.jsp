@@ -68,7 +68,7 @@ h2 {
 <script type="text/javascript">
 	var doBook = function() {
 		
-		opener.document.location.href="bookmark.do";
+		opener.document.location.href="bookmark.do?boardNo="+${boardNo};
 		window.close();
 	}
 

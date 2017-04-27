@@ -42,9 +42,9 @@ public class MyPageController {
 
 	@RequestMapping("applyPopupProc.do")
 	public String applyPopupProc(Model model, @RequestParam HashMap<String, Object>params,HttpSession session) {
-//		int userIndex = (int)session.getAttribute("userIndex");
+		int userIndex = (int)session.getAttribute("userIndex");
 //		System.out.println("userIndex" + userIndex);
-		int userIndex = 1;
+//		int userIndex = 1;
 		params.put("userIndex", userIndex);
 		service.writeApply(params);
 //		System.out.println("applyPopupProc.do params : " + params );
@@ -56,10 +56,11 @@ public class MyPageController {
 
 
 	@RequestMapping("bookmark.do")
-	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page) {
-//		int index = (int)session.getAttribute("userIndex");
-		int index = 1;
-		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(index,page);
+	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page, int boardNo) {
+		int userIndex = (int)session.getAttribute("userIndex");
+		service.bookmark(boardNo, userIndex);
+		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(userIndex,page);
+		
 		
 		
 				
@@ -86,8 +87,7 @@ public class MyPageController {
 	
 	@RequestMapping("complete.do")
 	public ModelAndView complete(HttpSession session, @RequestParam(defaultValue="1")int page) {
-//		int userIndex = (int)session.getAttribute("userIndex");
-		int userIndex = 1;
+		int userIndex = (int)session.getAttribute("userIndex");
 		
 		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(userIndex,page);
 		
@@ -107,8 +107,7 @@ public class MyPageController {
 	@RequestMapping("mylistProc.do")
 	public ModelAndView mylistProc
 	(HttpSession session, @RequestParam(defaultValue="1")int page,@RequestParam(defaultValue="9")int boardFlag) {
-//		int userIndex = (int) session.getAttribute("userIndex");
-		int userIndex=1;
+		int userIndex = (int) session.getAttribute("userIndex");
 		
 		
 		ModelAndView mav = new ModelAndView();
@@ -142,8 +141,7 @@ public class MyPageController {
 	
 	@RequestMapping("starpointProc.do")
 	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
-//		int userIndex = (int)session.getAttribute("userIndex");
-		int userIndex=1;
+		int userIndex = (int)session.getAttribute("userIndex");
 		boardNo=1;
 		int mode=0;
 		HashMap<String, Object> params = new HashMap<>();
