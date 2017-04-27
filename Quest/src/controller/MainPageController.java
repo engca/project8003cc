@@ -53,13 +53,12 @@ public class MainPageController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="userjoin.do")
 	public String join(String userId, String password, String nickname){
-		System.out.println(userId);
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("userId", userId );
 		param.put("password", password);
 		param.put("nickname", nickname);
 		service.join(param);
-		return "search.main.listBoard";
+		return "redirect:/listBoard.do";
 	}	
 	
 	@RequestMapping("idCheck.do")

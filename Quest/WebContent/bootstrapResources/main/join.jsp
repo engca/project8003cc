@@ -10,47 +10,27 @@
     <meta name="author" content="">
 
     <title>회원가입</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-        <!-- jQuery -->
-    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-    <script src="bootstrapResources/js/contact_me.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="bootstrapResources/js/freelancer.min.js"></script>
+ <meta httpequiv="ContentType" content="text/html; charset=UTF8">
+     <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ 	<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
+     <link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+     <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+     <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+ 	<script src="bootstrapResources/js/freelancer.min.js"></script>
     
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
 <script type="text/javascript">
+var joinCheckID = 0;
+var joinCheckPW1 = 0;
+var joinCheckPW2 = 0;
+var joinCheckNick = 0;
 $(document).ready ( function() {
-	
+
 	// id(이메일) 중복확인
 	$('#userId').on('keyup', function(){
 		var regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;		
@@ -66,6 +46,7 @@ $(document).ready ( function() {
 				success : function(data) {
 					if (data != 1) {
 						$('#idspan').html('사용가능한 ID(이메일) 입니다.');
+						joinCheckID = 1;
 					} else {
 						$('#idspan').text('이미 사용중인 ID(이메일) 입니다.');
 						$('#userId').focus();
@@ -84,6 +65,7 @@ $(document).ready ( function() {
 			$('#passwordspan').html('특수문자,숫자,영문 대소문자 포함 8자이상!! ');
 		} else {
 			$('#passwordspan').html('사용가능한 패스워드 입니다.');
+			joinCheckPW1 = 1;
 		}					
 	});
 	
@@ -92,6 +74,7 @@ $(document).ready ( function() {
 			$('#passwordcheckspan').html('동일한 비밀번호 입력하세요');
 		} else {
 			$('#passwordcheckspan').html('동일한 비밀번호 입니다');
+			joinCheckPW2 = 1;
 		}
 	});
 
@@ -105,6 +88,7 @@ $(document).ready ( function() {
 			success : function(data) {
 				if (data != 1) {
 					$('#nicknamespan').html('사용가능한 닉네임 입니다.');
+					joinCheckNick = 1;
 				} else {
 					$('#nicknamespan').text('이미 사용중인 닉네임 입니다.');
 					$('#nickname').focus();
@@ -114,9 +98,19 @@ $(document).ready ( function() {
 // 			alert('에러');
 // 			}
 		});
-	});	
-	
+	});
 });
+
+// 가입처리
+function	joinCheckAll(){
+if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
+	alert("회원가입이 완료되었습니다.");
+	return true;		
+} else {
+	alert("가입데이터를 정확히 입력하세요!!");
+	return false;
+}
+}	
 </script>
 </head>
 
@@ -129,7 +123,7 @@ $(document).ready ( function() {
                     <hr class="star-primary">
                 </div>
             </div>
-<form action="userjoin.do" method="post" name="frm">
+<form action="userjoin.do" method="post" name="frm" id="frm">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <form name="sentMessage" id="contactForm" novalidate>
@@ -167,7 +161,7 @@ $(document).ready ( function() {
                             <div class="form-group col-xs-12">
                                 <input type="button"	class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='viewBoard.do'">
 								
-                                <button type="submit" class="btn btn-success btn-lg" id="btn">Send</button>
+                                <button type="submit" class="btn btn-success btn-lg" id="btn" onclick="return joinCheckAll()">Send</button>
                             </div>
                         </div>
                     </form>
