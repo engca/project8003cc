@@ -41,9 +41,10 @@
 			
 		});
 		$('#closeBtn').click(function() {
-			$('#sangsea').empty();
-			$("input:checkbox[name='area']").prop("checked", false);
-			$('#sangseaArea').css('visibility', 'hidden');
+			$('#sidooo').empty();
+			$('#gunguuu').empty();
+// 			$("input:checkbox[name='area']").prop("checked", false);
+// 			$('#sangseaArea').css('visibility', 'hidden');
 		});	 
 	});
 	function searchGungu(btn){
