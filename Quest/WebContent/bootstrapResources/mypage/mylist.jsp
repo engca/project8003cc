@@ -167,7 +167,7 @@ select {
 						<td>${myapply.nickname}</td>
 						<td><fmt:formatDate value="${myapply.date }"
 								pattern="yyyy-MM-dd" /></td>
-						<td>${myapply.readcount }</td>
+						<td>${myapply.readCount }</td>
 					</tr>
 				</c:forEach>
 				
