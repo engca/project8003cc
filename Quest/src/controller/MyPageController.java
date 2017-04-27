@@ -41,6 +41,7 @@ public class MyPageController {
 	@RequestMapping("applyPopupProc.do")
 	public String applyPopupProc(Model model, @RequestParam HashMap<String, Object>params,HttpSession session) {
 //		int userIndex = (int)session.getAttribute("userIndex");
+//		System.out.println("userIndex" + userIndex);
 		int userIndex = 1;
 		params.put("userIndex", userIndex);
 		service.writeApply(params);
