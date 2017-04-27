@@ -53,6 +53,7 @@
 	 });
 	 
 	
+	 
 $(document).ready(function(){
 	 $('#sido').click(function(){
 		 var selectedVal = $('#sido option:selected').val();
@@ -88,7 +89,12 @@ $(document).ready(function(){
 			 alert("장소를 선택해주세요.");
 			 $('#sido').focus();
 		 }
-	 })
+	 });
+	 
+	 $("input:radio[name='contactNo']").click(function(){
+		 $('#contact').html("");
+	 });
+	 
 	 
 	 $('#btn').click(function(){
 		 if ($('#title').val() == "") {
@@ -141,6 +147,8 @@ $(document).ready(function(){
 				$('#rewardChk').html("");				
 			}
 		 });
+	 
+	 
 	 
 	 
 });
