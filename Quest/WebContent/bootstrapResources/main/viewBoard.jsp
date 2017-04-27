@@ -104,116 +104,131 @@ margin-left: 0px
 		</div>
 		<div class="row">
 
-				<table class="table table-bordered bordertable">
-					<tr>
-						<th><h5>제목</h5></th>
-						<td colspan="3">${boardList.title } </td>
-					</tr>
-					<tr>
-						<th><h5>장소</h5></th>
-						<td colspan="3">${addr.sido }&nbsp;&nbsp;&nbsp;${addr.gungu }</td>
-					</tr>
-					<tr>
-						<th><h5>보상</h5></th>
-						<td colspan="3">
-							<li class="btn btn-warning btn-lg">${boardList.reward1 } </li>
-							&nbsp; &nbsp;
-						 <c:if test="${boardList.reward2 != ''}">
-							<li class="btn btn-warning btn-lg">${boardList.reward2 } </li>
-						</c:if>
-							&nbsp; &nbsp;
-						<c:if test="${boardList.reward3 != ''}">
+			<table class="table table-bordered bordertable">
+				<tr>
+					<th><h5>제목</h5></th>
+					<td colspan="3">${boardList.title }</td>
+				</tr>
+				<tr>
+					<th><h5>장소</h5></th>
+					<td colspan="3">${addr.sido }&nbsp;&nbsp;&nbsp;${addr.gungu }</td>
+				</tr>
+				<tr>
+					<th><h5>보상</h5></th>
+					<td colspan="3">
+						<li class="btn btn-warning btn-lg">${boardList.reward1 }</li>
+						&nbsp; &nbsp; <c:if test="${boardList.reward2 != ''}">
+							<li class="btn btn-warning btn-lg">${boardList.reward2 }</li>
+						</c:if> &nbsp; &nbsp; <c:if test="${boardList.reward3 != ''}">
 							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>
-						</c:if>  
-					</tr>
-					<tr>
-						<th><h5>필요인원</h5></th> 
-						<td colspan="3">${boardList.people } 명</td>
-					</tr>
-					<tr>
-						<th><h5>연락방법</h5></th>
-						<td colspan="3">${contactMethod }</td>
-					</tr>
-					<tr>
-						<th><h5>희망시작시간</h5></th>
-						<td>${boardList.stTime }</td>
-						<th><h5>소요예정시간</h5></th>
-						<td>${boardList.playTime } 분</td>
-					</tr>
-					<tr>
-						<th height="100"><h5>내용</h5></th>
-						<td colspan="3">${boardList.content }</td>
-					</tr>
-					<tr>
-						<td colspan="4" align="right">
-<!-- 	로그인 세션 체크 -->
-	<c:choose>
-		<c:when test="${userId != null }">
+						</c:if>
+				</tr>
+				<tr>
+					<th><h5>필요인원</h5></th>
+					<td colspan="3">${boardList.people }명</td>
+				</tr>
+				<tr>
+					<th><h5>연락방법</h5></th>
+					<td colspan="3">${contactMethod }</td>
+				</tr>
+				<tr>
+					<th><h5>희망시작시간</h5></th>
+					<td>${boardList.stTime }</td>
+					<th><h5>소요예정시간</h5></th>
+					<td>
+					<c:if test="${boardList.playTime == '30m'}">30분</c:if>
+					<c:if test="${boardList.playTime == '3h' }">3시간이하</c:if>
+					<c:if test="${boardList.playTime == 'over3h'}">3시간이상</c:if>
+					</td>
+				</tr>
+				<tr>
+					<th height="100"><h5>내용</h5></th>
+					<td colspan="3">${boardList.content }</td>
+				</tr>
+				<tr>
+					<td colspan="4" align="right">
+						<!-- 	로그인 세션 체크 --> <c:choose>
+							<c:when test="${userId != null }">
 
-				<form name="apply">
-					<input type="hidden" name="boardNo" value=${boardList.boardNo }>
-					<input type="hidden" name="userIndex" value=${boardList.userIndex }>
-					<input type="hidden" name="reward1" value=${boardList.reward1 }>
-					<input type="hidden" name="reward2" value=${boardList.reward2 }>
-					<input type="hidden" name="reward3" value=${boardList.reward3 }>
-					<input type="hidden" name="contactNo" value=${boardList.contactNo }>										  
-				</form>						
-				<form name="bookmark">
-					<input type="hidden" name="boardNo" value=${boardList.boardNo }>
-					<input type="hidden" name="userIndex" value=${boardList.userIndex }>  
-				</form>
-				
-				<c:if test="${applydata == null }">				
-				<input type="button"	class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
-				</c:if>
-				
-				<input type="button"	class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
-				
-				<c:if test="${policedata == null }">						
-				<input type="button"	class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
-				</c:if>
-				
-				<c:if test="${sessionScope.userIndex == boardList.userIndex }">
-				<input type="button"	class="btn btn-warning btn-lg" value="퀘스트수정" onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
-				<input type="button"	class="btn btn-success btn-lg" value="퀘스트삭제" 
-				onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">   
-				</c:if>
-		</c:when>
-	</c:choose>					
-				<input type="button" 	class="btn btn-primary btn-lg" onclick="location.href='listBoard.do'" value="퀘스트목록">
-			
+								<form name="apply">
+									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+									<input type="hidden" name="userIndex"
+										value=${boardList.userIndex }> <input type="hidden"
+										name="reward1" value=${boardList.reward1 }> <input
+										type="hidden" name="reward2" value=${boardList.reward2 }>
+									<input type="hidden" name="reward3" value=${boardList.reward3 }>
+									<input type="hidden" name="contactNo"
+										value=${boardList.contactNo }>
+								</form>
+								<form name="bookmark">
+									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+									<input type="hidden" name="userIndex"
+										value=${boardList.userIndex }>
+								</form>
+
+								<c:if test="${applydata == null }">
+									<input type="button" class="btn btn-info btn-lg" value="신청하기"
+										onclick="applyPopup()">
+								</c:if>
+
+								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기"
+									onclick="bookmarkPopup()">
+
+								<c:if test="${policedata == null }">
+									<input type="button" class="btn btn-danger btn-lg" value="신고하기"
+										onclick="police()" name="police">
+								</c:if>
+
+								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
+									<input type="button" class="btn btn-warning btn-lg"
+										value="퀘스트수정"
+										onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
+									<input type="button" class="btn btn-success btn-lg"
+										value="퀘스트삭제"
+										onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">
+								</c:if>
+							</c:when>
+						</c:choose> <input type="button" class="btn btn-primary btn-lg"
+						onclick="location.href='listBoard.do'" value="퀘스트목록">
+
 					</td>
 				</tr>
 			</table>
-<!-- 댓글보기 부분 추가 -->
-		<hr>
+			<!-- 댓글보기 부분 추가 -->
+			<hr>
 			<table class="table table-bordered bordertable" width="80%">
-			<c:if test="${listComment != null }">
-				<c:forEach var="comment" items="${listComment }">
-				<tr>
-					<td width="20%"><b>${comment.nickname}</b></td>
-					<td width="60%">${comment.content}</td>
-					<td width="20%" align="center">${comment.date }</td>
-					<td>
-						<c:if test="${sessionScope.nickname == comment.nickname }">
-						<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${boardList.userIndex }'" value="삭제">
-						</c:if>
-					</td> 
-				</tr>
-				</c:forEach>
-				<c:if test="${sessionScope.userId != null }">
-				<form action="insertComment.do" method="post">
-					<tr>
-						<td>${sessionScope.nickname}</td>
-						<td colspan="2"><textarea name="content" id="content" rows="2" cols="100"></textarea></td>
-								<input type="hidden" name="boardNo" value=${boardList.boardNo }>
-								<input type="hidden" name="userIndex" value=${boardList.userIndex }>
-						<td><input type="submit" class="btn btn-primary btn-lg" value="댓글등록"></td>
-					</tr>
-				</form>
+				<c:if test="${listComment != null }">
+					<c:forEach var="comment" items="${listComment }">
+						<tr>
+							<td width="20%"><b>${comment.nickname}</b></td>
+							<td width="60%">${comment.content}</td>
+							<td width="20%" align="center">${comment.date }</td>
+							<td><c:if
+									test="${sessionScope.nickname == comment.nickname }">
+									<input type="button"
+										onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${boardList.userIndex }'"
+										value="삭제">
+								</c:if></td>
+						</tr>
+					</c:forEach>
+					<c:if test="${sessionScope.userId != null }">
+						<form action="insertComment.do" method="post">
+							<table>
+								<tr>
+									<td>${sessionScope.nickname}</td>
+									<td colspan="2"><textarea name="content" id="content"
+											rows="2" cols="100"></textarea></td>
+									<td><input type="hidden" name="boardNo"
+										value=${boardList.boardNo }> <input type="hidden"
+										name="userIndex" value=${boardList.userIndex }></td>
+									<td><input type="submit" class="btn btn-primary btn-lg"
+										value="댓글등록"></td>
+								</tr>
+							</table>
+						</form>
+					</c:if>
 				</c:if>
-			</c:if>	
-			</table>								
+			</table>
 		</div>
 	</div>
 
