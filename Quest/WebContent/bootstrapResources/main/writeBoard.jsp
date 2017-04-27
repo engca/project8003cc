@@ -44,9 +44,14 @@
 			alert("error");
 		}			
 	});
+	 $(function(){
+		if ( !$('#reward1').val() ) {
+		 $('#reward2').attr('readonly', true);
+		 $('#reward3').attr('readonly', true);
+		} 
+	 });
+	 
 	
-	
-
 $(document).ready(function(){
 	 $('#sido').click(function(){
 		 var selectedVal = $('#sido option:selected').val();
@@ -76,7 +81,7 @@ $(document).ready(function(){
 		}
 	 });
 	 
-	 $('#reward1').click(function(){
+	 $('#people').click(function(){
 		 if($("#gungu option").is(":selected") == true){
 		 } else {
 			 alert("장소를 선택해주세요.");
@@ -88,10 +93,11 @@ $(document).ready(function(){
 		 if (!$('#title').val()) {
 			 alert("제목을 입력하세요");
 			 return false;
-		 } else if (!$('#reward1').val()|| !$('#reward2').val() || !$('#reward3').val() ){
-			 alert("보상은 하나 이상 입력해야 합니다.")
-			 return false;
-		 }  else if (!$('#people').val()) {
+		 } else if ( !$('#reward1').val() ) {
+				$('#rewardChk').html("보상은 하나 이상 입력해야 합니다.");
+				$('#reward1').focus();
+			return false; 
+		 } else if (!$('#people').val()) {
 			$('#peoplechk').html("필요인원을 적어주세요.");
 			$('#people').focus();
 			return false;
@@ -100,15 +106,22 @@ $(document).ready(function(){
 				 $('#contact').html("연락방법을 선택하세요.");
 				 return false;
 		} else if ($.isNumeric($('#people').val()) == false) {
-			alert("숫자로 입력하세요");
-			$('#people').focus();
 			return false;
 		} else {
 			return true;
 		}
 	 });
 	 
-		   
+
+	 
+	$('#reward1').keyup(function(){
+		$('#reward2').attr('readonly', false);
+	});	
+	
+	$('#reward2').keyup(function(){
+		$('#reward3').attr('readonly', false);
+	})
+	
 
 	 $('#people').keyup(function(){
 		if ($.isNumeric($('#people').val()) == false) {
@@ -120,7 +133,12 @@ $(document).ready(function(){
 		}
 	 });
 	 
-	 
+	 $('#reward1').keyup(function(){
+			if ( !$('#reward1').val()) {
+			} else {
+				$('#rewardChk').remove(); 
+			}
+		 });
 	 
 	 
 });
@@ -194,19 +212,18 @@ select {
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
-						<td colspan="3">
+						<td colspan="4">
 							<table>  
 								<tr>
 									<td><input type="text" placeholder="보상1" name="reward1"
 										class="form-control input-sm" id="reward1"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" placeholder="보상2" name="reward2"
-										class="form-control input-sm"></td>
+										class="form-control input-sm" id = "reward2"></td>
 									<td>&nbsp;&nbsp;</td>
 									<td><input type="text" placeholder="보상3" name="reward3"
-										class="form-control input-sm">
-										<span id = "rewardChk" style = "color:red;"></span>
-										</td>
+										class="form-control input-sm" id = "reward3"></td>
+									<td><span id = "rewardChk" style = "color:red;"></span></td>
 								</tr>
 							</table>
 						</td>
