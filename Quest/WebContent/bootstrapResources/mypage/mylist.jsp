@@ -66,9 +66,9 @@ select {
 </head>
 <body>
 	<div id="board" class="container">
-		<input type="button" class="btn btn-primary btn-lg" value="해주세요"
+		<input type="button" class="btn btn-primary btn-lg" value="잘해요"
 			onclick="location.href='mylistProc.do?boardFlag=0'"> <input
-			type="button" class="btn btn-primary btn-lg" value="잘해요"
+			type="button" class="btn btn-primary btn-lg" value="해주세요"
 			onclick="location.href='mylistProc.do?boardFlag=1'">
 
 		<div class="row">
