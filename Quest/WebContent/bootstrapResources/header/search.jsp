@@ -4,12 +4,29 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Quest Header</title>
+<!-- Bootstrap Core CSS -->
+<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Theme CSS -->
+<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -27,7 +44,7 @@
 					$(data.sido).each(function(index)
 						{
 							var td = $('<td>');
-							var btn = $('<input type = "button" value = "' + this.sido +'" onclick="searchGungu(this)" />');
+							var btn = $('<input type = "button" class = "btn-link" value = "' + this.sido +'" onclick="searchGungu(this)" />');
 							td.append(btn);
 							tr.append(td);
 						});
@@ -84,31 +101,21 @@
 	}
 </script>
 <style type="text/css">
-table {
-	width: 100%;
-	border: 1px solid #bcbcbc;
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
 }
 
 .ls2 {
 	letter-spacing: -1px;
 	word-spacing: 3px;
 }
-
-ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-li {
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-	border: 0;
-	float: left;
-}
 </style>
 </head>
-<body>
+<body >
 	<center>
 		<form action="searchBoard.do">
 			<select name = "boardFlag">
@@ -120,14 +127,29 @@ li {
 				<option value = "1">작성자</option>
 			</select>
 			<input type="text" name="searchKey" > 
-			<input type="submit"value="검색" > 
-			<input id="sangseaBtn" type="button" value="상세검색"> 
-			<input type="button" id="closeBtn" value="상세검색닫기">
+			<input type="submit"value="검색" class = "btn-primary" > 
+			<input id="sangseaBtn" type="button" value="상세검색" class ="btn-success"> 
+			<input type="button" id="closeBtn" value="상세검색닫기" class= "btn-warning">
 			<div id="sangsea" style="visibility: hidden;">
-				<table id="sidooo" style = "width: 500px; border:double"></table>
-				<table id="gunguuu" style = "width: 800px; border:double; visibility:hidden;"></table>
+				<table id="sidooo" style = "width: 500px; border:double" class="col-lg-12"></table>
+				<table id="gunguuu" style = "width: 800px; visibility:hidden;"></table>
 			</div>
 		</form>
 	</center>
+	<!-- jQuery -->
+    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
+    <script src="bootstrapResources/js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="bootstrapResources/js/freelancer.min.js"></script>
 </body>
 </html>

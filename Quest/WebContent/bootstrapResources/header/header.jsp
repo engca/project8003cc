@@ -34,11 +34,11 @@
 	
 	</script>
 </head>
-<body>
+<body  >
 
     <!-- Navigation -->
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style ="padding:10px">
+            <div  class = "navbar navbar-default  navbar-custom ">
                    <c:choose>
                    	
 					<c:when test="${sessionScope.userId == null}">
@@ -51,8 +51,8 @@
 										onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
 								</span>
 								<span  style="float:right">
-									<span > id : </span><input type="text" name="id" class="form-control input-sm"> 
-									<span > pw: </span><input type="password" name="pw" class="form-control input-sm">
+									<span class="navbar-text" style="color:white"> id : <input type="text" name="id" class="input-sm"> </span>
+									<span class="navbar-text" style="color:white"> pw: <input type="password" name="pw" class="input-sm"> </span>
 									<input type="submit" value="로그인" class='btn btn-success btn-lg'> 
 									<input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'>
 								</span>
