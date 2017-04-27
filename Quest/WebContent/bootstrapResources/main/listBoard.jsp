@@ -48,15 +48,27 @@
  				<td align="center" width="20%"><b>작성일</b></td>
  				<td align="center" width="10%"><b>조회수</b></td>
  			</tr>
- 			<c:forEach var="board" items="${boardList}">
- 				<tr>
- 					<td align="center">${board.boardNo}</td>
+ 			
+  			<c:forEach var="board" items="${boardList}">
+  				<tr>
+ 					<td align="center">${board.boardNo}</td> 
+ 					<c:if test="${board.bCompleteFlag ==0 }">
  					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title }</a></td>
+ 					</c:if>
+ 					<c:if test="${board.bCompleteFlag ==1 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">
+ 						<font color="red">[완료된 퀘스트]</font>	${board.title }</a></td>
+ 					</c:if>
+ 					<c:if test="${board.bCompleteFlag ==2 }">
+ 					<td><font color="gray">삭제된 게시글 입니다</font></td>
+ 					</c:if>
+ 					
  					<td align="center">${board.nickname}</td>
  					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyyMMdd" />
  					<td align="center">${board.readCount }</td>
- 				</tr>
+ 				</tr>			
  			</c:forEach>
+ 
  			<tr>
  				<td colspan="5" align="right">
  					<input type="button" value="글쓰기" onclick="checkLogin()" 	class="btn btndefault pullright"></td>
