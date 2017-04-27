@@ -51,8 +51,8 @@
 										onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
 								</span>
 								<span  style="float:right">
-									<span class="navbar-text" style="color:white"> id : <input type="text" name="id" class="input-sm"> </span>
-									<span class="navbar-text" style="color:white"> pw: <input type="password" name="pw" class="input-sm"> </span>
+									<span class="navbar-text" style="color:white"> id : <input type="text" name="id" class="input-sm" style="color:black"> </span>
+									<span class="navbar-text" style="color:white"> pw: <input type="password" name="pw" class="input-sm" style="color:black"> </span>
 									<input type="submit" value="로그인" class='btn btn-success btn-lg'> 
 									<input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'>
 								</span>

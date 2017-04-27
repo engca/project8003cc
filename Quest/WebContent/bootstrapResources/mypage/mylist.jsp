@@ -66,9 +66,9 @@ select {
 </head>
 <body>
 	<div id="board" class="container">
-		<input type="button" class="btn btn-primary btn-lg" value="해주세요"
+		<input type="button" class="btn btn-primary btn-lg" value="잘해요"
 			onclick="location.href='mylistProc.do?boardFlag=0'"> <input
-			type="button" class="btn btn-primary btn-lg" value="잘해요"
+			type="button" class="btn btn-primary btn-lg" value="해주세요"
 			onclick="location.href='mylistProc.do?boardFlag=1'">
 
 		<div class="row">
@@ -112,7 +112,7 @@ select {
 						<td>${myboardnickname}</td>
 						<td><fmt:formatDate value="${myboard.date }"
 								pattern="yyyy-MM-dd" /></td>
-						<td>${myboard.readcount }</td>
+						<td>${myboard.readCount }</td>
 					</tr>
 				</c:forEach>
 				
@@ -167,7 +167,7 @@ select {
 						<td>${myapply.nickname}</td>
 						<td><fmt:formatDate value="${myapply.date }"
 								pattern="yyyy-MM-dd" /></td>
-						<td>${myapply.readcount }</td>
+						<td>${myapply.readCount }</td>
 					</tr>
 				</c:forEach>
 				
