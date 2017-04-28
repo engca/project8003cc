@@ -24,17 +24,17 @@
 				<th width="10%">선택한 보상</th>
 				<th width="10%">연락처</th>
 			</tr>
-
-			<c:forEach var="board" items="${bookmarkList }">
+${alldata }
+			<c:forEach var="board" items="${alldata }">
 				<tr>
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">잘해요</c:if> <c:if
 							test="${board.boardFlag == 1 }">해주세요</c:if></td>
 					<td><a href="viewBoard.do?boardNo=${board.boardNo }">
-							${board.title }</a></td>
+							${title }</a></td>
 					<!-- USER INDEX>ID -->
 					<td>${nickname }</td>
-					<td><fmt:formatDate value="${board.date }"
+					<td><fmt:formatDate value="${date }"
 							pattern="yyyy-MM-dd" /></td>
 					<td>${board.readCount }</td>
 					<td><input type="button" value="삭제" name="${board.boardNo }" onclick="deleteBook(this)">
