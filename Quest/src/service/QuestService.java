@@ -128,7 +128,7 @@ public class QuestService implements IQuestService {
 		result.put("boardList", list);
 		System.out.println("리스트보드용" + result); 
 		return result;  		
-	}
+	}  
 	
 	@Override
 	public HashMap<String, Object> searchBoardList(int boardflag,int searchFlag, int page,String searchKey, String[] area) {
