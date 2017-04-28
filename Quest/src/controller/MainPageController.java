@@ -35,7 +35,7 @@ public class MainPageController {
 		HashMap<String, Object> data = service.getBoardList(boardFlag, page); 
 		ModelAndView mav = new ModelAndView();
 		if(boardFlag==0){
-			data.put("header1", "잘해요");   
+			data.put("header1", "잘해요");    
 		}
 		else if(boardFlag==1){
 			data.put("header1", "해주세요");
@@ -126,9 +126,7 @@ public class MainPageController {
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session){
 		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 		board.put("userIndex", userIndex);
-		System.out.println(userIndex);
-		System.out.println(board);
-		service.writeBoard(board);
+		int result = service.writeBoard(board);
 		return "redirect:/listBoard.do";
 	}
 	

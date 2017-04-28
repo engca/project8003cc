@@ -42,11 +42,11 @@
  		</div>
  		<table class="table tablestriped">
  			<tr>
- 				<td align="center" width="10%"><b>No</b></td>
- 				<td align="center" width="40%"><b>제목</b></td>
- 				<td align="center" width="20%"><b>작성자</b></td>
- 				<td align="center" width="20%"><b>작성일</b></td>
- 				<td align="center" width="10%"><b>조회수</b></td>
+ 				<td align="center" width="8%"><b>No</b></td>
+ 				<td align="center" width="54%"><b>제목</b></td>
+ 				<td align="center" width="12%"><b>작성자</b></td>
+ 				<td align="center" width="18%"><b>작성일</b></td>
+ 				<td align="center" width="8%"><b>조회수</b></td>
  			</tr>
  			
   			<c:forEach var="board" items="${boardList}">
