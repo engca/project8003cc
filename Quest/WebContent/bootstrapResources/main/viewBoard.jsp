@@ -177,19 +177,17 @@ FORM {
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
 									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
 								</form>
-
+								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
+									<input type="button" class="btn btn-info btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
+								</c:if>
 								<c:if test="${applydata == null }">
 									<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 								</c:if>
-
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
-
 								<c:if test="${policedata == null }">
 									<input type="button" class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
 								</c:if>
-
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
-									<input type="button" class="btn btn-danger btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 									<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"
 										onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
 									<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"
@@ -201,7 +199,6 @@ FORM {
 
 					</td>
 				</tr>
-				<tr></tr>
 				<!-- 댓글보기 부분 추가 -->
 				<tr>
 				<c:if test="${sessionScope.userId != null }">
@@ -213,12 +210,11 @@ FORM {
 						<td>
 							<input type="hidden" name="boardNo" value=${boardList.boardNo }> 
 							<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
-							<input type="submit" class="btn btn-primary btn-lg" value="댓글등록">
+							<input type="submit" class="btn-primary" value="댓글등록">
 						</td>
 					</form>
 				</c:if>
 				</tr>
-				<tr>
 				<c:if test="${listComment != null }">
 					<c:forEach var="comment" items="${listComment }">
 					<tr>
@@ -232,7 +228,6 @@ FORM {
 					</tr>
 					</c:forEach>
 				</c:if>
-				</tr>
 				
 			</table>
 		</div>
