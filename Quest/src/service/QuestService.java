@@ -116,6 +116,10 @@ public class QuestService implements IQuestService {
 			int userindex = (int) (board.get("userIndex"));
 			board.put("nickname", nickname(userindex));
 			int boardNo = (int)(board.get("boardNo"));
+			// 신청갯수 체크하려고 넣은것!!
+			int applyCount = (int)dao.applyCount(boardNo);
+			board.put("applyCount", applyCount);
+			//댓글갯수 체크하려고 넣은 것!!			
 			int commentCount = dao.selectCommentCount(boardNo);
 			board.put("commentCount", commentCount);
 		}				
