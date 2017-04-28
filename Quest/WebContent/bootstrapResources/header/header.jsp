@@ -80,21 +80,21 @@
 				</form>
 			</c:when>
 			<c:otherwise>
-				<span> <input type="button" id='dowellBtn'
-					class='btn btn-success btn-lg'
-					onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
-					<input type="button" id='todoBtn' class='btn btn-success btn-lg'
-					onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
-				</span>
-				<span style="float: right" class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1"> <input type="button"
-					value="마이페이지" class='btn btn-success btn-lg'
-					onclick="location.href='profile.do'"> <input type="button"
-					value="로그아웃" class='btn btn-success btn-lg'
-					onclick="location.href='logout.do'">
-				</span>
-				<br>
-				<br>
+				<div>
+						<span> &nbsp;&nbsp;&nbsp;&nbsp; <a href='listBoard.do'>
+								<img alt="" src="bootstrapResources/img/questlogo.png"
+								width="250" height="80">
+						</a>
+						</span>
+						
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+								<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
+								<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
+							</ul>
+						</div>
+					</div>
 				<marquee direction="right" style="">
 					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font>
 				</marquee>
