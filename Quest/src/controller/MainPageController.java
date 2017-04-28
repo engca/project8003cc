@@ -35,7 +35,7 @@ public class MainPageController {
 		HashMap<String, Object> data = service.getBoardList(boardFlag, page); 
 		ModelAndView mav = new ModelAndView();
 		if(boardFlag==0){
-			data.put("header1", "잘해요");    
+			data.put("header1", "잘해요");     
 		}
 		else if(boardFlag==1){
 			data.put("header1", "해주세요");
