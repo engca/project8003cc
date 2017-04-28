@@ -26,7 +26,7 @@ function applyPopup(){
 function bookmarkPopup(){
 	$.ajax({
 		type : 'get',
-		url : 'bookmarkCheck.do',
+		url : 'bookmarkCheck.do', 
 		dataType : 'text',
 		data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${sessionScope.userIndex},
 		success : function(data) {
