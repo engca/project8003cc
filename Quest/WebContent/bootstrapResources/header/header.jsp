@@ -67,7 +67,7 @@
 					</c:when>
 					<c:otherwise>
 						<span >  
-							<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
+							<input type="button" id='dowellBtn' class='btn btn-success btn-lg' style="margin-left: 20px"
 								onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
 							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
 								onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
