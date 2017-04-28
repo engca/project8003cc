@@ -255,7 +255,7 @@ select {
 						<th><h5>희망시작시간</h5></th>
 						<td><select name="stTime">
 								<c:forEach var="i" begin="1" end="24">
-									<option value=${i }>${i }시</option>
+									<option value=${i } >${i }시</option>
 								</c:forEach>
 						</select></td>
 						<th><h5>소요예정시간</h5></th>

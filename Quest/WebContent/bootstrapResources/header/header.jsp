@@ -30,74 +30,91 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-	<script type="text/javascript">
+<script type="text/javascript">
 	
-	</script>
-	<style type="text/css">
-	</style>
+</script>
+<style type="text/css">
+.page-scroll {
+	font-size: 20px;
+}
+</style>
 </head>
-<body  >
+<body>
 
-            <div  class = "navbar navbar-default  navbar-custom ">
-                   <c:choose>
-                   	
-					<c:when test="${sessionScope.userId == null}">
-						<form action="login.do" method = "post">
-							<div>
-							<span> &nbsp;&nbsp;&nbsp;&nbsp;
-							<a href = 'listBoard.do'> 
+	<div class="navbar navbar-default  navbar-custom ">
+		<c:choose>
+
+			<c:when test="${sessionScope.userId == null}">
+				<form action="login.do" method="post">
+					<div>
+						<span> &nbsp;&nbsp;&nbsp;&nbsp; <a href='listBoard.do'>
 								<img alt="" src="bootstrapResources/img/questlogo.png"
-								width = "250" height = "80">
-							</a>
-							</span>
-								<span>
-									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
-										onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
-									<input type="button" id='todoBtn' class='btn btn-success btn-lg'
-										onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
-								</span>
-								<span  style="float:right">
-									<span class="navbar-text" style="color:white"> id : <input type="text" name="id" class="input-sm" style="color:black"> </span>
-									<span class="navbar-text" style="color:white"> pw: <input type="password" name="pw" class="input-sm" style="color:black"> </span>
-									<input type="submit" value="로그인" class='btn btn-success btn-lg'> 
-									<input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'>
-								</span>
-							</div>
-						</form>
-					</c:when>
-					<c:otherwise>
-						<span >  
-							<input type="button" id='dowellBtn' class='btn btn-success btn-lg' style="margin-left: 20px"
-								onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
-							<input type="button" id='todoBtn' class='btn btn-success btn-lg'
-								onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
+								width="250" height="80">
+						</a>
 						</span>
-						<span  style="float:right" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<input type="button" value="마이페이지" class='btn btn-success btn-lg'	onclick="location.href='profile.do'">
-							<input type="button" value="로그아웃"	class='btn btn-success btn-lg'	onclick="location.href='logout.do'">
-						</span>
-						<br><br>
-							<marquee direction="right" style=""><font color="white"> ${sessionScope.nickname }님 환영합니다. </font> </marquee> 
-					</c:otherwise>
-				</c:choose>
-            </div>
+						<table align = "right">
+							<tr>
+								<td><span class="navbar-text" style="color: white"> ID </span></td>
+								<td><input type="text" name="id" class="input-sm" style="color: black"> </td>
+								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td><input type="submit" value="로그인" class='btn btn-success btn-lg'></td>
+							</tr>
+							<tr>
+								<td><span class="navbar-text" style="color: white"> PW </span></td>
+								<td><input type="text" name="id" class="input-sm" style="color: black"> </td>
+								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								<td><input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'></td>
+						</table>
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+								<li class="page-scroll"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
+								<li class="page-scroll"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</c:when>
+			<c:otherwise>
+				<span> <input type="button" id='dowellBtn'
+					class='btn btn-success btn-lg'
+					onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
+					<input type="button" id='todoBtn' class='btn btn-success btn-lg'
+					onclick="location.href='listBoard.do?boardFlag=1'" value="해주세요">
+				</span>
+				<span style="float: right" class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1"> <input type="button"
+					value="마이페이지" class='btn btn-success btn-lg'
+					onclick="location.href='profile.do'"> <input type="button"
+					value="로그아웃" class='btn btn-success btn-lg'
+					onclick="location.href='logout.do'">
+				</span>
+				<br>
+				<br>
+				<marquee direction="right" style="">
+					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font>
+				</marquee>
+			</c:otherwise>
+		</c:choose>
+	</div>
 
-   
-    <!-- jQuery -->
-    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- jQuery -->
+	<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-    <script src="bootstrapResources/js/contact_me.js"></script>
+	<!-- Plugin JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="bootstrapResources/js/freelancer.min.js"></script>
+	<!-- Contact Form JavaScript -->
+	<script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
+	<script src="bootstrapResources/js/contact_me.js"></script>
+
+	<!-- Theme JavaScript -->
+	<script src="bootstrapResources/js/freelancer.min.js"></script>
 
 
 </body>
