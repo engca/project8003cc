@@ -113,12 +113,16 @@ public class QuestService implements IQuestService {
 		params.put("skip", skip);
 		params.put("count", count);
 		
-		List<HashMap<String, Object>> list = dao.selectBoardByUserIndex(params);
 		
+		List<HashMap<String, Object>> list = dao.selectBoardByUserIndex(params);
+				
 		HashMap<String, Object> result = new HashMap<>();
 		for (HashMap<String, Object> board : list ){
 			int userindex = (int) (board.get("userIndex"));
 			board.put("nickname", nickname(userindex));
+			int boardNo = (int)(board.get("boardNo"));
+			int commentCount = dao.selectCommentCount(boardNo);
+			board.put("commentCount", commentCount);
 		}				
 		result.put("start", start);
 		result.put("first", first);
@@ -127,6 +131,7 @@ public class QuestService implements IQuestService {
 		result.put("current", page);
 		result.put("boardFlag", boardflag);
 		result.put("boardList", list);
+		System.out.println("리스트보드용" + result); 
 		return result;  		
 	}
 	

@@ -76,7 +76,8 @@
 							<input type="button" value="마이페이지" class='btn btn-success btn-lg'	onclick="location.href='profile.do'">
 							<input type="button" value="로그아웃"	class='btn btn-success btn-lg'	onclick="location.href='logout.do'">
 						</span>
-							<marquee direction="right" style=""><font color="white"> ${sessionScope.userId }님 환영합니다. </font> </marquee> 
+						<br><br>
+							<marquee direction="right" style=""><font color="white"> ${sessionScope.nickname }님 환영합니다. </font> </marquee> 
 					</c:otherwise>
 				</c:choose>
             </div>

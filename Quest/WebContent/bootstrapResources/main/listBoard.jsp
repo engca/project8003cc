@@ -60,11 +60,11 @@
  						<font color="red">[완료된 퀘스트]</font>	${board.title }</a></td>
  					</c:if>
  					<c:if test="${board.bCompleteFlag ==2 }">
- 					<td><font color="gray">삭제된 게시글 입니다</font></td>
+ 					<td><font color="gray"><strike>삭제된 게시글 입니다</strike></font></td>
  					</c:if>
  					
  					<td align="center">${board.nickname}</td>
- 					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyyMMdd" />
+ 					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyy/MM/dd" />
  					<td align="center">${board.readCount }</td>
  				</tr>			
  			</c:forEach>
