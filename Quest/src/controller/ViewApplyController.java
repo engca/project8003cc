@@ -17,6 +17,7 @@ public class ViewApplyController {
 	@RequestMapping("viewApplyPopup.do")
 	public String viewApplyPopup(@RequestParam HashMap<String, Object>params){
 		
+		
 		return "viewApplyPopup.popup";
 	}
 	@RequestMapping("viewApply.do")

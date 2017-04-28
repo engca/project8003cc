@@ -10,8 +10,8 @@
 	<div id="board" class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h1>즐 겨 찾 기</h1>
-				<hr class="star-primary">
+				<h1>신청자보기</h1>
+				<hr class="star-primary" style="margin-bottom: 20px">
 				
 			</div>
 		</div>
