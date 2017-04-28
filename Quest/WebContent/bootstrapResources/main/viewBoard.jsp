@@ -16,7 +16,7 @@
  	<script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
 function applyPopup(){
-	var apply = document.apply; 
+	var apply = document.apply;
 	window.open('','apply','width=500, height=600');
 	apply.action = "applyPopup.do";
 	apply.target = "apply";
@@ -47,9 +47,9 @@ function bookmarkPopup(){
 	});	
 }
 function seeApplyUser(){
-	var sAUser = document.bookmark; 
+	var sAUser = document.applyUser;
 	window.open('','seeuser','width=500, height=600');
-	sAUser.action = "???.do";
+	sAUser.action = "viewApplyPopup.do";
 	sAUser.target = "seeuser";
 	sAUser.method = "post";
 	sAUser.submit(); 
@@ -177,6 +177,17 @@ FORM {
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
 									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
 								</form>
+								<form name="applyUser">
+									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
+									<input type="hidden"	name="title" value=${boardList.title }>  
+									<input type="hidden"	name="reward1" value=${boardList.reward1 }> 
+									<input type="hidden" name="reward2" value=${boardList.reward2 }>
+									<input type="hidden" name="reward3" value=${boardList.reward3 }>
+									<input type="hidden" name="people" value=${boardList.people }>
+									<input type="hidden" name="contactNo" value=${boardList.contactNo }>
+								</form>
+								
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
 									<input type="button" class="btn btn-info btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 								</c:if>
