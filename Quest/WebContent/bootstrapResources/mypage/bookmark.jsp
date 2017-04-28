@@ -44,19 +44,7 @@
 <!-- Theme JavaScript -->
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 
-<style type="text/css">
-th {
-	width: 150px;
-}
 
-select {
-	width: 100px;
-	height: 35px;
-}
-
-h1 {
-	text-align: center;
-}
 </style>
 <script type="text/javascript">
 function deleteBook(btn) {
@@ -73,19 +61,22 @@ function deleteBook(btn) {
 <body>
 	<div id="board" class="container">
 		<div class="row">
+			<div class="col-lg-12 text-center">
 				<h1>즐 겨 찾 기</h1>
 				<hr class="star-primary">
+				
 			</div>
 		</div>
-		<table class="table tablestriped">
+	
+		<table class="table table-striped">
 			<tr>
 				<th width="5%">No</th>
 				<th width="10%">구분</th>
 				<th width="45%">제목</th>
 				<th width="15%">작성자</th>
 				<th width="10%">작성일</th>
-				<th width="5%">조회수</th>
-				<th width="10%">삭제</th>
+				<th width="10%">조회수</th>
+				<th width="5%">삭제</th>
 			</tr>
 
 			<c:forEach var="board" items="${bookmarkList }">
