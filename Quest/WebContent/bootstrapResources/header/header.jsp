@@ -34,7 +34,7 @@
 	
 </script>
 <style type="text/css">
-.page-scroll {
+.page-scroll1 {
 	font-size: 20px;
 }
 </style>
@@ -57,19 +57,23 @@
 								<td><span class="navbar-text" style="color: white"> ID </span></td>
 								<td><input type="text" name="id" class="input-sm" style="color: black"> </td>
 								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-								<td><input type="submit" value="로그인" class='btn btn-success btn-lg'></td>
+								<td><input type="submit" value="로 그 인" class='btn btn-success'></td>
+								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+								
 							</tr>
 							<tr>
 								<td><span class="navbar-text" style="color: white"> PW </span></td>
 								<td><input type="text" name="id" class="input-sm" style="color: black"> </td>
 								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-								<td><input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success btn-lg'></td>
+								<td><input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success'></td>
+								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+							</tr>
 						</table>
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav">
 								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-								<li class="page-scroll"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
-								<li class="page-scroll"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
+								<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
+								<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
 							</ul>
 						</div>
 					</div>
