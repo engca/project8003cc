@@ -21,4 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    SELECT * FROM comment WHERE boardNo = #{boardNo}
    </select>
    
+   <select id="selectCommentCount" parameterType="int" resultType="int"> 
+   	select count(*) from comment where boardNo = #{boardNo}
+   </select>
 </mapper>
