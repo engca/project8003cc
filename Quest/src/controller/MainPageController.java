@@ -126,7 +126,7 @@ public class MainPageController {
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session){
 		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 		board.put("userIndex", userIndex);
-		int result = service.writeBoard(board);
+		service.writeBoard(board);
 		return "redirect:/listBoard.do";
 	}
 	
@@ -144,7 +144,7 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
 		gungu.put("gungu", service.getGungu(sido));
-//		System.out.println(gungu);
+		gungu.put("addrNo", service.getAddrNoAll());
 		return gungu;
 	}
 	
