@@ -144,7 +144,7 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
 		gungu.put("gungu", service.getGungu(sido));
-		gungu.put("addrNo", service.getAddrNoAll());
+		System.out.println(gungu);
 		return gungu;
 	}
 	

@@ -70,7 +70,6 @@ public interface IQuestDao {
 	public List<HashMap<String, Object>> selectSidoAll();
 	public List<HashMap<String, Object>> selectGungu(String sido);
 	public int selectAddrNo(String gungu);
-	public List<HashMap<String, Object>> selectAddrNoAll();
 
 	
 	//마이페이지 

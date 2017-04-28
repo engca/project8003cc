@@ -238,11 +238,6 @@ public class QuestService implements IQuestService {
 	@Override
 	public int writeBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		System.out.println("서비스의값?" + params);
-		int addrNo = dao.selectAddrNo((String)params.get("gungu"));
-		System.out.println(addrNo);
-		params.put("addrNo", addrNo);
-		System.out.println("입력전"+params);
 		return dao.insertBoard(params);
 	}
 
@@ -689,11 +684,6 @@ public class QuestService implements IQuestService {
 		
 	}
 
-	@Override
-	public List<HashMap<String, Object>> getAddrNoAll() {
-		// TODO Auto-generated method stub
-		return dao.selectAddrNoAll();
-	}
 
 
 

@@ -25,15 +25,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="selectGungu" parameterType="String" resultType="java.util.HashMap">
-		SELECT DISTINCT gungu FROM address WHERE sido LIKE #{sido}
+		SELECT gungu, addrNo FROM address WHERE sido LIKE #{sido}
 	</select>
 
 	<select id="selectAddrNo" parameterType="String" resultType="int">
 		SELECT addrNo FROM address WHERE gungu like CONCAT('%',#{gungu},'%')
-	</select>
-
-	<select id="selectAddrNoAll" resultType="java.util.HashMap">
-		SELECT addrNo FROM address
 	</select>
 
 

@@ -65,7 +65,7 @@ $(document).ready(function(){
 			success : function(data){
 			$('#gungu').empty();
 			$(data.gungu).each(function(index){
-				var gungu = $('<option value='+this.gungu+'>'+this.gungu+'</option>');
+				var gungu = $('<option value='+this.addrNo+'>'+this.gungu+'</option>');
 				$("#gungu").append(gungu);
 			});
 			},
@@ -211,7 +211,7 @@ select {
 					<tr>
 						<th><h5>장소</h5></th>
 						<td colspan="3"><select name="sido" id="sido">
-						</select> <select name="gungu" id="gungu">
+						</select> <select name="addrNo" id="gungu">
 						</select></td>
 					</tr>
 					<tr>
