@@ -15,6 +15,7 @@
 				
 			</div>
 		</div>
+		
 	
 		<table class="table table-striped">
 			<tr>
