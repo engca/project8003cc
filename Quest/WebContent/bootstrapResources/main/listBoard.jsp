@@ -21,7 +21,7 @@
  	if (loginid == ""){
  		alert('로그인 후 가능합니다.');
  	} else {
- 		location.href='writeBoard.do';
+ 		location.href='writeBoard.do'; 
  	}
  }
  </script>
