@@ -18,6 +18,13 @@ import service.IQuestService;
 public class HeaderController {
 	@Autowired
 	IQuestService service;
+	
+	@RequestMapping("loginForm.do")
+	public String loginForm(){
+		return "loginForm.popup";
+	}
+	
+	
 	@RequestMapping(value="login.do", method=RequestMethod.POST )
 	public String login(HttpSession session, String id, String pw){
 		System.out.println(id + " " + pw);

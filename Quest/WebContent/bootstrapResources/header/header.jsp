@@ -31,70 +31,79 @@
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
-	
+function loginPopup(){
+	window.open('loginForm.do','dsfadsf','width=400, height=500');
+}
+
 </script>
 <style type="text/css">
+#main{
+	position : relative;
+	height : 150px;
+}
 .page-scroll1 {
 	font-size: 20px;
+}
+
+.menu {
+	position : absolute;
+	left : 1%;
+	top : 1px;	
+}
+.menu2{
+	position : absolute;
+	left : 75%;
+	top : 1px;
 }
 </style>
 </head>
 <body>
 
-	<div class="navbar navbar-default  navbar-custom ">
+	<div class="navbar navbar-default  navbar-custom " id="main">
 		<c:choose>
-
 			<c:when test="${sessionScope.userId == null}">
-				<form action="login.do" method="post">
-					<div>
-						<span> &nbsp;&nbsp;&nbsp;&nbsp; <a href='listBoard.do'>
-								<img alt="" src="bootstrapResources/img/questlogo.png"
-								width="250" height="80">
-						</a>
-						</span>
-						<table align = "right">
-							<tr>
-								<td><span class="navbar-text" style="color: white"> ID </span></td>
-								<td><input type="text" name="id" class="input-sm" style="color: black"> </td>
-								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-								<td><input type="submit" value="로 그 인" class='btn btn-success'></td>
-								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-								
-							</tr>
-							<tr>
-								<td><span class="navbar-text" style="color: white"> PW </span></td>
-								<td><input type="password" name="pw" class="input-sm" style="color: black"> </td>
-								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-								<td><input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success'></td>
-								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-							</tr>
-						</table>
-						<div class="collapse navbar-collapse">
+						 <div class="menu">
 							<ul class="nav navbar-nav">
 								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 								<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
 								<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
 							</ul>
 						</div>
-					</div>
-				</form>
+						<div class="logo" id="logo" align = "center">
+							<a href='listBoard.do'> <img alt=""
+								src="bootstrapResources/img/questlogo.png" width="350px"
+								height="100px">
+							</a>
+						</div>
+						<div class = "menu2">
+							<ul class="nav navbar-nav">
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+								<li class="page-scroll1"><a href="##" onclick = "loginPopup()">로그인</a></li>
+								<li class="page-scroll1"><a href="join.do">회원가입</a></li>
+							</ul>
+						</div>
 			</c:when>
 			<c:otherwise>
-				<div>
-						<span> &nbsp;&nbsp;&nbsp;&nbsp; <a href='listBoard.do'>
-								<img alt="" src="bootstrapResources/img/questlogo.png"
-								width="250" height="80">
-						</a>
-						</span>
-						
-						<div class="collapse navbar-collapse">
+						 <div class="menu">
 							<ul class="nav navbar-nav">
 								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 								<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
 								<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
 							</ul>
 						</div>
-					</div>
+						<div class="logo" id="logo" align = "center">
+							<a href='listBoard.do'> <img alt=""
+								src="bootstrapResources/img/questlogo.png" width="350px"
+								height="100px">
+							</a>
+						</div>
+						<div class = "menu2">
+							<ul class="nav navbar-nav">
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+								<li class="page-scroll1"><a href="profile.do">마이페이지</a></li>
+								<li class="page-scroll1"><a href="logout.do">로그아웃</a></li>
+							</ul>
+						</div>
 				<marquee direction="right" style="">
 					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font>
 				</marquee>
