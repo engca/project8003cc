@@ -52,33 +52,42 @@
 </script>
 <style type="text/css">
 body {
-	background: #2C3E50;
+ 	background: #2C3E50;
+/* 	background: whitd; */
+}
+.tb {
+	position : absolute;
+	top : 50px;
+	left : 100px;
 }
 </style>
 </head>
 <body>
 	<center>
 		<form name="login">
-			<table align="center">
+			<table align="center" class = "tb">
 				<tr>
-					<td colspan="3">
-						<h1>로그인</h1>
+					<td colspan = "4" align = "center">
+						<h1 style = "color : white"><b>로그인</b></h1>
 					</td>
 				</tr>
 				<tr>
-					<td><span class="navbar-text" style="color: white"> ID
-					</span></td>
-					<td><input type="text" name="id" class="input-sm"
-						style="color: black"></td>
-					<td><input type="submit" value="로 그 인" class='btn btn-success'
-						onclick="homepage()"></td>
-
+					<td><h4 style = "color : white"><b>ID</b></h4></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td><input type="text" name="id" class="form-control"
+						style="color: black;"></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
-					<td><span class="navbar-text" style="color: white"> PW
-					</span></td>
-					<td><input type="password" name="pw" class="input-sm"
-						style="color: black"></td>
+					<td><h4 style = "color : white"><b>PW</b></h4></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td><input type="password" name="pw" class="form-control"
+						style="color: black;"></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+				<tr>
+				<td colspan = "4" align = "center">
+					<input type="submit" value="로 그 인" class='btn btn-success' onclick="homepage()"></td>
 				</tr>
 			</table>
 		</form>
