@@ -95,12 +95,7 @@ select {
 	width: 60px;
 }
 
-FORM {
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 0px
-}
+
 </style>
 </head>
 <body>
@@ -108,27 +103,29 @@ FORM {
 	<div id="board" class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				<h2>상세보기</h2>
+				<h3>상세보기</h3>
 				<hr class="star-primary1">
 			</div>
+		</div>
+		<div class="row">
 
-			<table class="table table-bordered bordertable">
+				<table class="table table-bordered bordertable">
 				<tr>
 					<th><h5>제목</h5></th>
 					<c:if test="${boardList.bCompleteFlag ==0 }">
-						<td colspan="3">${boardList.title }</td>
+						<td colspan="5">${boardList.title }</td>
 					</c:if>
 					<c:if test="${boardList.bCompleteFlag ==1 }">
-						<td colspan="3"><font color="red">[완료된 퀘스트]</font>${boardList.title }</td>
+						<td colspan="5"><font color="red">[완료된 퀘스트]</font>${boardList.title }</td>
 					</c:if>
 				</tr>
 				<tr>
 					<th><h5>장소</h5></th>
-					<td colspan="3">${addr.sido }&nbsp;&nbsp;&nbsp;${addr.gungu }</td>
+					<td colspan="5">${addr.sido }&nbsp;&nbsp;&nbsp;${addr.gungu }</td>
 				</tr>
 				<tr>
 					<th><h5>보상</h5></th>
-					<td colspan="3">
+					<td colspan="5">
 						<li class="btn btn-warning btn-lg">${boardList.reward1 }</li>
 						&nbsp; &nbsp; 
 						<c:if test="${boardList.reward2 != ''}">
@@ -141,27 +138,28 @@ FORM {
 				</tr>
 				<tr>
 					<th><h5>필요인원</h5></th>
-					<td colspan="3">${boardList.people }명</td>
+					<td colspan="5">${boardList.people }명</td>
 				</tr>
 				<tr>
 					<th><h5>연락방법</h5></th>
-					<td colspan="3">${contactMethod }</td>
+					<td colspan="5">${contactMethod }</td>
 				</tr>
 				<tr>
 					<th><h5>희망시작시간</h5></th>
-					<td>${boardList.stTime }</td>
+					<td colspan="2">${boardList.stTime }</td>
 					<th><h5>소요예정시간</h5></th>
-					<td><c:if test="${boardList.playTime == '30m'}">30분</c:if> 
-					<c:if test="${boardList.playTime == '3h' }">3시간이하</c:if> 
-					<c:if test="${boardList.playTime == 'over3h'}">3시간이상</c:if>
+					<td colspan="2">
+						<c:if test="${boardList.playTime == '30m'}">30분</c:if> 
+						<c:if test="${boardList.playTime == '3h' }">3시간이하</c:if> 
+						<c:if test="${boardList.playTime == 'over3h'}">3시간이상</c:if>
 					</td>
 				</tr>
 				<tr>
 					<th height="100"><h5>내용</h5></th>
-					<td colspan="3">${boardList.content }</td>
+					<td colspan="5">${boardList.content }</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="right">
+					<td colspan="6" align="right">
 						<!-- 	로그인 세션 체크 --> <c:choose>
 							<c:when test="${userId != null }">
 
@@ -215,7 +213,7 @@ FORM {
 				<c:if test="${sessionScope.userId != null }">
 					<form action="insertComment.do" method="post">
 						<td>${sessionScope.nickname}</td>
-						<td colspan="2">
+						<td colspan="4">
 								<textarea name="content" id="content" rows="2" cols="100"></textarea>
 						</td>
 						<td>

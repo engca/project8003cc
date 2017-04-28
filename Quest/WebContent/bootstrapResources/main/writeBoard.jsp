@@ -216,7 +216,7 @@ select {
 					</tr>
 					<tr>
 						<th><h5>보상</h5></th>
-						<td colspan="4">
+						<td colspan="3">
 							<table>  
 								<tr>
 									<td><input type="text" placeholder="보상1" name="reward1"
