@@ -50,6 +50,11 @@
 		self.close();
 	}
 </script>
+<style type="text/css">
+body {
+	background: #2C3E50;
+}
+</style>
 </head>
 <body>
 	<center>
