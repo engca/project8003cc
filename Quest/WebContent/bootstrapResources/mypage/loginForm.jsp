@@ -58,7 +58,12 @@ body {
 .tb {
 	position : absolute;
 	top : 50px;
-	left : 100px;
+	left : 90px;
+}
+.loginBtn {
+	margin : 10;
+	pedding : 10;
+	
 }
 </style>
 </head>
@@ -87,7 +92,10 @@ body {
 				</tr>
 				<tr>
 				<td colspan = "4" align = "center">
-					<input type="submit" value="로 그 인" class='btn btn-success' onclick="homepage()"></td>
+					<input type="submit" value="로 그 인" class='loginBtn' onclick="homepage()">
+					<img src="bootstrapResources/img/login.png" width="350px"
+								height="100px">
+					</td>
 				</tr>
 			</table>
 		</form>
