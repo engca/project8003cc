@@ -63,7 +63,7 @@
 							</tr>
 							<tr>
 								<td><span class="navbar-text" style="color: white"> PW </span></td>
-								<td><input type="text" name="id" class="input-sm" style="color: black"> </td>
+								<td><input type="password" name="pw" class="input-sm" style="color: black"> </td>
 								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
 								<td><input type="button" value="회원가입" onclick="location.href='join.do'" class='btn btn-success'></td>
 								<td><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
