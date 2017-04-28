@@ -1,19 +1,14 @@
 package service;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
-import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import commons.Constant;
-import commons.Constant.User;
 import dao.IQuestDao;
 
 @Service
@@ -692,6 +687,12 @@ public class QuestService implements IQuestService {
 		params.put("boardNo", boardNo);
 		return dao.deleteBookMark(params);
 		
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getAddrNoAll() {
+		// TODO Auto-generated method stub
+		return dao.selectAddrNoAll();
 	}
 
 

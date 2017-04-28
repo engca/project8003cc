@@ -65,10 +65,11 @@ public interface IQuestService {
 	public int selectpolice(int BoardNo, int userIndex);
 	
 	public List<HashMap<String, Object>> selectAll();
-	
+//	주소관련
 	public List<HashMap<String, Object>> getSidoAll();
 	public List<HashMap<String, Object>> getGungu(String sido);
 	public HashMap<String, Object> getAddress(int addrNo);
+	public List<HashMap<String, Object>> getAddrNoAll();
 	
 	// 마이리스트내가쓴글
 	public HashMap<String, Object> myapply(int userIndex , int page, int boardFlag);
