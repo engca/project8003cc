@@ -39,6 +39,7 @@ public interface IQuestService {
 	public int writeComment(HashMap<String, Object> params);
 	public int updateComment(HashMap<String, Object> params);
 	public int deleteComment(HashMap<String, Object> params); 
+	public int commentCount(int BoardNo);
 	
 	//신청하기
 	public List<HashMap<String, Object>> listApply(int BoardNo);

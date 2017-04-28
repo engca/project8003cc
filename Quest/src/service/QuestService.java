@@ -292,6 +292,13 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
+	public int commentCount(int BoardNo) {
+		// TODO Auto-generated method stub
+		return dao.selectCommentCount(BoardNo);
+	}
+
+	
+	@Override
 	public List<HashMap<String, Object>> listApply(int BoardNo) {
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> list = dao.selectAllApplyByBoardNo(BoardNo);
@@ -681,6 +688,7 @@ public class QuestService implements IQuestService {
 		return dao.deleteBookMark(params);
 		
 	}
+
 
 
 
