@@ -47,9 +47,9 @@ function bookmarkPopup(){
 	});	
 }
 function seeApplyUser(){
-	var sAUser = document.bookmark; 
+	var sAUser = document.alldata; 
 	window.open('','seeuser','width=500, height=600');
-	sAUser.action = "???.do";
+	sAUser.action = "viewApplyPopup.do";
 	sAUser.target = "seeuser";
 	sAUser.method = "post";
 	sAUser.submit(); 
@@ -177,6 +177,10 @@ FORM {
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
 									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
 								</form>
+								<form name="alldata">
+									<input type="hidden" name="alldata" value=${boardList }>
+								</form>
+								
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
 									<input type="button" class="btn btn-info btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 								</c:if>
