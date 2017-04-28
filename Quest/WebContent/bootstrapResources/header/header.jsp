@@ -33,18 +33,24 @@
 	<script type="text/javascript">
 	
 	</script>
+	<style type="text/css">
+	</style>
 </head>
 <body  >
 
-    <!-- Navigation -->
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div  class = "navbar navbar-default  navbar-custom ">
                    <c:choose>
                    	
 					<c:when test="${sessionScope.userId == null}">
 						<form action="login.do" method = "post">
 							<div>
-								<span >
+							<span> &nbsp;&nbsp;&nbsp;&nbsp;
+							<a href = "###"> 
+								<img alt="" src="bootstrapResources/img/questlogo.png"
+								width = "250" height = "80">
+							</a>
+							</span>
+								<span>
 									<input type="button" id='dowellBtn' class='btn btn-success btn-lg'
 										onclick="location.href='listBoard.do?boardFlag=0'" value="잘해요">
 									<input type="button" id='todoBtn' class='btn btn-success btn-lg'

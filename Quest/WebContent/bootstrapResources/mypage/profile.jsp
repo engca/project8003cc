@@ -37,7 +37,20 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
+<style type="text/css">
+th {
+	width: 150px;
+}
 
+select {
+	width: 100px;
+	height: 35px;
+}
+
+h1 {
+	text-align: center;
+}
+</style>
 <script type="text/javascript">
 $(document).ready ( function() {
 	
@@ -127,7 +140,7 @@ $(document).ready ( function() {
 <body>
 
 	<form action="profileProc.do" method="post" name="frm">
-		<section id="contact">
+		
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -191,7 +204,7 @@ $(document).ready ( function() {
 				</div>
 			</div>
 		</div>
-		</section>
+
 	</form>
 
 

@@ -34,19 +34,19 @@
 
 top.window.moveTo(0,0);
 if (document.all) {
-top.window.resizeTo(screen.availWidth,screen.availHeight);
-}
-else if (document.layers||document.getElementById) {
-if (top.window.outerHeight<screen.availHeight||top.window.outerWidth<screen.availWidth){
-top.window.outerHeight = screen.availHeight;
-top.window.outerWidth = screen.availWidth;
-}
+		top.window.resizeTo(screen.availWidth,screen.availHeight);
+	}
+	else if (document.layers||document.getElementById) {
+	if (top.window.outerHeight<screen.availHeight||top.window.outerWidth<screen.availWidth){
+		top.window.outerHeight = screen.availHeight;
+		top.window.outerWidth = screen.availWidth;
+	}
 }
 
 </script>
 </head>
 <body>
-	<table class= "table-responsive" style ="width : 1000px; " align = "center" >
+	<table class= "table-responsive" style="width:100%;height:100%" align = "center" >
 		<tr >
 			<td>
 					<tiles:insertAttribute name="header"></tiles:insertAttribute>

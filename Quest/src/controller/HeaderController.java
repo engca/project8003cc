@@ -43,17 +43,17 @@ public class HeaderController {
 	}
 	@RequestMapping("searchBoard.do")
 	public ModelAndView searchBoard(
-			@RequestParam(defaultValue = "0") int boardflag,
+			@RequestParam(defaultValue = "0") int boardFlag,
 			@RequestParam(defaultValue = "0") int searchFlag,
 			@RequestParam(defaultValue="1") int page ,
 			@RequestParam(required = false) String searchKey,
 			@RequestParam(required = false) String[] area){		
-		HashMap<String, Object> data = service.searchBoardList(boardflag, searchFlag, page, searchKey , area); 
+		HashMap<String, Object> data = service.searchBoardList(boardFlag, searchFlag, page, searchKey , area); 
 		ModelAndView mav = new ModelAndView();
-		if(boardflag==0){
+		if(boardFlag==0){
 			data.put("header1", "잘해요");   
 		}
-		else if(boardflag==1){
+		else if(boardFlag==1){
 			data.put("header1", "해주세요");
 		}
 		mav.addAllObjects(data);

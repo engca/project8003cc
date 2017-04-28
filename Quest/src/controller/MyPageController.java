@@ -56,23 +56,31 @@ public class MyPageController {
 
 
 	@RequestMapping("bookmark.do")
-	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page, int boardNo) {
+	public ModelAndView bookmarkProc(HttpSession session, @RequestParam(defaultValue="1")int page) {
 		int userIndex = (int)session.getAttribute("userIndex");
-		service.bookmark(boardNo, userIndex);
+		
 		HashMap<String, Object> list = (HashMap<String,Object>) service.bookmarkBoardByUserIndex(userIndex,page);
 		
 		
-		
-				
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(list);
 		mav.setViewName("mypageMenu.mypage.bookmark");
 		return mav;
 	}
+	@RequestMapping("deleteBook.do")
+	public String deleteBook(int boardNo){
+		service.removeBookmark(boardNo);
+		System.out.println("deleteBook"+boardNo);
+		return "redirect:bookmark.do";
+	}
 
 
 	@RequestMapping("bookmarkPopup.do")
-	public String bookmarkPopup() {
+	public String bookmarkPopup(@RequestParam HashMap<String, Object>params) {
+//		System.out.println("book"+params);
+		int boardNo=Integer.parseInt((String)params.get("boardNo"));
+		int userIndex=Integer.parseInt((String)params.get("userIndex"));
+		service.bookmark(boardNo, userIndex);
 		return "bookmarkPopup.popup";
 	}
 	

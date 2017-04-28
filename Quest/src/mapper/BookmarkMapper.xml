@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="dao.IQuestDao">
    <insert id="insertBookMark" parameterType="java.util.HashMap">
-      INSERT INTO bookmark VALUES(#{boardNo}, #{userIndex})
+      INSERT INTO bookmark VALUES(#{boardNo}, #{userIndex}, sysdate())
    </insert>
     
    <delete id="deleteBookMark" parameterType="java.util.HashMap">
@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id = "selectBookMarkByUserIndex" parameterType="java.util.HashMap" resultType="java.util.HashMap">
     	SELECT * FROM bookmark bk, board b 
     	WHERE bk.boardNo=b.boardNo and bk.userIndex=#{userIndex}
+    	order by bookdate desc
     	limit #{skip}, #{count}
    </select>
   
