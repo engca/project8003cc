@@ -31,7 +31,7 @@ public class MainPageController {
 	IQuestService service; 
 	 
 	@RequestMapping("listBoard.do")
-	public ModelAndView BoardAllList(@RequestParam(defaultValue = "0") int boardFlag, @RequestParam(defaultValue="1")int page ){		
+	public ModelAndView BoardAllList(@RequestParam(defaultValue = "1") int boardFlag, @RequestParam(defaultValue="1")int page ){		
 		HashMap<String, Object> data = service.getBoardList(boardFlag, page); 
 		ModelAndView mav = new ModelAndView();
 		if(boardFlag==0){
