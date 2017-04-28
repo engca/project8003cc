@@ -61,6 +61,9 @@ select {
 /* 	top: 60px; */
 /* 	left: 60px; */
 /* } */
+input {
+margin-top: 20px;
+}
 </style>
 
 </head>
