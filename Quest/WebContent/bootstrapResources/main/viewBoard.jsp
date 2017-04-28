@@ -5,25 +5,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>퀘스트 상세보기</title>
-<link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
-<link
-	href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css">
-<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
-<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrapResources/js/freelancer.min.js"></script>
-<script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-<script src="bootstrapResources/js/contact_me.js"></script>
+ <meta httpequiv="ContentType" content="text/html; charset=UTF8">
+     <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ 	<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
+     <link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+     <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+     <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+ 	<script src="bootstrapResources/js/freelancer.min.js"></script>
 <script type="text/javascript">
 function applyPopup(){
 	var apply = document.apply; 
@@ -54,8 +44,15 @@ function bookmarkPopup(){
 		error : function(){
 			alert('DB에러');
 		} 
-	}); 
-	
+	});	
+}
+function seeApplyUser(){
+	var sAUser = document.bookmark; 
+	window.open('','seeuser','width=500, height=600');
+	sAUser.action = "???.do";
+	sAUser.target = "seeuser";
+	sAUser.method = "post";
+	sAUser.submit(); 
 }
 function police(){
 		$.ajax({
@@ -192,6 +189,7 @@ FORM {
 								</c:if>
 
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
+									<input type="button" class="btn btn-danger btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 									<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"
 										onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
 									<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"
