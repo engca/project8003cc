@@ -37,7 +37,7 @@ public interface IQuestDao {
 	public List<HashMap<String, Object>> selectAllCommentByBoardNo(int boardNo);
 	public int selectCommentCount(int boardNo);
 	
-	// 신청하기
+	// 신청하기 
 	public int insertApply(HashMap<String, Object> params);
 	public int updateApply(HashMap<String, Object> params);
 	public int deleteApply(int boardNo);
