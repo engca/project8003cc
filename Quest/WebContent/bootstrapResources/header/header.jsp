@@ -45,7 +45,7 @@
 						<form action="login.do" method = "post">
 							<div>
 							<span> &nbsp;&nbsp;&nbsp;&nbsp;
-							<a href = "###"> 
+							<a href = 'listBoard.do'> 
 								<img alt="" src="bootstrapResources/img/questlogo.png"
 								width = "250" height = "80">
 							</a>
