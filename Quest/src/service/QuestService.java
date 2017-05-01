@@ -346,7 +346,7 @@ public class QuestService implements IQuestService {
 		flag.put("bCompleteFlag", 3);
 		dao.updateBoard(flag);
 		
-		// apply테이블 컴플리트 플래그 2. 간택완료로 바꿈
+		// apply테이블 컴플리트 플래그 1. 간택완료로 바꿈
 		HashMap<String, Object> tmp = new HashMap<>();
 		tmp.put("boardNo", boardNo);
 		tmp.put("userIndex", user2Index); // 신청자
