@@ -21,8 +21,11 @@
 	padding: 10px;
 }
 
-#btn:hover {
-	color: pink;
+#btn {
+	color : white;
+}
+#btn:HOVER {
+	color : #18CCA8;   
 }
 </style>
 
@@ -43,13 +46,13 @@
 				<input type="button" value="COMPLETE LIST"
 					onclick="location.href='complete.do'"
 					class="btn btn-success1 btn-lg1'"
-					style="width: 300px; height: 41px;" /> <input type="button"
+					style="width: 300px; height: 41px;" id = "btn"/> <input type="button"
 					value="BOOKMARK" onclick="location.href='bookmark.do'"
 					class="btn btn-success1 btn-lg1'"
-					style="width: 300px; height: 41px;" /> <input type="button"
+					style="width: 300px; height: 41px;" id = "btn"/> <input type="button"
 					value="PROFILE" onclick="location.href='profile.do'"
 					class="btn btn-success1 btn-lg1'"
-					style="width: 300px; height: 41px;" />
+					style="width: 300px; height: 41px;" id = "btn"/>
 			</div>
 		</div>
 	</center>
