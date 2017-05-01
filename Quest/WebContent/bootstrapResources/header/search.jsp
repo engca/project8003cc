@@ -174,23 +174,28 @@ select {
 	<center>
 		<div class="div">
 			<form action="searchBoard.do">
-				<select name="boardFlag">
-					<option value="0">잘해요</option>
-					<option value="1">해주세요</option>
-				</select> <select name="searchFlag">
-					<option value="0">컨텐츠</option>
-					<option value="1">작성자</option>
-				</select> <input type="text" name="searchKey" class="input-sm"> <input
-					type="submit" value="검색" class="btn-primary"> <input
-					id="sangseaBtn" type="button" value="상세검색" class="btn-success">
-				<div id="sangsea" style="visibility: hidden;" align="center">
-					<table id="sidooo" align="center"
-						style="width: 500px; border: double"></table>
-					<table id="gunguuu" align="center"
-						style="width: 700px; visibility: hidden;"></table>
-					<div id="areaList"
-						style="background: white; text-align: left; width: 700px"></div>
-					<input id="area" name="area" type="hidden">
+				<div class="form-group">
+					<div class="form-inline">
+						<select name="boardFlag" class="form-control">
+							<option value="0">잘해요</option>
+							<option value="1">해주세요</option>
+						</select> 
+						<select name="searchFlag" class="form-control">
+							<option value="0">컨텐츠</option>
+							<option value="1">작성자</option>
+						</select>  
+						<input type="text" name="searchKey" class="form-control" placeholder="search"> 
+						<input type="submit" value="검색" class="btn btn-primary"> 
+						<input id="sangseaBtn" type="button" value="상세검색" class="btn btn-success">
+						
+					<div id="sangsea" style="visibility: hidden;" align="center">
+						<table id="sidooo" align="center"	style="width: 500px; border: double"></table>
+						<table id="gunguuu" align="center" style="width: 700px; visibility: hidden;"></table>
+						<div id="areaList"	style="background: white; text-align: left; width: 700px"></div>
+						<input id="area" name="area" type="hidden">
+					</div>		 				
+					</div>
+				</div>
 			</form>
 		</div>
 	</center>
