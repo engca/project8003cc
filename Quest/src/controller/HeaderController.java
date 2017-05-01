@@ -27,14 +27,14 @@ public class HeaderController {
 	
 	@RequestMapping(value="login.do", method=RequestMethod.POST )
 	public String login(HttpSession session, String id, String pw){
-		System.out.println(id + " " + pw);
+		System.out.println("로그인>>>>>>>>"+id + " " + pw);
 		if(service.login(id, pw)!=null)
 		{	
 			HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
 			session.setAttribute(Constant.User.USERINDEX,user.get(Constant.User.USERINDEX));
 			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
-			System.out.println(user.get(Constant.User.USERINDEX) + " "+ user.get(Constant.User.NICKNAME) +" "+ user.get(Constant.User.USERID));
+			System.out.println("login>>>>>>>"+user.get(Constant.User.USERINDEX) + " "+ user.get(Constant.User.NICKNAME) +" "+ user.get(Constant.User.USERID));
 		}else
 		{
 			System.out.println("널이라구욧");

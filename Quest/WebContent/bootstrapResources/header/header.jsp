@@ -32,6 +32,7 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
 function loginPopup(){
+	window.name="pareWin";
 	window.open('loginForm.do','','width=400, height=300, top = 200, left= 300"');
 }
 
@@ -70,15 +71,14 @@ function loginPopup(){
 							</ul>
 						</div>
 						<div class="logo" id="logo" align = "center">
-							<a href='listBoard.do'> <img alt=""
-								src="bootstrapResources/img/questlogo.png" width="350px"
+							<a href='listBoard.do'> <img src="bootstrapResources/img/questlogo.png" width="350px"
 								height="100px">
 							</a>
 						</div>
 						<div class = "menu2">
 							<ul class="nav navbar-nav">
 								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-								<li class="page-scroll1"><a href="##" onclick = "loginPopup()">로그인</a></li>
+								<li class="page-scroll1"><a href="#" onclick = "loginPopup()">로그인</a></li>
 								<li class="page-scroll1"><a href="join.do">회원가입</a></li>
 							</ul>
 						</div>

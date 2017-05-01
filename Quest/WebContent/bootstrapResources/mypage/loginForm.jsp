@@ -44,7 +44,7 @@
 	function homepage() {
 		var login = document.login;
 		login.action = "login.do";
-		login.target = opener.document;
+		login.target = "pareWin";
 		login.method = "post";
 		login.submit();
 		self.close();
@@ -73,7 +73,7 @@ body {
 			<table align="center" class = "tb">
 				<tr>
 					<td colspan = "4" align = "center">
-						<h1 style = "color : white"><b>로그인</b></h1>
+						<h1 style = "color : #2C3E50"><b>LOGIN</b></h1>
 					</td>
 				</tr>
 				<tr>
