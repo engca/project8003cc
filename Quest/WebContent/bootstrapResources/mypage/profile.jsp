@@ -194,7 +194,7 @@ $(document).ready ( function() {
 						<br>
 						<div id="success"></div>
 						<div class="row">
-							<div class="form-group col-xs-12">
+							<div class="form-group col-xs-12" align = "right">
 								<input type="button" class="btn btn-primary btn-lg"
 									value="Cancel" onclick="location.href='글상세보기.do'">
 								<button type="submit" class="btn btn-success btn-lg" id="btn">Send</button>
