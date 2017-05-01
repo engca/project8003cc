@@ -106,30 +106,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoardByContent" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT * from board
-		where boardFlag = #{boardFlag}
+		where 1 = 0
+		<if test="area != null">
+			<foreach item="addrno" collection="area">
+				or addrNo = #{addrno}
+			</foreach>
+		</if>
+		and boardFlag = #{boardFlag}
 		<if test="searchKey != null and searchKey != ''">
 			and title like CONCAT('%',#{searchKey},'%')
 		</if>
-		<if test="area != null">
-			<foreach item="addrno" collection="area">
-				and addrNo = #{addrno}
-			</foreach>
-		</if>
+		
 		order by boardNo desc
 		limit #{skip}, #{count}
 	</select>
 	<select id="selectBoardByWriter" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT * from board
-		where boardFlag = #{boardFlag}
-		<if test="searchKey != null and searchKey != ''">
-			and userIndex = #{searchKey}
-		</if>
+		where 1 = 0
 		<if test="area != null">
 			<foreach item="addrno" collection="area">
-				and addrNo = #{addrno}
+				or addrNo = #{addrno}
 			</foreach>
 		</if>
+		and boardFlag = #{boardFlag}
+		<if test="searchKey != null and searchKey != ''">
+			and userIndex like CONCAT('%',#{searchKey},'%')
+		</if>
+		
 		order by boardNo desc
 		limit #{skip}, #{count}
 	</select>
