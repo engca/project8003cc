@@ -150,8 +150,9 @@ select {
 }
 .div {
 	background: #FFB400;
-	padding : 20px;
-}
+	height: 65px;
+ 	padding : 10px; 
+} 
 </style>
 </head>
 <body >
