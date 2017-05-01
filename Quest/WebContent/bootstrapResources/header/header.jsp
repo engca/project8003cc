@@ -32,7 +32,7 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
 function loginPopup(){
-	window.open('loginForm.do','','width=400, height=500');
+	window.open('loginForm.do','','width=400, height=300, top = 200, left= 300"');
 }
 
 </script>
