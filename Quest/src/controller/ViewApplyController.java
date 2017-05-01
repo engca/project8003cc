@@ -15,14 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
 import service.IQuestService;
-import service.J_service;
 
 @Controller
 public class ViewApplyController {
 	@Autowired
 	IQuestService service;
-	@Autowired
-	J_service jservice;
 
 	@RequestMapping("viewApplyPopup.do")
 	public ModelAndView viewApplyPopup(@RequestParam HashMap<String, Object> params, Model model) {

@@ -51,7 +51,8 @@
  			
   			<c:forEach var="board" items="${boardList}">
   				<tr>
- 					<td align="center">${board.boardNo}</td> 
+ 					<td align="center">${board.boardNo}</td>
+ 					 
  					<c:if test="${board.bCompleteFlag ==0 }">
  					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title } </a>
  						<c:if test="${board.applyCount >0 }"> 
@@ -59,7 +60,7 @@
 						</c:if>
 							&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
 					</td>	 							
- 					</c:if>
+ 					</c:if> 					
  					<c:if test="${board.bCompleteFlag ==1 }">
  					<td><a href="viewBoard.do?boardNo=${board.boardNo}">
  						<font color="red">[완료된 퀘스트]</font>	${board.title }</a>
@@ -69,6 +70,15 @@
  						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
  					</td>
  					</c:if>
+ 					<c:if test="${board.bCompleteFlag ==3 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">
+ 						<font color="blue">[진행중 퀘스트]</font>	${board.title }</a>
+ 						 <c:if test="${board.applyCount >0 }"> 
+ 							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
+						</c:if>
+ 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+ 					</td>
+ 					</c:if> 					
  					<c:if test="${board.bCompleteFlag ==2 }">
  					<td><font color="gray"><strike>삭제된 게시글 입니다</strike></font></td>
  					</c:if>
