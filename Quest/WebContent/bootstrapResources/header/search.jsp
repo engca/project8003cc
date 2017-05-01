@@ -149,34 +149,34 @@ select {
 	height: 30px;
 }
 .div {
-	margin-top: 20px;
+	background: #FFB400;
+	padding : 20px;
 }
 </style>
 </head>
 <body >
 	<center >
-	<div class = "div">
-		<form action="searchBoard.do">
-			<select name = "boardFlag">
-				<option value = "0">잘해요</option>
-				<option value = "1">해주세요</option>
-			</select>
-			<select name = "searchFlag">
-				<option value = "0">컨텐츠</option>
-				<option value = "1">작성자</option>
-			</select>
-			<input type="text" name="searchKey" class="input-sm"> 
-			<input type="submit"value="검색" class = "btn-primary" > 
-			<input id="sangseaBtn" type="button" value="상세검색" class ="btn-success"> 
-			<input type="button" id="closeBtn" value="상세검색닫기" class= "btn-warning">
-			<div id="sangsea" style="visibility: hidden;" align = "center">
-				<table id="sidooo" style = "width: 500px; border:double" ></table>
-				<table id="gunguuu" style = "width: 780px; visibility:hidden;"></table>
-				<div id = "areaList">
-<!-- 				<input id = "area" name = "area" type = "hidden"> -->
-			</div>
-		</form>
-	</div>
+		<div class="div">
+			<form action="searchBoard.do">
+				<select name="boardFlag">
+					<option value="0">잘해요</option>
+					<option value="1">해주세요</option>
+				</select> <select name="searchFlag">
+					<option value="0">컨텐츠</option>
+					<option value="1">작성자</option>
+				</select> <input type="text" name="searchKey" class="input-sm"> <input
+					type="submit" value="검색" class="btn-primary"> <input
+					id="sangseaBtn" type="button" value="상세검색" class="btn-success">
+				<input type="button" id="closeBtn" value="상세검색닫기"
+					class="btn-warning">
+				<div id="sangsea" style="visibility: hidden;" align="center">
+					<table id="sidooo" style="width: 500px; border: double"></table>
+					<table id="gunguuu" style="width: 780px; visibility: hidden;"></table>
+					<div id="areaList">
+						<!-- 				<input id = "area" name = "area" type = "hidden"> -->
+					</div>
+			</form>
+		</div>
 	</center>
 	<!-- jQuery -->
     <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>

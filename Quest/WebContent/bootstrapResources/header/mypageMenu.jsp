@@ -15,8 +15,8 @@
 <style type="text/css">
 .div {
 	background: #FFB400;
-	height: 50px;
-	padding : 7px;
+	height: 65px;
+ 	padding : 10px; 
 }
 
 </style>
@@ -30,16 +30,16 @@
 				<input type="button" value="MY LIST"
 					onclick="location.href='mylist.do'" class="btn btn-success1 btn-lg1'"
 					id = "btn"
-				style = "width : 300px; height : 33px;"/>
+				style = "width : 300px; height : 41px;"/>
 				<input type="button" value="COMPLETE LIST"
 				 onclick="location.href='complete.do'" class="btn btn-success1 btn-lg1'" 
-				 style = "width : 300px; height : 33px;"/> 
+				 style = "width : 300px; height : 41px;"/> 
 					<input type="button" value="BOOKMARK" 
 				 onclick="location.href='bookmark.do'" class="btn btn-success1 btn-lg1'"
-				style = "width : 300px; height : 33px;"/> 
+				style = "width : 300px; height : 41px;"/> 
 				 <input type="button" value="PROFILE"
 				 onclick="location.href='profile.do'" class="btn btn-success1 btn-lg1'" 
-				 style = "width : 300px; height : 33px;"/>
+				 style = "width : 300px; height : 41px;"/>
 			</form>
 		</div>
 	</center>
