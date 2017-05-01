@@ -52,7 +52,7 @@
 </script>
 <style type="text/css">
 body {
- 	background: #2C3E50;
+ 	background: #18BC9C;
 /* 	background: whitd; */
 }
 .tb {
@@ -92,9 +92,9 @@ body {
 				</tr>
 				<tr>
 				<td colspan = "4" align = "center">
-					<input type="submit" value="로 그 인" class='loginBtn' onclick="homepage()">
-					<img src="bootstrapResources/img/login.png" width="350px"
-								height="100px">
+				<br>
+					<input type = "image" src = "bootstrapResources/img/login.png" width = "70px"
+					height = "50px" onclick = "homepage()">
 					</td>
 				</tr>
 			</table>
