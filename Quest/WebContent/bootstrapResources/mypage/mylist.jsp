@@ -60,12 +60,6 @@ select {
 </head>
 <body>
 	<div id="board" class="container">
-	<center>
-		<input type="button" class="btn btn-primary btn-lg" value="잘해요"
-			onclick="location.href='mylistProc.do?boardFlag=0'"> <input
-			type="button" class="btn btn-primary btn-lg" value="해주세요"
-			onclick="location.href='mylistProc.do?boardFlag=1'">
-	</center>
 			
 				<c:if test="${boardFlag == 0}">
 					<h1 align = "center">잘 해 요</h1>
