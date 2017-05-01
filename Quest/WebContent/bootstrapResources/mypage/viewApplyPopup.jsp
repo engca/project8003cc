@@ -68,7 +68,7 @@
 		}
 	};
 		
-	function applyUser(){
+	function applyUser(boarNo){
 // 		$("#chk:checked").each(function(idx, row) {
 // 			var record = $(row).parents("tr").;
 // 			alert(record[0].innerText);
@@ -77,13 +77,18 @@
 // 		var arr = $('input[name=chk]:checked').serializeArray().map(function(item) { return item.value });
 		var str = $('input[name=chk]:checked').serialize(); // 이건 QueryString 방식으로 
 		alert(str);
+		alert("boardNo "+typeof(${boardList.boardNo}));
 		alert('신청자 선택이 완료되었습니다.');
-		var choiceApply = document.userApply;
-		choiceApply.action = "viewApply.do?str="+str;
-		window.opener.name= "parent";
-		choiceApply.target = "parent";
-		choiceApply.method = "post";
-		choiceApply.submit(); 
+		
+		opener.document.location.href="viewApply.do?boardNo="+${boardList.boardNo}+"&"+str;
+		
+// 		var choiceApply = document.userApply;
+	
+// 		choiceApply.action = "viewApply.do?boardNo="+${boardList.boardNo};
+// 		window.opener.name= "parent";
+// 		choiceApply.target = "parent";
+// 		choiceApply.method = "get";
+// 		choiceApply.submit(); 
 		window.close();
 		
 		

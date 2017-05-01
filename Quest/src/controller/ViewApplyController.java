@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
 import service.IQuestService;
+import service.J_service;
 
 @Controller
 public class ViewApplyController {
 	@Autowired
 	IQuestService service;
+	@Autowired
+	J_service jservice;
 
 	@RequestMapping("viewApplyPopup.do")
 	public ModelAndView viewApplyPopup(@RequestParam HashMap<String, Object> params, Model model) {
@@ -48,17 +53,25 @@ public class ViewApplyController {
 	}
 
 	@RequestMapping("viewApply.do")
-	public ModelAndView viewApply(String msg) {
-		System.out.println("viewApply"+msg);
-		String[] userIndex=msg.split("&");
+	public String viewApply(String[] chk, int boardNo, HttpSession session, Model model) {
+		System.out.println("?");
+		System.out.println("viewApply"+ chk);
+//		String[] userIndex=chk.split("&");
+		for(int i = 0 ; i< chk.length;i++)
+			System.out.println(chk[i]);
+//		int boardNum = Integer.parseInt(boardNo);
+		System.out.println("viewApply boardno:" + boardNo);
 		
-		//inseScore
-		//bcompleteFlag = 3으로 변경
-	
+		int userIndex1 = (int) session.getAttribute("userIndex");
 		
-		ModelAndView mav = new ModelAndView();
-
-		return mav;
+		
+		for (int i = 0 ; i< chk.length ; i++){
+			int userIndex2 = Integer.parseInt(chk[i]);
+			service.choiceApply(userIndex1, userIndex2, boardNo);
+		}
+			
+		model.addAttribute("boardNo", boardNo);
+		return "redirect:viewBoard.do";
 
 	}
 

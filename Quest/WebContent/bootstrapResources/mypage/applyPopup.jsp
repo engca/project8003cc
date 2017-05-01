@@ -67,7 +67,7 @@ select {
 		var apply = document.applyPopup;
 // 		window.open('','applyPopup','width=500, height=600');
 		apply.action = "applyPopupProc.do";
-		window.opener.name= "parent"
+		window.opener.name= "parent";
 		apply.target = "parent";
 		apply.method = "post";
 		apply.submit(); 

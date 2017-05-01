@@ -40,7 +40,7 @@ public class MainPageController {
 		else if(boardFlag==1){
 			data.put("header1", "해주세요");
 		}
-		System.out.println(data);
+//		System.out.println(data);
 		mav.addAllObjects(data);
 		mav.setViewName("search.main.listBoard");
 		return mav;		
@@ -87,7 +87,7 @@ public class MainPageController {
 		List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(board);
-		System.out.println(board);
+		System.out.println("viewBoard"+board);
 		mv.addObject("listComment", comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv; 
@@ -144,7 +144,7 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
 		gungu.put("gungu", service.getGungu(sido));
-		System.out.println(gungu);
+		System.out.println("gungu"+gungu);
 		return gungu;
 	}
 	
@@ -165,7 +165,7 @@ public class MainPageController {
 			HttpServletRequest session){
 //		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 //		board.put("userIndex", userIndex); 세션도아직안댐
-		System.out.println(board);
+		System.out.println("updateBoard"+board);
 		service.updateBoard(board);
 		return "redirect:/viewBoard.do?boardNo="+board.get(Constant.Board.BOARDNO);
 	}

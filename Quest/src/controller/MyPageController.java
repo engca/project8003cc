@@ -70,7 +70,7 @@ public class MyPageController {
 	@RequestMapping("deleteBook.do")
 	public String deleteBook(int boardNo){
 		service.removeBookmark(boardNo);
-		System.out.println("deleteBook"+boardNo);
+//		System.out.println("deleteBook"+boardNo);
 		return "redirect:bookmark.do";
 	}
 
