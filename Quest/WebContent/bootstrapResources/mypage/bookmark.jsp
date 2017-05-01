@@ -62,7 +62,7 @@ function deleteBook(btn) {
 	<div id="board" class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h1>즐 겨 찾 기</h1>
+				<h1>BOOKMARK</h1>
 				<hr class="star-primary">
 				
 			</div>
