@@ -351,7 +351,7 @@ public class QuestService implements IQuestService {
 		tmp.put("boardNo", boardNo);
 		tmp.put("userIndex", user2Index); // 신청자
 		HashMap<String, Object> apply = dao.selectApply(tmp);
-		apply.put(Constant.Apply.ACOMPLETEFLAG, 2);
+		apply.put(Constant.Apply.ACOMPLETEFLAG, 1);
 		dao.updateApply(apply);
 		
 		

@@ -94,8 +94,25 @@
 		
 	};
 	
-	function cUser(){
-		// c
+	
+	function cUser(btn) {
+		var code = btn.getAttribute('name');
+			alert(code + "← 이자식을 지우고 싶어...");
+		//code값을 서버에게 전달해서 지워달라고 ajax요청 ~
+// 		var http = new XMLHttpRequest();
+// 		http.open('get', 'deleteInven.do?code=' + code);
+// 		http.onreadystatechange = function() {
+// 			if (http.readyState == 4 && http.status == 200) {
+// 				var resultJson = JSON.parse(http.responseText);
+// 				if (resultJson.result) {
+// 					// 				alert('지워짐ㅋ');
+// 					var tr = document.getElementById('tr_' + code);
+// 					tr.parentNode.removeChild(tr);
+// 				}
+// 			}
+// 		};
+// 		http.send();
+
 	}
 	
 	$(function() {
@@ -151,7 +168,7 @@
 				</tr>
 				
 				<c:forEach var="applyUser" items="${applyList }">
-					<tr>
+					<tr name="tr_${applyUser.userIndex }">
 						<td> <input type="checkbox" name="chk" id="chk" value="${applyUser.userIndex }">
 						<td>${applyUser.nickname }</td>
 						<td>
@@ -161,8 +178,8 @@
 						</td>
 						<td>${applyUser.contactAnswer }</td>
 						<c:if test ="${applyUser.aCompleteFlag == 2}">
-						<td>
-							<input type="button" value="선택취소" onclick="cUser()">
+						<td name="td_${applyUser.userIndex }">
+							<input type="button" value="선택취소" onclick="cUser(this)">
 						</td>
 						</c:if>
 					</tr>
