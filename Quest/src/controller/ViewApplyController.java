@@ -28,7 +28,7 @@ public class ViewApplyController {
 		// data from applyTable by boardNo
 		List<HashMap<String, Object>> applydata = service.listApply(Integer.parseInt((String) params.get("boardNo")));
 		// System.out.println("?");
-		// System.out.println(applydata);
+		 System.out.println("뷰어플라이:"+ applydata);
 		// System.out.println("nick"+
 		// service.nickname(Integer.parseInt((String)params.get("userIndex"))));
 

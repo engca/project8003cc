@@ -143,6 +143,7 @@
 					<th width="15%">신청자</th>
 					<th width="15%">선택한 보상</th>
 					<th width="10%">연락처</th>
+					<th width="10%"> </th>
 				</tr>
 				
 				<c:forEach var="applyUser" items="${applyList }">
@@ -155,7 +156,11 @@
 							<c:if test="${applyUser.rewardNo==3 }">${boardList.reward3 }</c:if>
 						</td>
 						<td>${applyUser.contactAnswer }</td>
-						
+						<c:if test ="${applyUser.aCompleteFlag == 2}">
+						<td>
+							<input type="button" value="선택취소" onclick="cUser()">
+						</td>
+						</c:if>
 					</tr>
 				</c:forEach>
 	
