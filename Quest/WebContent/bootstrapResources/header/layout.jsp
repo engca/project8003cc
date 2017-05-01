@@ -30,26 +30,24 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-	<script language="JavaScript">
-
-top.window.moveTo(0,0);
-if (document.all) {
-		top.window.resizeTo(screen.availWidth,screen.availHeight);
+<script language="JavaScript">
+	top.window.moveTo(0, 0);
+	if (document.all) {
+		top.window.resizeTo(screen.availWidth, screen.availHeight);
+	} else if (document.layers || document.getElementById) {
+		if (top.window.outerHeight < screen.availHeight
+				|| top.window.outerWidth < screen.availWidth) {
+			top.window.outerHeight = screen.availHeight;
+			top.window.outerWidth = screen.availWidth;
+		}
 	}
-	else if (document.layers||document.getElementById) {
-	if (top.window.outerHeight<screen.availHeight||top.window.outerWidth<screen.availWidth){
-		top.window.outerHeight = screen.availHeight;
-		top.window.outerWidth = screen.availWidth;
-	}
-}
-
 </script>
 </head>
 <body>
-	<table class= "table-responsive" style="width:100%;height:100%" align = "center" >
-		<tr >
-			<td>
-					<tiles:insertAttribute name="header"></tiles:insertAttribute>
+	<table class="table-responsive" style="width: 100%; height: 100%"
+		align="center">
+		<tr>
+			<td><tiles:insertAttribute name="header"></tiles:insertAttribute>
 			</td>
 		</tr>
 		<tr>
@@ -58,30 +56,29 @@ if (document.all) {
 			</td>
 		</tr>
 		<tr>
-			<td>
-					<tiles:insertAttribute name="body"></tiles:insertAttribute>
+			<td><tiles:insertAttribute name="body"></tiles:insertAttribute>
 			</td>
 		</tr>
 		<tr>
-			<td>
-					<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+			<td><tiles:insertAttribute name="footer"></tiles:insertAttribute>
 			</td>
 		</tr>
 	</table>
 	<!-- jQuery -->
-    <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+	<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-    <script src="bootstrapResources/js/contact_me.js"></script>
+	<!-- Contact Form JavaScript -->
+	<script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
+	<script src="bootstrapResources/js/contact_me.js"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="bootstrapResources/js/freelancer.min.js"></script>
+	<!-- Theme JavaScript -->
+	<script src="bootstrapResources/js/freelancer.min.js"></script>
 </body>
 </html>
