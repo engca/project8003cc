@@ -148,10 +148,14 @@ select {
 	width: 80px;
 	height: 30px;
 }
+.div {
+	margin-top: 20px;
+}
 </style>
 </head>
 <body >
 	<center >
+	<div class = "div">
 		<form action="searchBoard.do">
 			<select name = "boardFlag">
 				<option value = "0">잘해요</option>
@@ -172,6 +176,7 @@ select {
 <!-- 				<input id = "area" name = "area" type = "hidden"> -->
 			</div>
 		</form>
+	</div>
 	</center>
 	<!-- jQuery -->
     <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>

@@ -3465,13 +3465,20 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 .btn-primary .badge {
 	color: #337ab7;
-	background-color: #fff
+	background-color: #fff;
 }
 
 .btn-success {
 	color: #fff;
 	background-color: #5cb85c;
 	border-color: #4cae4c
+}
+
+.btn-success1 {
+	color: #fff;
+	font-weight : bold;
+	background-color: #2C3E50;
+	border-color: #ffb400;
 }
 
 .btn-success.focus, .btn-success:focus {
@@ -3708,6 +3715,13 @@ a.btn.disabled, fieldset[disabled] a.btn {
 .btn-group-lg>.btn, .btn-lg {
 	padding: 10px 16px;
 	font-size: 18px;
+	line-height: 1.3333333;
+	border-radius: 6px
+}
+
+.btn-group-lg>.btn, .btn-lg1 {
+	padding: 10px 16px;
+	font-size: 20px;
 	line-height: 1.3333333;
 	border-radius: 6px
 }
