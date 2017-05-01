@@ -144,7 +144,7 @@ $(document).ready ( function() {
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2>Profile Info</h2>
+					<h2>PROFILE</h2>
 					<hr class="star-primary">
 				</div>
 			</div>
