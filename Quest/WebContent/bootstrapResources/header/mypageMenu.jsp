@@ -20,13 +20,16 @@
 	height: 65px;
 	padding: 10px;
 }
+#btn:hover {
+	color: pink;
+}
+
 </style>
 
 
 </head>
 <body>
 
-	</div>
 	<center>
 		<div class="div">
 			<div class="btn-group">
@@ -47,6 +50,7 @@
 					value="PROFILE" onclick="location.href='profile.do'"
 					class="btn btn-success1 btn-lg1'"
 					style="width: 300px; height: 41px;" />
+			</div>
 			</div>
 	</center>
 </body>
