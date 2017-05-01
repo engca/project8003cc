@@ -31,6 +31,7 @@
 	$(document).ready(function() {
 		
 		$('#sangseaBtn').click(function() {
+// 			alert("?");
 			$('#sangsea').css('visibility', 'visible');
 			$.ajax({
 				type : 'get',
@@ -73,20 +74,29 @@
 // 	            alert("체크박스 체크 !");
 	        
 	        }else{
-	            alert("체크박스 체크 해제!");
+	        	$("#areaList input").each(function(){
+	    			if($(this).val() == $(btn).val())
+	    			{
+	    				$(this).remove();
+	    			}
+	    		});
 	        }
 	}
-	function delete(btn)
+	function deleteBtn(button)
 	{	
-		 if($(btn).is(":checked")){
-	            var input = $('<input type = "button" onclick ="deleteBtn(this)" value = "'+ $(btn).val()+'"/>');
-	            $('#areaList').append(input);
-	            $('#area').text($(btn).val());
-// 	            alert("체크박스 체크 !");
-	        
-	        }else{
-	            alert("체크박스 체크 해제!");
-	        }
+		$("#areaList input").each(function(){
+			if($(this).val() == $(button).val())
+			{
+				$(this).remove();
+			}
+		});
+		$("input:checked").each(function(){
+			if($(this).val() == $(button).val())
+			{
+				$(this).prop("checked",false);
+			}
+		});
+		
 	}
 	function searchGungu(btn){
 			$('#gunguuu').css('visibility', 'visible');
@@ -103,7 +113,7 @@
 						if(index%6 == 0 )
 							tr = $('<tr>');
 						var td = $('<td>');
-						var b = $('<input type ="checkbox" onclick="changeCheck(this)" value="'+this.gungu+'">');
+						var b = $('<input type ="checkbox" onclick="changeCheck(this)" name = "area" value="'+this.gungu+'">');
 						var c = this.gungu;
 						$(td).append(b);
 						$(td).append(c);		
@@ -159,7 +169,7 @@ select {
 				<table id="sidooo" style = "width: 500px; border:double" ></table>
 				<table id="gunguuu" style = "width: 780px; visibility:hidden;"></table>
 				<div id = "areaList">
-				<input id = "area" name = "area" type = "hidden">
+<!-- 				<input id = "area" name = "area" type = "hidden"> -->
 			</div>
 		</form>
 	</center>
