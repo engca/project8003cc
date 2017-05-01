@@ -57,6 +57,7 @@
  						<c:if test="${board.applyCount >0 }"> 
  							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
 						</c:if>
+							&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
 					</td>	 							
  					</c:if>
  					<c:if test="${board.bCompleteFlag ==1 }">
@@ -65,7 +66,7 @@
  						 <c:if test="${board.applyCount >0 }"> 
  							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
 						</c:if>
-<%--  						&nbsp;&nbsp;&nbsp;<font color="gray"><b>${board.commentCount }</b></font></td> --%>
+ 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
  					</td>
  					</c:if>
  					<c:if test="${board.bCompleteFlag ==2 }">
