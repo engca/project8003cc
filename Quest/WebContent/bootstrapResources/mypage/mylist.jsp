@@ -74,6 +74,7 @@ select {
 					<h1>해 주 세 요</h1>
 				</c:if>
 			</center>
+			
 		</div>
 		<c:if test="${boardFlag == 0 || boardFlag == 1 }">
 			<hr class="star-primary">

@@ -118,6 +118,9 @@ select {
 					<c:if test="${boardList.bCompleteFlag ==1 }">
 						<td colspan="5"><font color="red">[완료된 퀘스트]</font>${boardList.title }</td>
 					</c:if>
+					<c:if test="${boardList.bCompleteFlag ==3 }">
+						<td colspan="5"><font color="blue">[진행중 퀘스트]</font>${boardList.title }</td>
+					</c:if>
 				</tr>
 				<tr>
 					<th><h5>장소</h5></th>
@@ -189,8 +192,10 @@ select {
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
 									<input type="button" class="btn btn-info btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 								</c:if>
+								<c:if test="${boardList.bCompleteFlag != 3}">
 								<c:if test="${applydata == null }">
 									<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
+								</c:if>
 								</c:if>
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 								<c:if test="${policedata == null }">
