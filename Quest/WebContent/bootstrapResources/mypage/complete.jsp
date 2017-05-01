@@ -11,6 +11,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Insert title here</title>
+
+
+
 <script type="text/javascript">
 	function starpointPopup(boardNo) {
 		var popUrl = "starpoint.do?boardNo="+boardNo;
@@ -77,5 +80,14 @@
 
 		</table>
 	</div>
+	
+	
+	
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	
+	
 </body>
 </html>

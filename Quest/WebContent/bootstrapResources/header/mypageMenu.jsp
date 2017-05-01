@@ -20,10 +20,10 @@
 	height: 65px;
 	padding: 10px;
 }
+
 #btn:hover {
 	color: pink;
 }
-
 </style>
 
 
@@ -51,7 +51,7 @@
 					class="btn btn-success1 btn-lg1'"
 					style="width: 300px; height: 41px;" />
 			</div>
-			</div>
+		</div>
 	</center>
 </body>
 </html>

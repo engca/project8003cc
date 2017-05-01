@@ -45,7 +45,6 @@
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 
 
-</style>
 <script type="text/javascript">
 function deleteBook(btn) {
 	var code = btn.getAttribute('name');
