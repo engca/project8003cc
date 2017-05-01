@@ -68,7 +68,7 @@
 		}
 	};
 		
-	function applyUser(boarNo){
+	function applyUser(){
 // 		$("#chk:checked").each(function(idx, row) {
 // 			var record = $(row).parents("tr").;
 // 			alert(record[0].innerText);
@@ -76,8 +76,8 @@
 		
 // 		var arr = $('input[name=chk]:checked').serializeArray().map(function(item) { return item.value });
 		var str = $('input[name=chk]:checked').serialize(); // 이건 QueryString 방식으로 
-		alert(str);
-		alert("boardNo "+typeof(${boardList.boardNo}));
+// 		alert(str);
+// 		alert("boardNo "+typeof(${boardList.boardNo}));
 		alert('신청자 선택이 완료되었습니다.');
 		
 		opener.document.location.href="viewApply.do?boardNo="+${boardList.boardNo}+"&"+str;
@@ -93,6 +93,10 @@
 		
 		
 	};
+	
+	function cUser(){
+		// c
+	}
 	
 	$(function() {
 		$("#btn").click(function() {
