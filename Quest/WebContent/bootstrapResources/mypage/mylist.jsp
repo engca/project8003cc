@@ -60,79 +60,78 @@ select {
 </head>
 <body>
 	<div id="board" class="container">
+	<center>
 		<input type="button" class="btn btn-primary btn-lg" value="잘해요"
 			onclick="location.href='mylistProc.do?boardFlag=0'"> <input
 			type="button" class="btn btn-primary btn-lg" value="해주세요"
 			onclick="location.href='mylistProc.do?boardFlag=1'">
-		<div align="center">
-			<center>
+	</center>
+			
 				<c:if test="${boardFlag == 0}">
-					<h1 align="center">잘 해 요</h1>
+					<h1 align = "center">잘 해 요</h1>
 				</c:if>
 
 				<c:if test="${boardFlag ==1}">
-					<h1>해 주 세 요</h1>
+					<h1 align = "center">해 주 세 요</h1>
 				</c:if>
-			</center>
-			
-		</div>
-		<c:if test="${boardFlag == 0 || boardFlag == 1 }">
-			<hr class="star-primary">
-			<h3>게시한 글(요청중)</h3>
-			<div>
-				<table class="table table-striped">
-					<tr>
-						<th width="5%">No</th>
-						<th width="15%">구분</th>
-						<th width="45%">제목</th>
-						<th width="15%">작성자</th>
-						<th width="15%">작성일</th>
-						<th width="5%">조회수</th>
-					</tr>
-					<c:forEach var="myboard" items="${myboard }">
-						<tr>
-							<td>${myboard.boardNo }</td>
-							<td><c:if test="${myboard.boardFlag == 1 }">해주세요</c:if> <c:if
-									test="${myboard.boardFlag == 0 }">잘해요</c:if></td>
-							<td><a href="viewBoard.do?boardNo=${myboard.boardNo }">${myboard.title }</a></td>
-							<!-- USER INDEX>ID -->
-							<td>${myboardnickname}</td>
-							<td><fmt:formatDate value="${myboard.date }"
-									pattern="yyyy-MM-dd" /></td>
-							<td>${myboard.readCount }</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
 
-			<h3>신청한 글(신청중)</h3>
-			<div>
-				<table class="table table-striped">
-					<tr>
-						<th width="5%">No</th>
-						<th width="15%">구분</th>
-						<th width="45%">제목</th>
-						<th width="15%">작성자</th>
-						<th width="15%">작성일</th>
-						<th width="5%">조회수</th>
-					</tr>
-					<c:forEach var="myapply" items="${myapply }">
-						<tr>
-							<td>${myapply.boardNo }</td>
-							<td><c:if test="${myapply.boardFlag == 1 }">해주세요</c:if> <c:if
-									test="${myapply.boardFlag == 0 }">잘해요</c:if></td>
-							<td><a href="viewBoard.do?boardNo=${myapply.boardNo }">${myapply.title }</a></td>
-							<!-- USER INDEX>ID -->
-							<td>${myapply.nickname}</td>
-							<td><fmt:formatDate value="${myapply.date }"
-									pattern="yyyy-MM-dd" /></td>
-							<td>${myapply.readCount }</td>
-						</tr>
-					</c:forEach>
+				<c:if test="${boardFlag == 0 || boardFlag == 1 }">
+					<hr class="star-primary">
+					<h3>게시한 글(요청중)</h3>
+					<div>
+						<table class="table table-striped">
+							<tr>
+								<th width="5%">No</th>
+								<th width="15%">구분</th>
+								<th width="45%">제목</th>
+								<th width="15%">작성자</th>
+								<th width="15%">작성일</th>
+								<th width="5%">조회수</th>
+							</tr>
+							<c:forEach var="myboard" items="${myboard }">
+								<tr>
+									<td>${myboard.boardNo }</td>
+									<td><c:if test="${myboard.boardFlag == 1 }">해주세요</c:if> <c:if
+											test="${myboard.boardFlag == 0 }">잘해요</c:if></td>
+									<td><a href="viewBoard.do?boardNo=${myboard.boardNo }">${myboard.title }</a></td>
+									<!-- USER INDEX>ID -->
+									<td>${myboardnickname}</td>
+									<td><fmt:formatDate value="${myboard.date }"
+											pattern="yyyy-MM-dd" /></td>
+									<td>${myboard.readCount }</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
 
-				</table>
-			</div>
-		</c:if>
+					<h3>신청한 글(신청중)</h3>
+					<div>
+						<table class="table table-striped">
+							<tr>
+								<th width="5%">No</th>
+								<th width="15%">구분</th>
+								<th width="45%">제목</th>
+								<th width="15%">작성자</th>
+								<th width="15%">작성일</th>
+								<th width="5%">조회수</th>
+							</tr>
+							<c:forEach var="myapply" items="${myapply }">
+								<tr>
+									<td>${myapply.boardNo }</td>
+									<td><c:if test="${myapply.boardFlag == 1 }">해주세요</c:if> <c:if
+											test="${myapply.boardFlag == 0 }">잘해요</c:if></td>
+									<td><a href="viewBoard.do?boardNo=${myapply.boardNo }">${myapply.title }</a></td>
+									<!-- USER INDEX>ID -->
+									<td>${myapply.nickname}</td>
+									<td><fmt:formatDate value="${myapply.date }"
+											pattern="yyyy-MM-dd" /></td>
+									<td>${myapply.readCount }</td>
+								</tr>
+							</c:forEach>
+
+						</table>
+					</div>
+				</c:if>
 	</div>
 </body>
 </html>
