@@ -45,7 +45,7 @@
 					$(data.sido).each(function(index)
 						{
 							var td = $('<td>');
-							var btn = $('<input type = "button" class = "btn-link" value = "' + this.sido +'" onclick="searchGungu(this)" />');
+							var btn = $('<input type = "button"  align = "center" style = "text-align:center"  class = "btn-link" value = "' + this.sido +'" onclick="searchGungu(this)" />');
 							td.append(btn);
 							tr.append(td);
 						});
@@ -68,7 +68,7 @@
 	function changeCheck(btn)
 	{	
 		 if($(btn).is(":checked")){
-	            var input = $('<input type = "button" onclick ="deleteBtn(this)" value = "'+ $(btn).val()+'"/>');
+	            var input = $('<input type = "button" onclick ="deleteBtn(this)" align = "center" style = "text-align:center" value = "'+ $(btn).val()+'"/>');
 	            $('#areaList').append(input);
 	            $('#area').text($(btn).val());
 // 	            alert("체크박스 체크 !");
@@ -113,7 +113,7 @@
 						if(index%6 == 0 )
 							tr = $('<tr>');
 						var td = $('<td>');
-						var b = $('<input type ="checkbox" onclick="changeCheck(this)" name = "area" value="'+this.gungu+'">');
+						var b = $('<input type ="checkbox" style = "font:border" onclick="changeCheck(this)" name = "area" value="'+this.gungu+'">');
 						var c = this.gungu;
 						$(td).append(b);
 						$(td).append(c);		
@@ -170,11 +170,10 @@ select {
 				<input type="button" id="closeBtn" value="상세검색닫기"
 					class="btn-warning">
 				<div id="sangsea" style="visibility: hidden;" align="center">
-					<table id="sidooo" style="width: 500px; border: double"></table>
-					<table id="gunguuu" style="width: 780px; visibility: hidden;"></table>
-					<div id="areaList">
-						<!-- 				<input id = "area" name = "area" type = "hidden"> -->
-					</div>
+					<table id="sidooo" align = "center"  style="width: 500px; border: double"></table>
+					<table id="gunguuu" align = "center" style="width: 700px; visibility: hidden;"></table>
+					<div id="areaList" style = "background:white; text-align:left; width:700px"></div>
+					<input id = "area" name = "area" type = "hidden">
 			</form>
 		</div>
 	</center>

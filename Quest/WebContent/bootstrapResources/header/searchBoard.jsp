@@ -17,11 +17,11 @@
  	
  <script type="text/javascript">
  var checkLogin = function(){
- 	var loginid = '${sessionScope.id}';
+ 	var loginid = '${sessionScope.userId}';
  	if (loginid == ""){
  		alert('로그인 후 가능합니다.');
  	} else {
- 		location.href='writeBoard.do';
+ 		location.href='writeBoard.do'; 
  	}
  }
  </script>
@@ -42,21 +42,53 @@
  		</div>
  		<table class="table tablestriped">
  			<tr>
- 				<td align="center" width="10%"><b>No</b></td>
- 				<td align="center" width="40%"><b>제목</b></td>
- 				<td align="center" width="20%"><b>작성자</b></td>
- 				<td align="center" width="20%"><b>작성일</b></td>
- 				<td align="center" width="10%"><b>조회수</b></td>
+ 				<td align="center" width="8%"><b>No</b></td>
+ 				<td align="center" width="54%"><b>제목</b></td>
+ 				<td align="center" width="12%"><b>작성자</b></td>
+ 				<td align="center" width="18%"><b>작성일</b></td>
+ 				<td align="center" width="8%"><b>조회수</b></td>
  			</tr>
- 			<c:forEach var="board" items="${boardList}">
- 				<tr>
+ 			
+  			<c:forEach var="board" items="${boardList}">
+  				<tr>
  					<td align="center">${board.boardNo}</td>
- 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title }</a></td>
+ 					 
+ 					<c:if test="${board.bCompleteFlag ==0 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title } </a>
+ 						<c:if test="${board.applyCount >0 }"> 
+ 							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
+						</c:if>
+							&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+					</td>	 							
+ 					</c:if> 					
+ 					<c:if test="${board.bCompleteFlag ==1 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">
+ 						<font color="red">[완료된 퀘스트]</font>	${board.title }</a>
+ 						 <c:if test="${board.applyCount >0 }"> 
+ 							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
+						</c:if>
+ 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+ 					</td>
+ 					</c:if>
+ 					<c:if test="${board.bCompleteFlag ==3 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">
+ 						<font color="blue">[진행중 퀘스트]</font>	${board.title }</a>
+ 						 <c:if test="${board.applyCount >0 }"> 
+ 							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
+						</c:if>
+ 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+ 					</td>
+ 					</c:if> 					
+ 					<c:if test="${board.bCompleteFlag ==2 }">
+ 					<td><font color="gray"><strike>삭제된 게시글 입니다</strike></font></td>
+ 					</c:if>
+ 					
  					<td align="center">${board.nickname}</td>
- 					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyyMMdd" />
+ 					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyy/MM/dd" />
  					<td align="center">${board.readCount }</td>
- 				</tr>
+ 				</tr>			
  			</c:forEach>
+ 
  			<tr>
  				<td colspan="5" align="right">
  					<input type="button" value="글쓰기" onclick="checkLogin()" 	class="btn btndefault pullright"></td>
@@ -65,19 +97,19 @@
  			<tr>
 				<td colspan="5" align="center">
 <%-- 					<c:if test="${start != first }"> --%>
-						<a href="searchBoard.do?page=${first}"> [처음]</a> &nbsp;&nbsp; 
+						<a href="searchBoard.do?page=${first}&boardFlag=${boardFlag}"> [처음]</a> &nbsp;&nbsp; 
 <%-- 					</c:if>  --%>
 					<c:forEach begin="${start }" end="${end}" var="i">
 						<c:choose>
 							<c:when test="${i == current }">[<b>${i }</b>]
 							</c:when>
 							<c:otherwise>
-								<a href="searchBoard.do?page=${i}">[<b>${i }</b>] </a>
+								<a href="searchBoard.do?page=${i}&boardFlag=${boardFlag}">[<b>${i }</b>] </a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach> 
 <%-- 					<c:if test="${end != last }"> --%>
-						 &nbsp; <a href="searchBoard.do?page=${last}">[끝]</a>
+						 &nbsp; <a href="searchBoard.do?page=${last}&boardFlag=${boardFlag}">[끝]</a>
 <%-- 					</c:if></td> --%>
 			</tr>
 			
