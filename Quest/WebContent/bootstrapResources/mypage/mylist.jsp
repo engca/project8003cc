@@ -77,7 +77,7 @@ select {
 
 				<c:if test="${boardFlag == 0 || boardFlag == 1 }">
 					<hr class="star-primary">
-					<h3>게시한 글(요청중)</h3>
+					<h3>게시한 글(요청중)</h3>  
 					<div>
 						<table class="table table-striped">
 							<tr>
