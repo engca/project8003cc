@@ -105,15 +105,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectBoardByContent" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
+		
 		SELECT * from board
-		where boardFlag = #{boardFlag} 
+		where boardFlag = #{boardFlag}
 		<if test="area != null">
-		and (1 = 0 
-			<foreach item="addrno" collection="area">
-			 	or addrNo = #{addrno}
-			</foreach>
-			or 1 = 1
-			)
+			and addrNo in
+			<foreach collection="area" item="addrno"  open="(" close=")" separator=",">
+	 			 #{addrno}
+	 		</foreach>
 		</if>
 		
 		<if test="searchKey != null and searchKey != ''">
@@ -125,14 +124,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoardByWriter" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT * from board
-		where boardFlag = #{boardFlag}
+		where boardFlag = #{boardFlag} 
 		<if test="area != null">
-		and (1 = 0 
-			<foreach item="addrno" collection="area">
-			 	or addrNo = #{addrno}
-			</foreach>
-			or 1 = 1
-			)
+		and addrNo in
+			<foreach collection="area" item="addrno"  open="(" close=")" separator=",">
+	 			#{addrno}
+	 		</foreach>
 		</if>
 		<if test="searchKey != null and searchKey != ''">
 			and userIndex like CONCAT('%',#{searchKey},'%')
@@ -197,7 +194,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from board, score where
 		board.boardNo=score.boardNo and
 		board.userIndex=#{userIndex} and
-		board.bCompleteFlag = 3
+		board.bCompleteFlag = 1
 		order by board.boardNo desc
 		limit #{skip}, #{count}
 	</select>
