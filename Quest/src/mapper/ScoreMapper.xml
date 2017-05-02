@@ -29,4 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		user2Index = #{user2Index}
 	</if>  
 	</select>
+	
+	<delete id="deleteScore" parameterType="java.util.HashMap">
+		delete from score where user2Index = #{user2Index} and boardNo = #{boardNo}
+	</delete>
 </mapper>

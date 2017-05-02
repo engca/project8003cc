@@ -342,21 +342,25 @@ public class QuestService implements IQuestService {
 		System.out.println("choiceApply" + user2Index + "ok");
 		
 		//board 테이블 보드클래그 3. 퀘진행중으로 바꿈
+		System.out.println("Board choiceApply" +dao.selectBoardOne(boardNo));
 		HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
 		flag.put("bCompleteFlag", 3);
 		dao.updateBoard(flag);
+		System.out.println("?");
 		
-		// apply테이블 컴플리트 플래그 1. 간택완료로 바꿈
+		// apply테이블 컴플리트 플래그 2. 간택완료로 바꿈
 		HashMap<String, Object> tmp = new HashMap<>();
 		tmp.put("boardNo", boardNo);
 		tmp.put("userIndex", user2Index); // 신청자
-		HashMap<String, Object> apply = dao.selectApply(tmp);
-		apply.put(Constant.Apply.ACOMPLETEFLAG, 1);
-		dao.updateApply(apply);
+		System.out.println("temp" + tmp);
+		HashMap<String, Object> applyD = dao.selectApply(tmp);
+		System.out.println("Befor aaplyD"+applyD);
+		applyD.put("aCompleteFlag",2);
+		System.out.println("After aaplyD"+applyD);
+		dao.updateApply(applyD);
+		System.out.println("!!!!?");
 		
-		
-//		dao.deleteApply(boardNo);
-		// 지원한 목록들 삭제
+
 
 		return 0;
 	}

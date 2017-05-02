@@ -95,31 +95,20 @@
 	};
 	
 	
-	function cUser(btn) {
-		var code = btn.getAttribute('name');
-			alert(code + "← 이자식을 지우고 싶어...");
-		//code값을 서버에게 전달해서 지워달라고 ajax요청 ~
-// 		var http = new XMLHttpRequest();
-// 		http.open('get', 'deleteInven.do?code=' + code);
-// 		http.onreadystatechange = function() {
-// 			if (http.readyState == 4 && http.status == 200) {
-// 				var resultJson = JSON.parse(http.responseText);
-// 				if (resultJson.result) {
-// 					// 				alert('지워짐ㅋ');
-// 					var tr = document.getElementById('tr_' + code);
-// 					tr.parentNode.removeChild(tr);
-// 				}
-// 			}
-// 		};
-// 		http.send();
-
-	}
+	
 	
 	$(function() {
 		$("#btn").click(function() {
 			
 		});
 	});
+	
+	function deleteUaer(btn){
+		alert("신청자 선택이 취소되었습니다.");
+		var applyIndex = btn.getAttribute('name');
+		location.href="deleteApplyUser.do?boardNo="+${boardList.boardNo}+"&user2Index="+applyIndex;
+
+	}
 	
 	
 	
@@ -164,11 +153,12 @@
 					<th width="15%">신청자</th>
 					<th width="15%">선택한 보상</th>
 					<th width="10%">연락처</th>
-					<th width="10%"> </th>
+					<th width="15%">선택여부 </th>
 				</tr>
 				
 				<c:forEach var="applyUser" items="${applyList }">
-					<tr name="tr_${applyUser.userIndex }">
+					
+					<tr name="tr_${applyUser.userIndex }" >
 						<td> <input type="checkbox" name="chk" id="chk" value="${applyUser.userIndex }">
 						<td>${applyUser.nickname }</td>
 						<td>
@@ -177,12 +167,19 @@
 							<c:if test="${applyUser.rewardNo==3 }">${boardList.reward3 }</c:if>
 						</td>
 						<td>${applyUser.contactAnswer }</td>
-						<c:if test ="${applyUser.aCompleteFlag == 2}">
-						<td name="td_${applyUser.userIndex }">
-							<input type="button" value="선택취소" onclick="cUser(this)">
+						<c:choose>
+							<c:when test="${applyUser.aCompleteFlag ==2 }">
+						
+						<td>
+							<input type="button" name="${applyUser.userIndex }" value="간택취소" id="${applyUser.userIndex }" onclick="deleteUaer(this)">
 						</td>
-						</c:if>
+						</c:when>
+							<c:otherwise>
+								<td></td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
+					
 				</c:forEach>
 	
 			</table>

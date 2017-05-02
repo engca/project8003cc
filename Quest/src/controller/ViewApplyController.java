@@ -15,11 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
 import service.IQuestService;
+import service.J_Service;
 
 @Controller
 public class ViewApplyController {
 	@Autowired
 	IQuestService service;
+	@Autowired
+	J_Service jservice;
 
 	@RequestMapping("viewApplyPopup.do")
 	public ModelAndView viewApplyPopup(@RequestParam HashMap<String, Object> params, Model model) {
@@ -45,6 +48,7 @@ public class ViewApplyController {
 		mav.addObject("contact", contact);
 		mav.addObject("boardList", params);
 		mav.addObject("applyList", applydata);
+		
 		mav.setViewName("viewApplyPopup.popup");
 		return mav;
 	}
@@ -54,8 +58,7 @@ public class ViewApplyController {
 		System.out.println("?");
 		System.out.println("viewApply"+ chk);
 //		String[] userIndex=chk.split("&");
-		for(int i = 0 ; i< chk.length;i++)
-			System.out.println(chk[i]);
+		
 //		int boardNum = Integer.parseInt(boardNo);
 		System.out.println("viewApply boardno:" + boardNo);
 		
@@ -70,6 +73,16 @@ public class ViewApplyController {
 		model.addAttribute("boardNo", boardNo);
 		return "redirect:viewBoard.do";
 
+	}
+	
+	@RequestMapping("deleteApplyUser.do")
+	public String deleteApplyUser(int user2Index, int boardNo, HttpSession session, Model model ){
+		int userIndex1 = (int) session.getAttribute("userIndex");
+		jservice.deleteApplyUser(userIndex1, user2Index, boardNo);
+		HashMap<String, Object> boardAll = service.getBoard(boardNo);
+		model.addAllAttributes(boardAll);
+		
+		return "redirect:viewApplyPopup.do";
 	}
 
 }
