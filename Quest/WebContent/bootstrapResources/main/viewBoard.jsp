@@ -197,7 +197,7 @@ select {
 										<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 									</c:if>
 								</c:if>
-							</c:if>
+							</c:if> 
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 								<c:if test="${policedata == null }">
 									<input type="button" class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
