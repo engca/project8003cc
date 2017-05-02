@@ -208,8 +208,7 @@ public class QuestService implements IQuestService {
 		int addrNo = (int)bd.get(Constant.Board.ADDRNO);
 		HashMap<String, Object> addr = dao.selectAddress(addrNo);
 		
-		// 신청하기 테이블 참조
-		
+		// 신청하기 테이블 참조		
 		int AboardNo = (int)bd.get(Constant.Board.BOARDNO);
 		System.out.println("ReadBoard" + AboardNo + "&"+ userIndex);
 		HashMap<String, Object> apply = new HashMap<>();
@@ -219,18 +218,16 @@ public class QuestService implements IQuestService {
 		
 		// 신고하기 테이블 참조
 		int PboardNo = (int)bd.get(Constant.Board.BOARDNO);
-		int Puserindex = (int)bd.get(Constant.Board.USERINDEX);
 		HashMap<String, Object> police = new HashMap<>();
 		police.put("boardNo", PboardNo);
-		police.put("userIndex", Puserindex);		
+		police.put("userIndex", userIndex);		
 		HashMap<String, Object> policedata = dao.selectPolice(police);
 		
 		// 즐겨찾기 테이블 참조
 		int BboardNo = (int)bd.get(Constant.Board.BOARDNO);
-		int Buserindex = (int)bd.get(Constant.Board.USERINDEX);
 		HashMap<String, Object> bookmark = new HashMap<>();
 		bookmark.put("boardNo", BboardNo);
-		bookmark.put("userIndex", Buserindex);		
+		bookmark.put("userIndex", userIndex);		
 		List<HashMap<String, Object>> bookmarkdata = dao.selectBookMark(bookmark); 
 		
 		// 최종 해쉬맵에 담아보내기		
