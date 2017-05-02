@@ -6,6 +6,12 @@
 <head>
 <title>Quest Header</title>
  <meta httpequiv="ContentType" content="text/html; charset=UTF8">
+ <style type="text/css">
+ @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+	body {
+		font-family: "Hanna";
+	}
+ </style>
      <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
  	<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
      <link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -133,11 +139,12 @@
 	}
 </script>
 <style type="text/css">
+	
 input[type="checkbox"], input[type="radio"] {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 0;
+	padding: 10;
 }
 
 .ls2 {
@@ -151,16 +158,13 @@ select {
 }
 
 .div {
-	background: #FFB400;
-	height: 65px;
- 	padding : 10px; 
-} 
-
+	height: 10px;
+}
 </style>
 </head>
 <body>
 	<center>
-<!-- 		<div class="div"> -->
+		<div class="div"></div>
 			<form action="searchBoard.do">
 				<div class="form-group">
 					<div class="form-inline">
@@ -176,25 +180,14 @@ select {
 						<input type="submit" value="검색" class="btn btn-primary"> 
 						<input id="sangseaBtn" type="button" value="상세검색" class="btn btn-success">
 						
-<!-- 					<div id="sangsea" style="visibility: hidden;" align="center" style="width: 500px; height:300px; border: double"> -->
-<!-- 						<table id="sidooo" align="center"	style="width: 500px; border: double"></table> -->
-<!-- 						<table id="gunguuu" align="center" style="width: 700px; visibility: hidden;"></table> -->
-<!-- 						<div id="areaList"	style="background: white; text-align: left; width: 700px"></div> -->
-<!-- 						<input id="area" name="area" type="hidden"> -->
-<!-- 					</div>		 				 -->
-						<div id="sangsea" 	style="visibility: hidden; back-ground: #000000;	 width: 800px;	height:300px; 	border: double;">
-							<table id="sidooo" align="center"></table>
-							<table id="gunguuu" align="center"></table>
-							<div id="areaList"></div>
-<!-- 							<div name="area" id ="area"> -->
-						</div>
-						
-						
-								 				
+					<div id="sangsea" style="visibility: hidden;width: 800px;" align="center"> <br>
+						<table id="sidooo" align="center"	style="width: 500px; border: double"></table>
+						<table id="gunguuu" align="center" style="width: 700px; visibility: hidden;"></table>
+						<div id="areaList"	style="background: white; text-align: left; width: 700px"></div>
 					</div> 
 				</div>
-			</form>
-<!-- 		</div> -->
+			</div>
+		</form>
 	</center>
 
 </body>

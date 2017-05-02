@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 body {
-	font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Hanna';
 	overflow-x: hidden
 }
 
@@ -21,7 +21,7 @@ a, a.active, a:active, a:focus, a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, 'Hanna';
 	text-transform: uppercase;
 	font-weight: 700
 }
@@ -108,7 +108,7 @@ header img {
 
 header .intro-text .name {
 	display: block;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, 'Hanna';
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 2em
@@ -134,7 +134,7 @@ header .intro-text .skills {
 
 .navbar-custom {
 	background: #2C3E50;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, 'Hanna';
 	text-transform: uppercase;
 	font-weight: 700;
 	border: none
