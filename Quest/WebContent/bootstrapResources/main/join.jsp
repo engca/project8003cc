@@ -11,19 +11,6 @@
 
     <title>회원가입</title>
  <meta httpequiv="ContentType" content="text/html; charset=UTF8">
-     <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
- 	<link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
-     <link href="bootstrapResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-     <script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
-     <script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
- 	<script src="bootstrapResources/js/freelancer.min.js"></script>
-    
-<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
 <script type="text/javascript">
 var joinCheckID = 0;
 var joinCheckPW1 = 0;

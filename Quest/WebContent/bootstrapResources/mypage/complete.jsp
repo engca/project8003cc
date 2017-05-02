@@ -11,9 +11,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Insert title here</title>
-
-
-
 <script type="text/javascript">
 	function starpointPopup(boardNo) {
 		var popUrl = "starpoint.do?boardNo="+boardNo;
