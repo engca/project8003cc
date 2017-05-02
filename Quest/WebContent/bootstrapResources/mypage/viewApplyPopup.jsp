@@ -69,12 +69,12 @@
 	};
 		
 	function applyUser(){
-// 		$("#chk:checked").each(function(idx, row) {
-// 			var record = $(row).parents("tr").;
-// 			alert(record[0].innerText);
-// 		});
+		if($('input:checkbox[name="chk"]').is(":checked") ==  false){
+			alert('신청자를 선택해주시기 바랍니다.');
+		}
+		else if($('input:checkbox[name="chk"]').is(":checked") ==  true){
+
 		
-// 		var arr = $('input[name=chk]:checked').serializeArray().map(function(item) { return item.value });
 		var str = $('input[name=chk]:checked').serialize(); // 이건 QueryString 방식으로 
 // 		alert(str);
 // 		alert("boardNo "+typeof(${boardList.boardNo}));
@@ -91,7 +91,7 @@
 // 		choiceApply.submit(); 
 		window.close();
 		
-		
+		}
 	};
 	
 	
@@ -186,6 +186,7 @@
 			<center>
 				<input type="button" class="btn btn-primary btn-lg" 
 				value="취소"onclick="window.close()">&nbsp;&nbsp;&nbsp;&nbsp; 
+				<c:if test="$"></c:if>
 				<input type="button"class="btn btn-success btn-lg" id="btn"
 				value="신청완료" onclick="applyUser()">
 			</center>
