@@ -114,7 +114,7 @@
 						if(index%6 == 0 )
 							tr = $('<tr>');
 						var td = $('<td>');
-						var b = $('<input type ="checkbox"  onclick="changeCheck(this)" name = "area" value="'+this.gungu+'">');
+						var b = $('<input type ="checkbox"  onclick="changeCheck(this)"  value="'+this.gungu+'">');
 						var c = this.gungu;
 						$(td).append(b);
 						$(td).append(c);		
