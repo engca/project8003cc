@@ -3,8 +3,13 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+ @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+ @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+ @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+ 
 body {
-	font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Hanna';
+	font-family: 'Jeju Gothic';
+/* 	font-family: 'Jeju Hallasan'; */
 	overflow-x: hidden
 }
 
@@ -21,7 +26,7 @@ a, a.active, a:active, a:focus, a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, 'Hanna';
+	font-family: 'Jeju Gothic';
 	text-transform: uppercase;
 	font-weight: 700
 }
@@ -108,7 +113,7 @@ header img {
 
 header .intro-text .name {
 	display: block;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, 'Hanna';
+	font-family: 'Jeju Gothic';
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 2em
@@ -134,7 +139,7 @@ header .intro-text .skills {
 
 .navbar-custom {
 	background: #2C3E50;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, 'Hanna';
+	font-family: 'Jeju Gothic';
 	text-transform: uppercase;
 	font-weight: 700;
 	border: none
