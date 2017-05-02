@@ -4,6 +4,8 @@ package service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
@@ -189,7 +191,7 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public HashMap<String, Object> readBoard(int boardNo) {
+	public HashMap<String, Object> readBoard(int boardNo, int userIndex) {
 		// 보드 불러와서 조회수 업데이트하기
 		HashMap<String, Object> bd = dao.selectBoardOne(boardNo);
 		bd.put(Constant.Board.READCOUNT, (int) bd.get(Constant.Board.READCOUNT) + 1);
@@ -207,27 +209,28 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> addr = dao.selectAddress(addrNo);
 		
 		// 신청하기 테이블 참조
+		
 		int AboardNo = (int)bd.get(Constant.Board.BOARDNO);
-		int Auserindex = (int)bd.get(Constant.Board.USERINDEX);
+		System.out.println("ReadBoard" + AboardNo + "&"+ userIndex);
 		HashMap<String, Object> apply = new HashMap<>();
 		apply.put("boardNo", AboardNo);
-		apply.put("userIndex", Auserindex);
+		apply.put("userIndex", userIndex);
 		HashMap<String, Object> applydata = dao.selectApply(apply);
 		
 		// 신고하기 테이블 참조
 		int PboardNo = (int)bd.get(Constant.Board.BOARDNO);
 		int Puserindex = (int)bd.get(Constant.Board.USERINDEX);
 		HashMap<String, Object> police = new HashMap<>();
-		apply.put("boardNo", PboardNo);
-		apply.put("userIndex", Puserindex);		
+		police.put("boardNo", PboardNo);
+		police.put("userIndex", Puserindex);		
 		HashMap<String, Object> policedata = dao.selectPolice(police);
 		
 		// 즐겨찾기 테이블 참조
 		int BboardNo = (int)bd.get(Constant.Board.BOARDNO);
 		int Buserindex = (int)bd.get(Constant.Board.USERINDEX);
 		HashMap<String, Object> bookmark = new HashMap<>();
-		apply.put("boardNo", BboardNo);
-		apply.put("userIndex", Buserindex);		
+		bookmark.put("boardNo", BboardNo);
+		bookmark.put("userIndex", Buserindex);		
 		List<HashMap<String, Object>> bookmarkdata = dao.selectBookMark(bookmark); 
 		
 		// 최종 해쉬맵에 담아보내기		

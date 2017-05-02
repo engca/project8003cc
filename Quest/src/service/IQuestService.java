@@ -3,6 +3,7 @@ import java.util.HashMap;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.xml.stream.events.Comment;
 
 
@@ -30,7 +31,7 @@ public interface IQuestService {
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(int boardNo); 
 	public HashMap<String, Object> getBoardList(int boardflag, int page); // 페이징 처리용 추가 (4/12)
-	public HashMap<String, Object> readBoard(int boardNo);
+	public HashMap<String, Object> readBoard(int boardNo, int userIndex);
 	public HashMap<String, Object> getBoard(int boardNo);
 	public boolean isMyBoard(HashMap<String, Object> params);
 	public HashMap<String, Object> searchBoardList(int boardflag,int searchFlag, int page, String searchKey,String[] area);
