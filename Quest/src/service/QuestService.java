@@ -175,6 +175,9 @@ public class QuestService implements IQuestService {
 				for (HashMap<String, Object> board : list ){
 					int userindex = (int) (board.get("userIndex"));
 					board.put("nickname", nickname(userindex));
+					int boardNo = (int)(board.get("boardNo"));
+					int commentCount = dao.selectCommentCount(boardNo);
+					board.put("commentCount", commentCount);
 				}				
 				result.put("start", start);
 				result.put("first", first);
