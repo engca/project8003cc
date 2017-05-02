@@ -63,6 +63,7 @@ select {
 
 <script type="text/javascript">
 	var apply = function() {
+		if()
 		alert('신청이 완료되었습니다.');
 		var apply = document.applyPopup;
 // 		window.open('','applyPopup','width=500, height=600');
