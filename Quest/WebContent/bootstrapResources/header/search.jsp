@@ -69,9 +69,9 @@
 	function changeCheck(btn)
 	{	
 		 if($(btn).is(":checked")){
-	            var input = $('<input type = "button" onclick ="deleteBtn(this)" align = "center" style = " font-size: 10pt;font-weight:bold;text-align:center" value = "'+ $(btn).val()+'"/>');
+	            var input = $('<input type = "button" onclick ="deleteBtn(this)"  align = "center" style = " font-size: 10pt;font-weight:bold;text-align:center" value = "'+ $(btn).val()+'"/>');
 	            $('#areaList').append(input);
-	            $('#area').text($(btn).val());
+// 	            $('#area').text($(btn).val());
 // 	            alert("체크박스 체크 !");
 	        
 	        }else{
@@ -114,7 +114,7 @@
 						if(index%6 == 0 )
 							tr = $('<tr>');
 						var td = $('<td>');
-						var b = $('<input type ="checkbox"  onclick="changeCheck(this)"  value="'+this.gungu+'">');
+						var b = $('<input type ="checkbox"  onclick="changeCheck(this)" name="area" value="'+this.gungu+'">');
 						var c = this.gungu;
 						$(td).append(b);
 						$(td).append(c);		
@@ -160,7 +160,7 @@ select {
 </head>
 <body>
 	<center>
-		<div class="div">
+<!-- 		<div class="div"> -->
 			<form action="searchBoard.do">
 				<div class="form-group">
 					<div class="form-inline">
@@ -186,7 +186,7 @@ select {
 							<table id="sidooo" align="center"></table>
 							<table id="gunguuu" align="center"></table>
 							<div id="areaList"></div>
-								<input id="area" name="area" type="hidden">
+<!-- 							<div name="area" id ="area"> -->
 						</div>
 						
 						
@@ -194,7 +194,7 @@ select {
 					</div> 
 				</div>
 			</form>
-		</div>
+<!-- 		</div> -->
 	</center>
 
 </body>
