@@ -711,6 +711,45 @@ public class QuestService implements IQuestService {
 		
 	}
 
+	@Override
+	public int deleteApplyUser(int user1Index, int user2Index, int boardNo) {
+		// TODO Auto-generated method stub
+		// score 지우기
+		HashMap<String, Object> deleteScore = new HashMap<>();
+		deleteScore.put("user2Index", user2Index);
+		deleteScore.put("boardNo", boardNo);
+		dao.deleteScore(deleteScore);
+		System.out.println("delete Score OK!");
+		
+		
+		//score table에 해당 보드넘버가 없으면 boardFlag 0
+		HashMap<String, Object> selectScore = dao.selectScoreByBoardNo(boardNo);
+		System.out.println("deleteApplyUSer select Score " + selectScore);
+		
+		if(selectScore == null){
+			HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
+			flag.put("bCompleteFlag", 0);
+			dao.updateBoard(flag);
+			System.out.println(flag);
+		}
+				
+				
+		// apply테이블 컴플리트 플래그 2. 간택완료로 바꿈
+		HashMap<String, Object> tmp = new HashMap<>();
+		tmp.put("boardNo", boardNo);
+		tmp.put("userIndex", user2Index); // 신청자
+		System.out.println("temp" + tmp);
+		HashMap<String, Object> applyD = dao.selectApply(tmp);
+		System.out.println("Befor aaplyD"+applyD);
+		applyD.put("aCompleteFlag",1);
+		System.out.println("After aaplyD"+applyD);
+		dao.updateApply(applyD);
+		System.out.println("!!!!?");
+		
+		return 0; 
+	
+	}
+
 
 
 

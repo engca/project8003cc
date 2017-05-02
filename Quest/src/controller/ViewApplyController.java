@@ -21,8 +21,7 @@ import service.J_Service;
 public class ViewApplyController {
 	@Autowired
 	IQuestService service;
-	@Autowired
-	J_Service jservice;
+	
 
 	@RequestMapping("viewApplyPopup.do")
 	public ModelAndView viewApplyPopup(@RequestParam HashMap<String, Object> params, Model model) {
@@ -78,7 +77,7 @@ public class ViewApplyController {
 	@RequestMapping("deleteApplyUser.do")
 	public String deleteApplyUser(int user2Index, int boardNo, HttpSession session, Model model ){
 		int userIndex1 = (int) session.getAttribute("userIndex");
-		jservice.deleteApplyUser(userIndex1, user2Index, boardNo);
+		service.deleteApplyUser(userIndex1, user2Index, boardNo);
 		HashMap<String, Object> boardAll = service.getBoard(boardNo);
 		model.addAllAttributes(boardAll);
 		
