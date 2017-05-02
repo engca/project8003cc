@@ -62,6 +62,7 @@ $(document).ready(function(){
 			var regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;		
 			if( !regEmail.test($('#contactAnswer').val()) ) {
 				$('#contactSpan').html('올바른 이메일을 입력하세요');
+				
 				$('#contactAnswer').focus();
 			}else {
 				$('#contactSpan').html('');
@@ -73,7 +74,6 @@ $(document).ready(function(){
 	if($('#contactNo').val() == 3){
 		$('#contactAnswer').on('blur', function(){
 			var phone = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/;
-		    $('#phone').on('keyup',function(){
 		       if(!phone.test($('#contactAnswer').val()) ){
 		    	   $('#contactSpan').html('올바른 핸드폰번호를 입력하세요');
 		          $('#contactAnswer').focus();
@@ -81,7 +81,6 @@ $(document).ready(function(){
 					$('#contactSpan').html('');
 				}
 		         
-		    });
 		});
 	}
 	
@@ -118,7 +117,7 @@ $(document).ready(function(){
 					},
 				error : function(xhrreq, status, error) {
 						
-						alert('신청이 완료되었습니다.');
+						alert('에러');
 					}
 			});
 		}
@@ -169,7 +168,7 @@ $(document).ready(function(){
 						<tr align="center">
 							<th>연락 방법</th>
 							<td><input type="hidden" name="contactNo" id="contactNo" value="${contactNo }"> ${contact}<input type="text" placeholder="연락처를 입력하세요."
-								name="contactAnswer" id="contactAnswer">
+								name="contactAnswer" id="contactAnswer"><br>
 								<span id="contactSpan" ></span>
 							</td>
 						</tr>
