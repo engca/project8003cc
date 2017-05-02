@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
 import service.IQuestService;
-import service.J_Service;
 
 @Controller
 public class ViewApplyController {
