@@ -23,21 +23,21 @@
 	</bean>
 
 
-	<!-- <mvc:interceptors> -->  
-	<!-- <mvc:interceptor> -->
-	<!-- <mvc:mapping path="/*.do" /> -->
-	<!-- <mvc:exclude-mapping path="/main.do" /> -->
-	<!-- <mvc:exclude-mapping path="/login.do" /> -->
-	<!-- <mvc:exclude-mapping path="/joinForm.do" /> -->
-	<!-- <mvc:exclude-mapping path="/join.do" /> -->
-	<!-- <ref bean="loginCheckInterceptor" /> -->
-	<!-- </mvc:interceptor> -->
+<!-- 	<mvc:interceptors>   -->
+<!-- 		<mvc:interceptor> -->
+<!-- 			<mvc:mapping path="/*.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/listBoard.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/searchBoard.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/viewBoard.do" /> -->
+<!-- 			<mvc:exclude-mapping path="/join.do" /> -->
+<!-- 			<ref bean="loginCheckInterceptor" /> -->
+<!-- 		</mvc:interceptor> -->
 
 	<!-- <mvc:interceptor> -->
 	<!-- <mvc:mapping path="/**" /> -->
 	<!-- <bean id="logInterceptor" class="controller.LogIntercepter"></bean> -->
 	<!-- </mvc:interceptor> -->
-	<!-- </mvc:interceptors> -->
+<!-- 	</mvc:interceptors> -->
 
 	<mvc:annotation-driven></mvc:annotation-driven>
 
