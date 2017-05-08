@@ -10,64 +10,86 @@
 		var btn = 1;
 	$(document).ready(function() {
 		$('#sangseaBtn').click(function() {
-// 			alert("?");
 			if(btn == 1)
-				{
-			$('#sangsea').css('visibility', 'visible');
-			$.ajax({
-				type : 'get',
-				url : 'getSido.ajax',
-				dataType : 'json',
-				success : function(data)
-				{
-// 					alert(data.sido);
-					$('#sidooo').empty();
-					var tr = $('<tr>');
-					$(data.sido).each(function(index)
-						{
-							var td = $('<td>');
-							var btn = $('<input type = "button"  align = "center" style = "font-weight:bold;text-align:center"  class = "btn-link" value = "' + this.sido +'" onclick="searchGungu(this)" />');
-							td.append(btn);
-							tr.append(td);
-						});
-					$('#sidooo').append(tr);
-					btn = 2;
-				},
-				error : function(xhrReq, status, error)
-				{
-					alert("!");
-				}
-			});
+			{
+				$('#sidooo').css('visibility', 'visible');
+				$.ajax({
+					type : 'get',
+					url : 'getSido.ajax',
+					dataType : 'json',
+					success : function(data)
+					{
+						$('#sidooo').empty();
+						$(data.sido).each(function(index)
+							{
+								var div = $('<div>');
+								var btn = $('<input type = "button"  align = "center" style = "font-weight:bold;text-align:center" value = "' + this.sido +'" onclick="searchGungu(this)" />');
+								div.append(btn);
+								$('#sidooo').append(div);
+							});
+						btn = 2;
+					},
+					error : function(xhrReq, status, error)
+					{
+						alert("!");
+					}
+				});
 			}
 			else
 				{
 					$('#sidooo').empty();
 					$('#gunguuu').empty();
 					$('#areaList').empty();
-					$('#area').empty();
+// 					$('#area').empty();
+					$('#sidooo').css('visibility', 'hidden');
+					$('#gunguuu').css('visibility', 'hidden');
+					$('#areaList').css('visibility', 'hidden');
 					btn = 1;				
 				}
-			
 		});
-// 		$('#sangseaBtn').click(function() {
-			
-// 			$("input:checkbox[name='area']").prop("checked", false);
-// 			$('#sangseaArea').css('visibility', 'hidden');
-// 		});	 
 	});
+	function searchGungu(btn){
+		$('#gunguuu').css('visibility', 'visible');
+		$('#areaList').css('visibility', 'visible');
+		var val = btn.value;
+		$.ajax({
+			type : "get",
+			url : "getGugun.ajax",
+			dataType : "json",
+			data : "sido="+val,
+			success : function(data){
+				$('#gunguuu').empty();
+				var div =$("<div>");
+				var tr = $('<ul>');
+				$(data.gungu).each(function(index){
+						
+					var td = $('<li>');
+					var b = $('<input type ="checkbox"  onclick="changeCheck(this)" name="area" value="'+this.gungu+'">');
+					var c = this.gungu;
+					td.append(b);
+					td.append(c);		
+					tr.append(td);
+				});
+						div.append(tr);
+				$("#gunguuu").append(div);
+				},
+			error : function() {
+				alert("error");
+			}
+		 });
+	}
 	function changeCheck(btn)
 	{	
 		 if($(btn).is(":checked")){
-	            var input = $('<input type = "button" onclick ="deleteBtn(this)"  align = "center" style = " font-size: 10pt;font-weight:bold;text-align:center" value = "'+ $(btn).val()+'"/>');
-	            $('#areaList').append(input);
-// 	            $('#area').text($(btn).val());
-// 	            alert("체크박스 체크 !");
-	        
+			 	var div = $('<div class = "'+$(btn).val() +'">');
+	            var input = $('<input type = "button" onclick ="deleteBtn(this)"  style = " font-size: 10pt;" value = "'+ $(btn).val()+'"/>');
+	            div.append(input);
+	            $('#areaList').append(div);
 	        }else{
 	        	$("#areaList input").each(function(){
 	    			if($(this).val() == $(btn).val())
 	    			{
-	    				$(this).remove();
+	    				$('div.'+$(btn).val()).remove();
 	    			}
 	    		});
 	        }
@@ -86,38 +108,6 @@
 				$(this).prop("checked",false);
 			}
 		});
-		
-	}
-	function searchGungu(btn){
-			$('#gunguuu').css('visibility', 'visible');
-			var val = btn.value;
-			$.ajax({
-				type : "get",
-				url : "getGugun.ajax",
-				dataType : "json",
-				data : "sido="+val,
-				success : function(data){
-					$('#gunguuu').empty();
-					var tr;
-					$(data.gungu).each(function(index){
-						if(index%6 == 0 )
-							tr = $('<tr>');
-						var td = $('<td>');
-						var b = $('<input type ="checkbox"  onclick="changeCheck(this)" name="area" value="'+this.gungu+'">');
-						var c = this.gungu;
-						$(td).append(b);
-						$(td).append(c);		
-						$(tr).append(td);
-						if(index%6 == 0 )
-							$('#gunguuu').append(tr);
-					});
-					
-					},
-				error : function() {
-					alert("error");
-				}
-			 });
-			
 		
 	}
 </script>
@@ -143,6 +133,56 @@ select {
 .div {
 	height: 10px;
 }
+#sidooo{
+	margin : 10px;
+	overflow:hidden;
+	padding : 10px;
+}
+#sidooo > div{
+	float:left;
+/* 	width : 192px; */
+}
+ #gunguuu{ 
+  	overflow:hidden; 
+ 	padding : 10px; 
+ 	background: #3B414D; 
+ 	align:center;
+ }
+ #gunguuu > div{ 
+ 	align:center;
+ 	width : 900px;
+ }  
+ #gunguuu > div> ul{
+ 	width : 900dp;
+	margin-top : 2px;
+	padding : 3px 5px;
+	white-space : nowrap;
+	overflow : hidden;
+	float:left;
+}
+ #gunguuu > div > ul > li{
+	float:left;
+	margin-top : 5px;
+	margin-left : 10px;
+	margin-right : 10px;
+	padding : 2px 2px;
+	white-space : nowrap;
+	overflow : hidden;
+	text-overflow : ellipsis;
+	color : #F3F3F3;
+}
+ #gunguuu > div > ul > li > input {
+	margin-right : 6px;
+	color : #F3F3F3;
+}
+#areaList >div {
+	overflow : hidden;
+}
+ #areaList > div{
+ 	float:left;
+	margin : 3px;
+	align : left;
+}
 </style>
 </head>
 <body>
@@ -163,11 +203,11 @@ select {
 						<input type="submit" value="검색" class="btn btn-primary"> 
 						<input id="sangseaBtn" type="button" value="상세검색" class="btn btn-success">
 						
-					<div id="sangsea" style="visibility: hidden;width: 800px;" align="center"> <br>
-						<table id="sidooo" align="center"	style="width: 500px; border: double"></table>
-						<table id="gunguuu" align="center" style="width: 700px; visibility: hidden;"></table>
-						<div id="areaList"	style="background: white; text-align: left; width: 700px"></div>
-					</div> 
+<!-- 					<div id="sangsea" style="visibility: hidden;width: 800px;" align="center"> <br> -->
+						<div id="sidooo" align="center" style="align:center;width: 750px; visibility: hidden;border: double"></div>
+						<div id="gunguuu" style=" visibility: hidden;"></div>
+						<div id="areaList"	style="background: white;  visibility: hidden;"></div>
+<!-- 					</div>  -->
 				</div>
 			</div>
 		</form>
