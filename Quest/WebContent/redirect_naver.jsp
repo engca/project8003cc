@@ -24,6 +24,7 @@
 		$("#name").text("이름 : " + naver_id_login.getProfileData('name'));
 		$("#email").text("이메일 : " + naver_id_login.getProfileData('email'));
 		$("#id").text("아이디 : " + naver_id_login.getProfileData('id'));
+		
 	}
 </script>
 </head>
