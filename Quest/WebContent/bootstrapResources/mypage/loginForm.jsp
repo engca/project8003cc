@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="google-signin-client_id"
+	content="730937907062-jog843h3nsiln40o93pjbqh6vmmniop4.apps.googleusercontent.com">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <title>egngg</title>
 <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -21,14 +26,15 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-	<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
-	<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
-	<script src="bootstrapResources/js/contact_me.js"></script>
-	<script src="bootstrapResources/js/freelancer.min.js"></script>
-	
+<script src="bootstrapResources/vendor/jquery/jquery.min.js"></script>
+<script src="bootstrapResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="bootstrapResources/js/jqBootstrapValidation.js"></script>
+<script src="bootstrapResources/js/contact_me.js"></script>
+<script src="bootstrapResources/js/freelancer.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function homepage() {
 		var login = document.login;
@@ -41,49 +47,216 @@
 </script>
 <style type="text/css">
 body {
- 	background: #18BC9C;
-/* 	background: whitd; */
+	background: #18BC9C;
+	/* 	background: whitd; */
 }
+
 .tb {
-	position : absolute;
-	top : 50px;
-	left : 90px;
+	position: absolute;
+	top: 50px;
+	left: 90px;
 }
+
 .loginBtn {
-	margin : 10;
-	pedding : 10;
-	
+	margin: 10;
+	pedding: 10;
 }
 </style>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	window.fbAsyncInit = function() {
+		//페이스북 SDK 초기화   
+		FB.init({
+			appId : "1664301437211779",
+			status : true,
+			cookie : true,
+			xfbml : true
+		});
+		//check user session and refresh it
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				//user is authorized
+				getUserData();
+			} else {
+				//user is not authorized
+			}
+		});
+	};
+
+	//load the JavaScript SDK
+	(function(d) {
+		var js,
+			id = "facebook-jssdk",
+			ref = d.getElementsByTagName("script")[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement("script");
+		js.id = id;
+		js.async = true;
+		js.src = "//connect.facebook.net/en_US/all.js";
+		ref.parentNode.insertBefore(js, ref);
+	}(document));
+
+
+	function getUserData() {
+		FB.api('/me', {
+			fields : 'name,email'
+		}, function(response) {
+			console.log(JSON.stringify(response));
+			$("#name").text("이름 : " + response.name);
+			$("#email").text("이메일 : " + response.email);
+			$("#id").text("아이디 : " + response.id);
+		});
+	}
+
+
+	function facebooklogin() {
+
+		//페이스북 로그인 버튼을 눌렀을 때의 루틴.  
+		FB.login(function(response) {
+			if (response.authResponse) {
+				access_token = response.authResponse.accessToken; //get access token
+				user_id = response.authResponse.userID; //get FB UID
+				console.log('access_token = ' + access_token);
+				console.log('user_id = ' + user_id);
+				//user just authorized your app
+				getUserData();
+			}
+		}, {
+			scope : 'email,public_profile,user_birthday',
+			return_scopes : true
+		});
+	}
+</script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript">
+	function onSignIn(googleUser) {
+		var profile = googleUser.getBasicProfile();
+		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		console.log('Name: ' + profile.getName());
+		console.log('Image URL: ' + profile.getImageUrl());
+		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+		$("#name").text("이름 : " + profile.getName());
+		$("#email").text("이메일 : " + profile.getEmail());
+		$("#id").text("아이디 : " + profile.getId());
+		$("#img").attr("src", profile.getImageUrl());
+	}
+
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function() {
+			console.log('User signed out.');
+		});
+	}
+</script>
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type='text/javascript'>
+	$(document).ready(function() {
+
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		Kakao.init('3a5e1bee013eec09ef701f6bf5efacba');
+		// 카카오 로그인 버튼을 생성합니다.
+		Kakao.Auth.createLoginButton({
+			container : '#kakao-login-btn',
+			lang : 'en',
+			size : 'medium',
+			success : function(authObj) {
+				getUserData();
+			},
+			fail : function(err) {
+				alert(JSON.stringify(err));
+			}
+		});
+	});
+
+
+	function getUserData() {
+		Kakao.API.request({
+			url : '/v1/user/me',
+			success : function(res) {
+				console.log(JSON.stringify(res));
+				$("#name").text("이름 : " + res.properties.nickname);
+				$("#email").text("이메일 : " + res.kaccount_email);
+				$("#id").text("아이디 : " + res.id);
+			},
+			fail : function(error) {
+				alert(JSON.stringify(error));
+			}
+		});
+	}
+</script>
+
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+
 </head>
 <body>
 	<center>
 		<form name="login">
-			<table align="center" class = "tb">
+			<table align="center" class="tb">
 				<tr>
-					<td colspan = "4" align = "center">
-						<h1 style = "color : #2C3E50"><b>LOGIN</b></h1>
+					<td colspan="4" align="center">
+						<h1 style="color: #2C3E50">
+							<b>LOGIN</b>
+						</h1>
 					</td>
 				</tr>
 				<tr>
-					<td><h4 style = "color : white"><b>ID</b></h4></td>
+					<td><h4 style="color: white">
+							<b>ID</b>
+						</h4></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input type="text" name="id" class="form-control"
 						style="color: black;"></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
-					<td><h4 style = "color : white"><b>PW</b></h4></td>
+					<td><h4 style="color: white">
+							<b>PW</b>
+						</h4></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input type="password" name="pw" class="form-control"
 						style="color: black;"></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
-				<td colspan = "4" align = "center">
-				<br>
-					<input type = "image" src = "bootstrapResources/img/login.png" width = "70px"
-					height = "50px" onclick = "homepage()">
+					<td colspan="4" align="center"><br> <input type="image"
+						src="bootstrapResources/img/login.png" width="70px" height="50px"
+						onclick="homepage()"></td>
+				</tr>
+				<tr>
+					<td>
+						<div class="fb-login-button" data-width="100" data-max-rows="1"
+							data-size="medium" data-button-type="continue_with"
+							data-show-faces="false" data-auto-logout-link="true"
+							data-use-continue-as="false"></div>
+					</td>
+					<td>
+						<div class="g-signin2" data-onsuccess="onSignIn"></div> <a
+						href="#" onclick="signOut();">Sign out</a>
+					</td>
+					<td>
+						<a id="kakao-login-btn"></a>
+					</td>
+					<td>
+						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
+						<div id="naver_id_login"></div> <!-- //네이버아이디로로그인 버튼 노출 영역 --> <script
+							type="text/javascript">
+							var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://localhost:8080/Quest/redirect_naver.jsp");
+							var state = naver_id_login.getUniqState();
+							naver_id_login.setButton("green", 3, 40);
+							naver_id_login.setDomain("http://localhost:8080/Quest/naverLogin.jsp");
+							naver_id_login.setState(state);
+							naver_id_login.setPopup();
+							naver_id_login.init_naver_id_login();
+						</script>
 					</td>
 				</tr>
 			</table>
