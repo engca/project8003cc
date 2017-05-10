@@ -45,23 +45,6 @@
 		self.close();
 	}
 </script>
-<style type="text/css">
-body {
-	background: #18BC9C;
-	/* 	background: whitd; */
-}
-
-.tb {
-	position: absolute;
-	top: 50px;
-	left: 90px;
-}
-
-.loginBtn {
-	margin: 10;
-	pedding: 10;
-}
-</style>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -87,9 +70,7 @@ body {
 
 	//load the JavaScript SDK
 	(function(d) {
-		var js,
-			id = "facebook-jssdk",
-			ref = d.getElementsByTagName("script")[0];
+		var js, id = "facebook-jssdk", ref = d.getElementsByTagName("script")[0];
 		if (d.getElementById(id)) {
 			return;
 		}
@@ -99,7 +80,6 @@ body {
 		js.src = "//connect.facebook.net/en_US/all.js";
 		ref.parentNode.insertBefore(js, ref);
 	}(document));
-
 
 	function getUserData() {
 		FB.api('/me', {
@@ -111,7 +91,6 @@ body {
 			$("#id").text("아이디 : " + response.id);
 		});
 	}
-
 
 	function facebooklogin() {
 
@@ -175,7 +154,6 @@ body {
 		});
 	});
 
-
 	function getUserData() {
 		Kakao.API.request({
 			url : '/v1/user/me',
@@ -197,67 +175,80 @@ body {
 	charset="utf-8"></script>
 
 </head>
+<style>
+#img {
+	margin-bottom: 25%;
+	margin-left: 5%;
+}
+
+body {
+	background: #18BC9C;
+}
+
+.tb {
+	position: absolute;
+	top: 30px;
+	left: 19%;
+}
+
+.tb2 {
+	position: absolute;
+	left: 15%;
+	top: 200px;
+	margin-top: 10%;
+}
+
+.loginBtn {
+	margin: 10;
+	pedding: 10;
+}
+</style>
+</head>
 <body>
 	<center>
 		<form name="login">
-			<table align="center" class="tb">
+			<table class="tb">
 				<tr>
-					<td colspan="4" align="center">
-						<h1 style="color: #2C3E50">
+					<td colspan="5" align="center">
+						<h1 style="color: black">
 							<b>LOGIN</b>
 						</h1>
 					</td>
 				</tr>
 				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><h4 style="color: white">
 							<b>ID</b>
 						</h4></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input type="text" name="id" class="form-control"
 						style="color: black;"></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td colspan="4" align="center" rowspan="3"><br> <input
+						type="image" src="bootstrapResources/img/login2.png" width="60px"
+						height="70px" onclick="homepage()" id="img"></td>
 				</tr>
 				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><h4 style="color: white">
 							<b>PW</b>
 						</h4></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input type="password" name="pw" class="form-control"
 						style="color: black;"></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+			</table>
+			<table class="tb2" align="center">
+				<tr>
+					<td width="180px" height="50px"><input type="image"
+						src="bootstrapResources/img/button_facebook.png"></td>
+					<td width="180px" height="50px"><input type="image"
+						src="bootstrapResources/img/button_kakao.png"></td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center"><br> <input type="image"
-						src="bootstrapResources/img/login.png" width="70px" height="50px"
-						onclick="homepage()"></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<div class="fb-login-button" data-width="100" data-max-rows="1"
-							data-size="medium" data-button-type="continue_with"
-							data-show-faces="false" data-auto-logout-link="true"
-							data-use-continue-as="false"></div>
-					</td>
-					<td colspan="2">
-						<div class="g-signin2" data-onsuccess="onSignIn"></div>
-<!-- 						<a href="#" onclick="signOut();">Sign out</a> -->
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2"><a id="kakao-login-btn"></a></td>
-					<td colspan="2">
-						<!-- 네이버아이디로로그인 버튼 노출 영역 -->
-						<div id="naver_id_login"></div> <!-- //네이버아이디로로그인 버튼 노출 영역 --> <script
-							type="text/javascript">
-							var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://localhost:8080/Quest/redirect_naver.jsp");
-							var state = naver_id_login.getUniqState();
-							naver_id_login.setButton("green", 3, 40);
-							naver_id_login.setDomain("http://localhost:8080/Quest/naverLogin.jsp");
-							naver_id_login.setState(state);
-							naver_id_login.setPopup();
-							naver_id_login.init_naver_id_login();
-						</script>
-					</td>
+					<td width="180px" height="50px"><input type="image"
+						src="bootstrapResources/img/button_naver.png"></td>
+					<td width="180px" height="50px"><input type="image"
+						src="bootstrapResources/img/button_google.png"></td>
 				</tr>
 			</table>
 		</form>

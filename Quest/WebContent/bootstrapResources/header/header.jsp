@@ -14,7 +14,7 @@
 <script type="text/javascript">
 function loginPopup(){
 	window.name="pareWin";
-	window.open('loginForm.do','','width=400, height=300, top = 200, left= 300"');
+	window.open('loginForm.do','','width=500, height=400, top = 200, left= 300"');
 }
 
 </script>
