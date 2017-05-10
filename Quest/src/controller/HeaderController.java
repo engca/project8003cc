@@ -34,6 +34,8 @@ public class HeaderController {
 			session.setAttribute(Constant.User.USERINDEX,user.get(Constant.User.USERINDEX));
 			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
+			session.setAttribute("loginCategory", user.get("loginCategory"));
+
 			System.out.println("login>>>>>>>"+user.get(Constant.User.USERINDEX) + " "+ user.get(Constant.User.NICKNAME) +" "+ user.get(Constant.User.USERID));
 		}else
 		{
