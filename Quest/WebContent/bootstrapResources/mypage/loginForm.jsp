@@ -188,7 +188,7 @@ body {
 .tb {
 	position: absolute;
 	top: 30px;
-	left: 19%;
+	left: 16.5%;
 }
 
 .tb2 {
@@ -207,7 +207,7 @@ body {
 <body>
 	<center>
 		<form name="login">
-			<table class="tb">
+			<table class="tb"  border="1">
 				<tr>
 					<td colspan="5" align="center">
 						<h1 style="color: black">
