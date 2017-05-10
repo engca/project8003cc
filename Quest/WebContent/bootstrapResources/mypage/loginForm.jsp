@@ -207,7 +207,7 @@ body {
 <body>
 	<center>
 		<form name="login">
-			<table class="tb"  border="1">
+			<table class="tb">
 				<tr>
 					<td colspan="5" align="center">
 						<h1 style="color: black">
