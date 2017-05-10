@@ -149,7 +149,7 @@ public class QuestService implements IQuestService {
 				params.put("skip", skip);
 				params.put("count", count);
 				params.put("searchKey", searchKey);
-				if(area.length >0) 
+				if(area != null) 
 				{
 					int[] areaList = new int[area.length];
 					for(int i =0 ;i < area.length ;i ++)
