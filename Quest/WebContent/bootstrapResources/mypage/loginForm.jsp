@@ -220,14 +220,8 @@
 		console.log('Name: ' + profile.getName());
 		console.log('Image URL: ' + profile.getImageUrl());
 		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-		$("#name").text("이름 : " + profile.getName());
-		$("#email").text("이메일 : " + profile.getEmail());
-		$("#id").text("아이디 : " + profile.getId());
-		$("#img").attr("src", profile.getImageUrl());
 	}
 
-	
 	function signOut() {
 		var auth2 = gapi.auth2.getAuthInstance();
 		auth2.signOut().then(function() {
@@ -328,7 +322,7 @@ body {
 						src="bootstrapResources/img/button_naver.png" id="naver"
 						name="naver"></td>
 					<td width="180px" height="50px">
-					<div class="g-signin2" data-onsuccess="onSignIn" style="width: 500px"></div></td>
+					<div class="g-signin2" data-onsuccess="onSignIn" style="width: 168px; height: 40px"></div></td>
 				</tr>
 			</table>
 		</form>
