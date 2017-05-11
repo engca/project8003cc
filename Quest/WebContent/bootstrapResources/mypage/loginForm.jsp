@@ -44,6 +44,7 @@
 				login(1);
 			}
 		});
+		
 
 		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 
