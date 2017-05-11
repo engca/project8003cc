@@ -39,6 +39,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		
 		$('#img').on({
 			'click' : function() {
 				login(1);
