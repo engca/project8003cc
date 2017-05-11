@@ -38,6 +38,13 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+
+		$('#img').on({
+			'click' : function() {
+				login(1);
+			}
+		});
+
 		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 
 		$('#kakao').on({
@@ -50,10 +57,11 @@
 						Kakao.API.request({
 							url : '/v1/user/me',
 							success : function(res) {
-								alert(JSON.stringify(res));
+// 								alert(JSON.stringify(res));
 								$('#id').val(res.kaccount_email);
 								$('#pw').val("nopw");
 								$('#name').val(res.properties.nickname);
+								$('#userIndex').val(res.id);
 								login(3);
 							},
 							fail : function(error) {
@@ -67,10 +75,32 @@
 				});
 			}
 		});
+		
+		
+		$('#facebook').on({
+			'click' : function() {
+				
+			}
+		});
+		
+		$('#naver').on({
+			'click' : function() {
+				
+			}
+		});
+		
+		$('#google').on({
+			'click' : function() {
+				
+			}
+		});
+		
+		
+		
 	});
 
 	function login(flag) {
-		alert(flag);
+// 		alert(flag);
 		var login = document.login;
 		$('#loginCategory').val(flag);
 		login.action = "login.do";
@@ -83,32 +113,7 @@
 	function facebookLogin() {
 		alert("facebook");
 	}
-	function kakaoLogin() {
-		alert("kakao");
-		Kakao.Auth.login({
-			persistAccessToken : true,
-			persistRefreshToken : true,
-			success : function(authObj) {
-				alert(JSON.stringify(authObj));
-			// 				Kakao.API.request({
-			// 					url : '/v1/user/me',
-			// 					success : function(res) {
-			// 						alert(JSON.stringify(res));
-			// 						$('#id').val(res.kaccount_email);
-			// 						$('#pw').val("nopw");
-			// 						$('#name').val(res.properties.nickname);
-			// 						login(3);
-			// 					},
-			// 					fail : function(error) {
-			// 						console.log(error);
-			// 					}
-			// 				});
-			},
-			fail : function(err) {
-				alert(JSON.stringify(err));
-			}
-		});
-	}
+
 	function naverLogin() {
 		alert("naver");
 	}
@@ -205,41 +210,6 @@
 	}
 </script>
 
-<script type='text/javascript'>
-	$(document).ready(function() {
-
-		// 사용할 앱의 JavaScript 키를 설정해 주세요.
-		Kakao.init('3a5e1bee013eec09ef701f6bf5efacba');
-		// 카카오 로그인 버튼을 생성합니다.
-		Kakao.Auth.createLoginButton({
-			container : '#kakao-login-btn',
-			lang : 'en',
-			size : 'medium',
-			success : function(authObj) {
-				getUserData();
-			},
-			fail : function(err) {
-				alert(JSON.stringify(err));
-			}
-		});
-	});
-
-	function getUserData() {
-		Kakao.API.request({
-			url : '/v1/user/me',
-			success : function(res) {
-				console.log(JSON.stringify(res));
-				$("#name").text("이름 : " + res.properties.nickname);
-				$("#email").text("이메일 : " + res.kaccount_email);
-				$("#id").text("아이디 : " + res.id);
-			},
-			fail : function(error) {
-				alert(JSON.stringify(error));
-			}
-		});
-	}
-</script>
-
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
 	charset="utf-8"></script>
@@ -278,7 +248,8 @@ body {
 	<center>
 		<form name="login">
 			<input type="hidden" name="loginCategory" id="loginCategory">
-			<input type="hidden" name="name" id="name">
+			<input type="hidden" name="name" id="name"> <input
+				type="hidden" name="userIndex" id="userIndex">
 			<table class="tb">
 				<tr>
 					<td colspan="5" align="center">
@@ -294,10 +265,10 @@ body {
 						</h4></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input type="text" name="id" class="form-control"
-						style="color: black;"></td>
-					<td colspan="4" align="center" rowspan="3"><br> <input
-						type="image" src="bootstrapResources/img/login2.png" width="60px"
-						height="70px" onclick="login(1)" id="img"></td>
+						style="color: black;" id="id"></td>
+					<td colspan="4" align="center" rowspan="3"><br> <img
+						src="bootstrapResources/img/login2.png" width="60px" height="70px"
+						id="img"></td>
 				</tr>
 				<tr>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -306,27 +277,25 @@ body {
 						</h4></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input type="password" name="pw" class="form-control"
-						style="color: black;"></td>
+						style="color: black;" id="pw"></td>
 				</tr>
 			</table>
 			<table class="tb2" align="center">
 				<tr>
-					<td width="180px" height="50px"><input type="image"
-						src="bootstrapResources/img/button_facebook.png"
-						onclick="facebookLogin()"></td>
-					<td width="180px" height="50px">
-						<!-- 					<input type="image" src="bootstrapResources/img/button_kakao.png" onclick="kakaoLogin()"> -->
-						<img src="bootstrapResources/img/button_kakao.png" id="kakao"
-						name="kakao">
-					</td>
+					<td width="180px" height="50px"><img
+						src="bootstrapResources/img/button_facebook.png" id="facebook"
+						name="facebook"></td>
+					<td width="180px" height="50px"><img
+						src="bootstrapResources/img/button_kakao.png" id="kakao"
+						name="kakao"></td>
 				</tr>
 				<tr>
-					<td width="180px" height="50px"><input type="image"
-						src="bootstrapResources/img/button_naver.png"
-						onclick="naverLogin()"></td>
-					<td width="180px" height="50px"><input type="image"
-						src="bootstrapResources/img/button_google.png"
-						onclick="googleLogin()"></td>
+					<td width="180px" height="50px"><img
+						src="bootstrapResources/img/button_naver.png" id="naver"
+						name="naver"></td>
+					<td width="180px" height="50px"><img
+						src="bootstrapResources/img/button_google.png" id="google"
+						name="google"></td>
 				</tr>
 			</table>
 		</form>

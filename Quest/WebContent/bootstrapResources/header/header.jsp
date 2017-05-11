@@ -17,6 +17,16 @@ function loginPopup(){
 	window.open('loginForm.do','','width=500, height=400, top = 200, left= 300"');  
 }
 
+$(document).ready(function() {
+	Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
+});
+
+function kakaoLogout() {
+	alert('aaaaaaaaaa');
+	Kakao.Auth.logout({
+		callback : 'logout.do'
+	});
+}
 </script>
 <style type="text/css">
 #main{
@@ -82,7 +92,14 @@ function loginPopup(){
 							<ul class="nav navbar-nav">
 								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 								<li class="page-scroll1"><a href="profile.do">마이페이지</a></li>
-								<li class="page-scroll1"><a href="logout.do">로그아웃</a></li>
+								<li class="page-scroll1">
+								<c:if test="${sessionScope.loginCategory == 1 }">
+									<a href="logout.do">
+								</c:if>
+								<c:if test="${sessionScope.loginCategory == 3 }">
+									<a href="#" onclick="kakaoLogout()">
+								</c:if>
+								로그아웃</a></li>
 							</ul>
 						</div>
 				<marquee direction="right" style="">

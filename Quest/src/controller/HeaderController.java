@@ -25,8 +25,9 @@ public class HeaderController {
 	}
 
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name) {
+	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name, @RequestParam(defaultValue="0") int userIndex) {
 		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);
+		session.setAttribute("loginCategory", loginCategory);
 		if (loginCategory == 1) {
 			if (service.login(id, pw) != null) {
 				HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
@@ -42,6 +43,9 @@ public class HeaderController {
 			System.out.println("facebook");
 		} else if (loginCategory == 3) {
 			System.out.println("kakao");
+			session.setAttribute(Constant.User.USERINDEX, userIndex);
+			session.setAttribute(Constant.User.NICKNAME, name);
+			session.setAttribute(Constant.User.USERID, id);
 		} else if (loginCategory == 4) {
 			System.out.println("naver");
 		} else if (loginCategory == 5) {
