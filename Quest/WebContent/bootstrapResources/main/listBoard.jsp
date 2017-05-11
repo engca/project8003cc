@@ -45,7 +45,7 @@
  					<td align="center">${board.boardNo}</td>
  					 
  					<c:if test="${board.bCompleteFlag ==0 }">
- 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">	${board.title } </a>
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">	${board.title } </a>
  						<c:if test="${board.applyCount >0 }"> 
  							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
 						</c:if>
@@ -53,7 +53,7 @@
 					</td>	 							
  					</c:if> 					
  					<c:if test="${board.bCompleteFlag ==1 }">
- 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
  						<font color="red">[완료된 퀘스트]</font>	${board.title }</a>
  						 <c:if test="${board.applyCount >0 }"> 
  							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">
@@ -62,7 +62,7 @@
  					</td>
  					</c:if>
  					<c:if test="${board.bCompleteFlag ==3 }">
- 					<td><a href="viewBoard.do?boardNo=${board.boardNo}">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
  						<font color="blue">[진행중 퀘스트]</font>	${board.title }</a>
  						 <c:if test="${board.applyCount >0 }"> 
  							&nbsp;&nbsp; <img src="bootstrapResources/img/cat_footPrint.png" title="신청자 있음">

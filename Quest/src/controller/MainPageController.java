@@ -82,9 +82,10 @@ public class MainPageController {
 	}
 		
 	@RequestMapping(method=RequestMethod.GET, value="viewBoard.do")
-	public ModelAndView viewboard(int boardNo, HttpSession session){
-		int userIndex = (int) session.getAttribute("userIndex");
-		HashMap<String, Object> board = service.readBoard(boardNo, userIndex);
+	public ModelAndView viewboard(int boardNo, @RequestParam(defaultValue="0") int userIndex){
+//		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+//		int userIndex = (int)session.getAttribute("userIndex");
+		HashMap<String, Object> board = service.readBoard(boardNo, userIndex);	
 		List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(board);

@@ -215,14 +215,14 @@ public class QuestService implements IQuestService {
 		apply.put("boardNo", AboardNo);
 		apply.put("userIndex", userIndex);
 		HashMap<String, Object> applydata = dao.selectApply(apply);
-		
+				
 		// 신고하기 테이블 참조
 		int PboardNo = (int)bd.get(Constant.Board.BOARDNO);
 		HashMap<String, Object> police = new HashMap<>();
 		police.put("boardNo", PboardNo);
 		police.put("userIndex", userIndex);		
 		HashMap<String, Object> policedata = dao.selectPolice(police);
-		
+				
 		// 즐겨찾기 테이블 참조
 		int BboardNo = (int)bd.get(Constant.Board.BOARDNO);
 		HashMap<String, Object> bookmark = new HashMap<>();
@@ -240,7 +240,6 @@ public class QuestService implements IQuestService {
 		result.put("addr", addr);
 		return result;
 	}
-
 
 	@Override
 	public int writeBoard(HashMap<String, Object> params) {
@@ -749,6 +748,10 @@ public class QuestService implements IQuestService {
 		return 0; 
 	
 	}
+
+
+
+
 
 
 
