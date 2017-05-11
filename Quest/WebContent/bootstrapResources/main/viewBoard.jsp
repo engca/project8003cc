@@ -223,9 +223,9 @@ select {
 				<c:if test="${listComment != null }">
 					<c:forEach var="comment" items="${listComment }">
 					<tr>
-							<td width="20%"><b>${comment.nickname}</b></td>
-							<td width="60%">${comment.content}</td>
-							<td width="20%" align="center">${comment.date }</td>
+							<td><b>${comment.nickname}</b></td>
+							<td colspan="3">${comment.content}</td>
+							<td align="center">${comment.date }</td>
 							<td><c:if test="${sessionScope.nickname == comment.nickname }">
 									<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${boardList.userIndex }'"
 										value="삭제">
@@ -233,11 +233,10 @@ select {
 					</tr>
 					</c:forEach>
 				</c:if>
-				
 			</table>
 		</div>
 	</div>
-
+<br><br><br>
 
 
 
