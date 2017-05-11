@@ -204,7 +204,7 @@ select {
 						<input id="sangseaBtn" type="button" value="상세검색" class="btn btn-success">
 						
 <!-- 					<div id="sangsea" style="visibility: hidden;width: 800px;" align="center"> <br> -->
-						<div id="sidooo" align="center" style="align:center;width: 750px; visibility: hidden;border: double"></div>
+						<div id="sidooo" align="center" style="align:center;width: 750px; visibility: hidden;"></div>
 						<div id="gunguuu" style=" visibility: hidden;"></div>
 						<div id="areaList"	style="background: white;  visibility: hidden;"></div>
 <!-- 					</div>  -->
