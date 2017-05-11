@@ -41,6 +41,9 @@ public class HeaderController {
 			}
 		} else if (loginCategory == 2) {
 			System.out.println("facebook");
+			session.setAttribute(Constant.User.USERINDEX, userIndex);
+			session.setAttribute(Constant.User.NICKNAME, name);
+			session.setAttribute(Constant.User.USERID, id);
 		} else if (loginCategory == 3) {
 			System.out.println("kakao");
 			session.setAttribute(Constant.User.USERINDEX, userIndex);

@@ -11,41 +11,51 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Welcome To Quest World</title>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
-function loginPopup(){
-	window.name="pareWin";
-	window.open('loginForm.do','','width=500, height=400, top = 200, left= 300"');  
-}
+	function loginPopup() {
+		window.name = "pareWin";
+		window.open('loginForm.do', '', 'width=500, height=400, top = 200, left= 300"');
+	}
 
-$(document).ready(function() {
-	Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
-});
-
-function kakaoLogout() {
-	alert('aaaaaaaaaa');
-	Kakao.Auth.logout({
-		callback : 'logout.do'
+	$(document).ready(function() {
+		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 	});
-}
+
+	function kakaoLogout() {
+		alert('kakao logout');
+		Kakao.Auth.logout(function(data) {
+			alert("logged out.");
+			alert(data);
+			return true;
+			// 아니아니아니아니되오
+		});
+	}
+	
+	function facebookLogout() {
+		
+	}
 </script>
 <style type="text/css">
-#main{
-	position : relative;
-	height : 150px;
+#main {
+	position: relative;
+	height: 150px;
 }
+
 .page-scroll1 {
 	font-size: 20px;
 }
 
 .menu {
-	position : absolute;
-	left : 1%;
-	top : 1px;	
+	position: absolute;
+	left: 1%;
+	top: 1px;
 }
-.menu2{
-	position : absolute;
-	left : 75%;
-	top : 1px;
+
+.menu2 {
+	position: absolute;
+	left: 75%;
+	top: 1px;
 }
 </style>
 </head>
@@ -54,54 +64,57 @@ function kakaoLogout() {
 	<div class="navbar navbar-default  navbar-custom " id="main">
 		<c:choose>
 			<c:when test="${sessionScope.userId == null}">
-						 <div class="menu">
-							<ul class="nav navbar-nav">
-								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-								<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
-								<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
-							</ul>
-						</div>
-						<div class="logo" id="logo" align = "center">
-							<a href='listBoard.do'> <img src="bootstrapResources/img/questlogo.png" width="350px"
-								height="100px">
-							</a>
-						</div>
-						<div class = "menu2">
-							<ul class="nav navbar-nav">
-								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-								<li class="page-scroll1"><a href="#" onclick = "loginPopup()">로그인</a></li>
-								<li class="page-scroll1"><a href="join.do">회원가입</a></li>
-							</ul>
-						</div>
+				<div class="menu">
+					<ul class="nav navbar-nav">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
+						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
+					</ul>
+				</div>
+				<div class="logo" id="logo" align="center">
+					<a href='listBoard.do'> <img
+						src="bootstrapResources/img/questlogo.png" width="350px"
+						height="100px">
+					</a>
+				</div>
+				<div class="menu2">
+					<ul class="nav navbar-nav">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="page-scroll1"><a href="#" onclick="loginPopup()">로그인</a></li>
+						<li class="page-scroll1"><a href="join.do">회원가입</a></li>
+					</ul>
+				</div>
 			</c:when>
 			<c:otherwise>
-						 <div class="menu">
-							<ul class="nav navbar-nav">
-								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-								<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
-								<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
-							</ul>
-						</div>
-						<div class="logo" id="logo" align = "center">
-							<a href='listBoard.do'> <img alt=""
-								src="bootstrapResources/img/questlogo.png" width="350px"
-								height="100px">
-							</a>
-						</div>
-						<div class = "menu2">
-							<ul class="nav navbar-nav">
-								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-								<li class="page-scroll1"><a href="profile.do">마이페이지</a></li>
-								<li class="page-scroll1">
-								<c:if test="${sessionScope.loginCategory == 1 }">
-									<a href="logout.do">
-								</c:if>
-								<c:if test="${sessionScope.loginCategory == 3 }">
-									<a href="#" onclick="kakaoLogout()">
-								</c:if>
-								로그아웃</a></li>
-							</ul>
-						</div>
+				<div class="menu">
+					<ul class="nav navbar-nav">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
+						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
+					</ul>
+				</div>
+				<div class="logo" id="logo" align="center">
+					<a href='listBoard.do'> <img alt=""
+						src="bootstrapResources/img/questlogo.png" width="350px"
+						height="100px">
+					</a>
+				</div>
+				<div class="menu2">
+					<ul class="nav navbar-nav">
+						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li class="page-scroll1"><a href="profile.do">마이페이지</a></li>
+						<li class="page-scroll1"><c:if
+								test="${sessionScope.loginCategory == 1 }">
+								<a href="logout.do">
+							</c:if> <c:if test="${sessionScope.loginCategory == 3 }">
+								<a href="logout.do" onclick="return kakaoLogout()">카카오톡 
+							</c:if> 
+							<c:if test="${sessionScope.loginCategory == 2 }">
+								<a href="logout.do" onclick="return facebookLogout()">페이스북 
+							</c:if> 
+							로그아웃</a></li>
+					</ul>
+				</div>
 				<marquee direction="right" style="">
 					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font>
 				</marquee>

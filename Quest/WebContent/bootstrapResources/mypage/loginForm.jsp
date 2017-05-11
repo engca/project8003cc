@@ -36,6 +36,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -47,6 +48,7 @@
 		});
 		
 
+		//kakaoooooooooooooooooooooooo
 		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 
 		$('#kakao').on({
@@ -79,21 +81,84 @@
 		});
 		
 		
+		// facebookkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+		window.fbAsyncInit = function() {
+			//페이스북 SDK 초기화   
+			FB.init({
+				appId : "1664301437211779",
+				status : true,
+				cookie : true,
+				xfbml : true
+			});
+			//check user session and refresh it
+			FB.getLoginStatus(function(response) {
+				if (response.status === 'connected') {
+					//user is authorized
+				} else {
+					//user is not authorized
+				}
+			});
+		};
+		//load the JavaScript SDK
+		(function(d) {
+			var js,
+				id = "facebook-jssdk",
+				ref = d.getElementsByTagName("script")[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement("script");
+			js.id = id;
+			js.async = true;
+			js.src = "//connect.facebook.net/ko_KR/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
+		
 		$('#facebook').on({
 			'click' : function() {
-				
+				FB.login(function(response) {
+					if (response.authResponse) {
+						access_token = response.authResponse.accessToken; //get access token
+						user_id = response.authResponse.userID; //get FB UID
+						FB.api('/me', {
+							fields : 'name,email,id'
+						}, function(response) {
+							alert(JSON.stringify(response));
+							$('#id').val(response.email);
+							$('#pw').val("nopw");
+							$('#name').val(response.name);
+// 							$('#userIndex').val(response.id);
+							login(2);
+						});
+					}
+				}, {
+					scope : 'email,public_profile,user_birthday',
+					return_scopes : true
+				});
 			}
 		});
 		
+		// naverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 		$('#naver').on({
 			'click' : function() {
 				
 			}
 		});
 		
+		// googleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 		$('#google').on({
-			'click' : function() {
-				
+			'click' : function(googleUser) {
+				alert('aaaaaaa');
+				var profile = googleUser.getBasicProfile();
+				console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+				console.log('Name: ' + profile.getName());
+				console.log('Image URL: ' + profile.getImageUrl());
+				console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+				$("#name").text("이름 : " + profile.getName());
+				$("#email").text("이메일 : " + profile.getEmail());
+				$("#id").text("아이디 : " + profile.getId());
+				$("#img").attr("src", profile.getImageUrl());
 			}
 		});
 		
@@ -102,7 +167,7 @@
 	});
 
 	function login(flag) {
-// 		alert(flag);
+		alert(flag);
 		var login = document.login;
 		$('#loginCategory').val(flag);
 		login.action = "login.do";
@@ -111,85 +176,9 @@
 		login.submit();
 		self.close();
 	}
-
-	function facebookLogin() {
-		alert("facebook");
-	}
-
-	function naverLogin() {
-		alert("naver");
-	}
-	function googleLogin() {
-		alert("google");
-	}
 </script>
 
-<script type="text/javascript">
-	window.fbAsyncInit = function() {
-		//페이스북 SDK 초기화   
-		FB.init({
-			appId : "1664301437211779",
-			status : true,
-			cookie : true,
-			xfbml : true
-		});
-		//check user session and refresh it
-		FB.getLoginStatus(function(response) {
-			if (response.status === 'connected') {
-				//user is authorized
-				getUserData();
-			} else {
-				//user is not authorized
-			}
-		});
-	};
 
-	//load the JavaScript SDK
-	(function(d) {
-		var js,
-			id = "facebook-jssdk",
-			ref = d.getElementsByTagName("script")[0];
-		if (d.getElementById(id)) {
-			return;
-		}
-		js = d.createElement("script");
-		js.id = id;
-		js.async = true;
-		js.src = "//connect.facebook.net/en_US/all.js";
-		ref.parentNode.insertBefore(js, ref);
-	}(document));
-
-	function getUserData() {
-		FB.api('/me', {
-			fields : 'name,email'
-		}, function(response) {
-			console.log(JSON.stringify(response));
-			$("#name").text("이름 : " + response.name);
-			$("#email").text("이메일 : " + response.email);
-			$("#id").text("아이디 : " + response.id);
-		});
-	}
-
-	function facebooklogin() {
-
-		//페이스북 로그인 버튼을 눌렀을 때의 루틴.  
-		FB.login(function(response) {
-			if (response.authResponse) {
-				access_token = response.authResponse.accessToken; //get access token
-				user_id = response.authResponse.userID; //get FB UID
-				console.log('access_token = ' + access_token);
-				console.log('user_id = ' + user_id);
-				//user just authorized your app
-				getUserData();
-			}
-		}, {
-			scope : 'email,public_profile,user_birthday',
-			return_scopes : true
-		});
-	}
-</script>
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type="text/javascript">
 	function onSignIn(googleUser) {
 		var profile = googleUser.getBasicProfile();
@@ -297,7 +286,7 @@ body {
 						name="naver"></td>
 					<td width="180px" height="50px"><img
 						src="bootstrapResources/img/button_google.png" id="google"
-						name="google"></td>
+						name="google" data-onsuccess="google"></td>
 				</tr>
 			</table>
 		</form>
