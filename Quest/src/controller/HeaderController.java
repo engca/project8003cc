@@ -13,80 +13,88 @@ import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
 import service.IQuestService;
-  
+
 @Controller
 public class HeaderController {
 	@Autowired
 	IQuestService service;
-	
+
 	@RequestMapping("loginForm.do")
-	public String loginForm(){
+	public String loginForm() {
 		return "loginForm.popup";
 	}
-	
-	
-	@RequestMapping(value="login.do", method=RequestMethod.POST )
-	public String login(HttpSession session, String id, String pw){
-		System.out.println("로그인>>>>>>>>"+id + " " + pw);
-		if(service.login(id, pw)!=null)
-		{	
-			HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
-			session.setAttribute(Constant.User.USERINDEX,user.get(Constant.User.USERINDEX));
-			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
-			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
-			System.out.println("login>>>>>>>"+user.get(Constant.User.USERINDEX) + " "+ user.get(Constant.User.NICKNAME) +" "+ user.get(Constant.User.USERID));
-		}else
-		{
-			System.out.println("널이라구욧");
+
+	@RequestMapping(value = "login.do", method = RequestMethod.POST)
+	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name) {
+		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);
+		if (loginCategory == 1) {
+			if (service.login(id, pw) != null) {
+				HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
+				session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
+				session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
+				session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
+				System.out.println("login>>>>>>>" + user.get(Constant.User.USERINDEX) + " "
+						+ user.get(Constant.User.NICKNAME) + " " + user.get(Constant.User.USERID));
+			} else {
+				System.out.println("널이라구욧");
+			}
+		} else if (loginCategory == 2) {
+			System.out.println("facebook");
+		} else if (loginCategory == 3) {
+			System.out.println("kakao");
+		} else if (loginCategory == 4) {
+			System.out.println("naver");
+		} else if (loginCategory == 5) {
+			System.out.println("google");
 		}
 		return "redirect:listBoard.do";
 	}
+
 	@RequestMapping("logout.do")
-	public String logout(HttpSession session){
-			session.removeAttribute(Constant.User.USERID);
-			session.removeAttribute(Constant.User.NICKNAME);
-			session.removeAttribute(Constant.User.USERINDEX);
+	public String logout(HttpSession session) {
+		session.removeAttribute(Constant.User.USERID);
+		session.removeAttribute(Constant.User.NICKNAME);
+		session.removeAttribute(Constant.User.USERINDEX);
 		return "redirect:listBoard.do";
 	}
+
 	@RequestMapping("searchBoard.do")
-	public ModelAndView searchBoard(
-			@RequestParam(defaultValue = "0") int boardFlag,
-			@RequestParam(defaultValue = "0") int searchFlag,
-			@RequestParam(defaultValue="1") int page ,
-			@RequestParam(required = false) String searchKey,
-			@RequestParam(required = false) String[] area){	
+	public ModelAndView searchBoard(@RequestParam(defaultValue = "0") int boardFlag,
+			@RequestParam(defaultValue = "0") int searchFlag, @RequestParam(defaultValue = "1") int page,
+			@RequestParam(required = false) String searchKey, @RequestParam(required = false) String[] area) {
 		System.out.println("controller");
-		HashMap<String, Object> data = service.searchBoardList(boardFlag, searchFlag, page, searchKey , area); 
+		HashMap<String, Object> data = service.searchBoardList(boardFlag, searchFlag, page, searchKey, area);
 		ModelAndView mav = new ModelAndView();
-		
-		if(boardFlag==0){
-			data.put("header1", "잘해요");   
-		}
-		else if(boardFlag==1){
+
+		if (boardFlag == 0) {
+			data.put("header1", "잘해요");
+		} else if (boardFlag == 1) {
 			data.put("header1", "해주세요");
 		}
 		mav.addAllObjects(data);
 		mav.setViewName("search.header.searchBoard");
-		return mav;		
+		return mav;
 	}
-	
+
 	@RequestMapping("joinForm.do")
-	public String joinForm(){
+	public String joinForm() {
 		return "redirect:join.do";
 	}
-	
+
 	@RequestMapping("search.do")
-	public String search(){
+	public String search() {
 		return "bootstrapResources/header/search.jsp";
-		}
+	}
+
 	@RequestMapping("header.do")
-	public String header(){
-//		session.setAttribute("id", id);
+	public String header() {
+		// session.setAttribute("id", id);
 		return "bootstrapResources/header/header.jsp";
-		}
+	}
+
 	@RequestMapping("mypageMenu.do")
-	public String mypageMenu(){
-//		session.setAttribute("id", id);
+	public String mypageMenu() {
+		// session.setAttribute("id", id);
 		return "bootstrapResources/header/mypageMenu.jsp";
-		}
+	}
 }

@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
-<title>egngg</title>
+<title>Login</title>
 <link href="bootstrapResources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="bootstrapResources/css/freelancer.min.css" rel="stylesheet">
@@ -35,19 +35,88 @@
 <script src="bootstrapResources/js/freelancer.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
-	function homepage() {
+	$(document).ready(function() {
+		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
+
+		$('#kakao').on({
+			'click' : function() {
+				Kakao.Auth.login({
+					persistAccessToken : true,
+					persistRefreshToken : true,
+					success : function(authObj) {
+						// 						alert(JSON.stringify(authObj));
+						Kakao.API.request({
+							url : '/v1/user/me',
+							success : function(res) {
+								alert(JSON.stringify(res));
+								$('#id').val(res.kaccount_email);
+								$('#pw').val("nopw");
+								$('#name').val(res.properties.nickname);
+								login(3);
+							},
+							fail : function(error) {
+								console.log(error);
+							}
+						});
+					},
+					fail : function(err) {
+						alert(JSON.stringify(err));
+					}
+				});
+			}
+		});
+	});
+
+	function login(flag) {
+		alert(flag);
 		var login = document.login;
+		$('#loginCategory').val(flag);
 		login.action = "login.do";
 		login.target = "pareWin";
 		login.method = "post";
 		login.submit();
 		self.close();
 	}
+
+	function facebookLogin() {
+		alert("facebook");
+	}
+	function kakaoLogin() {
+		alert("kakao");
+		Kakao.Auth.login({
+			persistAccessToken : true,
+			persistRefreshToken : true,
+			success : function(authObj) {
+				alert(JSON.stringify(authObj));
+			// 				Kakao.API.request({
+			// 					url : '/v1/user/me',
+			// 					success : function(res) {
+			// 						alert(JSON.stringify(res));
+			// 						$('#id').val(res.kaccount_email);
+			// 						$('#pw').val("nopw");
+			// 						$('#name').val(res.properties.nickname);
+			// 						login(3);
+			// 					},
+			// 					fail : function(error) {
+			// 						console.log(error);
+			// 					}
+			// 				});
+			},
+			fail : function(err) {
+				alert(JSON.stringify(err));
+			}
+		});
+	}
+	function naverLogin() {
+		alert("naver");
+	}
+	function googleLogin() {
+		alert("google");
+	}
 </script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 	window.fbAsyncInit = function() {
 		//페이스북 SDK 초기화   
@@ -70,7 +139,9 @@
 
 	//load the JavaScript SDK
 	(function(d) {
-		var js, id = "facebook-jssdk", ref = d.getElementsByTagName("script")[0];
+		var js,
+			id = "facebook-jssdk",
+			ref = d.getElementsByTagName("script")[0];
 		if (d.getElementById(id)) {
 			return;
 		}
@@ -134,7 +205,6 @@
 	}
 </script>
 
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
 	$(document).ready(function() {
 
@@ -207,6 +277,8 @@ body {
 <body>
 	<center>
 		<form name="login">
+			<input type="hidden" name="loginCategory" id="loginCategory">
+			<input type="hidden" name="name" id="name">
 			<table class="tb">
 				<tr>
 					<td colspan="5" align="center">
@@ -225,7 +297,7 @@ body {
 						style="color: black;"></td>
 					<td colspan="4" align="center" rowspan="3"><br> <input
 						type="image" src="bootstrapResources/img/login2.png" width="60px"
-						height="70px" onclick="homepage()" id="img"></td>
+						height="70px" onclick="login(1)" id="img"></td>
 				</tr>
 				<tr>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -240,15 +312,21 @@ body {
 			<table class="tb2" align="center">
 				<tr>
 					<td width="180px" height="50px"><input type="image"
-						src="bootstrapResources/img/button_facebook.png"></td>
-					<td width="180px" height="50px"><input type="image"
-						src="bootstrapResources/img/button_kakao.png"></td>
+						src="bootstrapResources/img/button_facebook.png"
+						onclick="facebookLogin()"></td>
+					<td width="180px" height="50px">
+						<!-- 					<input type="image" src="bootstrapResources/img/button_kakao.png" onclick="kakaoLogin()"> -->
+						<img src="bootstrapResources/img/button_kakao.png" id="kakao"
+						name="kakao">
+					</td>
 				</tr>
 				<tr>
 					<td width="180px" height="50px"><input type="image"
-						src="bootstrapResources/img/button_naver.png"></td>
+						src="bootstrapResources/img/button_naver.png"
+						onclick="naverLogin()"></td>
 					<td width="180px" height="50px"><input type="image"
-						src="bootstrapResources/img/button_google.png"></td>
+						src="bootstrapResources/img/button_google.png"
+						onclick="googleLogin()"></td>
 				</tr>
 			</table>
 		</form>
