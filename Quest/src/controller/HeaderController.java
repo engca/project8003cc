@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import commons.Constant;
@@ -24,6 +25,16 @@ public class HeaderController {
 		return "loginForm.popup";
 	}
 
+	@RequestMapping(value = "loginCheck.do", method = RequestMethod.POST)
+	@ResponseBody public String loginCheck(String id, String pw, int loginCategory) {
+		System.out.println(id+pw+loginCategory);
+		if(service.login(id, pw) != null) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name, @RequestParam(defaultValue="0") int userIndex) {
 		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);

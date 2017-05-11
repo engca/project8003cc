@@ -41,12 +41,56 @@
 	$(document).ready(function() {
 
 		
+//로그인 유효성 검사
 		$('#img').on({
-			'click' : function() {
-				login(1);
+				'click' : function() {
+					if ($('#id').val() == "") {
+						$('#formCheck2').empty();
+						$('#formCheck').html("아이디를 입력하세요");
+						return false;
+					} else if ($('#pw').val() == "") {
+						$('#formCheck2').empty();
+						$('#formCheck').html("비밀번호를 입력하세요");
+						return false;
+					} else {
+						
+						$.ajax({
+							type : "post",
+							url : "loginCheck.do",
+							dataType : "text",
+							data : "id="+$('#id').val()+"&pw="+$('#pw').val()+"&loginCategory=1",
+							success : function(data) {
+								if (data == "success") {
+									login(1);								
+								} else {
+									$('#formCheck').empty();
+									$("#formCheck2").html("없는 아이디거나 비밀번호가 틀립니다.다시 입력해주세요.");
+									$('#id').val('');
+									$('#pw').val('');
+									return false;
+								}
+							},
+							error : function() {
+								alert("error");
+							}			
+						});
+						
+						return false;
+					}
+				}
+			});
+
+			
+			function login(flag) {
+				var login = document.login;
+				$('#loginCategory').val(flag);
+				login.action = "login.do";
+				login.target = "pareWin";
+				login.method = "post";
+				login.submit();
+				self.close();
 			}
-		});
-		
+			
 
 		//kakaoooooooooooooooooooooooo
 		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
@@ -237,7 +281,8 @@ body {
 </head>
 <body>
 	<center>
-		<form name="login">
+		
+<form name="login">
 			<input type="hidden" name="loginCategory" id="loginCategory">
 			<input type="hidden" name="name" id="name"> <input
 				type="hidden" name="userIndex" id="userIndex">
@@ -257,9 +302,9 @@ body {
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input type="text" name="id" class="form-control"
 						style="color: black;" id="id"></td>
-					<td colspan="4" align="center" rowspan="3"><br> <img
-						src="bootstrapResources/img/login2.png" width="60px" height="70px"
-						id="img"></td>
+					<td colspan="4" align="center" rowspan="2"><br> <input
+						type="image" src="bootstrapResources/img/login2.png" width="65px"
+						height="70px" id="img"></td>
 				</tr>
 				<tr>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -270,6 +315,13 @@ body {
 					<td><input type="password" name="pw" class="form-control"
 						style="color: black;" id="pw"></td>
 				</tr>
+
+				<tr><td colspan = "5"> 
+					<span id = "formCheck2" style = "font-weight: bold; color : red"></span>
+					<span id="formCheck" style="font-weight: bold;"></span>
+					</td>
+				</tr>
+
 			</table>
 			<table class="tb2" align="center">
 				<tr>
