@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Quest Header</title>
+<title>Welcome To Quest World</title>
 <script type="text/javascript">
 function loginPopup(){
 	window.name="pareWin";
