@@ -40,57 +40,57 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		
-//로그인 유효성 검사
-		$('#img').on({
-				'click' : function() {
-					if ($('#id').val() == "") {
-						$('#formCheck2').empty();
-						$('#formCheck').html("아이디를 입력하세요");
-						return false;
-					} else if ($('#pw').val() == "") {
-						$('#formCheck2').empty();
-						$('#formCheck').html("비밀번호를 입력하세요");
-						return false;
-					} else {
-						
-						$.ajax({
-							type : "post",
-							url : "loginCheck.do",
-							dataType : "text",
-							data : "id="+$('#id').val()+"&pw="+$('#pw').val()+"&loginCategory=1",
-							success : function(data) {
-								if (data == "success") {
-									login(1);								
-								} else {
-									$('#formCheck').empty();
-									$("#formCheck2").html("없는 아이디거나 비밀번호가 틀립니다.다시 입력해주세요.");
-									$('#id').val('');
-									$('#pw').val('');
-									return false;
-								}
-							},
-							error : function() {
-								alert("error");
-							}			
-						});
-						
-						return false;
-					}
-				}
-			});
 
-			
-			function login(flag) {
-				var login = document.login;
-				$('#loginCategory').val(flag);
-				login.action = "login.do";
-				login.target = "pareWin";
-				login.method = "post";
-				login.submit();
-				self.close();
+		//로그인 유효성 검사
+		$('#img').on({
+			'click' : function() {
+				if ($('#id').val() == "") {
+					$('#formCheck2').empty();
+					$('#formCheck').html("아이디를 입력하세요");
+					return false;
+				} else if ($('#pw').val() == "") {
+					$('#formCheck2').empty();
+					$('#formCheck').html("비밀번호를 입력하세요");
+					return false;
+				} else {
+
+					$.ajax({
+						type : "post",
+						url : "loginCheck.do",
+						dataType : "text",
+						data : "id=" + $('#id').val() + "&pw=" + $('#pw').val() + "&loginCategory=1",
+						success : function(data) {
+							if (data == "success") {
+								login(1);
+							} else {
+								$('#formCheck').empty();
+								$("#formCheck2").html("없는 아이디거나 비밀번호가 틀립니다.다시 입력해주세요.");
+								$('#id').val('');
+								$('#pw').val('');
+								return false;
+							}
+						},
+						error : function() {
+							alert("error");
+						}
+					});
+
+					return false;
+				}
 			}
-			
+		});
+
+
+		function login(flag) {
+			var login = document.login;
+			$('#loginCategory').val(flag);
+			login.action = "login.do";
+			login.target = "pareWin";
+			login.method = "post";
+			login.submit();
+			self.close();
+		}
+
 
 		//kakaoooooooooooooooooooooooo
 		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
@@ -105,7 +105,7 @@
 						Kakao.API.request({
 							url : '/v1/user/me',
 							success : function(res) {
-// 								alert(JSON.stringify(res));
+								// 								alert(JSON.stringify(res));
 								$('#id').val(res.kaccount_email);
 								$('#pw').val("nopw");
 								$('#name').val(res.properties.nickname);
@@ -123,8 +123,8 @@
 				});
 			}
 		});
-		
-		
+
+
 		// facebookkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 		window.fbAsyncInit = function() {
 			//페이스북 SDK 초기화   
@@ -157,7 +157,7 @@
 			js.src = "//connect.facebook.net/ko_KR/all.js";
 			ref.parentNode.insertBefore(js, ref);
 		}(document));
-		
+
 		$('#facebook').on({
 			'click' : function() {
 				FB.login(function(response) {
@@ -171,7 +171,7 @@
 							$('#id').val(response.email);
 							$('#pw').val("nopw");
 							$('#name').val(response.name);
-// 							$('#userIndex').val(response.id);
+							// 							$('#userIndex').val(response.id);
 							login(2);
 						});
 					}
@@ -181,33 +181,23 @@
 				});
 			}
 		});
-		
+
 		// naverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 		$('#naver').on({
+			'click' : function() {}
+		});
+
+		// googleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+	
+
+		$('#google').on({
 			'click' : function() {
 				
 			}
 		});
-		
-		// googleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-		$('#google').on({
-			'click' : function(googleUser) {
-				alert('aaaaaaa');
-				var profile = googleUser.getBasicProfile();
-				console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-				console.log('Name: ' + profile.getName());
-				console.log('Image URL: ' + profile.getImageUrl());
-				console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-				$("#name").text("이름 : " + profile.getName());
-				$("#email").text("이메일 : " + profile.getEmail());
-				$("#id").text("아이디 : " + profile.getId());
-				$("#img").attr("src", profile.getImageUrl());
-			}
-		});
-		
-		
-		
+
+
 	});
 
 	function login(flag) {
@@ -281,8 +271,8 @@ body {
 </head>
 <body>
 	<center>
-		
-<form name="login">
+
+		<form name="login">
 			<input type="hidden" name="loginCategory" id="loginCategory">
 			<input type="hidden" name="name" id="name"> <input
 				type="hidden" name="userIndex" id="userIndex">
@@ -316,10 +306,10 @@ body {
 						style="color: black;" id="pw"></td>
 				</tr>
 
-				<tr><td colspan = "5"> 
-					<span id = "formCheck2" style = "font-weight: bold; color : red"></span>
-					<span id="formCheck" style="font-weight: bold;"></span>
-					</td>
+				<tr>
+					<td colspan="5"><span id="formCheck2"
+						style="font-weight: bold; color: red"></span> <span id="formCheck"
+						style="font-weight: bold;"></span></td>
 				</tr>
 
 			</table>
@@ -336,9 +326,8 @@ body {
 					<td width="180px" height="50px"><img
 						src="bootstrapResources/img/button_naver.png" id="naver"
 						name="naver"></td>
-					<td width="180px" height="50px"><img
-						src="bootstrapResources/img/button_google.png" id="google"
-						name="google" data-onsuccess="google"></td>
+					<td width="180px" height="50px">
+					<div class="g-signin2" data-onsuccess="onSignIn" style="width: 500px"></div></td>
 				</tr>
 			</table>
 		</form>
