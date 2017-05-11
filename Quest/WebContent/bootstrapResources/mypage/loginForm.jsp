@@ -329,34 +329,6 @@ body {
 						onclick="googleLogin()"></td>
 				</tr>
 			</table>
-			
-<!-- 			<tr> -->
-<!-- 					<td colspan="2"> -->
-<!-- 						<div class="fb-login-button" data-width="100" data-max-rows="1" -->
-<!-- 							data-size="medium" data-button-type="continue_with" -->
-<!-- 							data-show-faces="false" data-auto-logout-link="true" -->
-<!-- 							data-use-continue-as="false"></div> -->
-<!-- 					</td> -->
-<!-- 					<td colspan="2"> -->
-<!-- 						<div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-<!-- <!-- 						<a href="#" onclick="signOut();">Sign out</a> --> -->
-<!-- 					</td> -->
-<!-- 				</tr> -->
-<!-- 				<tr> -->
-<!-- 					<td colspan="2"><a id="kakao-login-btn"></a></td> -->
-<!-- 					<td colspan="2"> -->
-<!-- 						네이버아이디로로그인 버튼 노출 영역 -->
-<!-- 						<div id="naver_id_login"></div> //네이버아이디로로그인 버튼 노출 영역 <script -->
-<!-- 							type="text/javascript"> -->
-// 							var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://localhost:8080/Quest/redirect_naver.jsp");
-// 							var state = naver_id_login.getUniqState();
-// 							naver_id_login.setButton("green", 3, 40);
-// 							naver_id_login.setDomain("http://localhost:8080/Quest/naverLogin.jsp");
-// 							naver_id_login.setState(state);
-// 							naver_id_login.setPopup();
-// 							naver_id_login.init_naver_id_login();
-<!-- 						</script> -->
-<!-- 					</td> -->
 		</form>
 	</center>
 </body>
