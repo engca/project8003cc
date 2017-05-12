@@ -8,16 +8,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-signin-client_id"
+	content="730937907062-jog843h3nsiln40o93pjbqh6vmmniop4.apps.googleusercontent.com">
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Welcome To Quest World</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type="text/javascript">
 	function loginPopup() {
 		window.name = "pareWin";
 		window.open('loginForm.do', '', 'width=500, height=400, top = 200, left= 300"');
 	}
 
+	// kakao
 	$(document).ready(function() {
 		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 	});
@@ -28,12 +32,63 @@
 			alert("logged out.");
 			alert(data);
 			return true;
-			// 아니아니아니아니되오
+		// 아니아니아니아니되오
 		});
 	}
-	
+
+	// facebook
+	window.fbAsyncInit = function() {
+		//페이스북 SDK 초기화   
+		FB.init({
+			appId : "1664301437211779",
+			status : true,
+			cookie : true,
+			xfbml : true
+		});
+		//check user session and refresh it
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				//user is authorized
+			} else {
+				//user is not authorized
+			}
+		});
+	};
+	//load the JavaScript SDK
+	(function(d) {
+		var js,
+			id = "facebook-jssdk",
+			ref = d.getElementsByTagName("script")[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement("script");
+		js.id = id;
+		js.async = true;
+		js.src = "//connect.facebook.net/ko_KR/all.js";
+		ref.parentNode.insertBefore(js, ref);
+	}(document));
 	function facebookLogout() {
-		
+		alert('facebook logout');
+		FB.logout();
+		alert('aaaaaaaa');
+	}
+
+	
+	// google
+	function googleLogout() {
+		alert('google logout');
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function() {
+			console.log('User signed out.');
+		});
+	}
+
+	
+	
+	// naver
+	function naverLogout() {
+		alert('naver logout');
 	}
 </script>
 <style type="text/css">
@@ -107,18 +162,15 @@
 								test="${sessionScope.loginCategory == 1 }">
 								<a href="logout.do">
 							</c:if> <c:if test="${sessionScope.loginCategory == 3 }">
-								<a href="logout.do" onclick="return kakaoLogout()">카카오톡 
-							</c:if> 
-							<c:if test="${sessionScope.loginCategory == 2 }">
-								<a href="logout.do" onclick="return facebookLogout()">페이스북 
-							</c:if> 
-							<c:if test="${sessionScope.loginCategory == 4 }">
-								<a href="logout.do" onclick="return naverLogout()">네이버 
-							</c:if> 
-							<c:if test="${sessionScope.loginCategory == 5 }">
-								<a href="logout.do" onclick="return googleLogout()">구글 
-							</c:if> 
-							로그아웃</a></li>
+								<a href="logout.do" onclick="kakaoLogout()">카카오톡 
+							</c:if> <c:if test="${sessionScope.loginCategory == 2 }">
+								<a href="logout.do" onclick="facebookLogout()">페이스북 
+							</c:if> <c:if test="${sessionScope.loginCategory == 4 }">
+								<a href="logout.do" onclick="naverLogout()">네이버 
+							</c:if> <c:if test="${sessionScope.loginCategory == 5 }">
+								<div class="g-signin2" style="display: none;"></div>
+								<a href="logout.do" onclick="googleLogout()">구글 
+							</c:if> 로그아웃</a></li>
 					</ul>
 				</div>
 				<marquee direction="right" style="">

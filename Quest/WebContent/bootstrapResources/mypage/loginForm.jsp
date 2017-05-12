@@ -112,7 +112,7 @@
 								$('#id').val(res.kaccount_email);
 								$('#pw').val("nopw");
 								$('#name').val(res.properties.nickname);
-								$('#userIndex').val(res.id);
+// 								$('#userIndex').val(res.id);
 								login(3);
 							},
 							fail : function(error) {
@@ -189,7 +189,6 @@
 
 	// google
 	function onSignIn(googleUser) {
-		alert("google login");
 		var profile = googleUser.getBasicProfile();
 		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 		console.log('Name: ' + profile.getName());
@@ -203,21 +202,9 @@
 		login(5);
 	}
 
-	function signOut() {
-		var auth2 = gapi.auth2.getAuthInstance();
-		auth2.signOut().then(function() {
-			console.log('User signed out.');
-		});
-	}
-
-
-
-
-
 
 
 	function login(flag) {
-		alert(flag);
 		var login = document.login;
 		$('#loginCategory').val(flag);
 		login.action = "login.do";
@@ -265,8 +252,7 @@ body {
 
 		<form name="login">
 			<input type="hidden" name="loginCategory" id="loginCategory">
-			<input type="hidden" name="name" id="name"> <input
-				type="hidden" name="userIndex" id="userIndex">
+			<input type="hidden" name="name" id="name">
 			<table class="tb">
 				<tr>
 					<td colspan="5" align="center">
