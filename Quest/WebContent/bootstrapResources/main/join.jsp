@@ -3,14 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
- <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>회원가입</title>
- <meta httpequiv="ContentType" content="text/html; charset=UTF8">
 <script type="text/javascript">
 var joinCheckID = 0;
 var joinCheckPW1 = 0;
@@ -102,18 +95,12 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
 </head>
 
 <body>
-  <section id="contact">
-        <div class="container">
-            <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Join US</h2>
                     <hr class="star-primary">
                 </div>
-            </div>
 <form action="userjoin.do" method="post" name="frm" id="frm">
-            <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="userId">아이디(email)</label>
@@ -144,19 +131,14 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                         </div>
                         <br>
                         <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <input type="button"	class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='viewBoard.do'">
-								
+                            <div class="form-group col-xs-12" align = "right">
+                                <input type="button" class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='viewBoard.do'">
                                 <button type="submit" class="btn btn-success btn-lg" id="btn" onclick="return joinCheckAll()">Send</button>
+                                <br><br><br>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
+                
 </form>
-        </div>
-    </section>
 
 
 

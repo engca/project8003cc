@@ -47,6 +47,17 @@ public class MainPageController {
 		return mav;		
 	}
 
+	@RequestMapping("webJoin.do")
+	public String webJoin(){
+		return "search.main.webJoin";
+	}
+	
+	@RequestMapping(value = "webJoinProc.do", method = RequestMethod.POST)
+	public String webJoinProc(){
+		
+		return null;
+	}
+	
 	@RequestMapping("join.do")
 	public String join(){
 		return "search.main.join";
