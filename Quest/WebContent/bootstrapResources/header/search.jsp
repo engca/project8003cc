@@ -184,7 +184,6 @@ select {
 {
 	margin : 3px;
 	padding : 2px;
-	background: #FFCC00;
 	
 }
 #areaList >span {
@@ -219,7 +218,7 @@ select {
 <!-- 					<div id="sangsea" style="visibility: hidden;width: 800px;" align="center"> <br> -->
 						<div id="sidooo" align="center" style="align:center;width: 900px; visibility: hidden;"></div>
 						<div id="gunguuu" style=" visibility: hidden;"></div>
-						<div id = "areaBackground" style="background: #ffff00;visibility: hidden; ">
+						<div id = "areaBackground" style="visibility: hidden; ">
 						<div id="areaList"	style=" width: 750px;" align ="left">
 								<span>선택한 지역 : </span>
 						</div>
