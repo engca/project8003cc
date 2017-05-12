@@ -3,38 +3,44 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="dao.IQuestDao"> 
-	
+<mapper namespace="dao.IQuestDao">
+
 	<insert id="insertUser" parameterType="java.util.HashMap">
-	INSERT INTO user VALUES(0, #{userId}, #{password}, #{nickname}, 0, 0)
+		INSERT INTO user VALUES(0, #{userId}, #{password}, #{nickname}, 0, 0)
 	</insert>
 
 	<update id="updateUser" parameterType="java.util.HashMap">
-	UPDATE user SET password = #{password}, nickname = #{nickname}, starPoint = #{starPoint},
-	doCount = #{doCount} WHERE userIndex = #{userIndex}  
+		UPDATE user SET password = #{password}, nickname = #{nickname}, starPoint =
+		#{starPoint},
+		doCount = #{doCount} WHERE userIndex = #{userIndex}
 	</update>
 
 	<delete id="deleteUser" parameterType="int">
-	DELETE FROM user WHERE userIndex = #{userIndex}
+		DELETE FROM user WHERE userIndex = #{userIndex}
 	</delete>
 
-	<select id="selectUser" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-	SELECT * FROM user WHERE 0=1
-	<if test="userIndex != null">
-	 or userIndex = #{userIndex}
-	</if>
-	<if test="userId != null">
-	 or userId = #{userId}
-	</if>
-	<if test="nickname != null">
-	 or nickname = #{nickname}
-	</if>
+	<select id="selectUser" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT * FROM user WHERE 0=1
+		<if test="userIndex != null">
+			or userIndex = #{userIndex}
+		</if>
+		<if test="userId != null">
+			or userId = #{userId}
+		</if>
+		<if test="nickname != null">
+			or nickname = #{nickname}
+		</if>
 	</select>
-	<select id="selectUserIndexById" parameterType="String" resultType="int">
-	select userIndex from user where userId = #{userId}
+	<select id="selectUserIndexById" parameterType="String"
+		resultType="int">
+		select userIndex from user where userId = #{userId}
 	</select>
 	<select id="selectNicknname" parameterType="int" resultType="String">
-	select nickname from user where userIndex=#{userIndex}
+		select nickname from user where userIndex=#{userIndex}
 	</select>
-	
+	<select id="selectLoginCategory" parameterType="String"
+		resultType="int">
+		select loginCategory from user where user = #{userId}
+	</select>
 </mapper>

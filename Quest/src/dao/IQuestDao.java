@@ -28,6 +28,7 @@ public interface IQuestDao {
 	public int deleteUser(int userIndex);
 	public HashMap<String, Object> selectUser(HashMap<String, Object> params);
 	public String selectNicknname(int userIndex);
+	public int selectLogincategory (String id);
 	
 	// 코멘트 관리부분
 	public int insertComment(HashMap<String, Object> params);

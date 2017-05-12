@@ -76,6 +76,8 @@ public class QuestService implements IQuestService {
 		}
 	}
 
+	
+	
 	@Override
 	public int nicknameCheck(String nickname) {
 		// TODO Auto-generated method stub
@@ -747,6 +749,14 @@ public class QuestService implements IQuestService {
 		
 		return 0; 
 	
+	}
+
+	//웹사이트 로그인 체크
+	@Override
+	public int loginCategoryCheck(String id) {
+		// TODO Auto-generated method stub
+		int loginCategoryNum = dao.selectLogincategory(id);
+		return loginCategoryNum;
 	}
 
 

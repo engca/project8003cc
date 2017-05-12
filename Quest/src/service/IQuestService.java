@@ -22,8 +22,9 @@ public interface IQuestService {
 
 	public int idCheck(String id); 
 	public int nicknameCheck(String nickname); 
-	
+	public int loginCategoryCheck(String id);
 	public String nickname(int userIndex);
+	
 
 	// 보드 서비스   
 //	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex);
