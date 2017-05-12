@@ -170,7 +170,7 @@
 						FB.api('/me', {
 							fields : 'name,email,id'
 						}, function(response) {
-							alert(JSON.stringify(response));
+// 							alert(JSON.stringify(response));
 							$('#id').val(response.email);
 							$('#pw').val("nopw");
 							$('#name').val(response.name);
@@ -184,21 +184,6 @@
 				});
 			}
 		});
-
-		// 		// naverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-		// 		$('#naver').on({
-		// 			'click' : function() {}
-		// 		});
-
-		// 		// googleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-
-
-		// 		$('#google').on({
-		// 			'click' : function() {}
-		// 		});
-
-
-
 	});
 
 
