@@ -80,9 +80,18 @@ public class HeaderController {
 			session.setAttribute(Constant.User.NICKNAME, name);
 			session.setAttribute(Constant.User.USERID, id);
 		} else if (loginCategory == 5) {
-			System.out.println("google");
-			session.setAttribute(Constant.User.NICKNAME, name);
-			session.setAttribute(Constant.User.USERID, id);
+			if (service.idCheck(id) == 0) { 
+				System.out.println("1. 아이디 사용 가능  " + id);
+				return "redirect:webJoin.do?num=0&id="+id;
+			} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) == 1){ 
+				System.out.println("2. 아이디가 중복이면서 loginCategory가 1인 경우");
+				return "redirect:webJoin.do?num=1&id="+id;
+			} else {
+				System.out.println("google");
+				session.setAttribute(Constant.User.NICKNAME, name);
+				session.setAttribute(Constant.User.USERID, id);
+				return "redirect:listBoard.do";
+			}
 		}
 		return "redirect:listBoard.do";
 	}

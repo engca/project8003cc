@@ -56,12 +56,6 @@ public class MainPageController {
 		return "search.main.webJoin";
 	}
 	
-	@RequestMapping(value = "webJoinProc.do", method = RequestMethod.POST)
-	public String webJoinProc(){
-		
-		return null;
-	}
-	
 	@RequestMapping("join.do")
 	public String join(){
 		return "search.main.join";

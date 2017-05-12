@@ -1,12 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//닉네임 중복확인
+		$('#nickCheck').on('click', function() {
+			$.ajax({
+				type : 'post',
+				url : 'nicknameCheck.do',
+				dataType : 'text',
+				data : 'nickname=' + $('#nickname').val(),
+				success : function(data) {
+					if (data != 1) {
+						$('#msg').text('사용가능한 닉네임 입니다.');
+						$('#completeBtn').attr('disabled', false);
+
+					} else {
+						$('#msg').text('이미 사용중인 닉네임 입니다.');
+						$('#completeBtn').attr('disabled', true);
+						$('#nickname').focus();
+					}
+				},
+				error : function() {
+					alert('에러');
+				}
+			});
+		});
+	});
+</script>
 <style>
 th {
 	width: 70px;
@@ -21,7 +48,7 @@ td {
 #msg {
 	color: red;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 13px;
 }
 </style>
 </head>
@@ -31,36 +58,23 @@ td {
 			<h2>닉네임 설정하기</h2>
 			<hr class="star-primary">
 		</div>
-		<form method="post" action="webJoinNickProc.do">
-			<table>
-				<tr>
-					<th><h5>닉네임 :</h5></th>
-					<td><input type="text" class="form-control" name="nickname">
-					</td>
-					<td><input type="submit" value="중복확인" class="btn btn-success"></td>
-				</tr>
-				<c:choose>
-					<c:when test="">
-						<tr>
-							<td colspan="3"><br> <span id="msg">이미 존재하는 닉네임 입니다.</span></td>
-						</tr>
-						<tr>
-							<td colspan="3"><br> <input type="button"
-								value="로그인하러가기" onclick="location.href='join.do'" class="btn btn-primary"></td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="3"><br> <span id="msg">사용가능한 닉네임 입니다.</span></td>
-						</tr>
-						<tr>
-							<td colspan="3"><br> <input type="button" value="닉네임 설정 완료"
-								onclick="location.href='listBoard.do'" class="btn btn-primary"></td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</table>
-		</form>
+		<table>
+			<tr>
+				<th><h5>닉네임 :</h5></th>
+				<td><input type="text" class="form-control" name="nickname"
+					id="nickname"></td>
+					<td><input type = "button" class = "btn btn-success" value = "중복확인"
+						id = "nickCheck"></td>
+			</tr>
+			<tr>
+				<td colspan="3"><br> <span id="msg"></span></td>
+			</tr>
+			<tr>
+				<td colspan="3"><br> <input type="button"
+					value="닉네임 설정 완료" onclick="location.href='listBoard.do'"
+					class="btn btn-primary" id = "completeBtn"></td>
+			</tr>
+		</table>
 		<br> <br> <br> <br> <br> <br> <br>
 	</center>
 </body>
