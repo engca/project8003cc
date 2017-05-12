@@ -41,7 +41,7 @@ public class HeaderController {
 	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name) throws Exception {
 		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);
 		session.setAttribute("loginCategory", loginCategory);
-		MessageDigest md = MessageDigest.getInstance("MD5");
+		MessageDigest md = MessageDigest.getInstance("MD5");  
 		md.update(pw.getBytes());
 		byte[] result = md.digest();
 		StringBuffer sb = new StringBuffer();
