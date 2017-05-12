@@ -11,7 +11,8 @@
 <script type="text/javascript">
 	var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://localhost:8080/Quest/redirect_naver.jsp");
 	// 접근 토큰 값 출력
-	// 	alert(naver_id_login.oauthParams.access_token);
+// 	alert(naver_id_login.oauthParams.access_token);
+	setAccessToken(naver_id_login.oauthParams.access_token);
 	// 네이버 사용자 프로필 조회
 	naver_id_login.get_naver_userprofile("naverSignInCallback()");
 	// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
@@ -33,7 +34,7 @@
 	}
 
 	function login(flag) {
-		alert(flag);
+// 		alert(flag);
 		var login = document.login;
 		$('#loginCategory').val(flag);
 		login.action = "login.do";
@@ -43,15 +44,27 @@
 		opener.window.close();
 		self.close();
 	}
+
+	function setAccessToken(token) {
+		$.ajax({
+			type : "POST",
+			url : "setAccessToken.do", //세션 생성페이지 (setAttribute...)
+			data : "token=" + token,
+			success : function() {
+				//성공하면...
+// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
+			}
+		});
+	}
 </script>
 </head>
 <body>
 	<form name="login">
 		<input type="hidden" name="loginCategory" id="loginCategory">
-		<input type="hidden" name="name" id="name">
-		<input type="hidden" name="userIndex" id="userIndex">
-		<input type="hidden" name="id" id="id">
-		<input type="hidden" name="pw" id="pw">
+		<input type="hidden" name="name" id="name"> <input
+			type="hidden" name="userIndex" id="userIndex"> <input
+			type="hidden" name="id" id="id"> <input type="hidden"
+			name="pw" id="pw">
 	</form>
 	<span id="names"></span>
 	<br>

@@ -15,6 +15,10 @@
 <title>Welcome To Quest World</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 <script type="text/javascript">
 	function loginPopup() {
 		window.name = "pareWin";
@@ -28,12 +32,20 @@
 
 	function kakaoLogout() {
 		alert('kakao logout');
-		Kakao.Auth.logout(function(data) {
-			alert("logged out.");
-			alert(data);
-			return true;
-		// 아니아니아니아니되오
-		});
+// 		Kakao.Auth.logout(function(data) {
+// 			alert("logged out.");
+// 			alert(data);
+// 			return true;
+// 		// 아니아니아니아니되오
+// 		});
+		
+		if (Kakao.Auth.getRefreshToken() != undefined && Kakao.Auth.getRefreshToken().replace(/ /gi, "") != "") {
+			alert('aaaaaaaaaa');
+			Kakao.Auth.logout();
+		} else {
+			alert('bbbbbbbbbb');
+		}
+		
 	}
 
 	// facebook
@@ -89,6 +101,23 @@
 	// naver
 	function naverLogout() {
 		alert('naver logout');
+		var token = $('#token').val();
+		$.ajax({
+			type : "GET",
+			dataType: "JSON",
+			url : "https://nid.naver.com/oauth2.0/token",
+			data : "grant_type=delete&client_id=i5QN1eYsBD3HXcwrS_w7&client_secret=auZLADqLCW&access_token=" + token + "&service_provider=NAVER",
+			success : function(result) {
+				//성공하면...
+// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
+				alert(result);
+			},
+			error : function(xhrReq, status, error) {
+// 				alert(error + " / " +error_description);
+// 				alert(status + " / "+error);
+				alert("로그아웃 아니되요..........");
+			}
+		});
 	}
 </script>
 <style type="text/css">
@@ -115,7 +144,6 @@
 </style>
 </head>
 <body>
-
 	<div class="navbar navbar-default  navbar-custom " id="main">
 		<c:choose>
 			<c:when test="${sessionScope.userId == null}">
@@ -166,6 +194,7 @@
 							</c:if> <c:if test="${sessionScope.loginCategory == 2 }">
 								<a href="logout.do" onclick="facebookLogout()">페이스북 
 							</c:if> <c:if test="${sessionScope.loginCategory == 4 }">
+								<input type="hidden" id="token" value="${sessionScope.token }">
 								<a href="logout.do" onclick="naverLogout()">네이버 
 							</c:if> <c:if test="${sessionScope.loginCategory == 5 }">
 								<div class="g-signin2" style="display: none;"></div>

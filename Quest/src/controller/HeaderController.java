@@ -37,6 +37,13 @@ public class HeaderController {
 		}
 	}
 	
+	@RequestMapping(value="setAccessToken.do", method=RequestMethod.POST)
+	public void setAccessToken(HttpSession session, String token) {
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		session.setAttribute("token", token);
+		System.out.println(session.getAttribute("token"));
+	}
+	
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name) throws Exception {
 		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);
@@ -82,6 +89,7 @@ public class HeaderController {
 
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
+		session.removeAttribute("token");
 		session.removeAttribute(Constant.User.USERID);
 		session.removeAttribute(Constant.User.NICKNAME);
 		session.removeAttribute(Constant.User.USERINDEX);
