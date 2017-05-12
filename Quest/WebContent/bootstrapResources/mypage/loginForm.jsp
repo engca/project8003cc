@@ -37,6 +37,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -182,23 +185,51 @@
 			}
 		});
 
-		// naverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-		$('#naver').on({
-			'click' : function() {}
-		});
+		// 		// naverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+		// 		$('#naver').on({
+		// 			'click' : function() {}
+		// 		});
 
-		// googleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-	
+		// 		// googleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
-		$('#google').on({
-			'click' : function() {
-				
-			}
-		});
+
+		// 		$('#google').on({
+		// 			'click' : function() {}
+		// 		});
 
 
 
 	});
+
+
+	// google
+	function onSignIn(googleUser) {
+		alert("google login");
+		var profile = googleUser.getBasicProfile();
+		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		console.log('Name: ' + profile.getName());
+		console.log('Image URL: ' + profile.getImageUrl());
+		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+		$('#id').val(profile.getEmail());
+		$('#pw').val("nopw");
+		$('#name').val(profile.getName());
+		// 		$('#userIndex').val(profile.getId());
+		login(5);
+	}
+
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function() {
+			console.log('User signed out.');
+		});
+	}
+
+
+
+
+
+
 
 	function login(flag) {
 		alert(flag);
@@ -213,26 +244,6 @@
 </script>
 
 
-<script type="text/javascript">
-	function onSignIn(googleUser) {
-		var profile = googleUser.getBasicProfile();
-		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-		console.log('Name: ' + profile.getName());
-		console.log('Image URL: ' + profile.getImageUrl());
-		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-	}
-
-	function signOut() {
-		var auth2 = gapi.auth2.getAuthInstance();
-		auth2.signOut().then(function() {
-			console.log('User signed out.');
-		});
-	}
-</script>
-
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-	charset="utf-8"></script>
 
 </head>
 <style>
@@ -318,11 +329,21 @@ body {
 						name="kakao"></td>
 				</tr>
 				<tr>
-					<td width="180px" height="50px"><img
-						src="bootstrapResources/img/button_naver.png" id="naver"
-						name="naver"></td>
 					<td width="180px" height="50px">
-					<div class="g-signin2" data-onsuccess="onSignIn" style="width: 168px; height: 40px"></div></td>
+						<div id="naver_id_login"></div> <script type="text/javascript">
+							var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://localhost:8080/Quest/redirect_naver.jsp");
+							var state = naver_id_login.getUniqState();
+							naver_id_login.setButton("green", 3, 36);
+							naver_id_login.setDomain("http://localhost:8080/Quest/");
+							naver_id_login.setState(state);
+							naver_id_login.setPopup();
+							naver_id_login.init_naver_id_login();
+						</script>
+					</td>
+					<td width="180px" height="50px">
+						<div class="g-signin2" data-onsuccess="onSignIn"
+							style="width: 168px; height: 36px"></div>
+					</td>
 				</tr>
 			</table>
 		</form>

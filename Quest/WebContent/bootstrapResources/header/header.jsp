@@ -112,6 +112,12 @@
 							<c:if test="${sessionScope.loginCategory == 2 }">
 								<a href="logout.do" onclick="return facebookLogout()">페이스북 
 							</c:if> 
+							<c:if test="${sessionScope.loginCategory == 4 }">
+								<a href="logout.do" onclick="return naverLogout()">네이버 
+							</c:if> 
+							<c:if test="${sessionScope.loginCategory == 5 }">
+								<a href="logout.do" onclick="return googleLogout()">구글 
+							</c:if> 
 							로그아웃</a></li>
 					</ul>
 				</div>

@@ -62,8 +62,14 @@ public class HeaderController {
 			session.setAttribute(Constant.User.USERID, id);
 		} else if (loginCategory == 4) {
 			System.out.println("naver");
+			session.setAttribute(Constant.User.USERINDEX, userIndex);
+			session.setAttribute(Constant.User.NICKNAME, name);
+			session.setAttribute(Constant.User.USERID, id);
 		} else if (loginCategory == 5) {
 			System.out.println("google");
+			session.setAttribute(Constant.User.USERINDEX, userIndex);
+			session.setAttribute(Constant.User.NICKNAME, name);
+			session.setAttribute(Constant.User.USERID, id);
 		}
 		return "redirect:listBoard.do";
 	}
