@@ -15,10 +15,9 @@
 <title>Welcome To Quest World</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	crossorigin="anonymous"></script>
 <script type="text/javascript">
 	function loginPopup() {
 		window.name = "pareWin";
@@ -26,26 +25,14 @@
 	}
 
 	// kakao
-	$(document).ready(function() {
-		Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
-	});
-
+	Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 	function kakaoLogout() {
 		alert('kakao logout');
-// 		Kakao.Auth.logout(function(data) {
-// 			alert("logged out.");
-// 			alert(data);
-// 			return true;
-// 		// 아니아니아니아니되오
-// 		});
-		
-		if (Kakao.Auth.getRefreshToken() != undefined && Kakao.Auth.getRefreshToken().replace(/ /gi, "") != "") {
-			alert('aaaaaaaaaa');
-			Kakao.Auth.logout();
-		} else {
-			alert('bbbbbbbbbb');
-		}
-		
+
+		Kakao.Auth.logout(function() {
+// 			alert('aaaaaaaaaaaaaaaaaaaa');
+		});
+
 	}
 
 	// facebook
@@ -86,7 +73,7 @@
 		alert('aaaaaaaa');
 	}
 
-	
+
 	// google
 	function googleLogout() {
 		alert('google logout');
@@ -96,25 +83,25 @@
 		});
 	}
 
-	
-	
+
+
 	// naver
 	function naverLogout() {
 		alert('naver logout');
 		var token = $('#token').val();
 		$.ajax({
 			type : "GET",
-			dataType: "JSON",
+			dataType : "JSON",
 			url : "https://nid.naver.com/oauth2.0/token",
 			data : "grant_type=delete&client_id=i5QN1eYsBD3HXcwrS_w7&client_secret=auZLADqLCW&access_token=" + token + "&service_provider=NAVER",
 			success : function(result) {
 				//성공하면...
-// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
+				// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
 				alert(result);
 			},
 			error : function(xhrReq, status, error) {
-// 				alert(error + " / " +error_description);
-// 				alert(status + " / "+error);
+				// 				alert(error + " / " +error_description);
+				// 				alert(status + " / "+error);
 				alert("로그아웃 아니되요..........");
 			}
 		});
