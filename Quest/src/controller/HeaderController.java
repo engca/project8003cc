@@ -1,5 +1,6 @@
 package controller;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -36,11 +37,19 @@ public class HeaderController {
 	}
 	
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name, @RequestParam(defaultValue="0") int userIndex) {
+	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name, @RequestParam(defaultValue="0") int userIndex) throws Exception{
 		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);
 		session.setAttribute("loginCategory", loginCategory);
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(pw.getBytes());
+		byte[] result = md.digest();
+		StringBuffer sb = new StringBuffer();
+		for (int i=0 ; i < result.length ; i++)
+		{
+			sb.append(Integer.toHexString(0xFF&result[i]));
+		}
 		if (loginCategory == 1) {
-			if (service.login(id, pw) != null) {
+			if (service.login(id, sb.toString()) != null) {
 				HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
 				session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
 				session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
