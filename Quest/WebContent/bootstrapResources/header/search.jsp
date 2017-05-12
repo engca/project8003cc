@@ -23,7 +23,7 @@
 						$(data.sido).each(function(index)
 							{
 								var div = $('<div>');
-								var btn = $('<input type = "button"  align = "center" style = "font-weight:bold;text-align:center" value = "' + this.sido +'" onclick="searchGungu(this)" />');
+								var btn = $('<input type = "button" class = "btn-social" align = "center" style = "font-weight:bold;text-align:center" value = "' + this.sido +'" onclick="searchGungu(this)" />');
 								div.append(btn);
 								$('#sidooo').append(div);
 							});
@@ -43,7 +43,7 @@
 // 					$('#area').empty();
 					$('#sidooo').css('visibility', 'hidden');
 					$('#gunguuu').css('visibility', 'hidden');
-					$('#areaList').css('visibility', 'hidden');
+					$('#areaBackground').css('visibility', 'hidden');
 					btn = 1;				
 				}
 		});
@@ -51,6 +51,8 @@
 	function searchGungu(btn){
 		$('#gunguuu').css('visibility', 'visible');
 		$('#areaList').css('visibility', 'visible');
+		divList = $('<span >');
+		$('#areaList').append(divList);
 		var val = btn.value;
 		$.ajax({
 			type : "get",
@@ -81,10 +83,10 @@
 	function changeCheck(btn)
 	{	
 		 if($(btn).is(":checked")){
-			 	var div = $('<div class = "'+$(btn).val() +'">');
-	            var input = $('<input type = "button" onclick ="deleteBtn(this)"  style = " font-size: 10pt;" value = "'+ $(btn).val()+'"/>');
-	            div.append(input);
-	            $('#areaList').append(div);
+			 	
+	            var input = $('<input type = "button" class = "btn-primary" onclick ="deleteBtn(this)"  style = "margin:3px" value = "'+ $(btn).val()+'"/>');
+	            divList.after(input);
+	            
 	        }else{
 	        	$("#areaList input").each(function(){
 	    			if($(this).val() == $(btn).val())
@@ -175,13 +177,23 @@ select {
 	margin-right : 6px;
 	color : #F3F3F3;
 }
-#areaList >div {
-	overflow : hidden;
+#areaBackground{
+
 }
- #areaList > div{
+#areaList
+{
+	margin : 3px;
+	padding : 2px;
+	
+}
+#areaList >span {
+	overflow : hidden;
+	margin : 3px;
+	
+}
+ #areaList > span > input{
  	float:left;
 	margin : 3px;
-	align : left;
 }
 </style>
 </head>
@@ -204,9 +216,13 @@ select {
 						<input id="sangseaBtn" type="button" value="상세검색" class="btn btn-success">
 						
 <!-- 					<div id="sangsea" style="visibility: hidden;width: 800px;" align="center"> <br> -->
-						<div id="sidooo" align="center" style="align:center;width: 750px; visibility: hidden;"></div>
+						<div id="sidooo" align="center" style="align:center;width: 900px; visibility: hidden;"></div>
 						<div id="gunguuu" style=" visibility: hidden;"></div>
-						<div id="areaList"	style="background: white;  visibility: hidden;"></div>
+						<div id = "areaBackground" style="visibility: hidden; ">
+						<div id="areaList"	style=" width: 750px;" align ="left">
+								<span>선택한 지역 : </span>
+						</div>
+						</div>
 <!-- 					</div>  -->
 				</div>
 			</div>
