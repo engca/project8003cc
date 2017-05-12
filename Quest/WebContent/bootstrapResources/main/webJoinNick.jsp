@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
+<style>
 th {
 	width: 70px;
 	text-align: center;
@@ -28,22 +28,21 @@ td {
 <body>
 	<center>
 		<div class="col-lg-12 text-center">
-			<h2>구글 첫 로그인 시 닉네임 설정이 필요합니다.</h2>
+			<h2>닉네임 설정하기</h2>
 			<hr class="star-primary">
 		</div>
-		<form action="webJoinProc.do" method="post">
+		<form method="post" action="webJoinNickProc.do">
 			<table>
 				<tr>
-					<th><h5>Email : </h5></th>
-					<td><b>${id }io1028@naver.com</b></td>
-					<td><input type="button" value="중복확인" onclick="location.href='webJoinProc.do'"
-						class="btn btn-success"></td>
+					<th><h5>닉네임 :</h5></th>
+					<td><input type="text" class="form-control" name="nickname">
+					</td>
+					<td><input type="submit" value="중복확인" class="btn btn-success"></td>
 				</tr>
 				<c:choose>
 					<c:when test="">
 						<tr>
-							<td colspan="3"><br> <span id="msg">이미 가입된 이메일
-									입니다.</span></td>
+							<td colspan="3"><br> <span id="msg">이미 존재하는 닉네임 입니다.</span></td>
 						</tr>
 						<tr>
 							<td colspan="3"><br> <input type="button"
@@ -52,19 +51,17 @@ td {
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="3"><br> <span id="msg">사용가능한 이메일
-									입니다.</span></td>
+							<td colspan="3"><br> <span id="msg">사용가능한 닉네임 입니다.</span></td>
 						</tr>
 						<tr>
-							<td colspan="3"><br> <input type="button" value="다음"
-								onclick="location.href='webJoinNick.do'" class="btn btn-primary"></td>
+							<td colspan="3"><br> <input type="button" value="닉네임 설정 완료"
+								onclick="location.href='listBoard.do'" class="btn btn-primary"></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
 			</table>
-			<br> <br> <br> <br> <br> <br> <br>
-			<br>
 		</form>
+		<br> <br> <br> <br> <br> <br> <br>
 	</center>
 </body>
 </html>

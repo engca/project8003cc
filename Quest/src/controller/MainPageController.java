@@ -46,7 +46,11 @@ public class MainPageController {
 		mav.setViewName("search.main.listBoard");
 		return mav;		
 	}
-
+	@RequestMapping("webJoinNick.do")
+	public String webJoinNick(){
+		return "search.main.webJoinNick";
+	}
+	
 	@RequestMapping("webJoin.do")
 	public String webJoin(){
 		return "search.main.webJoin";
