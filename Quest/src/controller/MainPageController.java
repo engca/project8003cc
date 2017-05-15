@@ -77,7 +77,7 @@ public class MainPageController {
 		mav.addObject("id", id);
 		mav.addObject("password", pw);
 		mav.addObject("name", name);
-		mav.addObject("loginCateogory", loginCategory);
+		mav.addObject("loginCategory", loginCategory);
 		mav.setViewName("login.do");
 		return mav;
 	}

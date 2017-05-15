@@ -756,6 +756,7 @@ public class QuestService implements IQuestService {
 	public int loginCategoryCheck(String id) {
 		// TODO Auto-generated method stub
 		int loginCategoryNum = dao.selectLogincategory(id);
+		System.out.println("로그인카테고리 : " + loginCategoryNum);
 		return loginCategoryNum;
 	}
 

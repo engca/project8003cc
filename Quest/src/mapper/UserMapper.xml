@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectNicknname" parameterType="int" resultType="String">
 		select nickname from user where userIndex=#{userIndex}
 	</select>
-	<select id="selectLoginCategory" parameterType="String"
+	<select id="selectLogincategory" parameterType="String"
 		resultType="int">
 		select loginCategory from user where userId = #{userId}
 	</select>

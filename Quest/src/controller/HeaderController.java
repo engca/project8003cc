@@ -30,7 +30,6 @@ public class HeaderController {
 	@RequestMapping(value = "loginCheck.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String loginCheck(String id, String pw, int loginCategory) throws Exception {
-		// System.out.println(id+pw+loginCategory);
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(pw.getBytes());
 		byte[] result = md.digest();
