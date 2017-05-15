@@ -54,8 +54,8 @@ public class MyPageController {
 		mav.addObject("boardNo", params.get("boardNo"));
 		mav.addObject("userIndex", userIndex);
 //		model.addAttribute("boardNo", params.get("boardNo"));
-		mav.setViewName("viewBoard.do");
-		System.out.println(mav);
+		mav.setViewName("redirect:viewBoard.do");
+//		System.out.println(mav);
 		return mav;
 	}
 
