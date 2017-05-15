@@ -126,6 +126,8 @@ public class HeaderController {
 			System.out.println("2. 아이디가 중복이면서 loginCategory가 1인 경우");
 			return "redirect:webJoin.do?num=1&id=" + id;
 		} else {
+			HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
+			session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
 			session.setAttribute(Constant.User.NICKNAME, name);
 			session.setAttribute(Constant.User.USERID, id);
 			return "redirect:listBoard.do";

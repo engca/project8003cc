@@ -24,6 +24,45 @@ td {
 	font-size: 15px;
 }
 </style>
+<script type="text/javascript">
+//facebook
+	window.fbAsyncInit = function() {
+		//페이스북 SDK 초기화   
+		FB.init({
+			appId : "1664301437211779",
+			status : true,
+			cookie : true,
+			xfbml : true
+		});
+		//check user session and refresh it
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				//user is authorized
+			} else {
+				//user is not authorized
+			}
+		});
+	};
+	//load the JavaScript SDK
+	(function(d) {
+		var js,
+			id = "facebook-jssdk",
+			ref = d.getElementsByTagName("script")[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement("script");
+		js.id = id;
+		js.async = true;
+		js.src = "//connect.facebook.net/ko_KR/all.js";
+		ref.parentNode.insertBefore(js, ref);
+	}(document));
+	function facebookLogout() {
+//		alert('facebook logout');
+		FB.logout();
+//		alert('aaaaaaaa');
+	}
+</script>
 </head>
 <body>
 	<center>

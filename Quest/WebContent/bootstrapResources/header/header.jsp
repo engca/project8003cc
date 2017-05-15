@@ -30,7 +30,7 @@
 		alert('kakao logout');
 
 		Kakao.Auth.logout(function() {
-// 			alert('aaaaaaaaaaaaaaaaaaaa');
+			alert('aaaaaaaaaaaaaaaaaaaa');
 		});
 
 	}
@@ -79,6 +79,7 @@
 		alert('google logout');
 		var auth2 = gapi.auth2.getAuthInstance();
 		auth2.signOut().then(function() {
+			alert('aaaaaaaaaa');
 			console.log('User signed out.');
 		});
 	}
@@ -87,7 +88,7 @@
 
 	// naver
 	function naverLogout() {
-		alert('naver logout');
+// 		alert('naver logout');
 		var token = $('#token').val();
 		$.ajax({
 			type : "GET",
@@ -97,12 +98,12 @@
 			success : function(result) {
 				//성공하면...
 				// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
-				alert(result);
+// 				alert(result);
 			},
 			error : function(xhrReq, status, error) {
 				// 				alert(error + " / " +error_description);
 				// 				alert(status + " / "+error);
-				alert("로그아웃 아니되요..........");
+// 				alert("로그아웃 아니되요..........");
 			}
 		});
 	}

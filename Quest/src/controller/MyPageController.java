@@ -40,20 +40,22 @@ public class MyPageController {
 	 }
 	 
 
-	@RequestMapping("applyPopupProc.do")
-	public ModelAndView applyPopupProc(Model model, @RequestParam HashMap<String, Object>params,HttpSession session) {
+	@RequestMapping(value="applyPopupProc.do", method=RequestMethod.GET)
+	public ModelAndView applyPopupProc(@RequestParam HashMap<String, Object>params,HttpSession session) {
 		int userIndex = (int)session.getAttribute("userIndex");
 //		System.out.println("userIndex" + userIndex);
 //		int userIndex = 1;
 		System.out.println("applyPopupProc.do params : " + params );
 		params.put("userIndex", userIndex);
 		service.writeApply(params);
-//		System.out.println("apply OK!");
+		System.out.println("apply OK!");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("boardNo", params.get("boardNo"));
+		mav.addObject("userIndex", userIndex);
 //		model.addAttribute("boardNo", params.get("boardNo"));
 		mav.setViewName("viewBoard.do");
+		System.out.println(mav);
 		return mav;
 	}
 

@@ -9,6 +9,7 @@
 <script type="text/javascript">
 function applyPopup(){
 	var apply = document.apply;
+	window.name = "applyParent";
 	window.open('','apply','width=500, height=600');
 	apply.action = "applyPopup.do";
 	apply.target = "apply";
