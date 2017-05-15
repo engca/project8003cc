@@ -63,31 +63,8 @@ public class HeaderController {
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
 			System.out.println("login>>>>>>>" + user.get(Constant.User.USERINDEX) + " "
 					+ user.get(Constant.User.NICKNAME) + " " + user.get(Constant.User.USERID));
-		} else if (loginCategory == 2) {
-			System.out.println("facebook");
-			session.setAttribute(Constant.User.NICKNAME, name);
-			session.setAttribute(Constant.User.USERID, id);
-		} else if (loginCategory == 3) {
-			System.out.println("kakao");
-			session.setAttribute(Constant.User.NICKNAME, name);
-			session.setAttribute(Constant.User.USERID, id);
-		} else if (loginCategory == 4) {
-			System.out.println("naver");
-			session.setAttribute(Constant.User.NICKNAME, name);
-			session.setAttribute(Constant.User.USERID, id);
-		} else if (loginCategory == 5) {
-			if (service.idCheck(id) == 0) {
-				System.out.println("1. 아이디 사용 가능  " + id);
-				return "redirect:webJoin.do?num=0&id=" + id;
-			} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) == 1) {
-				System.out.println("2. 아이디가 중복이면서 loginCategory가 1인 경우");
-				return "redirect:webJoin.do?num=1&id=" + id;
-			} else {
-				System.out.println("google");
-				session.setAttribute(Constant.User.NICKNAME, name);
-				session.setAttribute(Constant.User.USERID, id);
-				return "redirect:listBoard.do";
-			}
+		} else {
+			return webCheck(id, session, name);
 		}
 		return "redirect:listBoard.do";
 	}
@@ -139,5 +116,19 @@ public class HeaderController {
 	public String mypageMenu() {
 		// session.setAttribute("id", id);
 		return "bootstrapResources/header/mypageMenu.jsp";
+	}
+
+	public String webCheck(String id, HttpSession session, String name) {
+		if (service.idCheck(id) == 0) {
+			System.out.println("1. 아이디 사용 가능  " + id);
+			return "redirect:webJoin.do?num=0&id=" + id;
+		} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) == 1) {
+			System.out.println("2. 아이디가 중복이면서 loginCategory가 1인 경우");
+			return "redirect:webJoin.do?num=1&id=" + id;
+		} else {
+			session.setAttribute(Constant.User.NICKNAME, name);
+			session.setAttribute(Constant.User.USERID, id);
+			return "redirect:listBoard.do";
+		}
 	}
 }

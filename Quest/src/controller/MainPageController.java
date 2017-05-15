@@ -65,14 +65,12 @@ public class MainPageController {
 	
 	@RequestMapping(value = "webLogin.do", method = RequestMethod.POST)
 	public ModelAndView webLogin(String id, String pw, String name, int loginCategory){
-		System.out.println(id);
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("userId", id);
 		params.put("password", pw);
 		params.put("nickname", name);
 		params.put("loginCategory", loginCategory);
 		service.join(params);
-		System.out.println(params);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("id", id);
 		mav.addObject("password", pw);
