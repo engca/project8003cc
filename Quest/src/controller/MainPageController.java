@@ -104,6 +104,7 @@ public class MainPageController {
 		param.put("userId", userId );
 		param.put("password", sb.toString());
 		param.put("nickname", nickname);
+		param.put("loginCategory", 1);
 		service.join(param);
 		return "redirect:/listBoard.do";
 	}	
