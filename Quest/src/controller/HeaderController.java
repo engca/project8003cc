@@ -28,45 +28,42 @@ public class HeaderController {
 	}
 
 	@RequestMapping(value = "loginCheck.do", method = RequestMethod.POST)
-	@ResponseBody public String loginCheck(String id, String pw, int loginCategory) {
-		System.out.println(id+pw+loginCategory);
-		if(service.login(id, pw) != null) {
+	@ResponseBody
+	public String loginCheck(String id, String pw, int loginCategory) throws Exception {
+		// System.out.println(id+pw+loginCategory);
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(pw.getBytes());
+		byte[] result = md.digest();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < result.length; i++) {
+			sb.append(Integer.toHexString(0xFF & result[i]));
+		}
+		if (service.login(id, sb.toString()) != null) {
 			return "success";
 		} else {
 			return "fail";
 		}
 	}
-	
-	@RequestMapping(value="setAccessToken.do", method=RequestMethod.POST)
+
+	@RequestMapping(value = "setAccessToken.do", method = RequestMethod.POST)
 	public void setAccessToken(HttpSession session, String token) {
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		session.setAttribute("token", token);
 		System.out.println(session.getAttribute("token"));
 	}
-	
+
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
-	public String login(HttpSession session, String id, String pw, int loginCategory, @RequestParam(defaultValue="noname") String name) throws Exception {
+	public String login(HttpSession session, String id, String pw, int loginCategory,
+			@RequestParam(defaultValue = "noname") String name) {
 		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);
 		session.setAttribute("loginCategory", loginCategory);
-		MessageDigest md = MessageDigest.getInstance("MD5");  
-		md.update(pw.getBytes());
-		byte[] result = md.digest();
-		StringBuffer sb = new StringBuffer();
-		for (int i=0 ; i < result.length ; i++)
-		{
-			sb.append(Integer.toHexString(0xFF&result[i]));
-		}
+
 		if (loginCategory == 1) {
-			if (service.login(id, sb.toString()) != null) {
-				HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
-				session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
-				session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
-				session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
-				System.out.println("login>>>>>>>" + user.get(Constant.User.USERINDEX) + " "
-						+ user.get(Constant.User.NICKNAME) + " " + user.get(Constant.User.USERID));
-			} else {
-				System.out.println("널이라구욧");
-			}
+			HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
+			session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
+			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
+			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
+			System.out.println("login>>>>>>>" + user.get(Constant.User.USERINDEX) + " "
+					+ user.get(Constant.User.NICKNAME) + " " + user.get(Constant.User.USERID));
 		} else if (loginCategory == 2) {
 			System.out.println("facebook");
 			session.setAttribute(Constant.User.NICKNAME, name);
@@ -80,12 +77,12 @@ public class HeaderController {
 			session.setAttribute(Constant.User.NICKNAME, name);
 			session.setAttribute(Constant.User.USERID, id);
 		} else if (loginCategory == 5) {
-			if (service.idCheck(id) == 0) { 
+			if (service.idCheck(id) == 0) {
 				System.out.println("1. 아이디 사용 가능  " + id);
-				return "redirect:webJoin.do?num=0&id="+id;
-			} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) == 1){ 
+				return "redirect:webJoin.do?num=0&id=" + id;
+			} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) == 1) {
 				System.out.println("2. 아이디가 중복이면서 loginCategory가 1인 경우");
-				return "redirect:webJoin.do?num=1&id="+id;
+				return "redirect:webJoin.do?num=1&id=" + id;
 			} else {
 				System.out.println("google");
 				session.setAttribute(Constant.User.NICKNAME, name);

@@ -11,7 +11,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;import org.apache.ibatis.javassist.expr.Instanceof;
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.cache.decorators.LoggingCache;
+import org.apache.ibatis.javassist.expr.Instanceof;
 import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,14 +50,38 @@ public class MainPageController {
 		return mav;		
 	}
 	@RequestMapping("webJoinNick.do")
-	public String webJoinNick(){
+	public String webJoinNick(String id){
 		return "search.main.webJoinNick";
 	}
 	
 	@RequestMapping("webJoin.do")
-	public String webJoin(){
-		return "search.main.webJoin";
+	public ModelAndView webJoin(String id, int num){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("id", id);
+		mav.addObject("num", num);
+		mav.setViewName("search.main.webJoin");
+		return mav;
 	}
+	
+	@RequestMapping(value = "webLogin.do", method = RequestMethod.POST)
+	public ModelAndView webLogin(String id, String pw, String name, int loginCategory){
+		System.out.println(id);
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userId", id);
+		params.put("password", pw);
+		params.put("nickname", name);
+		params.put("loginCategory", loginCategory);
+		service.join(params);
+		System.out.println(params);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("id", id);
+		mav.addObject("password", pw);
+		mav.addObject("name", name);
+		mav.addObject("loginCateogory", loginCategory);
+		mav.setViewName("login.do");
+		return mav;
+	}
+	
 	
 	@RequestMapping("join.do")
 	public String join(){

@@ -58,10 +58,11 @@ td {
 			<h2>닉네임 설정하기</h2>
 			<hr class="star-primary">
 		</div>
+		<form action = "webLogin.do" method = "post">
 		<table>
 			<tr>
 				<th><h5>닉네임 :</h5></th>
-				<td><input type="text" class="form-control" name="nickname"
+				<td><input type="text" class="form-control" name="name"
 					id="nickname"></td>
 					<td><input type = "button" class = "btn btn-success" value = "중복확인"
 						id = "nickCheck"></td>
@@ -70,11 +71,16 @@ td {
 				<td colspan="3"><br> <span id="msg"></span></td>
 			</tr>
 			<tr>
-				<td colspan="3"><br> <input type="button"
-					value="닉네임 설정 완료" onclick="location.href='listBoard.do'"
+				<td colspan="3"><br> 
+			<input type = "hidden" value = ${param.id } name = "id">
+			<input type = "hidden" value = ${loginCategory } name = "loginCategory">
+			<input type = "hidden" value = "noPw" name = "pw">
+			
+				<input type="submit"  value="닉네임 설정 완료" 
 					class="btn btn-primary" id = "completeBtn"></td>
 			</tr>
 		</table>
+		</form>
 		<br> <br> <br> <br> <br> <br> <br>
 	</center>
 </body>

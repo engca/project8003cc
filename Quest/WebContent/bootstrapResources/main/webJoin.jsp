@@ -31,35 +31,38 @@ td {
 			<h2>첫 로그인 시 닉네임 설정이 필요합니다.</h2>
 			<hr class="star-primary">
 		</div>
-		<table>
-			<tr>
-				<th><h5>Email :</h5></th>
-				<td><b>${id }</b></td>
-			</tr>
-			<c:choose>
-				<c:when test="${num == 1 }">
-					<tr>
-						<td colspan="2"><br> <span id="msg">이미 가입된 이메일
-								입니다.</span></td>
-					</tr>
-					<tr>
-						<td colspan="2"><br> <input type="button"
-							value="로그인하러가기" onclick="location.href='join.do'"
-							class="btn btn-primary"></td>
-					</tr>
-				</c:when>
-				<c:otherwise>
-					<tr>
-						<td colspan="3"><br> <span id="msg">사용가능한 이메일
-								입니다.</span></td>
-					</tr>
-					<tr>
-						<td colspan="3"><br> <input type="button" value="다음"
-							onclick="location.href='webJoinNick.do'" class="btn btn-primary"></td>
-					</tr>
-				</c:otherwise>
-			</c:choose>
-		</table>
+		<form action="webJoinNick.do">
+			<table>
+				<tr>
+					<th><h5>Email :</h5></th>
+					<td><b>${id }</b></td>
+				</tr>
+				<c:choose>
+					<c:when test="${num == 1 }">
+						<tr>
+							<td colspan="2"><br> <span id="msg">이미 가입된 이메일
+									입니다.</span></td>
+						</tr>
+						<tr>
+							<td colspan="2"><br> <input type="button"
+								value="로그인하러가기" onclick="location.href='join.do'"
+								class="btn btn-primary"></td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td colspan="3"><br> <span id="msg">사용가능한 이메일
+									입니다.</span></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br> <input type="hidden" value=${id }
+								name="id"> <input type="submit" value="다음"
+								class="btn btn-primary"></td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
+			</table>
+		</form>
 		<br> <br> <br> <br> <br> <br> <br>
 		<br>
 	</center>
