@@ -138,7 +138,7 @@ public class MainPageController {
 		System.out.println("viewBoard"+board);
 		mv.addObject("listComment", comment);
 		mv.setViewName("search.main.viewBoard");
-		return mv; 
+		return mv;  
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value ="insertComment.do")
