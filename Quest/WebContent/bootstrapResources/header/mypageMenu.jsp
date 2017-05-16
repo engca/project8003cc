@@ -31,7 +31,7 @@
 			<div class="btn-group">
 				<input type="button" value="MY LIST"
 					class="btn btn-success1 btn-lg1" id="btn"
-					style="width: 300px; height: 41px;" data-toggle="collapse" data-target="#dropdown" />
+					style="width: 300dp; height: 41dp;" data-toggle="collapse" data-target="#dropdown" />
 				<ul id="dropdown" class = "collapse dropdown-menu">
 					<li><a href="mylistProc.do?boardFlag=1">해주세요</a></li>
 					<li><a href="mylistProc.do?boardFlag=0">잘해요</a></li>
@@ -39,15 +39,15 @@
 				<input type="button" value="COMPLETE LIST"
 					onclick="location.href='complete.do'"
 					class="btn btn-success1 btn-lg1"
-					style="width: 300px; height: 41px;" id = "btn"/> 
+					style="width: 300dp; height: 41dp;" id = "btn"/> 
 				<input type="button"
 					value="BOOKMARK" onclick="location.href='bookmark.do'"
 					class="btn btn-success1 btn-lg1"
-					style="width: 300px; height: 41px;" id = "btn"/> 
+					style="width: 300dp; height: 41dp;" id = "btn"/> 
 				<input type="button"
 					value="PROFILE" onclick="location.href='profile.do'"
 					class="btn btn-success1 btn-lg1"
-					style="width: 300px; height: 41px;" id = "btn"/>
+					style="width: 300dp; height: 41dp;" id = "btn"/>
 			</div>
 		</div>
 	</center>
