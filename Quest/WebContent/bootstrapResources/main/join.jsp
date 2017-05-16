@@ -40,15 +40,15 @@ $(document).ready ( function() {
 	});	
 	
 	// 테스트 중에는 주석임
-// 	$('#password').on('keyup', function(){
+	$('#password').on('keyup', function(){
 // 		var regpass = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).{8,20}/;
 // 		if( !regpass.test($('#password').val()) ) {
 // 			$('#passwordspan').html('특수문자,숫자,영문 대소문자 포함 8자이상!! ');
 // 		} else {
 // 			$('#passwordspan').html('사용가능한 패스워드 입니다.');
-// 			joinCheckPW1 = 1;
+			joinCheckPW1 = 1;
 // 		}					
-// 	});
+	});
 	
 	$('#passwordcheck').on('keyup', function() {				
 		if($('#password').val() != $('#passwordcheck').val()) {
