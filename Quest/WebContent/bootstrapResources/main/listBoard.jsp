@@ -17,7 +17,7 @@
  	}
  }
  </script>
- <style type="text/css">
+ <style type="text/css"> 
  a {
  	textdecoration: none
  }
