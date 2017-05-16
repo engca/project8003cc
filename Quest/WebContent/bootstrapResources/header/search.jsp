@@ -15,7 +15,7 @@
 				$('#sidooo').css('visibility', 'visible');
 				$.ajax({
 					type : 'get',
-					url : 'getSido.ajax',
+					url : 'getSido.do',
 					dataType : 'json',
 					success : function(data)
 					{
@@ -56,7 +56,7 @@
 		var val = btn.value;
 		$.ajax({
 			type : "get",
-			url : "getGugun.ajax",
+			url : "getGugun.do",
 			dataType : "json",
 			data : "sido="+val,
 			success : function(data){
