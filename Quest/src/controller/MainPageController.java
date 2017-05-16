@@ -188,7 +188,7 @@ public class MainPageController {
 		return "redirect:/listBoard.do";
 	}
 	
-	@RequestMapping("getSido.ajax")
+	@RequestMapping("getSido.do")
 	public 
 	@ResponseBody HashMap<String, Object> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
@@ -197,7 +197,7 @@ public class MainPageController {
 		return sido;  
 	}
 
-	@RequestMapping("getGugun.ajax")
+	@RequestMapping("getGugun.do")
 	public
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
