@@ -53,7 +53,7 @@ $(document).ready ( function() {
 	$('#passwordcheck').on('keyup', function() {				
 		if($('#password').val() != $('#passwordcheck').val()) {
 			$('#passwordcheckspan').html('동일한 비밀번호 입력하세요');
-		} else {
+		} else { 
 			$('#passwordcheckspan').html('동일한 비밀번호 입니다');
 			joinCheckPW2 = 1;
 		}
