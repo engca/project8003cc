@@ -27,12 +27,9 @@
 	// kakao
 	Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 	function kakaoLogout() {
-		alert('kakao logout');
-
 		Kakao.Auth.logout(function() {
-			alert('aaaaaaaaaaaaaaaaaaaa');
+			alert('kakao logout');
 		});
-
 	}
 
 	// facebook
@@ -68,27 +65,32 @@
 		ref.parentNode.insertBefore(js, ref);
 	}(document));
 	function facebookLogout() {
-		alert('facebook logout');
 		FB.logout();
-		alert('aaaaaaaa');
+		alert('facebook logout');
 	}
 
 
 	// google
 	function googleLogout() {
+		// 		var auth2 = gapi.auth2.getAuthInstance();
+		// 		auth2.signOut().then(function() {
+		// 			alert('aaaaaaaaaa');
+		// 			console.log('User signed out.');
+		// 		});
+
+// 		location.href = "https://accounts.google.com/logout";
+
+		win = window.open("https://accounts.google.com/logout", "google logout", "width=1, height=1");
 		alert('google logout');
-		var auth2 = gapi.auth2.getAuthInstance();
-		auth2.signOut().then(function() {
-			alert('aaaaaaaaaa');
-			console.log('User signed out.');
-		});
+		win.close();
+
 	}
 
 
 
 	// naver
 	function naverLogout() {
-// 		alert('naver logout');
+		// 		alert('naver logout');
 		var token = $('#token').val();
 		$.ajax({
 			type : "GET",
@@ -98,12 +100,12 @@
 			success : function(result) {
 				//성공하면...
 				// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
-// 				alert(result);
+				// 				alert(result);
 			},
 			error : function(xhrReq, status, error) {
 				// 				alert(error + " / " +error_description);
 				// 				alert(status + " / "+error);
-// 				alert("로그아웃 아니되요..........");
+				// 				alert("로그아웃 아니되요..........");
 			}
 		});
 	}
