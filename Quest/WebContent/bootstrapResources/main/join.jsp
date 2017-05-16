@@ -100,6 +100,7 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                     <hr class="star-primary">
                 </div>
 <form action="userjoin.do" method="post" name="frm" id="frm">
+		<input type = "hidden" value ="1" name = "loginCategory" id="loginCategory">
                 <div class="col-lg-8 col-lg-offset-2">
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -132,7 +133,7 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                         <br>
                         <div id="success"></div>
                             <div class="form-group col-xs-12" align = "right">
-                                <input type="button" class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='viewBoard.do'">
+                                <input type="button" class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='listBoard.do'">
                                 <button type="submit" class="btn btn-success btn-lg" id="btn" onclick="return joinCheckAll()">Send</button>
                                 <br><br><br>
                             </div>

@@ -87,7 +87,7 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="userjoin.do")
-	public String join(String userId, String password, String nickname) throws Exception{
+	public ModelAndView join(String userId, String password, String nickname,  int loginCategory) throws Exception{
 		// 비밀번호 해쉬로 변경 저장.
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(password.getBytes());
@@ -102,9 +102,18 @@ public class MainPageController {
 		param.put("userId", userId );
 		param.put("password", sb.toString());
 		param.put("nickname", nickname);
-		param.put("loginCategory", 1);
+		param.put("loginCategory", loginCategory);
 		service.join(param);
-		return "redirect:/listBoard.do";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("id", userId);
+		mav.addObject("pw", password);
+		mav.addObject("name", nickname);
+		mav.addObject("loginCategory", loginCategory);
+		mav.setViewName("login.do");
+		System.out.println(mav);
+		return mav;
+		// return "redirect:/listBoard.do";
 	}	
 	
 	@RequestMapping("idCheck.do")
