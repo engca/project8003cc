@@ -37,7 +37,7 @@
 				<th width="45%">제목</th>
 				<th width="15%">작성자</th>
 				<th width="15%">작성일</th>
-				<th width="5%">버튼</th>
+				<th width="5%">평가</th>
 			</tr>
 
 			<c:forEach var="board" items="${completeList }">
@@ -45,12 +45,36 @@
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">잘해요</c:if> <c:if
 							test="${board.boardFlag == 1 }">해주세요</c:if></td>
-					<td><a href="viewBoard.do?boardNo=${board.boardNo}">${board.title }</a></td>
+					<c:choose>	
+					<c:when test="${board.sCompleteFlag == 3 }">
+					
+			 			<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">
+			 				<font color="blue">[완료된 퀘스트]</font>	${myboard.title }</a>
+			 			</td>
+					</c:when>
+					<c:otherwise>		 			
+						<td><a href="viewBoard.do?boardNo=${board.boardNo}">${board.title }</a></td>
+					</c:otherwise>
+					</c:choose>
+		 							
+		 							
 					<!-- USER INDEX>ID -->
 					<td>${board.nickname }</td>
 					<td><fmt:formatDate value="${board.date }"
 							pattern="yyyy-MM-dd" /></td>
-					<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo })"></td>
+							
+					
+					<c:choose>
+					<c:when test="${board.sCompleteFlag ==3 }">
+			 			<td> <input type="button" value="완료"> </a>
+			 			</td>
+					</c:when>
+					<c:otherwise>		 			
+						<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo })"></td>
+					</c:otherwise>
+					</c:choose>
+							
+					
 				</tr>
 			</c:forEach>
 

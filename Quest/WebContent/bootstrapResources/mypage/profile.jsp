@@ -66,6 +66,7 @@ $(document).ready ( function() {
 		}
 		http.send();
 	});
+	
 	// 닉네임 중복확인
 	$('#nickname').on('keyup', function(){
 		$.ajax({
@@ -113,7 +114,7 @@ $(document).ready ( function() {
 							</div>
 						</div>
 						
-						<c:if test="loginCategory == 1">
+						<c:if test="${loginCategory== 1 }">
 						<div class="row control-group">
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">

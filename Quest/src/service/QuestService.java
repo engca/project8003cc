@@ -410,7 +410,7 @@ public class QuestService implements IQuestService {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
 			}
 		}
-		
+		System.out.println(params);
 		return dao.updateScore(params);
 	}
 

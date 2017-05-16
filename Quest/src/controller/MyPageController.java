@@ -104,6 +104,7 @@ public class MyPageController {
 		int userIndex = (int)session.getAttribute("userIndex");
 		
 		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(userIndex,page);
+		System.out.println("컴플릿 두 : " + list);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(list);
@@ -156,8 +157,7 @@ public class MyPageController {
 	@RequestMapping("starpointProc.do")
 	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
 		int userIndex = (int)session.getAttribute("userIndex");
-		boardNo=1;
-		int mode=0;
+		int mode=0; 
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("boardNo", boardNo);
 		params.put("userIndex", userIndex);
@@ -165,7 +165,8 @@ public class MyPageController {
 			mode = 0;
 		else 
 			mode = 1;
-		service.writeScore(boardNo, starpoint, mode);
+		int result = service.writeScore(boardNo, starpoint, mode);
+		System.out.println(result);
 		return "redirect:complete.do";
 	}
 

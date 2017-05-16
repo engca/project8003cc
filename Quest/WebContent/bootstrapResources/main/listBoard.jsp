@@ -11,12 +11,13 @@
  	var loginid = '${sessionScope.userId}';
  	if (loginid == ""){
  		alert('로그인 후 가능합니다.');
+ 		window.open('loginForm.do', '', 'width=500, height=400, top = 200, left= 300"');
  	} else {
  		location.href='writeBoard.do'; 
  	}
  }
  </script>
- <style type="text/css">
+ <style type="text/css"> 
  a {
  	textdecoration: none
  }

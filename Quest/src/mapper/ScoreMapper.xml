@@ -1,36 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
-<mapper namespace="dao.IQuestDao"> 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.IQuestDao">
 	<insert id="insertScore" parameterType="java.util.HashMap">
-	INSERT INTO score VALUES (#{user1Index},#{user2Index},#{boardNo},0,0,0)
+		INSERT INTO score VALUES (#{user1Index},#{user2Index},#{boardNo},0,0,0)
 	</insert>
 	<update id="updateScore" parameterType="java.util.HashMap">
-	update score set 
+		update score set
 		sCompleteFlag = #{sCompleteFlag},
-	<if test="user1StarPoint != null">
-		user1StarPoint = #{user1StarPoint}
-	</if>
-	<if test="user2StarPoint != null">
-		user2StarPoint = #{user2StarPoint}
-	</if>
-	where boardNo = #{boardNo}
+		<if test="user1StarPoint != null">
+			user1StarPoint = #{user1StarPoint}
+		</if>
+		<if test="user2StarPoint != null">
+			user2StarPoint = #{user2StarPoint}
+		</if>
+		where boardNo = #{boardNo}
 	</update>
-	<select id="selectScoreByBoardNo" parameterType="int" resultType="java.util.HashMap">
-	SELECT * FROM score WHERE boardNo = #{boardNo} 
-	</select>  
-	<select id="selectScoreByUserindex" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-	SELECT * FROM score WHERE 
-	<if test="user1Index != null">
-		user1Index = #{user1Index}
-	</if>
-	<if test="user2Index != null">
-		user2Index = #{user2Index}
-	</if>  
+
+	<select id="selectScoreByBoardNo" parameterType="int"
+		resultType="java.util.HashMap">
+		SELECT * FROM score WHERE boardNo = #{boardNo}
 	</select>
-	
+	<select id="selectScoreByUserindex" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">
+		SELECT * FROM score WHERE
+		<if test="user1Index != null">
+			user1Index = #{user1Index}
+		</if>
+		<if test="user2Index != null">
+			user2Index = #{user2Index}
+		</if>
+	</select>
+
 	<delete id="deleteScore" parameterType="java.util.HashMap">
-		delete from score where user2Index = #{user2Index} and boardNo = #{boardNo}
+		delete from score where
+		user2Index = #{user2Index} and boardNo = #{boardNo}
 	</delete>
 </mapper>
