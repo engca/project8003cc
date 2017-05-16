@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import commons.Constant;
 import service.IQuestService;
@@ -113,9 +114,7 @@ public class MainPageController {
 //		mav.addObject("name", nickname);
 //		mav.addObject("loginCategory", loginCategory);
 		mav.setViewName("login.do");
-		System.out.println("mav임??"+mav);
-		return mav;
-		// return "redirect:/listBoard.do";
+		return mav;		
 	}	
 	
 	@RequestMapping("idCheck.do")
