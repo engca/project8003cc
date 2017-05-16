@@ -193,7 +193,6 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
 		sido.put("sido", service.getSidoAll());
-//		System.out.println(sido);
 		return sido;  
 	}
 
@@ -202,7 +201,6 @@ public class MainPageController {
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
 		gungu.put("gungu", service.getGungu(sido));
-		System.out.println("gungu"+gungu);
 		return gungu;
 	}
 	
