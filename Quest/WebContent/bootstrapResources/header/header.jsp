@@ -117,7 +117,7 @@
 		// 			}
 		// 		});
 
-		win = window.open("http://nid.naver.com/nidlogin.logout", "google logout", "width=1, height=1, left=2000, top=2000");
+		win = window.open("http://nid.naver.com/nidlogin.logout", "naver logout", "width=1, height=1, left=2000, top=2000");
 		alert('naver logout');
 		win.close();
 	}
