@@ -47,7 +47,7 @@
 							test="${board.boardFlag == 1 }">해주세요</c:if></td>
 					<td>${board.title }</td>
 					<!-- USER INDEX>ID -->
-					<td>${board.userIndex }</td>
+					<td>${board.nickname }</td>
 					<td><fmt:formatDate value="${board.date }"
 							pattern="yyyy-MM-dd" /></td>
 					<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo })"></td>
