@@ -78,8 +78,6 @@
 		// 			console.log('User signed out.');
 		// 		});
 
-// 		location.href = "https://accounts.google.com/logout";
-
 		win = window.open("https://accounts.google.com/logout", "google logout", "width=1, height=1");
 		alert('google logout');
 		win.close();
