@@ -685,8 +685,7 @@ public class QuestService implements IQuestService {
 					mode = 1;
 				
 				params.put("mode", mode);
-				
-				
+								
 				List<HashMap<String, Object>> myboard = dao.selectBoardComplete(params);
 				
 				String nickname =dao.selectNicknname(userIndex);
