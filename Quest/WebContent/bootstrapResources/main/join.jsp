@@ -31,7 +31,7 @@ $(document).ready ( function() {
 						$('#idspan').text('이미 사용중인 ID(이메일) 입니다.');
 						$('#userId').focus();
 					}
-				},
+				}, 
 // 				error : function(xhrReq, status, error) {
 // 					alert('에러');
 // 				}
