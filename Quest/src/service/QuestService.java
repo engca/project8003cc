@@ -384,15 +384,15 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public int writeScore(int boardNo, float starPoint, int mode) {
+	public int writeScore(int boardNo, float starPoint, int mode, HttpSession session) {
 		// TODO Auto-generated method stub
 		// boardNo
 		// starPoint
 		// mode = 0이면 내가 user1_exp
 		// mode = 1이면 내가 user2_exp
 		HashMap<String, Object> params = new HashMap<>();
-
-		int flag = (int) dao.selectScoreByBoardNo(boardNo).get(Constant.Score.SCOMPLETEFLAG);
+		HashMap<String, Object> scoreData = dao.selectScoreByBoardNo(boardNo);
+		int flag = (int) scoreData.get(Constant.Score.SCOMPLETEFLAG);
 		params.put("boardNo", boardNo);
 		
 		if (mode == 0) {
@@ -401,6 +401,24 @@ public class QuestService implements IQuestService {
 				params.put(Constant.Score.SCOMPLETEFLAG, 1);
 			} else {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
+				HashMap<String, Object> user1 = new HashMap<>();
+				HashMap<String, Object> user2 = new HashMap<>();
+				int user1Index = (int) scoreData.get(Constant.Score.USER1INDEX);
+				int user2Index = (int) scoreData.get(Constant.Score.USER2INDEX);
+				float user1StarPoint = (float) scoreData.get(Constant.Score.USER1STARPOINT);
+				float user2StarPoint = (float) scoreData.get(Constant.Score.USER2STARPOINT);
+				int user1DoCount = dao.selectDoCountByUserIndex(user1Index)+1;
+				int user2DoCount = dao.selectDoCountByUserIndex(user2Index)+1;
+				user1.put(Constant.User.USERINDEX, user1Index);
+				user2.put(Constant.User.USERINDEX, user2Index);
+				user1.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user1Index)+user1StarPoint)/user1DoCount);
+				user2.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user2Index)+user2StarPoint)/user2DoCount);
+				user1.put(Constant.User.DOCOUNT, user1DoCount);
+				user2.put(Constant.User.DOCOUNT, user2DoCount);
+				System.out.println(user1);
+				System.out.println(user2);
+				dao.updateUser(user1);
+				dao.updateUser(user2);
 			}
 		} else if (mode == 1) {
 			params.put("user1StarPoint", starPoint);
@@ -408,6 +426,24 @@ public class QuestService implements IQuestService {
 				params.put(Constant.Score.SCOMPLETEFLAG, 2);
 			} else {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
+				HashMap<String, Object> user1 = new HashMap<>();
+				HashMap<String, Object> user2 = new HashMap<>();
+				int user1Index = (int) scoreData.get(Constant.Score.USER1INDEX);
+				int user2Index = (int) scoreData.get(Constant.Score.USER2INDEX);
+				float user1StarPoint = (float) scoreData.get(Constant.Score.USER1STARPOINT);
+				float user2StarPoint = (float) scoreData.get(Constant.Score.USER2STARPOINT);
+				int user1DoCount = dao.selectDoCountByUserIndex(user1Index)+1;
+				int user2DoCount = dao.selectDoCountByUserIndex(user2Index)+1;
+				user1.put(Constant.User.USERINDEX, user1Index);
+				user2.put(Constant.User.USERINDEX, user2Index);
+				user1.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user1Index)+user1StarPoint)/user1DoCount);
+				user2.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user2Index)+user2StarPoint)/user2DoCount);
+				user1.put(Constant.User.DOCOUNT, user1DoCount);
+				user2.put(Constant.User.DOCOUNT, user2DoCount);
+				System.out.println(user1);
+				System.out.println(user2);
+				dao.updateUser(user1);
+				dao.updateUser(user2);
 			}
 		}
 		System.out.println(params);

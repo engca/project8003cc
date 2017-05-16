@@ -165,7 +165,7 @@ public class MyPageController {
 			mode = 0;
 		else 
 			mode = 1;
-		int result = service.writeScore(boardNo, starpoint, mode);
+		int result = service.writeScore(boardNo, starpoint, mode, session);
 		System.out.println(result);
 		return "redirect:complete.do";
 	}

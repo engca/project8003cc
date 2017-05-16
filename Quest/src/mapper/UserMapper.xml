@@ -55,4 +55,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="int">
 		select loginCategory from user where userId = #{userId}
 	</select>
+	<select id="selectDoCountByUserIndex" parameterType="int" resultType="int">
+		select doCount from user where userIndex = #{userIndex}
+	</select>
+	<select id="selectStarPointByUserIndex" parameterType="int" resultType="float">
+		select starPoint from user where userIndex = #{userIndex}
+	</select>
 </mapper>
