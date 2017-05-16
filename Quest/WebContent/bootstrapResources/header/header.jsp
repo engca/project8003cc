@@ -78,7 +78,7 @@
 		// 			console.log('User signed out.');
 		// 		});
 
-		win = window.open("https://accounts.google.com/logout", "google logout", "width=1, height=1");
+		win = window.open("https://accounts.google.com/logout", "google logout", "width=1, height=1, left=innerWidth, top=innerHeight");
 		alert('google logout');
 		win.close();
 
