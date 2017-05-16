@@ -105,14 +105,14 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="userId">아이디(email)</label>
-                                <input type="text" class="form-control" placeholder="사용할 ID(이메일) 입력" name="userId" id="userId" required data-validation-required-message="Please enter your name.">
+                                <input type="text" class="form-control" placeholder="사용할 ID(이메일) 입력" name="id" id="userId" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger" id="idspan"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="password">비밀번호</label>
-                                <input type="password" class="form-control" placeholder="비밀번호 입력"  name="password"  id="password" required data-validation-required-message="Please enter your email address.">
+                                <input type="password" class="form-control" placeholder="비밀번호 입력"  name="pw"  id="password" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger" id="passwordspan"></p>
                             </div>
                         </div>
@@ -126,7 +126,7 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="nickname">닉네임</label>
-                                <input type="text" class="form-control" placeholder="사용할 닉네임 입력" name="nickname"  id="nickname" required data-validation-required-message="Please enter your phone number.">
+                                <input type="text" class="form-control" placeholder="사용할 닉네임 입력" name="name"  id="nickname" required data-validation-required-message="Please enter your phone number.">
                                 <p class="help-block text-danger" id="nicknamespan"></p>
                             </div>
                         </div>

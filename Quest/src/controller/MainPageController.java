@@ -71,12 +71,14 @@ public class MainPageController {
 		params.put("nickname", name);
 		params.put("loginCategory", loginCategory);
 		service.join(params);
+		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("id", id);
-		mav.addObject("pw", pw);
-		mav.addObject("name", name);
-		mav.addObject("loginCategory", loginCategory);
+//		mav.addObject("id", id);
+//		mav.addObject("pw", pw);
+//		mav.addObject("name", name);
+//		mav.addObject("loginCategory", loginCategory);
 		mav.setViewName("login.do");
+		System.out.println("weblogin : " + mav);
 		return mav;
 	}
 	
@@ -87,10 +89,10 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="userjoin.do")
-	public ModelAndView join(String userId, String password, String nickname,  int loginCategory) throws Exception{
+	public ModelAndView join(String id, String pw, String name,  int loginCategory) throws Exception{
 		// 비밀번호 해쉬로 변경 저장.
 		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(password.getBytes());
+		md.update(pw.getBytes());
 		byte[] result = md.digest();
 		StringBuffer sb = new StringBuffer();
 		for (int i=0 ; i < result.length ; i++)
@@ -99,19 +101,19 @@ public class MainPageController {
 		}		
 		
 		HashMap<String, Object> param = new HashMap<>();
-		param.put("userId", userId );
+		param.put("userId", id );
 		param.put("password", sb.toString());
-		param.put("nickname", nickname);
+		param.put("nickname", name);
 		param.put("loginCategory", loginCategory);
 		service.join(param);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("id", userId);
-		mav.addObject("pw", password);
-		mav.addObject("name", nickname);
-		mav.addObject("loginCategory", loginCategory);
+//		mav.addObject("id", userId);
+//		mav.addObject("pw", password);
+//		mav.addObject("name", nickname);
+//		mav.addObject("loginCategory", loginCategory);
 		mav.setViewName("login.do");
-		System.out.println(mav);
+		System.out.println("mav임??"+mav);
 		return mav;
 		// return "redirect:/listBoard.do";
 	}	
