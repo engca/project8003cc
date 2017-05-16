@@ -194,7 +194,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="java.util.HashMap">
 		select * from board, score where
 		board.boardNo=score.boardNo and
-		board.userIndex=#{userIndex} and
+		(score.user1Index=#{userIndex} or score.user2Index = #{userIndex}) and
 		board.bCompleteFlag = 3
 		order by board.boardNo desc
 		limit #{skip}, #{count}
