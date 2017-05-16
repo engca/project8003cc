@@ -27,30 +27,8 @@ h1 {
 <script type="text/javascript">
 $(document).ready ( function() {
 	
-	// id(이메일) 중복확인
-	$('#id').on('keyup', function(){
-		var regEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;		
-		if( !regEmail.test($('#id').val()) ) {
-			$('#idspan').html('올바른 이메일을 입력하세요');
-			$('#id').focus();
-		} else {
-			$.ajax({
-				type : 'post',
-				url : 'idCheck.do',
-				dataType : 'text',
-				data : 'userid=' + $('#id').val(),
-				success : function(data) {
-					if (data != $('#id').val()) {
-						$('#idspan').html('사용가능한 ID(이메일) 입니다.');
-					} else {
-						$('#idspan').text('이미 사용중인 ID(이메일) 입니다.');
-						$('#id').focus();
-					}
-				},
-			});
-		}	
-	});	
-	
+
+
 	$('#password').on('keyup', function(){
 		var regpass = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).{8,20}/;
 		if( !regpass.test($('#pass').val()) ) {
@@ -112,7 +90,7 @@ $(document).ready ( function() {
 
 <body>
 
-	<form action="profileProc.do" method="post" name="frm">
+	<form action="profileProc.do" method="post">
 		
 		<div class="container">
 			<div class="row">
@@ -128,16 +106,17 @@ $(document).ready ( function() {
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">
 								<label for="id">아이디(email)</label> <input type="text"
-									class="form-control" readonly="readonly" id="id" value="${id}">
+									class="form-control" readonly="readonly" id="id" name="userId" value="${userId }">
 								<p class="help-block text-danger" id="idspan"></p>
 							</div>
 						</div>
 						
+						
 						<div class="row control-group">
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="password">비밀번호</label> <input type="password"
-									class="form-control" placeholder="비밀번호 입력" id="password"
+								<label for="password">변경 비밀번호</label> <input type="password"
+									class="form-control" placeholder="변경 비밀번호 입력" name="password" id="password"
 									required
 									data-validation-required-message="Please enter your email address.">
 								<p class="help-block text-danger" id="passwordspan"></p>
@@ -147,9 +126,9 @@ $(document).ready ( function() {
 						<div class="row control-group">
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">
-								<label for="passwordcheck">비밀번호 확인</label> <input
+								<label for="passwordcheck">변경 비밀번호 확인</label> <input
 									type="password" class="form-control"
-									placeholder="동일한 비밀번호 입력하세요" id="passwordcheck" required
+									placeholder="동일한 변경 비밀번호 입력하세요" id="passwordcheck" required
 									data-validation-required-message="Please enter your email address.">
 								<p class="help-block text-danger" id="passwordcheckspan"></p>
 							</div>
@@ -158,18 +137,19 @@ $(document).ready ( function() {
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">
 								<label for="nickname">닉네임</label> <input type="text"
-									class="form-control" placeholder="${nickname }" id="nickname"
+									class="form-control" value="${nickname }" name = "nickname" id="nickname"
 									required
 									data-validation-required-message="Please enter your phone number.">
 								<p class="help-block text-danger" id="nicknamespan"></p>
 							</div>
 						</div>
+						<input type="hidden" name = "userIndex" id ="userIndex" value="${userIndex }">
 						<br>
 						<div id="success"></div>
 						<div class="row">
 							<div class="form-group col-xs-12" align = "right">
 								<input type="button" class="btn btn-primary btn-lg"
-									value="Cancel" onclick="location.href='글상세보기.do'">
+									value="Cancel" onclick="location.href='bookmark.do'">
 								<button type="submit" class="btn btn-success btn-lg" id="btn">Send</button>
 							</div>
 						</div>

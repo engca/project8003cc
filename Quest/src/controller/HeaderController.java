@@ -53,7 +53,9 @@ public class HeaderController {
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public String login(HttpSession session, String id, String pw, int loginCategory,
 			@RequestParam(defaultValue = "noname") String name) {
+		
 		System.out.println("로그인>>>>>>>>" + id + " " + pw + " " + loginCategory + " " + name);
+		
 		session.setAttribute("loginCategory", loginCategory);
 
 		if (loginCategory == 1) {
