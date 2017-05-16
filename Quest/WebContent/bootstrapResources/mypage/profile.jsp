@@ -143,11 +143,20 @@ $(document).ready ( function() {
 								class="form-group col-xs-12 floating-label-form-group controls">
 								<label for="nickname">닉네임</label> <input type="text"
 									class="form-control" value="${nickname }" name = "nickname" id="nickname"
-									required
-									data-validation-required-message="Please enter your phone number.">
+									required data-validation-required-message="Please enter your phone number.">
 								<p class="help-block text-danger" id="nicknamespan"></p>
 							</div>
 						</div>
+						
+						<div class="row control-group">
+							<div
+								class="form-group col-xs-12 floating-label-form-group controls">
+								<label for="starPoint"> </label> <input type="text" readonly="readonly"
+									class="form-control" value="별점 : ${starPoint } 점 / 퀘스트 진행 : ${doCount } 건 " name = "starPoint" id="starPoint"									required data-validation-required-message="Please enter your phone number.">
+								<p class="help-block text-danger" id="nicknamespan"></p>
+							</div>
+						</div>
+						
 						<input type="hidden" name = "userIndex" id ="userIndex" value="${userIndex }">
 						<br>
 						<div id="success"></div>
