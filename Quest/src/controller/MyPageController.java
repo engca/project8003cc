@@ -1,5 +1,6 @@
 package controller;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -169,16 +170,31 @@ public class MyPageController {
 	}
 
 	@RequestMapping("profileProc.do")
-	public String profileProc(HashMap<String, Object> params) {
-		HashMap<String, Object> origin_User = service.getUser((int) params.get("userIndex"));
-
-		if (params.get("pass") != null) {
-			origin_User.put("pass", params.get("pass"));
+	public String profileProc(String password,int userIndex, String nickname) throws Exception {
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(password.getBytes());
+		byte[] result = md.digest();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < result.length; i++) {
+			sb.append(Integer.toHexString(0xFF & result[i]));
 		}
-
-		if (params.get("nickname") != null) {
-			origin_User.put("nickname", params.get("nickname"));
+		
+//		System.out.println("profileProc pass : " + password);
+		//user 정보 불러오기
+		HashMap<String, Object> origin_User = service.getUser(userIndex);
+//		System.out.println("profileProc user : " +origin_User); 
+		if ( password != null) {
+			
+			origin_User.put("password", sb.toString());
 		}
+		String origin_nick = service.nickname(userIndex);
+
+		if (nickname.equals(origin_nick) ) {
+			origin_User.put("nickname", null);
+		} else{
+			origin_User.put("nickname", nickname);
+		}
+		
 
 		service.updateUser(origin_User);
 

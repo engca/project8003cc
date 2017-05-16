@@ -10,9 +10,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<update id="updateUser" parameterType="java.util.HashMap">
-		UPDATE user SET password = #{password}, nickname = #{nickname}, starPoint =
-		#{starPoint},
-		doCount = #{doCount} WHERE userIndex = #{userIndex}
+		UPDATE user SET 
+		
+		<if test="password != null">
+		password = #{password}
+		</if>
+		<if test="nickname != null">
+		, nickname = #{nickname}
+		</if>
+		<if test="starPoint != null">
+		 , starPoint =#{starPoint}
+		</if>
+		<if test="doCount != null">
+		 ,	doCount = #{doCount}
+		</if>
+		 WHERE userIndex = #{userIndex}
 	</update>
 
 	<delete id="deleteUser" parameterType="int">
