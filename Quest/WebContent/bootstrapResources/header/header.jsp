@@ -27,9 +27,17 @@
 	// kakao
 	Kakao.init("3a5e1bee013eec09ef701f6bf5efacba");
 	function kakaoLogout() {
-		Kakao.Auth.logout(function() {
-			alert('kakao logout');
+		Kakao.Auth.logout(function(obj) {
+			if (obj == true) {
+				alert("로그아웃 되었습니다.");
+				location.href="logout.do";
+			} else {
+				alert("로그아웃 실패하였습니다.");
+			}
 		});
+// 		win = window.open("http://developers.kakao.com/logout", "kakao logout", "width=1, height=1, left=innerWidth, top=innerHeight");
+// 		alert('kakao logout');
+// 		win.close();
 	}
 
 	// facebook
@@ -66,7 +74,7 @@
 	}(document));
 	function facebookLogout() {
 		FB.logout();
-		alert('facebook logout');
+		alert("로그아웃 되었습니다.");
 	}
 
 
@@ -78,7 +86,7 @@
 		// 			console.log('User signed out.');
 		// 		});
 
-		win = window.open("https://accounts.google.com/logout", "google logout", "width=1, height=1, left=innerWidth, top=innerHeight");
+		win = window.open("https://accounts.google.com/logout", "google logout", "width=1, height=1, left=2000, top=2000");
 		alert('google logout');
 		win.close();
 
@@ -180,7 +188,7 @@
 								test="${sessionScope.loginCategory == 1 }">
 								<a href="logout.do">
 							</c:if> <c:if test="${sessionScope.loginCategory == 3 }">
-								<a href="logout.do" onclick="kakaoLogout()">카카오톡 
+								<a href="#" onclick="kakaoLogout()">카카오톡 
 							</c:if> <c:if test="${sessionScope.loginCategory == 2 }">
 								<a href="logout.do" onclick="facebookLogout()">페이스북 
 							</c:if> <c:if test="${sessionScope.loginCategory == 4 }">
