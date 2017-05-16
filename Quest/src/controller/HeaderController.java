@@ -66,7 +66,7 @@ public class HeaderController {
 		} else {
 			return webCheck(id, session, name);
 		}
-		return "redirect:listBoard.do";
+		return "redirect:listBoard.do"; 
 	}
 
 	@RequestMapping("logout.do")
