@@ -200,6 +200,8 @@ select {
 <body>
 	<center>
 		<div class="div"></div>
+		<div class="div"></div>
+		<div class="div"></div>
 			<form action="searchBoard.do">
 				<div class="form-group">
 					<div class="form-inline">

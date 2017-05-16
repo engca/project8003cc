@@ -119,7 +119,7 @@ public class MyPageController {
 	
 	@RequestMapping("mylistProc.do")
 	public ModelAndView mylistProc
-	(HttpSession session, @RequestParam(defaultValue="1")int page,@RequestParam(defaultValue="9")int boardFlag) {
+	(HttpSession session, @RequestParam(defaultValue="1")int page,int boardFlag) {
 		int userIndex = (int) session.getAttribute("userIndex");
 		
 		
@@ -128,7 +128,7 @@ public class MyPageController {
 //		mav.addObject("myapply",jservice.myapply(userIndex, page));
 		mav.addObject("boardFlag",boardFlag);
 		mav.addAllObjects(service.myapply(userIndex, page, boardFlag));
-		mav.addAllObjects(service.myboard(userIndex, page,boardFlag));
+		mav.addAllObjects(service.myboard(userIndex, page, boardFlag));
 		mav.setViewName("mypageMenu.mypage.mylist");
 		return mav;
 		
