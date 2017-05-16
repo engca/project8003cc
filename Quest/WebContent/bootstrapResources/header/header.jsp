@@ -30,14 +30,14 @@
 		Kakao.Auth.logout(function(obj) {
 			if (obj == true) {
 				alert("로그아웃 되었습니다.");
-				location.href="logout.do";
+				location.href = "logout.do";
 			} else {
 				alert("로그아웃 실패하였습니다.");
 			}
 		});
-// 		win = window.open("http://developers.kakao.com/logout", "kakao logout", "width=1, height=1, left=innerWidth, top=innerHeight");
-// 		alert('kakao logout');
-// 		win.close();
+	// 		win = window.open("http://developers.kakao.com/logout", "kakao logout", "width=1, height=1, left=innerWidth, top=innerHeight");
+	// 		alert('kakao logout');
+	// 		win.close();
 	}
 
 	// facebook
@@ -91,31 +91,35 @@
 		win.close();
 
 	}
-	
-	
+
+
 
 
 
 	// naver
 	function naverLogout() {
 		// 		alert('naver logout');
-		var token = $('#token').val();
-		$.ajax({
-			type : "GET",
-			dataType : "JSON",
-			url : "https://nid.naver.com/oauth2.0/token",
-			data : "grant_type=delete&client_id=i5QN1eYsBD3HXcwrS_w7&client_secret=auZLADqLCW&access_token=" + token + "&service_provider=NAVER",
-			success : function(result) {
-				//성공하면...
-				// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
-				// 				alert(result);
-			},
-			error : function(xhrReq, status, error) {
-				// 				alert(error + " / " +error_description);
-				// 				alert(status + " / "+error);
-				// 				alert("로그아웃 아니되요..........");
-			}
-		});
+		// 		var token = $('#token').val();
+		// 		$.ajax({
+		// 			type : "GET",
+		// 			dataType : "JSON",
+		// 			url : "https://nid.naver.com/oauth2.0/token",
+		// 			data : "grant_type=delete&client_id=i5QN1eYsBD3HXcwrS_w7&client_secret=auZLADqLCW&access_token=" + token + "&service_provider=NAVER",
+		// 			success : function(result) {
+		// 				//성공하면...
+		// 				// 				location.href = "http://localhost:8080/ajaxTest/Test02.jsp?id=" + id;
+		// 				alert(result);
+		// 			},
+		// 			error : function(xhrReq, status, error) {
+		// 				// 				alert(error + " / " +error_description);
+		// 				// 				alert(status + " / "+error);
+		// 				alert("로그아웃 아니되요..........");
+		// 			}
+		// 		});
+
+		win = window.open("http://nid.naver.com/nidlogin.logout", "google logout", "width=1, height=1, left=2000, top=2000");
+		alert('naver logout');
+		win.close();
 	}
 </script>
 <style type="text/css">
