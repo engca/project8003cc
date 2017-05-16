@@ -57,8 +57,6 @@
 					</c:otherwise>
 					</c:choose>
 		 							
-		 			
-		 							
 		 							
 					<!-- USER INDEX>ID -->
 					<td>${board.nickname }</td>
