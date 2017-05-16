@@ -14,7 +14,6 @@ select {
 	height: 35px;
 }
 </style>
-
 	<div id="board" class="container">
 			
 				<c:if test="${boardFlag == 0}">
