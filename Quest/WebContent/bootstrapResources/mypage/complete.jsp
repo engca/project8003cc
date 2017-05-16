@@ -33,8 +33,8 @@
 		<table class="table table-striped">
 			<tr>
 				<th width="5%">No</th>
-				<th width="15%">구분</th>
-				<th width="45%">제목</th>
+				<th width="20%">구분</th>
+				<th width="40%">제목</th>
 				<th width="15%">작성자</th>
 				<th width="15%">작성일</th>
 				<th width="5%">평가</th>
@@ -43,13 +43,27 @@
 			<c:forEach var="board" items="${completeList }">
 				<tr>
 					<td>${board.boardNo }</td>
-					<td><c:if test="${board.boardFlag == 0 }">잘해요</c:if> <c:if
-							test="${board.boardFlag == 1 }">해주세요</c:if></td>
+					<td><c:if test="${board.boardFlag == 0 }">
+							<c:if test="${board.user1Index == board.userIndex }">
+							잘해요(요청중)
+							</c:if>
+							<c:if test="${board.user1Index != board.userIndex }">
+							잘해요(신청중)
+							</c:if>
+						</c:if> 
+						<c:if test="${board.boardFlag == 1 }">
+							<c:if test="${board.user1Index == board.userIndex }">
+							해주세요(요청중)
+							</c:if>
+							<c:if test="${board.user1Index != board.userIndex }">
+							해주세요(신청중)
+							</c:if>
+						</c:if></td>
 					<c:choose>	
 					<c:when test="${board.sCompleteFlag == 3 }">
 					
 			 			<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">
-			 				<font color="blue">[완료된 퀘스트]</font>	${myboard.title }</a>
+			 				<font color="blue">[완료된 퀘스트]</font>${board.title }</a>
 			 			</td>
 					</c:when>
 					<c:otherwise>		 			
