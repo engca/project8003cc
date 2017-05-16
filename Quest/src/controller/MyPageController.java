@@ -104,6 +104,7 @@ public class MyPageController {
 		int userIndex = (int)session.getAttribute("userIndex");
 		
 		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(userIndex,page);
+		System.out.println("컴플릿 두 : " + list);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(list);
