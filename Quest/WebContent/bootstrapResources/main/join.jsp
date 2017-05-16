@@ -48,7 +48,7 @@ $(document).ready ( function() {
 // 			$('#passwordspan').html('사용가능한 패스워드 입니다.');
 			joinCheckPW1 = 1;
 // 		}					
-	});
+	}); 
 	
 	$('#passwordcheck').on('keyup', function() {				
 		if($('#password').val() != $('#passwordcheck').val()) {
