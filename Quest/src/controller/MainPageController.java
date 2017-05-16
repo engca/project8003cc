@@ -73,7 +73,7 @@ public class MainPageController {
 		service.join(params);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("id", id);
-		mav.addObject("password", pw);
+		mav.addObject("pw", pw);
 		mav.addObject("name", name);
 		mav.addObject("loginCategory", loginCategory);
 		mav.setViewName("login.do");
