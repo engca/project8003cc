@@ -188,21 +188,19 @@ public class MainPageController {
 		return "redirect:/listBoard.do";
 	}
 	
-	@RequestMapping("getSido.ajax")
+	@RequestMapping("getSido.do")
 	public 
 	@ResponseBody HashMap<String, Object> getSido(){
 		HashMap<String, Object> sido = new HashMap<>();
 		sido.put("sido", service.getSidoAll());
-//		System.out.println(sido);
 		return sido;  
 	}
 
-	@RequestMapping("getGugun.ajax")
+	@RequestMapping("getGugun.do")
 	public
 	@ResponseBody HashMap<String, Object> getGugun(String sido){
 		HashMap<String, Object> gungu = new HashMap<>();
 		gungu.put("gungu", service.getGungu(sido));
-		System.out.println("gungu"+gungu);
 		return gungu;
 	}
 	
