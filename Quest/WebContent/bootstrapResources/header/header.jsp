@@ -87,7 +87,7 @@
 		// 		});
 
 		win = window.open("https://accounts.google.com/logout", "google logout", "width=1, height=1, left=2000, top=2000");
-		alert('google logout');
+		alert("로그아웃 되었습니다.");
 		win.close();
 
 	}
@@ -118,7 +118,7 @@
 		// 		});
 
 		win = window.open("http://nid.naver.com/nidlogin.logout", "naver logout", "width=1, height=1, left=2000, top=2000");
-		alert('naver logout');
+		alert("로그아웃 되었습니다.");
 		win.close();
 	}
 </script>
