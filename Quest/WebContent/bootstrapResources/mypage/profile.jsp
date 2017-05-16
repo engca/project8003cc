@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -111,7 +113,7 @@ $(document).ready ( function() {
 							</div>
 						</div>
 						
-						
+						<c:if test="loginCategory == 1">
 						<div class="row control-group">
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">
@@ -133,6 +135,8 @@ $(document).ready ( function() {
 								<p class="help-block text-danger" id="passwordcheckspan"></p>
 							</div>
 						</div>
+						</c:if>
+						
 						<div class="row control-group">
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">
