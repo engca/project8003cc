@@ -119,12 +119,12 @@
 								${param.reward1 }
 								
 									&nbsp;&nbsp;&nbsp; 
-								<c:if test="${param.reward2 != null}">																														
+								<c:if test="${param.reward2 != ''}">																														
 									<input type="radio" name="rewardNo" id="reward" value="2"> 
 									${param.reward2 }
 								</c:if>								
 								&nbsp;&nbsp; 
-								<c:if test="${param.reward3 != null}">	
+								<c:if test="${param.reward3 != ''}">	
 									<input type="radio" name="rewardNo" id="reward" value="3"> 
 									${param.reward3 }
 								</c:if>	
