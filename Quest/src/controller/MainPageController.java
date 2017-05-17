@@ -145,26 +145,22 @@ public class MainPageController {
 		List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(board);
-		System.out.println("viewBoard"+board);
 		mv.addObject("listComment", comment);
+		System.out.println("viewBoard"+board+"listComment"+comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv;  
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value ="insertComment.do")
 	public String insertComment(@RequestParam HashMap<String, Object> comment, HttpSession session){
-		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
-		System.out.println(comment);
 		service.writeComment(comment);
-		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO+"&userIndex="+userIndex);
+		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO)+"&userIndex="+comment.get(Constant.Commnet.USERINDEX);
 	}
 	
 	@RequestMapping("deleteComment.do")
 	public String deleteComment(@RequestParam HashMap<String, Object> comment, HttpSession session){
-		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
-		System.out.println(comment);
 		service.deleteComment(comment);
-		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO+"&userIndex="+userIndex);
+		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO)+"&userIndex="+comment.get(Constant.Commnet.USERINDEX);
 	}
 	
 	@RequestMapping("deleteBoardPopup.do")

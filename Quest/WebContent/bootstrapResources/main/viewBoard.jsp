@@ -186,7 +186,7 @@ select {
 									<input type="button" class="btn btn-info btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 								</c:if>
 								<c:if test="${boardList.bCompleteFlag != 3}">
-									<c:if test="${applydata == null }">
+									<c:if test="${applydata != null or sessionScope.userIndex != boardList.userIndex }">									
 										<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 									</c:if>
 								</c:if>
@@ -228,7 +228,7 @@ select {
 							<td colspan="3">${comment.content}</td>
 							<td align="center">${comment.date }</td>
 							<td><c:if test="${sessionScope.nickname == comment.nickname }">
-									<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${boardList.userIndex }'"
+									<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${sessionScope.userIndex }&content=${comment.content }'"
 										value="삭제">
 							</c:if></td>
 					</tr>

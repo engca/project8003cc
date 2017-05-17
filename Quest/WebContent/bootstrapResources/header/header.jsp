@@ -187,7 +187,7 @@
 				<div class="menu2">
 					<ul class="nav navbar-nav">
 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-						<li class="page-scroll1"><a href="profile.do">마이페이지</a></li>
+						<li class="page-scroll1"><a href="mylistProc.do?boardFlag=1">마이페이지</a></li>
 						<li class="page-scroll1"><c:if
 								test="${sessionScope.loginCategory == 1 }">
 								<a href="logout.do">

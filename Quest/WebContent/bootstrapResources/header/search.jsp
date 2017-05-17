@@ -12,7 +12,7 @@
 		$('#sangseaBtn').click(function() {
 			if(btn == 1)
 			{
-				$('#sidooo').css('visibility', 'visible');
+				$('#sidooo').css('display', '');
 				$.ajax({
 					type : 'get',
 					url : 'getSido.do',
@@ -39,18 +39,21 @@
 				{
 					$('#sidooo').empty();
 					$('#gunguuu').empty();
-					$('#areaList').empty();
-// 					$('#area').empty();
-					$('#sidooo').css('visibility', 'hidden');
-					$('#gunguuu').css('visibility', 'hidden');
-					$('#areaBackground').css('visibility', 'hidden');
+					//$('#areaList').remove("button");
+					// $('#area').empty();
+					$("#areaList input").each(function(){
+						$( this ).detach();
+	    			});
+					$('#sidooo').css('display', 'none');
+					$('#gunguuu').css('display', 'none');
+					$('#areaList').css('display', 'none');
 					btn = 1;				
 				}
 		});
 	});
 	function searchGungu(btn){
-		$('#gunguuu').css('visibility', 'visible');
-		$('#areaList').css('visibility', 'visible');
+		$('#gunguuu').css('display', '');
+		$('#areaList').css('display', '');
 		divList = $('<span >');
 		$('#areaList').append(divList);
 		var val = btn.value;
@@ -66,10 +69,18 @@
 				$(data.gungu).each(function(index){
 						
 					var td = $('<li>');
-					var b = $('<input type ="checkbox"  onclick="changeCheck(this)" name="area" value="'+this.gungu+'">');
+					var label = $('<label class = "btn btn-success active">');
+					/* <label class="btn btn-success active">
+						<input type="checkbox" autocomplete="off" checked>
+						<span class="glyphicon glyphicon-ok"></span>
+					</label> */
+					var b = $('<input type ="checkbox" autocomplete="off" onclick="changeCheck(this)" name="area" autocomplete="off" value="'+this.gungu+'">');
 					var c = this.gungu;
-					td.append(b);
-					td.append(c);		
+					label.append(b);
+					label.append(c);
+// 					td.append(b);
+// 					td.append(c);
+					td.append(label);
 					tr.append(td);
 				});
 						div.append(tr);
@@ -83,15 +94,14 @@
 	function changeCheck(btn)
 	{	
 		 if($(btn).is(":checked")){
-			 	
-	            var input = $('<input type = "button" class = "btn-primary" onclick ="deleteBtn(this)"  style = "margin:3px" value = "'+ $(btn).val()+'"/>');
+	            var input = $('<input type = "button" class = "btn-primary" onclick ="deleteBtn(this)"  style = "margin:3px" value = "'+ $(btn).val()+'" id = "'+ $(btn).val()+'"/>');
 	            divList.after(input);
-	            
-	        }else{
+	        }
+		 else{
 	        	$("#areaList input").each(function(){
 	    			if($(this).val() == $(btn).val())
 	    			{
-	    				$('div.'+$(btn).val()).remove();
+						$( this ).detach();
 	    			}
 	    		});
 	        }
@@ -101,7 +111,7 @@
 		$("#areaList input").each(function(){
 			if($(this).val() == $(button).val())
 			{
-				$(this).remove();
+				$(this).detach();
 			}
 		});
 		$("input:checked").each(function(){
@@ -120,11 +130,6 @@ input[type="checkbox"], input[type="radio"] {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 10;
-}
-
-.ls2 {
-	letter-spacing: -1px;
-	word-spacing: 3px;
 }
 
 select {
@@ -177,9 +182,6 @@ select {
 	margin-right : 6px;
 	color : #F3F3F3;
 }
-#areaBackground{
-
-}
 #areaList
 {
 	margin : 3px;
@@ -198,12 +200,11 @@ select {
 </style>
 </head>
 <body>
-	<center>
 		<div class="div"></div>
 		<div class="div"></div>
 		<div class="div"></div>
 			<form action="searchBoard.do">
-				<div class="form-group">
+				<div class="form-group" align = "center">
 					<div class="form-inline">
 						<select name="boardFlag" class="form-control">
 							<option value="0">잘해요</option>
@@ -217,19 +218,15 @@ select {
 						<input type="submit" value="검색" class="btn btn-primary"> 
 						<input id="sangseaBtn" type="button" value="상세검색" class="btn btn-success">
 						
-<!-- 					<div id="sangsea" style="visibility: hidden;width: 800px;" align="center"> <br> -->
-						<div id="sidooo" align="center" style="align:center;width: 900px; visibility: hidden;"></div>
-						<div id="gunguuu" style=" visibility: hidden;"></div>
-						<div id = "areaBackground" style="visibility: hidden; ">
-						<div id="areaList"	style=" width: 750px;" align ="left">
-								<span>선택한 지역 : </span>
+						<div id="sidooo"  style="width: 900px; display:none;"></div>
+						<div id="gunguuu" style=" display:none;"></div>
+						<div id="areaList"	style="display:none; width: 800px;" align ="left">
+								<label class = "btn btn-info"><span>선택한 지역 : </span></label>
 						</div>
-						</div>
-<!-- 					</div>  -->
 				</div>
 			</div>
 		</form>
-	</center>
+	<hr>
 
 </body>
 </html>
