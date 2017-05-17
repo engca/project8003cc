@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.bcel.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -127,11 +128,15 @@ public class HeaderController {
 		} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) == 1) {
 			System.out.println("2. 아이디가 중복이면서 loginCategory가 1인 경우");
 			return "redirect:webJoin.do?num=1&id=" + id;
+		} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) != 4) {
+			System.out.println("2. 아이디가 중복이면서 loginCategory가 1인 경우");
+			return "redirect:webJoin.do?num=1&id=" + id;
 		} else {
 			HashMap<String, Object> user = service.getUser(service.getUserIndexById(id));
 			session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
-			session.setAttribute(Constant.User.NICKNAME, name);
-			session.setAttribute(Constant.User.USERID, id);
+			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
+			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
+			session.setAttribute("loginCategory", user.get("loginCategory"));
 			return "redirect:listBoard.do";
 		}
 	}
