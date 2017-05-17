@@ -116,16 +116,17 @@
 							<tr align="center">
 								<th>보상</th>
 								<td><input type="radio" name="rewardNo" id="reward"	value="1" checked="checked"> 
-								<%=request.getParameter("reward1")%>
+								${param.reward1 }
+								
 									&nbsp;&nbsp;&nbsp; 
-								<c:if test="${paramValues.reward2 == null}">																														
+								<c:if test="${param.reward2 != null}">																														
 									<input type="radio" name="rewardNo" id="reward" value="2"> 
-									<%=request.getParameter("reward2")%>
+									${param.reward2 }
 								</c:if>								
 								&nbsp;&nbsp; 
-								<c:if test="${paramValues.reward3 == null}">	
+								<c:if test="${param.reward3 != null}">	
 									<input type="radio" name="rewardNo" id="reward" value="3"> 
-									<%=request.getParameter("reward3")%>
+									${param.reward3 }
 								</c:if>	
 								</td>
 							</tr>

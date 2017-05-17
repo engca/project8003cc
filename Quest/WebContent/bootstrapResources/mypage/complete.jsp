@@ -62,7 +62,7 @@
 					<c:when test="${board.sCompleteFlag == 3 }">
 					
 			 			<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">
-			 				<font color="red">[완료된 퀘스트]</font>${board.title }</a>
+			 				<font color="red">[완료된 퀘스트] &nbsp;</font>${board.title }</a>
 			 			</td>
 					</c:when>
 					<c:otherwise>		 			
