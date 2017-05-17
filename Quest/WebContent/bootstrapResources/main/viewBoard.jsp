@@ -186,7 +186,8 @@ select {
 									<input type="button" class="btn btn-info btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 								</c:if>
 								<c:if test="${boardList.bCompleteFlag != 3}">
-									<c:if test="${applydata != null or sessionScope.userIndex != boardList.userIndex }">									
+									
+									<c:if test="${applydata == null and sessionScope.userIndex != boardList.userIndex}">									
 										<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 									</c:if>
 								</c:if>

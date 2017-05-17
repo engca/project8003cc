@@ -44,20 +44,20 @@ select {
 									<td>${myboard.boardNo }</td>
 									
 									<c:if test="${myboard.bCompleteFlag ==0 }">
-		 								<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">	${myboard.title } </a>
+		 								<td><a href="viewBoard.do?boardNo=${myboard.boardNo}&userIndex=${userIndex}">	${myboard.title } </a>
 		 							
 									</td>	 							
 		 							</c:if> 
 		 												
 		 							<c:if test="${myboard.bCompleteFlag ==1 }">
-		 								<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">
-		 									<font color="red">[완료된 퀘스트]</font>	${myboard.title }</a>
+		 								<td><a href="viewBoard.do?boardNo=${myboard.boardNo}&userIndex=${userIndex}">
+		 									<font color="red">[완료된 퀘스트] &nbsp; </font>	${myboard.title }</a>
 				 						</td>
 		 							</c:if>
 		 							
 		 							<c:if test="${myboard.bCompleteFlag ==3 }">
-			 							<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">
-			 								<font color="blue">[진행중 퀘스트]</font>	${myboard.title }</a>
+			 							<td><a href="viewBoard.do?boardNo=${myboard.boardNo}&userIndex=${userIndex}">
+			 								<font color="blue">[진행중 퀘스트] &nbsp;</font>	${myboard.title }</a>
 			 						 	</td>
 		 							</c:if> 					
 		 					
@@ -93,7 +93,7 @@ select {
 									<td><c:if test="${myapply.aCompleteFlag == 1 }">접수완료</c:if> 
 										<c:if test="${myapply.aCompleteFlag == 2 }">간택완료</c:if>
 										<c:if test="${myapply.aCompleteFlag == 3 }">간택실패</c:if></td>
-									<td><a href="viewBoard.do?boardNo=${myapply.boardNo }">${myapply.title }</a></td>
+									<td><a href="viewBoard.do?boardNo=${myapply.boardNo }&userIndex=${userIndex}">${myapply.title }</a></td>
 									<td>${myapply.nickname}</td>
 									<td><fmt:formatDate value="${myapply.date }" pattern="yyyy-MM-dd" /></td>
 									<td>${myapply.readCount }</td>
