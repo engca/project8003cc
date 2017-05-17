@@ -55,7 +55,7 @@ public interface IQuestDao {
 	public List<HashMap<String, Object>> selectScoreByUserindex(HashMap<String, Object> params);
 //	public Score selectScoreByUser1Id(int user1_index);
 //	public Score selectScoreByUser2Id(int user2_index);
-	public HashMap<String, Object> selectScoreByBoardNo(int boardNo);
+	public HashMap<String, Object> selectScoreByBoardNo(HashMap<String, Object> params);
 	public int selectUserIndexById(String id);
 	public int deleteScore(HashMap<String, Object> params);
 	

@@ -36,16 +36,16 @@
 					<li><a href="mylistProc.do?boardFlag=1">해주세요</a></li>
 					<li><a href="mylistProc.do?boardFlag=0">잘해요</a></li>
 				</ul>
-				<input type="button" value="COMPLETE LIST"
+				<input type="button" value="평가하기"
 					onclick="location.href='complete.do'"
 					class="btn btn-success1 btn-lg1"
 					style="width: 300dp; height: 38dp;" id = "btn"/> 
 				<input type="button"
-					value="BOOKMARK" onclick="location.href='bookmark.do'"
+					value="즐겨찾기" onclick="location.href='bookmark.do'"
 					class="btn btn-success1 btn-lg1"
 					style="width: 300dp; height: 38dp;" id = "btn"/> 
 				<input type="button"
-					value="PROFILE" onclick="location.href='profile.do'"
+					value="정보수정" onclick="location.href='profile.do'"
 					class="btn btn-success1 btn-lg1"
 					style="width: 300dp; height: 38dp;" id = "btn"/>
 			</div>

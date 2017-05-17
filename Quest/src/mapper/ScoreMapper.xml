@@ -18,9 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where boardNo = #{boardNo}
 	</update>
 
-	<select id="selectScoreByBoardNo" parameterType="int"
+	<select id="selectScoreByBoardNo" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
-		SELECT * FROM score WHERE boardNo = #{boardNo}
+		SELECT * FROM score WHERE boardNo = #{boardNo} and user2Index = #{user2Index}
 	</select>
 	<select id="selectScoreByUserindex" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">

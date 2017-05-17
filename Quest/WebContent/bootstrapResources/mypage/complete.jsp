@@ -12,8 +12,9 @@
 <meta name="author" content="">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function starpointPopup(boardNo) {
-		var popUrl = "starpoint.do?boardNo="+boardNo;
+	function starpointPopup(boardNo, user2Index) {
+		alert(user2Index);
+		var popUrl = "starpoint.do?boardNo="+boardNo+"&user2Index="+user2Index;
 		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 		window.open(popUrl,"",popOption);
 	}
@@ -34,10 +35,12 @@
 				<th width="5%">No</th>
 				<th width="20%">구분</th>
 				<th width="40%">제목</th>
-				<th width="15%">작성자</th>
-				<th width="15%">작성일</th>
+				<th width="10%">작성자</th>
+				<th width="10%">수행자</th>
+				<th width="10%">작성일</th>
 				<th width="5%">평가</th>
 			</tr>
+			
 
 			<c:forEach var="board" items="${completeList }">
 				<tr>
@@ -59,12 +62,28 @@
 							</c:if>
 						</c:if></td>
 					<c:choose>	
-					<c:when test="${board.sCompleteFlag == 3 }">
+					<c:when test="${board.bCompleteFlag ==0 }">
+					
+			 			<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${board.userIndex }">
+			 				${board.title }</a>
+			 			</td>
+					</c:when>
+					<c:when test="${board.bCompleteFlag ==1  }">
 					
 			 			<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${board.userIndex }">
 			 				<font color="red">[완료된 퀘스트] &nbsp;</font>${board.title }</a>
 			 			</td>
 					</c:when>
+					<c:when test="${board.bCompleteFlag ==3}">
+					
+			 			<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${board.userIndex }">
+			 				<font color="blue">[진행중 퀘스트] &nbsp;</font>${board.title }</a>
+			 			</td>
+					</c:when>
+					<c:when test="${board.bCompleteFlag ==2}">
+						<td><font color="gray"><strike>삭제된 게시글 입니다</strike></font></td>
+					</c:when>
+					
 					<c:otherwise>		 			
 						<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${board.userIndex }">${board.title }</a></td>
 					</c:otherwise>
@@ -73,6 +92,7 @@
 		 							
 					<!-- USER INDEX>ID -->
 					<td>${board.nickname }</td>
+					<td>${board.playNick }</td>
 					<td><fmt:formatDate value="${board.date }"
 							pattern="yyyy-MM-dd" /></td>
 							
@@ -83,7 +103,7 @@
 			 			</td>
 					</c:when>
 					<c:otherwise>		 			
-						<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo })"></td>
+						<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo }, ${board.user2Index })"></td>
 					</c:otherwise>
 					</c:choose>
 							

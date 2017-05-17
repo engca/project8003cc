@@ -384,14 +384,20 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public int writeScore(int boardNo, float starPoint, int mode, HttpSession session) {
+	public int writeScore(int boardNo, float starPoint, int mode, HttpSession session, int user2Index) {
 		// TODO Auto-generated method stub
 		// boardNo
 		// starPoint
 		// mode = 0이면 내가 user1_exp
 		// mode = 1이면 내가 user2_exp
 		HashMap<String, Object> params = new HashMap<>();
-		HashMap<String, Object> scoreData = dao.selectScoreByBoardNo(boardNo);
+		
+		HashMap<String, Object> tmpParams = new HashMap<>();
+		tmpParams.put("boardNo", boardNo);
+		tmpParams.put("user2Index", user2Index);
+	
+		HashMap<String, Object> scoreData = dao.selectScoreByBoardNo(tmpParams);
+				
 		int flag = (int) scoreData.get(Constant.Score.SCOMPLETEFLAG);
 		params.put("boardNo", boardNo);
 		
@@ -404,7 +410,6 @@ public class QuestService implements IQuestService {
 				HashMap<String, Object> user1 = new HashMap<>();
 				HashMap<String, Object> user2 = new HashMap<>();
 				int user1Index = (int) scoreData.get(Constant.Score.USER1INDEX);
-				int user2Index = (int) scoreData.get(Constant.Score.USER2INDEX);
 				float user1StarPoint = (float) scoreData.get(Constant.Score.USER1STARPOINT);
 				float user2StarPoint = (float) scoreData.get(Constant.Score.USER2STARPOINT);
 				int user1DoCount = dao.selectDoCountByUserIndex(user1Index)+1;
@@ -432,7 +437,6 @@ public class QuestService implements IQuestService {
 				HashMap<String, Object> user1 = new HashMap<>();
 				HashMap<String, Object> user2 = new HashMap<>();
 				int user1Index = (int) scoreData.get(Constant.Score.USER1INDEX);
-				int user2Index = (int) scoreData.get(Constant.Score.USER2INDEX);
 				float user1StarPoint = (float) scoreData.get(Constant.Score.USER1STARPOINT);
 				float user2StarPoint = (float) scoreData.get(Constant.Score.USER2STARPOINT);
 				int user1DoCount = dao.selectDoCountByUserIndex(user1Index)+1;
@@ -765,15 +769,15 @@ public class QuestService implements IQuestService {
 		
 		
 		//score table에 해당 보드넘버가 없으면 boardFlag 0
-		HashMap<String, Object> selectScore = dao.selectScoreByBoardNo(boardNo);
-		System.out.println("deleteApplyUSer select Score " + selectScore);
-		
-		if(selectScore == null){
-			HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
-			flag.put("bCompleteFlag", 0);
-			dao.updateBoard(flag);
-			System.out.println(flag);
-		}
+//		HashMap<String, Object> selectScore = dao.selectScoreByBoardNo(boardNo);
+//		System.out.println("deleteApplyUSer select Score " + selectScore);
+//		
+//		if(selectScore == null){
+//			HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
+//			flag.put("bCompleteFlag", 0);
+//			dao.updateBoard(flag);
+//			System.out.println(flag);
+//		}
 				
 				
 		// apply테이블 컴플리트 플래그 2. 간택완료로 바꿈

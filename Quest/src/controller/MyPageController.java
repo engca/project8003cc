@@ -103,10 +103,22 @@ public class MyPageController {
 		
 		HashMap<String, Object> list = (HashMap<String,Object>) service.mycomplete(userIndex,page);
 		System.out.println("컴플릿 두 : " + list);
-		
+//		System.out.println(list.get("completeList"));
+//		int cnt = 0;
+		for(HashMap<String, Object> tmp : (List<HashMap<String, Object>>) list.get("completeList")) {
+//			cnt++;
+//			list.put("playUserIndex"+cnt, tmp.get("user2Index"));
+			tmp.put("playNick", service.nickname((int) tmp.get("user2Index")));
+			System.out.println("playNick" + service.nickname((int) tmp.get("user2Index")));
+			
+		}
+//		List<HashMap<String, Object>> completeList = (List<HashMap<String, Object>>) list.get("completeList");
+//		System.out.println();
+//		String playnick = service.nickname(Integer.parseInt(completeList.get(25));
 		ModelAndView mav = new ModelAndView();
 		mav.addAllObjects(list);
 		mav.setViewName("mypageMenu.mypage.complete");
+		System.out.println("?");
 		return mav;
 	}
 
@@ -146,14 +158,15 @@ public class MyPageController {
 
 	
 	@RequestMapping("starpoint.do")
-	public String starpoint(int boardNo, Model model) {
+	public String starpoint(int boardNo, Model model, int user2Index) {
 		model.addAttribute("boardNo", boardNo);
+		model.addAttribute("user2Index", user2Index);
 		return "starpoint.popup";
 	} 
 	
 	
 	@RequestMapping("starpointProc.do")
-	public String starpointProc(HttpSession session, int boardNo, int starpoint) {
+	public String starpointProc(HttpSession session, int boardNo, int starpoint, int user2Index) {
 		int userIndex = (int)session.getAttribute("userIndex");
 		int mode=0; 
 		HashMap<String, Object> params = new HashMap<>();
@@ -163,7 +176,7 @@ public class MyPageController {
 			mode = 0;
 		else 
 			mode = 1;
-		int result = service.writeScore(boardNo, starpoint, mode, session);
+		int result = service.writeScore(boardNo, starpoint, mode, session, user2Index);
 		System.out.println(result);
 		return "redirect:complete.do";
 	}
