@@ -31,7 +31,6 @@ public class MyPageController {
 //		 System.out.println("getboard"+ Integer.parseInt((String)(params.get("boardNo"))));
 		 HashMap<String, Object> tmp = service.getBoard(Integer.parseInt((String)(params.get("boardNo"))));
 //		 System.out.println("tmp"+service.getContact(Integer.parseInt((String)params.get("contactNo"))));
-		 
 		 tmp.put("contact", service.getContact(Integer.parseInt((String)params.get("contactNo"))));
 		 ModelAndView mav = new ModelAndView();
 		 mav.addAllObjects(tmp);

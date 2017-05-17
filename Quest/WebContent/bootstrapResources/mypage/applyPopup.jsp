@@ -116,17 +116,17 @@
 							<tr align="center">
 								<th>보상</th>
 								<td><input type="radio" name="rewardNo" id="reward"	value="1" checked="checked"> 
-								${param.reward1 }
+								${reward1 }
 								
 									&nbsp;&nbsp;&nbsp; 
-								<c:if test="${param.reward2 != ''}">																														
+								<c:if test="${reward2 != ''}">																														
 									<input type="radio" name="rewardNo" id="reward" value="2"> 
-									${param.reward2 }
+									${reward2 }
 								</c:if>								
 								&nbsp;&nbsp; 
-								<c:if test="${param.reward3 != ''}">	
+								<c:if test="${reward3 != ''}">	
 									<input type="radio" name="rewardNo" id="reward" value="3"> 
-									${param.reward3 }
+									${reward3 }
 								</c:if>	
 								</td>
 							</tr>
