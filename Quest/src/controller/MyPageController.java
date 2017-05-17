@@ -36,7 +36,7 @@ public class MyPageController {
 		 mav.addAllObjects(tmp);
 		 mav.setViewName("applyPopup.popup");
 	
-		 return mav;
+		 return mav; 
 	 }
 	 
 
