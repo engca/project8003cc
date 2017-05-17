@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 		</foreach>
 		</if>
 		<if test="searchKey != null and searchKey != ''">
-			and userIndex like CONCAT('%',#{searchKey},'%')
+			and nickname like CONCAT('%',#{searchKey},'%')
 		</if>
 		
 		order by boardNo desc
