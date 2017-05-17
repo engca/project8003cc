@@ -61,12 +61,12 @@
 					<c:choose>	
 					<c:when test="${board.sCompleteFlag == 3 }">
 					
-			 			<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">
+			 			<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${board.userIndex }">
 			 				<font color="red">[완료된 퀘스트] &nbsp;</font>${board.title }</a>
 			 			</td>
 					</c:when>
 					<c:otherwise>		 			
-						<td><a href="viewBoard.do?boardNo=${board.boardNo}">${board.title }</a></td>
+						<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${board.userIndex }">${board.title }</a></td>
 					</c:otherwise>
 					</c:choose>
 		 							

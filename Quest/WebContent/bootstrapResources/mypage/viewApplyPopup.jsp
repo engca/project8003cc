@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-.info{ 
+.info{
 
 }
 </style>
@@ -106,14 +106,16 @@
 			</div>
 		</div>
 		<p>
+		
 		<table class="info">
+		
 			<tr>
 				<td>글&nbsp;&nbsp;번&nbsp;&nbsp;호&nbsp;:</td>
 				<td>&nbsp;${boardList.boardNo }</td>
 			</tr>
 			<tr>
 				<td>
-			제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;:</td>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목&nbsp;:</td>
 				<td> ${boardList.title }</td>
 			</tr>
 			<tr>
@@ -152,7 +154,8 @@
 							<c:when test="${applyUser.aCompleteFlag ==2 }">
 						
 						<td>
-							<input type="button" name="${applyUser.userIndex }" value="간택취소" id="${applyUser.userIndex }" onclick="deleteUaer(this)">
+<%-- 							<input type="button" name="${applyUser.userIndex }" value="간택취소" id="${applyUser.userIndex }" onclick="deleteUaer(this)"> --%>
+								<input type="button" value="선택완료"  disabled="disabled">
 						</td>
 						</c:when>
 							<c:otherwise>
@@ -165,11 +168,21 @@
 	
 			</table>
 			<center>
+				<c:choose>
+						<c:when test="${boardList.bCompleteFlag == 0 }">
 				<input type="button" class="btn btn-primary btn-lg" 
 				value="취소"onclick="window.close()">&nbsp;&nbsp;&nbsp;&nbsp; 
 				<c:if test="$"></c:if>
 				<input type="button"class="btn btn-success btn-lg" id="btn"
 				value="신청완료" onclick="applyUser()">
+				</c:when>
+				</c:choose>
+				
+				<c:choose>
+						<c:when test="${boardList.bCompleteFlag ==3 }">
+						<input type="button" class="btn btn-primary btn-lg" value="확인"onclick="window.close()">
+						</c:when>
+				</c:choose>
 			</center>
 		</form>
 	</div>

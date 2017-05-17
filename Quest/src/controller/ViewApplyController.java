@@ -24,7 +24,7 @@ public class ViewApplyController {
 
 	@RequestMapping("viewApplyPopup.do")
 	public ModelAndView viewApplyPopup(@RequestParam HashMap<String, Object> params, Model model) {
-		// System.out.println("viewApply" + params);
+		 System.out.println("viewApply param" + params);
 
 		// data from applyTable by boardNo
 		List<HashMap<String, Object>> applydata = service.listApply(Integer.parseInt((String) params.get("boardNo")));

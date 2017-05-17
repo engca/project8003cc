@@ -16,6 +16,15 @@ function applyPopup(){
 	apply.method = "post";
 	apply.submit(); 
 }
+function deleteapplyPopup(){
+	var apply = document.apply;
+	window.name = "applyParent";
+	window.open('','apply','width=500, height=600');
+	apply.action = "deleteapplyPopup.do";
+	apply.target = "apply";
+	apply.method = "post";
+	apply.submit(); 
+}
 function bookmarkPopup(){
 	$.ajax({
 		type : 'get',
@@ -180,6 +189,7 @@ select {
 									<input type="hidden" name="reward3" value=${boardList.reward3 }>
 									<input type="hidden" name="people" value=${boardList.people }>
 									<input type="hidden" name="contactNo" value=${boardList.contactNo }>
+									<input type="hidden" name="bCompleteFlag" value=${boardList.bCompleteFlag }>
 								</form>
 							<c:if test="${boardList.bCompleteFlag !=1 }">
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
@@ -189,6 +199,10 @@ select {
 									
 									<c:if test="${applydata == null and sessionScope.userIndex != boardList.userIndex}">									
 										<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
+									</c:if>
+									
+									<c:if test="${applydata != null}">									
+										<input type="button" class="btn btn-info btn-lg" value="신청취소" onclick="deleteapplyPopup()">
 									</c:if>
 								</c:if>
 							</c:if> 
