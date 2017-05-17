@@ -66,10 +66,18 @@
 				$(data.gungu).each(function(index){
 						
 					var td = $('<li>');
-					var b = $('<input type ="checkbox"  onclick="changeCheck(this)" name="area" value="'+this.gungu+'">');
+					var label = $('<label class = "btn btn-success active">');
+					/* <label class="btn btn-success active">
+						<input type="checkbox" autocomplete="off" checked>
+						<span class="glyphicon glyphicon-ok"></span>
+					</label> */
+					var b = $('<input type ="checkbox" autocomplete="off" onclick="changeCheck(this)" name="area" autocomplete="off" value="'+this.gungu+'">');
 					var c = this.gungu;
-					td.append(b);
-					td.append(c);		
+					label.append(b);
+					label.append(c);
+// 					td.append(b);
+// 					td.append(c);
+					td.append(label);
 					tr.append(td);
 				});
 						div.append(tr);
@@ -83,15 +91,14 @@
 	function changeCheck(btn)
 	{	
 		 if($(btn).is(":checked")){
-			 	
-	            var input = $('<input type = "button" class = "btn-primary" onclick ="deleteBtn(this)"  style = "margin:3px" value = "'+ $(btn).val()+'"/>');
+	            var input = $('<input type = "button" class = "btn-primary" onclick ="deleteBtn(this)"  style = "margin:3px" value = "'+ $(btn).val()+'" id = "'+ $(btn).val()+'"/>');
 	            divList.after(input);
-	            
-	        }else{
+	        }
+		 else{
 	        	$("#areaList input").each(function(){
 	    			if($(this).val() == $(btn).val())
 	    			{
-	    				$('div.'+$(btn).val()).remove();
+						$( this ).detach();
 	    			}
 	    		});
 	        }
@@ -221,8 +228,8 @@ select {
 						<div id="sidooo" align="center" style="align:center;width: 900px; visibility: hidden;"></div>
 						<div id="gunguuu" style=" visibility: hidden;"></div>
 						<div id = "areaBackground" style="visibility: hidden; ">
-						<div id="areaList"	style=" width: 750px;" align ="left">
-								<span>선택한 지역 : </span>
+						<div id="areaList"	style=" width: 800px;" align ="left">
+								<label class = "btn btn-info"><span>선택한 지역 : </span></label>
 						</div>
 						</div>
 <!-- 					</div>  -->
