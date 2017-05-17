@@ -26,7 +26,6 @@
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<h2>COMPLETE LIST</h2>
-				<hr class="star-primary">
 			</div>
 		</div>
 		
@@ -63,7 +62,7 @@
 					<c:when test="${board.sCompleteFlag == 3 }">
 					
 			 			<td><a href="viewBoard.do?boardNo=${myboard.boardNo}">
-			 				<font color="blue">[완료된 퀘스트]</font>${board.title }</a>
+			 				<font color="red">[완료된 퀘스트]</font>${board.title }</a>
 			 			</td>
 					</c:when>
 					<c:otherwise>		 			
