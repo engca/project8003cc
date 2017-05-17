@@ -36,7 +36,29 @@ public class MainPageController {
 	IQuestService service; 
 	 
 	@RequestMapping("listBoard.do")
-	public ModelAndView BoardAllList(@RequestParam(defaultValue = "1") int boardFlag, @RequestParam(defaultValue="1")int page ){		
+	public ModelAndView BoardAllList(HttpSession session, @RequestParam(required=false, defaultValue="0") int boardFlag, @RequestParam(required=false, defaultValue="0") int page){	
+
+		if ( session.getAttribute("boardFlag")==null && session.getAttribute("page")==null ){
+			//처음 listBoard에 들어왓을때
+			session.setAttribute(Constant.Board.PAGE, 1);
+			session.setAttribute(Constant.Board.BOARDFLAG, 1);
+			page = 1;
+			boardFlag = 1;
+		}	
+		else if( boardFlag == 0 && page == 0)
+		{
+			//세번째경우 
+			//만약에 쟤네 파라미터 안들어오면 얘네 0들어와야함
+			page = (int)session.getAttribute("page");
+			boardFlag = (int)session.getAttribute("boardFlag");
+		}
+		else {
+			// 두번째 이상으로 들어왓을때
+			// 내가 최근에 들어온 boardFlag랑 page 세션에 갱신
+			session.setAttribute(Constant.Board.PAGE, page);
+			session.setAttribute(Constant.Board.BOARDFLAG, boardFlag);
+		}
+		
 		HashMap<String, Object> data = service.getBoardList(boardFlag, page); 
 		ModelAndView mav = new ModelAndView();
 		if(boardFlag==0){
@@ -45,7 +67,6 @@ public class MainPageController {
 		else if(boardFlag==1){
 			data.put("header1", "해주세요");
 		}
-//		System.out.println(data);
 		mav.addAllObjects(data);
 		mav.setViewName("search.main.listBoard");
 		return mav;		

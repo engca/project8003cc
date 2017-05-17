@@ -21,6 +21,7 @@ public class Constant {
 		public static final String STTIME = "stTime";
 		public static final String PLAYTIME = "playTime";
 		public static final String CONTENT = "content";
+		public static final String PAGE = "page";
 	}
 
 	public static class User {
