@@ -26,7 +26,6 @@ public class MyPageController {
 	 @RequestMapping("applyPopup.do")
 	 public ModelAndView applyPopup(@RequestParam HashMap<String, Object> params) {
 //		 System.out.println("applyPopup.do");
-//		 System.out.println("params" + params);
 //		 System.out.println("boardNo: " + params.get("boardNo"));
 //		 System.out.println("getboard"+ Integer.parseInt((String)(params.get("boardNo"))));
 		 HashMap<String, Object> tmp = service.getBoard(Integer.parseInt((String)(params.get("boardNo"))));
