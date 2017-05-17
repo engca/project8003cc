@@ -123,8 +123,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="selectBoardByWriter" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
-		SELECT * from board
+		SELECT * from board , user
 		where boardFlag = #{boardFlag} 
+		and user.userIndex = board.userIndex
 		<if test="area != null">
 		and addrNo in
 			<foreach collection="area" item="addrno"  open="(" close=")" separator=",">
@@ -132,9 +133,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 		</foreach>
 		</if>
 		<if test="searchKey != null and searchKey != ''">
-			and userIndex like CONCAT('%',#{searchKey},'%')
+			and user.nickname like CONCAT('%',#{searchKey},'%')
 		</if>
-		
 		order by boardNo desc
 		limit #{skip}, #{count}
 	</select>
