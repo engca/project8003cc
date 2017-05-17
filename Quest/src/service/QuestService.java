@@ -449,7 +449,7 @@ public class QuestService implements IQuestService {
 				dao.updateUser(user2);
 				HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
 				tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
-				dao.updateBoard(tmp);
+				dao.updateBoard(tmp); 
 			}
 		}
 		System.out.println(params);
