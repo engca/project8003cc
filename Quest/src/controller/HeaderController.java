@@ -122,7 +122,7 @@ public class HeaderController {
 	}
 
 	public String webCheck(String id, HttpSession session, String name) {
-		if (service.idCheck(id) == 0) {
+		if (service.idCheck(id) == 0) { 
 			System.out.println("1. 아이디 사용 가능  " + id);
 			return "redirect:webJoin.do?num=0&id=" + id;
 		} else if (service.idCheck(id) == 1 && service.loginCategoryCheck(id) == 1) {
