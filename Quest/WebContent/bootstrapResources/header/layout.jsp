@@ -34,18 +34,6 @@
 	<script src="bootstrapResources/js/freelancer.min.js"></script>
 	
 	
-<script language="JavaScript">
-	top.window.moveTo(0, 0);
-	if (document.all) {
-		top.window.resizeTo(screen.availWidth, screen.availHeight);
-	} else if (document.layers || document.getElementById) {
-		if (top.window.outerHeight < screen.availHeight
-				|| top.window.outerWidth < screen.availWidth) {
-			top.window.outerHeight = screen.availHeight;
-			top.window.outerWidth = screen.availWidth;
-		}
-	}
-</script>
 </head>
 <body>
 	<table class="table-responsive" style="width: 100%; height: 100%"
@@ -56,7 +44,7 @@
 		</tr>
 		<tr>
 			<td>
-					<tiles:insertAttribute name="bar"></tiles:insertAttribute>
+				<tiles:insertAttribute name="bar"></tiles:insertAttribute>
 			</td>
 		</tr>
 		<tr>
