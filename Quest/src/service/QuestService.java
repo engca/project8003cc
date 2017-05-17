@@ -419,6 +419,9 @@ public class QuestService implements IQuestService {
 				System.out.println(user2);
 				dao.updateUser(user1);
 				dao.updateUser(user2);
+				HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
+				tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
+				dao.updateBoard(tmp);
 			}
 		} else if (mode == 1) {
 			params.put("user1StarPoint", starPoint);
@@ -444,6 +447,9 @@ public class QuestService implements IQuestService {
 				System.out.println(user2);
 				dao.updateUser(user1);
 				dao.updateUser(user2);
+				HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
+				tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
+				dao.updateBoard(tmp);
 			}
 		}
 		System.out.println(params);
