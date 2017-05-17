@@ -182,8 +182,11 @@
 			<div class="col-lg-12 text-center">
 				<h2>평 가 하 기</h2>
 				<hr class="star-primary">
+				<h4>평가는 수정이 불가능 합니다. <br> 신중하게 평가해주시기 바랍니다.</h4>
+				<br>
 			</div>
 		</div>
+		
 		<div class="row" align="center">
 
 

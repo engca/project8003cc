@@ -80,7 +80,7 @@
 					
 					<c:choose>
 					<c:when test="${board.sCompleteFlag ==3 }">
-			 			<td> <input type="button" value="완료"> </a>
+			 			<td> <input type="button" value="완료" class="btn btn-default" disabled="disabled"> </a>
 			 			</td>
 					</c:when>
 					<c:otherwise>		 			

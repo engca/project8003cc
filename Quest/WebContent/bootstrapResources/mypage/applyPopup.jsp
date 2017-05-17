@@ -125,7 +125,7 @@
 							<tr align="center">
 								<th>연락 방법</th>
 								<td><input type="hidden" name="contactNo" id="contactNo"
-									value="${contactNo }"> ${contact}<input type="text"
+									value="${contactNo }"> ${contact} &nbsp;<input type="text"
 									placeholder="연락처를 입력하세요." name="contactAnswer"
 									id="contactAnswer"><br> <span id="contactSpan"></span>
 								</td>
