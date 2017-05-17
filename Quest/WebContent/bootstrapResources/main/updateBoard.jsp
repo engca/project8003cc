@@ -10,7 +10,7 @@
 <script type="text/javascript">
 $.ajax({
 	type : "get",
-	url : "getSido.ajax",
+	url : "getSido.do",
 	dataType : "json",
 	success : function(data) {
 		$(data.sido).each(function(index) {
@@ -30,7 +30,7 @@ $(document).ready(function(){
 	 var selectedVal = $('#sido option:selected').val();
 	 $.ajax({
 		type : "get",
-		url : "getGugun.ajax",
+		url : "getGugun.do",
 		dataType : "json",
 		data : "sido="+selectedVal,
 		success : function(data){
