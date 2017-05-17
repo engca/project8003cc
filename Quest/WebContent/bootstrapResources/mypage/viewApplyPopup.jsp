@@ -76,6 +76,21 @@
 
 	}
 	
+	function count_chk(btn){
+		var chkbox = document.getElementsByName("chk");
+		var chkCnt = 0;
+		for(var i=0 ; i<chkbox.length; i++){
+			if(chkbox[i].checked){
+				chkCnt++;
+			}
+		}
+		if(chkCnt > ${boardList.people }){
+			alert("필요인원 이상을 선택하셨습다.");
+			btn.checked = false;
+			return false;
+		}
+	}
+	
 	
 	
 </script>
@@ -115,7 +130,7 @@
 		<form name="userApply">
 			<table class="table table-striped">
 				<tr>
-					<th width="5%"> <input type="checkbox" name="selectAll" onclick="CheckAll()">   </th>
+					<th width="5%">     </th>
 					<th width="15%">신청자</th>
 					<th width="15%">선택한 보상</th>
 					<th width="10%">연락처</th>
@@ -125,7 +140,7 @@
 				<c:forEach var="applyUser" items="${applyList }">
 					
 					<tr name="tr_${applyUser.userIndex }" >
-						<td> <input type="checkbox" name="chk" id="chk" value="${applyUser.userIndex }">
+						<td> <input type="checkbox" name="chk" id="chk" value="${applyUser.userIndex }" onclick="count_chk(this)" >
 						<td>${applyUser.nickname }</td>
 						<td>
 							<c:if test="${applyUser.rewardNo==1 }">${boardList.reward1 }</c:if>

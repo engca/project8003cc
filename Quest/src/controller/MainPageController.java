@@ -152,15 +152,19 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value ="insertComment.do")
-	public String insertComment(@RequestParam HashMap<String, Object> comment, HttpSession session){		
+	public String insertComment(@RequestParam HashMap<String, Object> comment, HttpSession session){
+		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+		System.out.println(comment);
 		service.writeComment(comment);
-		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO);
+		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO+"&userIndex="+userIndex);
 	}
 	
 	@RequestMapping("deleteComment.do")
-	public String deleteComment(@RequestParam HashMap<String, Object> comment, HttpSession session){		
+	public String deleteComment(@RequestParam HashMap<String, Object> comment, HttpSession session){
+		int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
+		System.out.println(comment);
 		service.deleteComment(comment);
-		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO);
+		return "redirect:/viewBoard.do?boardNo="+comment.get(Constant.Commnet.BOARDNO+"&userIndex="+userIndex);
 	}
 	
 	@RequestMapping("deleteBoardPopup.do")
