@@ -157,7 +157,7 @@
 					</ul>
 				</div>
 				<div class="logo" id="logo" align="center">
-					<a href='listBoard.do'> <img
+					<a href='listBoard.do?boardFlag=1&page=1'> <img
 						src="bootstrapResources/img/questlogo.png" width="350px"
 						height="100px">
 					</a>
@@ -179,7 +179,7 @@
 					</ul>
 				</div>
 				<div class="logo" id="logo" align="center">
-					<a href='listBoard.do'> <img alt=""
+					<a href='listBoard.do?boardFlag=1&page=1'> <img alt=""
 						src="bootstrapResources/img/questlogo.png" width="350px"
 						height="100px">
 					</a>

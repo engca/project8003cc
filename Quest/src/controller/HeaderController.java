@@ -82,8 +82,8 @@ public class HeaderController {
 	}
 
 	@RequestMapping("searchBoard.do")
-	public ModelAndView searchBoard(HttpSession session, @RequestParam(required=false, defaultValue="0") int boardFlag,
-			@RequestParam(defaultValue = "0") int searchFlag, @RequestParam(required=false, defaultValue="0") int page,
+	public ModelAndView searchBoard(HttpSession session, @RequestParam(required=false, defaultValue="3") int boardFlag,
+			@RequestParam(defaultValue = "0") int searchFlag, @RequestParam(required=false, defaultValue="1") int page,
 			@RequestParam(required = false) String searchKey, @RequestParam(required = false) String[] area) {
 		
 		if ( session.getAttribute("boardFlag")==null && session.getAttribute("page")==null ){
@@ -93,7 +93,7 @@ public class HeaderController {
 			page = 1;
 			boardFlag = 1;
 		}	
-		else if( boardFlag == 0 && page == 0)
+		else if( boardFlag == 3 && page == 1)
 		{
 			//세번째경우 
 			//만약에 쟤네 파라미터 안들어오면 얘네 0들어와야함
@@ -105,7 +105,7 @@ public class HeaderController {
 			// 내가 최근에 들어온 boardFlag랑 page 세션에 갱신
 			session.setAttribute(Constant.Board.PAGE, page);
 			session.setAttribute(Constant.Board.BOARDFLAG, boardFlag);
-		}	
+		}
 		
 		System.out.println("controller");
 		HashMap<String, Object> data = service.searchBoardList(boardFlag, searchFlag, page, searchKey, area);
