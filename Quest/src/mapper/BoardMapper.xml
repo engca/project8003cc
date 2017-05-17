@@ -125,7 +125,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="java.util.HashMap">
 		SELECT * from board , user
 		where boardFlag = #{boardFlag} 
-		and user.userIndex = board.userIndex
+		and user.userIndex = board.userIndex 
 		<if test="area != null">
 		and addrNo in
 			<foreach collection="area" item="addrno"  open="(" close=")" separator=",">
