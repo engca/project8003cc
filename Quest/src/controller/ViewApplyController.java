@@ -19,7 +19,7 @@ import service.IQuestService;
 @Controller
 public class ViewApplyController {
 	@Autowired
-	IQuestService service;
+	IQuestService service; 
 	
 
 	@RequestMapping("viewApplyPopup.do")
