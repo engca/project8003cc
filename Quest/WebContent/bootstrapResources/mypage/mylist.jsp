@@ -34,8 +34,8 @@ text-align: center;
 							<tr>
 								
 								<th align="center" width="5%">No</th>
-								<th align="center" width="45%">제목</th>
 								<th align="center" width="10%">신청자현황</th>
+								<th align="center" width="45%">제목</th>
 								<th align="center" width="15%">작성자</th>
 								<th align="center" width="15%">작성일</th>
 								<th align="center" width="5%">조회수</th>
@@ -45,6 +45,19 @@ text-align: center;
 								<tr>
 									
 									<td>${myboard.boardNo }</td>
+									
+									<c:choose>
+										<c:when test="${myboard.bCompleteFlag ==3 }">
+										<td> 진행중 </td>
+										</c:when>
+										<c:when test="${myboard.bCompleteFlag ==1 }">
+										<td><font color="red"> 완료</font> </td>
+										</c:when>
+										<c:otherwise>
+										<td align="center"><font color=blue>${myboard.totalapplycount}</font></td>
+										</c:otherwise>
+									</c:choose>
+									
 									
 									<c:if test="${myboard.bCompleteFlag ==0 }">
 		 								<td><a href="viewBoard.do?boardNo=${myboard.boardNo}&userIndex=${userIndex}">	${myboard.title } </a>
@@ -69,17 +82,6 @@ text-align: center;
 		 							</c:if>
 
 									<!-- USER INDEX>ID -->
-									<c:choose>
-										<c:when test="${myboard.bCompleteFlag ==3 }">
-										<td> 진행중 </td>
-										</c:when>
-										<c:when test="${myboard.bCompleteFlag ==1 }">
-										<td><font color="red"> 완료</font> </td>
-										</c:when>
-										<c:otherwise>
-										<td align="center"><font color=blue>${myboard.totalapplycount}</font></td>
-										</c:otherwise>
-									</c:choose>
 									
 									
 									<td align="center">${myboardnickname}</td>
