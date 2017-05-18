@@ -10,15 +10,16 @@
 <style type="text/css">
 .div {
 	background: #FFB400;
-	height: 65px;
+	height: 75px;
 	padding: 10px;
 }
 
 #btn {
-	color : white;
+	color: white;
 }
+
 #btn:HOVER {
-	color : #18CCA8;   
+	color: #18CCA8;
 }
 </style>
 
@@ -31,23 +32,22 @@
 			<div class="btn-group">
 				<input type="button" value="MY LIST"
 					class="btn btn-success1 btn-lg1" id="btn"
-					style="width: 300dp; height: 38dp;" data-toggle="collapse" data-target="#dropdown" />
-				<ul id="dropdown" class = "collapse dropdown-menu">
+					style="width: 300dp; height: 38dp;" data-toggle="collapse"
+					data-target="#dropdown" />
+				<ul id="dropdown" class="collapse dropdown-menu">
 					<li><a href="mylistProc.do?boardFlag=1">해주세요</a></li>
 					<li><a href="mylistProc.do?boardFlag=0">잘해요</a></li>
 				</ul>
 				<input type="button" value="평가하기"
 					onclick="location.href='complete.do'"
 					class="btn btn-success1 btn-lg1"
-					style="width: 300dp; height: 38dp;" id = "btn"/> 
-				<input type="button"
-					value="즐겨찾기" onclick="location.href='bookmark.do'"
+					style="width: 300dp; height: 38dp;" id="btn" /> <input
+					type="button" value="즐겨찾기" onclick="location.href='bookmark.do'"
 					class="btn btn-success1 btn-lg1"
-					style="width: 300dp; height: 38dp;" id = "btn"/> 
-				<input type="button"
-					value="정보수정" onclick="location.href='profile.do'"
+					style="width: 300dp; height: 38dp;" id="btn" /> <input
+					type="button" value="정보수정" onclick="location.href='profile.do'"
 					class="btn btn-success1 btn-lg1"
-					style="width: 300dp; height: 38dp;" id = "btn"/>
+					style="width: 300dp; height: 38dp;" id="btn" />
 			</div>
 		</div>
 	</center>
