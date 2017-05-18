@@ -683,6 +683,10 @@ public class QuestService implements IQuestService {
 		String nickname =dao.selectNicknname(userIndex);
 		 
 		HashMap<String, Object> result = new HashMap<>();
+		for ( HashMap<String, Object> mylist : myboard ){
+			int totalapplycount = dao.applyCount((int)(mylist.get("boardNo")));	
+			mylist.put("totalapplycount", totalapplycount);
+		}
 		result.put("myboardstart", start);
 		result.put("myboardfirst", first);
 		result.put("myboardend", end);
@@ -692,7 +696,7 @@ public class QuestService implements IQuestService {
 		result.put("myboardnickname", nickname);
 		result.put("myboardboardFlag", boardFlag);
 
-		return result;
+		return result; 
 	}
 
 	public HashMap<String, Object> getAddress(int addrNo) {

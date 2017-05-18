@@ -7,6 +7,7 @@
 <style type="text/css">
 th {
 	width: 150px;
+	text-align: center;
 }
 
 select {
@@ -31,11 +32,12 @@ select {
 						<table class="table table-striped">
 							<tr>
 								
-								<th width="5%">No</th>
-								<th width="50%">제목</th>
-								<th width="20%">작성자</th>
-								<th width="20%">작성일</th>
-								<th width="5%">조회수</th>
+								<th align="center" width="5%">No</th>
+								<th align="center" width="45%">제목</th>
+								<th align="center" width="15%">신청자현황</th>
+								<th align="center" width="15%">작성자</th>
+								<th align="center" width="15%">작성일</th>
+								<th align="center" width="5%">조회수</th>
 							
 							</tr>
 							<c:forEach var="myboard" items="${myboard }">
@@ -66,10 +68,11 @@ select {
 		 							</c:if>
 
 									<!-- USER INDEX>ID -->
-									<td>${myboardnickname}</td>
-									<td><fmt:formatDate value="${myboard.date }"
+									<td align="center"><font color=blue>${myboard.totalapplycount}</font></td>
+									<td align="center">${myboardnickname}</td>
+									<td align="center"><fmt:formatDate value="${myboard.date }"
 											pattern="yyyy-MM-dd" /></td>
-									<td>${myboard.readCount }</td>
+									<td align="center">${myboard.readCount }</td>
 									
 								</tr>
 							</c:forEach>
@@ -80,23 +83,23 @@ select {
 					<div>
 						<table class="table table-striped">
 							<tr>
-								<th width="5%">No</th>
-								<th width="15%">구분</th>
-								<th width="45%">제목</th>
-								<th width="15%">작성자</th>
-								<th width="15%">작성일</th>
-								<th width="5%">조회수</th>
+								<th align="center" width="5%">No</th>
+								<th align="center" width="15%">구분</th>
+								<th align="center" width="45%">제목</th>
+								<th align="center" width="15%">작성자</th>
+								<th align="center" width="15%">작성일</th>
+								<th align="center" width="5%">조회수</th>
 							</tr>
 							<c:forEach var="myapply" items="${myapply }">
 								<tr>
 									<td>${myapply.boardNo }</td>
-									<td><c:if test="${myapply.aCompleteFlag == 1 }">접수완료</c:if> 
+									<td align="center"><c:if test="${myapply.aCompleteFlag == 1 }">접수완료</c:if> 
 										<c:if test="${myapply.aCompleteFlag == 2 }">간택완료</c:if>
 										<c:if test="${myapply.aCompleteFlag == 3 }">간택실패</c:if></td>
-									<td><a href="viewBoard.do?boardNo=${myapply.boardNo }&userIndex=${userIndex}">${myapply.title }</a></td>
-									<td>${myapply.nickname}</td>
-									<td><fmt:formatDate value="${myapply.date }" pattern="yyyy-MM-dd" /></td>
-									<td>${myapply.readCount }</td>
+									<td align="center"><a href="viewBoard.do?boardNo=${myapply.boardNo }&userIndex=${userIndex}">${myapply.title }</a></td>
+									<td align="center">${myapply.nickname}</td>
+									<td align="center"><fmt:formatDate value="${myapply.date }" pattern="yyyy-MM-dd" /></td>
+									<td align="center">${myapply.readCount }</td>
 								</tr>
 							</c:forEach>
 
