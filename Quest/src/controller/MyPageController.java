@@ -158,15 +158,16 @@ public class MyPageController {
 
 	
 	@RequestMapping("starpoint.do")
-	public String starpoint(int boardNo, Model model, int user2Index) {
+	public String starpoint(int boardNo, Model model, int user1Index, int user2Index) {
 		model.addAttribute("boardNo", boardNo);
+		model.addAttribute("user1Index", user1Index);
 		model.addAttribute("user2Index", user2Index);
 		return "starpoint.popup";
 	} 
 	
 	
 	@RequestMapping("starpointProc.do")
-	public String starpointProc(HttpSession session, int boardNo, int starpoint, int user2Index) {
+	public String starpointProc(HttpSession session, int boardNo, int starpoint, int user1Index, int user2Index) {
 		int userIndex = (int)session.getAttribute("userIndex");
 		int mode=0; 
 		HashMap<String, Object> params = new HashMap<>();
@@ -176,7 +177,7 @@ public class MyPageController {
 			mode = 0;
 		else 
 			mode = 1;
-		int result = service.writeScore(boardNo, starpoint, mode, session, user2Index);
+		int result = service.writeScore(boardNo, starpoint, mode, session, user1Index, user2Index);
 		System.out.println(result);
 		return "redirect:complete.do";
 	}

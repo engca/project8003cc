@@ -12,7 +12,7 @@
 <script type="text/javascript">
 	var doScore = function() {
 		var starPoint = $(".star-input").find("output>b").text();
-		opener.document.location.href="starpointProc.do?boardNo="+${boardNo}+"&starpoint="+starPoint+"&user2Index="+${user2Index};
+		opener.document.location.href="starpointProc.do?boardNo="+${boardNo}+"&starpoint="+starPoint+"&user1Index="+${user1Index}+"&user2Index="+${user2Index};
 		alert(starPoint+"점 평가하였습니다.");
 		doClose();
 	}

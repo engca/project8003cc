@@ -1,6 +1,5 @@
 package service;
 
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,7 +19,8 @@ public class QuestService implements IQuestService {
 	private IQuestDao dao;
 	@Autowired
 	private DataSourceTransactionManager txManager;
-// 
+
+	//
 	@Override
 	public int join(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
@@ -36,7 +36,7 @@ public class QuestService implements IQuestService {
 		System.out.println(id + " " + password);
 		HashMap<String, Object> user = dao.selectUser(params);
 		if (user != null) {
-			if(user.get(Constant.User.PASSWORD).equals(password))
+			if (user.get(Constant.User.PASSWORD).equals(password))
 				return user;
 			return null;
 		} else {
@@ -76,8 +76,6 @@ public class QuestService implements IQuestService {
 		}
 	}
 
-	
-	
 	@Override
 	public int nicknameCheck(String nickname) {
 		// TODO Auto-generated method stub
@@ -91,10 +89,9 @@ public class QuestService implements IQuestService {
 		}
 	}
 
-	
 	@Override
 	public HashMap<String, Object> getBoardList(int boardflag, int page) {
-	
+
 		// 시작페이지와 끝페이지
 		int start = (page - 1) / 10 * 10 + 1;
 		int end = ((page - 1) / 10 + 1) * 10;
@@ -106,27 +103,26 @@ public class QuestService implements IQuestService {
 		// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
 		int skip = (page - 1) * 10;
 		int count = 10;
-		
+
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("boardFlag", boardflag);
 		params.put("skip", skip);
 		params.put("count", count);
-		
-		
+
 		List<HashMap<String, Object>> list = dao.selectBoardByUserIndex(params);
-				
+
 		HashMap<String, Object> result = new HashMap<>();
-		for (HashMap<String, Object> board : list ){
+		for (HashMap<String, Object> board : list) {
 			int userindex = (int) (board.get("userIndex"));
 			board.put("nickname", nickname(userindex));
-			int boardNo = (int)(board.get("boardNo"));
+			int boardNo = (int) (board.get("boardNo"));
 			// 신청갯수 체크하려고 넣은것!!
-			int applyCount = (int)dao.applyCount(boardNo);
+			int applyCount = (int) dao.applyCount(boardNo);
 			board.put("applyCount", applyCount);
-			//댓글갯수 체크하려고 넣은 것!!			
+			// 댓글갯수 체크하려고 넣은 것!!
 			int commentCount = dao.selectCommentCount(boardNo);
 			board.put("commentCount", commentCount);
-		}				
+		}
 		result.put("start", start);
 		result.put("first", first);
 		result.put("end", end);
@@ -134,62 +130,61 @@ public class QuestService implements IQuestService {
 		result.put("current", page);
 		result.put("boardFlag", boardflag);
 		result.put("boardList", list);
-		System.out.println("리스트보드용" + result); 
-		return result;  		
-	}  
-	
+		System.out.println("리스트보드용" + result);
+		return result;
+	}
+
 	@Override
-	public HashMap<String, Object> searchBoardList(int boardflag,int searchFlag, int page,String searchKey, String[] area) {
+	public HashMap<String, Object> searchBoardList(int boardflag, int searchFlag, int page, String searchKey,
+			String[] area) {
 		// TODO Auto-generated method stub
 		// 시작페이지와 끝페이지
-				
-				int skip = (page - 1) * 10;
-				int count = 10;
-				
-				HashMap<String, Object> params = new HashMap<>();
-				params.put("boardFlag", boardflag);
-				params.put("skip", skip);
-				params.put("count", count);
-				params.put("searchKey", searchKey);
-				if(area != null) 
-				{
-					int[] areaList = new int[area.length];
-					for(int i =0 ;i < area.length ;i ++)
-					{
-						areaList[i] = dao.selectAddrNo(area[i]);
-						System.out.println(areaList[i]);
-					}
-					params.put("area",areaList);
-				}
-				List<HashMap<String, Object>> list = null;
-				if(searchFlag == 0)
-					list = dao.selectBoardByContent(params);
-				else
-					list = dao.selectBoardByWriter(params);
-				int start = (page - 1) / 10 * 10 + 1;
-				int end = ((page - 1) / 10 + 1) * 10;
-				// 첫페이지와 마지막페이지
-				int first = 1;
-				// 끝페이지 검증
-				// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
-				int last = (list.size() - 1) / 10 + 1;
-				end = last < end ? last : end;
-				
-				HashMap<String, Object> result = new HashMap<>();
-				for (HashMap<String, Object> board : list ){
-					int userindex = (int) (board.get("userIndex"));
-					board.put("nickname", nickname(userindex));
-					int boardNo = (int)(board.get("boardNo"));
-					int commentCount = dao.selectCommentCount(boardNo);
-					board.put("commentCount", commentCount);
-				}				
-				result.put("start", start);
-				result.put("first", first);
-				result.put("end", end);
-				result.put("last", last);
-				result.put("current", page);
-				result.put("boardList", list);
-				return result;  	
+
+		int skip = (page - 1) * 10;
+		int count = 10;
+
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("boardFlag", boardflag);
+		params.put("skip", skip);
+		params.put("count", count);
+		params.put("searchKey", searchKey);
+		if (area != null) {
+			int[] areaList = new int[area.length];
+			for (int i = 0; i < area.length; i++) {
+				areaList[i] = dao.selectAddrNo(area[i]);
+				System.out.println(areaList[i]);
+			}
+			params.put("area", areaList);
+		}
+		List<HashMap<String, Object>> list = null;
+		if (searchFlag == 0)
+			list = dao.selectBoardByContent(params);
+		else
+			list = dao.selectBoardByWriter(params);
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막페이지
+		int first = 1;
+		// 끝페이지 검증
+		// 해당 페이지의 게시물을 쿼리하기 위한 skip과 count
+		int last = (list.size() - 1) / 10 + 1;
+		end = last < end ? last : end;
+
+		HashMap<String, Object> result = new HashMap<>();
+		for (HashMap<String, Object> board : list) {
+			int userindex = (int) (board.get("userIndex"));
+			board.put("nickname", nickname(userindex));
+			int boardNo = (int) (board.get("boardNo"));
+			int commentCount = dao.selectCommentCount(boardNo);
+			board.put("commentCount", commentCount);
+		}
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("boardList", list);
+		return result;
 	}
 
 	@Override
@@ -198,47 +193,50 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> bd = dao.selectBoardOne(boardNo);
 		bd.put(Constant.Board.READCOUNT, (int) bd.get(Constant.Board.READCOUNT) + 1);
 		dao.updateBoard(bd);
-		
+
 		// 컨택방법 테이블 참조
 		int contactNo = (int) bd.get(Constant.Board.CONTACTNO);
 		String contactMethod = null;
-		if (contactNo == 1)	contactMethod = "KakaoTalk";
-		else if (contactNo == 2) 	contactMethod = "Email";
-		else contactMethod = "Phone";
+		if (contactNo == 1)
+			contactMethod = "KakaoTalk";
+		else if (contactNo == 2)
+			contactMethod = "Email";
+		else
+			contactMethod = "Phone";
 
 		// 주소테이블 참조
-		int addrNo = (int)bd.get(Constant.Board.ADDRNO);
+		int addrNo = (int) bd.get(Constant.Board.ADDRNO);
 		HashMap<String, Object> addr = dao.selectAddress(addrNo);
-		
-		// 신청하기 테이블 참조		
-		int AboardNo = (int)bd.get(Constant.Board.BOARDNO);
-		System.out.println("ReadBoard" + AboardNo + "&"+ userIndex);
+
+		// 신청하기 테이블 참조
+		int AboardNo = (int) bd.get(Constant.Board.BOARDNO);
+		System.out.println("ReadBoard" + AboardNo + "&" + userIndex);
 		HashMap<String, Object> apply = new HashMap<>();
 		apply.put("boardNo", AboardNo);
 		apply.put("userIndex", userIndex);
 		HashMap<String, Object> applydata = dao.selectApply(apply);
-				
+
 		// 신고하기 테이블 참조
-		int PboardNo = (int)bd.get(Constant.Board.BOARDNO);
+		int PboardNo = (int) bd.get(Constant.Board.BOARDNO);
 		HashMap<String, Object> police = new HashMap<>();
 		police.put("boardNo", PboardNo);
-		police.put("userIndex", userIndex);		
+		police.put("userIndex", userIndex);
 		HashMap<String, Object> policedata = dao.selectPolice(police);
-				
+
 		// 즐겨찾기 테이블 참조
-		int BboardNo = (int)bd.get(Constant.Board.BOARDNO);
+		int BboardNo = (int) bd.get(Constant.Board.BOARDNO);
 		HashMap<String, Object> bookmark = new HashMap<>();
 		bookmark.put("boardNo", BboardNo);
-		bookmark.put("userIndex", userIndex);		
-		List<HashMap<String, Object>> bookmarkdata = dao.selectBookMark(bookmark); 
-		
-		// 최종 해쉬맵에 담아보내기		
+		bookmark.put("userIndex", userIndex);
+		List<HashMap<String, Object>> bookmarkdata = dao.selectBookMark(bookmark);
+
+		// 최종 해쉬맵에 담아보내기
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("applydata", applydata);
 		result.put("policedata", policedata);
 		result.put("bookmarkdata", bookmarkdata);
 		result.put("boardList", bd);
-		result.put("contactMethod", contactMethod);		
+		result.put("contactMethod", contactMethod);
 		result.put("addr", addr);
 		return result;
 	}
@@ -252,7 +250,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public int updateBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		int addrNo = dao.selectAddrNo((String)params.get("gungu"));
+		int addrNo = dao.selectAddrNo((String) params.get("gungu"));
 		params.put("addrNo", addrNo);
 		System.out.println(params);
 		return dao.updateBoard(params);
@@ -268,11 +266,11 @@ public class QuestService implements IQuestService {
 	public List<HashMap<String, Object>> listComment(int boardNo) {
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> list = dao.selectAllCommentByBoardNo(boardNo);
-				
-		for (HashMap<String, Object> board : list ){
+
+		for (HashMap<String, Object> board : list) {
 			int userindex = (int) (board.get("userIndex"));
 			board.put("nickname", nickname(userindex));
-		}		
+		}
 		return list;
 	}
 
@@ -300,7 +298,6 @@ public class QuestService implements IQuestService {
 		return dao.selectCommentCount(BoardNo);
 	}
 
-	
 	@Override
 	public List<HashMap<String, Object>> listApply(int BoardNo) {
 		// TODO Auto-generated method stub
@@ -344,27 +341,25 @@ public class QuestService implements IQuestService {
 		// (#{user1_index},#{user2_index},#{boardNo},0,0,0)
 		// 평가완료확인 = user1_exp = user2_exp = 0
 		System.out.println("choiceApply" + user2Index + "ok");
-		
-		//board 테이블 보드클래그 3. 퀘진행중으로 바꿈
-		System.out.println("Board choiceApply" +dao.selectBoardOne(boardNo));
+
+		// board 테이블 보드클래그 3. 퀘진행중으로 바꿈
+		System.out.println("Board choiceApply" + dao.selectBoardOne(boardNo));
 		HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
 		flag.put("bCompleteFlag", 3);
 		dao.updateBoard(flag);
 		System.out.println("?");
-		
+
 		// apply테이블 컴플리트 플래그 2. 간택완료로 바꿈
 		HashMap<String, Object> tmp = new HashMap<>();
 		tmp.put("boardNo", boardNo);
 		tmp.put("userIndex", user2Index); // 신청자
 		System.out.println("temp" + tmp);
 		HashMap<String, Object> applyD = dao.selectApply(tmp);
-		System.out.println("Befor aaplyD"+applyD);
-		applyD.put("aCompleteFlag",2);
-		System.out.println("After aaplyD"+applyD);
+		System.out.println("Befor aaplyD" + applyD);
+		applyD.put("aCompleteFlag", 2);
+		System.out.println("After aaplyD" + applyD);
 		dao.updateApply(applyD);
 		System.out.println("!!!!?");
-		
-
 
 		return 0;
 	}
@@ -384,40 +379,42 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public int writeScore(int boardNo, float starPoint, int mode, HttpSession session, int user2Index) {
+	public int writeScore(int boardNo, float starPoint, int mode, HttpSession session, int user1Index, int user2Index) {
 		// TODO Auto-generated method stub
 		// boardNo
 		// starPoint
 		// mode = 0이면 내가 user1_exp
 		// mode = 1이면 내가 user2_exp
 		HashMap<String, Object> params = new HashMap<>();
-		
+		params.put("boardNo", boardNo);
+
 		HashMap<String, Object> tmpParams = new HashMap<>();
 		tmpParams.put("boardNo", boardNo);
+		tmpParams.put("user1Index", user1Index);
 		tmpParams.put("user2Index", user2Index);
-	
+
 		HashMap<String, Object> scoreData = dao.selectScoreByBoardNo(tmpParams);
-				
+
 		int sCompleteFlag = (int) scoreData.get(Constant.Score.SCOMPLETEFLAG);
-		params.put("boardNo", boardNo);
-		
+
 		if (mode == 0) {
 			params.put("user2StarPoint", starPoint);
-			if(sCompleteFlag == 0 || sCompleteFlag == 1) {
+			if (sCompleteFlag == 0) {
 				params.put(Constant.Score.SCOMPLETEFLAG, 1);
 			} else {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
 				HashMap<String, Object> user1 = new HashMap<>();
 				HashMap<String, Object> user2 = new HashMap<>();
-				int user1Index = (int) scoreData.get(Constant.Score.USER1INDEX);
 				float user1StarPoint = (float) scoreData.get(Constant.Score.USER1STARPOINT);
-				float user2StarPoint = (float) scoreData.get(Constant.Score.USER2STARPOINT);
-				int user1DoCount = dao.selectDoCountByUserIndex(user1Index)+1;
-				int user2DoCount = dao.selectDoCountByUserIndex(user2Index)+1;
+				float user2StarPoint = starPoint;
+				int user1DoCount = dao.selectDoCountByUserIndex(user1Index) + 1;
+				int user2DoCount = dao.selectDoCountByUserIndex(user2Index) + 1;
 				user1.put(Constant.User.USERINDEX, user1Index);
 				user2.put(Constant.User.USERINDEX, user2Index);
-				user1.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user1Index)+user1StarPoint)/user1DoCount);
-				user2.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user2Index)+user2StarPoint)/user2DoCount);
+				user1.put(Constant.User.STARPOINT,
+						(dao.selectStarPointByUserIndex(user1Index) + user1StarPoint) / user1DoCount);
+				user2.put(Constant.User.STARPOINT,
+						(dao.selectStarPointByUserIndex(user2Index) + user2StarPoint) / user2DoCount);
 				user1.put(Constant.User.DOCOUNT, user1DoCount);
 				user2.put(Constant.User.DOCOUNT, user2DoCount);
 				System.out.println(user1);
@@ -428,23 +425,25 @@ public class QuestService implements IQuestService {
 				tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
 				dao.updateBoard(tmp);
 			}
-		} else if (mode == 1) {
+		}
+		if (mode == 1) {
 			params.put("user1StarPoint", starPoint);
-			if(sCompleteFlag == 0 || sCompleteFlag == 2) {
+			if (sCompleteFlag == 0) {
 				params.put(Constant.Score.SCOMPLETEFLAG, 2);
 			} else {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
 				HashMap<String, Object> user1 = new HashMap<>();
 				HashMap<String, Object> user2 = new HashMap<>();
-				int user1Index = (int) scoreData.get(Constant.Score.USER1INDEX);
-				float user1StarPoint = (float) scoreData.get(Constant.Score.USER1STARPOINT);
+				float user1StarPoint = starPoint;
 				float user2StarPoint = (float) scoreData.get(Constant.Score.USER2STARPOINT);
-				int user1DoCount = dao.selectDoCountByUserIndex(user1Index)+1;
-				int user2DoCount = dao.selectDoCountByUserIndex(user2Index)+1;
+				int user1DoCount = dao.selectDoCountByUserIndex(user1Index) + 1;
+				int user2DoCount = dao.selectDoCountByUserIndex(user2Index) + 1;
 				user1.put(Constant.User.USERINDEX, user1Index);
 				user2.put(Constant.User.USERINDEX, user2Index);
-				user1.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user1Index)+user1StarPoint)/user1DoCount);
-				user2.put(Constant.User.STARPOINT, (dao.selectStarPointByUserIndex(user2Index)+user2StarPoint)/user2DoCount);
+				user1.put(Constant.User.STARPOINT,
+						(dao.selectStarPointByUserIndex(user1Index) + user1StarPoint) / user1DoCount);
+				user2.put(Constant.User.STARPOINT,
+						(dao.selectStarPointByUserIndex(user2Index) + user2StarPoint) / user2DoCount);
 				user1.put(Constant.User.DOCOUNT, user1DoCount);
 				user2.put(Constant.User.DOCOUNT, user2DoCount);
 				System.out.println(user1);
@@ -453,7 +452,7 @@ public class QuestService implements IQuestService {
 				dao.updateUser(user2);
 				HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
 				tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
-				dao.updateBoard(tmp); 
+				dao.updateBoard(tmp);
 			}
 		}
 		System.out.println(params);
@@ -485,20 +484,20 @@ public class QuestService implements IQuestService {
 		params.put(Constant.Police.BOARDNO, boardNo);
 		params.put(Constant.Police.USERINDEX, userIndex);
 		HashMap<String, Object> result = dao.selectPolice(params);
-		if(result == null){
+		if (result == null) {
 			dao.insertPolice(params);
-			return 1;  //신고없음. 신고접수 가능
-		}
-		else return 2;	// 신고데이터 있음. 신고접수 불가능   
+			return 1; // 신고없음. 신고접수 가능
+		} else
+			return 2; // 신고데이터 있음. 신고접수 불가능
 	}
 
 	@Override
 	public List<HashMap<String, Object>> selectAll() {
 		// TODO Auto-generated method stub
 
-		return dao.selectBoardAll(); 
+		return dao.selectBoardAll();
 	}
- 
+
 	@Override
 	public HashMap<String, Object> getUser(int userIndex) {
 		// TODO Auto-generated method stub
@@ -511,7 +510,7 @@ public class QuestService implements IQuestService {
 
 	public HashMap<String, Object> getBoard(int boardNo) {
 		// TODO Auto-generated method stub
-//		System.out.println( dao.selectBoardOne(boardNo));
+		// System.out.println( dao.selectBoardOne(boardNo));
 		return dao.selectBoardOne(boardNo);
 
 	}
@@ -545,28 +544,29 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public int BookmarkCheck(HashMap<String, Object> params){
+	public int BookmarkCheck(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		List<HashMap<String, Object>> list = dao.selectBookMark(params);
-		if( list.size() != 0 )  
+		if (list.size() != 0)
 			return 2; // 즐겨찾기 한사람이 있음.
-		else return 1; // 줄겨찾기 한사람이 없음. 즐겨찾기 가능!!
+		else
+			return 1; // 줄겨찾기 한사람이 없음. 즐겨찾기 가능!!
 	}
-		
-	@Override 
+
+	@Override
 	public boolean isMyBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		if(dao.isMyBoard(params) == null)
+		if (dao.isMyBoard(params) == null)
 			return false;
-		else 
+		else
 			return true;
 	}
 
 	@Override
 	public HashMap<String, Object> bookmarkBoardByUserIndex(int userIndex, int page) {
 		// TODO Auto-generated method stub
-	// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub
+
 		// 시작페이지와 끝페이지 계산
 		int start = (page - 1) / 10 * 10 + 1;
 		int end = ((page - 1) / 10 + 1) * 10;
@@ -577,7 +577,7 @@ public class QuestService implements IQuestService {
 		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
 		int skip = (page - 1) * 10;
 		int count = 10;
-		
+
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("userIndex", userIndex);
 		params.put("page", page);
@@ -585,7 +585,7 @@ public class QuestService implements IQuestService {
 		params.put("count", count);
 
 		List<HashMap<String, Object>> list = dao.selectBookMarkByUserIndex(params);
-		
+
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("start", start);
 		result.put("first", first);
@@ -594,7 +594,7 @@ public class QuestService implements IQuestService {
 		result.put("current", page);
 		result.put("bookmarkList", list);
 		result.put("nickname", dao.selectNicknname(userIndex));
-		
+
 		return result;
 
 	}
@@ -602,7 +602,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public String nickname(int userIndex) {
 		// TODO Auto-generated method stub
-		
+
 		return dao.selectNicknname(userIndex);
 	}
 
@@ -619,24 +619,22 @@ public class QuestService implements IQuestService {
 		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
 		int skip = (page - 1) * 10;
 		int count = 10;
-		
+
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("userIndex", userIndex);
 		params.put("page", page);
 		params.put("skip", skip);
 		params.put("count", count);
 		params.put("boardFlag", boardFlag);
-		
-		
-		//apply+board 내가 신청한거
+
+		// apply+board 내가 신청한거
 		List<HashMap<String, Object>> myapply = dao.selectBoardApply(params);
-		for(HashMap<String, Object> p : myapply){
-			String nickname =dao.selectNicknname((int)p.get("userIndex"));
+		for (HashMap<String, Object> p : myapply) {
+			String nickname = dao.selectNicknname((int) p.get("userIndex"));
 			p.put("nickname", nickname);
-			
+
 		}
-		
-		
+
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("myapplystart", start);
 		result.put("myapplyfirst", first);
@@ -645,8 +643,7 @@ public class QuestService implements IQuestService {
 		result.put("myapplycurrent", page);
 		result.put("myapply", myapply);
 		result.put("myapplyboardFlag", boardFlag);
-		
-		
+
 		return result;
 	}
 
@@ -663,22 +660,21 @@ public class QuestService implements IQuestService {
 		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
 		int skip = (page - 1) * 10;
 		int count = 10;
-		
+
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("userIndex", userIndex);
 		params.put("page", page);
 		params.put("skip", skip);
 		params.put("count", count);
 		params.put("boardFlag", boardFlag);
-		
-		
-		//board에서 내가 쓴거
+
+		// board에서 내가 쓴거
 		List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
-		
-		//apply+board 내가 신청한거
-		
-		String nickname =dao.selectNicknname(userIndex);
-		
+
+		// apply+board 내가 신청한거
+
+		String nickname = dao.selectNicknname(userIndex);
+
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("myboardstart", start);
 		result.put("myboardfirst", first);
@@ -688,64 +684,63 @@ public class QuestService implements IQuestService {
 		result.put("myboard", myboard);
 		result.put("myboardnickname", nickname);
 		result.put("myboardboardFlag", boardFlag);
-		
-		
+
 		return result;
 	}
-
 
 	public HashMap<String, Object> getAddress(int addrNo) {
 		// TODO Auto-generated method stub
 		return dao.selectAddress(addrNo);
 
 	}
-	public int getUserIndexById(String id)
-	{
+
+	public int getUserIndexById(String id) {
 		System.out.println(id);
 		return dao.selectUserIndexById(id);
 	}
+
 	@Override
 	public HashMap<String, Object> mycomplete(int userIndex, int page) {
 		// TODO Auto-generated method stub
 		// 시작페이지와 끝페이지 계산
-				int start = (page - 1) / 10 * 10 + 1;
-				int end = ((page - 1) / 10 + 1) * 10;
-				// 첫페이지와 마지막 페이지 계산
-				int first = 1;
-				int last = (dao.getCountBoardComplete(userIndex) - 1) / 10 + 1;
-				end = last < end ? last : end;
-				// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
-				int skip = (page - 1) * 10;
-				int count = 10;
-				
-				HashMap<String, Object> params = new HashMap<>();
-				params.put("userIndex", userIndex);
-				params.put("page", page);
-				params.put("skip", skip);
-				params.put("count", count);
-				
-				int mode = 0;
-				if(isMyBoard(params))
-					mode = 0;
-				else 
-					mode = 1;
-				
-				params.put("mode", mode);
-								
-				List<HashMap<String, Object>> myboard = dao.selectBoardComplete(params);
-				
-				String nickname =dao.selectNicknname(userIndex);
-				
-				HashMap<String, Object> result = new HashMap<>();
-				result.put("start", start);
-				result.put("first", first);
-				result.put("end", end);
-				result.put("last", last);
-				result.put("current", page);
-				result.put("completeList", myboard);
-				result.put("nickname", nickname);
-				
-				return result;
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막 페이지 계산
+		int first = 1;
+		int last = (dao.getCountBoardComplete(userIndex) - 1) / 10 + 1;
+		end = last < end ? last : end;
+		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
+
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userIndex", userIndex);
+		params.put("page", page);
+		params.put("skip", skip);
+		params.put("count", count);
+
+		int mode = 0;
+		if (isMyBoard(params))
+			mode = 0;
+		else
+			mode = 1;
+
+		params.put("mode", mode);
+
+		List<HashMap<String, Object>> myboard = dao.selectBoardComplete(params);
+
+		String nickname = dao.selectNicknname(userIndex);
+
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("start", start);
+		result.put("first", first);
+		result.put("end", end);
+		result.put("last", last);
+		result.put("current", page);
+		result.put("completeList", myboard);
+		result.put("nickname", nickname);
+
+		return result;
 	}
 
 	@Override
@@ -754,7 +749,7 @@ public class QuestService implements IQuestService {
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("boardNo", boardNo);
 		return dao.deleteBookMark(params);
-		
+
 	}
 
 	@Override
@@ -766,37 +761,36 @@ public class QuestService implements IQuestService {
 		deleteScore.put("boardNo", boardNo);
 		dao.deleteScore(deleteScore);
 		System.out.println("delete Score OK!");
-		
-		
-		//score table에 해당 보드넘버가 없으면 boardFlag 0
-//		HashMap<String, Object> selectScore = dao.selectScoreByBoardNo(boardNo);
-//		System.out.println("deleteApplyUSer select Score " + selectScore);
-//		
-//		if(selectScore == null){
-//			HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
-//			flag.put("bCompleteFlag", 0);
-//			dao.updateBoard(flag);
-//			System.out.println(flag);
-//		}
-				
-				
+
+		// score table에 해당 보드넘버가 없으면 boardFlag 0
+		// HashMap<String, Object> selectScore =
+		// dao.selectScoreByBoardNo(boardNo);
+		// System.out.println("deleteApplyUSer select Score " + selectScore);
+		//
+		// if(selectScore == null){
+		// HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
+		// flag.put("bCompleteFlag", 0);
+		// dao.updateBoard(flag);
+		// System.out.println(flag);
+		// }
+
 		// apply테이블 컴플리트 플래그 2. 간택완료로 바꿈
 		HashMap<String, Object> tmp = new HashMap<>();
 		tmp.put("boardNo", boardNo);
 		tmp.put("userIndex", user2Index); // 신청자
 		System.out.println("temp" + tmp);
 		HashMap<String, Object> applyD = dao.selectApply(tmp);
-		System.out.println("Befor aaplyD"+applyD);
-		applyD.put("aCompleteFlag",1);
-		System.out.println("After aaplyD"+applyD);
+		System.out.println("Befor aaplyD" + applyD);
+		applyD.put("aCompleteFlag", 1);
+		System.out.println("After aaplyD" + applyD);
 		dao.updateApply(applyD);
 		System.out.println("!!!!?");
-		
-		return 0; 
-	
+
+		return 0;
+
 	}
 
-	//웹사이트 로그인 체크
+	// 웹사이트 로그인 체크
 	@Override
 	public int loginCategoryCheck(String id) {
 		// TODO Auto-generated method stub
@@ -804,23 +798,5 @@ public class QuestService implements IQuestService {
 		System.out.println("로그인카테고리 : " + loginCategoryNum);
 		return loginCategoryNum;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
 
 }
