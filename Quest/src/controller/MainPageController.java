@@ -99,10 +99,6 @@ public class MainPageController {
 		service.join(params);
 
 		ModelAndView mav = new ModelAndView();
-		// mav.addObject("id", id);
-		// mav.addObject("pw", pw);
-		// mav.addObject("name", name);
-		// mav.addObject("loginCategory", loginCategory);
 		mav.setViewName("login.do");
 		System.out.println("weblogin : " + mav);
 		return mav;
@@ -144,8 +140,8 @@ public class MainPageController {
 	}
 
 	@RequestMapping("findPwProc.do")
-	public ModelAndView findPwProc(int category, String id, String answer, String password,
-			HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public ModelAndView findPwProc(int category, String id, String answer, String password, HttpServletRequest req,
+			HttpServletResponse resp) throws IOException {
 		ModelAndView mav = new ModelAndView();
 		if (category == 1) {
 			int question = service.findPwQ(id);
@@ -159,26 +155,42 @@ public class MainPageController {
 			pw.print(result);
 			pw.close();
 			pw.flush();
-		} 
+		}
 		return null;
 	}
-	
+
 	@RequestMapping("changePw.do")
-	public ModelAndView changePw(String id){
+	public ModelAndView changePw(String id) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("id", id);
 		mav.setViewName("changePw.popup");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "changePwProc.do", method = RequestMethod.POST)
-	public void changePwProc(String id, String password,
-			HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		int result = service.updatePw(id, password);
-		PrintWriter pw = resp.getWriter();
-		pw.print(result);
-		pw.close();
-		pw.flush();
+	public void changePwProc(String id, String password, HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+
+		// 비밀번호 해쉬로 변경 저장.
+		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("MD5");
+			md.update(password.getBytes());
+			byte[] result = md.digest();
+			StringBuffer sb = new StringBuffer();
+			for (int i = 0; i < result.length; i++) {
+				sb.append(Integer.toHexString(0xFF & result[i]));
+			}
+			int result2 = service.updatePw(id, sb.toString());
+			PrintWriter pw = resp.getWriter();
+			pw.print(result2);
+			pw.close();
+			pw.flush();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	@RequestMapping("idCheck.do")

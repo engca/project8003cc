@@ -69,7 +69,7 @@ body {
 .tb {
 	position: absolute;
 	top: 30px;
-	left: 23.5%;
+	left: 26.5%;
 }
 
 .checkspan {
