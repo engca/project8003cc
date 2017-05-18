@@ -424,7 +424,7 @@ public class QuestService implements IQuestService {
 				dao.updateUser(user1);
 				dao.updateUser(user2);
 				
-				if(dao.countByBoardNo(boardNo) == 0) {
+				if(dao.countByBoardNo(boardNo) == 1) {
 					HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
 					tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
 					dao.updateBoard(tmp);
@@ -456,7 +456,7 @@ public class QuestService implements IQuestService {
 				dao.updateUser(user1);
 				dao.updateUser(user2);
 				
-				if(dao.countByBoardNo(boardNo) == 0) {
+				if(dao.countByBoardNo(boardNo) == 1) {
 					HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
 					tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
 					dao.updateBoard(tmp);
