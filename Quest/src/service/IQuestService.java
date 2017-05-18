@@ -24,6 +24,10 @@ public interface IQuestService {
 	public int nicknameCheck(String nickname); 
 	public int loginCategoryCheck(String id);
 	public String nickname(int userIndex);
+
+	public int findPwQ(String id);
+	public int findPwA(String id, String answer);
+	public int updatePw(String id, String password);
 	
 
 	// 보드 서비스   

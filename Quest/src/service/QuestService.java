@@ -809,5 +809,31 @@ public class QuestService implements IQuestService {
 		System.out.println("로그인카테고리 : " + loginCategoryNum);
 		return loginCategoryNum;
 	}
+	
+
+@Override
+	public int findPwQ(String id) {
+		int question = dao.selectFindPwQ(id);
+		return question;
+	}
+
+	@Override
+	public int findPwA(String id, String answer) {
+		String check = dao.selectFindPwA(id);
+		if (check.equals(answer)) {
+			return 0; // 비밀번호 같음
+		} else {
+			return 1;
+		}
+	}
+
+	@Override
+	public int updatePw(String id, String password) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("password", password);
+		params.put("userId", id);
+		return dao.updatePw(params);
+	}
 
 }

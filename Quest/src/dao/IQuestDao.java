@@ -31,6 +31,10 @@ public interface IQuestDao {
 	public int selectLogincategory (String id);
 	public int selectDoCountByUserIndex(int userIndex);
 	public float selectStarPointByUserIndex(int userIndex);
+	public int selectFindPwQ(String id);
+	public String selectFindPwA(String id);
+	public int updatePw(HashMap<String, Object> params);
+
 	
 	// 코멘트 관리부분
 	public int insertComment(HashMap<String, Object> params);

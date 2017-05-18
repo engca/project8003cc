@@ -68,4 +68,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="float">
 		select starPoint from user where userIndex = #{userIndex}
 	</select>
+	
+	<select id = "selectFindPwQ" parameterType="String" resultType="int">
+		select findPwQ from user where userId = #{userId}
+	</select>
+
+	<select id = "selectFindPwA" parameterType="String" resultType="String">
+		select findPwA from user where userId = #{userId}
+	</select>
+	
+	<update id="updatePw" parameterType="java.util.HashMap" >
+		update user set password = #{password} where userId = #{userId}
+	</update>
+	
 </mapper>
