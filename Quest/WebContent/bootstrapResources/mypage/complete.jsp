@@ -43,6 +43,7 @@
 			
 
 			<c:forEach var="board" items="${completeList }">
+			
 				<tr>
 					<td>${board.boardNo }</td>
 					<td><c:if test="${board.boardFlag == 0 }">
@@ -98,7 +99,15 @@
 							
 					
 					<c:choose>
-					<c:when test="${board.sCompleteFlag ==3 }">
+					<c:when test="${board.sCompleteFlag == 3 }">
+			 			<td> <input type="button" value="완료" class="btn btn-default" disabled="disabled"> </a>
+			 			</td>
+					</c:when>
+					<c:when test="${userIndex==board.user1Index and board.sCompleteFlag == 1 }">
+			 			<td> <input type="button" value="완료" class="btn btn-default" disabled="disabled"> </a>
+			 			</td>
+					</c:when>
+					<c:when test="${userIndex==board.user2Index and board.sCompleteFlag == 2 }">
 			 			<td> <input type="button" value="완료" class="btn btn-default" disabled="disabled"> </a>
 			 			</td>
 					</c:when>

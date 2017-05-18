@@ -5,14 +5,15 @@
 
 
 <style type="text/css">
-th {
-	width: 150px;
-	text-align: center;
-}
 
 select {
 	width: 100px;
 	height: 35px;
+}
+th{
+text-align: center; }
+td {
+text-align: center;
 }
 </style>
 	<div id="board" class="container">
@@ -34,7 +35,7 @@ select {
 								
 								<th align="center" width="5%">No</th>
 								<th align="center" width="45%">제목</th>
-								<th align="center" width="15%">신청자현황</th>
+								<th align="center" width="10%">신청자현황</th>
 								<th align="center" width="15%">작성자</th>
 								<th align="center" width="15%">작성일</th>
 								<th align="center" width="5%">조회수</th>
@@ -68,7 +69,19 @@ select {
 		 							</c:if>
 
 									<!-- USER INDEX>ID -->
-									<td align="center"><font color=blue>${myboard.totalapplycount}</font></td>
+									<c:choose>
+										<c:when test="${myboard.bCompleteFlag ==3 }">
+										<td> 진행중 </td>
+										</c:when>
+										<c:when test="${myboard.bCompleteFlag ==1 }">
+										<td><font color="red"> 완료</font> </td>
+										</c:when>
+										<c:otherwise>
+										<td align="center"><font color=blue>${myboard.totalapplycount}</font></td>
+										</c:otherwise>
+									</c:choose>
+									
+									
 									<td align="center">${myboardnickname}</td>
 									<td align="center"><fmt:formatDate value="${myboard.date }"
 											pattern="yyyy-MM-dd" /></td>
@@ -84,7 +97,7 @@ select {
 						<table class="table table-striped">
 							<tr>
 								<th align="center" width="5%">No</th>
-								<th align="center" width="15%">구분</th>
+								<th align="center" width="10%">구분</th>
 								<th align="center" width="45%">제목</th>
 								<th align="center" width="15%">작성자</th>
 								<th align="center" width="15%">작성일</th>
@@ -96,7 +109,32 @@ select {
 									<td align="center"><c:if test="${myapply.aCompleteFlag == 1 }">접수완료</c:if> 
 										<c:if test="${myapply.aCompleteFlag == 2 }">간택완료</c:if>
 										<c:if test="${myapply.aCompleteFlag == 3 }">간택실패</c:if></td>
-									<td align="center"><a href="viewBoard.do?boardNo=${myapply.boardNo }&userIndex=${userIndex}">${myapply.title }</a></td>
+<%-- 									<td align="center"><a href="viewBoard.do?boardNo=${myapply.boardNo }&userIndex=${userIndex}">${myapply.title }</a></td> --%>
+									
+									
+									<c:if test="${myapply.bCompleteFlag ==0 }">
+		 								<td><a href="viewBoard.do?boardNo=${myapply.boardNo}&userIndex=${userIndex}">	${myapply.title } </a>
+		 							
+									</td>	 							
+		 							</c:if> 
+		 												
+		 							<c:if test="${myapply.bCompleteFlag ==1 }">
+		 								<td><a href="viewBoard.do?boardNo=${myapply.boardNo}&userIndex=${userIndex}">
+		 									<font color="red">[완료된 퀘스트] &nbsp; </font>	${myapply.title }</a>
+				 						</td>
+		 							</c:if>
+		 							
+		 							<c:if test="${myapply.bCompleteFlag ==3 }">
+			 							<td><a href="viewBoard.do?boardNo=${myapply.boardNo}&userIndex=${userIndex}">
+			 								<font color="blue">[진행중 퀘스트] &nbsp;</font>	${myapply.title }</a>
+			 						 	</td>
+		 							</c:if> 					
+		 					
+		 							<c:if test="${myapply.bCompleteFlag ==2 }">
+		 								<td><font color="gray"><strike>삭제된 게시글 입니다</strike></font></td>
+		 							</c:if>
+									
+									
 									<td align="center">${myapply.nickname}</td>
 									<td align="center"><fmt:formatDate value="${myapply.date }" pattern="yyyy-MM-dd" /></td>
 									<td align="center">${myapply.readCount }</td>
