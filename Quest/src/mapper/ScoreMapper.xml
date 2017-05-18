@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="user2StarPoint != null">
 			user2StarPoint = #{user2StarPoint}
 		</if>
-		where boardNo = #{boardNo}
+		where boardNo = #{boardNo} and user1Index = #{user1Index} and user2Index = #{user2Index}
 	</update>
 
 	<select id="selectScoreByBoardNo" parameterType="java.util.HashMap"

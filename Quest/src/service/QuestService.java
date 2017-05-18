@@ -387,6 +387,8 @@ public class QuestService implements IQuestService {
 		// mode = 1이면 내가 user2_exp
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("boardNo", boardNo);
+		params.put("user1Index", user1Index);
+		params.put("user2Index", user2Index);
 
 		HashMap<String, Object> tmpParams = new HashMap<>();
 		tmpParams.put("boardNo", boardNo);
