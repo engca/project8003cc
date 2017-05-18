@@ -674,11 +674,15 @@ public class QuestService implements IQuestService {
 		
 		//board에서 내가 쓴거
 		List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
-		
+
 		//apply+board 내가 신청한거		
 		String nickname =dao.selectNicknname(userIndex);
 		 
 		HashMap<String, Object> result = new HashMap<>();
+		for ( HashMap<String, Object> mylist : myboard ){
+			int totalapplycount = dao.applyCount((int)(mylist.get("boardNo")));	
+			mylist.put("totalapplycount", totalapplycount);
+		}
 		result.put("myboardstart", start);
 		result.put("myboardfirst", first);
 		result.put("myboardend", end);
