@@ -152,7 +152,7 @@ $(document).ready ( function() {
 							<div
 								class="form-group col-xs-12 floating-label-form-group controls">
 								<label for="starPoint"> </label> <input type="text" readonly="readonly"
-									class="form-control" value="별점 : ${starPoint } 점 / 퀘스트 진행 : ${doCount } 건 " name = "starPoint" id="starPoint"									required data-validation-required-message="Please enter your phone number.">
+									class="form-control" value="별점 : ${starPoint } 점 / 평가자 수 : ${doCount } 명 " name = "starPoint" id="starPoint"									required data-validation-required-message="Please enter your phone number.">
 								<p class="help-block text-danger" id="nicknamespan"></p>
 							</div>
 						</div>
