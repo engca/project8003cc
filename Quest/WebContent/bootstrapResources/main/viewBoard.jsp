@@ -115,13 +115,13 @@ select {
 				<tr>
 					<th><h5>제목</h5></th>
 					<c:if test="${boardList.bCompleteFlag ==0 }">
-						<td colspan="5">${boardList.title }</td>
+						<td colspan="5"><font size="4"><b>${boardList.title }</b></font></td>
 					</c:if>
 					<c:if test="${boardList.bCompleteFlag ==1 }">
-						<td colspan="5"><font color="red">[완료된 퀘스트]</font>${boardList.title }</td>
+						<td colspan="5"><font size="4"><b><font color="red">[완료된 퀘스트]</font>${boardList.title }</b></font></td>
 					</c:if>
 					<c:if test="${boardList.bCompleteFlag ==3 }">
-						<td colspan="5"><font color="blue">[진행중 퀘스트]</font>${boardList.title }</td>
+						<td colspan="5"><font size="4"><b><font color="blue">[진행중 퀘스트]</font>${boardList.title }</b></font></td>
 					</c:if>
 				</tr>
 				<tr>

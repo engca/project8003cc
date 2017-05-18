@@ -38,7 +38,6 @@ public class MainPageController {
 	public ModelAndView BoardAllList(HttpSession session,
 			@RequestParam(required = false, defaultValue = "3") int boardFlag,
 			@RequestParam(required = false, defaultValue = "1") int page) {
-		System.out.println("1:" + boardFlag + " " + page);
 
 		if (session.getAttribute("boardFlag") == null && session.getAttribute("page") == null) {
 			// 처음 listBoard에 들어왓을때
@@ -46,22 +45,17 @@ public class MainPageController {
 			session.setAttribute(Constant.Board.BOARDFLAG, 1);
 			page = 1;
 			boardFlag = 1;
-			System.out.println("1번");
 		} else if (boardFlag == 3 && page == 1) {
 			// 세번째경우
 			// 만약에 쟤네 파라미터 안들어오면 얘네 0들어와야함
 			page = (int) session.getAttribute("page");
 			boardFlag = (int) session.getAttribute("boardFlag");
-			System.out.println("2번");
 		} else {
 			// 두번째 이상으로 들어왓을때
 			// 내가 최근에 들어온 boardFlag랑 page 세션에 갱신
 			session.setAttribute(Constant.Board.PAGE, page);
 			session.setAttribute(Constant.Board.BOARDFLAG, boardFlag);
-			System.out.println("3번");
 		}
-
-		System.out.println("2:" + boardFlag + " " + page);
 
 		HashMap<String, Object> data = service.getBoardList(boardFlag, page);
 		ModelAndView mav = new ModelAndView();
@@ -100,7 +94,6 @@ public class MainPageController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("login.do");
-		System.out.println("weblogin : " + mav);
 		return mav;
 	}
 
@@ -215,8 +208,6 @@ public class MainPageController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "viewBoard.do")
 	public ModelAndView viewboard(int boardNo, @RequestParam(defaultValue = "0") int userIndex) {
-		// int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
-		// int userIndex = (int)session.getAttribute("userIndex");
 		HashMap<String, Object> board = service.readBoard(boardNo, userIndex);
 		List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		ModelAndView mv = new ModelAndView();
