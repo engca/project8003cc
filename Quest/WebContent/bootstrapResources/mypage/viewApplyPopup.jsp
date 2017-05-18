@@ -175,7 +175,7 @@
 				value="취소"onclick="window.close()">&nbsp;&nbsp;&nbsp;&nbsp; 
 				<c:if test="$"></c:if>
 				<input type="button"class="btn btn-success btn-lg" id="btn"
-				value="신청완료" onclick="applyUser()">
+				value="간택완료" onclick="applyUser()">
 				</c:when>
 				</c:choose>
 				
