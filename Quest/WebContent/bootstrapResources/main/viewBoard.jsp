@@ -151,7 +151,7 @@ select {
 				</tr>
 				<tr>
 					<th><h5>희망시작시간</h5></th>
-					<td colspan="2">${boardList.stTime }시</td>
+					<td colspan="2">${boardList.stTime }시</td> 
 					<th><h5>소요예정시간</h5></th>
 					<td colspan="2">
 						<c:if test="${boardList.playTime == '30m'}">30분</c:if> 
