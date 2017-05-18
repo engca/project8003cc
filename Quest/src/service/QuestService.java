@@ -398,12 +398,12 @@ public class QuestService implements IQuestService {
 	
 		HashMap<String, Object> scoreData = dao.selectScoreByBoardNo(tmpParams);
 				
-		int flag = (int) scoreData.get(Constant.Score.SCOMPLETEFLAG);
+		int sCompleteFlag = (int) scoreData.get(Constant.Score.SCOMPLETEFLAG);
 		params.put("boardNo", boardNo);
 		
 		if (mode == 0) {
 			params.put("user2StarPoint", starPoint);
-			if(flag == 0) {
+			if(sCompleteFlag == 0 || sCompleteFlag == 1) {
 				params.put(Constant.Score.SCOMPLETEFLAG, 1);
 			} else {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
@@ -430,7 +430,7 @@ public class QuestService implements IQuestService {
 			}
 		} else if (mode == 1) {
 			params.put("user1StarPoint", starPoint);
-			if(flag == 0) {
+			if(sCompleteFlag == 0 || sCompleteFlag == 2) {
 				params.put(Constant.Score.SCOMPLETEFLAG, 2);
 			} else {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
