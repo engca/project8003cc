@@ -251,7 +251,7 @@ public class MainPageController {
 	public String deleteBoard(int boardNo) {
 		service.deleteBoard(boardNo);
 		return "redirect:/listBoard.do";
-	}
+	} 
 
 	@RequestMapping("writeBoard.do")
 	public String writeBoard() {
@@ -260,10 +260,18 @@ public class MainPageController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session) {
-		int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
-		board.put("userIndex", userIndex);
-		service.writeBoard(board);
-		return "redirect:/listBoard.do";
+		int flag = Integer.parseInt(board.get("boardFlag").toString());
+		if ( flag == 1) { //해주세요
+			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
+			board.put("userIndex", userIndex);
+			service.writeBoard(board);
+			return "redirect:/listBoard.do?boardFlag=1";
+		} else { //잘해요
+			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
+			board.put("userIndex", userIndex);
+			service.writeBoard(board);
+			return "redirect:/listBoard.do?boardFlag=0";
+		}
 	}
 
 	@RequestMapping("getSido.do")

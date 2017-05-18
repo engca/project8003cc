@@ -13,7 +13,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function starpointPopup(boardNo, user1Index, user2Index) {
-		alert(user2Index);
+		
 		var popUrl = "starpoint.do?boardNo="+boardNo+"&user1Index="+user1Index+"&user2Index="+user2Index;
 		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 		window.open(popUrl,"",popOption);

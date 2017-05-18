@@ -51,7 +51,7 @@ $(document).ready(function() {
 			success : function(data) {
 				if (data == 1) {
 					alert("비밀번호가 변경되었습니다.");
-					self.close();
+					location.href = "loginForm.do";
 				} 
 			}
 		});
