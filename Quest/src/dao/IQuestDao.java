@@ -58,6 +58,7 @@ public interface IQuestDao {
 	public HashMap<String, Object> selectScoreByBoardNo(HashMap<String, Object> params);
 	public int selectUserIndexById(String id);
 	public int deleteScore(HashMap<String, Object> params);
+	public int countByBoardNo(int boardNo);
 	
 	// 즐겨찾기
 	public int insertBookMark(HashMap<String, Object> params);

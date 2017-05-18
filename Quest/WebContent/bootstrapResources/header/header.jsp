@@ -73,7 +73,10 @@
 		ref.parentNode.insertBefore(js, ref);
 	}(document));
 	function facebookLogout() {
-		FB.logout();
+		FB.logout(function(response) {
+			  // user is now logged out
+			  alert(response);
+		});
 		alert("로그아웃 되었습니다.");
 	}
 

@@ -53,7 +53,7 @@ public interface IQuestService {
 
 	//평가하기
 	public List<HashMap<String, Object>> listScore(int userIndex,int mode);
-	public int writeScore(int boardNo, float starPoint, int mode, HttpSession session, int user2Index);
+	public int writeScore(int boardNo, float starPoint, int mode, HttpSession session, int user1Index, int user2Index);
 
 	//즐겨찾기
 	public int bookmark(int BoardNo, int userIndex); 

@@ -12,9 +12,9 @@
 <meta name="author" content="">
 <title>Insert title here</title>
 <script type="text/javascript">
-	function starpointPopup(boardNo, user2Index) {
+	function starpointPopup(boardNo, user1Index, user2Index) {
 		alert(user2Index);
-		var popUrl = "starpoint.do?boardNo="+boardNo+"&user2Index="+user2Index;
+		var popUrl = "starpoint.do?boardNo="+boardNo+"&user1Index="+user1Index+"&user2Index="+user2Index;
 		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 		window.open(popUrl,"",popOption);
 	}
@@ -103,7 +103,7 @@
 			 			</td>
 					</c:when>
 					<c:otherwise>		 			
-						<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo }, ${board.user2Index })"></td>
+						<td><input type="button" class="btn btn-default" value="평가" onclick="starpointPopup(${board.boardNo },${board.user1Index }, ${board.user2Index })"></td>
 					</c:otherwise>
 					</c:choose>
 							
