@@ -696,7 +696,7 @@ public class QuestService implements IQuestService {
 		result.put("myboardnickname", nickname);
 		result.put("myboardboardFlag", boardFlag);
 
-		return result;
+		return result; 
 	}
 
 	public HashMap<String, Object> getAddress(int addrNo) {
