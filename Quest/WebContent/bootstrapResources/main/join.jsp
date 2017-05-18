@@ -80,10 +80,22 @@ $(document).ready ( function() {
 // 			}
 		});
 	});
+	
+	$('#btn').click(function(){
+		if ( $('#answer').val() == "" ){
+			alert("답변을 입력해 주세요");
+			return false;
+		} else {
+			joinCheckAll();
+		}
+		
+	});
+	
 });
 
+
 // 가입처리
-function	joinCheckAll(){
+function joinCheckAll(){
 if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
 	alert("회원가입이 완료되었습니다.");
 	return true;		
@@ -139,14 +151,14 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                         </div>
                           <div class="row control-group"><br>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          	<select name = "findPwQ" id = "findPwQ">
+                          	<select name = "findPwQ" id = "findPwQ" class = "form-control">
                                 <option value = "1">내가 키우는 애완동물 이름은?</option>
                                 <option value = "2">나의 좌우명은?</option>
                                 <option value = "3">학창시절 가장 기억에 남는 선생님 이름은?</option>
-                                </select><br>
+                                </select>
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="findPw">비밀번호 찾기 시 사용될 질문&답변</label>
-                                <input type="text" class="form-control" placeholder="답변 입력" name="findPwA">
+                                <input type="text" class="form-control" placeholder="답변 입력" name="findPwA" id = "answer">
                                 <p class="help-block text-danger" id="pwa"></p>
                             </div>
                         </div>
@@ -155,7 +167,7 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                         <div id="success"></div>
                             <div class="form-group col-xs-12" align = "right">
                                 <input type="button" class="btn btn-primary btn-lg" value="Cancel" onclick="location.href='listBoard.do'">
-                                <button type="submit" class="btn btn-success btn-lg" id="btn" onclick="return joinCheckAll()">Send</button>
+                                <button type="submit" class="btn btn-success btn-lg" id="btn">Send</button>
                                 <br><br><br>
                             </div>
                         </div>
