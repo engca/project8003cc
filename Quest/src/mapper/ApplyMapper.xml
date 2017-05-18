@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <select id="applyCount" parameterType="int" resultType="int">
-   	select count(*) from apply where boardNo = #{boardNo}
+   	select count(*) from apply where boardNo = #{boardNo} and aCompleteFlag = 0
    </select>
    
    

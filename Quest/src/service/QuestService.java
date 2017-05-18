@@ -675,8 +675,7 @@ public class QuestService implements IQuestService {
 		//board에서 내가 쓴거
 		List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
 		
-		//apply+board 내가 신청한거
-		
+		//apply+board 내가 신청한거		
 		String nickname =dao.selectNicknname(userIndex);
 		
 		HashMap<String, Object> result = new HashMap<>();
