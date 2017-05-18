@@ -36,7 +36,7 @@ text-align: center;
 								<th align="center" width="5%">No</th>
 								<th align="center" width="10%">신청자현황</th>
 								<th align="center" width="45%">제목</th>
-								<th align="center" width="15%">작성자</th>
+								<th align="center" width="10%">작성자</th>
 								<th align="center" width="15%">작성일</th>
 								<th align="center" width="5%">조회수</th>
 							
@@ -93,6 +93,11 @@ text-align: center;
 							</c:forEach>
 						</table>
 					</div>
+					
+					<br>
+					<br>
+					<br>
+					<br>
 
 					<h3>신청한 글(신청중)</h3>
 					<div>
@@ -101,7 +106,7 @@ text-align: center;
 								<th align="center" width="5%">No</th>
 								<th align="center" width="10%">구분</th>
 								<th align="center" width="45%">제목</th>
-								<th align="center" width="15%">작성자</th>
+								<th align="center" width="10%">작성자</th>
 								<th align="center" width="15%">작성일</th>
 								<th align="center" width="5%">조회수</th>
 							</tr>
