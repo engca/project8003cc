@@ -211,7 +211,7 @@ select {
 								
 								<c:if test="${boardList.bCompleteFlag == 3 && boardList.bCompleteFlag == 1}">
 									<c:if test="${sessionScope.userIndex == boardList.userIndex }">
-										<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"
+										<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정" 
 											onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
 										<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"
 											onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">
