@@ -22,6 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="java.util.HashMap">
 		SELECT * FROM score WHERE boardNo = #{boardNo} and user1Index = #{user1Index} and user2Index = #{user2Index}
 	</select>
+	
+	<select id="countByBoardNo" parameterType="int" resultType="int">
+		select count(*) from score where boardNo = #{boardNo} and sCompleteFlag != 3
+	</select>
+	
+	
 	<select id="selectScoreByUserindex" parameterType="java.util.HashMap"
 		resultType="java.util.HashMap">
 		SELECT * FROM score WHERE
