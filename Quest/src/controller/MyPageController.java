@@ -125,7 +125,7 @@ public class MyPageController {
 	@RequestMapping("mylist.do")
 	public String mylist(@RequestParam(defaultValue="9") int boardFlag,Model model) {
 		model.addAttribute("boardFlag", boardFlag);
-		
+
 		return "mypageMenu.mypage.mylist";
 	}
 	
@@ -142,6 +142,7 @@ public class MyPageController {
 		mav.addAllObjects(service.myapply(userIndex, page, boardFlag));
 		mav.addAllObjects(service.myboard(userIndex, page, boardFlag));
 		mav.setViewName("mypageMenu.mypage.mylist");
+		System.out.println(mav);
 		return mav;
 		
 	}

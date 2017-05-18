@@ -287,6 +287,11 @@ body {
 						style="font-weight: bold; color: red"></span> <span id="formCheck"
 						style="font-weight: bold;"></span></td>
 				</tr>
+				<tr><td></td><td></td><td></td>
+				<td align = "right"><input type = "button" value = "비밀번호 찾기" class = "btn btn-success"
+				 onclick = "location.href='findPw.do'"></td>
+				</tr>
+				
 
 			</table>
 			<table class="tb2" align="center">

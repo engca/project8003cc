@@ -117,7 +117,8 @@ public class MainPageController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="userjoin.do")
-	public ModelAndView join(String id, String pw, String name,  int loginCategory) throws Exception{
+	public ModelAndView join(String id, String pw, String name,  int loginCategory,
+			int findPwQ, String findPwA) throws Exception{
 		// 비밀번호 해쉬로 변경 저장.
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(pw.getBytes());
@@ -133,16 +134,22 @@ public class MainPageController {
 		param.put("password", sb.toString());
 		param.put("nickname", name);
 		param.put("loginCategory", loginCategory);
+		param.put("findPwQ", findPwQ);
+		param.put("findPwA", findPwA);
 		service.join(param);
-		
 		ModelAndView mav = new ModelAndView();
-//		mav.addObject("id", userId);
-//		mav.addObject("pw", password);
-//		mav.addObject("name", nickname);
-//		mav.addObject("loginCategory", loginCategory);
 		mav.setViewName("login.do");
 		return mav;		
 	}	
+
+
+
+
+	@RequestMapping("findPw.do")
+	public String findPw(){
+		return "findPw.popup";
+	}
+
 	
 	@RequestMapping("idCheck.do")
 	public void idCheck(String userId, HttpServletRequest req, HttpServletResponse resp) throws IOException 	{ 

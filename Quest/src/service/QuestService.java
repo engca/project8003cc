@@ -430,7 +430,7 @@ public class QuestService implements IQuestService {
 			params.put("user1StarPoint", starPoint);
 			if (sCompleteFlag == 0) {
 				params.put(Constant.Score.SCOMPLETEFLAG, 2);
-			} else {
+			} else { 
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
 				HashMap<String, Object> user1 = new HashMap<>();
 				HashMap<String, Object> user2 = new HashMap<>();
@@ -671,10 +671,9 @@ public class QuestService implements IQuestService {
 		// board에서 내가 쓴거
 		List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
 
-		// apply+board 내가 신청한거
-
-		String nickname = dao.selectNicknname(userIndex);
-
+		//apply+board 내가 신청한거		
+		String nickname =dao.selectNicknname(userIndex);
+		 
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("myboardstart", start);
 		result.put("myboardfirst", first);

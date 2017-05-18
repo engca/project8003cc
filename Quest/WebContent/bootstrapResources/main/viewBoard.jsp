@@ -201,9 +201,9 @@ select {
 										<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
 									</c:if>
 									
-									<c:if test="${applydata != null}">									
-										<input type="button" class="btn btn-info btn-lg" value="신청취소" onclick="deleteapplyPopup()">
-									</c:if>
+<%-- 									<c:if test="${applydata != null}">									 --%>
+<!-- 										<input type="button" class="btn btn-info btn-lg" value="신청취소" onclick="deleteapplyPopup()"> -->
+<%-- 									</c:if> --%>
 								</c:if>
 							</c:if> 
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
