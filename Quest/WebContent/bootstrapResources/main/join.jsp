@@ -85,7 +85,7 @@ $(document).ready ( function() {
 		if ( $('#answer').val() == "" ){
 			alert("답변을 입력해 주세요");
 			return false;
-		} else {
+		} else { 
 			joinCheckAll();
 		}
 		
