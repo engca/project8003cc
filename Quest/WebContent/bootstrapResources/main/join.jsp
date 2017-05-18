@@ -93,6 +93,12 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
 }
 }	
 </script>
+<style>
+#findPwQ {
+	width : 400px;
+}
+</style>
+
 </head>
 
 <body>
@@ -131,6 +137,19 @@ if (joinCheckID==1 && joinCheckPW1==1 && joinCheckPW2==1 && joinCheckNick== 1){
                                 <p class="help-block text-danger" id="nicknamespan"></p>
                             </div>
                         </div>
+                          <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="findPw">비밀번호 찾기 시 사용될 질문&답변</label>
+                                <select name = "findPwQ" id = "findPwQ">
+                                <option value = "1">내가 키우는 애완동물 이름은?</option>
+                                <option value = "2">나의 좌우명은?</option>
+                                <option value = "3">학창시절 가장 기억에 남는 선생님 이름은?</option>
+                                </select><br>
+                                <input type="text" class="form-control" placeholder="답변 입력" name="findPwA">
+                                <p class="help-block text-danger" id="pwa"></p>
+                            </div>
+                        </div>
+                        
                         <br>
                         <div id="success"></div>
                             <div class="form-group col-xs-12" align = "right">
