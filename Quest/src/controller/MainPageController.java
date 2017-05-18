@@ -251,7 +251,7 @@ public class MainPageController {
 	public String deleteBoard(int boardNo) {
 		service.deleteBoard(boardNo);
 		return "redirect:/listBoard.do";
-	}
+	} 
 
 	@RequestMapping("writeBoard.do")
 	public String writeBoard() {
