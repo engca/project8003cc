@@ -208,11 +208,14 @@ select {
 							</c:if> 
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 								<input type="button" class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
-								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
-									<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"
-										onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
-									<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"
-										onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">
+								
+								<c:if test="${boardList.bCompleteFlag == 3 && boardList.bCompleteFlag == 1}">
+									<c:if test="${sessionScope.userIndex == boardList.userIndex }">
+										<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"
+											onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
+										<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"
+											onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">
+									</c:if>
 								</c:if>
 							</c:when>
 						</c:choose> 
