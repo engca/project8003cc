@@ -187,7 +187,8 @@ select {
 				</tr>
 				<tr>
 					<td colspan="6" align="right">
-						<!-- 	로그인 세션 체크 --> <c:choose>
+						<!-- 	로그인 세션 체크 --> 
+						<c:choose>
 							<c:when test="${userId != null }">
 
 								<form name="apply">
@@ -213,16 +214,17 @@ select {
 									<input type="hidden" name="contactNo" value=${boardList.contactNo }>
 									<input type="hidden" name="bCompleteFlag" value=${boardList.bCompleteFlag }>
 								</form>
+								<form name="delupData">
+											<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+								</form>
 							<c:if test="${boardList.bCompleteFlag !=1 }">
 								<c:if test="${sessionScope.userIndex == boardList.userIndex }">
 									<input type="button" class="btn btn-info btn-lg" value="신청자 보기"	onclick="seeApplyUser()">
 								</c:if>
-								<c:if test="${boardList.bCompleteFlag != 3}">
-									
+								<c:if test="${boardList.bCompleteFlag != 3}">									
 									<c:if test="${applydata == null and sessionScope.userIndex != boardList.userIndex}">									
 										<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
-									</c:if>
-									
+									</c:if>									
 <%-- 									<c:if test="${applydata != null}">									 --%>
 <!-- 										<input type="button" class="btn btn-info btn-lg" value="신청취소" onclick="deleteapplyPopup()"> -->
 <%-- 									</c:if> --%>
@@ -231,13 +233,10 @@ select {
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 								<input type="button" class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
 								
-								<c:if test="${ boardList.bCompleteFlag == 0}">
+								<c:if test="${boardList.bCompleteFlag == 0}">
 									<c:if test="${sessionScope.userIndex == boardList.userIndex }">
-									<form name="delupData">
-									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
-									</form>
-										<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"	onclick="updatePopup()'">
-										<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"	onClick="deletePopup()">
+										<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"	onclick="updatePopup()">
+										<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"	onclick="deletePopup()">
 									</c:if>
 								</c:if>
 							</c:when>
