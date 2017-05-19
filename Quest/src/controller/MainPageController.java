@@ -199,6 +199,7 @@ public class MainPageController {
 	@RequestMapping("nicknameCheck.do")
 	public void nicknameCheck(String nickname, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		// TODO Auto-generated method stub
+		nickname = nickname.replaceAll(" ", "");
 		int result = service.nicknameCheck(nickname);
 		PrintWriter pw = resp.getWriter();
 		pw.print(result);
