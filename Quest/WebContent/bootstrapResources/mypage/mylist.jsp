@@ -10,7 +10,7 @@ select {
 	width: 100px;
 	height: 35px;
 }
-th{
+th{ 
 text-align: center; }
 td {
 text-align: center;
