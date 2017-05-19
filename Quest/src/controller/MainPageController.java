@@ -252,6 +252,9 @@ public class MainPageController {
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session) {
 		int flag = Integer.parseInt(board.get("boardFlag").toString());
+		String content = (String)board.get("content");
+		content = content.replaceAll("\r\n", "<br>");
+		board.put("content", content);
 		if ( flag == 1) { //해주세요
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
 			board.put("userIndex", userIndex);
