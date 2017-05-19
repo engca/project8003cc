@@ -231,7 +231,7 @@ select {
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 								<input type="button" class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
 								
-								<c:if test="${boardList.bCompleteFlag == 3 or boardList.bCompleteFlag == 0}">
+								<c:if test="${ boardList.bCompleteFlag == 0}">
 									<c:if test="${sessionScope.userIndex == boardList.userIndex }">
 									<form name="delupData">
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
