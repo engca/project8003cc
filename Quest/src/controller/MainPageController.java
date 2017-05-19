@@ -220,7 +220,11 @@ public class MainPageController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "insertComment.do")
 	public String insertComment(@RequestParam HashMap<String, Object> comment, HttpSession session) {
-		service.writeComment(comment);
+
+		String content = (String)comment.get("content");
+		content = content.replaceAll("\r\n", "<br>");
+		comment.put("content", content);
+		service.writeComment(comment);		
 		return "redirect:/viewBoard.do?boardNo=" + comment.get(Constant.Commnet.BOARDNO) + "&userIndex="
 				+ comment.get(Constant.Commnet.USERINDEX);
 	}
