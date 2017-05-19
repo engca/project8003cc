@@ -203,7 +203,7 @@ select {
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
 									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
 								</form>
-								<form name="applyUser">
+								<form name="applyUser"> 
 									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
 									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
 									<input type="hidden"	name="title" value=${boardList.title }>  
