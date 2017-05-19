@@ -75,8 +75,9 @@ $(document).ready ( function() {
 			dataType : 'text',
 			data : 'nickname=' + $('#nickname').val(),
 			success : function(data) {
-				if (data != $('#nickname').val()) {
+				if (data != 1) {
 					$('#nicknamespan').html('사용가능한 닉네임 입니다.');
+					joinCheckNick = 1;
 				} else {
 					$('#nicknamespan').text('이미 사용중인 닉네임 입니다.');
 					$('#nickname').focus();
