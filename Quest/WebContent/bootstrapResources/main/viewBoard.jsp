@@ -268,7 +268,7 @@ select {
 							<td><b>${comment.nickname}</b></td>
 							<td colspan="3">${comment.content}</td>
 							<td align="center">${comment.date }</td>
-							<td><c:if test="${sessionScope.nickname == comment.nickname }">
+							<td><c:if test="${sessionScope.userIndex == comment.userIndex }">
 									<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${sessionScope.userIndex }&content=${comment.content }'"
 										value="삭제">
 							</c:if></td>

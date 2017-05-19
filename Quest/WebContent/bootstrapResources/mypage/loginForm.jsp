@@ -305,11 +305,11 @@ body {
 				<tr>
 					<td width="180px" height="50px">
 						<div id="naver_id_login"></div> <script type="text/javascript">
-							var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://localhost:8080/Quest/redirect_naver.jsp");
+							var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://70.12.109.73:8080/Quest/redirect_naver.jsp");
 // 							var naver_id_login = new naver_id_login("i5QN1eYsBD3HXcwrS_w7", "http://localhost:8080/Quest/redirect_naver.jsp");
 							var state = naver_id_login.getUniqState(); 
 							naver_id_login.setButton("green", 3, 36);
-							naver_id_login.setDomain("http://localhost:8080/Quest/");
+							naver_id_login.setDomain("http://70.12.109.73:8080/Quest/");
 // 							naver_id_login.setDomain("http://localhost:8080/Quest/");
 							naver_id_login.setState(state);
 							naver_id_login.setPopup();
