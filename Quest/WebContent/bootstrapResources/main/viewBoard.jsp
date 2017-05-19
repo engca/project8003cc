@@ -56,6 +56,26 @@ function seeApplyUser(){
 	sAUser.method = "post";
 	sAUser.submit(); 
 }
+
+function deletePopup(){
+	var data = document.delupData;
+	window.open('','del','width=500, height=600');
+	data.action = "deleteBoardPopup.do";
+	data.target = "del";
+	data.method = "post";
+	data.submit(); 	
+}
+
+function updatePopup(){
+	var data = document.delupData;
+	window.open('','up','width=500, height=600');
+	data.action = "updateBoard.do";
+	data.target = "up";
+	data.method = "post";
+	data.submit(); 	
+}
+
+
 function police(){
 		$.ajax({
 			type : 'get',
@@ -74,6 +94,8 @@ function police(){
 			} 
 		}); 
 }
+
+
 
 
 </script>
@@ -209,12 +231,13 @@ select {
 								<input type="button" class="btn btn-success btn-lg" value="즐겨찾기" onclick="bookmarkPopup()">
 								<input type="button" class="btn btn-danger btn-lg" value="신고하기" onclick="police()" name="police">
 								
-								<c:if test="${boardList.bCompleteFlag == 3 && boardList.bCompleteFlag == 1}">
+								<c:if test="${boardList.bCompleteFlag == 3 or boardList.bCompleteFlag == 0}">
 									<c:if test="${sessionScope.userIndex == boardList.userIndex }">
-										<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정" 
-											onclick="location.href='updateBoard.do?boardNo=${boardList.boardNo }'">
-										<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"
-											onClick="window.open('deleteBoardPopup.do?boardNo=${boardList.boardNo}','','width=400, height=300');">
+									<form name="delupData">
+									<input type="hidden" name="boardNo" value=${boardList.boardNo }>
+									</form>
+										<input type="button" class="btn btn-warning btn-lg" value="퀘스트수정"	onclick="updatePopup()'">
+										<input type="button" class="btn btn-success btn-lg" value="퀘스트삭제"	onClick="deletePopup()">
 									</c:if>
 								</c:if>
 							</c:when>
