@@ -25,7 +25,7 @@
  </head>
  <body>
  
- 	<div id="board" class="container">
+ 	<div id="board1" class="container">
  		<div class="row">
  		<div class="col-lg-12">
  			<h2>${header1}</h2>
@@ -110,6 +110,6 @@
  	</div>
  	<br><br>
  
- 
+
  </body>
  </html> 
