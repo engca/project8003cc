@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import commons.Constant;
 import commons.Constant.User;
 import service.IQuestService;
 
@@ -184,7 +185,7 @@ public class MyPageController {
 	}
 
 	@RequestMapping("profileProc.do")
-	public String profileProc(String password,int userIndex, String nickname) throws Exception {
+	public String profileProc(HttpSession session, @RequestParam(defaultValue="noPw") String password,int userIndex, String nickname) throws Exception {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(password.getBytes());
 		byte[] result = md.digest();
@@ -204,9 +205,14 @@ public class MyPageController {
 		String origin_nick = service.nickname(userIndex);
 
 		if (nickname.equals(origin_nick) ) {
+			//기존 닉으로 변경
 			origin_User.put("nickname", null);
+			
 		} else{
+			//닉네임 변경시
 			origin_User.put("nickname", nickname);
+			session.setAttribute(Constant.User.NICKNAME, nickname);
+			
 		}
 		
 
