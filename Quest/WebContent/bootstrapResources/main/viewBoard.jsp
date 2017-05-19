@@ -277,7 +277,7 @@ select {
 				</c:if>
 			</table>
 		</div>
-	</div>
+	</div> 
 <br><br><br>
 
 
