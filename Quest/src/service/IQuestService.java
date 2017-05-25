@@ -76,6 +76,8 @@ public interface IQuestService {
 	//신고하기
 	public int police(int BoardNo, int userIndex); 
 	public int selectpolice(int BoardNo, int userIndex);
+	public int countPolice(int BoardNo);
+	public int updateAll (HashMap<String, Object> board);
 	
 	public List<HashMap<String, Object>> selectAll();
 //	주소관련

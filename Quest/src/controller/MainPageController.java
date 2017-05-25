@@ -39,6 +39,9 @@ public class MainPageController {
 			@RequestParam(required = false, defaultValue = "3") int boardFlag,
 			@RequestParam(required = false, defaultValue = "1") int page) {
 
+		
+		
+		
 		if (session.getAttribute("boardFlag") == null && session.getAttribute("page") == null) {
 			// 처음 listBoard에 들어왓을때
 			session.setAttribute(Constant.Board.PAGE, 1);
@@ -64,6 +67,8 @@ public class MainPageController {
 		} else if (boardFlag == 1) {
 			data.put("header1", "해주세요");
 		}
+		
+		//
 		mav.addAllObjects(data);
 		mav.setViewName("search.main.listBoard");
 		return mav;
@@ -308,10 +313,19 @@ public class MainPageController {
 	}
 
 	@RequestMapping("police.do")
-	@ResponseBody
-	public int police(int boardNo, int userIndex) {
-		int result = service.selectpolice(boardNo, userIndex);
-		return result;
+	public String police(int boardNo, int userIndex, int boardFlag) {
+		service.selectpolice(boardNo, userIndex);
+//		System.out.println("보드플레그: " + boardFlag);
+		int count = service.countPolice(boardNo);
+		
+		if(count == 10 ){
+			HashMap<String, Object> board = service.getBoard(boardNo);
+			board.put("bCompleteFlag", 2);
+//			System.out.println("신고하기" + board);
+//			System.out.println(service.countPolice(boardNo));
+			service.updateAll(board);
+		}
+		return"redirect:/listBoard.do";
 	}
 
 	// 요거 희정 테스트확인용

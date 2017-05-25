@@ -77,6 +77,7 @@ public interface IQuestDao {
 	// 신고하기
 	public int insertPolice(HashMap<String, Object> params);
 	public HashMap<String, Object> selectPolice(HashMap<String, Object> params);
+	public int countPolice(int boardNo);
 
 	// 주소관련
 	public HashMap<String, Object> selectAddress(int addrNo);

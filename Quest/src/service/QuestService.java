@@ -870,5 +870,18 @@ public class QuestService implements IQuestService {
 		params.put("userId", id);
 		return dao.updatePw(params);
 	}
+	@Override
+	public int countPolice(int boardNo) {
+		// TODO Auto-generated method stub
+		return dao.countPolice(boardNo);
+	}
+
+	@Override
+	public int updateAll(HashMap<String, Object> board) {
+		// TODO Auto-generated method stub
+		return dao.updateBoard(board);
+		
+		
+	}
 
 }

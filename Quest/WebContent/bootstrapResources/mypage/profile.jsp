@@ -34,9 +34,9 @@ $(document).ready ( function() {
 	$('#password').on('keyup', function(){
 		var regpass = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).{8,20}/;
 		if( !regpass.test($('#pass').val()) ) {
-			$('#passspan').html('특수문자,숫자,영문 대소문자 포함하세요');
+			$('#passwordspan').html('특수문자,숫자,영문 대소문자 포함하세요');
 		} else {
-			$('#passspan').html('사용가능한 패스워드 입니다.');
+			$('#passwordspan').html('사용가능한 패스워드 입니다.');
 		}					
 	});
 	

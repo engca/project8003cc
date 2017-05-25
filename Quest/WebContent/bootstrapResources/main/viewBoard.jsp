@@ -81,7 +81,7 @@ function police(){
 			type : 'get',
 			url : 'police.do',
 			dataType : 'text',
-			data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${sessionScope.userIndex},
+			data : 'boardNo=' + ${boardList.boardNo} + '&userIndex=' + ${sessionScope.userIndex}+ '&boardFlag=' + ${boardList.boardFlag},
 			success : function(data) {
 				if (data == 2) {
 					alert('이미 신고된 게시글 입니다.');
