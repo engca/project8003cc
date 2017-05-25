@@ -40,7 +40,7 @@ public class MainPageController {
 			@RequestParam(required = false, defaultValue = "1") int page) {
 
 		
-		
+		service.getSession(session, (int)session.getAttribute("userIndex"));
 		
 		if (session.getAttribute("boardFlag") == null && session.getAttribute("page") == null) {
 			// 처음 listBoard에 들어왓을때

@@ -39,6 +39,7 @@ public class HeaderController {
 			sb.append(Integer.toHexString(0xFF & result[i]));
 		}
 		if (service.login(id, sb.toString()) != null) {
+			
 			return "success";
 		} else {
 			return "fail";
@@ -64,6 +65,7 @@ public class HeaderController {
 			session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
 			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
+			service.getSession(session, (int)user.get(Constant.User.USERINDEX));
 			System.out.println("login>>>>>>>" + user.get(Constant.User.USERINDEX) + " "
 					+ user.get(Constant.User.NICKNAME) + " " + user.get(Constant.User.USERID));
 		} else {
@@ -107,7 +109,7 @@ public class HeaderController {
 			session.setAttribute(Constant.Board.BOARDFLAG, boardFlag);
 		}
 		
-		System.out.println("controller");
+//		System.out.println("controller");
 		HashMap<String, Object> data = service.searchBoardList(boardFlag, searchFlag, page, searchKey, area);
 		ModelAndView mav = new ModelAndView();
 
@@ -159,6 +161,7 @@ public class HeaderController {
 			session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
 			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
+			service.getSession(session, (int)user.get(Constant.User.USERINDEX));
 			session.setAttribute("loginCategory", user.get("loginCategory"));
 			return "redirect:listBoard.do";
 		}

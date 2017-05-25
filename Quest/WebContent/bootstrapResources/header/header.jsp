@@ -212,8 +212,11 @@
 <!-- 				</marquee> -->
 				<div>
 					${sessionScope.nickname }님<br>
-					해주세요 : <a value = "${sessionScope.todo }개" href = ""></a>
 					잘해요 : <a value = "${sessionScope.dowell }개" href = ""></a>
+					해주세요 : <a value = "${sessionScope.todo }개" href = ""></a>
+					<br>
+					잘해요 신청 : <a value = "${sessionScope.dowellapply }개" href = ""></a>
+					해주세요 신청 : <a value = "${sessionScope.todoapply }개" href = ""></a>
 				</div>
 			</c:otherwise>
 		</c:choose>

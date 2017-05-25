@@ -37,7 +37,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</otherwise>
 		</choose>
 	</sql>
-
+	<select id="selectDowellApply" parameterType="int" resultType="int">
+		select count(*) from board,apply where 
+		board.boardNo = apply.boardNo and board.boardflag = 0 and
+		userIndex = #{userIndex} and (apply.acompleteflag = 2 or apply.acompleteflag = 3)
+	</select>
+	<select id="selectTodoApply" parameterType="int" resultType="int">
+		select count(*) from board,apply where 
+		board.boardNo = apply.boardNo and board.boardflag = 1 and
+		userIndex = #{userIndex} and (apply.acompleteflag = 2 or apply.acompleteflag = 3) 
+	</select>
+	<select id="selectDowell" parameterType="int" resultType="int">
+		select count(*) from board where userIndex = #{userIndex} and (bcompleteflag = 0  or bcompleteflag = 3) and boardflag = 0
+	</select>
+	<select id="selectTodo" parameterType="int" resultType="int">
+		select count(*) from board where userIndex = #{userIndex} and (bcompleteflag = 0  or bcompleteflag = 3 and boardflag = 1
+	</select>
 	<select id="selectContact" parameterType="int" resultType="String">
 		select contact from contact where contactNo= #{contactNo}
 	</select>
