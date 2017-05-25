@@ -7,7 +7,10 @@ import javax.xml.stream.events.Comment;
 
 public interface IQuestDao {
 	public String selectContact(int contactNo);
-
+	public int selectTodo(int userIndex);
+	public int selectDowell(int userIndex);
+	public int selectDowellApply(int userIndex);
+	public int selectTodoApply(int userIndex);
 	//게시판 관련
 	public int insertBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);

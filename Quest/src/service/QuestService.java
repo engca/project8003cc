@@ -33,13 +33,13 @@ public class QuestService implements IQuestService {
 	@Override
 	public int getSessionTodoApply(int userIndex) {
 		// TODO Auto-generated method stub
-		return dao.selectTodo(userIndex);
+		return dao.selectDowellApply(userIndex);
 	}
 
 	@Override
 	public int getSessionDowellApply(int userIndex) {
 		// TODO Auto-generated method stub
-		return dao.selectTodo(userIndex);
+		return dao.selectTodoApply(userIndex);
 	}
 
 	@Override
