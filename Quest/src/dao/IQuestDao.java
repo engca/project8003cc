@@ -50,7 +50,7 @@ public interface IQuestDao {
 	// 신청하기 
 	public int insertApply(HashMap<String, Object> params);
 	public int updateApply(HashMap<String, Object> params);
-	public int deleteApply(int boardNo);
+	public int deleteApply(HashMap<String, Object> params);
 	public HashMap<String, Object> selectApply(HashMap<String, Object> params);
 	public List<HashMap<String, Object>> selectAllApplyByBoardNo(int boardNo);
 	public List<HashMap<String, Object>> selectAllApplyByUserIndex(int userIndex);

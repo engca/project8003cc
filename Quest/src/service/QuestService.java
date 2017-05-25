@@ -883,5 +883,14 @@ public class QuestService implements IQuestService {
 		
 		
 	}
+	@Override
+	public int deleteApply(int BoardNo,int userIndex) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("boardNo", BoardNo);
+		params.put("userIndex", userIndex);
+		return dao.deleteApply(params);
+	}
+
 
 }

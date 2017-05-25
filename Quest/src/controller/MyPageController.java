@@ -58,6 +58,15 @@ public class MyPageController {
 //		System.out.println(mav);
 		return mav;
 	}
+	
+//	@RequestMapping(value="delete_applylist.do", method=RequestMethod.POST)
+//	public void delete_applylist(int boardNo, int userIndex,HttpSession session){
+//		System.out.println("delete_applylist.do 세션:" + session.getAttribute("userIndex") + "userIndex : "+userIndex);
+//		HashMap<String, Object> params = (HashMap<String, Object>) service.getApply(boardNo, userIndex);
+//		params.put(Constant.Apply.ACOMPLETEFLAG,"4");
+//		
+//		
+//	}
 
 
 	@RequestMapping("bookmark.do")
@@ -221,4 +230,33 @@ public class MyPageController {
 		return "redirect:profile.do";
 
 	}
+	
+	@RequestMapping("deleteApplyPopup.do")
+	 public String deleteApplyPopup(@RequestParam HashMap<String, Object> params) {
+		 System.out.println("deleteApplyPopup.do" + params);
+//		 System.out.println("boardNo: " + params.get("boardNo"));
+//		 System.out.println("getboard"+ Integer.parseInt((String)(params.get("boardNo"))));
+//		 HashMap<String, Object> tmp = service.getBoard(Integer.parseInt((String)(params.get("boardNo"))));
+//		 System.out.println("tmp"+service.getContact(Integer.parseInt((String)params.get("contactNo"))));
+//		 tmp.put("contact", service.getContact(Integer.parseInt((String)params.get("contactNo"))));
+//		 ModelAndView mav = new ModelAndView();
+//		 mav.addAllObjects(tmp);
+//		 mav.setViewName("applyPopup.popup");
+	
+		 return "deleteApplyPopup.popup"; 
+	 }
+	
+	@RequestMapping("deleteApply.do")
+	public ModelAndView deleteApply(int boardNo, int userIndex) {
+		System.out.println("deleteProc" + boardNo + "&" + userIndex);
+		service.deleteApply(boardNo, userIndex);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardNo", boardNo);
+		mav.addObject("userIndex", userIndex);
+		mav.setViewName("redirect:viewBoard.do");
+		return mav;
+	} 
+
+	
 }

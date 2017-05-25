@@ -60,6 +60,7 @@ public interface IQuestService {
 	public int deleteApply(HashMap<String, Object> params); 
 	public int choiceApply(int user1Index, int user2Index, int boardNo);
 	public int deleteApplyUser(int user1Index, int user2Index, int boardNo);
+	
 
 	//평가하기
 	public List<HashMap<String, Object>> listScore(int userIndex,int mode);
@@ -92,5 +93,7 @@ public interface IQuestService {
 	
 	public int getUserIndexById(String id);
 	public HashMap<String, Object> mycomplete(int userIndex, int page);
+	public int deleteApply(int boardNo,int userIndex); 
+	
 
 }
