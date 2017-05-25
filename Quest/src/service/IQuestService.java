@@ -9,8 +9,11 @@ import javax.xml.stream.events.Comment;
 
 public interface IQuestService {
 	//header
+	public void getSession(HttpSession session, int userIndex);
 	public int getSessionTodo(int userIndex);
 	public int getSessionDowell(int userIndex);
+	public int getSessionTodoApply(int userIndex);
+	public int getSessionDowellApply(int userIndex);
 	//contact
 	public String getContact(int conatactNo);
 	
