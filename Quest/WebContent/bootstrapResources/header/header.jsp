@@ -207,9 +207,14 @@
 							</c:if> 로그아웃</a></li>
 					</ul>
 				</div>
-				<marquee direction="right" style="">
-					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font>
-				</marquee>
+<!-- 				<marquee direction="right" style=""> -->
+<%-- 					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font> --%>
+<!-- 				</marquee> -->
+				<div>
+					${sessionScope.nickname }님<br>
+					해주세요 : <a value = "${sessionScope.todo }개" href = ""></a>
+					잘해요 : <a value = "${sessionScope.dowell }개" href = ""></a>
+				</div>
 			</c:otherwise>
 		</c:choose>
 	</div>

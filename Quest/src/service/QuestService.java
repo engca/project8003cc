@@ -20,6 +20,20 @@ public class QuestService implements IQuestService {
 	@Autowired
 	private DataSourceTransactionManager txManager;
 
+	
+	@Override
+	public int getSessionTodo(int userIndex) {
+		// TODO Auto-generated method stub
+		
+		return dao.selectTodo(userIndex);;
+	}
+
+	@Override
+	public int getSessionDowell(int userIndex) {
+		// TODO Auto-generated method stub
+		return dao.selectDowell(userIndex);;
+	}
+
 	//
 	@Override
 	public int join(HashMap<String, Object> params) {
