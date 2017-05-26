@@ -26,7 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    
-  <delete parameterType="java.util.HashMap" id="deleteApply"> DELETE * from apply where boardNo = #{boardNo} and userIndex= #{userIndex} </delete>
+  <delete parameterType="java.util.HashMap" id="deleteApply"> 
+  DELETE from apply where boardNo = #{boardNo} and userIndex= #{userIndex} </delete>
    
    <select id="selectBoardApply" parameterType="java.util.HashMap" resultType="java.util.HashMap">
    	select * from board b, apply a where b.boardNo=a.boardNo and a.userIndex=#{userIndex} and boardFlag=#{boardFlag} limit #{skip},#{count}

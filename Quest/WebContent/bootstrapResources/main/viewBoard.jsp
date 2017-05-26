@@ -16,6 +16,24 @@ function applyPopup(){
 	apply.method = "post";
 	apply.submit(); 
 }
+function applyUpdatePopup(){
+	var apply = document.apply;
+	window.name = "applyParent";
+	window.open('','apply','width=500, height=600');
+	apply.action = "applyUpdatePopup.do";
+	apply.target = "apply";
+	apply.method = "post";
+	apply.submit(); 
+}
+function deleteapplyPopup(){
+	var apply = document.apply;
+	window.name = "applyParent";
+	window.open('','apply','width=500, height=600');
+	apply.action = "deleteapplyPopup.do";
+	apply.target = "apply";
+	apply.method = "post";
+	apply.submit(); 
+}
 function deleteapplyPopup(){
 	var apply = document.apply;
 	window.name = "applyParent";
@@ -224,6 +242,9 @@ select {
 								<c:if test="${boardList.bCompleteFlag != 3}">									
 									<c:if test="${applydata == null and sessionScope.userIndex != boardList.userIndex}">									
 										<input type="button" class="btn btn-info btn-lg" value="신청하기" onclick="applyPopup()">
+									</c:if>	
+									<c:if test="${applydata != null}">									
+										<input type="button" class="btn btn-info btn-lg" value="신청수정" onclick="applyUpdatePopup()">
 									</c:if>									
 <%-- 									<c:if test="${applydata != null}">									 --%>
 <!-- 										<input type="button" class="btn btn-info btn-lg" value="신청취소" onclick="deleteapplyPopup()"> -->

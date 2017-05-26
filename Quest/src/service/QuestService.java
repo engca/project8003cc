@@ -891,6 +891,13 @@ public class QuestService implements IQuestService {
 		params.put("userIndex", userIndex);
 		return dao.deleteApply(params);
 	}
-
+	@Override
+	public HashMap<String, Object> selectApply(int BoardNo, int userIndex) {
+		// TODO Auto-generated method stub
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("boardNo", BoardNo);
+		params.put("userIndex", userIndex);
+		return dao.selectApply(params);
+	}
 
 }

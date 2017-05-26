@@ -22,21 +22,6 @@ var dodelete = function() {
 }
 </script>
 <style type="text/css">
-th {
-	width: 150px;
-}
-
-select {
-	width: 100px;
-	height: 35px;
-}
-
-.container {
-	position: absolute;
-	top: 60px;
-	left: 60px;
-}
-
 h2 {
 	text-align: center;
 }
@@ -49,7 +34,7 @@ h2 {
 	<p>
 	<hr class="star-primary">
 	<center>
-	- boardNo ${boardNo } ${boardNo} / ${userIndex }
+	- boardNo ${boardNo} / ${userIndex }
 			<input type="hidden" name="boardNo" value=${boardNo }>
 			<input type="hidden" name="userIndex" value=${userIndex }>
 		<input type="button" class="btn btn-primary btn-lg" value="아니요" onclick="location.href = 'javascript:history.back()'">

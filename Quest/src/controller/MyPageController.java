@@ -231,8 +231,55 @@ public class MyPageController {
 
 	}
 	
-	@RequestMapping("deleteApplyPopup.do")
-	 public String deleteApplyPopup(@RequestParam HashMap<String, Object> params) {
+
+	@RequestMapping("applyUpdatePopup.do")
+	 public ModelAndView applyUpdatePopup(@RequestParam HashMap<String, Object> params) {
+		 System.out.println("applyUpdatePopup.do" + params);
+		 HashMap<String, Object> tmp = service.getBoard(Integer.parseInt((String)(params.get("boardNo"))));
+//		 System.out.println("tmp"+service.getContact(Integer.parseInt((String)params.get("contactNo"))));
+		 tmp.put("contact", service.getContact(Integer.parseInt((String)params.get("contactNo"))));
+		 int boardNo = Integer.parseInt((String)(params.get("boardNo")));
+		 int userIndex = Integer.parseInt((String)(params.get("userIndex")));
+		 HashMap<String, Object> apply = service.selectApply(boardNo, userIndex);
+		 System.out.println("업데이트 apply : "+ apply);
+		 ModelAndView mav = new ModelAndView();
+		 mav.addObject("board", tmp);
+		 mav.addObject("apply", apply);
+		 mav.setViewName("applyUpdatePopup.popup");
+		 System.out.println("update popup ok!");
+	
+		 return mav; 
+	 }
+	 
+	 @RequestMapping(value="applyUpdatePopupProc.do", method=RequestMethod.POST)
+		public ModelAndView applyUpdatePopupProc(@RequestParam HashMap<String, Object>params,HttpSession session) {
+			int userIndex = (int)session.getAttribute("userIndex");
+//			System.out.println("userIndex" + userIndex);
+//			int userIndex = 1;
+			System.out.println("? applyPopupProc.do params : " + params );
+			params.put("userIndex", userIndex);
+			HashMap<String, Object> apply = service.selectApply(Integer.parseInt((String)(params.get("boardNo"))), userIndex);
+			System.out.println("?섏젙 Proc ?");
+			apply.put("rewardNo", params.get("rewardNo"));
+			apply.put("contactAnswer", params.get("contactAnswer"));
+			apply.put("content", params.get("content"));
+			
+			service.updateApply(apply);
+			
+			System.out.println("Proc OK!");
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("boardNo", params.get("boardNo"));
+			mav.addObject("userIndex", userIndex);
+//			model.addAttribute("boardNo", params.get("boardNo"));
+			mav.setViewName("redirect:viewBoard.do");
+//			System.out.println(mav);
+			return mav;
+		}
+	 
+	 
+	 @RequestMapping("deleteApplyPopup.do")
+	 public String deleteApplyPopup(@RequestParam HashMap<String, Object> params, Model model) {
 		 System.out.println("deleteApplyPopup.do" + params);
 //		 System.out.println("boardNo: " + params.get("boardNo"));
 //		 System.out.println("getboard"+ Integer.parseInt((String)(params.get("boardNo"))));
@@ -242,21 +289,24 @@ public class MyPageController {
 //		 ModelAndView mav = new ModelAndView();
 //		 mav.addAllObjects(tmp);
 //		 mav.setViewName("applyPopup.popup");
-	
+		 model.addAttribute("boardNo",(params.get("boardNo")));
+		 model.addAttribute("userIndex",(params.get("userIndex")));
+		 System.out.println(model);
 		 return "deleteApplyPopup.popup"; 
 	 }
-	
-	@RequestMapping("deleteApply.do")
-	public ModelAndView deleteApply(int boardNo, int userIndex) {
-		System.out.println("deleteProc" + boardNo + "&" + userIndex);
-		service.deleteApply(boardNo, userIndex);
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("boardNo", boardNo);
-		mav.addObject("userIndex", userIndex);
-		mav.setViewName("redirect:viewBoard.do");
-		return mav;
-	} 
+	 
+		@RequestMapping("deleteApply.do")
+		public ModelAndView deleteApply(int boardNo, int userIndex) {
+			System.out.println("deleteProc" + boardNo + "&" + userIndex);
+			service.deleteApply(boardNo, userIndex);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("boardNo", boardNo);
+			mav.addObject("userIndex", userIndex);
+			mav.setViewName("redirect:viewBoard.do");
+			return mav;
+		} 
+
 
 	
 }

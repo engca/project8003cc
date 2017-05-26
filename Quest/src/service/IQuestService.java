@@ -94,6 +94,6 @@ public interface IQuestService {
 	public int getUserIndexById(String id);
 	public HashMap<String, Object> mycomplete(int userIndex, int page);
 	public int deleteApply(int boardNo,int userIndex); 
-	
+	public HashMap<String, Object> selectApply(int BoardNo, int userIndex);
 
 }
