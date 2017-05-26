@@ -13,9 +13,10 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-.info{
-
-}
+th{
+text-align: center;}
+td{
+text-align: center;}
 </style>
 <script type="text/javascript">
 	var check = false;
@@ -143,7 +144,7 @@
 				<c:forEach var="applyUser" items="${applyList }">
 					
 					<tr name="tr_${applyUser.userIndex }" >
-						<td> <input type="checkbox" name="chk" id="chk" value="${applyUser.userIndex }" onclick="count_chk(this)" >
+						<td rowspan="2"> <input type="checkbox" name="chk" id="chk" value="${applyUser.userIndex }" onclick="count_chk(this)" >
 						<td>${applyUser.nickname }</td>
 						<td>
 							<c:if test="${applyUser.rewardNo==1 }">${boardList.reward1 }</c:if>
@@ -155,8 +156,8 @@
 							<c:when test="${applyUser.aCompleteFlag ==2 }">
 						
 						<td>
-<%-- 							<input type="button" name="${applyUser.userIndex }" value="간택취소" id="${applyUser.userIndex }" onclick="deleteUaer(this)"> --%>
-								<input type="button" value="진행중"  disabled="disabled">
+							<input type="button" name="${applyUser.userIndex }" value="간택취소" id="${applyUser.userIndex }" onclick="deleteUaer(this)">
+<!-- 								<input type="button" value="진행중"  disabled="disabled"> -->
 						</td>
 						</c:when>
 							<c:otherwise>
@@ -164,19 +165,23 @@
 							</c:otherwise>
 						</c:choose>
 					</tr>
+					<tr>
+						<th > 신청 내용 </th>
+						<td colspan="3"> ${applyUser.content } </td>
+					</tr>
 					
 				</c:forEach>
 	
 			</table>
 			<center>
 				<c:choose>
-						<c:when test="${boardList.bCompleteFlag == 0 }">
-				<input type="button" class="btn btn-primary btn-lg" 
-				value="취소"onclick="window.close()">&nbsp;&nbsp;&nbsp;&nbsp; 
-				<c:if test="$"></c:if>
-				<input type="button"class="btn btn-success btn-lg" id="btn"
-				value="간택완료" onclick="applyUser()">
-				</c:when>
+					<c:when test="${boardList.bCompleteFlag == 0 }">
+						<input type="button" class="btn btn-primary btn-lg" 
+						value="취소"onclick="window.close()">&nbsp;&nbsp;&nbsp;&nbsp; 
+						<c:if test="$"></c:if>
+						<input type="button"class="btn btn-success btn-lg" id="btn"
+						value="간택완료" onclick="applyUser()">
+					</c:when>
 				</c:choose>
 				
 				<c:choose>
