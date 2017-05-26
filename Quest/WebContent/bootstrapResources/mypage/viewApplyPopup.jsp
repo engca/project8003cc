@@ -103,7 +103,7 @@ text-align: center;}
 			<div class="col-lg-12 text-center">
 				<h1>신청자보기</h1>
 				<hr class="star-primary" style="margin-bottom: 20px">
-				<h4><font color="red">신청자 선택 후 수정이 불가능 합니다. <br> 신청자와 충분히 협의후 신중하게 선택해주시기 바랍니다.</font></h4>				
+				<h4><font color="red"> 신청자와 충분한 협의후 신중하게 선택해주시기 바랍니다.</font></h4>				
 				
 			</div>
 		</div>
