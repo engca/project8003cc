@@ -44,7 +44,11 @@ public class Constant {
 		public static final String BOARDNO = "boardNo";
 		public static final String USERINDEX = "userIndex";
 		public static final String DATE = "date";
-		public static final String CONTENT = "content";		
+		public static final String CONTENT = "content";
+		public static final String COMMENT_GROUP = "comment_group";
+		public static final String COMMENT_SEQ = "comment_seq";	
+		public static final String COMMENT_LV = "comment_lv";	
+		
 	}
 	
 	public static class Score{

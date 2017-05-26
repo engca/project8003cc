@@ -46,12 +46,22 @@ public interface IQuestService {
 	public HashMap<String, Object> getBoard(int boardNo);
 	public boolean isMyBoard(HashMap<String, Object> params);
 	public HashMap<String, Object> searchBoardList(int boardflag,int searchFlag, int page, String searchKey,String[] area);
+	
 	//댓글
 	public List<HashMap<String, Object>> listComment(int BoardNo);
 	public int writeComment(HashMap<String, Object> params);
 	public int updateComment(HashMap<String, Object> params);
 	public int deleteComment(HashMap<String, Object> params); 
 	public int commentCount(int BoardNo);
+	
+	public HashMap<String, Object> selectComment(HashMap<String, Object> params);
+	public void insertComment(HashMap<String, Object> params);
+	public void updateSequence(HashMap<String, Object> params);
+	public void updateGroup(int boardNo);
+	public List<HashMap<String, Object>> selectCommentList(int boardNo);
+
+	
+	
 	
 	//신청하기
 	public List<HashMap<String, Object>> listApply(int BoardNo);

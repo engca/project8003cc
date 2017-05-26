@@ -4,16 +4,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="dao.IQuestDao">
   <insert id="insertComment" parameterType="java.util.HashMap">
-  	INSERT INTO comment VALUES (#{boardNo}, #{userIndex}, sysdate(), #{content})
+  	INSERT INTO comment VALUES (#{boardNo}, #{userIndex}, sysdate(), #{content}, #{comment_group}, #{comment_seq}, #{comment_lv})
   </insert>
     
   <update id="updateComment" parameterType="java.util.HashMap" >
-  	UPDATE comment SET content = #{content}, date = sysdate() WHERE 
-  	(boardNo = #{boardNo} and userIndex = #{userIndex})
+  	UPDATE comment 
+  	SET content = #{content}, date = sysdate() 
+  	WHERE 
+  		(boardNo = #{boardNo} and userIndex = #{userIndex})
   </update>
   
   <delete id="deleteComment" parameterType="java.util.HashMap">
-  	DELETE FROM comment WHERE boardNo = #{boardNo} AND userIndex = #{userIndex} AND content = #{content}
+  	DELETE FROM comment 
+  	WHERE 
+  		boardNo = #{boardNo} AND userIndex = #{userIndex} AND 
+  		comment_group = #{comment_group} AND comment_seq = #{comment_seq}
   </delete>
   
   <select id="selectAllCommentByBoardNo" parameterType="int"
@@ -24,4 +29,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="selectCommentCount" parameterType="int" resultType="int"> 
    	select count(*) from comment where boardNo = #{boardNo}
    </select>
+   
+   <select id="selectCommentList" parameterType = "int" resultType = "java.util.HashMap">
+		select * from comment 
+		where boardNo = #{boardNo}
+		order by comment_group desc , comment_seq asc
+	</select>
+
+	<select id="selectComment" parameterType = "java.util.HashMap" resultType = "java.util.HashMap">
+		select * from comment 
+		where 
+			boardNo = #{boardNo}
+			and comment_group = #{comment_group} and comment_seq = #{comment_seq}
+	</select>
+
+	<update id="updateSequence" parameterType="java.util.HashMap">
+		update comment 
+		set comment_seq = comment_seq + 1
+		where comment_group = #{comment_group} and comment_seq > #{comment_seq} and boardNo = #{boardNo}
+	</update>
+
+	<update id="updateGroup" parameterType="int">
+		update comment 
+		set comment_group = comment_group + 1
+		where boardNo = #{boardNo}
+	</update>
+   
+   
 </mapper>

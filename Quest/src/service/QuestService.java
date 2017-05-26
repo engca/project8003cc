@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.stream.events.Comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -898,6 +899,37 @@ public class QuestService implements IQuestService {
 		params.put("boardNo", BoardNo);
 		params.put("userIndex", userIndex);
 		return dao.selectApply(params);
+	}
+
+	@Override
+	public HashMap<String, Object> selectComment(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		return dao.selectComment(params);
+	}
+
+	@Override
+	public void insertComment(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		dao.insertComment(params);		
+	}
+
+	@Override
+	public void updateSequence(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+		dao.updateSequence(params);
+		
+	}
+
+	@Override
+	public void updateGroup(int boardNo) {
+		// TODO Auto-generated method stub
+		dao.updateGroup(boardNo);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectCommentList(int boardNo) {
+		// TODO Auto-generated method stub
+		return dao.selectCommentList(boardNo);
 	}
 
 }

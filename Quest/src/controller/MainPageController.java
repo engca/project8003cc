@@ -218,13 +218,17 @@ public class MainPageController {
 		List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(board);
+		
+		//List<HashMap<String, Object>> comments = service.selectCommentList(boardNo);
+		if (comment.size() > 0)
 		mv.addObject("listComment", comment);
+		
 		System.out.println("viewBoard" + board + "listComment" + comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "insertComment.do")
+	/*@RequestMapping(method = RequestMethod.POST, value = "insertComment.do")
 	public String insertComment(@RequestParam HashMap<String, Object> comment, HttpSession session) {
 
 		String content = (String)comment.get("content");
@@ -233,7 +237,7 @@ public class MainPageController {
 		service.writeComment(comment);		
 		return "redirect:/viewBoard.do?boardNo=" + comment.get(Constant.Commnet.BOARDNO) + "&userIndex="
 				+ comment.get(Constant.Commnet.USERINDEX);
-	}
+	}*/
 
 	@RequestMapping("deleteComment.do")
 	public String deleteComment(@RequestParam HashMap<String, Object> comment, HttpSession session) {
@@ -325,9 +329,50 @@ public class MainPageController {
 //			System.out.println(service.countPolice(boardNo));
 			service.updateAll(board);
 		}
-		return"redirect:/listBoard.do";
+		return "redirect:/listBoard.do";
 	}
 
+	@RequestMapping("insertComment.do")
+	public String insertComment(int group, @RequestParam(required = false, defaultValue = "0") int seq, int boardNo,
+			String userIndex, String content) {
+		System.out.println("group: " + group + "seq : " + seq);
+		
+		if (group == -1) {
+			HashMap<String, Object> param = new HashMap<>();
+			param.put("boardNo", boardNo);
+			param.put("userIndex", userIndex);
+			param.put("content", content);
+			param.put("comment_group", 0);
+			param.put("comment_seq", 0);
+			param.put("comment_lv", 0);
+			
+			service.updateGroup(boardNo);
+			service.insertComment(param);
+		} else {
+			HashMap<String, Object> param = new HashMap<>();
+			param.put("boardNo", boardNo);
+			param.put("comment_group", group);
+			param.put("comment_seq", seq);
+
+			HashMap<String, Object> params = service.selectComment(param);
+			service.updateSequence(params);
+			
+			param.put("boardNo", boardNo);
+			param.put("userIndex", userIndex);
+			param.put("content", content);
+			param.put("comment_group", params.get(Constant.Commnet.COMMENT_GROUP));
+			param.put("comment_seq", params.get(Constant.Commnet.COMMENT_SEQ+1));
+			param.put("comment_lv", params.get(Constant.Commnet.COMMENT_LV+1));			
+			service.insertComment(param);
+		}
+		return "redirect:viewBoard.do?boardNo=" + boardNo;
+	}
+	
+	
+	
+	
+	
+	
 	// 요거 희정 테스트확인용
 	@RequestMapping("heetest.do")
 	public String heetest() {
@@ -335,3 +380,4 @@ public class MainPageController {
 	}
 
 }
+
