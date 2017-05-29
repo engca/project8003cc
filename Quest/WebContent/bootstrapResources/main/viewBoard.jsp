@@ -308,7 +308,8 @@ select {
 								 <img src="bootstrapResources/img/reply_icon.gif">
 								  ${comment.nickname } &nbsp;&nbsp; &nbsp;&nbsp;
 								 <b>${comment.content } &nbsp;&nbsp; &nbsp;&nbsp;</b>
-								 <a href="#" onclick="insertForm(${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv })" >[댓글]</a>
+								 <c:if test="${sessionScope.userId != null }">
+								 <a href="#" onclick="insertForm(${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv })" >[댓글]</a>				 
 								 <c:if test="${sessionScope.userIndex == comment.userIndex }">
 								 	<a href="#" onclick="deleteComment(${comment.boardNo}${comment.comment_seq }${comment.comment_group })" >[삭제]</a>								 
 									 	<form  name="delcomData" id="delcom${comment.boardNo}${comment.comment_seq }${comment.comment_group }" method="get" action="deleteComment.do">
@@ -317,7 +318,7 @@ select {
 										<input type = "hidden" name ="userIndex" value="${sessionScope.userIndex }">
 										<input type = "hidden" name = "boardNo" value = "${comment.boardNo }">							
 										</form>
-								 </c:if>
+								 </c:if></c:if>
 							 	</td>					
 							</tr>								
 							<tr style = "display:none;" id = "comment${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv }" >
@@ -342,6 +343,7 @@ select {
 								<img src="bootstrapResources/img/reply_icon.gif"><img src="bootstrapResources/img/reply_icon2.gif">
 								  ${comment.nickname } &nbsp;&nbsp; &nbsp;&nbsp;
 								 <b>${comment.content } &nbsp;&nbsp; &nbsp;&nbsp;</b>
+								<c:if test="${sessionScope.userId != null }">
 								 <a href="#" onclick="insertForm(${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv })" >[댓글]</a>
 								 <c:if test="${sessionScope.userIndex == comment.userIndex }">
 								 	<a href="#" onclick="deleteComment(${comment.boardNo}${comment.comment_seq }${comment.comment_group })" >[삭제]</a>								 
@@ -351,7 +353,7 @@ select {
 										<input type = "hidden" name ="userIndex" value="${sessionScope.userIndex }">
 										<input type = "hidden" name = "boardNo" value = "${comment.boardNo }">							
 										</form>
-								 </c:if>
+								 </c:if></c:if>
 							 	</td>				
 							</tr>
 							<tr style = "display:none;" id = "comment${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv }" >
