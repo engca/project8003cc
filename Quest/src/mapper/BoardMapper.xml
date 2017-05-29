@@ -38,20 +38,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</choose>
 	</sql>
 	<select id="selectDowellApply" parameterType="int" resultType="int">
-		select count(*) from board,apply where 
-		board.boardNo = apply.boardNo and board.boardflag = 0 and
-		userIndex = #{userIndex} and (apply.acompleteflag = 2 or apply.acompleteflag = 3)
+		<if test="value != null">
+			select count(*) from board,apply where 
+			board.boardNo = apply.boardNo and board.boardflag = 0 and
+			board.userIndex = #{value} and (apply.acompleteflag = 2 or apply.acompleteflag = 3)
+		</if>
 	</select>
 	<select id="selectTodoApply" parameterType="int" resultType="int">
-		select count(*) from board,apply where 
-		board.boardNo = apply.boardNo and board.boardflag = 1 and
-		userIndex = #{userIndex} and (apply.acompleteflag = 2 or apply.acompleteflag = 3) 
+		<if test="value != null">
+			select count(*) from board,apply where 
+			board.boardNo = apply.boardNo and board.boardflag = 1 and
+			board.userIndex = #{value} and (apply.acompleteflag = 2 or apply.acompleteflag = 3) 
+		</if>
 	</select>
 	<select id="selectDowell" parameterType="int" resultType="int">
-		select count(*) from board where userIndex = #{userIndex} and (bcompleteflag = 0  or bcompleteflag = 3) and boardflag = 0
+		<if test="value != null">
+			select count(*) from board where 
+			board.userIndex = #{value} and (bcompleteflag = 0  or bcompleteflag = 3) 
+			and boardflag = 0
+		</if>
 	</select>
 	<select id="selectTodo" parameterType="int" resultType="int">
-		select count(*) from board where userIndex = #{userIndex} and (bcompleteflag = 0  or bcompleteflag = 3 and boardflag = 1
+		<if test="value != null">
+			select count(*) from board where 
+			board.userIndex = #{value} and (bcompleteflag = 0  or bcompleteflag = 3 )
+			and boardflag = 1
+		</if>
 	</select>
 	<select id="selectContact" parameterType="int" resultType="String">
 		select contact from contact where contactNo= #{contactNo}

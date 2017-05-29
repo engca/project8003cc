@@ -82,7 +82,6 @@ public class HeaderController {
 		session.removeAttribute(Constant.User.USERINDEX);
 		return "redirect:listBoard.do";
 	}
-
 	@RequestMapping("searchBoard.do")
 	public ModelAndView searchBoard(HttpSession session, @RequestParam(required=false, defaultValue="3") int boardFlag,
 			@RequestParam(defaultValue = "0") int searchFlag, @RequestParam(required=false, defaultValue="1") int page,
@@ -161,7 +160,7 @@ public class HeaderController {
 			session.setAttribute(Constant.User.USERINDEX, user.get(Constant.User.USERINDEX));
 			session.setAttribute(Constant.User.NICKNAME, user.get(Constant.User.NICKNAME));
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
-//			service.getSession(session, (int)user.get(Constant.User.USERINDEX));
+			service.getSession(session, (int)user.get(Constant.User.USERINDEX));
 			session.setAttribute("loginCategory", user.get("loginCategory"));
 			return "redirect:listBoard.do";
 		}

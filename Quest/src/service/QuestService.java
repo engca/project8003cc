@@ -25,7 +25,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public void getSession(HttpSession session, int userIndex) {
 		// TODO Auto-generated method stub
-		session.setAttribute("todoapply", getSessionTodoApply( userIndex));
+		session.setAttribute("todoApply", getSessionTodoApply( userIndex));
 		session.setAttribute("dowellApply", getSessionDowellApply( userIndex));
 		session.setAttribute("todo", getSessionTodo(userIndex));
 		session.setAttribute("dowell", getSessionDowell( userIndex));
@@ -33,7 +33,8 @@ public class QuestService implements IQuestService {
 
 	@Override
 	public int getSessionTodoApply(int userIndex) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubs
+		System.out.println("userIndex : " + userIndex);
 		return dao.selectDowellApply(userIndex);
 	}
 

@@ -152,13 +152,13 @@
 	<div class="navbar navbar-default  navbar-custom " id="main">
 		<c:choose>
 			<c:when test="${sessionScope.userId == null}">
-				<div class="menu">
-					<ul class="nav navbar-nav">
-						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-						<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
-						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
-					</ul>
-				</div>
+<!-- 				<div class="menu"> -->
+<!-- 					<ul class="nav navbar-nav"> -->
+<!-- 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
+<!-- 						<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li> -->
+<!-- 						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
 				<div class="logo" id="logo" align="center">
 					<a href='listBoard.do?boardFlag=1&page=1'> <img
 						src="bootstrapResources/img/questlogo.png" width="350px"
@@ -175,12 +175,20 @@
 			</c:when>
 			<c:otherwise>
 				<div class="menu">
-					<ul class="nav navbar-nav">
-						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-						<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li>
-						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li>
-					</ul>
+					${sessionScope.nickname }님<br>
+					잘해요 : <a href = "">${sessionScope.dowell }개</a>
+					해주세요 : <a href = "">${sessionScope.todo }개</a>
+					<br>
+					잘해요 신청 : <a href = "">${sessionScope.dowellApply }개</a>
+					해주세요 신청 : <a href = "">${sessionScope.todoApply }개</a>
 				</div>
+<!-- 				<div class="menu"> -->
+<!-- 					<ul class="nav navbar-nav"> -->
+<!-- 						<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li> -->
+<!-- 						<li class="page-scroll1"><a href="listBoard.do?boardFlag=1">해주세요</a></li> -->
+<!-- 						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
 				<div class="logo" id="logo" align="center">
 					<a href='listBoard.do?boardFlag=1&page=1'> <img alt=""
 						src="bootstrapResources/img/questlogo.png" width="350px"
@@ -207,17 +215,11 @@
 							</c:if> 로그아웃</a></li>
 					</ul>
 				</div>
+				
 <!-- 				<marquee direction="right" style=""> -->
 <%-- 					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font> --%>
 <!-- 				</marquee> -->
-				<div>
-					${sessionScope.nickname }님<br>
-					잘해요 : <a value = "${sessionScope.dowell }개" href = ""></a>
-					해주세요 : <a value = "${sessionScope.todo }개" href = ""></a>
-					<br>
-					잘해요 신청 : <a value = "${sessionScope.dowellapply }개" href = ""></a>
-					해주세요 신청 : <a value = "${sessionScope.todoapply }개" href = ""></a>
-				</div>
+				
 			</c:otherwise>
 		</c:choose>
 	</div>
