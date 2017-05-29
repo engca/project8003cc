@@ -33,6 +33,19 @@ import service.IQuestService;
 public class MainPageController {
 	@Autowired
 	IQuestService service;
+	
+	
+	@RequestMapping("main.do")
+	public ModelAndView main() {
+		ModelAndView mav = new ModelAndView();
+		HashMap<String, Object> data0 = service.getBoardList(0, 1);
+		HashMap<String, Object> data1 = service.getBoardList(1, 1);
+		mav.addObject("list0", data0);
+		mav.addObject("list1", data1);
+		mav.setViewName("search.main.main");
+		return mav;
+	}
+	
 
 	@RequestMapping("listBoard.do")
 	public ModelAndView BoardAllList(HttpSession session,
