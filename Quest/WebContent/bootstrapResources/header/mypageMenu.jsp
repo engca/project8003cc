@@ -30,6 +30,14 @@
 	<center>
 		<div class="div">
 			<div class="btn-group">
+				<input type="button" value="Main"
+					class="btn btn-success1 btn-lg1" id="btn"
+					style="width: 300dp; height: 38dp;" data-toggle="collapse"
+					data-target="#dropdown" />
+				<ul id="dropdown" class="collapse dropdown-menu">
+					<li><a href="listBoard.do?boardFlag=1">해주세요</a></li>
+					<li><a href="listBoard.do?boardFlag=0">잘해요</a></li>
+				</ul>
 				<input type="button" value="MY LIST"
 					class="btn btn-success1 btn-lg1" id="btn"
 					style="width: 300dp; height: 38dp;" data-toggle="collapse"
