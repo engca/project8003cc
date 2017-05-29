@@ -123,7 +123,6 @@ function deleteComment(num){
 	$('#delcom'+num).submit();
 } 
 
-
 </script>
 <style type="text/css">
 th {
