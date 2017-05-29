@@ -210,13 +210,13 @@
 <!-- 				<marquee direction="right" style=""> -->
 <%-- 					<font color="white"> ${sessionScope.nickname }님 환영합니다. </font> --%>
 <!-- 				</marquee> -->
-				<div>
+				<div class="navbar navbar-default  navbar-custom ">
 					${sessionScope.nickname }님<br>
-					잘해요 : <a value = "${sessionScope.dowell }개" href = ""></a>
-					해주세요 : <a value = "${sessionScope.todo }개" href = ""></a>
+					잘해요 : <a href = "">${sessionScope.dowell }개</a>
+					해주세요 : <a href = "">${sessionScope.todo }개</a>
 					<br>
-					잘해요 신청 : <a value = "${sessionScope.dowellapply }개" href = ""></a>
-					해주세요 신청 : <a value = "${sessionScope.todoapply }개" href = ""></a>
+					잘해요 신청 : <a href = "">${sessionScope.dowellApply }개</a>
+					해주세요 신청 : <a href = "">${sessionScope.todoApply }개</a>
 				</div>
 			</c:otherwise>
 		</c:choose>

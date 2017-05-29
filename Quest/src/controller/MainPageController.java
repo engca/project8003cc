@@ -282,6 +282,7 @@ public class MainPageController {
 		String content = (String)board.get("content");
 		content = content.replaceAll("\r\n", "<br>");
 		board.put("content", content);
+		service.getSession(session, (int)board.get(Constant.User.USERINDEX));
 		if ( flag == 1) { //해주세요
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
 			board.put("userIndex", userIndex);
