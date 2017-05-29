@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.IQuestDao">
+	<insert id="insertBoardFile" parameterType="java.util.HashMap"
+		useGeneratedKeys="true" keyProperty="fileId">
+		INSERT INTO boardFile VALUES (0, #{boardNo}, #{uri}, #{size}, #{originFileName}, #{flag})
+	</insert>
+
+	<update id="updateBoardFile" parameterType="java.util.HashMap">
+		UPDATE boardFile SET uri = #{uri}, size = #{size}, originFileName = #{originFileName},
+		flag = #{flag}
+		WHERE fileId = #{fileId}
+	</update>
+
+	<delete id="deleteBoardFile" parameterType="int">
+		DELETE FROM
+		boardFile WHERE boardNo = #{boardNo}
+	</delete>
+
+	<select id="selectOneBoardFile" parameterType="int" resultType="java.util.HashMap">
+		SELECT *
+		FROM boardFile WHERE fileId = #{fileId}
+	</select>
+
+	<select id="selectAllBoardFile" resultType="java.util.HashMap">
+		SELECT * FROM boardFile;
+	</select>
+
+</mapper>

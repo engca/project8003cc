@@ -22,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -266,25 +267,32 @@ public class MainPageController {
 		return "search.main.writeBoard";
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
-	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session) {
+	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do" )
+	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session,
+			@RequestParam("ufile1") MultipartFile ufile1, @RequestParam("ufile2") MultipartFile ufile2,
+			@RequestParam("ufile3") MultipartFile ufile3) {
 		int flag = Integer.parseInt(board.get("boardFlag").toString());
-		String content = (String)board.get("content");
+		String content = (String) board.get("content");
 		content = content.replaceAll("\r\n", "<br>");
+		
 		board.put("content", content);
-		service.getSession(session, (int)board.get(Constant.User.USERINDEX));
-		if ( flag == 1) { //해주세요
+		board.put("ufile1", ufile1);
+		board.put("ufile2", ufile2);
+		board.put("ufile3", ufile3);
+		
+		if (flag == 1) { // 해주세요
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
 			board.put("userIndex", userIndex);
 			service.writeBoard(board);
 			return "redirect:/listBoard.do?boardFlag=1";
-		} else { //잘해요
+		} else { // 잘해요
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
 			board.put("userIndex", userIndex);
 			service.writeBoard(board);
 			return "redirect:/listBoard.do?boardFlag=0";
 		}
 	}
+
 
 	@RequestMapping("getSido.do")
 	public @ResponseBody HashMap<String, Object> getSido() {

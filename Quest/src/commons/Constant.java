@@ -1,8 +1,7 @@
 package commons;
 
 public class Constant {
-	
-	
+
 	public static class Board {
 		public static final String BOARDFLAG = "boardFlag";
 		public static final String BCOMPLETEFLAG = "bCompleteFlag";
@@ -22,6 +21,7 @@ public class Constant {
 		public static final String PLAYTIME = "playTime";
 		public static final String CONTENT = "content";
 		public static final String PAGE = "page";
+		public static final String FILEID = "fileId";
 	}
 
 	public static class User {
@@ -46,31 +46,38 @@ public class Constant {
 		public static final String DATE = "date";
 		public static final String CONTENT = "content";
 		public static final String COMMENT_GROUP = "comment_group";
-		public static final String COMMENT_SEQ = "comment_seq";	
-		public static final String COMMENT_LV = "comment_lv";	
-		
+		public static final String COMMENT_SEQ = "comment_seq";
+		public static final String COMMENT_LV = "comment_lv";
+
 	}
-	
-	public static class Score{
+
+	public static class Score {
 		public static final String USER1INDEX = "user1Index";
-		public static final String USER2INDEX="user2Index";
-		public static final String BOARDNO="boardNo";
-		public static final String SCOMPLETEFLAG="sCompleteFlag";
-		public static final String USER1STARPOINT="user1StarPoint";
-		public static final String USER2STARPOINT="user2StarPoint";
+		public static final String USER2INDEX = "user2Index";
+		public static final String BOARDNO = "boardNo";
+		public static final String SCOMPLETEFLAG = "sCompleteFlag";
+		public static final String USER1STARPOINT = "user1StarPoint";
+		public static final String USER2STARPOINT = "user2StarPoint";
 
 	}
-	
-	public static class Bookmark{
-		public static final String BOARDNO="boardNo";
-		public static final String USERINDEX="userIndex";
-	
-	}
-	
-	public static class Police{
-		public static final String BOARDNO="boardNo";
-		public static final String USERINDEX="userIndex";
 
-		
+	public static class Bookmark {
+		public static final String BOARDNO = "boardNo";
+		public static final String USERINDEX = "userIndex";
+
+	}
+
+	public static class Police {
+		public static final String BOARDNO = "boardNo";
+		public static final String USERINDEX = "userIndex";
+	}
+
+	public static class BoardFile {
+		public static final String FILEID = "fileId";
+		public static final String BOARDNO = "boardNo";
+		public static final String URI = "uri";
+		public static final String SIZE = "size";
+		public static final String ORIGINFILENAME = "originFileName";
+		public static final String FLAG = "flag";
 	}
 }
