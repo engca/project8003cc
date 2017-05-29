@@ -93,7 +93,6 @@ function updatePopup(){
 	data.submit(); 	
 }
 
-
 function police(){
 		$.ajax({
 			type : 'get',
@@ -113,7 +112,16 @@ function police(){
 		}); 
 }
 
+function insertForm(num)
+{
+	 $("#comment"+num).css("display","");
+}
 
+function deleteComment(num){
+	alert("댓글이 삭제되었습니다");
+	var delcomdata = document.delcomData;
+	$('#delcom'+num).submit();
+} 
 
 
 </script>
@@ -121,20 +129,24 @@ function police(){
 th {
 	width: 150px;
 }
-
 select {
 	width: 100px;
 	height: 35px;
 }
-
-
+.reply {
+ 	margin-bottom: 10px; 
+ } 
 .bordertable th {
 	/* 	background-color: pink; */
 	text-align: center;
-}
- 
+} 
 .people {
 	width: 60px;
+}
+.hrmy {
+	width: 80%;
+	border: thin solid;
+	color:#2C3E50;
 }
 
 
@@ -266,7 +278,11 @@ select {
 
 					</td>
 				</tr>
-				<!-- 댓글보기 부분 추가 -->
+				</table>
+				
+				
+				<!-- 1차 댓글달기 부분 추가 -->
+			<table width="80%" align="center" >
 				<tr>
 				<c:if test="${sessionScope.userId != null }">
 					<form action="insertComment.do" method="post">
@@ -277,25 +293,109 @@ select {
 						<td>
 							<input type="hidden" name="boardNo" value=${boardList.boardNo }> 
 							<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
+							<input type="hidden" name = "group" value = "-1">
 							<input type="submit" class="btn-primary" value="댓글등록">
 						</td>
 					</form>
 				</c:if>
 				</tr>
+				<!-- 댓글/대댓글 보기, 달기 부분 추가 -->
 				<c:if test="${listComment != null }">
 					<c:forEach var="comment" items="${listComment }">
-					<tr>
-							<td><b>${comment.nickname}</b></td>
-							<td colspan="3">${comment.content}</td>
-							<td align="center">${comment.date }</td>
-							<td><c:if test="${sessionScope.userIndex == comment.userIndex }">
-									<input type="button" onclick="location.href='deleteComment.do?boardNo=${boardList.boardNo }&userIndex=${sessionScope.userIndex }&content=${comment.content }'"
-										value="삭제">
-							</c:if></td>
-					</tr>
+					
+						<c:if test="${comment.comment_lv == 0 }">		
+							<tr height="40px">
+								<td colspan="6">
+								 <img src="bootstrapResources/img/reply_icon.gif">
+								  ${comment.nickname } &nbsp;&nbsp; &nbsp;&nbsp;
+								 <b>${comment.content } &nbsp;&nbsp; &nbsp;&nbsp;</b>
+								 <a href="#" onclick="insertForm(${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv })" >[댓글]</a>
+								 <c:if test="${sessionScope.userIndex == comment.userIndex }">
+								 	<a href="#" onclick="deleteComment(${comment.boardNo}${comment.comment_seq }${comment.comment_group })" >[삭제]</a>								 
+									 	<form  name="delcomData" id="delcom${comment.boardNo}${comment.comment_seq }${comment.comment_group }" method="get" action="deleteComment.do">
+										<input type = "hidden" name = "comment_seq" value = "${comment.comment_seq }">
+										<input type = "hidden" name = "comment_group" value = "${comment.comment_group }">
+										<input type = "hidden" name ="userIndex" value="${sessionScope.userIndex }">
+										<input type = "hidden" name = "boardNo" value = "${comment.boardNo }">							
+										</form>
+								 </c:if>
+							 	</td>					
+							</tr>								
+							<tr style = "display:none;" id = "comment${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv }" >
+								<td colspan="6" align="center">
+								<form action="insertComment.do">
+									<input type = "hidden" name = "seq" value = "${comment.comment_seq }">
+									<input type = "hidden" name = "group" value = "${comment.comment_group }">
+									<input type = "hidden" name = "nickname" value = "${board.nickname }">
+									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
+									<input type = "hidden" name = "boardNo" value = "${comment.boardNo }">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	<img src="bootstrapResources/img/reply_icon.gif"  class="reply">
+										<textarea name="content" id="content" rows="1" cols="100"></textarea>
+										<input type= "submit" value="등록"  class="reply">							
+								</form>
+								</td>
+							</tr>
+						</c:if>
+						
+						<c:if test="${comment.comment_lv == 1 }">
+							<tr height="40px">
+								<td colspan="6">
+								<img src="bootstrapResources/img/reply_icon.gif"><img src="bootstrapResources/img/reply_icon2.gif">
+								  ${comment.nickname } &nbsp;&nbsp; &nbsp;&nbsp;
+								 <b>${comment.content } &nbsp;&nbsp; &nbsp;&nbsp;</b>
+								 <a href="#" onclick="insertForm(${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv })" >[댓글]</a>
+								 <c:if test="${sessionScope.userIndex == comment.userIndex }">
+								 	<a href="#" onclick="deleteComment(${comment.boardNo}${comment.comment_seq }${comment.comment_group })" >[삭제]</a>								 
+									 	<form  name="delcomData" id="delcom${comment.boardNo}${comment.comment_seq }${comment.comment_group }" method="get" action="deleteComment.do">
+										<input type = "hidden" name = "comment_seq" value = "${comment.comment_seq }">
+										<input type = "hidden" name = "comment_group" value = "${comment.comment_group }">
+										<input type = "hidden" name ="userIndex" value="${sessionScope.userIndex }">
+										<input type = "hidden" name = "boardNo" value = "${comment.boardNo }">							
+										</form>
+								 </c:if>
+							 	</td>				
+							</tr>
+							<tr style = "display:none;" id = "comment${comment.boardNo}${comment.comment_seq }${comment.comment_group }${comment.comment_lv }" >
+								<td colspan="6" align="center">
+								<form action="insertComment.do">
+									<input type = "hidden" name = "seq" value = "${comment.comment_seq }">
+									<input type = "hidden" name = "group" value = "${comment.comment_group }">
+									<input type = "hidden" name = "nickname" value = "${board.nickname }">
+									<input type="hidden" name="userIndex" value=${sessionScope.userIndex }>
+									<input type = "hidden" name = "boardNo" value = "${comment.boardNo }">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	<img src="bootstrapResources/img/reply_icon.gif"  class="reply">
+										<textarea name="content" id="content" rows="1" cols="100"></textarea>
+										<input type= "submit" value="등록"  class="reply">							
+								</form>
+								</td>
+							</tr>
+						</c:if>
+						
+						<c:if test="${comment.comment_lv == 2 }">
+							<tr height="40px">
+								<td colspan="6">
+								<img src="bootstrapResources/img/reply_icon.gif"><img src="bootstrapResources/img/reply_icon2.gif"><img src="bootstrapResources/img/reply_icon2.gif">
+								  ${comment.nickname } &nbsp;&nbsp; &nbsp;&nbsp;
+								 <b>${comment.content } &nbsp;&nbsp; &nbsp;&nbsp;</b>
+								 <c:if test="${sessionScope.userIndex == comment.userIndex }">
+									 <a href="#" onclick="deleteComment(${comment.boardNo}${comment.comment_seq }${comment.comment_group })" >[삭제]</a>								 
+									 	<form  name="delcomData" id="delcom${comment.boardNo}${comment.comment_seq }${comment.comment_group }" method="get" action="deleteComment.do">
+										<input type = "hidden" name = "comment_seq" value = "${comment.comment_seq }">
+										<input type = "hidden" name = "comment_group" value = "${comment.comment_group }">
+										<input type = "hidden" name ="userIndex" value="${sessionScope.userIndex }">
+										<input type = "hidden" name = "boardNo" value = "${comment.boardNo }">							
+										</form>
+								 </c:if>								 
+							 	</td>				
+							</tr>
+						</c:if>
+						
+						
 					</c:forEach>
 				</c:if>
+				
 			</table>
+			<hr class="star-primary1">
 		</div>
 	</div> 
 <br><br><br>

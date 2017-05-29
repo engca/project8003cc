@@ -215,11 +215,11 @@ public class MainPageController {
 	@RequestMapping(method = RequestMethod.GET, value = "viewBoard.do")
 	public ModelAndView viewboard(int boardNo, @RequestParam(defaultValue = "0") int userIndex) {
 		HashMap<String, Object> board = service.readBoard(boardNo, userIndex);
-		List<HashMap<String, Object>> comment = service.listComment(boardNo);
+		//List<HashMap<String, Object>> comment = service.listComment(boardNo);
+		List<HashMap<String, Object>> comment = service.selectCommentList(boardNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(board);
 		
-		//List<HashMap<String, Object>> comments = service.selectCommentList(boardNo);
 		if (comment.size() > 0)
 		mv.addObject("listComment", comment);
 		
@@ -228,18 +228,8 @@ public class MainPageController {
 		return mv;
 	}
 
-	/*@RequestMapping(method = RequestMethod.POST, value = "insertComment.do")
-	public String insertComment(@RequestParam HashMap<String, Object> comment, HttpSession session) {
 
-		String content = (String)comment.get("content");
-		content = content.replaceAll("\r\n", "<br>");
-		comment.put("content", content);
-		service.writeComment(comment);		
-		return "redirect:/viewBoard.do?boardNo=" + comment.get(Constant.Commnet.BOARDNO) + "&userIndex="
-				+ comment.get(Constant.Commnet.USERINDEX);
-	}*/
-
-	@RequestMapping("deleteComment.do")
+	@RequestMapping(method = RequestMethod.GET, value = "deleteComment.do")
 	public String deleteComment(@RequestParam HashMap<String, Object> comment, HttpSession session) {
 		service.deleteComment(comment);
 		return "redirect:/viewBoard.do?boardNo=" + comment.get(Constant.Commnet.BOARDNO) + "&userIndex="
@@ -334,8 +324,9 @@ public class MainPageController {
 
 	@RequestMapping("insertComment.do")
 	public String insertComment(int group, @RequestParam(required = false, defaultValue = "0") int seq, int boardNo,
-			String userIndex, String content) {
-		System.out.println("group: " + group + "seq : " + seq);
+			String userIndex, String content)
+	{
+		//System.out.println("group: " + group + "seq : " + seq + "userIndex" + userIndex);
 		
 		if (group == -1) {
 			HashMap<String, Object> param = new HashMap<>();
@@ -349,23 +340,27 @@ public class MainPageController {
 			service.updateGroup(boardNo);
 			service.insertComment(param);
 		} else {
+				//System.out.println("두번쨰 댓글이냐?");
 			HashMap<String, Object> param = new HashMap<>();
 			param.put("boardNo", boardNo);
 			param.put("comment_group", group);
 			param.put("comment_seq", seq);
 
 			HashMap<String, Object> params = service.selectComment(param);
+
 			service.updateSequence(params);
-			
+
 			param.put("boardNo", boardNo);
 			param.put("userIndex", userIndex);
 			param.put("content", content);
 			param.put("comment_group", params.get(Constant.Commnet.COMMENT_GROUP));
-			param.put("comment_seq", params.get(Constant.Commnet.COMMENT_SEQ+1));
-			param.put("comment_lv", params.get(Constant.Commnet.COMMENT_LV+1));			
+			param.put("comment_seq", (int)params.get(Constant.Commnet.COMMENT_SEQ)+1);
+			param.put("comment_lv", (int)params.get(Constant.Commnet.COMMENT_LV)+1);
+
 			service.insertComment(param);
+			
 		}
-		return "redirect:viewBoard.do?boardNo=" + boardNo;
+		return "redirect:/viewBoard.do?boardNo=" + boardNo +  "&userIndex=" + userIndex;
 	}
 	
 	

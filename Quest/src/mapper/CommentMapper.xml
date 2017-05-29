@@ -21,8 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		comment_group = #{comment_group} AND comment_seq = #{comment_seq}
   </delete>
   
-  <select id="selectAllCommentByBoardNo" parameterType="int"
-   resultType="java.util.HashMap">
+  <select id="selectAllCommentByBoardNo" parameterType="int"   resultType="java.util.HashMap">
    SELECT * FROM comment WHERE boardNo = #{boardNo}
    </select>
    
@@ -39,8 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectComment" parameterType = "java.util.HashMap" resultType = "java.util.HashMap">
 		select * from comment 
 		where 
-			boardNo = #{boardNo}
-			and comment_group = #{comment_group} and comment_seq = #{comment_seq}
+			boardNo = #{boardNo} and comment_group = #{comment_group} and comment_seq = #{comment_seq}
 	</select>
 
 	<update id="updateSequence" parameterType="java.util.HashMap">
