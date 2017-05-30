@@ -6,6 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 <title>퀘스트 작성하기</title>
 <script type="text/javascript">
 	$.ajax({
@@ -28,9 +40,10 @@
 		if ( !$('#reward1').val() ) {
 		 $('#reward2').attr('readonly', true);
 		 $('#reward3').attr('readonly', true);
-		} 
+		} else if ( !$('#reward2').val() ) {
+			$('#reward3').attr('readonly', true);
+		}
 	 });
-	 
 	
 	 
 $(document).ready(function(){
@@ -94,6 +107,7 @@ $(document).ready(function(){
 		} else if ($.isNumeric($('#people').val()) == false) {
 			return false;
 		} else {
+			$('#content').val( $('#summernote').summernote('code')  );
 			return true;
 		}
 	 });
@@ -129,7 +143,6 @@ $(document).ready(function(){
 	 
 	 
 	 
-	 
 });
 
 !function(e){var t=function(t,n){this.$element=e(t),this.type=this.$element.data("uploadtype")||(this.$element.find(".thumbnail").length>0?"image":"file"),this.$input=this.$element.find(":file");if(this.$input.length===0)return;this.name=this.$input.attr("name")||n.name,this.$hidden=this.$element.find('input[type=hidden][name="'+this.name+'"]'),this.$hidden.length===0&&(this.$hidden=e('<input type="hidden" />'),this.$element.prepend(this.$hidden)),this.$preview=this.$element.find(".fileupload-preview");var r=this.$preview.css("height");this.$preview.css("display")!="inline"&&r!="0px"&&r!="none"&&this.$preview.css("line-height",r),this.original={exists:this.$element.hasClass("fileupload-exists"),preview:this.$preview.html(),hiddenVal:this.$hidden.val()},this.$remove=this.$element.find('[data-dismiss="fileupload"]'),this.$element.find('[data-trigger="fileupload"]').on("click.fileupload",e.proxy(this.trigger,this)),this.listen()};t.prototype={listen:function(){this.$input.on("change.fileupload",e.proxy(this.change,this)),e(this.$input[0].form).on("reset.fileupload",e.proxy(this.reset,this)),this.$remove&&this.$remove.on("click.fileupload",e.proxy(this.clear,this))},change:function(e,t){if(t==="clear")return;var n=e.target.files!==undefined?e.target.files[0]:e.target.value?{name:e.target.value.replace(/^.+\\/,"")}:null;if(!n){this.clear();return}this.$hidden.val(""),this.$hidden.attr("name",""),this.$input.attr("name",this.name);if(this.type==="image"&&this.$preview.length>0&&(typeof n.type!="undefined"?n.type.match("image.*"):n.name.match(/\.(gif|png|jpe?g)$/i))&&typeof FileReader!="undefined"){var r=new FileReader,i=this.$preview,s=this.$element;r.onload=function(e){i.html('<img src="'+e.target.result+'" '+(i.css("max-height")!="none"?'style="max-height: '+i.css("max-height")+';"':"")+" />"),s.addClass("fileupload-exists").removeClass("fileupload-new")},r.readAsDataURL(n)}else this.$preview.text(n.name),this.$element.addClass("fileupload-exists").removeClass("fileupload-new")},clear:function(e){this.$hidden.val(""),this.$hidden.attr("name",this.name),this.$input.attr("name","");if(navigator.userAgent.match(/msie/i)){var t=this.$input.clone(!0);this.$input.after(t),this.$input.remove(),this.$input=t}else this.$input.val("");this.$preview.html(""),this.$element.addClass("fileupload-new").removeClass("fileupload-exists"),e&&(this.$input.trigger("change",["clear"]),e.preventDefault())},reset:function(e){this.clear(),this.$hidden.val(this.original.hiddenVal),this.$preview.html(this.original.preview),this.original.exists?this.$element.addClass("fileupload-exists").removeClass("fileupload-new"):this.$element.addClass("fileupload-new").removeClass("fileupload-exists")},trigger:function(e){this.$input.trigger("click"),e.preventDefault()}},e.fn.fileupload=function(n){return this.each(function(){var r=e(this),i=r.data("fileupload");i||r.data("fileupload",i=new t(this,n)),typeof n=="string"&&i[n]()})},e.fn.fileupload.Constructor=t,e(document).on("click.fileupload.data-api",'[data-provides="fileupload"]',function(t){var n=e(this);if(n.data("fileupload"))return;n.fileupload(n.data());var r=e(t.target).closest('[data-dismiss="fileupload"],[data-trigger="fileupload"]');r.length>0&&(r.trigger("click.fileupload"),t.preventDefault())})}(window.jQuery)
@@ -140,8 +153,6 @@ $(document).ready(function(){
 
 
 <style type="text/css">
-
-
 .clearfix:before, .clearfix:after {
 	display: table;
 	content: "";
@@ -371,11 +382,10 @@ select {
 											data-provides="fileupload">
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상1 이미지</span> <span
-												class="fileupload-exists">선택완료</span> <input type="file" 
-												name = "ufile1"/></span>
-											<span class="fileupload-preview"></span> <a href="#"
-												class="close fileupload-exists" data-dismiss="fileupload"
-												style="float: none">×</a>
+												class="fileupload-exists">선택완료</span> <input type="file"
+												name="ufile1" /></span> <span class="fileupload-preview"></span> <a
+												href="#" class="close fileupload-exists"
+												data-dismiss="fileupload" style="float: none">×</a>
 										</div></td>
 									<td>&nbsp;&nbsp;</td>
 									<td id="fileTd"><br>
@@ -383,11 +393,10 @@ select {
 											data-provides="fileupload">
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상2 이미지</span> <span
-												class="fileupload-exists">선택완료</span> 
-												<input type="file" name = "ufile2" /></span>
-											<span class="fileupload-preview"></span> <a href="#"
-												class="close fileupload-exists" data-dismiss="fileupload"
-												style="float: none">×</a>
+												class="fileupload-exists">선택완료</span> <input type="file"
+												name="ufile2" /></span> <span class="fileupload-preview"></span> <a
+												href="#" class="close fileupload-exists"
+												data-dismiss="fileupload" style="float: none">×</a>
 										</div></td>
 									<td>&nbsp;&nbsp;</td>
 									<td id="fileTd"><br>
@@ -395,11 +404,10 @@ select {
 											data-provides="fileupload">
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상3 이미지</span> <span
-												class="fileupload-exists">선택완료</span> <input type="file" 
-												name = "ufile3"/></span>
-											<span class="fileupload-preview"></span> <a href="#"
-												class="close fileupload-exists" data-dismiss="fileupload"
-												style="float: none">×</a>
+												class="fileupload-exists">선택완료</span> <input type="file"
+												name="ufile3" /></span> <span class="fileupload-preview"></span> <a
+												href="#" class="close fileupload-exists"
+												data-dismiss="fileupload" style="float: none">×</a>
 										</div></td>
 									<td>&nbsp;&nbsp;</td>
 								</tr>
@@ -438,12 +446,14 @@ select {
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
-						<td colspan="3"><textarea cols="10" rows="6"
-								placeholder="내용을 입력하세요." name="content" class="form-control"></textarea></td>
+						<td colspan="3"> <div id="summernote"></div> </td>
 					</tr>
 					<tr>
 
-						<td colspan="4" align="right"><input type="submit"
+						<td colspan="4" align="right">
+							<input type = "hidden" name = "content" id = "content">
+						
+						<input type="submit"
 							class="btn btn-success btn-lg" value="퀘스트등록" id="btn"> <a
 							class="btn btn-primary btn-lg"
 							onclick="location.href='listBoard.do'">퀘스트목록 </a></td>
@@ -457,4 +467,16 @@ select {
 
 
 </body>
+	<script>
+		$(document).ready(function() {
+			$('#summernote').summernote();
+		});
+		$('#summernote').summernote({
+			height : 300, // set editor height
+			minHeight : 300, // set minimum height of editor
+			maxHeight : 300, // set maximum height of editor
+			focus : true
+		});
+	</script>
+
 </html>

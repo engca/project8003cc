@@ -69,7 +69,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select contact from contact where contactNo= #{contactNo}
 	</select>
 
-	<insert id="insertBoard" parameterType="java.util.HashMap">
+	<insert id="insertBoard" parameterType="java.util.HashMap"
+	useGeneratedKeys="true" keyProperty="boardNo"
+	>
 		INSERT INTO board
 		VALUES(#{boardFlag}, 0, 0,
 		#{userIndex}, sysdate(), 0, 0,

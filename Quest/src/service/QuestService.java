@@ -25,14 +25,13 @@ public class QuestService implements IQuestService {
 	@Autowired
 	private DataSourceTransactionManager txManager;
 
-	
 	@Override
 	public void getSession(HttpSession session, int userIndex) {
 		// TODO Auto-generated method stub
-		session.setAttribute("todoApply", getSessionTodoApply( userIndex));
-		session.setAttribute("dowellApply", getSessionDowellApply( userIndex));
+		session.setAttribute("todoApply", getSessionTodoApply(userIndex));
+		session.setAttribute("dowellApply", getSessionDowellApply(userIndex));
 		session.setAttribute("todo", getSessionTodo(userIndex));
-		session.setAttribute("dowell", getSessionDowell( userIndex));
+		session.setAttribute("dowell", getSessionDowell(userIndex));
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public int getSessionTodo(int userIndex) {
 		// TODO Auto-generated method stub
-		
+
 		return dao.selectTodo(userIndex);
 	}
 
@@ -282,12 +281,12 @@ public class QuestService implements IQuestService {
 		return result;
 	}
 
-
 	@Override
 	public void writeBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-
+		System.out.println("insert전" + params);
 		dao.insertBoard(params);
+		System.out.println("후" + params);
 
 		String path = "C:/Users/student/Upload/";
 		// String path = "C:/Users/ARI/Upload/";
@@ -350,6 +349,7 @@ public class QuestService implements IQuestService {
 		}
 
 	}
+
 	@Override
 	public int updateBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
@@ -526,8 +526,8 @@ public class QuestService implements IQuestService {
 				System.out.println(user2);
 				dao.updateUser(user1);
 				dao.updateUser(user2);
-				
-				if(dao.countByBoardNo(boardNo) == 1) {
+
+				if (dao.countByBoardNo(boardNo) == 1) {
 					HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
 					tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
 					dao.updateBoard(tmp);
@@ -538,7 +538,7 @@ public class QuestService implements IQuestService {
 			params.put("user1StarPoint", starPoint);
 			if (sCompleteFlag == 0) {
 				params.put(Constant.Score.SCOMPLETEFLAG, 2);
-			} else { 
+			} else {
 				params.put(Constant.Score.SCOMPLETEFLAG, 3);
 				HashMap<String, Object> user1 = new HashMap<>();
 				HashMap<String, Object> user2 = new HashMap<>();
@@ -558,8 +558,8 @@ public class QuestService implements IQuestService {
 				System.out.println(user2);
 				dao.updateUser(user1);
 				dao.updateUser(user2);
-				
-				if(dao.countByBoardNo(boardNo) == 1) {
+
+				if (dao.countByBoardNo(boardNo) == 1) {
 					HashMap<String, Object> tmp = dao.selectBoardOne(boardNo);
 					tmp.put(Constant.Board.BCOMPLETEFLAG, 1);
 					dao.updateBoard(tmp);
@@ -782,12 +782,12 @@ public class QuestService implements IQuestService {
 		// board에서 내가 쓴거
 		List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
 
-		//apply+board 내가 신청한거		
-		String nickname =dao.selectNicknname(userIndex);
-		 
+		// apply+board 내가 신청한거
+		String nickname = dao.selectNicknname(userIndex);
+
 		HashMap<String, Object> result = new HashMap<>();
-		for ( HashMap<String, Object> mylist : myboard ){
-			int totalapplycount = dao.applyCount((int)(mylist.get("boardNo")));	
+		for (HashMap<String, Object> mylist : myboard) {
+			int totalapplycount = dao.applyCount((int) (mylist.get("boardNo")));
 			mylist.put("totalapplycount", totalapplycount);
 		}
 		result.put("myboardstart", start);
@@ -799,7 +799,7 @@ public class QuestService implements IQuestService {
 		result.put("myboardnickname", nickname);
 		result.put("myboardboardFlag", boardFlag);
 
-		return result; 
+		return result;
 	}
 
 	public HashMap<String, Object> getAddress(int addrNo) {
@@ -912,9 +912,8 @@ public class QuestService implements IQuestService {
 		System.out.println("로그인카테고리 : " + loginCategoryNum);
 		return loginCategoryNum;
 	}
-	
 
-@Override
+	@Override
 	public int findPwQ(String id) {
 		int question = dao.selectFindPwQ(id);
 		return question;
@@ -938,6 +937,7 @@ public class QuestService implements IQuestService {
 		params.put("userId", id);
 		return dao.updatePw(params);
 	}
+
 	@Override
 	public int countPolice(int boardNo) {
 		// TODO Auto-generated method stub
@@ -948,17 +948,18 @@ public class QuestService implements IQuestService {
 	public int updateAll(HashMap<String, Object> board) {
 		// TODO Auto-generated method stub
 		return dao.updateBoard(board);
-		
-		
+
 	}
+
 	@Override
-	public int deleteApply(int BoardNo,int userIndex) {
+	public int deleteApply(int BoardNo, int userIndex) {
 		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("boardNo", BoardNo);
 		params.put("userIndex", userIndex);
 		return dao.deleteApply(params);
 	}
+
 	@Override
 	public HashMap<String, Object> selectApply(int BoardNo, int userIndex) {
 		// TODO Auto-generated method stub
@@ -977,14 +978,14 @@ public class QuestService implements IQuestService {
 	@Override
 	public void insertComment(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		dao.insertComment(params);		
+		dao.insertComment(params);
 	}
 
 	@Override
 	public void updateSequence(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		dao.updateSequence(params);
-		
+
 	}
 
 	@Override
