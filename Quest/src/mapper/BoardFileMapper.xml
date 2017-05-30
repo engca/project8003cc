@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dao.IQuestDao">
+
 	<insert id="insertBoardFile" parameterType="java.util.HashMap"
 		useGeneratedKeys="true" keyProperty="fileId">
 		INSERT INTO boardFile VALUES (0, #{boardNo}, #{uri}, #{size}, #{originFileName}, #{flag})

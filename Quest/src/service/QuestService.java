@@ -328,8 +328,11 @@ public class QuestService implements IQuestService {
 		boardFile3.put(Constant.BoardFile.ORIGINFILENAME, file3Name);
 		boardFile3.put(Constant.BoardFile.FLAG, 3);
 
+		if ( file1Name != null )
 		dao.insertBoardFile(boardFile1);
+		else if ( file2Name != null )
 		dao.insertBoardFile(boardFile2);
+		else if ( file3Name != null )
 		dao.insertBoardFile(boardFile3);
 
 		File localFile = new File(fileUri);

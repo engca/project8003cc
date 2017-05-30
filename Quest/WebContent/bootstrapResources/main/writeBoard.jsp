@@ -7,13 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-	rel="stylesheet">
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<link
 	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css"
 	rel="stylesheet">
 <script
@@ -107,7 +100,7 @@ $(document).ready(function(){
 		} else if ($.isNumeric($('#people').val()) == false) {
 			return false;
 		} else {
-			$('#content').val( $('#summernote').summernote('code')  );
+			$('#content').val( $('#summernote').summernote('code')  )
 			return true;
 		}
 	 });
