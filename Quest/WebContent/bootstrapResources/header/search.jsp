@@ -28,6 +28,8 @@
 								$('#sidooo').append(div);
 							});
 						btn = 2;
+						divList = $('<span >');
+						$('#areaList').append(divList);
 					},
 					error : function(xhrReq, status, error)
 					{
@@ -54,8 +56,7 @@
 	function searchGungu(btn){
 		$('#gunguuu').css('display', '');
 		$('#areaList').css('display', '');
-		divList = $('<span >');
-		$('#areaList').append(divList);
+		
 		var val = btn.value;
 		$.ajax({
 			type : "get",
@@ -214,8 +215,8 @@ select {
 </style>
 </head>
 <body>
-<!-- 		<div class="div"></div> -->
-<!-- 		<div class="div"></div> -->
+		<div class="div"></div>
+		<div class="div"></div>
 			<form action="searchBoard.do">
 				<div class="form-group" align = "center">
 					<div class="form-inline">
