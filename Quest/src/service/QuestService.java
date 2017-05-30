@@ -67,16 +67,19 @@ public class QuestService implements IQuestService {
 		dao.insertUser(params);
 		return 1; // 성공
 	}
+
 	@Override
 	public List<HashMap<String, Object>> getRankingAverage() {
 		// TODO Auto-generated method stub
 		return dao.selectUserAverage();
 	}
+
 	@Override
 	public List<HashMap<String, Object>> getRankingDocount() {
 		// TODO Auto-generated method stub
 		return dao.selectUserDocount();
 	}
+
 	@Override
 	public HashMap<String, Object> login(String id, String password) {
 		// TODO Auto-generated method stub
@@ -296,66 +299,38 @@ public class QuestService implements IQuestService {
 		dao.insertBoard(params);
 
 		String path = "C:/Users/student/Upload/";
-		// String path = "C:/Users/ARI/Upload/";
 
-		MultipartFile file1 = (MultipartFile) params.get("ufile1");
-		MultipartFile file2 = (MultipartFile) params.get("ufile2");
-		MultipartFile file3 = (MultipartFile) params.get("ufile3");
+		MultipartFile[] file = (MultipartFile[]) params.get("ufile");
 
-		// 원본 파일명
-		String file1Name = file1.getOriginalFilename();
-		String file2Name = file2.getOriginalFilename();
-		String file3Name = file3.getOriginalFilename();
+		for (int i = 0; i < file.length; i++) {
 
-		// 파일의 사이즈
-		int size1 = (int) file1.getSize();
-		int size2 = (int) file2.getSize();
-		int size3 = (int) file3.getSize();
+			String fileName = file[i].getOriginalFilename();
+			int size = (int) file[i].getSize();
+			String fileUri = path + UUID.randomUUID().toString();
+			long boardNo = (long) params.get("boardNo");
+		
+			HashMap<String, Object> boardFile = new HashMap<>();
+			boardFile.put(Constant.BoardFile.BOARDNO, boardNo);
+			boardFile.put(Constant.BoardFile.URI, fileUri);
+			boardFile.put(Constant.BoardFile.SIZE, size);
+			boardFile.put(Constant.BoardFile.ORIGINFILENAME, fileName);
+			boardFile.put(Constant.BoardFile.FLAG, i);
+			
+			//flag 보상 1 = 0 , 보상2 = 1, 보상3 = 2 
 
-		// 파일을 저장할 경로를 받아서 boardFile객체에 담기
-		String fileUri = path + UUID.randomUUID().toString();
-		long boardNo = (long) params.get("boardNo");
+			if (fileName != null)
+				dao.insertBoardFile(boardFile);
+			File localFile = new File(fileUri);
 
-		HashMap<String, Object> boardFile1 = new HashMap<>();
-		boardFile1.put(Constant.BoardFile.BOARDNO, boardNo);
-		boardFile1.put(Constant.BoardFile.URI, fileUri);
-		boardFile1.put(Constant.BoardFile.SIZE, size1);
-		boardFile1.put(Constant.BoardFile.ORIGINFILENAME, file1Name);
-		boardFile1.put(Constant.BoardFile.FLAG, 1);
-
-		HashMap<String, Object> boardFile2 = new HashMap<>();
-		boardFile2.put(Constant.BoardFile.BOARDNO, boardNo);
-		boardFile2.put(Constant.BoardFile.URI, fileUri);
-		boardFile2.put(Constant.BoardFile.SIZE, size2);
-		boardFile2.put(Constant.BoardFile.ORIGINFILENAME, file2Name);
-		boardFile2.put(Constant.BoardFile.FLAG, 2);
-
-		HashMap<String, Object> boardFile3 = new HashMap<>();
-		boardFile3.put(Constant.BoardFile.BOARDNO, boardNo);
-		boardFile3.put(Constant.BoardFile.URI, fileUri);
-		boardFile3.put(Constant.BoardFile.SIZE, size3);
-		boardFile3.put(Constant.BoardFile.ORIGINFILENAME, file3Name);
-		boardFile3.put(Constant.BoardFile.FLAG, 3);
-
-		if ( file1Name != null )
-		dao.insertBoardFile(boardFile1);
-		else if ( file2Name != null )
-		dao.insertBoardFile(boardFile2);
-		else if ( file3Name != null )
-		dao.insertBoardFile(boardFile3);
-
-		File localFile = new File(fileUri);
-
-		try {
-			file1.transferTo(localFile);
-			file2.transferTo(localFile);
-			file3.transferTo(localFile);
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			try {
+				file[i].transferTo(localFile);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}

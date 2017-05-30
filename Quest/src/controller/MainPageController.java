@@ -34,8 +34,7 @@ import service.IQuestService;
 public class MainPageController {
 	@Autowired
 	IQuestService service;
-	
-	
+
 	@RequestMapping("main.do")
 	public ModelAndView main() {
 		ModelAndView mav = new ModelAndView();
@@ -43,28 +42,26 @@ public class MainPageController {
 		HashMap<String, Object> data1 = service.getBoardList(1, 1);
 		mav.addObject("list0", data0);
 		mav.addObject("list1", data1);
-		
-		//Ranking system
-		List<HashMap<String,Object>> rankAverage = service.getRankingAverage();
-		List<HashMap<String,Object>> rankDocount = service.getRankingDocount();
-		
-		
+
+		// Ranking system
+		List<HashMap<String, Object>> rankAverage = service.getRankingAverage();
+		List<HashMap<String, Object>> rankDocount = service.getRankingDocount();
+
 		mav.addObject("rankAverage", rankAverage);
 		mav.addObject("rankDocount", rankDocount);
 		System.out.println(rankAverage);
 		mav.setViewName("search.main.main");
 		return mav;
 	}
-	
 
 	@RequestMapping("listBoard.do")
 	public ModelAndView BoardAllList(HttpSession session,
 			@RequestParam(required = false, defaultValue = "3") int boardFlag,
 			@RequestParam(required = false, defaultValue = "1") int page) {
 
-//		if(session.getAttribute("userIndex") != null)
-//			service.getSession(session, (int)session.getAttribute("userIndex"));
-		
+		// if(session.getAttribute("userIndex") != null)
+		// service.getSession(session, (int)session.getAttribute("userIndex"));
+
 		if (session.getAttribute("boardFlag") == null && session.getAttribute("page") == null) {
 			// 처음 listBoard에 들어왓을때
 			session.setAttribute(Constant.Board.PAGE, 1);
@@ -90,7 +87,7 @@ public class MainPageController {
 		} else if (boardFlag == 1) {
 			data.put("header1", "해주세요");
 		}
-		
+
 		//
 		mav.addAllObjects(data);
 		mav.setViewName("search.main.listBoard");
@@ -238,19 +235,18 @@ public class MainPageController {
 	@RequestMapping(method = RequestMethod.GET, value = "viewBoard.do")
 	public ModelAndView viewboard(int boardNo, @RequestParam(defaultValue = "0") int userIndex) {
 		HashMap<String, Object> board = service.readBoard(boardNo, userIndex);
-		//List<HashMap<String, Object>> comment = service.listComment(boardNo);
+		// List<HashMap<String, Object>> comment = service.listComment(boardNo);
 		List<HashMap<String, Object>> comment = service.selectCommentList(boardNo);
 		ModelAndView mv = new ModelAndView();
 		mv.addAllObjects(board);
-		
+
 		if (comment.size() > 0)
-		mv.addObject("listComment", comment);
-		
-//		System.out.println("viewBoard" + board + "listComment" + comment);
+			mv.addObject("listComment", comment);
+
+		// System.out.println("viewBoard" + board + "listComment" + comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv;
 	}
-
 
 	@RequestMapping(method = RequestMethod.GET, value = "deleteComment.do")
 	public String deleteComment(@RequestParam HashMap<String, Object> comment, HttpSession session) {
@@ -269,35 +265,32 @@ public class MainPageController {
 	public String deleteBoard(int boardNo) {
 		service.deleteBoard(boardNo);
 		return "redirect:/listBoard.do";
-	} 
+	}
 
 	@RequestMapping("writeBoard.do")
 	public String writeBoard() {
 		return "search.main.writeBoard";
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do" )
+	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session,
-			@RequestParam("ufile1") MultipartFile ufile1, @RequestParam("ufile2") MultipartFile ufile2,
-			@RequestParam("ufile3") MultipartFile ufile3) {
+			@RequestParam("ufile") MultipartFile ufile[]) {
 		int flag = Integer.parseInt(board.get("boardFlag").toString());
-//		System.out.println(board);
-//		System.out.println(ufile1 +" 22 : " + ufile2 + "33 : " + ufile3);
-		//<,>를 &lt;,&gt;로 모두 치환. 엔터 줄바꿈까지..
-		//content는 summernote에서 막아놨음
-//		String content = (String)board.get("content");
-//		content = content.replace("<","&lt;").replace(">","&gt;").replaceAll("\r\n", "<br>");
-		String title = (String)board.get("title");
-		title = title.replace("<","&lt;").replace(">","&gt;");
+		// <,>를 &lt;,&gt;로 모두 치환. 엔터 줄바꿈까지..
+		// content는 SUMMER NOTE에서 막아놨음
+		// String content = (String)board.get("content");
+		// content =
+		// content.replace("<","&lt;").replace(">","&gt;").replaceAll("\r\n",
+		// "<br>");
+		String title = (String) board.get("title");
+		title = title.replace("<", "&lt;").replace(">", "&gt;");
 
 		board.put("title", title);
-		board.put("ufile1", ufile1);
-		board.put("ufile2", ufile2);
-		board.put("ufile3", ufile3);
-		
-		service.getSession(session, (int)session.getAttribute(Constant.User.USERINDEX));
-		
-		if ( flag == 1) { //해주세요
+		board.put("ufile", ufile);
+
+		service.getSession(session, (int) session.getAttribute(Constant.User.USERINDEX));
+
+		if (flag == 1) { // 해주세요
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
 			board.put("userIndex", userIndex);
 			service.writeBoard(board);
@@ -309,7 +302,6 @@ public class MainPageController {
 			return "redirect:/listBoard.do?boardFlag=0";
 		}
 	}
-
 
 	@RequestMapping("getSido.do")
 	public @ResponseBody HashMap<String, Object> getSido() {
@@ -340,7 +332,7 @@ public class MainPageController {
 	public String updateBoardProc(@RequestParam HashMap<String, Object> board, HttpServletRequest session) {
 		// int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 		// board.put("userIndex", userIndex); 세션도아직안댐
-//		System.out.println("updateBoard" + board);
+		// System.out.println("updateBoard" + board);
 		service.updateBoard(board);
 		return "redirect:/viewBoard.do?boardNo=" + board.get(Constant.Board.BOARDNO);
 	}
@@ -348,14 +340,14 @@ public class MainPageController {
 	@RequestMapping("police.do")
 	public String police(int boardNo, int userIndex, int boardFlag) {
 		service.selectpolice(boardNo, userIndex);
-//		System.out.println("보드플레그: " + boardFlag);
+		// System.out.println("보드플레그: " + boardFlag);
 		int count = service.countPolice(boardNo);
-		
-		if(count == 10 ){
+
+		if (count == 10) {
 			HashMap<String, Object> board = service.getBoard(boardNo);
 			board.put("bCompleteFlag", 2);
-//			System.out.println("신고하기" + board);
-//			System.out.println(service.countPolice(boardNo));
+			// System.out.println("신고하기" + board);
+			// System.out.println(service.countPolice(boardNo));
 			service.updateAll(board);
 		}
 		return "redirect:/listBoard.do";
@@ -363,10 +355,10 @@ public class MainPageController {
 
 	@RequestMapping("insertComment.do")
 	public String insertComment(int group, @RequestParam(required = false, defaultValue = "0") int seq, int boardNo,
-			String userIndex, String content)
-	{
-		//System.out.println("group: " + group + "seq : " + seq + "userIndex" + userIndex);
-		
+			String userIndex, String content) {
+		// System.out.println("group: " + group + "seq : " + seq + "userIndex" +
+		// userIndex);
+
 		if (group == -1) {
 			HashMap<String, Object> param = new HashMap<>();
 			param.put("boardNo", boardNo);
@@ -375,11 +367,11 @@ public class MainPageController {
 			param.put("comment_group", 0);
 			param.put("comment_seq", 0);
 			param.put("comment_lv", 0);
-			
+
 			service.updateGroup(boardNo);
 			service.insertComment(param);
 		} else {
-				//System.out.println("두번쨰 댓글이냐?");
+			// System.out.println("두번쨰 댓글이냐?");
 			HashMap<String, Object> param = new HashMap<>();
 			param.put("boardNo", boardNo);
 			param.put("comment_group", group);
@@ -393,20 +385,15 @@ public class MainPageController {
 			param.put("userIndex", userIndex);
 			param.put("content", content);
 			param.put("comment_group", params.get(Constant.Commnet.COMMENT_GROUP));
-			param.put("comment_seq", (int)params.get(Constant.Commnet.COMMENT_SEQ)+1);
-			param.put("comment_lv", (int)params.get(Constant.Commnet.COMMENT_LV)+1);
+			param.put("comment_seq", (int) params.get(Constant.Commnet.COMMENT_SEQ) + 1);
+			param.put("comment_lv", (int) params.get(Constant.Commnet.COMMENT_LV) + 1);
 
 			service.insertComment(param);
-			
+
 		}
-		return "redirect:/viewBoard.do?boardNo=" + boardNo +  "&userIndex=" + userIndex;
+		return "redirect:/viewBoard.do?boardNo=" + boardNo + "&userIndex=" + userIndex;
 	}
-	
-	
-	
-	
-	
-	
+
 	// 요거 희정 테스트확인용
 	@RequestMapping("heetest.do")
 	public String heetest() {
@@ -414,4 +401,3 @@ public class MainPageController {
 	}
 
 }
-

@@ -30,12 +30,10 @@
 	});
 	
 	 $(function(){
-		if ( !$('#reward1').val() ) {
+		if ( $('#reward1').val() == "" ) {
 		 $('#reward2').attr('readonly', true);
 		 $('#reward3').attr('readonly', true);
-		} else if ( !$('#reward2').val() ) {
-			$('#reward3').attr('readonly', true);
-		}
+		} 
 	 });
 	
 	 
@@ -112,6 +110,8 @@ $(document).ready(function(){
 		$('#div1').stop(true, false).slideDown();
 		if ( $('#reward1').val() == "" ) {
 			$('#div1').stop(true, false).slideUp();
+			 $('#reward2').attr('readonly', true);
+			 $('#reward3').attr('readonly', true);
 		}
 	});	
 	
@@ -120,6 +120,7 @@ $(document).ready(function(){
 		$('#div2').stop(true, false).slideDown();
 		if ( $('#reward2').val() == "" ) {
 			$('#div2').stop(true, false).slideUp();
+			 $('#reward3').attr('readonly', true);
 		}
 	})
 	
@@ -144,6 +145,7 @@ $(document).ready(function(){
 	 $('#reward1').change(function(){
 			if ( $('#reward1').val() == '' ) {
 				$('#rewardChk').html("보상을 입력하세요");
+				$('#reward1').focus();
 			} else {
 				$('#rewardChk').html("");				
 			}
@@ -404,7 +406,7 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상1 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile1" /></span> <span class="fileupload-preview"></span> <a
+												name="ufile" /></span> <span class="fileupload-preview"></span> <a
 												href="#" class="close fileupload-exists"
 												data-dismiss="fileupload" style="float: none">×</a>
 										</div></td>
@@ -415,7 +417,7 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상2 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile2" /></span> <span class="fileupload-preview"></span> <a
+												name="ufile" /></span> <span class="fileupload-preview"></span> <a
 												href="#" class="close fileupload-exists"
 												data-dismiss="fileupload" style="float: none">×</a>
 										</div></td>
@@ -426,7 +428,7 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상3 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile3" /></span> <span class="fileupload-preview"></span> <a
+												name="ufile" /></span> <span class="fileupload-preview"></span> <a
 												href="#" class="close fileupload-exists"
 												data-dismiss="fileupload" style="float: none">×</a>
 										</div></td>
@@ -474,8 +476,7 @@ select {
 					<tr>
 
 						<td colspan="4" align="right"><input type="hidden"
-							name="content" id="content"> <input type="button"
-							value="디브숨기기" id="divBtn"> <input type="submit"
+							name="content" id="content"> <input type="submit"
 							class="btn btn-success btn-lg" value="퀘스트등록" id="btn"> <a
 							class="btn btn-primary btn-lg"
 							onclick="location.href='listBoard.do'">퀘스트목록 </a></td>
