@@ -134,9 +134,6 @@
 .page-scroll1 {
 	font-size: 20px;
 }
-td{
-text-align: center;
-}
 
 .menu {
 	position: absolute;
@@ -192,19 +189,19 @@ text-align: center;
 							</td>
 						</tr>
 						<tr>
-							<td></td>
-							<td>해주세요</td>
-							<td>잘해요</td>
+							<td align="center"></td>
+							<td align="center">해주세요</td>
+							<td align="center">잘해요</td>
 						</tr>
 						<tr>
-							<td>요청</td>
-							<td><a href=mylistProc.do?boardFlag=1>${sessionScope.todo }개</a></td>
-							<td><a href=mylistProc.do?boardFlag=2>${sessionScope.dowell }개</a></td>
+							<td align="center">요청</td>
+							<td align="center"><a href=mylistProc.do?boardFlag=1>${sessionScope.todo }개</a></td>
+							<td align="center"><a href=mylistProc.do?boardFlag=2>${sessionScope.dowell }개</a></td>
 						</tr>
 						<tr>
-							<td>신청</td>
-							<td><a href=mylistProc.do?boardFlag=1>${sessionScope.todoApply }개</a></td>
-							<td><a href=mylistProc.do?boardFlag=2>${sessionScope.dowellApply }개</a></td>
+							<td align="center">신청</td>
+							<td align="center"><a href=mylistProc.do?boardFlag=1>${sessionScope.todoApply }개</a></td>
+							<td align="center"><a href=mylistProc.do?boardFlag=2>${sessionScope.dowellApply }개</a></td>
 						</tr>
 					</table>
 <%-- 					${sessionScope.nickname }님의 활동 현황 <br> --%>
