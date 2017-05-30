@@ -109,10 +109,25 @@ $(document).ready(function(){
 	 
 	$('#reward1').keyup(function(){
 		$('#reward2').attr('readonly', false);
+		$('#div1').stop(true, false).slideDown();
+		if ( $('#reward1').val() == "" ) {
+			$('#div1').stop(true, false).slideUp();
+		}
 	});	
 	
 	$('#reward2').keyup(function(){
 		$('#reward3').attr('readonly', false);
+		$('#div2').stop(true, false).slideDown();
+		if ( $('#reward2').val() == "" ) {
+			$('#div2').stop(true, false).slideUp();
+		}
+	})
+	
+	$('#reward3').keyup(function(){
+		$('#div3').stop(true, false).slideDown();
+		if ( $('#reward3').val() == "" ) {
+			$('#div3').stop(true, false).slideUp();
+		}
 	})
 	
 
@@ -135,6 +150,7 @@ $(document).ready(function(){
 		 });
 	 
 	 
+
 	 
 });
 
@@ -146,6 +162,18 @@ $(document).ready(function(){
 
 
 <style type="text/css">
+#div1 {
+	display: none;
+}
+
+#div2 {
+	display: none;
+}
+
+#div3 {
+	display: none;
+}
+
 .clearfix:before, .clearfix:after {
 	display: table;
 	content: "";
@@ -372,7 +400,7 @@ select {
 								<tr>
 									<td id="fileTd"><br>
 										<div class="fileupload fileupload-new"
-											data-provides="fileupload">
+											data-provides="fileupload" id="div1">
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상1 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
@@ -383,7 +411,7 @@ select {
 									<td>&nbsp;&nbsp;</td>
 									<td id="fileTd"><br>
 										<div class="fileupload fileupload-new"
-											data-provides="fileupload">
+											data-provides="fileupload" id="div2">
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상2 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
@@ -394,7 +422,7 @@ select {
 									<td>&nbsp;&nbsp;</td>
 									<td id="fileTd"><br>
 										<div class="fileupload fileupload-new"
-											data-provides="fileupload">
+											data-provides="fileupload" id="div3">
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상3 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
@@ -439,14 +467,15 @@ select {
 					</tr>
 					<tr>
 						<th height="100"><h5>내용</h5></th>
-						<td colspan="3"> <div id="summernote"></div> </td>
+						<td colspan="3">
+							<div id="summernote"></div>
+						</td>
 					</tr>
 					<tr>
 
-						<td colspan="4" align="right">
-							<input type = "hidden" name = "content" id = "content">
-						
-						<input type="submit"
+						<td colspan="4" align="right"><input type="hidden"
+							name="content" id="content"> <input type="button"
+							value="디브숨기기" id="divBtn"> <input type="submit"
 							class="btn btn-success btn-lg" value="퀘스트등록" id="btn"> <a
 							class="btn btn-primary btn-lg"
 							onclick="location.href='listBoard.do'">퀘스트목록 </a></td>
@@ -460,7 +489,7 @@ select {
 
 
 </body>
-	<script>
+<script>
 		$(document).ready(function() {
 			$('#summernote').summernote();
 		});
