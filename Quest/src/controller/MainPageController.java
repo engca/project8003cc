@@ -51,6 +51,7 @@ public class MainPageController {
 		
 		mav.addObject("rankAverage", rankAverage);
 		mav.addObject("rankDocount", rankDocount);
+		System.out.println(rankAverage);
 		mav.setViewName("search.main.main");
 		return mav;
 	}
@@ -245,7 +246,7 @@ public class MainPageController {
 		if (comment.size() > 0)
 		mv.addObject("listComment", comment);
 		
-		System.out.println("viewBoard" + board + "listComment" + comment);
+//		System.out.println("viewBoard" + board + "listComment" + comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv;
 	}
@@ -280,8 +281,8 @@ public class MainPageController {
 			@RequestParam("ufile1") MultipartFile ufile1, @RequestParam("ufile2") MultipartFile ufile2,
 			@RequestParam("ufile3") MultipartFile ufile3) {
 		int flag = Integer.parseInt(board.get("boardFlag").toString());
-		System.out.println(board);
-		System.out.println(ufile1 +" 22 : " + ufile2 + "33 : " + ufile3);
+//		System.out.println(board);
+//		System.out.println(ufile1 +" 22 : " + ufile2 + "33 : " + ufile3);
 		//<,>를 &lt;,&gt;로 모두 치환. 엔터 줄바꿈까지..
 		//content는 summernote에서 막아놨음
 //		String content = (String)board.get("content");
@@ -339,7 +340,7 @@ public class MainPageController {
 	public String updateBoardProc(@RequestParam HashMap<String, Object> board, HttpServletRequest session) {
 		// int userIndex = (int)session.getAttribute(Constant.User.USERINDEX);
 		// board.put("userIndex", userIndex); 세션도아직안댐
-		System.out.println("updateBoard" + board);
+//		System.out.println("updateBoard" + board);
 		service.updateBoard(board);
 		return "redirect:/viewBoard.do?boardNo=" + board.get(Constant.Board.BOARDNO);
 	}

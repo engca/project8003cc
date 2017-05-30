@@ -10,6 +10,17 @@
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  function averageClick(){
+	  $('#doCountTable').css('display', 'none');
+	  $('#averageTable').css('display', '');
+  }
+  
+  function countClick(){
+	  $('#doCountTable').css('display', '');
+	  $('#averageTable').css('display', 'none');
+  }
+  </script>
 <style type="text/css">
 #_chatbox {
 	border-radius: 10em 0 5em 2em;
@@ -38,18 +49,46 @@
 			</td>
 			<td rowspan="2">
 				<p>순위</p>
-				<table>
+				<ul class="nav nav-tabs">
+				  <li role="presentation" class="active"><a href="javascript:averageClick()">Average</a></li>
+				  <li role="presentation"><a href="javascript:countClick()">Count</a></li>
+				</ul>
+				<table id = "averageTable" >
 					<tr>
 						<th>순위</th>
 						<th>이름</th>
+						<th>평점</th>
 					</tr>
-					<c:forEach begin="1" end="3" step="1" var="i">
+					<c:forEach  var="ranker" items="rankAverage" varStatus="status">
 					<tr>
 						<td>
-							${i }위
+							${status.count }위
 						</td>
 						<td>
-							aaa
+							${ranker.userId }
+						</td>
+						<td>
+							${ranker.average }
+						</td>
+					</tr>
+					</c:forEach>
+				</table>
+				<table id = "doCountTable" style = "display:none;">
+					<tr>
+						<th>순위</th>
+						<th>이름</th>
+						<th>개수</th>
+					</tr>
+					<c:forEach  var="ranker" items="rankDocount" varStatus="status">
+					<tr>
+						<td>
+							${status.count }위
+						</td>
+						<td>
+							${ranker.userId }
+						</td>
+						<td>
+							${ranker.doCount }
 						</td>
 					</tr>
 					</c:forEach>
