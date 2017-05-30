@@ -63,7 +63,7 @@
 						<th>이름</th>
 						<th>평점</th>
 					</tr>
-					<c:forEach  var="ranker" items="${rankDocount }" varStatus="status">
+					<c:forEach  var="ranker" items="${rankAverage }" varStatus="status">
 					<tr>
 						<td>
 							${status.count }위
