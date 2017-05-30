@@ -37,23 +37,23 @@
 			</table>
 			</td>
 			<td rowspan="2">
-			<p>순위</p>
-			<table>
-				<tr>
-					<th>순위</th>
-					<th>이름</th>
-				</tr>
-				<c:forEach begin="1" end="3" step="1" var="i">
-				<tr>
-					<td>
-						${i }위
-					</td>
-					<td>
-						aaa
-					</td>
-				</tr>
-				</c:forEach>
-			</table>
+				<p>순위</p>
+				<table>
+					<tr>
+						<th>순위</th>
+						<th>이름</th>
+					</tr>
+					<c:forEach begin="1" end="3" step="1" var="i">
+					<tr>
+						<td>
+							${i }위
+						</td>
+						<td>
+							aaa
+						</td>
+					</tr>
+					</c:forEach>
+				</table>
 			</td>
 		</tr>
 		<tr>

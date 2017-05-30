@@ -81,11 +81,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update user set password = #{password} where userId = #{userId}
 	</update>
 	<select id = "selectUserAverage" resultType = "java.util.HashMap">
-		select userIndex , starPoint/doCount as average from user desc average 
-		limit 10
+		select userIndex , 
+		<if test="doCount != 0">
+			starPoint/doCount
+		</if> as average from user order by average desc 
+		limit 10 
 	</select>
 	<select id = "selectUserDocount" resultType = "java.util.HashMap">
-		select userIndex , doCount as average from user desc doCount 
+		select userIndex , doCount as average from user order by doCount desc  
 		limit 10
 	</select>
 	

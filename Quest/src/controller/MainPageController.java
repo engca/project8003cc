@@ -49,8 +49,8 @@ public class MainPageController {
 		List<HashMap<String,Object>> rankDocount = service.getRankingDocount();
 		
 		
-		mav.addObject("list0", rankAverage);
-		mav.addObject("list1", rankDocount);
+		mav.addObject("rankAverage", rankAverage);
+		mav.addObject("rankDocount", rankDocount);
 		mav.setViewName("search.main.main");
 		return mav;
 	}
