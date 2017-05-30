@@ -275,13 +275,13 @@ public class MainPageController {
 		System.out.println(board);
 		System.out.println(ufile1 +" 22 : " + ufile2 + "33 : " + ufile3);
 		//<,>를 &lt;,&gt;로 모두 치환. 엔터 줄바꿈까지..
+		//content는 summernote에서 막아놨음
 //		String content = (String)board.get("content");
 //		content = content.replace("<","&lt;").replace(">","&gt;").replaceAll("\r\n", "<br>");
-//		String title = (String)board.get("title");
-//		title = title.replace("<","&lt;").replace(">","&gt;");
+		String title = (String)board.get("title");
+		title = title.replace("<","&lt;").replace(">","&gt;");
 
-//		board.put("content", content);
-//		board.put("title", title);
+		board.put("title", title);
 		board.put("ufile1", ufile1);
 		board.put("ufile2", ufile2);
 		board.put("ufile3", ufile3);
