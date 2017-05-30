@@ -284,9 +284,7 @@ public class QuestService implements IQuestService {
 	@Override
 	public void writeBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
-		System.out.println("insert전" + params);
 		dao.insertBoard(params);
-		System.out.println("후" + params);
 
 		String path = "C:/Users/student/Upload/";
 		// String path = "C:/Users/ARI/Upload/";
