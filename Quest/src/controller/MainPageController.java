@@ -289,7 +289,6 @@ public class MainPageController {
 		service.getSession(session, (int)session.getAttribute(Constant.User.USERINDEX));
 		
 		if ( flag == 1) { //해주세요
-		
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
 			board.put("userIndex", userIndex);
 			service.writeBoard(board);
