@@ -280,14 +280,14 @@ public class MainPageController {
 		title = title.replace("<","&lt;").replace(">","&gt;");
 
 		board.put("content", content);
-		board.put("content", title);
-		
-		service.getSession(session, (int)board.get(Constant.User.USERINDEX));
-		if ( flag == 1) { //해주세요
-
+		board.put("title", title);
 		board.put("ufile1", ufile1);
 		board.put("ufile2", ufile2);
 		board.put("ufile3", ufile3);
+		
+		service.getSession(session, (int)board.get(Constant.User.USERINDEX));
+		if ( flag == 1) { //해주세요
+		
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);
 			board.put("userIndex", userIndex);
 			service.writeBoard(board);
