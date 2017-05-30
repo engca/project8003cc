@@ -71,7 +71,7 @@ public class HeaderController {
 		} else {
 			return webCheck(id, session, name);
 		}
-		return "redirect:listBoard.do"; 
+		return "redirect:main.do"; 
 	}
 
 	@RequestMapping("logout.do")
@@ -80,7 +80,7 @@ public class HeaderController {
 		session.removeAttribute(Constant.User.USERID);
 		session.removeAttribute(Constant.User.NICKNAME);
 		session.removeAttribute(Constant.User.USERINDEX);
-		return "redirect:listBoard.do";
+		return "redirect:main.do";
 	}
 	@RequestMapping("searchBoard.do")
 	public ModelAndView searchBoard(HttpSession session, @RequestParam(required=false, defaultValue="3") int boardFlag,
@@ -162,7 +162,7 @@ public class HeaderController {
 			session.setAttribute(Constant.User.USERID, user.get(Constant.User.USERID));
 			service.getSession(session, (int)user.get(Constant.User.USERINDEX));
 			session.setAttribute("loginCategory", user.get("loginCategory"));
-			return "redirect:listBoard.do";
+			return "redirect:main.do";
 		}
 	}
 }
