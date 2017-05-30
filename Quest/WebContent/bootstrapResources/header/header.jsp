@@ -134,6 +134,9 @@
 .page-scroll1 {
 	font-size: 20px;
 }
+td{
+text-align: center;
+}
 
 .menu {
 	position: absolute;
@@ -145,6 +148,13 @@
 	position: absolute;
 	left: 75%;
 	top: 1px;
+}
+
+
+.logo {
+	position: absolute;
+	left: 35%;
+	top: 20px;
 }
 </style>
 </head>
@@ -159,7 +169,7 @@
 <!-- 						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li> -->
 <!-- 					</ul> -->
 <!-- 				</div> -->
-				<div class="logo" id="logo" align="center">
+				<div class="logo" id="logo" align="center" >
 					<a href='listBoard.do?boardFlag=1&page=1'> <img
 						src="bootstrapResources/img/questlogo.png" width="350px"
 						height="100px">
@@ -174,13 +184,35 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class=".menu">
-					${sessionScope.nickname }님<br>
-					잘해요 : <a href = "">${sessionScope.dowell }개</a>
-					해주세요 : <a href = "">${sessionScope.todo }개</a>
-					<br>
-					잘해요 신청 : <a href = "">${sessionScope.dowellApply }개</a>
-					해주세요 신청 : <a href = "">${sessionScope.todoApply }개</a>
+				<div class=".menu" style="color: white;">
+					<table style="width: 250px; ">
+						<tr>
+							<td colspan="3" align="center">
+								${sessionScope.nickname }님의 활동 현황
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>해주세요</td>
+							<td>잘해요</td>
+						</tr>
+						<tr>
+							<td>요청</td>
+							<td><a href=mylistProc.do?boardFlag=1>${sessionScope.todo }개</a></td>
+							<td><a href=mylistProc.do?boardFlag=2>${sessionScope.dowell }개</a></td>
+						</tr>
+						<tr>
+							<td>신청</td>
+							<td><a href=mylistProc.do?boardFlag=1>${sessionScope.todoApply }개</a></td>
+							<td><a href=mylistProc.do?boardFlag=2>${sessionScope.dowellApply }개</a></td>
+						</tr>
+					</table>
+<%-- 					${sessionScope.nickname }님의 활동 현황 <br> --%>
+<%-- 					잘해요 : <a href = "">${sessionScope.dowell }개</a> --%>
+<%-- 					해주세요 : <a href = "">${sessionScope.todo }개</a> --%>
+<!-- 					<br> -->
+<%-- 					잘해요 신청 : <a href = "">${sessionScope.dowellApply }개</a> --%>
+<%-- 					해주세요 신청 : <a href = "">${sessionScope.todoApply }개</a> --%>
 				</div>
 <!-- 				<div class="menu"> -->
 <!-- 					<ul class="nav navbar-nav"> -->
@@ -189,6 +221,7 @@
 <!-- 						<li class="page-scroll1"><a href="listBoard.do?boardFlag=0">잘해요</a></li> -->
 <!-- 					</ul> -->
 <!-- 				</div> -->
+				
 				<div class="logo" id="logo" align="center">
 					<a href='listBoard.do?boardFlag=1&page=1'> <img alt=""
 						src="bootstrapResources/img/questlogo.png" width="350px"

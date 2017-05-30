@@ -41,8 +41,8 @@
 				<input type="button" value="MY LIST"
 					class="btn btn-success1 btn-lg1" id="btn"
 					style="width: 300dp; height: 38dp;" data-toggle="collapse"
-					data-target="#dropdown" />
-				<ul id="dropdown" class="collapse dropdown-menu">
+					data-target="#dropdown1" />
+				<ul id="dropdown1" class="collapse dropdown-menu">
 					<li><a href="mylistProc.do?boardFlag=1">해주세요</a></li>
 					<li><a href="mylistProc.do?boardFlag=0">잘해요</a></li>
 				</ul>
