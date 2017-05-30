@@ -15,7 +15,7 @@
  	} else {
  		location.href='writeBoard.do'; 
  	}
- }
+ } 
  </script>
  <style type="text/css"> 
  a {

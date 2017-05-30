@@ -269,9 +269,15 @@ public class MainPageController {
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session) {
 		int flag = Integer.parseInt(board.get("boardFlag").toString());
+		
+		//<,>를 &lt;,&gt;로 모두 치환. 엔터 줄바꿈까지..
 		String content = (String)board.get("content");
-		content = content.replaceAll("\r\n", "<br>");
+		content = content.replace("<","&lt;").replace(">","&gt;").replaceAll("\r\n", "<br>");
+		String title = (String)board.get("title");
+		title = title.replace("<","&lt;").replace(">","&gt;");
 		board.put("content", content);
+		board.put("content", title);
+		
 		service.getSession(session, (int)board.get(Constant.User.USERINDEX));
 		if ( flag == 1) { //해주세요
 			int userIndex = (int) session.getAttribute(Constant.User.USERINDEX);

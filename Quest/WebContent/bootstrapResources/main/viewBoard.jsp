@@ -122,6 +122,12 @@ function deleteComment(num){
 	var delcomdata = document.delcomData;
 	$('#delcom'+num).submit();
 } 
+//<,>를 &lt;,&gt;로 모두 치환
+function ConvertSystemSourcetoHtml(str){
+	 str = str.replace(/</g,"&lt;");
+	 str = str.replace(/>/g,"&gt;");
+	 return str;
+}
 
 </script>
 <style type="text/css">
@@ -162,7 +168,7 @@ select {
 		</div>
 		<div class="row">
 
-				<table class="table table-bordered bordertable">
+				<table class="table table-bordered bordertable" >
 				<tr>
 					<th><h5>제목</h5></th>
 					<c:if test="${boardList.bCompleteFlag ==0 }">
