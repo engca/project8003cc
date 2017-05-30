@@ -80,5 +80,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updatePw" parameterType="java.util.HashMap" >
 		update user set password = #{password} where userId = #{userId}
 	</update>
+	<select id = "selectUserAverage" resultType = "java.util.HashMap">
+		select userIndex , starPoint/doCount as average from user desc average 
+		limit 10
+	</select>
+	<select id = "selectUserDocount" resultType = "java.util.HashMap">
+		select userIndex , doCount as average from user desc doCount 
+		limit 10
+	</select>
 	
 </mapper>

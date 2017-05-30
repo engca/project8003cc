@@ -103,6 +103,9 @@ public interface IQuestDao {
 	public int getCountBoardComplete(int userIndex);
 	public List<HashMap<String, Object>> selectBoardComplete(HashMap<String, Object>params);
 	
+	//main Ranking
+	public List<HashMap<String, Object>> selectUserAverage();
+	public List<HashMap<String, Object>> selectUserDocount();
 	
 	//파일관련
 	public int insertBoardFile(HashMap<String, Object> params);
