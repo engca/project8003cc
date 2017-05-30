@@ -174,7 +174,7 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="menu">
+				<div class=".menu">
 					${sessionScope.nickname }님<br>
 					잘해요 : <a href = "">${sessionScope.dowell }개</a>
 					해주세요 : <a href = "">${sessionScope.todo }개</a>

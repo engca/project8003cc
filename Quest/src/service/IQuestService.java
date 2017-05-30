@@ -38,7 +38,7 @@ public interface IQuestService {
 
 	// 보드 서비스   
 //	public List<HashMap<String, Object>> listBoard(List<Integer> addrNo, int mode, String searchMsg, int userIndex);
-	public int writeBoard(HashMap<String, Object> params);
+	public void writeBoard(HashMap<String, Object> params);
 	public int updateBoard(HashMap<String, Object> params);
 	public int deleteBoard(int boardNo); 
 	public HashMap<String, Object> getBoardList(int boardflag, int page); // 페이징 처리용 추가 (4/12)

@@ -102,4 +102,13 @@ public interface IQuestDao {
 	
 	public int getCountBoardComplete(int userIndex);
 	public List<HashMap<String, Object>> selectBoardComplete(HashMap<String, Object>params);
+	
+	
+	//파일관련
+	public int insertBoardFile(HashMap<String, Object> params);
+	public int updateBoardFile(HashMap<String, Object> params);
+	public int deleteBoardFile(int fileId);
+	public HashMap<String, Object> selectOneBoardFile(int fileId);
+	public List<HashMap<String, Object>> selectAllBoardFile();
+	
 }

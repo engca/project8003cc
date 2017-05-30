@@ -1,7 +1,10 @@
 package service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.stream.events.Comment;
@@ -9,6 +12,7 @@ import javax.xml.stream.events.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import commons.Constant;
 import dao.IQuestDao;
@@ -278,12 +282,74 @@ public class QuestService implements IQuestService {
 		return result;
 	}
 
-	@Override
-	public int writeBoard(HashMap<String, Object> params) {
-		// TODO Auto-generated method stub
-		return dao.insertBoard(params);
-	}
 
+	@Override
+	public void writeBoard(HashMap<String, Object> params) {
+		// TODO Auto-generated method stub
+
+		dao.insertBoard(params);
+
+		String path = "C:/Users/student/Upload/";
+		// String path = "C:/Users/ARI/Upload/";
+
+		MultipartFile file1 = (MultipartFile) params.get("ufile1");
+		MultipartFile file2 = (MultipartFile) params.get("ufile2");
+		MultipartFile file3 = (MultipartFile) params.get("ufile3");
+
+		// 원본 파일명
+		String file1Name = file1.getOriginalFilename();
+		String file2Name = file2.getOriginalFilename();
+		String file3Name = file3.getOriginalFilename();
+
+		// 파일의 사이즈
+		int size1 = (int) file1.getSize();
+		int size2 = (int) file2.getSize();
+		int size3 = (int) file3.getSize();
+
+		// 파일을 저장할 경로를 받아서 boardFile객체에 담기
+		String fileUri = path + UUID.randomUUID().toString();
+		long boardNo = (long) params.get("boardNo");
+
+		HashMap<String, Object> boardFile1 = new HashMap<>();
+		boardFile1.put(Constant.BoardFile.BOARDNO, boardNo);
+		boardFile1.put(Constant.BoardFile.URI, fileUri);
+		boardFile1.put(Constant.BoardFile.SIZE, size1);
+		boardFile1.put(Constant.BoardFile.ORIGINFILENAME, file1Name);
+		boardFile1.put(Constant.BoardFile.FLAG, 1);
+
+		HashMap<String, Object> boardFile2 = new HashMap<>();
+		boardFile2.put(Constant.BoardFile.BOARDNO, boardNo);
+		boardFile2.put(Constant.BoardFile.URI, fileUri);
+		boardFile2.put(Constant.BoardFile.SIZE, size2);
+		boardFile2.put(Constant.BoardFile.ORIGINFILENAME, file2Name);
+		boardFile2.put(Constant.BoardFile.FLAG, 2);
+
+		HashMap<String, Object> boardFile3 = new HashMap<>();
+		boardFile3.put(Constant.BoardFile.BOARDNO, boardNo);
+		boardFile3.put(Constant.BoardFile.URI, fileUri);
+		boardFile3.put(Constant.BoardFile.SIZE, size3);
+		boardFile3.put(Constant.BoardFile.ORIGINFILENAME, file3Name);
+		boardFile3.put(Constant.BoardFile.FLAG, 3);
+
+		dao.insertBoardFile(boardFile1);
+		dao.insertBoardFile(boardFile2);
+		dao.insertBoardFile(boardFile3);
+
+		File localFile = new File(fileUri);
+
+		try {
+			file1.transferTo(localFile);
+			file2.transferTo(localFile);
+			file3.transferTo(localFile);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	@Override
 	public int updateBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub

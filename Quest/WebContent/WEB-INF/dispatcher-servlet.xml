@@ -7,14 +7,16 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<context:component-scan base-package="controller"></context:component-scan>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-<!-- 		<property name="prefix" value = "/jsp/"></property> -->
-<!-- 		<property name="suffix" value = ".jsp"></property> -->
+		<!-- <property name="prefix" value = "/jsp/"></property> -->
+		<!-- <property name="suffix" value = ".jsp"></property> -->
 		<property name="order" value="2" />
 	</bean>
-	
+
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions" value="/WEB-INF/Tiles.xml"></property>
 	</bean>
@@ -23,21 +25,21 @@
 	</bean>
 
 
-<!-- 	<mvc:interceptors>   -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/*.do" /> -->
-<!-- 			<mvc:exclude-mapping path="/listBoard.do" /> -->
-<!-- 			<mvc:exclude-mapping path="/searchBoard.do" /> -->
-<!-- 			<mvc:exclude-mapping path="/viewBoard.do" /> -->
-<!-- 			<mvc:exclude-mapping path="/join.do" /> -->
-<!-- 			<ref bean="loginCheckInterceptor" /> -->
-<!-- 		</mvc:interceptor> -->
+	<!-- <mvc:interceptors> -->
+	<!-- <mvc:interceptor> -->
+	<!-- <mvc:mapping path="/*.do" /> -->
+	<!-- <mvc:exclude-mapping path="/listBoard.do" /> -->
+	<!-- <mvc:exclude-mapping path="/searchBoard.do" /> -->
+	<!-- <mvc:exclude-mapping path="/viewBoard.do" /> -->
+	<!-- <mvc:exclude-mapping path="/join.do" /> -->
+	<!-- <ref bean="loginCheckInterceptor" /> -->
+	<!-- </mvc:interceptor> -->
 
 	<!-- <mvc:interceptor> -->
 	<!-- <mvc:mapping path="/**" /> -->
 	<!-- <bean id="logInterceptor" class="controller.LogIntercepter"></bean> -->
 	<!-- </mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
+	<!-- </mvc:interceptors> -->
 
 	<mvc:annotation-driven></mvc:annotation-driven>
 
