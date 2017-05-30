@@ -14,11 +14,15 @@
   function averageClick(){
 	  $('#doCountTable').css('display', 'none');
 	  $('#averageTable').css('display', '');
+	  $('#average').attr('class','active')
+	  $('#docount').attr('class','')
   }
   
   function countClick(){
 	  $('#doCountTable').css('display', '');
 	  $('#averageTable').css('display', 'none');
+	  $('#average').attr('class','')
+	  $('#docount').attr('class','active')
   }
   </script>
 <style type="text/css">
@@ -50,8 +54,8 @@
 			<td rowspan="2">
 				<p>순위</p>
 				<ul class="nav nav-tabs">
-				  <li role="presentation" class="active"><a href="javascript:averageClick()">Average</a></li>
-				  <li role="presentation"><a href="javascript:countClick()">Count</a></li>
+				  <li role="presentation" id = "average" class="active" ><a href="javascript:averageClick()">Average</a></li>
+				  <li role="presentation" id = "docount"><a href="javascript:countClick()">Count</a></li>
 				</ul>
 				<table id = "averageTable" >
 					<tr>
@@ -59,15 +63,17 @@
 						<th>이름</th>
 						<th>평점</th>
 					</tr>
-					<c:forEach  var="ranker" items="rankAverage" varStatus="status">
+					<c:forEach  var="ranker" items="${rankDocount }" varStatus="status">
 					<tr>
 						<td>
 							${status.count }위
 						</td>
 						<td>
+<!-- 						id -->
 							${ranker.userId }
 						</td>
 						<td>
+<!-- 						average -->
 							${ranker.average }
 						</td>
 					</tr>
@@ -79,15 +85,17 @@
 						<th>이름</th>
 						<th>개수</th>
 					</tr>
-					<c:forEach  var="ranker" items="rankDocount" varStatus="status">
+					<c:forEach  var="ranker" items="${rankDocount }" varStatus="status">
 					<tr>
 						<td>
 							${status.count }위
 						</td>
 						<td>
+<!-- 						id -->
 							${ranker.userId }
 						</td>
 						<td>
+<!-- 						count -->
 							${ranker.doCount }
 						</td>
 					</tr>
