@@ -16,7 +16,9 @@ public interface IQuestService {
 	public int getSessionDowellApply(int userIndex);
 	//contact
 	public String getContact(int conatactNo);
-	
+	//ranking
+	public List<HashMap<String, Object>> getRankingAverage();
+	public List<HashMap<String, Object>> getRankingDocount();
 	//join
 	public int join(HashMap<String, Object> params);
 	public HashMap<String, Object> login(String id, String password);

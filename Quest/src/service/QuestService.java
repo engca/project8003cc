@@ -67,7 +67,16 @@ public class QuestService implements IQuestService {
 		dao.insertUser(params);
 		return 1; // 성공
 	}
-
+	@Override
+	public List<HashMap<String, Object>> getRankingAverage() {
+		// TODO Auto-generated method stub
+		return dao.selectUserAverage();
+	}
+	@Override
+	public List<HashMap<String, Object>> getRankingDocount() {
+		// TODO Auto-generated method stub
+		return dao.selectUserDocount();
+	}
 	@Override
 	public HashMap<String, Object> login(String id, String password) {
 		// TODO Auto-generated method stub

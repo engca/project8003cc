@@ -13,7 +13,7 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 <title>퀘스트 작성하기</title>
 <script type="text/javascript">
-	$.ajax({
+	$.ajax({  
 		type : "get",
 		url : "getSido.do",
 		dataType : "json",
