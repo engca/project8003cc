@@ -299,9 +299,10 @@ public class QuestService implements IQuestService {
 		int FboardNo = (int) bd.get(Constant.Board.BOARDNO);
 		List<HashMap<String, Object>> fileinfo = dao.selectOneBoardFiletoBoardNo(FboardNo);
 		HashMap<String, Object> filedetail = new HashMap<>();
-		filedetail.put("file0", fileinfo.get(0).get(Constant.BoardFile.URI));
-		filedetail.put("file1", fileinfo.get(1).get(Constant.BoardFile.URI));
-		filedetail.put("file2", fileinfo.get(2).get(Constant.BoardFile.URI));
+		for(int i = 0 ; i < fileinfo.size(); i ++)
+		{
+			filedetail.put("file"+i, fileinfo.get(i).get(Constant.BoardFile.URI));
+		}
 		
 		// 최종 해쉬맵에 담아보내기
 		HashMap<String, Object> result = new HashMap<>();
