@@ -19,6 +19,8 @@ public interface IQuestService {
 	//ranking
 	public List<HashMap<String, Object>> getRankingAverage();
 	public List<HashMap<String, Object>> getRankingDocount();
+	public List<HashMap<String, Object>> selectBoardClicked();
+	public List<HashMap<String, Object>> selectBoardApply();
 	//join
 	public int join(HashMap<String, Object> params);
 	public HashMap<String, Object> login(String id, String password);

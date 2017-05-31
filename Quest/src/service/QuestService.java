@@ -79,6 +79,18 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		return dao.selectUserDocount();
 	}
+	
+	@Override
+	public List<HashMap<String, Object>> selectBoardClicked() {
+		// TODO Auto-generated method stub
+		return dao.selectBoardClicked();
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectBoardApply() {
+		// TODO Auto-generated method stub
+		return dao.selectBoardApply();
+	}
 
 	@Override
 	public HashMap<String, Object> login(String id, String password) {

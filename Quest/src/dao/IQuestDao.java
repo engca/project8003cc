@@ -106,7 +106,8 @@ public interface IQuestDao {
 	//main Ranking
 	public List<HashMap<String, Object>> selectUserAverage();
 	public List<HashMap<String, Object>> selectUserDocount();
-	
+	public List<HashMap<String, Object>> selectBoardClicked(); // 조회수
+	public List<HashMap<String, Object>> selectBoardApply(); // 지원자수
 	//파일관련
 	public int insertBoardFile(HashMap<String, Object> params);
 	public int updateBoardFile(HashMap<String, Object> params);

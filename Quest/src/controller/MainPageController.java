@@ -49,7 +49,13 @@ public class MainPageController {
 
 		mav.addObject("rankAverage", rankAverage);
 		mav.addObject("rankDocount", rankDocount);
-		System.out.println(rankAverage);
+//		System.out.println(rankAverage);
+		
+		List<HashMap<String, Object>> rankClicked = service.selectBoardClicked();
+		List<HashMap<String, Object>> rankApply = service.selectBoardApply();
+		
+		mav.addObject("rankClicked", rankClicked);
+		mav.addObject("rankApply", rankApply);
 		mav.setViewName("search.main.main");
 		return mav;
 	}
