@@ -138,6 +138,28 @@ public class MyPageController {
 
 		return "mypageMenu.mypage.mylist";
 	}
+	@RequestMapping("selectFlag.do")
+	public ModelAndView selectFlag(HttpSession session, 
+			@RequestParam(defaultValue="1")int page, int boardFlag,
+			int boardSelect, int applySelect) {
+		int userIndex = (int) session.getAttribute("userIndex");
+//		System.out.println("selectFlag");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardFlag",boardFlag);
+		
+		System.out.println("applySelect : "+service.myapplySelect(userIndex, page, boardFlag,applySelect));
+		System.out.println("boardSelect : " + service.myboardSelect(userIndex, page, boardFlag,boardSelect));
+		
+		mav.addAllObjects(service.myapplySelect(userIndex, page, boardFlag,applySelect));
+		mav.addAllObjects(service.myboardSelect(userIndex, page, boardFlag,boardSelect));
+//		mav.addObject("myapply", service.myapplySelect(userIndex, page, boardFlag,applySelect));
+//		mav.addObject("myboard", service.myboardSelect(userIndex, page, boardFlag,boardSelect));
+		
+		mav.setViewName("mypageMenu.mypage.mylist");
+//		System.out.println(mav);
+		return mav;
+		
+	}
 	
 	@RequestMapping("mylistProc.do")
 	public ModelAndView mylistProc
@@ -151,8 +173,11 @@ public class MyPageController {
 		mav.addObject("boardFlag",boardFlag);
 		mav.addAllObjects(service.myapply(userIndex, page, boardFlag));
 		mav.addAllObjects(service.myboard(userIndex, page, boardFlag));
+		
+		System.out.println("apply : "+ service.myapply(userIndex, page, boardFlag));
+		System.out.println("board : "+ service.myboard(userIndex, page, boardFlag));
 		mav.setViewName("mypageMenu.mypage.mylist");
-		System.out.println(mav);
+//		System.out.println(mav);
 		return mav;
 		
 	}

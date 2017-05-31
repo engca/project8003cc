@@ -101,6 +101,8 @@ public interface IQuestService {
 	// 마이리스트내가쓴글
 	public HashMap<String, Object> myapply(int userIndex , int page, int boardFlag);
 	public HashMap<String, Object> myboard(int userIndex , int page, int boardFlag);
+	public HashMap<String, Object> myapplySelect(int userIndex , int page, int boardFlag, int completeFlag);
+	public HashMap<String, Object> myboardSelect(int userIndex , int page, int boardFlag, int completeFlag);
 	
 	
 	public int getUserIndexById(String id);

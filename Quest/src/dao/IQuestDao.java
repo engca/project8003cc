@@ -97,7 +97,7 @@ public interface IQuestDao {
 	public int getCountBoardApplyByUserIndex(int userIndex);
 	public List<HashMap<String, Object>> selectBoardByUserIndex(HashMap<String, Object>params);
 	public List<HashMap<String, Object>> selectBoardApply(HashMap<String, Object>params);
-	
+	public List<HashMap<String, Object>> selectBoardApplyByFlag(HashMap<String, Object>params);
 	
 	
 	public int getCountBoardComplete(int userIndex);

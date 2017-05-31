@@ -993,5 +993,92 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		return dao.selectCommentList(boardNo);
 	}
+	@Override
+	public HashMap<String, Object> myapplySelect(int userIndex, int page, int boardFlag, int completeFlag) {
+		// TODO Auto-generated method stub
+		// 시작페이지와 끝페이지 계산
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막 페이지 계산
+		int first = 1;
+		int last = (dao.getCountBoardApplyByUserIndex(userIndex) - 1) / 10 + 1;
+		end = last < end ? last : end;
+		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
+
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userIndex", userIndex);
+		params.put("page", page);
+		params.put("skip", skip);
+		params.put("count", count);
+		params.put("boardFlag", boardFlag);
+		params.put("aCompleteFlag", completeFlag);
+		System.out.println("dao apply params" + params);
+		
+		// apply+board 내가 신청한거
+		List<HashMap<String, Object>> myapply = dao.selectBoardApplyByFlag(params);
+		for (HashMap<String, Object> p : myapply) {
+			String nickname = dao.selectNicknname((int) p.get("userIndex"));
+			p.put("nickname", nickname);
+
+		}
+
+		HashMap<String, Object> result = new HashMap<>();
+		result.put("myapplystart", start);
+		result.put("myapplyfirst", first);
+		result.put("myapplyend", end);
+		result.put("myapplylast", last);
+		result.put("myapplycurrent", page);
+		result.put("myapply", myapply);
+		result.put("myapplyboardFlag", boardFlag);
+
+		return result;
+	}
+
+	@Override
+	public HashMap<String, Object> myboardSelect(int userIndex, int page, int boardFlag, int completeFlag) {
+		// TODO Auto-generated method stub
+				// 시작페이지와 끝페이지 계산
+				int start = (page - 1) / 10 * 10 + 1;
+				int end = ((page - 1) / 10 + 1) * 10;
+				// 첫페이지와 마지막 페이지 계산
+				int first = 1;
+				int last = (dao.getCountBoardByUserIndex(userIndex) - 1) / 10 + 1;
+				end = last < end ? last : end;
+				// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+				int skip = (page - 1) * 10;
+				int count = 10;
+
+				HashMap<String, Object> params = new HashMap<>();
+				params.put("userIndex", userIndex);
+				params.put("page", page);
+				params.put("skip", skip);
+				params.put("count", count);
+				params.put("boardFlag", boardFlag);
+				params.put("bCompleteFlag", completeFlag);
+				System.out.println("dao board params" + params);
+				// board에서 내가 쓴거
+				List<HashMap<String, Object>> myboard = dao.selectBoardApplyByFlag(params);
+
+				// apply+board 내가 신청한거
+				String nickname = dao.selectNicknname(userIndex);
+
+				HashMap<String, Object> result = new HashMap<>();
+				for (HashMap<String, Object> mylist : myboard) {
+					int totalapplycount = dao.applyCount((int) (mylist.get("boardNo")));
+					mylist.put("totalapplycount", totalapplycount);
+				}
+				result.put("myboardstart", start);
+				result.put("myboardfirst", first);
+				result.put("myboardend", end);
+				result.put("myboardlast", last);
+				result.put("myboardcurrent", page);
+				result.put("myboard", myboard);
+				result.put("myboardnickname", nickname);
+				result.put("myboardboardFlag", boardFlag);
+
+				return result;
+	}
 
 }
