@@ -150,8 +150,22 @@ public class MyPageController {
 		System.out.println("applySelect : "+service.myapplySelect(userIndex, page, boardFlag,applySelect));
 		System.out.println("boardSelect : " + service.myboardSelect(userIndex, page, boardFlag,boardSelect));
 		
-		mav.addAllObjects(service.myapplySelect(userIndex, page, boardFlag,applySelect));
-		mav.addAllObjects(service.myboardSelect(userIndex, page, boardFlag,boardSelect));
+		if (applySelect == 0  ){
+			mav.addAllObjects(service.myapply(userIndex, page, boardFlag));
+		} else if(applySelect != 0){
+			mav.addAllObjects(service.myapplySelect(userIndex, page, boardFlag,applySelect));
+		}
+		if(boardSelect == 0 ){
+			mav.addAllObjects(service.myboard(userIndex, page, boardFlag));
+		} else if (boardSelect !=0 ){
+			mav.addAllObjects(service.myboardSelect(userIndex, page, boardFlag,boardSelect));
+
+		}
+		
+		
+		
+//		mav.addAllObjects(service.myboardSelect(userIndex, page, boardFlag,boardSelect));
+//		mav.addAllObjects(service.myboardSelect(userIndex, page, boardFlag,boardSelect));
 //		mav.addObject("myapply", service.myapplySelect(userIndex, page, boardFlag,applySelect));
 //		mav.addObject("myboard", service.myboardSelect(userIndex, page, boardFlag,boardSelect));
 		

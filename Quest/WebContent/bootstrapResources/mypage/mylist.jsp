@@ -25,8 +25,8 @@ text-align: center;
 $(document).ready(function() {
 
 $("#boardSelect").change(function(){
-    alert("select" + $(this).val());
-    alert("boardFlag"+${boardFlag})
+//     alert("select" + $(this).val());
+//     alert("boardFlag"+${boardFlag})
     if($(this).val() == 0){
     	document.location.href="mylistProc.do?boardFlag="+${boardFlag};
     }    else{  
@@ -35,8 +35,8 @@ $("#boardSelect").change(function(){
 });
 
 $("#applySelect").change(function(){
-    alert($(this).val());
-    alert("boardFlag"+${boardFlag})
+//     alert($(this).val());
+//     alert("boardFlag"+${boardFlag})
  if($(this).val() == 0){
 	 document.location.href="mylistProc.do?boardFlag="+${boardFlag};
     }    else{  
