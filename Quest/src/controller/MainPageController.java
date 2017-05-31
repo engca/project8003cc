@@ -52,7 +52,7 @@ public class MainPageController {
 //		System.out.println(rankAverage);
 		
 		List<HashMap<String, Object>> rankClicked = service.selectBoardClicked();
-		List<HashMap<String, Object>> rankApply = service.selectBoardApply();
+		List<HashMap<String, Object>> rankApply = service.selectBoardApplyRank();
 		
 		mav.addObject("rankClicked", rankClicked);
 		mav.addObject("rankApply", rankApply);
