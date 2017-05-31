@@ -20,6 +20,19 @@
 	  $('#average').attr('class','')
 	  $('#docount').attr('class','active')
   }
+  function clickedClick(){
+	  $('#clickedTable').css('display', 'none');
+	  $('#applyTable').css('display', '');
+	  $('#clicked').attr('class','active')
+	  $('#apply').attr('class','')
+  }
+  
+  function applyClick(){
+	  $('#clickedTable').css('display', '');
+	  $('#applyTable').css('display', 'none');
+	  $('#clicked').attr('class','')
+	  $('#apply').attr('class','active')
+  }
   </script>
 <style type="text/css">
 #_chatbox {
@@ -170,6 +183,52 @@
 							<td align="center"><fmt:formatDate value="${board.date }"
 									pattern="yyyy.MM.dd" /></td>
 							<td align="center">${board.readCount }</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</td>
+		</tr>
+		<td>
+				<p>게시판 순위</p>
+				<ul class="nav nav-tabs">
+					<li role="presentation" id="clicked" class="active"><a
+						href="javascript:clickedClick()">Average</a></li>
+					<li role="presentation" id="apply"><a
+						href="javascript:applyClick()">Count</a></li>
+				</ul>
+				<table id="clickedTable">
+					<tr>
+						<th>순위</th>
+						<th>게시판 이름</th>
+						<th>조회수</th>
+					</tr>
+					<c:forEach var="ranker" items="${rankClicked }" varStatus="status">
+						<tr>
+							<td>${status.count }위</td>
+							<td>
+								<!-- 						id --> <a href="view.do?boardNo="${ranker.boardNo }>${ranker.title }</a>
+							</td>
+							<td>
+								<!-- 						average --> ${ranker.readCount }
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+				<table id="applyTable" style="display: none;">
+					<tr>
+						<th>순위</th>
+						<th>게시판 이름</th>
+						<th>지원자 수</th>
+					</tr>
+					<c:forEach var="ranker" items="${rankDocount }" varStatus="status">
+						<tr>
+							<td>${status.count }위</td>
+							<td>
+								<!-- 						id --> <a href="view.do?boardNo="${ranker.boardNo }>${ranker.title }</a>
+							</td>
+							<td>
+								<!-- 						count --> ${ranker.count(boardNo) }
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
