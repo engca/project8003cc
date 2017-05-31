@@ -285,6 +285,10 @@ public class QuestService implements IQuestService {
 		// 해당글의 보상파일 정보 불러오기
 		int FboardNo = (int) bd.get(Constant.Board.BOARDNO);
 		List<HashMap<String, Object>> fileinfo = dao.selectOneBoardFiletoBoardNo(FboardNo);
+		HashMap<String, Object> filedetail = new HashMap<>();
+		filedetail.put("file0", fileinfo.get(0).get(Constant.BoardFile.URI));
+		filedetail.put("file1", fileinfo.get(1).get(Constant.BoardFile.URI));
+		filedetail.put("file2", fileinfo.get(2).get(Constant.BoardFile.URI));
 		
 		// 최종 해쉬맵에 담아보내기
 		HashMap<String, Object> result = new HashMap<>();
@@ -294,7 +298,7 @@ public class QuestService implements IQuestService {
 		result.put("boardList", bd);
 		result.put("contactMethod", contactMethod);
 		result.put("addr", addr);
-		result.put("fileinfo", fileinfo);
+		result.put("fileinfo", filedetail);
 		return result;
 	}
 
