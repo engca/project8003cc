@@ -12,6 +12,7 @@ import javax.xml.stream.events.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import commons.Constant;
@@ -743,6 +744,7 @@ public class QuestService implements IQuestService {
 		params.put("skip", skip);
 		params.put("count", count);
 		params.put("boardFlag", boardFlag);
+		params.put("boardFlag", boardFlag);
 
 		// apply+board 내가 신청한거
 		List<HashMap<String, Object>> myapply = dao.selectBoardApply(params);
@@ -1029,7 +1031,7 @@ public class QuestService implements IQuestService {
 		System.out.println("dao apply params" + params);
 		
 		// apply+board 내가 신청한거
-		List<HashMap<String, Object>> myapply = dao.selectBoardApplyByFlag(params);
+		List<HashMap<String, Object>> myapply = dao.selectBoardApply(params);
 		for (HashMap<String, Object> p : myapply) {
 			String nickname = dao.selectNicknname((int) p.get("userIndex"));
 			p.put("nickname", nickname);
@@ -1071,7 +1073,7 @@ public class QuestService implements IQuestService {
 				params.put("bCompleteFlag", completeFlag);
 				System.out.println("dao board params" + params);
 				// board에서 내가 쓴거
-				List<HashMap<String, Object>> myboard = dao.selectBoardApplyByFlag(params);
+				List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
 
 				// apply+board 내가 신청한거
 				String nickname = dao.selectNicknname(userIndex);

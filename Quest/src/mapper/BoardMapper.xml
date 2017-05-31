@@ -207,6 +207,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="userIndex != null and userIndex != ''">
 			and userIndex = #{userIndex}
 		</if>
+		<if test="bCompleteFlag != null">
+			and bCompleteFlag = #{bCompleteFlag}
+		</if>
 		order by boardNo desc
 		limit #{skip}, #{count}
 	</select>
