@@ -44,6 +44,7 @@
 #messageWindow {
 	background-color: gray;
 }
+
 </style>
 </head>
 <body>
@@ -52,45 +53,41 @@
 
 	<table class="table table-bordered">
 		<tr>
-			<td width="40%">
-				<h3>잘해요</h3>
+			<td>
+				<h3><a href = "listBoard.do?boardFlag=0">잘해요</a></h3>
 				<hr class="star-primary1">
 				<table>
 					<tr>
 						<td align="center" width="8%"><b>No</b></td>
-						<td align="center" width="46%"><b>제목</b></td>
-						<td align="center" width="20%"><b>작성자</b></td>
+						<td align="center" width="54%"><b>제목</b></td>
+						<td align="center" width="12%"><b>작성자</b></td>
 						<td align="center" width="18%"><b>작성일</b></td>
 						<td align="center" width="8%"><b>조회수</b></td>
 					</tr>
-					<c:forEach begin="0" end="5" step="1" items="${list0.boardList }"
-						var="board">
+					<c:forEach begin="0" end="5" step="1" items="${list0.boardList }" var="board">
 						<tr>
 							<td align="center">${board.boardNo}</td>
 
 							<c:if test="${board.bCompleteFlag ==0 }">
-								<td><a
-									href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.title } </a>
-									&nbsp;&nbsp;&nbsp; <font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+								<td>
+								<a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.title } </a> &nbsp;&nbsp;&nbsp;
+										<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
 							</c:if>
 							<c:if test="${board.bCompleteFlag ==1 }">
 								<td><a
 									href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
-										<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[완료된
-											퀘스트]</font> ${board.title }
+										<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[완료된 퀘스트]</font> ${board.title }
 								</a> &nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
 							</c:if>
 							<c:if test="${board.bCompleteFlag ==3 }">
 								<td><a
 									href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
-										<font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[진행중
-											퀘스트]</font> ${board.title }
+										<font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[진행중 퀘스트]</font> ${board.title }
 								</a> &nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
 							</c:if>
 							<c:if test="${board.bCompleteFlag ==2 }">
-								<td><font color="gray"><strike>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭제된
-											게시글 입니다</strike></font></td>
+								<td><font color="gray"><strike>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭제된 게시글 입니다</strike></font></td>
 							</c:if>
 
 							<td align="center">${board.nickname}</td>
@@ -101,7 +98,7 @@
 					</c:forEach>
 				</table>
 			</td>
-			<td width="15%">
+			<td>
 				<p>순위</p>
 				<ul class="nav nav-tabs">
 					<li role="presentation" id="average" class="active"><a
@@ -146,55 +143,16 @@
 					</c:forEach>
 				</table>
 			</td>
-
-			<!-- 			채팅 -->
-
-			<td rowspan="2" width="25%">
-				
-				
-				<div>
-					<!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
-					<c:if
-						test="${(sessionScope.userIndex ne '') and !(empty sessionScope.userIndex)}">
-						<input type="hidden" value='${sessionScope.nickname }'
-							id='chat_id' />
-					</c:if>
-					<c:if
-						test="${(sessionScope.userIndex eq '') or (empty sessionScope.userIndex)}">
-						<input type="hidden" value='<%=session.getId().substring(0, 6)%>'
-							id='chat_id' />
-					</c:if>
-					<!--     채팅창 -->
-					<div id="_chatbox"
-						style=" right: 50px; bottom: 70px;">
-						<fieldset>
-							<div id="messageWindow"
-								style="overflow-x: hidden; overflow-y: scroll; height: 330px;"></div>
-							<br /> <input id="inputMessage" type="text" onkeyup="enterkey()" />
-							<input type="submit" value="send" onclick="send()" />
-						</fieldset>
-					</div>
-					<div
-						style=" right: 20px; bottom: 20px; text-align: right;">
-						<img class="chat"
-							src="<%=request.getContextPath()%>/img/chat_black.png" />
-					</div>
-				</div>
-
-
-
-			</td>
-
 		</tr>
 		<tr>
 			<td>
-				<h3>해주세요</h3>
+				<h3><a href = "listBoard.do?boardFlag=0">해주세요</a></h3>
 				<hr class="star-primary1">
 				<table>
 					<tr>
 						<td align="center" width="8%"><b>No</b></td>
-						<td align="center" width="46%"><b>제목</b></td>
-						<td align="center" width="20%"><b>작성자</b></td>
+						<td align="center" width="54%"><b>제목</b></td>
+						<td align="center" width="12%"><b>작성자</b></td>
 						<td align="center" width="18%"><b>작성일</b></td>
 						<td align="center" width="8%"><b>조회수</b></td>
 					</tr>
@@ -202,27 +160,23 @@
 						var="board">
 						<tr>
 							<td align="center">${board.boardNo}</td>
-							<td><a
-								href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.title } </a>
-								&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+							<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.title } </a> &nbsp;&nbsp;&nbsp;<font color="gray"
+								size="1px"><b>[${board.commentCount }]</b></font></td>
 							<c:if test="${board.bCompleteFlag ==1 }">
 								<td><a
 									href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
-										<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[완료된
-											퀘스트]</font> ${board.title }
+										<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[완료된 퀘스트]</font> ${board.title }
 								</a> &nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
 							</c:if>
 							<c:if test="${board.bCompleteFlag ==3 }">
 								<td><a
 									href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
-										<font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[진행중
-											퀘스트]</font> ${board.title }
+										<font color="blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[진행중 퀘스트]</font> ${board.title }
 								</a> &nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
 							</c:if>
 							<c:if test="${board.bCompleteFlag ==2 }">
-								<td><font color="gray"><strike>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭제된
-											게시글 입니다</strike></font></td>
+								<td><font color="gray"><strike>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;삭제된 게시글 입니다</strike></font></td>
 							</c:if>
 
 							<td align="center">${board.nickname}</td>
@@ -237,21 +191,21 @@
 				<p>게시판 순위</p>
 				<ul class="nav nav-tabs">
 					<li role="presentation" id="clicked" class="active"><a
-						href="javascript:clickedClick()">Average</a></li>
+						href="javascript:clickedClick()">클릭 많은 게시판</a></li>
 					<li role="presentation" id="apply"><a
-						href="javascript:applyClick()">Count</a></li>
+						href="javascript:applyClick()">신청 많은 제목</a></li>
 				</ul>
-				<table id="clickedTable">
+				<table id="clickedTable" style="display: none;">
 					<tr>
 						<th>순위</th>
-						<th>게시판 이름</th>
+						<th>제목</th>
 						<th>조회수</th>
 					</tr>
 					<c:forEach var="ranker" items="${rankClicked }" varStatus="status">
 						<tr>
 							<td>${status.count }위</td>
 							<td>
-								<!-- 						id --> <a href="view.do?boardNo=" ${ranker.boardNo }>${ranker.title }</a>
+		<!-- 						id --> <a href="viewBoard.do?boardNo=${ranker.boardNo }">${ranker.title }</a>
 							</td>
 							<td>
 								<!-- 						average --> ${ranker.readCount }
@@ -259,20 +213,20 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<table id="applyTable" style="display: none;">
+				<table id="applyTable" >
 					<tr>
 						<th>순위</th>
-						<th>게시판 이름</th>
+						<th>제목</th>
 						<th>지원자 수</th>
 					</tr>
 					<c:forEach var="ranker" items="${rankApply }" varStatus="status">
 						<tr>
 							<td>${status.count }위</td>
 							<td>
-								<!-- 						id --> <a href="view.do?boardNo=" ${ranker.boardNo }>${ranker.title }</a>
+<!-- 						id --> <a href="viewBoard.do?boardNo=${ranker.boardNo }">${ranker.title }</a>
 							</td>
 							<td>
-								<!-- 						count --> ${ranker.count }
+						<!-- 						count --> ${ranker.count }
 							</td>
 						</tr>
 					</c:forEach>
@@ -280,23 +234,49 @@
 			</td>
 		</tr>
 	</table>
-	<br>
-	<br>
 
+	<div>
+		<!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
+		<c:if
+			test="${(sessionScope.userIndex ne '') and !(empty sessionScope.userIndex)}">
+			<input type="hidden" value='${sessionScope.nickname }' id='chat_id' />
+		</c:if>
+		<c:if
+			test="${(sessionScope.userIndex eq '') or (empty sessionScope.userIndex)}">
+			<input type="hidden" value='<%=session.getId().substring(0, 6)%>'
+				id='chat_id' />
+		</c:if>
+		<!--     채팅창 -->
+		<div id="_chatbox"
+			style="display: none; position: absolute; right: 50px; bottom: 70px;">
+			<fieldset>
+				<div id="messageWindow"
+					style="overflow-x: hidden; overflow-y: scroll; height: 330px;"></div>
+				<br /> <input id="inputMessage" type="text" onkeyup="enterkey()" />
+				<input type="submit" value="send" onclick="send()" />
+			</fieldset>
+		</div>
+		<div
+			style="position: absolute; right: 20px; bottom: 20px; text-align: right;">
+			<img class="chat"
+				src="<%=request.getContextPath()%>/img/chat_black.png" />
+		</div>
+	</div>
 </body>
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
 <script type="text/javascript">
-//     $(".chat").on({
-//         "click" : function() {
-<%--             if ($(this).attr("src") == "<%=request.getContextPath()%>/img/chat_black.png") { --%>
-<%--                 $(".chat").attr("src", "<%=request.getContextPath()%>/img/chat_red.png"); --%>
-//                 $("#_chatbox").css("display", "block");
-<%--             } else if ($(this).attr("src") == "<%=request.getContextPath()%>/img/chat_red.png") { --%>
-<%--                 $(".chat").attr("src", "<%=request.getContextPath()%>/img/chat_black.png" ); --%>
-// 								$("#_chatbox").css("display", "none");
-// 							}
-// 						}
-// 					});
+    $(".chat").on({
+        "click" : function() {
+            if ($(this).attr("src") == "<%=request.getContextPath()%>/img/chat_black.png") {
+                $(".chat").attr("src", "<%=request.getContextPath()%>/img/chat_red.png");
+                $("#_chatbox").css("display", "block");
+            } else if ($(this).attr("src") == "<%=request.getContextPath()%>/img/chat_red.png") {
+                $(".chat").attr("src", "<%=request.getContextPath()%>
+	/img/chat_black.png");
+								$("#_chatbox").css("display", "none");
+							}
+						}
+					});
 </script>
 <script type="text/javascript">
 	var textarea = document.getElementById("messageWindow");
@@ -361,7 +341,7 @@
 		if (inputMessage.value == "") {
 		} else {
 			$("#messageWindow").html(
-					$("#messageWindow").html() + "<p class='chat_content'>${sessionScope.nickname} : "
+					$("#messageWindow").html() + "<p class='chat_content'>나 : "
 							+ inputMessage.value + "</p>");
 		}
 		webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
