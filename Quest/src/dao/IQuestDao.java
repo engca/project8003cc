@@ -113,5 +113,5 @@ public interface IQuestDao {
 	public int deleteBoardFile(int fileId);
 	public HashMap<String, Object> selectOneBoardFile(int fileId);
 	public List<HashMap<String, Object>> selectAllBoardFile();
-	
+	public List<HashMap<String, Object>> selectOneBoardFiletoBoardNo(int boardNo);
 }

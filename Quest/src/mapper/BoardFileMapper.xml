@@ -29,5 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAllBoardFile" resultType="java.util.HashMap">
 		SELECT * FROM boardFile;
 	</select>
+	
+	<select id="selectOneBoardFiletoBoardNo" parameterType="int" resultType="java.util.HashMap">
+		SELECT *
+		FROM boardFile WHERE boardNo = #{boardNo}
+	</select>
 
 </mapper>

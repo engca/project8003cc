@@ -243,7 +243,7 @@ public class MainPageController {
 		if (comment.size() > 0)
 			mv.addObject("listComment", comment);
 
-		// System.out.println("viewBoard" + board + "listComment" + comment);
+		System.out.println("viewBoard" + board + "listComment" + comment);
 		mv.setViewName("search.main.viewBoard");
 		return mv;
 	}

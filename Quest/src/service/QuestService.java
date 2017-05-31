@@ -282,6 +282,10 @@ public class QuestService implements IQuestService {
 		bookmark.put("userIndex", userIndex);
 		List<HashMap<String, Object>> bookmarkdata = dao.selectBookMark(bookmark);
 
+		// 해당글의 보상파일 정보 불러오기
+		int FboardNo = (int) bd.get(Constant.Board.BOARDNO);
+		List<HashMap<String, Object>> fileinfo = dao.selectOneBoardFiletoBoardNo(FboardNo);
+		
 		// 최종 해쉬맵에 담아보내기
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("applydata", applydata);
@@ -290,6 +294,7 @@ public class QuestService implements IQuestService {
 		result.put("boardList", bd);
 		result.put("contactMethod", contactMethod);
 		result.put("addr", addr);
+		result.put("fileinfo", fileinfo);
 		return result;
 	}
 
