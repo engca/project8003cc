@@ -37,17 +37,45 @@
 </style>
 </head>
 <body>
-	<table border="1">
+	<table border="1"  align="center" cellpadding="4px" style = "padding-top: 100px;padding: 100%">
 		<tr>
 			<td>
-			<p>잘해요</p>
-			<table>
+			<h3>잘해요</h3>
+			<hr class="star-primary1">
+			<table >
+				<tr>
+	 				<td align="center" width="8%"><b>No</b></td>
+	 				<td align="center" width="54%"><b>제목</b></td>
+	 				<td align="center" width="12%"><b>작성자</b></td>
+	 				<td align="center" width="18%"><b>작성일</b></td>
+	 				<td align="center" width="8%"><b>조회수</b></td>
+ 				</tr>
 				<c:forEach begin="0" end="5" step="1" items="${list0.boardList }" var="board">
 				<tr>
-					<td>
-						<a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">${board.title } </a>
-					</td>
-				</tr>
+ 					<td align="center">${board.boardNo}</td>
+ 					 
+ 					<c:if test="${board.bCompleteFlag ==0 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">	${board.title } </a>
+							&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+ 					</c:if> 					
+ 					<c:if test="${board.bCompleteFlag ==1 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
+ 						<font color="red">[완료된 퀘스트]</font>	${board.title }</a>
+ 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+ 					</c:if>
+ 					<c:if test="${board.bCompleteFlag ==3 }">
+ 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
+ 						<font color="blue">[진행중 퀘스트]</font>	${board.title }</a>
+ 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+ 					</c:if> 					
+ 					<c:if test="${board.bCompleteFlag ==2 }">
+ 					<td><font color="gray"><strike>삭제된 게시글 입니다</strike></font></td>
+ 					</c:if>
+ 					
+ 					<td align="center">${board.nickname}</td>
+ 					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyy/MM/dd" /></td>
+ 					<td align="center">${board.readCount }</td>
+ 				</tr>
 				</c:forEach>
 			</table>
 			</td>
@@ -105,16 +133,41 @@
 		</tr>
 		<tr>
 			<td>
-			<p>해주세요</p>
-			<table>
-				<c:forEach begin="0" end="5" step="1" items="${list1.boardList }" var="board">
-				<tr>
-					<td>
-						<a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">${board.title } </a>
-					</td>
-				</tr>
-				</c:forEach>
-			</table>
+				<h3>해주세요</h3>
+				<hr class="star-primary1">
+				<table >
+					<tr>
+		 				<td align="center" width="8%"><b>No</b></td>
+		 				<td align="center" width="54%"><b>제목</b></td>
+		 				<td align="center" width="12%"><b>작성자</b></td>
+		 				<td align="center" width="18%"><b>작성일</b></td>
+		 				<td align="center" width="8%"><b>조회수</b></td>
+	 				</tr>
+					<c:forEach begin="0" end="5" step="1" items="${list1.boardList }" var="board">
+					<tr>
+	 					<td align="center">${board.boardNo}</td>
+	 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">	${board.title } </a>
+								&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+	 					<c:if test="${board.bCompleteFlag ==1 }">
+	 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
+	 						<font color="red">[완료된 퀘스트]</font>	${board.title }</a>
+	 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+	 					</c:if>
+	 					<c:if test="${board.bCompleteFlag ==3 }">
+	 					<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
+	 						<font color="blue">[진행중 퀘스트]</font>	${board.title }</a>
+	 						 	&nbsp;&nbsp;&nbsp;<font color="gray" size="1px"><b>[${board.commentCount }]</b></font></td>
+	 					</c:if> 					
+	 					<c:if test="${board.bCompleteFlag ==2 }">
+	 					<td><font color="gray"><strike>삭제된 게시글 입니다</strike></font></td>
+	 					</c:if>
+	 					
+	 					<td align="center">${board.nickname}</td>
+	 					<td align="center"><fmt:formatDate value="${board.date }"  pattern="yyyy/MM/dd" /></td>
+	 					<td align="center">${board.readCount }</td>
+	 				</tr>
+					</c:forEach>
+				</table>
 			</td>
 		</tr>
 	</table>
@@ -139,11 +192,10 @@
 	    	<img class="chat" src="<%=request.getContextPath() %>/img/chat_black.png" />
 	    </div>
 	</div>
-	
-	
+	<div></div>
 </body>
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
-<script>
+<script type="text/javascript">
     $(".chat").on({
         "click" : function() {
             if ($(this).attr("src") == "<%=request.getContextPath() %>/img/chat_black.png") {

@@ -196,12 +196,12 @@
 						<tr>
 							<td align="center">요청</td>
 							<td align="center"><a href=mylistProc.do?boardFlag=1>${sessionScope.todo }개</a></td>
-							<td align="center"><a href=mylistProc.do?boardFlag=2>${sessionScope.dowell }개</a></td>
+							<td align="center"><a href=mylistProc.do?boardFlag=0>${sessionScope.dowell }개</a></td>
 						</tr>
 						<tr>
 							<td align="center">신청</td>
 							<td align="center"><a href=mylistProc.do?boardFlag=1>${sessionScope.todoApply }개</a></td>
-							<td align="center"><a href=mylistProc.do?boardFlag=2>${sessionScope.dowellApply }개</a></td>
+							<td align="center"><a href=mylistProc.do?boardFlag=0>${sessionScope.dowellApply }개</a></td>
 						</tr>
 					</table>
 <%-- 					${sessionScope.nickname }님의 활동 현황 <br> --%>
@@ -220,7 +220,7 @@
 <!-- 				</div> -->
 				
 				<div class="logo" id="logo" align="center">
-					<a href='listBoard.do?boardFlag=1&page=1'> <img alt=""
+					<a href='main.do'> <img alt=""
 						src="bootstrapResources/img/questlogo.png" width="350px"
 						height="100px">
 					</a>
