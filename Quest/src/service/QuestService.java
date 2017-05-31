@@ -298,7 +298,7 @@ public class QuestService implements IQuestService {
 		result.put("boardList", bd);
 		result.put("contactMethod", contactMethod);
 		result.put("addr", addr);
-		result.put("fileinfo", filedetail);
+		result.put("fileinfo", filedetail); 
 		return result;
 	}
 
