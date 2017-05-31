@@ -151,7 +151,52 @@ $(document).ready(function(){
 			}
 		 });
 	 
+	 //확장자 체크 및 파일크기 체크
+		 $('#ufile1').change(function(){
+					var filename = $('#ufile1').val();
+					var extension = filename.slice(filename.indexOf(".") + 1).toLowerCase();
+					var fileSize = this.files[0].size;
+					if(extension != "jpg" && extension != "png" &&  extension != "gif" &&  extension != "bmp"){
+						alert("이미지 파일은 (jpg, png, gif, bmp) 형식만 등록 가능합니다.");
+						this.val("");
+						}
+					if ( fileSize > 1024 * 1024 * 10) {
+						alert("파일크기는 10MB를 초과할 수 없습니다.");
+						this.val("");
+					}
+				 });	
 	 
+	 $('#ufile2').change(function(){
+			var filename = $('#ufile2').val();
+			var extension = filename.slice(filename.indexOf(".") + 1).toLowerCase();
+			var fileSize = this.files[0].size;
+
+			if(extension != "jpg" && extension != "png" &&  extension != "gif" &&  extension != "bmp"){
+				alert("이미지 파일은 (jpg, png, gif, bmp) 형식만 등록 가능합니다.");
+				$("#ufile2").val("");
+				}
+			if ( fileSize > 1024 * 1024 * 2 ) {
+				alert("파일크기는 2MB를 초과할 수 없습니다.");
+				this.val("");
+			}
+		 });
+	 
+	 $('#ufile3').change(function(){
+			var filename = $('#ufile3').val();
+			var extension = filename.slice(filename.indexOf(".") + 1).toLowerCase();
+			var fileSize = this.files[0].size;
+
+			if(extension != "jpg" && extension != "png" &&  extension != "gif" &&  extension != "bmp"){
+				alert("이미지 파일은 (jpg, png, gif, bmp) 형식만 등록 가능합니다.");
+				$("#ufile3").val("");
+				}
+			if ( fileSize > 1024 * 1024 * 2 ) {
+				alert("파일크기는 2MB를 초과할 수 없습니다.");
+				this.val("");
+			}
+		 });
+	 
+	
 
 	 
 });
@@ -406,9 +451,10 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상1 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile" /></span> <span class="fileupload-preview"></span> <a
-												href="#" class="close fileupload-exists"
-												data-dismiss="fileupload" style="float: none">×</a>
+												name="ufile" id="ufile1" /></span> <span
+												class="fileupload-preview"></span> <a href="#"
+												class="close fileupload-exists" data-dismiss="fileupload"
+												style="float: none">×</a>
 										</div></td>
 									<td>&nbsp;&nbsp;</td>
 									<td id="fileTd"><br>
@@ -417,9 +463,10 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상2 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile" /></span> <span class="fileupload-preview"></span> <a
-												href="#" class="close fileupload-exists"
-												data-dismiss="fileupload" style="float: none">×</a>
+												name="ufile" id="ufile2" /></span> <span
+												class="fileupload-preview"></span> <a href="#"
+												class="close fileupload-exists" data-dismiss="fileupload"
+												style="float: none">×</a>
 										</div></td>
 									<td>&nbsp;&nbsp;</td>
 									<td id="fileTd"><br>
@@ -428,9 +475,10 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상3 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile" /></span> <span class="fileupload-preview"></span> <a
-												href="#" class="close fileupload-exists"
-												data-dismiss="fileupload" style="float: none">×</a>
+												name="ufile" id="ufile3" /></span> <span
+												class="fileupload-preview"></span> <a href="#"
+												class="close fileupload-exists" data-dismiss="fileupload"
+												style="float: none">×</a>
 										</div></td>
 									<td>&nbsp;&nbsp;</td>
 								</tr>
@@ -485,9 +533,6 @@ select {
 			</form>
 		</div>
 	</div>
-
-
-
 
 </body>
 <script>
