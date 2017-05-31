@@ -87,9 +87,9 @@ public class QuestService implements IQuestService {
 	}
 
 	@Override
-	public List<HashMap<String, Object>> selectBoardApply() {
+	public List<HashMap<String, Object>> selectBoardApplyRank() {
 		// TODO Auto-generated method stub
-		return dao.selectBoardApply();
+		return dao.selectBoardApplyRank();
 	}
 
 	@Override

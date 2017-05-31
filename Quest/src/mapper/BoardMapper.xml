@@ -234,8 +234,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from board order by readCount desc 
 		limit 5
 	</select>
-	<select id = "selectBoardApply" resultType = "java.util.HashMap">
-		select * from board, (select boardNo, count(boardNo) from apply group by boardNo) as apply_temp
+	<select id = "selectBoardApplyRank" resultType = "java.util.HashMap">
+		select * from board, (select boardNo, count(boardNo) as count from apply group by boardNo) as apply_temp
 		where board.boardNo = apply_temp.boardNo limit 5; 
 	</select>
 

@@ -187,8 +187,7 @@
 					</c:forEach>
 				</table>
 			</td>
-		</tr>
-		<td>
+			<td>
 				<p>게시판 순위</p>
 				<ul class="nav nav-tabs">
 					<li role="presentation" id="clicked" class="active"><a
@@ -220,14 +219,14 @@
 						<th>게시판 이름</th>
 						<th>지원자 수</th>
 					</tr>
-					<c:forEach var="ranker" items="${rankDocount }" varStatus="status">
+					<c:forEach var="ranker" items="${rankApply }" varStatus="status">
 						<tr>
 							<td>${status.count }위</td>
 							<td>
 								<!-- 						id --> <a href="view.do?boardNo="${ranker.boardNo }>${ranker.title }</a>
 							</td>
 							<td>
-								<!-- 						count --> ${ranker.count(boardNo) }
+								<!-- 						count --> ${ranker.count }
 							</td>
 						</tr>
 					</c:forEach>
