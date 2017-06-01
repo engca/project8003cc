@@ -6,6 +6,7 @@
 <html>
 <head>
  <meta httpequiv="ContentType" content="text/html; charset=UTF8">
+ <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 function applyPopup(){
 	var apply = document.apply;
@@ -74,7 +75,6 @@ function seeApplyUser(){
 	sAUser.method = "post";
 	sAUser.submit(); 
 }
-
 function deletePopup(){
 	var data = document.delupData;
 	window.open('','del','width=500, height=600');
@@ -83,7 +83,6 @@ function deletePopup(){
 	data.method = "post";
 	data.submit(); 	
 }
-
 function updatePopup(){
 	var data = document.delupData;
 	window.open('','up','width=500, height=600');
@@ -92,7 +91,6 @@ function updatePopup(){
 	data.method = "post";
 	data.submit(); 	
 }
-
 function police(){
 		$.ajax({
 			type : 'get',
@@ -111,24 +109,68 @@ function police(){
 			} 
 		}); 
 }
-
 function insertForm(num)
 {
 	 $("#comment"+num).css("display","");
 }
-
 function deleteComment(num){
 	alert("댓글이 삭제되었습니다");
 	var delcomdata = document.delcomData;
 	$('#delcom'+num).submit();
 } 
-//<,>를 &lt;,&gt;로 모두 치환
-function ConvertSystemSourcetoHtml(str){
-	 str = str.replace(/</g,"&lt;");
-	 str = str.replace(/>/g,"&gt;");
-	 return str;
-}
+$(document).ready(function() {                 
+                var xOffset = 10;
+                var yOffset = 30;
+                 $(".thumnail0").on("mouseover", function(e){ //마우스 오버시          
+                    $("body").append("<p id='preview'><img src='"+ $("#thumnail_img0").attr("src") +"' width='400px' /></p>"); //보여줄 이미지를 선언                       
+                    $("#preview")
+                        .css("top",(e.pageY - xOffset) + "px")
+                        .css("left",(e.pageX + yOffset) + "px")
+                        .fadeIn("fast"); //미리보기 화면 설정 셋팅                
+                    });      
+                $(".thumnail0").on("mousemove", function(e){ //마우스 이동시
+                    $("#preview")
+                        .css("top",(e.pageY - xOffset) + "px")
+                        .css("left",(e.pageX + yOffset) + "px");
+                });
+                $(".thumnail0").on("mouseout", function(){ //마우스 아웃시
+                    $("#preview").remove();
+                });
+                // 2번째 보상
+                $(".thumnail1").on("mouseover", function(e){ //마우스 오버시          
+                    $("body").append("<p id='preview'><img src='"+ $("#thumnail_img1").attr("src") +"' width='400px' /></p>"); //보여줄 이미지를 선언                       
+                    $("#preview")
+                        .css("top",(e.pageY - xOffset) + "px")
+                        .css("left",(e.pageX + yOffset) + "px")
+                        .fadeIn("fast"); //미리보기 화면 설정 셋팅                
+                    });      
+                $(".thumnail1").on("mousemove", function(e){ //마우스 이동시
+                    $("#preview")
+                        .css("top",(e.pageY - xOffset) + "px")
+                        .css("left",(e.pageX + yOffset) + "px");
+                });
+                $(".thumnail1").on("mouseout", function(){ //마우스 아웃시
+                    $("#preview").remove();
+                });
+                // 3번째 보상
+                $(".thumnail2").on("mouseover", function(e){ //마우스 오버시          
+                    $("body").append("<p id='preview'><img src='"+ $("#thumnail_img2").attr("src") +"' width='400px' /></p>"); //보여줄 이미지를 선언                       
+                    $("#preview")
+                        .css("top",(e.pageY - xOffset) + "px")
+                        .css("left",(e.pageX + yOffset) + "px")
+                        .fadeIn("fast"); //미리보기 화면 설정 셋팅                
+                    });      
+                $(".thumnail2").on("mousemove", function(e){ //마우스 이동시
+                    $("#preview")
+                        .css("top",(e.pageY - xOffset) + "px")
+                        .css("left",(e.pageX + yOffset) + "px");
+                });
+                $(".thumnail2").on("mouseout", function(){ //마우스 아웃시
+                    $("#preview").remove();
+                });
 
+
+});
 </script>
 <style type="text/css">
 th {
@@ -153,12 +195,21 @@ select {
 	border: thin solid;
 	color:#2C3E50;
 }
-
-
+#thumnail_img0{display:none; position:absolute; }
+#thumnail_img1{display:none; position:absolute; }
+#thumnail_img2{display:none; position:absolute; }
+#preview{
+    z-index: 9999;
+    position:absolute;
+    border:0px solid #ccc;
+    background:#333;
+    padding:1px;
+    display:none;
+    color:#fff;
+ }
 </style>
 </head>
 <body>
-
 	<div id="board" class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -188,14 +239,17 @@ select {
 				<tr>
 					<th><h5>보상</h5></th>
 					<td colspan="5">
-						<li class="btn btn-warning btn-lg">${boardList.reward1 }</li>
+							<li class="btn btn-warning btn-lg thumnail0">${boardList.reward1 }</li>
+  							<img src="<%=request.getContextPath() %>/bootstrapResources/img_rewardThumnail/${fileinfo.file0 }" id="thumnail_img0">
 						&nbsp; &nbsp; 
-						<c:if test="${boardList.reward2 != ''}">
-							<li class="btn btn-warning btn-lg">${boardList.reward2 }</li>
+						<c:if test="${boardList.reward2 != '' and fileinfo.file1 != '' }">
+							<li class="btn btn-warning btn-lg thumnail1">${boardList.reward2 }</li>
+							<img src="<%=request.getContextPath() %>/bootstrapResources/img_rewardThumnail/${fileinfo.file1 }" id="thumnail_img1">
 						</c:if> 
 						&nbsp; &nbsp; 
-						<c:if test="${boardList.reward3 != ''}">
-							<li class="btn btn-warning btn-lg">${boardList.reward3 }</li>
+						<c:if test="${boardList.reward3 != '' and fileinfo.file2 != '' }">
+							<li class="btn btn-warning btn-lg thumnail2">${boardList.reward3 }</li>
+							<img src="<%=request.getContextPath() %>/bootstrapResources/img_rewardThumnail/${fileinfo.file2 }" id="thumnail_img2">
 						</c:if>
 				</tr>
 				<tr>
