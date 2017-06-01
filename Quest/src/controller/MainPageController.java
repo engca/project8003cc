@@ -49,11 +49,11 @@ public class MainPageController {
 
 		mav.addObject("rankAverage", rankAverage);
 		mav.addObject("rankDocount", rankDocount);
-//		System.out.println(rankAverage);
-		
+		// System.out.println(rankAverage);
+
 		List<HashMap<String, Object>> rankClicked = service.selectBoardClicked();
 		List<HashMap<String, Object>> rankApply = service.selectBoardApplyRank();
-		
+
 		mav.addObject("rankClicked", rankClicked);
 		mav.addObject("rankApply", rankApply);
 		mav.setViewName("search.main.main");
@@ -280,7 +280,8 @@ public class MainPageController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "writeBoardProc.do")
 	public String writeBoardProc(@RequestParam HashMap<String, Object> board, HttpSession session,
-			@RequestParam("ufile") MultipartFile ufile[]) {
+			@RequestParam(required = false, value = "ufile1") MultipartFile ufile1, @RequestParam(required = false, value = "ufile2") MultipartFile ufile2,
+			@RequestParam(required = false, value = "ufile3") MultipartFile ufile3) {
 		int flag = Integer.parseInt(board.get("boardFlag").toString());
 		// <,>를 &lt;,&gt;로 모두 치환. 엔터 줄바꿈까지..
 		// content는 SUMMER NOTE에서 막아놨음
@@ -290,9 +291,11 @@ public class MainPageController {
 		// "<br>");
 		String title = (String) board.get("title");
 		title = title.replace("<", "&lt;").replace(">", "&gt;");
-
+		
 		board.put("title", title);
-		board.put("ufile", ufile);
+		board.put("ufile1", ufile1);
+		board.put("ufile2", ufile2);
+		board.put("ufile3", ufile3);
 
 		service.getSession(session, (int) session.getAttribute(Constant.User.USERINDEX));
 

@@ -451,7 +451,7 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상1 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile" id="ufile1" /></span> <span
+												name="ufile1" id="ufile1" /></span> <span
 												class="fileupload-preview"></span> <a href="#"
 												class="close fileupload-exists" data-dismiss="fileupload"
 												style="float: none">×</a>
@@ -463,7 +463,7 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상2 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile" id="ufile2" /></span> <span
+												name="ufile2" id="ufile2" /></span> <span
 												class="fileupload-preview"></span> <a href="#"
 												class="close fileupload-exists" data-dismiss="fileupload"
 												style="float: none">×</a>
@@ -475,7 +475,7 @@ select {
 											<span class="btn btn-primary btn-file"><span
 												class="fileupload-new">보상3 이미지</span> <span
 												class="fileupload-exists">선택완료</span> <input type="file"
-												name="ufile" id="ufile3" /></span> <span
+												name="ufile3" id="ufile3" /></span> <span
 												class="fileupload-preview"></span> <a href="#"
 												class="close fileupload-exists" data-dismiss="fileupload"
 												style="float: none">×</a>

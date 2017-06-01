@@ -80,7 +80,7 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		return dao.selectUserDocount();
 	}
-	
+
 	@Override
 	public List<HashMap<String, Object>> selectBoardClicked() {
 		// TODO Auto-generated method stub
@@ -299,11 +299,10 @@ public class QuestService implements IQuestService {
 		int FboardNo = (int) bd.get(Constant.Board.BOARDNO);
 		List<HashMap<String, Object>> fileinfo = dao.selectOneBoardFiletoBoardNo(FboardNo);
 		HashMap<String, Object> filedetail = new HashMap<>();
-		for(int i = 0 ; i < fileinfo.size(); i ++)
-		{
-			filedetail.put("file"+i, fileinfo.get(i).get(Constant.BoardFile.URI));
+		for (int i = 0; i < fileinfo.size(); i++) {
+			filedetail.put("file" + i, fileinfo.get(i).get(Constant.BoardFile.URI));
 		}
-		
+
 		// 최종 해쉬맵에 담아보내기
 		HashMap<String, Object> result = new HashMap<>();
 		result.put("applydata", applydata);
@@ -312,7 +311,7 @@ public class QuestService implements IQuestService {
 		result.put("boardList", bd);
 		result.put("contactMethod", contactMethod);
 		result.put("addr", addr);
-		result.put("fileinfo", filedetail); 
+		result.put("fileinfo", filedetail);
 		return result;
 	}
 
@@ -320,33 +319,75 @@ public class QuestService implements IQuestService {
 	public void writeBoard(HashMap<String, Object> params) {
 		// TODO Auto-generated method stub
 		dao.insertBoard(params);
-
+		System.out.println(params);
 		String path = "C:/Users/student/Upload/";
 
-		MultipartFile[] file = (MultipartFile[]) params.get("ufile");
+		MultipartFile file1 = (MultipartFile) params.get("ufile1");
+		MultipartFile file2 = (MultipartFile) params.get("ufile2");
+		MultipartFile file3 = (MultipartFile) params.get("ufile3");
+		System.out.println(file1 + ",, " + file2 + ",, " + file3);
+		String fileUri = path + UUID.randomUUID().toString();
+		long boardNo = (long) params.get("boardNo");
 
-		for (int i = 0; i < file.length; i++) {
+		File localFile = new File(fileUri);
 
-			String fileName = file[i].getOriginalFilename();
-			int size = (int) file[i].getSize();
-			String fileUri = path + UUID.randomUUID().toString();
-			long boardNo = (long) params.get("boardNo");
-		
-			HashMap<String, Object> boardFile = new HashMap<>();
-			boardFile.put(Constant.BoardFile.BOARDNO, boardNo);
-			boardFile.put(Constant.BoardFile.URI, fileUri);
-			boardFile.put(Constant.BoardFile.SIZE, size);
-			boardFile.put(Constant.BoardFile.ORIGINFILENAME, fileName);
-			boardFile.put(Constant.BoardFile.FLAG, i);
-			
-			//flag 보상 1 = 0 , 보상2 = 1, 보상3 = 2 
-
-			if (fileName != null)
-				dao.insertBoardFile(boardFile);
-			File localFile = new File(fileUri);
-
+		if (file1 != null) {
+			String fileName1 = file1.getOriginalFilename();
+			int size1 = (int) file1.getSize();
+			HashMap<String, Object> boardFile1 = new HashMap<>();
+			boardFile1.put(Constant.BoardFile.BOARDNO, boardNo);
+			boardFile1.put(Constant.BoardFile.URI, fileUri);
+			boardFile1.put(Constant.BoardFile.SIZE, size1);
+			boardFile1.put(Constant.BoardFile.ORIGINFILENAME, fileName1);
+			boardFile1.put(Constant.BoardFile.FLAG, 0);
+			if (size1 != 0)
+				dao.insertBoardFile(boardFile1);
 			try {
-				file[i].transferTo(localFile);
+				file1.transferTo(localFile);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		if (file2 != null) {
+			String fileName2 = file2.getOriginalFilename();
+			int size2 = (int) file2.getSize();
+			HashMap<String, Object> boardFile2 = new HashMap<>();
+			boardFile2.put(Constant.BoardFile.BOARDNO, boardNo);
+			boardFile2.put(Constant.BoardFile.URI, fileUri);
+			boardFile2.put(Constant.BoardFile.SIZE, size2);
+			boardFile2.put(Constant.BoardFile.ORIGINFILENAME, fileName2);
+			boardFile2.put(Constant.BoardFile.FLAG, 1);
+			if (size2 != 0)
+				dao.insertBoardFile(boardFile2);
+			try {
+				file2.transferTo(localFile);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		if (file3 != null) {
+			String fileName3 = file3.getOriginalFilename();
+			int size3 = (int) file3.getSize();
+			HashMap<String, Object> boardFile3 = new HashMap<>();
+			boardFile3.put(Constant.BoardFile.BOARDNO, boardNo);
+			boardFile3.put(Constant.BoardFile.URI, fileUri);
+			boardFile3.put(Constant.BoardFile.SIZE, size3);
+			boardFile3.put(Constant.BoardFile.ORIGINFILENAME, fileName3);
+			boardFile3.put(Constant.BoardFile.FLAG, 2);
+			if (size3 != 0)
+				dao.insertBoardFile(boardFile3);
+			try {
+				file2.transferTo(localFile);
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -1008,6 +1049,7 @@ public class QuestService implements IQuestService {
 		// TODO Auto-generated method stub
 		return dao.selectCommentList(boardNo);
 	}
+
 	@Override
 	public HashMap<String, Object> myapplySelect(int userIndex, int page, int boardFlag, int completeFlag) {
 		// TODO Auto-generated method stub
@@ -1030,7 +1072,7 @@ public class QuestService implements IQuestService {
 		params.put("boardFlag", boardFlag);
 		params.put("aCompleteFlag", completeFlag);
 		System.out.println("dao apply params" + params);
-		
+
 		// apply+board 내가 신청한거
 		List<HashMap<String, Object>> myapply = dao.selectBoardApply(params);
 		for (HashMap<String, Object> p : myapply) {
@@ -1054,46 +1096,46 @@ public class QuestService implements IQuestService {
 	@Override
 	public HashMap<String, Object> myboardSelect(int userIndex, int page, int boardFlag, int completeFlag) {
 		// TODO Auto-generated method stub
-				// 시작페이지와 끝페이지 계산
-				int start = (page - 1) / 10 * 10 + 1;
-				int end = ((page - 1) / 10 + 1) * 10;
-				// 첫페이지와 마지막 페이지 계산
-				int first = 1;
-				int last = (dao.getCountBoardByUserIndex(userIndex) - 1) / 10 + 1;
-				end = last < end ? last : end;
-				// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
-				int skip = (page - 1) * 10;
-				int count = 10;
+		// 시작페이지와 끝페이지 계산
+		int start = (page - 1) / 10 * 10 + 1;
+		int end = ((page - 1) / 10 + 1) * 10;
+		// 첫페이지와 마지막 페이지 계산
+		int first = 1;
+		int last = (dao.getCountBoardByUserIndex(userIndex) - 1) / 10 + 1;
+		end = last < end ? last : end;
+		// 해당페이지의 게시물을 쿼리 하기 위한 skip과 count
+		int skip = (page - 1) * 10;
+		int count = 10;
 
-				HashMap<String, Object> params = new HashMap<>();
-				params.put("userIndex", userIndex);
-				params.put("page", page);
-				params.put("skip", skip);
-				params.put("count", count);
-				params.put("boardFlag", boardFlag);
-				params.put("bCompleteFlag", completeFlag);
-				System.out.println("dao board params" + params);
-				// board에서 내가 쓴거
-				List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("userIndex", userIndex);
+		params.put("page", page);
+		params.put("skip", skip);
+		params.put("count", count);
+		params.put("boardFlag", boardFlag);
+		params.put("bCompleteFlag", completeFlag);
+		System.out.println("dao board params" + params);
+		// board에서 내가 쓴거
+		List<HashMap<String, Object>> myboard = dao.selectBoardByUserIndex(params);
 
-				// apply+board 내가 신청한거
-				String nickname = dao.selectNicknname(userIndex);
+		// apply+board 내가 신청한거
+		String nickname = dao.selectNicknname(userIndex);
 
-				HashMap<String, Object> result = new HashMap<>();
-				for (HashMap<String, Object> mylist : myboard) {
-					int totalapplycount = dao.applyCount((int) (mylist.get("boardNo")));
-					mylist.put("totalapplycount", totalapplycount);
-				}
-				result.put("myboardstart", start);
-				result.put("myboardfirst", first);
-				result.put("myboardend", end);
-				result.put("myboardlast", last);
-				result.put("myboardcurrent", page);
-				result.put("myboard", myboard);
-				result.put("myboardnickname", nickname);
-				result.put("myboardboardFlag", boardFlag);
+		HashMap<String, Object> result = new HashMap<>();
+		for (HashMap<String, Object> mylist : myboard) {
+			int totalapplycount = dao.applyCount((int) (mylist.get("boardNo")));
+			mylist.put("totalapplycount", totalapplycount);
+		}
+		result.put("myboardstart", start);
+		result.put("myboardfirst", first);
+		result.put("myboardend", end);
+		result.put("myboardlast", last);
+		result.put("myboardcurrent", page);
+		result.put("myboard", myboard);
+		result.put("myboardnickname", nickname);
+		result.put("myboardboardFlag", boardFlag);
 
-				return result;
+		return result;
 	}
 
 }
