@@ -33,7 +33,7 @@ public class QuestService implements IQuestService {
 		session.setAttribute("dowellApply", getSessionDowellApply(userIndex));
 		session.setAttribute("todo", getSessionTodo(userIndex));
 		session.setAttribute("dowell", getSessionDowell(userIndex));
-	}
+	}  
 
 	@Override
 	public int getSessionTodoApply(int userIndex) {
