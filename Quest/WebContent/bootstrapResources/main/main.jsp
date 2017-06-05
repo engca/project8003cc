@@ -218,7 +218,7 @@
 					</c:forEach>
 				</table>
 				<table id="applyTable" >
-					<tr>
+					<tr> 
 						<th>순위</th>
 						<th>제목</th>
 						<th>지원자 수</th>
