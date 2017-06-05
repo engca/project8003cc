@@ -49,6 +49,7 @@
 	font-size: 8px;
 }
 
+
 </style>
 </head>
 <body>
@@ -60,8 +61,8 @@
 			<td style="width: 70%">
 				<h3><a href = "listBoard.do?boardFlag=0">잘해요</a></h3>
 				<hr class="star-primary1">
-				<table  style="width: 100%">
-					<tr>
+				<table class="inner" style="width: 100%">
+					<tr height="30px">
 						<td align="center" style="width: 8%"><b>No</b></td>
 						<td align="center" style="width: 54%"><b>제목</b></td>
 						<td align="center" style="width: 12%" ><b>작성자</b></td>
@@ -69,7 +70,7 @@
 						<td align="center" style="width: 8%" ><b>조회수</b></td>
 					</tr>
 					<c:forEach begin="0" end="5" step="1" items="${list0.boardList }" var="board">
-						<tr>
+						<tr height="30px">
 							<td align="center">${board.boardNo}</td>
 
 							<c:if test="${board.bCompleteFlag == 0 }">
@@ -104,20 +105,20 @@
 			</td>
 			<td  style="width: 30%">
 				<p>순위</p>
-				<ul class="nav nav-tabs">
-					<li role="presentation" id="average" class="active"><a
+				<ul class="nav nav-tabs" >
+					<li role="presentation" id="average" class="active" style="height: 40px"><a
 						href="javascript:averageClick()">Average</a></li>
-					<li role="presentation" id="docount"><a
+					<li role="presentation" id="docount" style="height: 40px"><a
 						href="javascript:countClick()">Count</a></li>
 				</ul>
-				<table id="averageTable">
-					<tr>
-						<th>순위</th>
-						<th>이름</th>
-						<th>평점</th>
+				<table id="averageTable" width="80%" >
+					<tr height="30px">
+						<th width="15%" align="center">순위</th>
+						<th width="50%" align="center">이름</th>
+						<th width="15%" align="center">평점</th>
 					</tr>
 					<c:forEach var="ranker" items="${rankAverage }" varStatus="status">
-						<tr>
+						<tr height="30px">
 							<td>${status.count }위</td>
 							<td>
 								<!-- 						id --> ${ranker.userId }
@@ -128,14 +129,14 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<table id="doCountTable" style="display: none;">
-					<tr>
-						<th>순위</th>
-						<th>이름</th>
-						<th>개수</th>
+				<table id="doCountTable" style="display: none;" width="80%"> 
+					<tr height="30px">
+						<th width="15%" align="center">순위</th>
+						<th width="50%" align="center">이름</th>
+						<th width="15%" align="center">개수</th>
 					</tr>
 					<c:forEach var="ranker" items="${rankDocount }" varStatus="status">
-						<tr>
+						<tr height="30px">
 							<td>${status.count }위</td>
 							<td>
 								<!-- 						id --> ${ranker.userId }
@@ -153,7 +154,7 @@
 				<h3><a href = "listBoard.do?boardFlag=0">해주세요</a></h3>
 				<hr class="star-primary1" >
 				<table style="width: 100%">
-					<tr>
+					<tr height="30px">
 						<td align="center" style="width: 8%"><b>No</b></td>
 						<td align="center" style="width: 54%"><b>제목</b></td>
 						<td align="center" style="width: 12%" ><b>작성자</b></td>
@@ -162,7 +163,7 @@
 					</tr>
 					<c:forEach begin="0" end="5" step="1" items="${list1.boardList }"
 						var="board">
-						<tr>
+						<tr height="30px">
 							<td align="center">${board.boardNo}</td>
 							<c:if test="${board.bCompleteFlag == 0 }">
 								<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
@@ -202,17 +203,17 @@
 					<li role="presentation" id="apply"><a
 						href="javascript:applyClick()">신청 많은 제목</a></li>
 				</ul>
-				<table id="clickedTable" style="display: none;">
-					<tr>
-						<th>순위</th>
-						<th>제목</th>
-						<th>조회수</th>
+				<table id="clickedTable" style="display: none;" width="100%"  style="table-layout: fixed;">
+					<tr height="30px">
+						<th width="25%" align="center">순위</th>
+						<th width="50%" align="center">제목</th>
+						<th width="25%" align="center">조회수</th>
 					</tr>
 					<c:forEach var="ranker" items="${rankClicked }" varStatus="status">
-						<tr>
+						<tr height="30px">
 							<td>${status.count }위</td>
-							<td>
-		<!-- 						id --> <a href="viewBoard.do?boardNo=${ranker.boardNo }">${ranker.title }</a>
+							<td style="text-overflow:ellipsis; overflow:hidden;">
+		<!-- 						id --> <a href="viewBoard.do?boardNo=${ranker.boardNo }"><nobr>${ranker.title }</nobr></a>
 							</td>
 							<td>
 								<!-- 						average --> ${ranker.readCount }
@@ -220,17 +221,19 @@
 						</tr>
 					</c:forEach>
 				</table>
-				<table id="applyTable" >
-					<tr> 
-						<th>순위</th>
-						<th>제목</th>
-						<th>지원자 수</th>
+				<table id="applyTable" width="300px" style="table-layout: fixed;">
+					<tr height="30px" align="center"> 
+						<th width="75px" align="center">순위</th>
+						<th width="150px" align="center">제목</th>
+						<th width="75px" align="center">지원자</th>
 					</tr>
 					<c:forEach var="ranker" items="${rankApply }" varStatus="status">
-						<tr>
+						<tr height="30px">
 							<td>${status.count }위</td>
-							<td>
-<!-- 						id --> <a href="viewBoard.do?boardNo=${ranker.boardNo }">${ranker.title }</a>
+							<td >
+<!-- 						id --> <a href="viewBoard.do?boardNo=${ranker.boardNo }">
+								
+							<div style="width:150px; text-overflow:ellipsis; overflow:hidden;"> <nobr>${ranker.title }</nobr></div></a>
 							</td>
 							<td>
 						<!-- 						count --> ${ranker.count }
@@ -260,7 +263,7 @@
 				<input type="submit" value="send" onclick="send()" />
 			</fieldset>
 		</div>
-		<div style="position: absolute; right: 20px; bottom: 20px; text-align: right;">
+		<div style="position: absolute; right: 20px; bottom: 20px; text-align: right; display: none"> 
 			<img class="chat" src="<%=request.getContextPath()%>/img/chat_black.png" />
 		</div>
 	</div>
