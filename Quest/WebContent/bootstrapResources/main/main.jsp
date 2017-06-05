@@ -55,18 +55,18 @@
 
 	<div></div>
 
-	<table class="table table-bordered">
+	<table class="table table-bordered" style="width: 100%">
 		<tr>
-			<td>
+			<td style="width: 70%">
 				<h3><a href = "listBoard.do?boardFlag=0">잘해요</a></h3>
 				<hr class="star-primary1">
-				<table>
+				<table  style="width: 100%">
 					<tr>
-						<td align="center" width="8%"><b>No</b></td>
-						<td align="center" width="54%"><b>제목</b></td>
-						<td align="center" width="12%"><b>작성자</b></td>
-						<td align="center" width="18%"><b>작성일</b></td>
-						<td align="center" width="8%"><b>조회수</b></td>
+						<td align="center" style="width: 8%"><b>No</b></td>
+						<td align="center" style="width: 54%"><b>제목</b></td>
+						<td align="center" style="width: 12%" ><b>작성자</b></td>
+						<td align="center" style="width: 18%" ><b>작성일</b></td>
+						<td align="center" style="width: 8%" ><b>조회수</b></td>
 					</tr>
 					<c:forEach begin="0" end="5" step="1" items="${list0.boardList }" var="board">
 						<tr>
@@ -102,7 +102,7 @@
 					</c:forEach>
 				</table>
 			</td>
-			<td>
+			<td  style="width: 30%">
 				<p>순위</p>
 				<ul class="nav nav-tabs">
 					<li role="presentation" id="average" class="active"><a
@@ -149,16 +149,16 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td  style="width: 70%; background-color: pink">
 				<h3><a href = "listBoard.do?boardFlag=0">해주세요</a></h3>
-				<hr class="star-primary1">
-				<table>
+				<hr class="star-primary1" >
+				<table style="width: 100%">
 					<tr>
-						<td align="center" width="8%"><b>No</b></td>
-						<td align="center" width="54%"><b>제목</b></td>
-						<td align="center" width="12%"><b>작성자</b></td>
-						<td align="center" width="18%"><b>작성일</b></td>
-						<td align="center" width="8%"><b>조회수</b></td>
+						<td align="center" style="width: 8%"><b>No</b></td>
+						<td align="center" style="width: 54%"><b>제목</b></td>
+						<td align="center" style="width: 12%" ><b>작성자</b></td>
+						<td align="center" style="width: 18%" ><b>작성일</b></td>
+						<td align="center" style="width: 8%" ><b>조회수</b></td>
 					</tr>
 					<c:forEach begin="0" end="5" step="1" items="${list1.boardList }"
 						var="board">
@@ -191,7 +191,7 @@
 					</c:forEach>
 				</table>
 			</td>
-			<td>
+			<td  style="width: 30%">
 				<p>게시판 순위</p>
 				<ul class="nav nav-tabs">
 					<li role="presentation" id="clicked" class="active"><a
