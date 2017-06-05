@@ -45,6 +45,10 @@
 	background-color: gray;
 }
 
+.sender {
+	font-size: 8px;
+}
+
 </style>
 </head>
 <body>
@@ -247,7 +251,8 @@
 				</c:if>
 				<c:if test="${(sessionScope.userIndex eq '') or (empty sessionScope.userIndex)}">
 					<input type="hidden" value='<%=session.getId().substring(0, 6)%>(손님)' id='chat_id' />
-					<input id="inputMessage" type="text" onkeyup="enterkey()" readonly="readonly" placeholder="로그인을 하세요."/>
+					<input id="inputMessage" type="text" onkeyup="enterkey()" />
+<!-- 					<input id="inputMessage" type="text" onkeyup="enterkey()" readonly="readonly" placeholder="로그인을 하세요."/> -->
 				</c:if>
 				<input type="submit" value="send" onclick="send()" />
 			</fieldset>
@@ -295,15 +300,21 @@
 					var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
 					if (temp[1].trim() == "") {
 					} else {
-						$("#messageWindow").html($("#messageWindow").html()+ "<p class='whisper'>"+ sender+ content.replace("/"+ $("#chat_id").val(), "(귓속말) :") + "</p>");
+						$("#messageWindow").html($("#messageWindow").html()
+								+"<p class='chat_content' align='left'><span class='sender' style='background: yellow;'>"+sender+"(귓속말)"+"</span></p>"
+								+"<p class='whisper' align='left'>"+ content.replace("/"+ $("#chat_id").val(), "") + "</p>");
 					}
 				} else {
 				}
 			} else {
 				if (content.match("!")) {
-					$("#messageWindow").html($("#messageWindow").html()+ "<p class='chat_content'><b class='impress'>"+ sender + " : " + content+ "</b></p>");
+					$("#messageWindow").html($("#messageWindow").html()
+							+"<p class='chat_content' align='left'><span class='sender' style='background: yellow;'>"+sender+"</span></p>"
+							+"<p class='chat_content' align='left'><span style='background: yellow;'><b class='impress'>"+ content+ "</b></span></p>");
 				} else {
-					$("#messageWindow").html($("#messageWindow").html()+ "<p class='chat_content'>" + sender+ " : " + content + "</p>");
+					$("#messageWindow").html($("#messageWindow").html()
+							+"<p class='chat_content' align='left'><span class='sender' style='background: yellow;'>"+sender+"</span></p>"
+							+"<p class='chat_content' align='left'><span style='background: yellow;'>" + content + "</span></p>");
 				}
 			}
 		}
@@ -317,7 +328,8 @@
 	function send() {
 		if (inputMessage.value == "") {
 		} else {
-			$("#messageWindow").html($("#messageWindow").html() + "<p class='chat_content'>나 : "+ inputMessage.value + "</p>");
+			$("#messageWindow").html($("#messageWindow").html() 
+					+ "<p class='chat_content' align='right'><span style='background: yellow;'>"+ inputMessage.value + "</span></p>");
 		}
 		webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
 		inputMessage.value = "";
