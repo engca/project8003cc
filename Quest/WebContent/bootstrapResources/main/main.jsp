@@ -236,50 +236,42 @@
 	</table>
 
 	<div>
-		<!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
-		<c:if
-			test="${(sessionScope.userIndex ne '') and !(empty sessionScope.userIndex)}">
-			<input type="hidden" value='${sessionScope.nickname }' id='chat_id' />
-		</c:if>
-		<c:if
-			test="${(sessionScope.userIndex eq '') or (empty sessionScope.userIndex)}">
-			<input type="hidden" value='<%=session.getId().substring(0, 6)%>'
-				id='chat_id' />
-		</c:if>
 		<!--     채팅창 -->
-		<div id="_chatbox"
-			style="display: none; position: absolute; right: 50px; bottom: 70px;">
+		<div id="_chatbox" style="display: none; position: absolute; right: 50px; bottom: 70px;">
 			<fieldset>
-				<div id="messageWindow"
-					style="overflow-x: hidden; overflow-y: scroll; height: 330px;"></div>
-				<br /> <input id="inputMessage" type="text" onkeyup="enterkey()" />
+				<div id="messageWindow" style="overflow-x: hidden; overflow-y: scroll; height: 330px;"></div>
+				<input id="inputMessage" type="text" onkeyup="enterkey()" />
 				<input type="submit" value="send" onclick="send()" />
 			</fieldset>
 		</div>
-		<div
-			style="position: absolute; right: 20px; bottom: 20px; text-align: right;">
-			<img class="chat"
-				src="<%=request.getContextPath()%>/img/chat_black.png" />
+		<div style="position: absolute; right: 20px; bottom: 20px; text-align: right;">
+			<img class="chat" src="<%=request.getContextPath()%>/img/chat_black.png" />
 		</div>
+		<!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
+		<c:if test="${(sessionScope.userIndex ne '') and !(empty sessionScope.userIndex)}">
+			<input type="hidden" value='${sessionScope.nickname }' id='chat_id' />
+		</c:if>
+		<c:if test="${(sessionScope.userIndex eq '') or (empty sessionScope.userIndex)}">
+			<input type="hidden" value='<%=session.getId().substring(0, 6)%>(손님)' id='chat_id' />
+		</c:if>
+		
 	</div>
 </body>
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
 <script type="text/javascript">
-    $(".chat").on({
-        "click" : function() {
+    $(".chat").on({"click" : function() {
             if ($(this).attr("src") == "<%=request.getContextPath()%>/img/chat_black.png") {
                 $(".chat").attr("src", "<%=request.getContextPath()%>/img/chat_red.png");
                 $("#_chatbox").css("display", "block");
             } else if ($(this).attr("src") == "<%=request.getContextPath()%>/img/chat_red.png") {
-                $(".chat").attr("src", "<%=request.getContextPath()%>
-	/img/chat_black.png");
-								$("#_chatbox").css("display", "none");
-							}
-						}
-					});
+                $(".chat").attr("src", "<%=request.getContextPath()%>/img/chat_black.png");
+				$("#_chatbox").css("display", "none");
+			}
+		}
+	});
 </script>
 <script type="text/javascript">
-	var textarea = document.getElementById("messageWindow");
+// 	var textarea = document.getElementById("messageWindow");
 	var webSocket = new WebSocket('ws://localhost:8080/Quest/broadcasting');
 	var inputMessage = document.getElementById('inputMessage');
 	webSocket.onerror = function(event) {
@@ -300,33 +292,18 @@
 		} else {
 			if (content.match("/")) {
 				if (content.match(("/" + $("#chat_id").val()))) {
-					var temp = content.replace("/" + $("#chat_id").val(),
-							"(귓속말) :").split(":");
+					var temp = content.replace("/" + $("#chat_id").val(), "(귓속말) :").split(":");
 					if (temp[1].trim() == "") {
 					} else {
-						$("#messageWindow").html(
-								$("#messageWindow").html()
-										+ "<p class='whisper'>"
-										+ sender
-										+ content.replace("/"
-												+ $("#chat_id").val(),
-												"(귓속말) :") + "</p>");
+						$("#messageWindow").html($("#messageWindow").html()+ "<p class='whisper'>"+ sender+ content.replace("/"+ $("#chat_id").val(), "(귓속말) :") + "</p>");
 					}
 				} else {
 				}
 			} else {
 				if (content.match("!")) {
-					$("#messageWindow")
-							.html(
-									$("#messageWindow").html()
-											+ "<p class='chat_content'><b class='impress'>"
-											+ sender + " : " + content
-											+ "</b></p>");
+					$("#messageWindow").html($("#messageWindow").html()+ "<p class='chat_content'><b class='impress'>"+ sender + " : " + content+ "</b></p>");
 				} else {
-					$("#messageWindow").html(
-							$("#messageWindow").html()
-									+ "<p class='chat_content'>" + sender
-									+ " : " + content + "</p>");
+					$("#messageWindow").html($("#messageWindow").html()+ "<p class='chat_content'>" + sender+ " : " + content + "</p>");
 				}
 			}
 		}
@@ -340,12 +317,14 @@
 	function send() {
 		if (inputMessage.value == "") {
 		} else {
-			$("#messageWindow").html(
-					$("#messageWindow").html() + "<p class='chat_content'>나 : "
-							+ inputMessage.value + "</p>");
+			$("#messageWindow").html($("#messageWindow").html() + "<p class='chat_content'>나 : "+ inputMessage.value + "</p>");
 		}
 		webSocket.send($("#chat_id").val() + "|" + inputMessage.value);
 		inputMessage.value = "";
+		
+		//	     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
+		var elem = document.getElementById('messageWindow');
+		elem.scrollTop = elem.scrollHeight;
 	}
 	//     엔터키를 통해 send함
 	function enterkey() {
@@ -354,9 +333,9 @@
 		}
 	}
 	//     채팅이 많아져 스크롤바가 넘어가더라도 자동적으로 스크롤바가 내려가게함
-	window.setInterval(function() {
-		var elem = document.getElementById('messageWindow');
-		elem.scrollTop = elem.scrollHeight;
-	}, 0);
+// 	window.setInterval(function() {
+// 		var elem = document.getElementById('messageWindow');
+// 		elem.scrollTop = elem.scrollHeight;
+// 	}, 0);
 </script>
 </html>
