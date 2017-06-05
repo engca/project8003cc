@@ -72,7 +72,7 @@
 						<tr>
 							<td align="center">${board.boardNo}</td>
 
-							<c:if test="${board.bCompleteFlag ==0 }">
+							<c:if test="${board.bCompleteFlag == 0 }">
 								<td>
 								<a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.title } </a> &nbsp;&nbsp;&nbsp;
@@ -149,7 +149,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td  style="width: 70%; background-color: pink">
+			<td  style="width: 70%; ">
 				<h3><a href = "listBoard.do?boardFlag=0">해주세요</a></h3>
 				<hr class="star-primary1" >
 				<table style="width: 100%">
@@ -164,9 +164,12 @@
 						var="board">
 						<tr>
 							<td align="center">${board.boardNo}</td>
-							<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.title } </a> &nbsp;&nbsp;&nbsp;<font color="gray"
-								size="1px"><b>[${board.commentCount }]</b></font></td>
+							<c:if test="${board.bCompleteFlag == 0 }">
+								<td><a href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${board.title } </a> &nbsp;&nbsp;&nbsp;<font color="gray"
+									size="1px"><b>[${board.commentCount }]</b></font></td>
+							</c:if>
+								
 							<c:if test="${board.bCompleteFlag ==1 }">
 								<td><a
 									href="viewBoard.do?boardNo=${board.boardNo}&userIndex=${sessionScope.userIndex}">

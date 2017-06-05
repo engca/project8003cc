@@ -367,6 +367,8 @@ public class MainPageController {
 			String userIndex, String content) {
 		// System.out.println("group: " + group + "seq : " + seq + "userIndex" +
 		// userIndex);
+		content =content.replace("<", "&lt;").replace(">", "&gt;"); 
+		
 
 		if (group == -1) {
 			HashMap<String, Object> param = new HashMap<>();
