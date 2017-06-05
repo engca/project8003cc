@@ -240,21 +240,21 @@
 		<div id="_chatbox" style="display: none; position: absolute; right: 50px; bottom: 70px;">
 			<fieldset>
 				<div id="messageWindow" style="overflow-x: hidden; overflow-y: scroll; height: 330px;"></div>
-				<input id="inputMessage" type="text" onkeyup="enterkey()" />
+				<!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
+				<c:if test="${(sessionScope.userIndex ne '') and !(empty sessionScope.userIndex)}">
+					<input type="hidden" value='${sessionScope.nickname }' id='chat_id' />
+					<input id="inputMessage" type="text" onkeyup="enterkey()" />
+				</c:if>
+				<c:if test="${(sessionScope.userIndex eq '') or (empty sessionScope.userIndex)}">
+					<input type="hidden" value='<%=session.getId().substring(0, 6)%>(손님)' id='chat_id' />
+					<input id="inputMessage" type="text" onkeyup="enterkey()" readonly="readonly" placeholder="로그인을 하세요."/>
+				</c:if>
 				<input type="submit" value="send" onclick="send()" />
 			</fieldset>
 		</div>
 		<div style="position: absolute; right: 20px; bottom: 20px; text-align: right;">
 			<img class="chat" src="<%=request.getContextPath()%>/img/chat_black.png" />
 		</div>
-		<!-- 로그인한 상태일 경우와 비로그인 상태일 경우의 chat_id설정 -->
-		<c:if test="${(sessionScope.userIndex ne '') and !(empty sessionScope.userIndex)}">
-			<input type="hidden" value='${sessionScope.nickname }' id='chat_id' />
-		</c:if>
-		<c:if test="${(sessionScope.userIndex eq '') or (empty sessionScope.userIndex)}">
-			<input type="hidden" value='<%=session.getId().substring(0, 6)%>(손님)' id='chat_id' />
-		</c:if>
-		
 	</div>
 </body>
 <!-- 말풍선아이콘 클릭시 채팅창 열고 닫기 -->
