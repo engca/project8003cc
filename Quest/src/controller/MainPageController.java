@@ -287,8 +287,7 @@ public class MainPageController {
 		// content는 SUMMER NOTE에서 막아놨음
 		// String content = (String)board.get("content");
 		// content =
-		// content.replace("<","&lt;").replace(">","&gt;").replaceAll("\r\n",
-		// "<br>");
+//		 content.replace("<","&lt;").replace(">","&gt;").replaceAll("\r\n", "<br>");
 		String title = (String) board.get("title");
 		title = title.replace("<", "&lt;").replace(">", "&gt;");
 		

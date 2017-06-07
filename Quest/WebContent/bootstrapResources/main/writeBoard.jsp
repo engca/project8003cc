@@ -418,7 +418,8 @@ select {
 					<tr>
 						<th><h5>제목</h5></th>
 						<td colspan="3"><input type="text" placeholder="제목을 입력하세요. "
-							name="title" class="form-control" id="title" /></td>
+							name="title" class="form-control" id="title" />
+							</td>
 					</tr>
 					<tr>
 						<th><h5>장소</h5></th>
