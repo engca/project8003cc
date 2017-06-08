@@ -6,6 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
 <title>퀘스트 수정하기</title>
 <script type="text/javascript">
 $.ajax({
@@ -85,6 +90,7 @@ $(document).ready(function(){
 });
 
 </script>
+
 <style type="text/css">
 th {
 	width: 150px;
@@ -212,10 +218,16 @@ select {
 								<option value="over3h">3시간 이상</option>
 						</select></td>
 					</tr>
+<!-- 					<tr> -->
+<!-- 						<th height="100"><h5>내용</h5></th> -->
+<!-- 						<td colspan="3"><textarea cols="10" rows="10" -->
+<%-- 								 name="content" class="form-control">${content }</textarea></td> --%>
+<!-- 					</tr> -->
 					<tr>
 						<th height="100"><h5>내용</h5></th>
-						<td colspan="3"><textarea cols="10" rows="10"
-								 name="content" class="form-control">${content }</textarea></td>
+						<td colspan="3">
+							<div id="summernote">${content }</div>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="4" align="right">
@@ -238,4 +250,15 @@ select {
 
 
 </body>
+<script>
+		$(document).ready(function() {
+			$('#summernote').summernote();
+		});
+		$('#summernote').summernote({
+			height : 300, // set editor height
+			minHeight : 300, // set minimum height of editor
+			maxHeight : 300, // set maximum height of editor
+			focus : true
+		});
+	</script>
 </html>

@@ -937,8 +937,15 @@ public class QuestService implements IQuestService {
 		// dao.updateBoard(flag);
 		// System.out.println(flag);
 		// }
-
-		// apply테이블 컴플리트 플래그 2. 간택완료로 바꿈
+		
+		// board 테이블 보드클래그 3. 퀘진행중으로 바꿈
+//		System.out.println("Board choiceApply" + dao.selectBoardOne(boardNo));
+		HashMap<String, Object> flag = dao.selectBoardOne(boardNo);
+		flag.put("bCompleteFlag", 0);
+		dao.updateBoard(flag);
+		System.out.println("?");
+		
+		// apply테이블 컴플리트 플래그 1. 간택완료로 바꿈
 		HashMap<String, Object> tmp = new HashMap<>();
 		tmp.put("boardNo", boardNo);
 		tmp.put("userIndex", user2Index); // 신청자

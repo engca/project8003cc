@@ -84,12 +84,14 @@ function deletePopup(){
 	data.submit(); 	
 }
 function updatePopup(){
-	var data = document.delupData;
-	window.open('','up','width=500, height=600');
-	data.action = "updateBoard.do";
-	data.target = "up";
-	data.method = "post";
-	data.submit(); 	
+// 	var data = document.delupData;
+// 	document.open('','up','width=500, height=600');
+// 	data.action = "updateBoard.do";
+// 	data.target = "up";
+// 	data.method = "post";
+// 	data.submit();
+	document.location.href="updateBoard.do?boardNo="+${boardList.boardNo };
+
 }
 function police(){
 		$.ajax({

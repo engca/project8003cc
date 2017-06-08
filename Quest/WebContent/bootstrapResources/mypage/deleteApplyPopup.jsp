@@ -34,7 +34,7 @@ h2 {
 	<p>
 	<hr class="star-primary">
 	<center>
-	- boardNo ${boardNo} / ${userIndex }
+<%-- 	- boardNo ${boardNo} / ${userIndex } --%>
 			<input type="hidden" name="boardNo" value=${boardNo }>
 			<input type="hidden" name="userIndex" value=${userIndex }>
 		<input type="button" class="btn btn-primary btn-lg" value="아니요" onclick="location.href = 'javascript:history.back()'">

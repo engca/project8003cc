@@ -119,12 +119,12 @@
 												${board.reward1 }
 								
 												&nbsp;&nbsp;&nbsp; 
-											<c:if test="${apply.reward2 != ''}">																														
+											<c:if test="${board.reward2 != ''}">																														
 												<input type="radio" name="rewardNo" id="reward" value="2"> 
 												${board.reward2 }
 											</c:if>								
 											&nbsp;&nbsp; 
-											<c:if test="${apply.reward3 != ''}">	
+											<c:if test="${board.reward3 != ''}">	
 												<input type="radio" name="rewardNo" id="reward" value="3"> 
 												${board.reward3 }
 											</c:if>	
@@ -135,12 +135,12 @@
 												${board.reward1 }
 								
 												&nbsp;&nbsp;&nbsp; 
-											<c:if test="${apply.reward2 != ''}">																														
+											<c:if test="${board.reward2 != ''}">																														
 												<input type="radio" name="rewardNo" id="reward" value="2" checked="checked"> 
 												${board.reward2 }
 											</c:if>								
 											&nbsp;&nbsp; 
-											<c:if test="${apply.reward3 != ''}">	
+											<c:if test="${board.reward3 != ''}">	
 												<input type="radio" name="rewardNo" id="reward" value="3"> 
 												${board.reward3 }
 											</c:if>	
@@ -151,12 +151,12 @@
 												${board.reward1 }
 								
 												&nbsp;&nbsp;&nbsp; 
-											<c:if test="${apply.reward2 != ''}">																														
+											<c:if test="${board.reward2 != ''}">																														
 												<input type="radio" name="rewardNo" id="reward" value="2" > 
 												${board.reward2 }
 											</c:if>								
 											&nbsp;&nbsp; 
-											<c:if test="${apply.reward3 != ''}">	
+											<c:if test="${board.reward3 != ''}">	
 												<input type="radio" name="rewardNo" id="reward" value="3" checked="checked"> 
 												${board.reward3 }
 											</c:if>	
