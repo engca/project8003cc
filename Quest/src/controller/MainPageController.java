@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
 import commons.Constant;
 import service.IQuestService;
 
@@ -34,7 +36,20 @@ import service.IQuestService;
 public class MainPageController {
 	@Autowired
 	IQuestService service;
-
+	@RequestMapping("android.do")
+	public @ResponseBody String android() {
+		HashMap<String, Object> data = new HashMap<>();
+		System.out.println("dfdfdfdfdfdf");
+		HashMap<String, Object> data0 = service.getBoardList(0, 1);
+		HashMap<String, Object> data1 = service.getBoardList(1, 1);
+		data.put("list0", data0);
+		data.put("list1", data1);
+		System.out.println(data0.get("boardList"));
+//		return data;
+		Gson gson = new Gson();
+		String json = gson.toJson(data);
+		return json;
+	}
 	@RequestMapping("main.do")
 	public ModelAndView main() {
 		ModelAndView mav = new ModelAndView();
