@@ -15,10 +15,11 @@ import service.IQuestService;
 public class AndroidController {
 	@Autowired
 	IQuestService service;
+	
 	@RequestMapping("m_android.do")
 	public @ResponseBody String android() {
 		HashMap<String, Object> data = new HashMap<>();
-		System.out.println("dfdfdfdfdfdf");
+		System.out.println("m_android");
 		HashMap<String, Object> data0 = service.getBoardList(0, 1);
 		HashMap<String, Object> data1 = service.getBoardList(1, 1);
 //		data.put("welldolist", data0); //잘해요
@@ -31,6 +32,24 @@ public class AndroidController {
 		String json = gson.toJson(data);
 		System.out.println("json"+json);
 		return json;
+		
+	}
+	
+	@RequestMapping("m_getBoard.do")
+	public @ResponseBody String getBoard(int boardNo) {
+		System.out.println("m_getBoard in!");
+		System.out.println(boardNo);
+		
+//		HashMap<String, Object> boardList = service.getBoard(Integer.parseInt(boardNo));
+		HashMap<String, Object> boardList = service.getBoard(boardNo);
+		System.out.println("getBoard"+boardList);
+		
+//		return data;
+		Gson gson = new Gson();
+		String json_boarList = gson.toJson(boardList);
+		System.out.println("boardList"+json_boarList);
+		return json_boarList;
+//		return null;
 		
 	}
 
