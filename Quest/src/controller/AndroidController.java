@@ -2,6 +2,8 @@ package controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
+import commons.Constant;
 import service.IQuestService;
 
 @Controller
@@ -52,5 +55,15 @@ public class AndroidController {
 //		return null;
 		
 	}
-
+	@RequestMapping("m_session.do")
+	public @ResponseBody String session(HttpSession session) {
+		System.out.println("m_session in!");
+		
+		HashMap<String, Object> sessionMap = new HashMap<>();
+		sessionMap.put(Constant.User.USERID, session.getAttribute(Constant.User.USERID));
+		Gson gson = new Gson();
+		String json_sessionMap = gson.toJson(sessionMap);
+		System.out.println("sessionMap"+sessionMap);
+		return json_sessionMap;
+	}
 }
