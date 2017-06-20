@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -39,17 +40,20 @@ public class AndroidController {
 	public @ResponseBody String getBoard(int boardNo) {
 		System.out.println("m_getBoard in!");
 		System.out.println(boardNo);
-		
-//		HashMap<String, Object> boardList = service.getBoard(Integer.parseInt(boardNo));
+		HashMap<String, Object> data = new HashMap<>();
 		HashMap<String, Object> boardList = service.getBoard(boardNo);
 		System.out.println("getBoard"+boardList);
+		System.out.println((int)boardList.get("addrNo"));
+		HashMap<String, Object> addrList = service.getAddress((int)boardList.get("addrNo"));
+		System.out.println("addrList"+addrList);
+		data.put("boardList", boardList);
+		data.put("addrList", addrList); 
 		
-//		return data;
+		
 		Gson gson = new Gson();
-		String json_boarList = gson.toJson(boardList);
-		System.out.println("boardList"+json_boarList);
-		return json_boarList;
-//		return null;
+		String json = gson.toJson(data);
+		System.out.println("m_getBoard json"+json);
+		return json;
 		
 	}
 
